@@ -29,8 +29,6 @@ export const Row = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  margin: 34px 0;
-
   &.end {
     justify-content: flex-end;
   }
