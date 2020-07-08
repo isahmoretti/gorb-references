@@ -15,7 +15,7 @@ export const Content = styled.div`
   position: relative;
 
   width: 950px;
-  height: 700px;
+  height: 545px;
 `;
 export const Row = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ export const Row = styled.div`
 
   position: relative;
 
-  height: 233px;
+  height: 182px;
 
   &.bt {
     justify-content: space-around;
