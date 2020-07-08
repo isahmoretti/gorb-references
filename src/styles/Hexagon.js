@@ -16,19 +16,34 @@ export const Content = styled.div`
 
   width: 950px;
   height: 545px;
+
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+  }
 `;
 export const Row = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: relative;
 
+  width: 100%;
   height: 182px;
 
   &.bt {
     justify-content: space-around;
+  }
+
+  @media only screen and (max-width: 600px) {
+    :nth-child(1) {
+      margin-top: 20px;
+    }
+
+    :nth-child(2) {
+      flex-direction: column;
+      height: auto;
+    }
   }
 `;
 
@@ -93,6 +108,25 @@ export const Hexagon = styled.div`
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
     border-top: 58px solid red;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 140px;
+    height: 78px;
+
+    margin: 80px 20px;
+
+    ::before {
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-bottom: 57px solid red;
+    }
+
+    ::after {
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-top: 58px solid red;
+    }
   }
 
   :hover {
