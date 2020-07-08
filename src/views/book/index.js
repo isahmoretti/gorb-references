@@ -10,7 +10,7 @@ import {
 } from "../../styles/Hexagon";
 
 // pages
-import Book from "./Book";
+import BookWithOneAuthor from "./BookWithOneAuthor";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -52,7 +52,7 @@ const BookGeneral = ({ back }) => {
         </Content>
       )}
 
-      {state === 1 && <Book back={() => setState(0)} />}
+      {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
     </Conatiner>
   );
 };

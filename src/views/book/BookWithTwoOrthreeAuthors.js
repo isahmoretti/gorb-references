@@ -7,11 +7,10 @@ import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
-import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 
 // styles
-import { Container, Card, Row, Content, Footer, Back } from "./style";
+import { Container, Card, Row, Content, Footer } from "./style";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -30,7 +29,6 @@ const generateReference = (values) => {
     local,
     publishingCompany,
     yearOfPublication,
-    online,
   } = values;
 
   const authorSplit = author.split(" ");
@@ -42,21 +40,22 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {lastName},{firstName}.
+      {lastName}, {firstName}. {' '}
       {caption ? (
         <>
           <b>{title}: </b>
           {caption}.{" "}
         </>
       ) : (
-        <b>{title}. </b>
-      )}
+          <b>{title}. </b>
+        )}
       {edition && <> {edition}. ed. </>}
-      {local}: {publishingCompany}
+      {local}: {publishingCompany}, {' '}
+      {yearOfPublication}.
     </span>
   );
 };
-const Book = ({ back }) => {
+const Book = () => {
   const [state, setState] = useState({
     values: {},
   });
@@ -71,7 +70,6 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
       <Formik
         initialValues={{
           author: "Daniel Barbosa de Lima",
@@ -81,7 +79,6 @@ const Book = ({ back }) => {
           local: "São Paulo", // ex: São Paulo
           publishingCompany: "Revista hoje", //
           yearOfPublication: "2020",
-          online: false,
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -120,7 +117,7 @@ const Book = ({ back }) => {
                   <Grid item xs={4}>
                     <Input
                       type="text"
-                      label="Capítulo"
+                      label="Subtítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -169,7 +166,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={6}>
+                  <Grid item xs={3}>
                     <Input
                       type="text"
                       label="Ano de publicação"
@@ -182,7 +179,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={6}>
+                  {/* <Grid item xs={6}>
                     <Select
                       id="online"
                       label="Online"
@@ -195,7 +192,7 @@ const Book = ({ back }) => {
                         { value: false, name: "Não" },
                       ]}
                     />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Content>
 
