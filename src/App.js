@@ -10,8 +10,8 @@ import GlobalStyles from "./styles/GlobalStyles";
 function App() {
   return (
     <div>
-      <Dashboard />
-      <Book/>
+      {/* <Dashboard /> */}
+      <Book />
       <GlobalStyles />
     </div>
   );

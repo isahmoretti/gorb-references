@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-import InputWrapper from "../../components/InputWrapper/Input";
+import { Grid } from "@material-ui/core";
 
+// components
+import Input from "../../components/InputWrapper/Input";
+import Select from "../../components/InputWrapper/Select";
+import Button from "../../components/Buttons";
+
+// styles
+import { Container, Card, Row, Content, Footer } from "./style";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -13,27 +21,65 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
+const generateReference = (values) => {
+  const {
+    author,
+    title,
+    caption,
+    edition,
+    local,
+    publishingCompany,
+    yearOfPublication,
+    online,
+  } = values;
+
+  const authorSplit = author.split(" ");
+
+  const firstName = authorSplit[0];
+
+  const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+
+  return (
+    <span>
+      {" "}
+      {lastName},{firstName}.
+      {caption ? (
+        <>
+          <b>{title}: </b>
+          {caption}.{" "}
+        </>
+      ) : (
+        <b>{title}. </b>
+      )}
+      {edition && <> {edition}. ed. </>}
+      {local}: {publishingCompany}
+    </span>
+  );
+};
 const Book = () => {
-  // Elementos essenciais: autor, título, subtítulo (se houver),
-  // edição (se houver), local de publicação, editora e data de publicação.
-  // Elementos complementares: outras responsabilidades, paginação, série, notas, ISBN.
+  const [state, setState] = useState({
+    values: {},
+  });
 
   const handleSubmit = (values) => {
-
-    console.log(values);
+    setState((prev) => ({
+      ...prev,
+      values,
+      references: generateReference(values),
+    }));
   };
 
   return (
-    <div>
+    <Container>
       <Formik
         initialValues={{
-          author: "",
-          title: "",
-          caption: "", // subtitulo - não é obrigatório
-          edition: "", // não é obrigatório
-          local: "", // ex: São Paulo
-          publishingCompany: "", //
-          yearOfPublication: "",
+          author: "Daniel Barbosa de Lima",
+          title: "A bela e a fera",
+          caption: "Em uma aventura perigosa", // subtitulo - não é obrigatório
+          edition: "1", // não é obrigatório
+          local: "São Paulo", // ex: São Paulo
+          publishingCompany: "Revista hoje", //
+          yearOfPublication: "2020",
           online: false,
         }}
         validationSchema={SignupSchema}
@@ -41,98 +87,134 @@ const Book = () => {
       >
         {(props) => (
           <form onSubmit={props.handleSubmit}>
-            <InputWrapper
-              type="text"
-              label="Autor"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.author}
-              name="author"
-            />
-            {props.errors.author && (
-              <span className="error">{props.errors.author}</span>
-            )}
-            <InputWrapper
-              type="text"
-              label="Título"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.title}
-              name="title"
-            />
-            {props.errors.title && (
-              <span className="error">{props.errors.title}</span>
-            )}
-            <InputWrapper
-              type="text"
-              label="Capítulo"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.caption}
-              name="caption"
-            />
-            <InputWrapper
-              type="text"
-              label="Edição"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.edition}
-              name="edition"
-            />
-            <InputWrapper
-              type="text"
-              label="Local de publicação"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.local}
-              name="local"
-            />
-            {props.errors.local && (
-              <span className="error">{props.errors.local}</span>
-            )}
-            <InputWrapper
-              type="text"
-              label="Empresa de publicação"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.publishingCompany}
-              name="publishingCompany"
-            />
-            {props.errors.publishingCompany && (
-              <span className="error">{props.errors.publishingCompany}</span>
-            )}
-            <InputWrapper
-              type="text"
-              label="Ano de publicação"
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              value={props.values.yearOfPublication}
-              name="yearOfPublication"
-            />
-            {props.errors.yearOfPublication && (
-              <span className="error">{props.errors.yearOfPublication}</span>
-            )}
-            <label htmlFor="online">Online</label>
-            <select
-              id="online"
-              label="online"
-              value={props.values.online}
-              onChange={props.handleChange}
-              onBlur={props.handleBlur}
-              name="online"
-            >
-              <option value="true">Sim</option>
-              <option value="false">Não</option>
-            </select>
+            <Card>
+              <Content>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Autor"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.author}
+                      name="author"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
 
-            <button type="submit">Submit</button>
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Título"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.title}
+                      name="title"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Capítulo"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      name="caption"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Edição"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.edition}
+                      name="edition"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Local de publicação"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.local}
+                      name="local"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Input
+                      type="text"
+                      label="Empresa de publicação"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.publishingCompany}
+                      name="publishingCompany"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={6}>
+                    <Input
+                      type="text"
+                      label="Ano de publicação"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.yearOfPublication}
+                      name="yearOfPublication"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={6}>
+                    <Select
+                      id="online"
+                      label="Online"
+                      value={props.values.online}
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      name="online"
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                </Grid>
+              </Content>
+
+              {state.references && generateReference(state.values)}
+              <Footer>
+                <Row container className="end">
+                  <Button variant="outlined" color="primary">
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referencia
+                  </Button>
+                </Row>
+              </Footer>
+            </Card>
           </form>
         )}
       </Formik>
-    </div>
+    </Container>
   );
 };
 
 export default Book;
-
-
