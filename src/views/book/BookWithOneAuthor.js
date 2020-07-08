@@ -214,6 +214,8 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
 
                   <Grid item xs={4}>
                     <Input
@@ -237,7 +239,7 @@ const Book = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
-                      name="Series"
+                      name="series"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -246,11 +248,26 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Serie"
+                      label="Nota"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.series}
-                      name="Series"
+                      value={props.values.grades}
+                      name="grades"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={4}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="isbn"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.isbn}
+                      name="Isbn"
                       errors={props.errors}
                       touched={props.touched}
                     />
