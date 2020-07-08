@@ -39,8 +39,8 @@ const Book = () => {
   })
   // Elementos essenciais: autor, título, subtítulo (se houver),
   // edição (se houver), local de publicação, editora e data de publicação.
-  // Elementos complementares: outras responsabilidades, paginação, série, notas, ISBN.
-
+  // Elementos complementares: outras responsabilidades, paginação, série, notas, ISBN .
+ 
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
