@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   position: relative;
   width: 950px;
-  height: 700px;
+  height: 545px;
 `;
 
 export const Back = styled(ArrowBack)`
