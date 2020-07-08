@@ -1,12 +1,26 @@
 import styled from "styled-components";
 
+import { ArrowBack } from "styled-icons/material";
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  height: 100vh;
+  position: relative;
+  width: 950px;
+  height: 700px;
+`;
+
+export const Back = styled(ArrowBack)`
+  width: 50px;
+  height: 50px;
+
+  position: absolute;
+  cursor: pointer;
+
+  top: 0;
+  left: 0;
 `;
 
 export const Card = styled.div`
@@ -16,10 +30,6 @@ export const Card = styled.div`
 
   width: 800px;
   height: 500px;
-
-  border: 1px solid #000;
-
-  border-radius: 3px;
 
   padding: 20px;
 `;

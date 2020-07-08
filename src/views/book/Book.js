@@ -11,7 +11,7 @@ import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 
 // styles
-import { Container, Card, Row, Content, Footer } from "./style";
+import { Container, Card, Row, Content, Footer, Back } from "./style";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -56,7 +56,7 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Book = () => {
+const Book = ({ back }) => {
   const [state, setState] = useState({
     values: {},
   });
@@ -71,6 +71,7 @@ const Book = () => {
 
   return (
     <Container>
+      <Back onClick={back} />
       <Formik
         initialValues={{
           author: "Daniel Barbosa de Lima",
