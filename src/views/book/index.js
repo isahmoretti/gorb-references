@@ -11,7 +11,7 @@ import {
 
 // pages
 import BookWithOneAuthor from "./BookWithOneAuthor";
-import BookWithTwoOrthreeAuthors from "./BookWithMoreThatThreeAuthors";
+import BookWithTwoOrThreeAuthors from "./BookWithTwoOrThreeAuthors";
 import BookWithMoreThatThreeAuthors from "./BookWithMoreThatThreeAuthors";
 
 const BookGeneral = ({ back }) => {
@@ -55,7 +55,7 @@ const BookGeneral = ({ back }) => {
       )}
 
       {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
-      {state === 2 && <BookWithTwoOrthreeAuthors back={() => setState(0)} />}
+      {state === 2 && <BookWithTwoOrThreeAuthors back={() => setState(0)} />}
       {state === 3 && <BookWithMoreThatThreeAuthors back={() => setState(0)} />}
     </Conatiner>
   );
