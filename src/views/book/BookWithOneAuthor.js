@@ -9,6 +9,7 @@ import { Grid } from "@material-ui/core";
 import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
+import Modal from "../../components/Modal";
 // styles
 import { Container, Card, Row, Content, Footer, Back } from "./style";
 
@@ -60,6 +61,8 @@ const Book = ({ back }) => {
     values: {},
   });
 
+  const [openModal, setOpenModal] = useState(false);
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -95,7 +98,7 @@ const Book = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Autor"
@@ -108,7 +111,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       type="text"
                       label="Título"
@@ -120,8 +123,9 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-
-                  <Grid item xs={4}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Subtítulo"
@@ -133,21 +137,8 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
-                    <Input
-                      type="text"
-                      label="Edição"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.edition}
-                      name="edition"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={4}>
+
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Local de publicação"
@@ -159,7 +150,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Empresa de publicação"
@@ -173,7 +164,19 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      label="Edição"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.edition}
+                      name="edition"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Ano de publicação"
@@ -185,7 +188,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Select
                       type="text"
                       label="Elementos complementares"
@@ -201,7 +204,7 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -216,8 +219,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -231,7 +233,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -244,7 +246,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -259,7 +261,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -274,18 +276,26 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
               </Content>
-
-              {state.references && generateReference(state.values)}
               <Footer>
                 <Row container className="end">
                   <Button variant="outlined" color="primary">
                     Limpar campos
                   </Button>
-                  <Button type="submit" color="primary">
+                  <Button
+                    onClick={() => setOpenModal(!openModal)}
+                    type="submit"
+                    color="primary"
+                  >
                     Gerar referencia
                   </Button>
                 </Row>
               </Footer>
+
+              <Modal
+                isOpen={openModal}
+                handleClose={() => setOpenModal(!openModal)}
+                text={state.references}
+              />
             </Card>
           </form>
         )}

@@ -10,6 +10,10 @@ export const Container = styled.div`
   position: relative;
   width: 950px;
   height: 545px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const Back = styled(ArrowBack)`
@@ -21,6 +25,10 @@ export const Back = styled(ArrowBack)`
 
   top: 0;
   left: 0;
+
+  @media only screen and (max-width: 600px) {
+    top: -30px;
+  }
 `;
 
 export const Card = styled.div`
@@ -32,6 +40,24 @@ export const Card = styled.div`
   height: 500px;
 
   padding: 20px;
+
+  overflow-y: scroll;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(118, 118, 118);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgb(195, 195, 195));
+  }
 `;
 
 export const Row = styled.div`

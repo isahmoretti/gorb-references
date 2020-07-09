@@ -40,18 +40,17 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {lastName}, {firstName}. {' '}
+      {lastName}, {firstName}.{" "}
       {caption ? (
         <>
           <b>{title}: </b>
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {edition && <> {edition}. ed. </>}
-      {local}: {publishingCompany}, {' '}
-      {yearOfPublication}.
+      {local}: {publishingCompany}, {yearOfPublication}.
     </span>
   );
 };
@@ -88,7 +87,7 @@ const Book = () => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Autor"
@@ -101,7 +100,7 @@ const Book = () => {
                     />
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Título"
@@ -114,7 +113,7 @@ const Book = () => {
                     />
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Subtítulo"
@@ -128,7 +127,7 @@ const Book = () => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Edição"
@@ -140,7 +139,7 @@ const Book = () => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Local de publicação"
@@ -152,7 +151,7 @@ const Book = () => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item sm={12} md={4}>
                     <Input
                       type="text"
                       label="Empresa de publicação"
