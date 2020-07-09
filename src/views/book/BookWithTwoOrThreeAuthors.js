@@ -24,8 +24,7 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array()
-    .of(Yup.string().required("Obrigatório")),
+  authors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -72,8 +71,8 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
@@ -94,13 +93,14 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = (values, ...rest) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
     }));
+
+    setOpenModal(!openModal);
   };
 
   return (
@@ -110,7 +110,18 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
       <Formik
         initialValues={{
           authors: [""],
+          title: "",
+          caption: "",
+          edition: "",
+          local: "",
+          publishingCompany: "",
+          yearOfPublication: "",
           complementaryElements: false,
+          othersResponsabilities: "",
+          pagination: "",
+          series: "",
+          grades: "",
+          isbn: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -126,45 +137,45 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.authors &&
-                            props.values.authors.length > 0 ? (
-                              props.values.authors.map((author, index) => (
-                                <FieldArrayContainer key={index}>
-                                  <Input
-                                    type="text"
-                                    label={`Author ${index + 1}`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`authors.${index}`}
-                                    nameField="authors"
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
+                          props.values.authors.length > 0 ? (
+                            props.values.authors.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <Input
+                                  type="text"
+                                  label={`Author ${index + 1}`}
+                                  onChange={props.handleChange}
+                                  onBlur={props.handleBlur}
+                                  value={author}
+                                  name={`authors.${index}`}
+                                  nameField="authors"
+                                  errors={props.errors}
+                                  touched={props.touched}
+                                />
+                                <ButtonCore
+                                  type="button"
+                                  disabled={index === 0}
+                                  onClick={() => arrayHelpers.remove(index)}
+                                >
+                                  <RemoveIcon />
+                                </ButtonCore>
+                                {index === props.values.authors.length - 1 && (
                                   <ButtonCore
                                     type="button"
-                                    disabled={index === 0}
-                                    onClick={() => arrayHelpers.remove(index)}
+                                    onClick={() => arrayHelpers.push("")}
                                   >
-                                    <RemoveIcon />
+                                    <AddIcon />
                                   </ButtonCore>
-                                  {index === props.values.authors.length - 1 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.push("")}
-                                    >
-                                      <AddIcon />
-                                    </ButtonCore>
-                                  )}
-                                </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                                )}
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />
@@ -343,11 +354,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                   >
                     Limpar campos
                   </Button>
-                  <Button
-                    onClick={() => setOpenModal(!openModal)}
-                    type="submit"
-                    color="primary"
-                  >
+                  <Button type="submit" color="primary">
                     Gerar referencia
                   </Button>
                 </Row>

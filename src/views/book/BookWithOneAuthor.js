@@ -35,7 +35,7 @@ const generateReference = (values) => {
     series,
     pagination,
     grades,
-    isbn
+    isbn,
   } = values;
 
   const authorSplit = author.split(" ");
@@ -54,13 +54,15 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
-      {complementaryElements && othersResponsabilities && <> {othersResponsabilities}.</>}
+      {complementaryElements && othersResponsabilities && (
+        <> {othersResponsabilities}.</>
+      )}
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
     </span> //TODO: edition apenas em português
@@ -80,15 +82,29 @@ const Book = ({ back }) => {
       values,
       references: generateReference(values),
     }));
+
+    setOpenModal(!openModal);
   };
 
   return (
     <Container>
       <Back onClick={back} />
-        
+
       <Formik
         initialValues={{
+          author: "",
+          title: "",
+          caption: "",
+          edition: "",
+          local: "",
+          publishingCompany: "",
+          yearOfPublication: "",
           complementaryElements: false,
+          othersResponsabilities: "",
+          pagination: "",
+          series: "",
+          grades: "",
+          isbn: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -278,16 +294,14 @@ const Book = ({ back }) => {
               </Content>
               <Footer>
                 <Row container className="end">
-                  <Button variant="outlined" color="primary"
+                  <Button
+                    variant="outlined"
+                    color="primary"
                     onClick={props.resetForm}
                   >
                     Limpar campos
                   </Button>
-                  <Button
-                    onClick={() => setOpenModal(!openModal)}
-                    type="submit"
-                    color="primary"
-                  >
+                  <Button type="submit" color="primary">
                     Gerar referencia
                   </Button>
                 </Row>
