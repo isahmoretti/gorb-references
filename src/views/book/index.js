@@ -43,7 +43,7 @@ const BookGeneral = ({ back }) => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(3)}  className="blue">
+            <Hexagon onClick={() => setState(3)} className="blue">
               <p>Referência de livro com vários autores</p>
             </Hexagon>
 
@@ -54,7 +54,7 @@ const BookGeneral = ({ back }) => {
         </Content>
       )}
 
-      {state === 1 && <BookWithOneAuthor BookWithThreeOrMoreAuthorsback={() => setState(0)} />}
+      {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
       {state === 2 && <BookWithTwoOrthreeAuthors back={() => setState(0)} />}
       {state === 3 && <BookWithMoreThatThreeAuthors back={() => setState(0)} />}
     </Conatiner>
