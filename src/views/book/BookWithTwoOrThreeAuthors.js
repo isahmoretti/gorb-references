@@ -24,7 +24,10 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array().required("Obrigatório"),
+  authors: Yup.array()
+    .of(Yup.string().min(3, "Nome do autor precisa ter mais de 3 caracteres"))
+    .required("Obrigatório")
+    .min(1, "Minimo 1 autor"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -32,18 +35,16 @@ const SignupSchema = Yup.object().shape({
 });
 
 const getAuthorName = (authors) => {
-  const authorsTogether = authors.map(author => {
-
+  const authorsTogether = authors.map((author) => {
     const authorSplit = author.split(" ");
-    
-    const firstName = authorSplit[0];
-    
-    const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-    
-    return `${lastName}, ${firstName[0]}`;
-  })
-  return authorsTogether.join('; ')
 
+    const firstName = authorSplit[0];
+
+    const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+
+    return `${lastName}, ${firstName[0]}`;
+  });
+  return authorsTogether.join("; ");
 };
 
 const generateReference = (values) => {
@@ -148,6 +149,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                                   onBlur={props.handleBlur}
                                   value={author}
                                   name={`authors.${index}`}
+                                  nameField="authors"
                                   errors={props.errors}
                                   touched={props.touched}
                                 />
@@ -161,9 +163,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                                 {index === props.values.authors.length - 1 && (
                                   <ButtonCore
                                     type="button"
-                                    onClick={() =>
-                                      arrayHelpers.push("")
-                                    }
+                                    onClick={() => arrayHelpers.push("")}
                                   >
                                     <AddIcon />
                                   </ButtonCore>

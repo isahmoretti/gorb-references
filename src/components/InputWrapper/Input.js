@@ -5,14 +5,17 @@ import { TextField } from "@material-ui/core";
 import { Container, ErrorText } from "./style";
 
 const InputWrapper = ({ ...rest }) => {
-  const { errors, touched, name } = rest;
+  const { errors, touched, name, nameField } = rest;
 
   return (
     <Container>
       <TextField variant="outlined" {...rest} />
-      {errors && touched && errors[name] && touched[name] && (
-        <ErrorText>{errors[name]}</ErrorText>
-      )}
+      {errors &&
+        touched &&
+        errors[nameField || name] &&
+        touched[nameField || name] && (
+          <ErrorText>{errors[nameField || name]}</ErrorText>
+        )}
     </Container>
   );
 };
