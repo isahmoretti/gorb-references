@@ -21,6 +21,7 @@ import {
   AddIcon,
   RemoveIcon,
   FieldArrayContainer,
+  ErrorText,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -140,32 +141,41 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                           props.values.authors.length > 0 ? (
                             props.values.authors.map((author, index) => (
                               <FieldArrayContainer key={index}>
-                                <Input
-                                  type="text"
-                                  label={`Author ${index + 1}`}
-                                  onChange={props.handleChange}
-                                  onBlur={props.handleBlur}
-                                  value={author}
-                                  name={`authors.${index}`}
-                                  nameField="authors"
-                                  errors={props.errors}
-                                  touched={props.touched}
-                                />
-                                <ButtonCore
-                                  type="button"
-                                  disabled={index === 0}
-                                  onClick={() => arrayHelpers.remove(index)}
-                                >
-                                  <RemoveIcon />
-                                </ButtonCore>
-                                {index === props.values.authors.length - 1 && (
+                                <div style={{ display: "flex", width: "100%" }}>
+                                  <Input
+                                    type="text"
+                                    label={`Author ${index + 1}`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    name={`authors.${index}`}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
                                   <ButtonCore
                                     type="button"
-                                    onClick={() => arrayHelpers.push("")}
+                                    disabled={index === 0}
+                                    onClick={() => arrayHelpers.remove(index)}
                                   >
-                                    <AddIcon />
+                                    <RemoveIcon />
                                   </ButtonCore>
-                                )}
+                                  {index ===
+                                    props.values.authors.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                                <div style={{ width: "100%" }}>
+                                  <ErrorText>
+                                    {props.errors &&
+                                      props.errors.authors &&
+                                      props.errors.authors[index]}
+                                  </ErrorText>
+                                </div>
                               </FieldArrayContainer>
                             ))
                           ) : (
