@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ArrowBack } from "styled-icons/material";
+import { ArrowBack, Add, Remove } from "styled-icons/material";
 
 export const Container = styled.div`
   display: flex;
@@ -72,3 +72,17 @@ export const Row = styled.div`
 
 export const Content = styled.div``;
 export const Footer = styled.div``;
+
+export const AddIcon = styled(Add)`
+  width: 50px;
+  height: 50px;
+
+  color: green;
+`;
+
+export const RemoveIcon = styled(Remove)`
+  width: 50px;
+  height: 50px;
+
+  color: red;
+`;

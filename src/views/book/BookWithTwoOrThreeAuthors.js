@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { Formik } from "formik";
+import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -11,7 +11,16 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 // styles
-import { Container, Card, Row, Content, Footer, Back } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Footer,
+  Back,
+  AddIcon,
+  RemoveIcon,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
   author1: Yup.string().required("Obrigatório"),
@@ -28,8 +37,8 @@ const getAuthorName = (author) => {
 
   const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
 
-  return `${lastName}, ${firstName[0]}`
-}
+  return `${lastName}, ${firstName[0]}`;
+};
 
 const generateReference = (values) => {
   const {
@@ -47,33 +56,33 @@ const generateReference = (values) => {
     series,
     pagination,
     grades,
-    isbn
+    isbn,
   } = values;
 
   return (
     <span>
       {" "}
-      {author1 && getAuthorName(author1)} {author1 && author2 ? ';' : '.'}{" "}
-      {author2 && getAuthorName(author2)} {author2 && author3 ? ';' : '.'}{" "}
+      {author1 && getAuthorName(author1)} {author1 && author2 ? ";" : "."}{" "}
+      {author2 && getAuthorName(author2)} {author2 && author3 ? ";" : "."}{" "}
       {author3 && getAuthorName(author3)} {author3 && <>. </>}
-{
-  caption ? (
-    <>
-      <b>{title}: </b>
-      {caption}.{" "}
-    </>
-  ) : (
-      <b>{title}. </b>
-    )
-}
-{ edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </> }
-{ local }: { publishingCompany }, { yearOfPublication }.
-{ complementaryElements && pagination && <> {pagination} p.</> }
-{ complementaryElements && series && <> ({series}).</> }
-{ complementaryElements && othersResponsabilities && <> {othersResponsabilities}.</> }
-{ complementaryElements && grades && <> {grades}.</> }
-{ complementaryElements && isbn && <> {isbn}.</> }
-    </span > //TODO: edition apenas em português
+      {caption ? (
+        <>
+          <b>{title}: </b>
+          {caption}.{" "}
+        </>
+      ) : (
+        <b>{title}. </b>
+      )}
+      {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
+      {local}: {publishingCompany}, {yearOfPublication}.
+      {complementaryElements && pagination && <> {pagination} p.</>}
+      {complementaryElements && series && <> ({series}).</>}
+      {complementaryElements && othersResponsabilities && (
+        <> {othersResponsabilities}.</>
+      )}
+      {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> {isbn}.</>}
+    </span> //TODO: edition apenas em português
   );
 };
 const BookWithTwoOrThreeAuthors = ({ back }) => {
@@ -98,9 +107,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
 
       <Formik
         initialValues={{
-          author1: "Clarice Lispector",
-          author2: "Clarice Lispector",
-          author3: "Clarice Lispector",
+          authors: [],
           title: "Água viva",
           caption: "Uma paixão", // subtitulo - não é obrigatório
           edition: "11", // não é obrigatório
@@ -122,28 +129,49 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Autor 1"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author1}
-                      name="author1"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Autor 2"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author2}
-                      name="author2"
-                      errors={props.errors}
-                      touched={props.touched}
+                  <Grid item xs={12} sm={12} md={12}>
+                    <FieldArray
+                      name="authors"
+                      render={(arrayHelpers) => (
+                        <div>
+                          {props.values.authors &&
+                          props.values.authors.length > 0 ? (
+                            props.values.authors.map((author, index) => (
+                              <div key={index}>
+                                <Input
+                                  type="text"
+                                  label={`Author ${index + 1}`}
+                                  onChange={props.handleChange}
+                                  onBlur={props.handleBlur}
+                                  value={props.values.authors}
+                                  name={`authors.${index}`}
+                                  errors={props.errors}
+                                  touched={props.touched}
+                                />
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.remove(index)}
+                                >
+                                  <RemoveIcon />
+                                </ButtonCore>
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.insert(index, "")}
+                                >
+                                  <AddIcon />
+                                </ButtonCore>
+                              </div>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
+                        </div>
+                      )}
                     />
                   </Grid>
                 </Grid>
@@ -325,7 +353,9 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
               </Content>
               <Footer>
                 <Row container className="end">
-                  <Button variant="outlined" color="primary"
+                  <Button
+                    variant="outlined"
+                    color="primary"
                     onClick={props.resetForm}
                   >
                     Limpar campos
