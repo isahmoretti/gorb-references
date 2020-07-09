@@ -20,10 +20,11 @@ import {
   Back,
   AddIcon,
   RemoveIcon,
+  FieldArrayContainer,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  author1: Yup.string().required("Obrigatório"),
+  authors: Yup.array().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -94,6 +95,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (values) => {
+    console.log(values);
     setState((prev) => ({
       ...prev,
       values,
@@ -107,7 +109,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [],
+          authors: [""],
           title: "Água viva",
           caption: "Uma paixão", // subtitulo - não é obrigatório
           edition: "11", // não é obrigatório
@@ -137,30 +139,35 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                           {props.values.authors &&
                           props.values.authors.length > 0 ? (
                             props.values.authors.map((author, index) => (
-                              <div key={index}>
+                              <FieldArrayContainer key={index}>
                                 <Input
                                   type="text"
                                   label={`Author ${index + 1}`}
                                   onChange={props.handleChange}
                                   onBlur={props.handleBlur}
-                                  value={props.values.authors}
+                                  value={author}
                                   name={`authors.${index}`}
                                   errors={props.errors}
                                   touched={props.touched}
                                 />
                                 <ButtonCore
                                   type="button"
+                                  disabled={index === 0}
                                   onClick={() => arrayHelpers.remove(index)}
                                 >
                                   <RemoveIcon />
                                 </ButtonCore>
-                                <ButtonCore
-                                  type="button"
-                                  onClick={() => arrayHelpers.insert(index, "")}
-                                >
-                                  <AddIcon />
-                                </ButtonCore>
-                              </div>
+                                {index === props.values.authors.length - 1 && (
+                                  <ButtonCore
+                                    type="button"
+                                    onClick={() =>
+                                      arrayHelpers.insert(index, "")
+                                    }
+                                  >
+                                    <AddIcon />
+                                  </ButtonCore>
+                                )}
+                              </FieldArrayContainer>
                             ))
                           ) : (
                             <ButtonCore
@@ -179,18 +186,6 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Autor 3"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author3}
-                      name="author3"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
                       label="Título"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -200,9 +195,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Subtítulo"
@@ -214,7 +207,9 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Local de publicação"
@@ -226,7 +221,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Empresa de publicação"

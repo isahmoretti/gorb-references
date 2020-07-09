@@ -86,3 +86,11 @@ export const RemoveIcon = styled(Remove)`
 
   color: red;
 `;
+
+export const FieldArrayContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: centr;
+`;
