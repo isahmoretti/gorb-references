@@ -14,16 +14,28 @@ import Modal from "../../components/Modal";
 import { Container, Card, Row, Content, Footer, Back } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  author: Yup.string().required("Obrigatório"),
+  author1: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
+const getAuthorName = (author) => {
+  const authorSplit = author.split(" ");
+
+  const firstName = authorSplit[0];
+
+  const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+  
+  return `${lastName}, ${firstName[0]}`
+}
+
 const generateReference = (values) => {
   const {
-    author,
+    author1,
+    author2,
+    author3,
     title,
     caption,
     edition,
@@ -38,16 +50,12 @@ const generateReference = (values) => {
     isbn
   } = values;
 
-  const authorSplit = author.split(" ");
-
-  const firstName = authorSplit[0];
-
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
   return (
     <span>
       {" "}
-      {lastName}, {firstName[0]}.{" "}
+      {author1 && getAuthorName(author1)} {author2 ? ';' : ','}{" "}
+      {author2 && getAuthorName(author2)} {author3 ? ';' : ','}{" "}
+      {author3 && getAuthorName(author3)} ,{" "}
       {caption ? (
         <>
           <b>{title}: </b>
@@ -66,7 +74,7 @@ const generateReference = (values) => {
     </span> //TODO: edition apenas em português
   );
 };
-const Book = ({ back }) => {
+const BookWithMoreThatThreeAuthors = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
@@ -85,10 +93,12 @@ const Book = ({ back }) => {
   return (
     <Container>
       <Back onClick={back} />
-        
+
       <Formik
-        initialValues={state.clearInitialValues ? {} : {
-          author: "Clarice Lispector",
+        initialValues={{
+          author1: "Clarice Lispector",
+          author2: "Clarice Lispector",
+          author3: "Clarice Lispector",
           title: "Água viva",
           caption: "Uma paixão", // subtitulo - não é obrigatório
           edition: "11", // não é obrigatório
@@ -110,20 +120,45 @@ const Book = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Autor"
+                      label="Autor 1"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
+                      value={props.values.author1}
+                      name="author1"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      type="text"
+                      label="Autor 2"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.author2}
+                      name="author2"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      type="text"
+                      label="Autor 3"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.author3}
+                      name="author3"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Título"
@@ -149,7 +184,6 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
@@ -244,7 +278,6 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -304,7 +337,6 @@ const Book = ({ back }) => {
                   </Button>
                 </Row>
               </Footer>
-
               <Modal
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
@@ -318,4 +350,4 @@ const Book = ({ back }) => {
   );
 };
 
-export default Book;
+export default BookWithMoreThatThreeAuthors;

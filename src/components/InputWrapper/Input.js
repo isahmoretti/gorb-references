@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Input, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 import { Container, ErrorText } from "./style";
 

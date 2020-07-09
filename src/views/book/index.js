@@ -11,6 +11,8 @@ import {
 
 // pages
 import BookWithOneAuthor from "./BookWithOneAuthor";
+import BookWithTwoOrthreeAuthors from "./BookWithMoreThatThreeAuthors";
+import BookWithMoreThatThreeAuthors from "./BookWithMoreThatThreeAuthors";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -31,7 +33,7 @@ const BookGeneral = ({ back }) => {
           </Row>
 
           <Row className="bt">
-            <Hexagon className="blue">
+            <Hexagon onClick={() => setState(2)} className="blue">
               <p>Livros com dois ou três autores</p>
             </Hexagon>
             <Title> Livros </Title>
@@ -41,7 +43,7 @@ const BookGeneral = ({ back }) => {
           </Row>
 
           <Row>
-            <Hexagon className="blue">
+            <Hexagon onClick={() => setState(3)}  className="blue">
               <p>Referência de livro com vários autores</p>
             </Hexagon>
 
@@ -52,7 +54,9 @@ const BookGeneral = ({ back }) => {
         </Content>
       )}
 
-      {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
+      {state === 1 && <BookWithOneAuthor BookWithThreeOrMoreAuthorsback={() => setState(0)} />}
+      {state === 2 && <BookWithTwoOrthreeAuthors back={() => setState(0)} />}
+      {state === 3 && <BookWithMoreThatThreeAuthors back={() => setState(0)} />}
     </Conatiner>
   );
 };
