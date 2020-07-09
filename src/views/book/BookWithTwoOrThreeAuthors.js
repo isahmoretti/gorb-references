@@ -31,21 +31,24 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getAuthorName = (author) => {
-  const authorSplit = author.split(" ");
+const getAuthorName = (authors) => {
+  const authorsTogether = authors.map(author => {
 
-  const firstName = authorSplit[0];
+    const authorSplit = author.split(" ");
+    
+    const firstName = authorSplit[0];
+    
+    const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+    
+    return `${lastName}, ${firstName[0]}`;
+  })
+  return authorsTogether.join('; ')
 
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
-  return `${lastName}, ${firstName[0]}`;
 };
 
 const generateReference = (values) => {
   const {
-    author1,
-    author2,
-    author3,
+    authors,
     title,
     caption,
     edition,
@@ -63,12 +66,10 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {author1 && getAuthorName(author1)} {author1 && author2 ? ";" : "."}{" "}
-      {author2 && getAuthorName(author2)} {author2 && author3 ? ";" : "."}{" "}
-      {author3 && getAuthorName(author3)} {author3 && <>. </>}
+      {authors.length && getAuthorName(authors)}.
       {caption ? (
         <>
-          <b>{title}: </b>
+          <b> {title}: </b>
           {caption}.{" "}
         </>
       ) : (
@@ -161,7 +162,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                                   <ButtonCore
                                     type="button"
                                     onClick={() =>
-                                      arrayHelpers.insert(index, "")
+                                      arrayHelpers.push("")
                                     }
                                   >
                                     <AddIcon />
