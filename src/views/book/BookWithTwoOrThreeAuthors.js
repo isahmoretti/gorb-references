@@ -25,9 +25,7 @@ import {
 
 const SignupSchema = Yup.object().shape({
   authors: Yup.array()
-    .of(Yup.string().min(3, "Nome do autor precisa ter mais de 3 caracteres"))
-    .required("Obrigatório")
-    .min(1, "Minimo 1 autor"),
+    .of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -74,8 +72,8 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-        <b>{title}. </b>
-      )}
+          <b>{title}. </b>
+        )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
@@ -112,18 +110,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
       <Formik
         initialValues={{
           authors: [""],
-          title: "Água viva",
-          caption: "Uma paixão", // subtitulo - não é obrigatório
-          edition: "11", // não é obrigatório
-          local: "Rio de Janeiro", // ex: São Paulo
-          publishingCompany: "Francisco Alves", //
-          yearOfPublication: "1990",
           complementaryElements: false,
-          othersResponsabilities: "Organizadores, Compiladores, Editores",
-          pagination: "118", //paginação
-          series: "Coleção Grandes Autores Nacionais", //serie
-          grades: "Essa é uma nota fake do autor para os leitores", //notas
-          isbn: "14564251457898", //identificação do livro
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -139,45 +126,45 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <Input
-                                  type="text"
-                                  label={`Author ${index + 1}`}
-                                  onChange={props.handleChange}
-                                  onBlur={props.handleBlur}
-                                  value={author}
-                                  name={`authors.${index}`}
-                                  nameField="authors"
-                                  errors={props.errors}
-                                  touched={props.touched}
-                                />
-                                <ButtonCore
-                                  type="button"
-                                  disabled={index === 0}
-                                  onClick={() => arrayHelpers.remove(index)}
-                                >
-                                  <RemoveIcon />
-                                </ButtonCore>
-                                {index === props.values.authors.length - 1 && (
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <Input
+                                    type="text"
+                                    label={`Author ${index + 1}`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    name={`authors.${index}`}
+                                    nameField="authors"
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
                                   <ButtonCore
                                     type="button"
-                                    onClick={() => arrayHelpers.push("")}
+                                    disabled={index === 0}
+                                    onClick={() => arrayHelpers.remove(index)}
                                   >
-                                    <AddIcon />
+                                    <RemoveIcon />
                                   </ButtonCore>
-                                )}
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Add a author
-                            </ButtonCore>
-                          )}
+                                  {index === props.values.authors.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
                         </div>
                       )}
                     />

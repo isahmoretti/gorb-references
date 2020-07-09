@@ -87,20 +87,8 @@ const Book = ({ back }) => {
       <Back onClick={back} />
         
       <Formik
-        initialValues={state.clearInitialValues ? {} : {
-          author: "Clarice Lispector",
-          title: "Água viva",
-          caption: "Uma paixão", // subtitulo - não é obrigatório
-          edition: "11", // não é obrigatório
-          local: "Rio de Janeiro", // ex: São Paulo
-          publishingCompany: "Francisco Alves", //
-          yearOfPublication: "1990",
+        initialValues={{
           complementaryElements: false,
-          othersResponsabilities: "Organizadores, Compiladores, Editores",
-          pagination: "118", //paginação
-          series: "Coleção Grandes Autores Nacionais", //serie
-          grades: "Essa é uma nota fake do autor para os leitores", //notas
-          isbn: "14564251457898", //identificação do livro
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
