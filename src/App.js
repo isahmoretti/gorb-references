@@ -1,17 +1,18 @@
 import React from "react";
 
-// views
-import Dashboard from "./views/Dashboard";
+// routes
+import Routes from "./routes";
 
 // styles
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
-    <div>
-      <Dashboard />
+    <>
+      <Routes />
+
       <GlobalStyles />
-    </div>
+    </>
   );
 }
 
