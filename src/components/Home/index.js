@@ -19,10 +19,9 @@ const Home = () => {
                 <strong>new creative</strong> website!
               </h3>
               <a
-                href="#about"
                 className="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs"
                 data-wow-delay="0.8s"
-                onClick={() => navigate("/app")}
+                href="/app"
               >
                 Let's go
               </a>

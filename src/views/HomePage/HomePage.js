@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 
 const HomePage = () => {
   return (
-    <div>
+    <div id="homepage">
       <Preloader />
       <Home />
       <About />

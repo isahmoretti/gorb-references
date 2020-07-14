@@ -22,12 +22,12 @@ const Footer = () => {
           <div className="col-md-4 col-sm-6">
             <h2>comila</h2>
             <div className="wow fadeInUp" data-wow-delay="0.3s">
-              <p>
+              <p className="txt-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
                 luctus lacus nulla, eget varius justo tristique ut. Etiam a
                 tellus magna.
               </p>
-              <p className="copyright-text">
+              <p className="txt-white">
                 Copyright &copy; 2016 Your Company <br />
                 Designed by
                 <a
@@ -45,7 +45,7 @@ const Footer = () => {
 
           <div className="col-md-4 col-sm-5">
             <h2>Our Studio</h2>
-            <p className="wow fadeInUp" data-wow-delay="0.6s">
+            <p className="txt-white wow fadeInUp" data-wow-delay="0.6s">
               120-240 aliquam augue libero,
               <br />
               Convallis in vulputate 10220 <br />
