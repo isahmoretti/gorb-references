@@ -11,7 +11,7 @@ function App() {
     <>
       <Routes />
 
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
     </>
   );
 }
