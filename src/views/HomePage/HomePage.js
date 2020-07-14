@@ -7,6 +7,10 @@ import Feature from "../../components/Feature";
 import Contact from "../../components/Contact";
 import Footer from "../../components/Footer";
 
+// assets
+import Logo from "../../assets/images/via-carreira2.png";
+import "./style.css";
+
 const HomePage = () => {
   return (
     <div id="homepage">
@@ -20,6 +24,8 @@ const HomePage = () => {
       <a href="#back-top" className="go-top">
         <i className="fa fa-angle-up"></i>
       </a>
+
+      <img src={Logo} alt="" className="logo" />
     </div>
   );
 };
