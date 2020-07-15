@@ -234,7 +234,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 15 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -288,6 +288,8 @@ const Book = ({ back }) => {
                       name="isbn"
                       errors={props.errors}
                       touched={props.touched}
+                      help
+                      helpText="Número de livro padrão internacional"
                     />
                   </Grid>
                 </Grid>
