@@ -217,7 +217,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Local de publicação(editora)"
+                      label="Local de publicação"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -229,7 +229,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Empresa de publicação"
+                      label="Empresa de publicação(editora)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
