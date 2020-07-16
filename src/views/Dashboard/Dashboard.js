@@ -14,17 +14,17 @@ const Dashboard = () => {
         <Content>
           <Row>
             <Hexagon onClick={() => setState(1)} className="blue">
-              <p>Livros</p>
+              <p className="txt-white">Livros</p>
             </Hexagon>
 
             <Hexagon className="green">
-              <p>Documento jurídico</p>
+              <p className="txt-white">Documento jurídico</p>
             </Hexagon>
           </Row>
 
           <Row className="bt">
             <Hexagon className="yellow">
-              <p>
+              <p className="txt-white">
                 Trabalhos <br />
                 acadêmicos e <br />
                 publicações <br />
@@ -33,7 +33,7 @@ const Dashboard = () => {
             </Hexagon>
             <Title> Gerador de Referências Bibliográficas </Title>
             <Hexagon className="">
-              <p>
+              <p className="txt-white">
                 Documentos <br />
                 exclusivos de meio <br />
                 eletrônico
@@ -43,11 +43,11 @@ const Dashboard = () => {
 
           <Row>
             <Hexagon className="blue-dark">
-              <p>Eventos</p>
+              <p className="txt-white">Eventos</p>
             </Hexagon>
 
             <Hexagon className="violet">
-              <p>
+              <p className="txt-white">
                 Documentos <br />
                 audiovisuais
               </p>

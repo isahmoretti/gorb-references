@@ -61,6 +61,9 @@ export const Back = styled(ArrowBack)`
 export const Title = styled.span`
   width: 270px;
 
+  font-size: 32px;
+  font-weight: bold;
+
   text-align: center;
 `;
 

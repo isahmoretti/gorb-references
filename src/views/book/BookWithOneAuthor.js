@@ -351,7 +351,17 @@ const Book = ({ back }) => {
                       helpText="Número de livro padrão internacional"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={8}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"

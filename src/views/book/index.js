@@ -23,31 +23,35 @@ const BookGeneral = ({ back }) => {
           <Row>
             <Back onClick={back} />
             <Hexagon onClick={() => setState(1)} className="blue">
-              <p>Livros com um único autor</p>
+              <p className="txt-white">Livros com um único autor</p>
             </Hexagon>
 
             <Hexagon className="blue">
-              <p>Livro com indicação de edição</p>
+              <p className="txt-white">Livro com indicação de edição</p>
             </Hexagon>
           </Row>
 
           <Row className="bt">
             <Hexagon onClick={() => setState(2)} className="blue">
-              <p>Livros com dois ou três autores</p>
+              <p className="txt-white">Livros com dois ou três autores</p>
             </Hexagon>
             <Title> Livros </Title>
             <Hexagon className="blue">
-              <p>Livro com responsável intelectual ao invés de autor</p>
+              <p className="txt-white">
+                Livro com responsável intelectual ao invés de autor
+              </p>
             </Hexagon>
           </Row>
 
           <Row>
             <Hexagon onClick={() => setState(2)} className="blue">
-              <p>Referência de livro com vários autores</p>
+              <p className="txt-white">
+                Referência de livro com vários autores
+              </p>
             </Hexagon>
 
             <Hexagon className="blue">
-              <p>Capítulo de livro</p>
+              <p className="txt-white"> Capítulo de livro</p>
             </Hexagon>
           </Row>
         </Content>

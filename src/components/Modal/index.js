@@ -6,6 +6,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
+import Button from "../../components/Buttons";
+
 function SimpleDialog(props) {
   const { isOpen, handleClose, text } = props;
 
@@ -26,13 +28,20 @@ function SimpleDialog(props) {
       fullWidth
       maxWidth="md"
     >
-      <DialogTitle id="simple-dialog-title"><div style={{color: 'black'}}>Referência</div></DialogTitle>
+      <DialogTitle id="simple-dialog-title">
+        <div style={{ color: "black" }}>Referência</div>
+      </DialogTitle>
       <DialogContent>
         <div ref={refDiv}>{text}</div>
         <CopyToClipboard text={content} onCopy={handleCopy}>
-          <button style={{
-            float: 'right'
-          }}>Copy to clipboard with button</button>
+          <Button
+            color="primary"
+            style={{
+              float: "right",
+            }}
+          >
+            Copiar
+          </Button>
         </CopyToClipboard>
       </DialogContent>
     </Dialog>
