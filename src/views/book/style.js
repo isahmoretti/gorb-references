@@ -36,6 +36,8 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  position: relative;
+
   width: 1000px;
   height: 500px;
 
@@ -56,8 +58,16 @@ export const Card = styled.div`
     border-radius: 4px;
   }
   ::-webkit-scrollbar-track {
-    background-color: rgb(195, 195, 195));
+    background-color: rgb(195, 195, 195);
   }
+`;
+
+export const Actions = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const Row = styled.div`
