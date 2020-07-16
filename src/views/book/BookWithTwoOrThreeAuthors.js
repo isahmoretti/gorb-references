@@ -60,6 +60,7 @@ const generateReference = (values) => {
     pagination,
     grades,
     isbn,
+    volume
   } = values;
 
   return (
@@ -72,10 +73,11 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-        <b>{title}. </b>
-      )}
+          <b>{title}. </b>
+        )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
+      {complementaryElements && volume && <> {volume}.v,</>}
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && othersResponsabilities && (
@@ -83,6 +85,7 @@ const generateReference = (values) => {
       )}
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
+
     </span> //TODO: edition apenas em português
   );
 };
@@ -123,6 +126,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
           series: "",
           grades: "",
           isbn: "",
+          volume: ""
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -138,54 +142,54 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
-                                  <Input
-                                    type="text"
-                                    label={`Author ${index + 1}`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`authors.${index}`}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  <ButtonCore
-                                    type="button"
-                                    disabled={index === 0}
-                                    onClick={() => arrayHelpers.remove(index)}
-                                  >
-                                    <RemoveIcon />
-                                  </ButtonCore>
-                                  {index ===
-                                    props.values.authors.length - 1 && (
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div style={{ display: "flex", width: "100%" }}>
+                                    <Input
+                                      type="text"
+                                      label={`Author ${index + 1}`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      name={`authors.${index}`}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
                                     <ButtonCore
                                       type="button"
-                                      onClick={() => arrayHelpers.push("")}
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <AddIcon />
+                                      <RemoveIcon />
                                     </ButtonCore>
-                                  )}
-                                </div>
-                                <div style={{ width: "100%" }}>
-                                  <ErrorText>
-                                    {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
-                                  </ErrorText>
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Add a author
-                            </ButtonCore>
-                          )}
+                                    {index ===
+                                      props.values.authors.length - 1 && (
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.push("")}
+                                        >
+                                          <AddIcon />
+                                        </ButtonCore>
+                                      )}
+                                  </div>
+                                  <div style={{ width: "100%" }}>
+                                    <ErrorText>
+                                      {props.errors &&
+                                        props.errors.authors &&
+                                        props.errors.authors[index]}
+                                    </ErrorText>
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
                         </div>
                       )}
                     />
@@ -221,7 +225,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Local de publicação"
+                      label="Local de publicação(editora)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -303,7 +307,7 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Paginação"
+                      label="Paginas"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -349,6 +353,19 @@ const BookWithTwoOrThreeAuthors = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.isbn}
                       name="isbn"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Volume"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
                       errors={props.errors}
                       touched={props.touched}
                     />

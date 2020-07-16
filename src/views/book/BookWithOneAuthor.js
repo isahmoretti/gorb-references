@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import { Formik } from "formik";
+import { Formik, Field, FieldArray } from "formik";
+
 import * as Yup from "yup";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -11,7 +12,18 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 // styles
-import { Container, Card, Row, Content, Footer, Back } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Footer,
+  Back,
+  AddIcon,
+  RemoveIcon,
+  FieldArrayContainer,
+  ErrorText,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -20,6 +32,16 @@ const SignupSchema = Yup.object().shape({
   publishingCompany: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
+
+
+
+// const getTraslatorsNames = (translatorsNames) => {
+//   // até 3 tradutores separar por ponto-e-virgula
+//   const translators = translatorsNames.map((translator) => {
+//     const translatorJoin = translator.join("; ");
+//   });
+//   return translatorJoin
+// }
 
 const generateReference = (values) => {
   const {
@@ -36,7 +58,15 @@ const generateReference = (values) => {
     pagination,
     grades,
     isbn,
+    volume,
+    originalTitle,
+    online,
+    url,
+    accessedAt,
+    translator,
+    translatorName
   } = values;
+
 
   const authorSplit = author.split(" ");
 
@@ -54,10 +84,18 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-        <b>{title}. </b>
-      )}
+          <b>{title}. </b>
+        )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
+
+      {complementaryElements && originalTitle && <> Título original: {originalTitle}.</>}
+
+      {complementaryElements && translator
+        && translatorName.length && <> Tradução: {translatorName.join("; ")}.</>
+      }
+
+      {complementaryElements && volume && <> {volume}.v,</>}
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && othersResponsabilities && (
@@ -65,6 +103,10 @@ const generateReference = (values) => {
       )}
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
+
+      {complementaryElements && online && url && <> Disponível em: {url}.</>}
+
+      {complementaryElements && online && accessedAt && <> Acesso em: {accessedAt}.</>}
     </span> //TODO: edition apenas em português
   );
 };
@@ -105,6 +147,13 @@ const Book = ({ back }) => {
           series: "",
           grades: "",
           isbn: "",
+          originalTitle: "",
+          volume: "",
+          online: false,
+          url: "",
+          accessedAt: "",
+          translator: false,
+          translatorName: [""]
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -157,7 +206,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Local de publicação"
+                      label="Local de publicação(editora)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -239,7 +288,7 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Paginação"
+                      label="Paginas"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -248,7 +297,6 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -290,6 +338,152 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Título original"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.originalTitle}
+                      name="originalTitle"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Volume"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Select
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Online"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.online}
+                      name="online"
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      disabled={!props.values.complementaryElements || !props.values.online}
+                      type="date"
+                      // label="Acessado em"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.accessedAt}
+                      name="accessedAt"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      disabled={!props.values.complementaryElements || !props.values.online}
+                      type="text"
+                      label="Endereço(URL)"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
+                      name="url"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Select
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Tradutor"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.translator}
+                      name="translator"
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid>
+                  <Grid item xs={12} sm={12} md={12}>
+                    <FieldArray
+                      name="translatorName"
+                      render={(arrayHelpers) => (
+                        <div>
+                          {props.values.translatorName &&
+                            props.values.translatorName.length > 0 ? (
+                              props.values.translatorName.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div style={{ display: "flex", width: "100%" }}>
+                                    <Input
+                                      disabled={!props.values.complementaryElements || !props.values.translator}
+                                      type="text"
+                                      label={`Tradutor ${index + 1}`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      name={`translatorName.${index}`}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
+                                    <ButtonCore
+                                      type="button"
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    >
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                    {index ===
+                                      props.values.translatorName.length - 1 && (
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.push("")}
+                                        >
+                                          <AddIcon />
+                                        </ButtonCore>
+                                      )}
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Adicione um tradutor
+                              </ButtonCore>
+                            )}
+                        </div>
+                      )}
+                    />
+                  </Grid>
                 </Grid>
               </Content>
               <Footer>
@@ -316,7 +510,7 @@ const Book = ({ back }) => {
           </form>
         )}
       </Formik>
-    </Container>
+    </Container >
   );
 };
 
