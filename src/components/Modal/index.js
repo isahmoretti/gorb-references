@@ -26,11 +26,13 @@ function SimpleDialog(props) {
       fullWidth
       maxWidth="md"
     >
-      <DialogTitle id="simple-dialog-title">Referência</DialogTitle>
+      <DialogTitle id="simple-dialog-title"><div style={{color: 'black'}}>Referência</div></DialogTitle>
       <DialogContent>
         <div ref={refDiv}>{text}</div>
         <CopyToClipboard text={content} onCopy={handleCopy}>
-          <button>Copy to clipboard with button</button>
+          <button style={{
+            float: 'right'
+          }}>Copy to clipboard with button</button>
         </CopyToClipboard>
       </DialogContent>
     </Dialog>
