@@ -14,7 +14,7 @@ export const Conatiner = styled.div`
 export const Content = styled.div`
   position: relative;
 
-  width: 950px;
+  width: 1100px;
   height: 545px;
 
   @media only screen and (max-width: 600px) {

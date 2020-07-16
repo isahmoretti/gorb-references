@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
+
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 
 function SimpleDialog(props) {
   const { isOpen, handleClose, text } = props;
-  const [copy, setCopy] = useState(false);
 
-  useEffect(() => {
-    const copyText = document.getElementById("myInput")?.textContent;
+  const refDiv = useRef();
+  const [content, setContent] = useState("");
 
-    console.log("copyText: ", copyText);
-  }, [copy]);
+  const handleCopy = () => {
+    const copyText = refDiv.current.textContent;
+
+    setContent(copyText);
+  };
 
   return (
     <Dialog
@@ -25,10 +28,10 @@ function SimpleDialog(props) {
     >
       <DialogTitle id="simple-dialog-title">Referência</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          <div id="myInput">{text}</div>
-          <button onClick={() => setCopy(!copy)}> Copy </button>
-        </DialogContentText>
+        <div ref={refDiv}>{text}</div>
+        <CopyToClipboard text={content} onCopy={handleCopy}>
+          <button>Copy to clipboard with button</button>
+        </CopyToClipboard>
       </DialogContent>
     </Dialog>
   );

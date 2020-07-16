@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
 
   position: relative;
-  width: 950px;
+  width: 1100px;
   height: 545px;
 
   @media only screen and (max-width: 600px) {
@@ -36,7 +36,7 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  width: 800px;
+  width: 1000px;
   height: 500px;
 
   padding: 20px;
