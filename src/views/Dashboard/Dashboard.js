@@ -4,6 +4,7 @@ import { Conatiner, Content, Row, Hexagon, Title } from "../../styles/Hexagon";
 
 // pages
 import Book from "../book";
+import AcademicWork from "../ AcademicWork";
 
 const Dashboard = () => {
   const [state, setState] = useState(0);
@@ -23,7 +24,7 @@ const Dashboard = () => {
           </Row>
 
           <Row className="bt">
-            <Hexagon className="yellow">
+            <Hexagon onClick={() => setState(2)} className="yellow">
               <p className="txt-white">
                 Trabalhos <br />
                 acadêmicos e <br />
@@ -56,6 +57,7 @@ const Dashboard = () => {
         </Content>
       )}
       {state === 1 && <Book back={() => setState(0)} />}
+      {state === 2 && <AcademicWork back={() => setState(0)} />}
     </Conatiner>
   );
 };

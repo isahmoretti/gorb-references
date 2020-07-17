@@ -50,7 +50,7 @@ const getNamesResponsible = (names) => {
 
 const getResposabilityTypes = (responsabiltyTypes) => {
   switch (responsabiltyTypes) {
-    case "organazation":
+    case "organization":
       return "(org.)";
     case "editor":
       return "(ed.)";
@@ -281,7 +281,7 @@ const Book = ({ back }) => {
                       errors={props.errors}
                       touched={props.touched}
                       options={[
-                        { value: "organazation", name: "Organizador" },
+                        { value: "organization", name: "Organizador" },
                         { value: "editor", name: "Editor(es)" },
                         { value: "coords", name: "Coordenador(es)" },
                       ]}
