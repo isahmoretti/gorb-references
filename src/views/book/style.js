@@ -67,7 +67,7 @@ export const Actions = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 export const Row = styled.div`
@@ -110,4 +110,20 @@ export const ErrorText = styled.span`
   font-size: 12px;
 
   color: #6666cc;
+`;
+
+export const Title = styled.div`
+  padding-left: 20px;
+
+  > p {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #6666cc;
+  }
+
+  > span {
+    font-style: italic;
+  }
 `;

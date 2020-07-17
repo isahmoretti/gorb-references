@@ -35,22 +35,36 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getAuthorName = (authors) => {
-  const authorsTogether = authors.map((author) => {
-    const authorSplit = author.split(" ");
+const getNamesResponsible = (names) => {
+  const namesTogether = names.map((author) => {
+    const nameSplit = author.split(" ");
 
-    const firstName = authorSplit[0];
+    const firstName = nameSplit[0];
 
-    const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+    const lastName = nameSplit[nameSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
 
-    return `${lastName}, ${firstName[0]}`;
+    return `${lastName}, ${firstName[0]}.`;
   });
-  return authorsTogether.join("; ");
+  return namesTogether.join("; ");
+};
+
+const getResposabilityTypes = (responsabiltyTypes) => {
+  switch (responsabiltyTypes) {
+    case "organazation":
+      return "(org.)";
+    case "editor":
+      return "(ed.)";
+    case "coords":
+      return "(coord.)";
+    default:
+      return "";
+  }
 };
 
 const generateReference = (values) => {
   const {
-    authors,
+    namesResponsible,
+    responbiltyTypes,
     title,
     caption,
     edition,
@@ -81,7 +95,8 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {authors.length && getAuthorName(authors)}.
+      {namesResponsible.length && getNamesResponsible(namesResponsible)}
+      &nbsp;{getResposabilityTypes(responbiltyTypes)}.&nbsp;
       {caption ? (
         <>
           <b>{title}: </b>
@@ -137,7 +152,8 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          namesResponsible: [""],
+          responbiltyTypes: "",
           title: "",
           caption: "",
           edition: "",
@@ -165,7 +181,12 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de livro dois ou três autores </p>
+                <p>
+                  Referência de livro com responsável intelectual ao invés de
+                  autor{" "}
+                </p>
+                <br />
+                <span>Editor, coordenador ou organizador.</span>
               </Title>
               <Row container className="end">
                 <Button
@@ -185,50 +206,55 @@ const Book = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
-                      name="authors"
+                      name="namesResponsible"
                       render={(arrayHelpers) => (
                         <div>
-                          {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
-                                  <Input
-                                    type="text"
-                                    label={`Author ${index + 1}`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`authors.${index}`}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  <ButtonCore
-                                    type="button"
-                                    disabled={index === 0}
-                                    onClick={() => arrayHelpers.remove(index)}
+                          {props.values.namesResponsible &&
+                          props.values.namesResponsible.length > 0 ? (
+                            props.values.namesResponsible.map(
+                              (namesResponsible, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div
+                                    style={{ display: "flex", width: "100%" }}
                                   >
-                                    <RemoveIcon />
-                                  </ButtonCore>
-                                  {index ===
-                                    props.values.authors.length - 1 && (
+                                    <Input
+                                      type="text"
+                                      label={`Nome do responsável ${index + 1}`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={namesResponsible}
+                                      name={`namesResponsible.${index}`}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
                                     <ButtonCore
                                       type="button"
-                                      onClick={() => arrayHelpers.push("")}
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <AddIcon />
+                                      <RemoveIcon />
                                     </ButtonCore>
-                                  )}
-                                </div>
-                                <div style={{ width: "100%" }}>
-                                  <ErrorText>
-                                    {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
-                                  </ErrorText>
-                                </div>
-                              </FieldArrayContainer>
-                            ))
+                                    {index ===
+                                      props.values.namesResponsible.length -
+                                        1 && (
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() => arrayHelpers.push("")}
+                                      >
+                                        <AddIcon />
+                                      </ButtonCore>
+                                    )}
+                                  </div>
+                                  <div style={{ width: "100%" }}>
+                                    <ErrorText>
+                                      {props.errors &&
+                                        props.errors.namesResponsible &&
+                                        props.errors.namesResponsible[index]}
+                                    </ErrorText>
+                                  </div>
+                                </FieldArrayContainer>
+                              )
+                            )
                           ) : (
                             <ButtonCore
                               type="button"
@@ -242,17 +268,23 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
                   <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                    <Select
                       type="text"
-                      label="Autor"
+                      label="Tipos de responsabilidade"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
+                      value={props.values.responbiltyTypes}
+                      name="responbiltyTypes"
                       errors={props.errors}
                       touched={props.touched}
+                      options={[
+                        { value: "organazation", name: "Organizador" },
+                        { value: "editor", name: "Editor(es)" },
+                        { value: "coords", name: "Coordenador(es)" },
+                      ]}
                     />
                   </Grid>
 

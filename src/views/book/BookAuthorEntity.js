@@ -24,6 +24,7 @@ import {
   FieldArrayContainer,
   ErrorText,
   Actions,
+  Title,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -148,6 +149,9 @@ const Book = ({ back }) => {
         {(props) => (
           <form onSubmit={props.handleSubmit}>
             <Actions>
+              <Title>
+                <p>Referência de livro com autor entidade </p>
+              </Title>
               <Row container className="end">
                 <Button
                   variant="outlined"

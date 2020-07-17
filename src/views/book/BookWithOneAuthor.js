@@ -24,6 +24,7 @@ import {
   FieldArrayContainer,
   ErrorText,
   Actions,
+  Title,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -158,6 +159,9 @@ const Book = ({ back }) => {
         {(props) => (
           <form onSubmit={props.handleSubmit}>
             <Actions>
+              <Title>
+                <p>Referência de livro um autor </p>
+              </Title>
               <Row container className="end">
                 <Button
                   variant="outlined"
@@ -517,21 +521,6 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
               </Content>
-              {/* <Footer>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={props.resetForm}
-                  >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referencia
-                  </Button>
-                </Row>
-              </Footer> */}
-
               <Modal
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
