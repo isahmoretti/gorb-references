@@ -14,6 +14,8 @@ import BookWithOneAuthor from "./BookWithOneAuthor";
 import BookWithTwoOrThreeAuthors from "./BookWithTwoOrThreeAuthors";
 import BookAuthorEntity from "./BookAuthorEntity";
 import BookIntellectuallyResponsible from "./BookIntellectuallyResponsible";
+import BookWithFourOrMoreAuthors from "./BookWithFourOrMoreAuthors";
+import ChapterOfBook from "./ChapterOfBook";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -28,7 +30,7 @@ const BookGeneral = ({ back }) => {
               <p className="txt-white">Livros com um único autor</p>
             </Hexagon>
 
-            <Hexagon className="blue" onClick={() => setState(4)}>
+            <Hexagon className="blue" onClick={() => setState(6)}>
               <p className="txt-white">Livro com autor entidade</p>
             </Hexagon>
           </Row>
@@ -38,7 +40,7 @@ const BookGeneral = ({ back }) => {
               <p className="txt-white">Livros com dois ou três autores</p>
             </Hexagon>
             <Title> Livros </Title>
-            <Hexagon onClick={() => setState(6)} className="blue">
+            <Hexagon onClick={() => setState(5)} className="blue">
               <p className="txt-white">
                 Livro com responsável intelectual ao invés de autor
               </p>
@@ -46,13 +48,13 @@ const BookGeneral = ({ back }) => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(2)} className="blue">
+            <Hexagon onClick={() => setState(3)} className="blue">
               <p className="txt-white">
-                Referência de livro com vários autores
+                Livro com quatro autores ou mais
               </p>
             </Hexagon>
 
-            <Hexagon className="blue">
+            <Hexagon onClick={() => setState(4)} className="blue">
               <p className="txt-white"> Capítulo de livro</p>
             </Hexagon>
           </Row>
@@ -61,10 +63,13 @@ const BookGeneral = ({ back }) => {
 
       {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
       {state === 2 && <BookWithTwoOrThreeAuthors back={() => setState(0)} />}
-      {state === 4 && <BookAuthorEntity back={() => setState(0)} />}
-      {state === 6 && (
+      {state === 3 && <BookWithFourOrMoreAuthors back={() => setState(0)} />}
+      {state === 4 && <ChapterOfBook back={() => setState(0)} />}
+      {state === 5 && (
         <BookIntellectuallyResponsible back={() => setState(0)} />
       )}
+      {state === 6 && <BookAuthorEntity back={() => setState(0)} />}
+
     </Conatiner>
   );
 };
