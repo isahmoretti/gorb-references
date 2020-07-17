@@ -12,6 +12,7 @@ import {
 // pages
 import BookWithOneAuthor from "./BookWithOneAuthor";
 import BookWithTwoOrThreeAuthors from "./BookWithTwoOrThreeAuthors";
+import BookAuthorEntity from "./BookAuthorEntity";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -26,8 +27,8 @@ const BookGeneral = ({ back }) => {
               <p className="txt-white">Livros com um único autor</p>
             </Hexagon>
 
-            <Hexagon className="blue">
-              <p className="txt-white">Livro com indicação de edição</p>
+            <Hexagon className="blue" onClick={() => setState(4)}>
+              <p className="txt-white">Livro com autor entidade</p>
             </Hexagon>
           </Row>
 
@@ -59,6 +60,7 @@ const BookGeneral = ({ back }) => {
 
       {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
       {state === 2 && <BookWithTwoOrThreeAuthors back={() => setState(0)} />}
+      {state === 4 && <BookAuthorEntity back={() => setState(0)} />}
     </Conatiner>
   );
 };

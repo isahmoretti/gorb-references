@@ -27,29 +27,20 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array().of(Yup.string().required("Obrigatório")),
+  entities: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getAuthorName = (authors) => {
-  const authorsTogether = authors.map((author) => {
-    const authorSplit = author.split(" ");
-
-    const firstName = authorSplit[0];
-
-    const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
-    return `${lastName}, ${firstName[0]}`;
-  });
-  return authorsTogether.join("; ");
+const getEntityName = (entities) => {
+  return entities.map((entity) => entity.toUpperCase()).join("; ");
 };
 
 const generateReference = (values) => {
   const {
-    authors,
+    entities,
     title,
     caption,
     edition,
@@ -71,16 +62,10 @@ const generateReference = (values) => {
     translatorName,
   } = values;
 
-  // const authorSplit = author.split(" ");
-
-  // const firstName = authorSplit[0];
-
-  // const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
   return (
     <span>
       {" "}
-      {authors.length && getAuthorName(authors)}.
+      {entities.length && getEntityName(entities)}.&nbsp;
       {caption ? (
         <>
           <b>{title}: </b>
@@ -136,7 +121,7 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          entities: [""],
           title: "",
           caption: "",
           edition: "",
@@ -181,21 +166,21 @@ const Book = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
-                      name="authors"
+                      name="entities"
                       render={(arrayHelpers) => (
                         <div>
-                          {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
+                          {props.values.entities &&
+                          props.values.entities.length > 0 ? (
+                            props.values.entities.map((entity, index) => (
                               <FieldArrayContainer key={index}>
                                 <div style={{ display: "flex", width: "100%" }}>
                                   <Input
                                     type="text"
-                                    label={`Author ${index + 1}`}
+                                    label={`Entidade ${index + 1}`}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`authors.${index}`}
+                                    value={entity}
+                                    name={`entities.${index}`}
                                     errors={props.errors}
                                     touched={props.touched}
                                   />
@@ -207,7 +192,7 @@ const Book = ({ back }) => {
                                     <RemoveIcon />
                                   </ButtonCore>
                                   {index ===
-                                    props.values.authors.length - 1 && (
+                                    props.values.entities.length - 1 && (
                                     <ButtonCore
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
@@ -219,8 +204,8 @@ const Book = ({ back }) => {
                                 <div style={{ width: "100%" }}>
                                   <ErrorText>
                                     {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
+                                      props.errors.entities &&
+                                      props.errors.entities[index]}
                                   </ErrorText>
                                 </div>
                               </FieldArrayContainer>
@@ -239,20 +224,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Autor"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={12}>
                     <Input
                       type="text"
                       label="Título"
@@ -582,20 +554,6 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
               </Content>
-              {/* <Footer>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={props.resetForm}
-                  >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referencia
-                  </Button>
-                </Row>
-              </Footer> */}
 
               <Modal
                 isOpen={openModal}

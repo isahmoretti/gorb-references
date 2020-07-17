@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const ErrorText = styled.span`
   font-size: 12px;
 
-  color: red;
+  color: #6666cc;
 `;
 
 export const IconHelp = styled(HelpOutline)`

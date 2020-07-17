@@ -161,7 +161,7 @@ const Book = ({ back }) => {
               <Row container className="end">
                 <Button
                   variant="outlined"
-                  color="primary"
+                  color="secondary"
                   onClick={props.resetForm}
                 >
                   Limpar campos

@@ -87,14 +87,14 @@ export const AddIcon = styled(Add)`
   width: 50px;
   height: 50px;
 
-  color: green;
+  color: #eada18;
 `;
 
 export const RemoveIcon = styled(Remove)`
   width: 50px;
   height: 50px;
 
-  color: red;
+  color: #6666cc;
 `;
 
 export const FieldArrayContainer = styled.div`
@@ -109,5 +109,5 @@ export const FieldArrayContainer = styled.div`
 export const ErrorText = styled.span`
   font-size: 12px;
 
-  color: red;
+  color: #6666cc;
 `;
