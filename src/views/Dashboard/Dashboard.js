@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-import { Conatiner, Content, Row, Hexagon, Title } from "../../styles/Hexagon";
+import {
+  Conatiner,
+  Content,
+  Row,
+  Hexagon,
+  Title,
+  Separator,
+} from "../../styles/Hexagon";
 
 // pages
 import Book from "../book";
@@ -17,13 +24,13 @@ const Dashboard = () => {
             <Hexagon onClick={() => setState(1)} className="blue">
               <p className="txt-white">Livros</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon className="green">
               <p className="txt-white">Documento jurídico</p>
             </Hexagon>
           </Row>
 
-          <Row className="bt">
+          <Row>
             <Hexagon onClick={() => setState(2)} className="yellow">
               <p className="txt-white">
                 Trabalhos <br />
@@ -32,7 +39,10 @@ const Dashboard = () => {
                 periódicas
               </p>
             </Hexagon>
-            <Title> Gerador de Referências Bibliográficas </Title>
+            <Title>
+              {" "}
+              Gerador <br /> Online de <br /> Referências <br /> Bibliográficas{" "}
+            </Title>
             <Hexagon className="">
               <p className="txt-white">
                 Documentos <br />
@@ -46,7 +56,7 @@ const Dashboard = () => {
             <Hexagon className="blue-dark">
               <p className="txt-white">Eventos</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon className="violet">
               <p className="txt-white">
                 Documentos <br />

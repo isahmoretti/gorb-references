@@ -7,6 +7,7 @@ import {
   Hexagon,
   Title,
   Back,
+  Separator,
 } from "../../styles/Hexagon";
 
 // pages
@@ -24,18 +25,18 @@ const BookGeneral = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
+          <Back onClick={back} />
           <Row>
-            <Back onClick={back} />
             <Hexagon onClick={() => setState(1)} className="blue">
               <p className="txt-white">Livros com um único autor</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon className="blue" onClick={() => setState(6)}>
               <p className="txt-white">Livro com autor entidade</p>
             </Hexagon>
           </Row>
 
-          <Row className="bt">
+          <Row>
             <Hexagon onClick={() => setState(2)} className="blue">
               <p className="txt-white">Livros com dois ou três autores</p>
             </Hexagon>
@@ -49,11 +50,9 @@ const BookGeneral = ({ back }) => {
 
           <Row>
             <Hexagon onClick={() => setState(3)} className="blue">
-              <p className="txt-white">
-                Livro com quatro autores ou mais
-              </p>
+              <p className="txt-white">Livro com quatro autores ou mais</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon onClick={() => setState(4)} className="blue">
               <p className="txt-white"> Capítulo de livro</p>
             </Hexagon>
@@ -69,7 +68,6 @@ const BookGeneral = ({ back }) => {
         <BookIntellectuallyResponsible back={() => setState(0)} />
       )}
       {state === 6 && <BookAuthorEntity back={() => setState(0)} />}
-
     </Conatiner>
   );
 };

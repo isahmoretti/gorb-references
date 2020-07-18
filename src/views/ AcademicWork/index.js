@@ -7,6 +7,7 @@ import {
   Hexagon,
   Title,
   Back,
+  Separator,
 } from "../../styles/Hexagon";
 
 // pages
@@ -21,14 +22,14 @@ const BookGeneral = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
+          <Back onClick={back} />
           <Row>
-            <Back onClick={back} />
             <Hexagon onClick={() => {}} className="yellow">
               {" "}
               {/** setState(1) */}
               <p className="txt-white">Tese</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon onClick={() => {}} className="yellow">
               {" "}
               {/** setState(6) */}
@@ -36,13 +37,16 @@ const BookGeneral = ({ back }) => {
             </Hexagon>
           </Row>
 
-          <Row className="bt">
+          <Row>
             <Hexagon onClick={() => {}} className="yellow">
               {" "}
               {/** setState(2) */}
               <p className="txt-white">Dissertação</p>
             </Hexagon>
-            <Title> Trabalhos acadêmicos e publicações periódicas </Title>
+            <Title>
+              {" "}
+              Trabalhos <br /> acadêmicos e <br /> publicações <br /> periódicas{" "}
+            </Title>
             <Hexagon onClick={() => setState(5)} className="yellow">
               <p className="txt-white">Artigo em periódico</p>
             </Hexagon>
@@ -52,7 +56,7 @@ const BookGeneral = ({ back }) => {
             <Hexagon onClick={() => setState(3)} className="yellow">
               <p className="txt-white">Artigo de Jornal</p>
             </Hexagon>
-
+            <Separator />
             <Hexagon onClick={() => setState(4)} className="yellow">
               <p className="txt-white"> Artigo de revista</p>
             </Hexagon>

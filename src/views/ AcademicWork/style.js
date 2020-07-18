@@ -26,6 +26,12 @@ export const Back = styled(ArrowBack)`
   top: 0;
   left: 0;
 
+  transition: color 0.3s;
+
+  :hover {
+    color: #6666cc;
+  }
+
   @media only screen and (max-width: 600px) {
     top: -30px;
   }

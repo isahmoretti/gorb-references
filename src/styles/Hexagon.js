@@ -15,7 +15,12 @@ export const Content = styled.div`
   position: relative;
 
   width: 1100px;
-  height: 545px;
+  height: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: 600px) {
     height: 100vh;
@@ -56,15 +61,26 @@ export const Back = styled(ArrowBack)`
 
   top: 0;
   left: 0;
+
+  transition: color 0.3s;
+
+  :hover {
+    color: #6666cc;
+  }
 `;
 
 export const Title = styled.span`
-  width: 270px;
+  width: 216px;
 
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
 
   text-align: center;
+`;
+
+export const Separator = styled.div`
+  width: 9px;
+  height: 50px;
 `;
 
 export const Hexagon = styled.div`
@@ -83,7 +99,7 @@ export const Hexagon = styled.div`
   font-size: 16px;
   text-align: center;
 
-  margin: 80px 45px;
+  /* margin: 80px 45px; */
 
   cursor: pointer;
   transition: opacity 0.2s;
