@@ -185,7 +185,7 @@ const Book = ({ back }) => {
                   Referência de livro com responsável intelectual ao invés de
                   autor{" "}
                 </p>
-                <br />
+
                 <span>Editor, coordenador ou organizador.</span>
               </Title>
               <Row container className="end">

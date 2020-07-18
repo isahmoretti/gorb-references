@@ -11,6 +11,8 @@ import {
 
 // pages
 import WorkArticle from "./ WorkArticlePeriodic";
+import ArticleMagazine from "./ArticleMagazine";
+import ArticleNewspaper from "./ArticleNewspaper";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -53,6 +55,8 @@ const BookGeneral = ({ back }) => {
       )}
 
       {state === 5 && <WorkArticle back={() => setState(0)} />}
+      {state === 4 && <ArticleMagazine back={() => setState(0)} />}
+      {state === 3 && <ArticleNewspaper back={() => setState(0)} />}
     </Conatiner>
   );
 };
