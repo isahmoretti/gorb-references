@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Formik, Field, FieldArray } from "formik";
 
 import * as Yup from "yup";
+import { format } from "date-fns";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
 
@@ -34,6 +35,19 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
+const getResposabilityTypes = (responsabiltyTypes) => {
+  switch (responsabiltyTypes) {
+    case "organizator":
+      return "(org.)";
+    case "author":
+      return "(aut.)";
+    case "coordinator":
+      return "(coord.)";
+    default:
+      return "";
+  }
+};
+
 const generateReference = (values) => {
   const {
     authorship,
@@ -48,6 +62,8 @@ const generateReference = (values) => {
     othersResponsabilities,
     series,
     pagination,
+    captionPageInit,
+    captionPageFinish,
     grades,
     isbn,
     volume,
@@ -58,7 +74,8 @@ const generateReference = (values) => {
     translator,
     translatorName,
     authorType,
-    authorCaption
+    authorCaption,
+    responsabilityType
   } = values;
 
   //autor do livro
@@ -67,26 +84,30 @@ const generateReference = (values) => {
   const lastNameAuthorship = authorshipSplit[authorshipSplit.length - 1].toUpperCase();
 
   //autor do capitulo
-  const authorCaptionSplit = authorCaption.split(" "); //autor do livro
-
+  const authorCaptionSplit = authorCaption.split(" ");
   const firstNameAuthorCaption = authorCaptionSplit[0];
-
   const lastNameAuthorCaption = authorCaptionSplit[authorCaptionSplit.length - 1].toUpperCase();
 
 
   return (
     <span>
-      {authorship && <>{lastNameAuthorship}, {firstNameAuthorship[0]}</>}.
-      {/* chapterTitle */}
+      {/* ÚLTIMO NOME, Primeiro Nome do autor do capítulo. Título do capítulo. In: */}
+      {authorCaption &&
+        <>{lastNameAuthorCaption}, {firstNameAuthorCaption[0]}</>}.
 
+      {/* titulo do capitulo */}
       {chapterTitle && <> {chapterTitle}.</>}
-      
-      {authorCaption && <> In:{lastNameAuthorCaption}, {firstNameAuthorCaption[0]}.</>}
 
+      {/* ÚLTIMO NOME, Primeiro nome do autor */}
+      {authorCaption &&
+        <> In: {lastNameAuthorship}, {firstNameAuthorship[0]}.</>}
+
+      <> {getResposabilityTypes(responsabilityType)}. </>
+      {/* Titulo da obra */}
       {caption ? (
         <>
           <b> {title}: </b>
-          { caption}.{" "}
+          {caption}.{" "}
         </>
       ) : (
           <b>{title}. </b>
@@ -100,7 +121,10 @@ const generateReference = (values) => {
         <> Tradução: {translatorName.join("; ")}.</>
       )}
       {complementaryElements && volume && <> {volume}.v,</>}
+
+      {captionPageInit && captionPageFinish && `p. ${captionPageInit} - ${captionPageFinish}, `}
       {complementaryElements && pagination && <> {pagination} p.</>}
+
       {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && othersResponsabilities && (
         <> {othersResponsabilities}.</>
@@ -109,9 +133,9 @@ const generateReference = (values) => {
       {complementaryElements && isbn && <> {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
       {complementaryElements && online && accessedAt && (
-        <> Acesso em: {accessedAt}.</>
+        <> Acesso em: {format(new Date(accessedAt), "MMM. yyyy")}.</>
       )}
-    </span> //TODO: edition apenas em português
+    </span>
   );
 };
 const Book = ({ back }) => {
@@ -138,15 +162,16 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authorType: "person",
-          responsabilityType: "organizator",
-          authorship: "Daniel Barbosa de Lima", //autor do livro
-          title: "A casa assombrada",
-          caption: "Assombrando pelas paredes",
-          local: "Rio Grande do Sul",
-          publishingCompanoriginalTitley: "Paranoides Livros",
-          edition: "5",
-          yearOfPublication: "2015",
+          authorType: "",
+          responsabilityType: "",
+          authorship: "",
+          title: "",
+          caption: "",
+          local: "",
+          publishingCompany: "",
+          originalTitley: "",
+          edition: "",
+          yearOfPublication: "",
           complementaryElements: false,
           pagination: "",
           series: "",
@@ -158,10 +183,11 @@ const Book = ({ back }) => {
           accessedAt: "",
           url: "",
           translator: false,
-          translatorName: "",
+          translatorName: [""],
           chapterTitle: "",
           captionChapter: "",
-          captionPages: "",
+          captionPageInit: "",
+          captionPageFinish: "",
           authorCaption: "",
         }}
         validationSchema={SignupSchema}
@@ -226,6 +252,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Autoria"
+                      placeholder="Nome e sobrenome do autor do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.authorship}
@@ -238,6 +265,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título"
+                      placeholder="Título do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -252,6 +280,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
+                      placeholder="Subtítulo do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -265,6 +294,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Local de publicação"
+                      placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -277,6 +307,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Empresa de publicação(editora)"
+                      placeholder="Ex: Objetivo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -291,6 +322,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Edição"
+                      placeholder="Ex: 4"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -303,6 +335,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
+                      placeholder="Ex: 2010"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -332,6 +365,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Paginas"
+                      placeholder="Ex: 223"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -346,7 +380,8 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Serie"
+                      label="Séries e coleções"
+                      placeholder="Ex: Grandes Autores Nacionais"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
@@ -360,6 +395,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Nota"
+                      placeholder="Ex: Submetida e aceita em uma revista mas ainda não foi publicada"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.grades}
@@ -410,6 +446,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Volume"
+                      placeholder="Ex: 10"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
@@ -462,6 +499,7 @@ const Book = ({ back }) => {
                       }
                       type="text"
                       label="Endereço(URL)"
+                      placeholder="https://viacarreira.com/"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
@@ -505,6 +543,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título do capítulo"
+                      placeholder="Título do capítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.chapterTitle}
@@ -517,6 +556,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo do capítulo"
+                      placeholder="Subtítulo do capítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.captionChapter}
@@ -525,14 +565,28 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       type="text"
-                      label="Páginas do capítulo"
+                      label="Páginas do capítulo (início)"
+                      placeholder="45"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.captionPages}
-                      name="captionPages"
+                      value={props.values.captionPageInit}
+                      name="captionPageInit"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      type="text"
+                      label="Páginas do capítulo (fim)"
+                      placeholder="67"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.captionPageFinish}
+                      name="captionPageFinish"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -543,6 +597,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Autor do capítulo"
+                      placeholder="Nome e sobrenome do autor do capítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.authorCaption}

@@ -83,8 +83,8 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-        <b>{title}. </b>
-      )}
+          <b>{title}. </b>
+        )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && originalTitle && (
@@ -182,6 +182,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Autor"
+                      placeholder="Nome e sobrenome do autor"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.author}
@@ -195,6 +196,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título"
+                      placeholder="Título do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -209,6 +211,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
+                      placeholder="Subtítulo do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -222,6 +225,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Local de publicação"
+                      placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -234,6 +238,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Empresa de publicação(editora)"
+                      placeholder="Ex: Objetivo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -243,11 +248,12 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 15 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Edição"
+                      placeholder="Ex: 4"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -260,6 +266,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
+                      placeholder="Ex: 2010"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -288,22 +295,8 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Outras responsabilidades"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.othersResponsabilities}
-                      name="othersResponsabilities"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 15 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Paginas"
+                      label="Páginas"
+                      placeholder="Ex: 223"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -312,11 +305,33 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 15 }}>
+                  <Grid item xs={12} sm={12} md={4} >
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Serie"
+                      label="Outras responsabilidades"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.othersResponsabilities}
+                      name="othersResponsabilities"
+                      errors={props.errors}
+                      touched={props.touched}
+                      help
+                      helpText="Abreviatura de: Organizador, editor, compilador ou coordenador."
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4} style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                  }}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Séries e coleções"
+                      placeholder="Ex: Grandes Autores Nacionais"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
@@ -325,11 +340,16 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={4} style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                  }}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Nota"
+                      placeholder="Ex: Submetida e aceita em uma revista mas ainda não foi publicada"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.grades}
@@ -385,6 +405,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Volume"
+                      placeholder="Ex: 10"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
@@ -418,7 +439,6 @@ const Book = ({ back }) => {
                         !props.values.online
                       }
                       type="date"
-                      // label="Acessado em"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
@@ -437,6 +457,7 @@ const Book = ({ back }) => {
                       }
                       type="text"
                       label="Endereço(URL)"
+                      placeholder="https://viacarreira.com/"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
@@ -470,51 +491,51 @@ const Book = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.translatorName &&
-                          props.values.translatorName.length > 0 ? (
-                            props.values.translatorName.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
-                                  <Input
-                                    disabled={
-                                      !props.values.complementaryElements ||
-                                      !props.values.translator
-                                    }
-                                    type="text"
-                                    label={`Tradutor ${index + 1}`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`translatorName.${index}`}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  <ButtonCore
-                                    type="button"
-                                    disabled={index === 0}
-                                    onClick={() => arrayHelpers.remove(index)}
-                                  >
-                                    <RemoveIcon />
-                                  </ButtonCore>
-                                  {index ===
-                                    props.values.translatorName.length - 1 && (
+                            props.values.translatorName.length > 0 ? (
+                              props.values.translatorName.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div style={{ display: "flex", width: "100%" }}>
+                                    <Input
+                                      disabled={
+                                        !props.values.complementaryElements ||
+                                        !props.values.translator
+                                      }
+                                      type="text"
+                                      label={`Tradutor ${index + 1}`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      name={`translatorName.${index}`}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
                                     <ButtonCore
                                       type="button"
-                                      onClick={() => arrayHelpers.push("")}
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <AddIcon />
+                                      <RemoveIcon />
                                     </ButtonCore>
-                                  )}
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Adicione um tradutor
-                            </ButtonCore>
-                          )}
+                                    {index ===
+                                      props.values.translatorName.length - 1 && (
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.push("")}
+                                        >
+                                          <AddIcon />
+                                        </ButtonCore>
+                                      )}
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Adicione um tradutor
+                              </ButtonCore>
+                            )}
                         </div>
                       )}
                     />
