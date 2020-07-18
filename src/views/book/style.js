@@ -50,7 +50,7 @@ export const Card = styled.div`
 
   padding: 20px;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
