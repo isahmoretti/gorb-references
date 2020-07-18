@@ -206,7 +206,7 @@ const Book = ({ back }) => {
                                   {index > 3 && (
                                     <ButtonCore
                                       type="button"
-                                      onClick={() => arrayHelpers.push("")}
+                                      onClick={() => arrayHelpers.remove("")}
                                     >
                                       <RemoveIcon />
                                     </ButtonCore>

@@ -95,15 +95,15 @@ export const Content = styled.div``;
 export const Footer = styled.div``;
 
 export const AddIcon = styled(Add)`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 
   color: #eada18;
 `;
 
 export const RemoveIcon = styled(Remove)`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 
   color: #6666cc;
 `;
