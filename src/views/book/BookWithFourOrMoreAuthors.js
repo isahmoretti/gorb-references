@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import { format } from "date-fns";
-import { Formik, Field, FieldArray } from "formik";
+
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
@@ -12,13 +13,13 @@ import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
+
 // styles
 import {
   Container,
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
@@ -73,12 +74,6 @@ const generateReference = (values) => {
     translatorName,
   } = values;
 
-  // const authorSplit = author.split(" ");
-
-  // const firstName = authorSplit[0];
-
-  // const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
   return (
     <span>
       {" "}
@@ -115,7 +110,7 @@ const generateReference = (values) => {
           new Date(accessedAt),
           "d MMM. yyyy"
         )}. `}
-    </span> //TODO: edition apenas em português
+    </span>
   );
 };
 const Book = ({ back }) => {
@@ -187,7 +182,7 @@ const Book = ({ back }) => {
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="authors"
@@ -253,7 +248,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <Input
                       type="text"
@@ -268,7 +263,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
@@ -310,7 +305,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 15 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
@@ -368,7 +363,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 15 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -433,7 +428,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -473,7 +468,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -523,7 +518,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
                       disabled={

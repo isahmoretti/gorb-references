@@ -176,7 +176,7 @@ const Book = ({ back }) => {
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 15 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="authors"
