@@ -2,6 +2,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.MuiOutlinedInput-input {
+  padding: 10.5px 14px !important;
+}
+
 @media only screen and (max-width: 600px) {
   .txt-white {
     font-size: 11px;
