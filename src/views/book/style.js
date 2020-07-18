@@ -13,6 +13,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     width: 100%;
+    position: initial;
   }
 `;
 
@@ -32,9 +33,9 @@ export const Back = styled(ArrowBack)`
     color: #6666cc;
   }
 
-  @media only screen and (max-width: 600px) {
+  /* @media only screen and (max-width: 600px) {
     top: -30px;
-  }
+  } */
 `;
 
 export const Card = styled.div`
@@ -74,6 +75,10 @@ export const Actions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const Row = styled.div`

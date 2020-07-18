@@ -1,3 +1,14 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
+@media only screen and (max-width: 600px) {
+  .txt-white {
+    font-size: 11px;
+    line-height: unset;
+  }
+
+  form {
+    margin-top: 108px;
+  }
+}

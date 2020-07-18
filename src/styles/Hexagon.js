@@ -23,7 +23,7 @@ export const Content = styled.div`
   justify-content: center;
 
   @media only screen and (max-width: 600px) {
-    height: 100vh;
+    position: initial;
   }
 `;
 export const Row = styled.div`
@@ -36,19 +36,8 @@ export const Row = styled.div`
   width: 100%;
   height: 182px;
 
-  &.bt {
-    justify-content: space-around;
-  }
-
   @media only screen and (max-width: 600px) {
-    :nth-child(1) {
-      margin-top: 20px;
-    }
-
-    :nth-child(2) {
-      flex-direction: column;
-      height: auto;
-    }
+    height: 117px;
   }
 `;
 
@@ -76,6 +65,11 @@ export const Title = styled.span`
   font-weight: bold;
 
   text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    width: 132px;
+    font-size: 16px;
+  }
 `;
 
 export const Separator = styled.div`
@@ -130,21 +124,25 @@ export const Hexagon = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    width: 140px;
+    width: 110px;
     height: 78px;
 
-    margin: 80px 20px;
+    /* margin: 80px 20px; */
 
     ::before {
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-      border-bottom: 57px solid red;
+      border-left: 59px solid transparent;
+      border-right: 51px solid transparent;
+      border-bottom: 36px solid red;
+
+      top: -36px;
     }
 
     ::after {
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-      border-top: 58px solid red;
+      border-left: 56px solid transparent;
+      border-right: 54px solid transparent;
+      border-top: 36px solid red;
+
+      bottom: -36px;
     }
   }
 
