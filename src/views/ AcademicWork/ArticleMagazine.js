@@ -165,7 +165,7 @@ const ArticleMagazine = ({ back }) => {
                           props.values.authors.length > 0 ? (
                             props.values.authors.map((author, index) => (
                               <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
+                                <div style={{ display: "flex", width: "100%", marginBottom: 10 }}>
                                   <Input
                                     name={`authors.${index}`}
                                     label={`Author ${index + 1}`}

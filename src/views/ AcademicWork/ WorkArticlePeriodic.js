@@ -166,7 +166,7 @@ const WorkArticlePeriodic = ({ back }) => {
                               (constructionName, index) => (
                                 <FieldArrayContainer key={index}>
                                   <div
-                                    style={{ display: "flex", width: "100%" }}
+                                    style={{ display: "flex", width: "100%", marginBottom: 10 }}
                                   >
                                     <Input
                                       name={`constructionNames.${index}`}

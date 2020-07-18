@@ -500,7 +500,7 @@ const Book = ({ back }) => {
                           props.values.translatorName.length > 0 ? (
                             props.values.translatorName.map((author, index) => (
                               <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
+                                <div style={{ display: "flex", width: "100%", marginBottom: 10 }}>
                                   <Input
                                     disabled={
                                       !props.values.complementaryElements ||
