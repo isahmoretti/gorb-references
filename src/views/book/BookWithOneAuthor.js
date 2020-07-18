@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { Formik, Field, FieldArray } from "formik";
 
+import { format } from 'date-fns'
+
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -35,14 +37,6 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-// const getTraslatorsNames = (translatorsNames) => {
-//   // até 3 tradutores separar por ponto-e-virgula
-//   const translators = translatorsNames.map((translator) => {
-//     const translatorJoin = translator.join("; ");
-//   });
-//   return translatorJoin
-// }
-
 const generateReference = (values) => {
   const {
     author,
@@ -71,7 +65,7 @@ const generateReference = (values) => {
 
   const firstName = authorSplit[0];
 
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
+  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
 
   return (
     <span>
@@ -102,10 +96,12 @@ const generateReference = (values) => {
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
+
       {complementaryElements && online && accessedAt && (
-        <> Acesso em: {accessedAt}.</>
+        <> Acesso em: {format(new Date(accessedAt), "MMM. yyyy")}.</>
       )}
-    </span> //TODO: edition apenas em português
+
+    </span>
   );
 };
 const Book = ({ back }) => {

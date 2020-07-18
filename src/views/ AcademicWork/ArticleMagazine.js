@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";

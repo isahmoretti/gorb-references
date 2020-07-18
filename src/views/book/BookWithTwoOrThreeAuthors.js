@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { Formik, FieldArray } from "formik";
 
+import { format } from 'date-fns'
+
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -77,11 +79,11 @@ const generateReference = (values) => {
       {authors.length && getAuthorName(authors)}.
       {caption ? (
         <>
-          <b>{title}: </b>
+          <b> {title}: </b>
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
+          <b> {title}. </b>
         )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
@@ -101,9 +103,9 @@ const generateReference = (values) => {
       {complementaryElements && isbn && <> {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
       {complementaryElements && online && accessedAt && (
-        <> Acesso em: {accessedAt}.</>
+        <> Acesso em: {format(new Date(accessedAt), "MMM. yyyy")}.</>
       )}
-    </span> 
+    </span>
   );
 };
 const Book = ({ back }) => {
@@ -336,7 +338,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
-                  <Input
+                    <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Páginas"
@@ -352,7 +354,7 @@ const Book = ({ back }) => {
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 15 }}>
                   <Grid item xs={12} sm={12} md={4}>
-                  <Input
+                    <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Outras responsabilidades"
@@ -368,11 +370,11 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}
-                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -387,11 +389,11 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}
-                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
