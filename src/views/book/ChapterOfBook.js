@@ -555,7 +555,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Título do capítulo"
@@ -568,7 +568,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Subtítulo do capítulo"
@@ -577,32 +577,6 @@ const Book = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.captionChapter}
                       name="captionChapter"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      type="text"
-                      label="Páginas do capítulo (início)"
-                      placeholder="45"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionPageInit}
-                      name="captionPageInit"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      type="text"
-                      label="Páginas do capítulo (fim)"
-                      placeholder="67"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionPageFinish}
-                      name="captionPageFinish"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -618,6 +592,32 @@ const Book = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.authorCaption}
                       name="authorCaption"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="text"
+                      label="Páginas do capítulo (início)"
+                      placeholder="Ex: 45"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.captionPageInit}
+                      name="captionPageInit"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="text"
+                      label="Páginas do capítulo (fim)"
+                      placeholder="Ex: 67"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.captionPageFinish}
+                      name="captionPageFinish"
                       errors={props.errors}
                       touched={props.touched}
                     />
