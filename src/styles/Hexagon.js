@@ -15,7 +15,7 @@ export const Content = styled.div`
   position: relative;
 
   width: 1100px;
-  height: 700px;
+  height: 650px;
 
   display: flex;
   flex-direction: column;
