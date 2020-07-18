@@ -23,17 +23,23 @@ const BookGeneral = ({ back }) => {
         <Content>
           <Row>
             <Back onClick={back} />
-            <Hexagon onClick={() => setState(1)} className="yellow">
+            <Hexagon onClick={() => {}} className="yellow">
+              {" "}
+              {/** setState(1) */}
               <p className="txt-white">Tese</p>
             </Hexagon>
 
-            <Hexagon onClick={() => setState(6)} className="yellow">
+            <Hexagon onClick={() => {}} className="yellow">
+              {" "}
+              {/** setState(6) */}
               <p className="txt-white">Monografia</p>
             </Hexagon>
           </Row>
 
           <Row className="bt">
-            <Hexagon onClick={() => setState(2)} className="yellow">
+            <Hexagon onClick={() => {}} className="yellow">
+              {" "}
+              {/** setState(2) */}
               <p className="txt-white">Dissertação</p>
             </Hexagon>
             <Title> Trabalhos acadêmicos e publicações periódicas </Title>
