@@ -155,7 +155,7 @@ const ArticleMagazine = ({ back }) => {
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="authors"
@@ -216,7 +216,7 @@ const ArticleMagazine = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
                       name="title"
@@ -244,7 +244,7 @@ const ArticleMagazine = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="titleMagazine"
@@ -272,7 +272,7 @@ const ArticleMagazine = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="volume"
@@ -314,7 +314,7 @@ const ArticleMagazine = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="fascicle"

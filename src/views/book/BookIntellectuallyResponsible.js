@@ -209,7 +209,7 @@ const Book = ({ back }) => {
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="namesResponsible"
@@ -275,7 +275,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
 
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Select
                       type="text"
@@ -307,7 +307,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
@@ -346,7 +346,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
@@ -442,7 +442,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -482,7 +482,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -531,7 +531,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 30 }}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
                       disabled={

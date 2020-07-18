@@ -53,7 +53,7 @@ const InputWrapper = ({ ...rest }) => {
           </Popover>
         </ContainerHelp>
       )}
-      <TextField variant="outlined" {...rest} />
+      <TextField size="small" variant="outlined" {...rest} />
       {errors &&
         touched &&
         errors[nameField || name] &&
