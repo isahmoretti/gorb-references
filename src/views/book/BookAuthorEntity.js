@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { format } from "date-fns";
 
 import { Formik, Field, FieldArray } from "formik";
 
@@ -91,10 +92,14 @@ const generateReference = (values) => {
       )}
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
-      {complementaryElements && online && url && <> Disponível em: {url}.</>}
-      {complementaryElements && online && accessedAt && (
-        <> Acesso em: {accessedAt}.</>
-      )}
+      {complementaryElements &&
+        online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${format(
+          new Date(accessedAt),
+          "d MMM. yyyy"
+        )}. `}
     </span> //TODO: edition apenas em português
   );
 };

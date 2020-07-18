@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { format } from "date-fns";
+
 import { Formik, Field, FieldArray } from "formik";
 
 import * as Yup from "yup";
@@ -28,7 +30,7 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array().of(Yup.string().required("Obrigatório")),
+  namesResponsible: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -51,11 +53,11 @@ const getNamesResponsible = (names) => {
 const getResposabilityTypes = (responsabiltyTypes) => {
   switch (responsabiltyTypes) {
     case "organization":
-      return "(org.)";
+      return "(org.).";
     case "editor":
-      return "(ed.)";
+      return "(ed.).";
     case "coords":
-      return "(coord.)";
+      return "(coord.).";
     default:
       return "";
   }
@@ -96,7 +98,7 @@ const generateReference = (values) => {
     <span>
       {" "}
       {namesResponsible.length && getNamesResponsible(namesResponsible)}
-      &nbsp;{getResposabilityTypes(responbiltyTypes)}.&nbsp;
+      &nbsp;{getResposabilityTypes(responbiltyTypes)}&nbsp;
       {caption ? (
         <>
           <b>{title}: </b>
@@ -121,10 +123,14 @@ const generateReference = (values) => {
       )}
       {complementaryElements && grades && <> {grades}.</>}
       {complementaryElements && isbn && <> {isbn}.</>}
-      {complementaryElements && online && url && <> Disponível em: {url}.</>}
-      {complementaryElements && online && accessedAt && (
-        <> Acesso em: {accessedAt}.</>
-      )}
+      {complementaryElements &&
+        online &&
+        accessedAt &&
+        url &&
+        ` Disponível em: ${url}. Acesso em: ${format(
+          new Date(accessedAt),
+          "d MMM. yyyy"
+        )}. `}
     </span> //TODO: edition apenas em português
   );
 };
