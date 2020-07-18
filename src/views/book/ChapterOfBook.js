@@ -25,6 +25,7 @@ import {
   FieldArrayContainer,
   ErrorText,
   Actions,
+  Title,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -75,33 +76,40 @@ const generateReference = (values) => {
     translatorName,
     authorType,
     authorCaption,
-    responsabilityType
+    responsabilityType,
   } = values;
 
   //autor do livro
   const authorshipSplit = authorship.split(" ");
   const firstNameAuthorship = authorshipSplit[0];
-  const lastNameAuthorship = authorshipSplit[authorshipSplit.length - 1].toUpperCase();
+  const lastNameAuthorship = authorshipSplit[
+    authorshipSplit.length - 1
+  ].toUpperCase();
 
   //autor do capitulo
   const authorCaptionSplit = authorCaption.split(" ");
   const firstNameAuthorCaption = authorCaptionSplit[0];
-  const lastNameAuthorCaption = authorCaptionSplit[authorCaptionSplit.length - 1].toUpperCase();
-
+  const lastNameAuthorCaption = authorCaptionSplit[
+    authorCaptionSplit.length - 1
+  ].toUpperCase();
 
   return (
     <span>
       {/* ÚLTIMO NOME, Primeiro Nome do autor do capítulo. Título do capítulo. In: */}
-      {authorCaption &&
-        <>{lastNameAuthorCaption}, {firstNameAuthorCaption[0]}</>}.
-
-      {/* titulo do capitulo */}
+      {authorCaption && (
+        <>
+          {lastNameAuthorCaption}, {firstNameAuthorCaption[0]}
+        </>
+      )}
+      .{/* titulo do capitulo */}
       {chapterTitle && <> {chapterTitle}.</>}
-
       {/* ÚLTIMO NOME, Primeiro nome do autor */}
-      {authorCaption &&
-        <> In: {lastNameAuthorship}, {firstNameAuthorship[0]}.</>}
-
+      {authorCaption && (
+        <>
+          {" "}
+          In: {lastNameAuthorship}, {firstNameAuthorship[0]}.
+        </>
+      )}
       <> {getResposabilityTypes(responsabilityType)}. </>
       {/* Titulo da obra */}
       {caption ? (
@@ -110,8 +118,8 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && originalTitle && (
@@ -121,10 +129,10 @@ const generateReference = (values) => {
         <> Tradução: {translatorName.join("; ")}.</>
       )}
       {complementaryElements && volume && <> {volume}.v,</>}
-
-      {captionPageInit && captionPageFinish && `p. ${captionPageInit} - ${captionPageFinish}, `}
+      {captionPageInit &&
+        captionPageFinish &&
+        `p. ${captionPageInit} - ${captionPageFinish}, `}
       {complementaryElements && pagination && <> {pagination} p.</>}
-
       {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && othersResponsabilities && (
         <> {othersResponsabilities}.</>
@@ -196,10 +204,13 @@ const Book = ({ back }) => {
         {(props) => (
           <form onSubmit={props.handleSubmit}>
             <Actions>
+              <Title>
+                <p>Capítulo de livro </p>
+              </Title>
               <Row container className="end">
                 <Button
                   variant="outlined"
-                  color="primary"
+                  color="secondary"
                   onClick={props.resetForm}
                 >
                   Limpar campos
@@ -223,9 +234,9 @@ const Book = ({ back }) => {
                       errors={props.errors}
                       touched={props.touched}
                       options={[
-                        { value: 'person', name: "Pessoa" },
-                        { value: 'entitie', name: "Entidade" },
-                        { value: 'withoutAuthorship', name: "Sem autoria" },
+                        { value: "person", name: "Pessoa" },
+                        { value: "entitie", name: "Entidade" },
+                        { value: "withoutAuthorship", name: "Sem autoria" },
                       ]}
                     />
                   </Grid>
@@ -240,9 +251,9 @@ const Book = ({ back }) => {
                       errors={props.errors}
                       touched={props.touched}
                       options={[
-                        { value: 'author', name: "Autor" },
-                        { value: 'organizator', name: "Organizador" },
-                        { value: 'coordinator', name: "Coordenador" },
+                        { value: "author", name: "Autor" },
+                        { value: "organizator", name: "Organizador" },
+                        { value: "coordinator", name: "Coordenador" },
                       ]}
                     />
                   </Grid>
@@ -421,12 +432,17 @@ const Book = ({ back }) => {
                       helpText="Número de livro padrão internacional"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={8}
                     style={{
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "flex-end",
-                    }}>
+                    }}
+                  >
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
