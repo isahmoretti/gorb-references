@@ -17,7 +17,6 @@ import {
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
@@ -72,12 +71,6 @@ const generateReference = (values) => {
     translatorName,
   } = values;
 
-  // const authorSplit = author.split(" ");
-
-  // const firstName = authorSplit[0];
-
-  // const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
   return (
     <span>
       {" "}
@@ -110,7 +103,7 @@ const generateReference = (values) => {
       {complementaryElements && online && accessedAt && (
         <> Acesso em: {accessedAt}.</>
       )}
-    </span> //TODO: edition apenas em português
+    </span> 
   );
 };
 const Book = ({ back }) => {
@@ -134,7 +127,6 @@ const Book = ({ back }) => {
   return (
     <Container>
       <Back onClick={back} />
-
       <Formik
         initialValues={{
           authors: ["", "", ""],
@@ -244,21 +236,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 30 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Autor"
-                      placeholder="Nome e sobrenome do autor"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={12}>
                     <Input
                       type="text"
                       label="Título"

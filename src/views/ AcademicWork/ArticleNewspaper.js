@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -18,7 +18,6 @@ import {
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
