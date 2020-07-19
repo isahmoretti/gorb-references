@@ -9,15 +9,30 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Button from "../../components/Buttons";
 
 function SimpleDialog(props) {
-  const { isOpen, handleClose, text } = props;
+  const { isOpen, handleClose, text, citationWithAuthor, citation } = props;
 
-  const refDiv = useRef();
-  const [content, setContent] = useState("");
+  const refDiv1 = useRef();
+  const refDiv2 = useRef();
+  const refDiv3 = useRef();
 
-  const handleCopy = () => {
-    const copyText = refDiv.current.textContent;
+  const [content1, setContent1] = useState("");
+  const [content2, setContent2] = useState("");
+  const [content3, setContent3] = useState("");
 
-    setContent(copyText);
+  const handleCopy1 = () => {
+    const copyText = refDiv1.current.textContent;
+
+    setContent1(copyText);
+  };
+  const handleCopy2 = () => {
+    const copyText = refDiv2.current.textContent;
+
+    setContent2(copyText);
+  };
+  const handleCopy3 = () => {
+    const copyText = refDiv3.current.textContent;
+
+    setContent3(copyText);
   };
 
   return (
@@ -32,8 +47,8 @@ function SimpleDialog(props) {
         <div style={{ color: "black" }}>Referência</div>
       </DialogTitle>
       <DialogContent>
-        <div ref={refDiv}>{text}</div>
-        <CopyToClipboard text={content} onCopy={handleCopy}>
+        <div ref={refDiv1}>{text}</div>
+        <CopyToClipboard text={content1} onCopy={handleCopy1}>
           <Button
             color="primary"
             style={{
@@ -44,6 +59,45 @@ function SimpleDialog(props) {
           </Button>
         </CopyToClipboard>
       </DialogContent>
+
+      {
+        citationWithAuthor &&
+        <DialogContent>
+          <div id="simple-dialog-title">
+            <div style={{ color: "black", fontSize: '20px' }}>CITAÇÃO COM AUTOR INCLUÍDO NO TEXTO</div>
+          </div>
+          <div ref={refDiv2}>{citationWithAuthor}</div>
+          <CopyToClipboard text={content2} onCopy={handleCopy2}>
+            <Button
+              color="primary"
+              style={{
+                float: "right",
+              }}
+            >
+              Copiar
+          </Button>
+          </CopyToClipboard>
+        </DialogContent>
+      }
+      {
+        citation &&
+        <DialogContent>
+          <div id="simple-dialog-title">
+            <div style={{ color: "black", fontSize: '20px' }}>CITAÇÃO</div>
+          </div>
+          <div ref={refDiv3}>{citation}</div>
+          <CopyToClipboard text={content3} onCopy={handleCopy3}>
+            <Button
+              color="primary"
+              style={{
+                float: "right",
+              }}
+            >
+              Copiar
+          </Button>
+          </CopyToClipboard>
+        </DialogContent>
+      }
     </Dialog>
   );
 }

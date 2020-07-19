@@ -146,6 +146,30 @@ const generateReference = (values) => {
     </span>
   );
 };
+const generateCitationWithAuthor = (values) => {
+  const {
+    author,
+    yearOfPublication
+  } = values;
+
+  const authorSplit = author.split(" ");
+
+  const lastName = authorSplit[authorSplit.length - 1]
+
+  return <span>{lastName} ({yearOfPublication})</span>
+}
+const generateCitation = (values) => {
+  const {
+    author,
+    yearOfPublication
+   } = values;
+
+  const authorSplit = author.split(" ");
+
+  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
+
+  return <span>({lastName}, {yearOfPublication})</span>
+}
 const Book = ({ back }) => {
   const [state, setState] = useState({
     values: {},
@@ -628,6 +652,8 @@ const Book = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

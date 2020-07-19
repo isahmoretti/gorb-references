@@ -87,13 +87,6 @@ const generateReference = (values) => {
     translator,
     translatorName,
   } = values;
-
-  // const authorSplit = author.split(" ");
-
-  // const firstName = authorSplit[0];
-
-  // const lastName = authorSplit[authorSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
   return (
     <span>
       {" "}
@@ -134,6 +127,30 @@ const generateReference = (values) => {
     </span> //TODO: edition apenas em português
   );
 };
+const generateCitationWithAuthor = (values) => {
+  const {
+    author,
+    yearOfPublication
+  } = values;
+
+  const authorSplit = author.split(" ");
+
+  const lastName = authorSplit[authorSplit.length - 1]
+
+  return <span>{lastName} ({yearOfPublication})</span>
+}
+const generateCitation = (values) => {
+  const {
+    author,
+    yearOfPublication
+   } = values;
+
+  const authorSplit = author.split(" ");
+
+  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
+
+  return <span>({lastName}, {yearOfPublication})</span>
+}
 const Book = ({ back }) => {
   const [state, setState] = useState({
     values: {},
@@ -628,6 +645,8 @@ const Book = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>
