@@ -179,7 +179,9 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de livro com autor entidade </p>
+                <p style={{
+                  fontSize: '20px'
+                  }}>Referência de livro com autor entidade </p>
               </Title>
               <Row container className="end">
                 <Button
@@ -190,7 +192,7 @@ const Book = ({ back }) => {
                   Limpar campos
                 </Button>
                 <Button type="submit" color="primary">
-                  Gerar referencia
+                  Gerar referência e citação
                 </Button>
               </Row>
             </Actions>

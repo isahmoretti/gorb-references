@@ -149,7 +149,7 @@ const ArticleMagazine = ({ back }) => {
                   Limpar campos
                 </Button>
                 <Button type="submit" color="primary">
-                  Gerar referencia
+                  Gerar referência e citação
                 </Button>
               </Row>
             </Actions>

@@ -47,7 +47,9 @@ function SimpleDialog(props) {
         <div style={{ color: "black" }}>Referência</div>
       </DialogTitle>
       <DialogContent>
-        <div ref={refDiv1}>{text}</div>
+        <div ref={refDiv1} style={{
+         fontSize: '18px'
+        }}>{text}</div>
         <CopyToClipboard text={content1} onCopy={handleCopy1}>
           <Button
             color="primary"
@@ -66,7 +68,9 @@ function SimpleDialog(props) {
           <div id="simple-dialog-title">
             <div style={{ color: "black", fontSize: '20px' }}>CITAÇÃO COM AUTOR INCLUÍDO NO TEXTO</div>
           </div>
-          <div ref={refDiv2}>{citationWithAuthor}</div>
+          <div ref={refDiv2} style={{
+         fontSize: '18px'
+        }}>{citationWithAuthor}</div>
           <CopyToClipboard text={content2} onCopy={handleCopy2}>
             <Button
               color="primary"
@@ -85,7 +89,9 @@ function SimpleDialog(props) {
           <div id="simple-dialog-title">
             <div style={{ color: "black", fontSize: '20px' }}>CITAÇÃO</div>
           </div>
-          <div ref={refDiv3}>{citation}</div>
+          <div ref={refDiv3} style={{
+         fontSize: '18px'
+        }}>{citation}</div>
           <CopyToClipboard text={content3} onCopy={handleCopy3}>
             <Button
               color="primary"

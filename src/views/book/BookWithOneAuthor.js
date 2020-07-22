@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import { Formik, Field, FieldArray } from "formik";
-
-import { format } from "date-fns";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
@@ -13,18 +11,21 @@ import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
+
+//utils 
+import { formatDate } from '../../utils/formatDate'
+import { formatAuthorName } from '../../utils/formatAuthorName'
+
 // styles
 import {
   Container,
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
   FieldArrayContainer,
-  ErrorText,
   Actions,
   Title,
 } from "./style";
@@ -47,10 +48,8 @@ const generateReference = (values) => {
     publishingCompany,
     yearOfPublication,
     complementaryElements,
-    othersResponsabilities,
     series,
     pagination,
-    grades,
     isbn,
     volume,
     originalTitle,
@@ -61,16 +60,9 @@ const generateReference = (values) => {
     translatorName,
   } = values;
 
-  const authorSplit = author.split(" ");
-
-  const firstName = authorSplit[0];
-
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
-
   return (
     <span>
-      {" "}
-      {lastName}, {firstName[0]}.{" "}
+      {formatAuthorName(author)}
       {caption ? (
         <>
           <b>{title}: </b>
@@ -79,25 +71,22 @@ const generateReference = (values) => {
       ) : (
           <b>{title}. </b>
         )}
-      {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
-      {local}: {publishingCompany}, {yearOfPublication}.
-      {complementaryElements && originalTitle && (
-        <> Título original: {originalTitle}.</>
-      )}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName.join("; ")}.</>
       )}
-      {complementaryElements && volume && <> {volume}.v,</>}
+      {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
+      {local}: <>{publishingCompany}, </>
+      {complementaryElements && volume && <> v. {volume}, </>}
+      {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
-      {complementaryElements && othersResponsabilities && (
-        <> {othersResponsabilities}.</>
+      {complementaryElements && originalTitle && (
+        <> Título original: {originalTitle}.</>
       )}
-      {complementaryElements && grades && <> {grades}.</>}
-      {complementaryElements && isbn && <> {isbn}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
       {complementaryElements && online && accessedAt && (
-        <> Acesso em: {format(new Date(accessedAt), "MMM. yyyy")}.</>
+        <> Acesso em: {formatDate(accessedAt)}.</>
       )}
     </span>
   );
@@ -118,7 +107,7 @@ const generateCitation = (values) => {
   const {
     author,
     yearOfPublication
-   } = values;
+  } = values;
 
   const authorSplit = author.split(" ");
 
@@ -160,10 +149,8 @@ const Book = ({ back }) => {
           publishingCompany: "",
           yearOfPublication: "",
           complementaryElements: false,
-          othersResponsabilities: "",
           pagination: "",
           series: "",
-          grades: "",
           isbn: "",
           originalTitle: "",
           volume: "",
@@ -180,7 +167,9 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de livro um autor </p>
+                <p style={{
+                  fontSize: '20px'
+                }}>Referência de livro com um autor </p>
               </Title>
               <Row container className="end">
                 <Button
@@ -191,7 +180,7 @@ const Book = ({ back }) => {
                   Limpar campos
                 </Button>
                 <Button type="submit" color="primary">
-                  Gerar referencia
+                  Gerar referência e citação
                 </Button>
               </Row>
             </Actions>
@@ -327,21 +316,6 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Outras responsabilidades"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.othersResponsabilities}
-                      name="othersResponsabilities"
-                      errors={props.errors}
-                      touched={props.touched}
-                      help
-                      helpText="Abreviatura de: Organizador, editor, compilador ou coordenador."
-                    />
-                  </Grid>
                   <Grid
                     item
                     xs={12}
@@ -366,37 +340,12 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={4}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Nota"
-                      placeholder="Ex: Submetida e aceita em uma revista mas ainda não foi publicada"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.grades}
-                      name="grades"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Isbn"
+                      label="ISBN"
+                      placeholder="EX: 9788535238693"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.isbn}
@@ -407,98 +356,11 @@ const Book = ({ back }) => {
                       helpText="Número de livro padrão internacional"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={8}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Título original"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.originalTitle}
-                      name="originalTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Select
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Online"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      name="online"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="date"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      name="accessedAt"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="text"
-                      label="Endereço(URL)"
-                      placeholder="https://viacarreira.com/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={4} style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                  }}>
                     <Select
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -516,7 +378,7 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="translatorName"
@@ -549,7 +411,9 @@ const Book = ({ back }) => {
                                       <RemoveIcon />
                                     </ButtonCore>
                                     {index ===
-                                      props.values.translatorName.length - 1 && (
+                                      props.values.translatorName.length - 1 &&
+                                      props.values.complementaryElements &&
+                                      props.values.translator && (
                                         <ButtonCore
                                           type="button"
                                           onClick={() => arrayHelpers.push("")}
@@ -572,6 +436,89 @@ const Book = ({ back }) => {
                       )}
                     />
                   </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={6}
+                  >
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Título original"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.originalTitle}
+                      name="originalTitle"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Volume"
+                      placeholder="Ex: 10"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Online"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.online}
+                      name="online"
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      disabled={
+                        !props.values.complementaryElements ||
+                        !props.values.online
+                      }
+                      type="text"
+                      label="Endereço(URL)"
+                      placeholder="https://viacarreira.com/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
+                      name="url"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      disabled={
+                        !props.values.complementaryElements ||
+                        !props.values.online
+                      }
+                      type="date"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.accessedAt}
+                      name="accessedAt"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
                 </Grid>
               </Content>
               <Modal
@@ -585,7 +532,7 @@ const Book = ({ back }) => {
           </form>
         )}
       </Formik>
-    </Container>
+    </Container >
   );
 };
 

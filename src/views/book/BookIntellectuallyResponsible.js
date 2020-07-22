@@ -204,8 +204,10 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>
-                  Referência de livro com responsável intelectual ao invés de
+                <p style={{
+                  fontSize: '20px'
+                  }}>
+                  Referência de livro com responsável intelectual<br/> ao invés de
                   autor{" "}
                 </p>
 
@@ -220,7 +222,7 @@ const Book = ({ back }) => {
                   Limpar campos
                 </Button>
                 <Button type="submit" color="primary">
-                  Gerar referencia
+                  Gerar referência e citação
                 </Button>
               </Row>
             </Actions>

@@ -14,6 +14,9 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
+// utils
+import { formatAuthorName } from '../../utils/formatAuthorName'
+
 // styles
 import {
   Container,
@@ -77,7 +80,8 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {authors.length && getAuthorName(authors)}.
+      {/* {getAuthorName(authors)}. */}
+      {formatAuthorName(authors)}
       {caption ? (
         <>
           <b>{title}: </b>
@@ -189,7 +193,9 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de livro com quatro autores ou mais </p>
+                <p style={{
+                  fontSize: '20px'
+                  }}>Referência de livro com quatro <br/> autores ou mais </p>
               </Title>
               <Row container className="end">
                 <Button
@@ -200,7 +206,7 @@ const Book = ({ back }) => {
                   Limpar campos
                 </Button>
                 <Button type="submit" color="primary">
-                  Gerar referencia
+                  Gerar referência e citação
                 </Button>
               </Row>
             </Actions>
