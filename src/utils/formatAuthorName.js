@@ -5,6 +5,8 @@ const replaceNameAuthor = (author, abbreviate) => {
   let lastName = "";
   let otherNames = "";
 
+  if (!author.length) return '';
+
   const arrAuthor = author.trim().split(" ");
 
   if (author.toLowerCase().includes("filho")) parent = "FILHO";
@@ -58,7 +60,7 @@ const replaceNameAuthor = (author, abbreviate) => {
 
 export const formatAuthorName = (authors, abbreviate = false) => {
   if (Array.isArray(authors)) {
-    if (!authors.length) return <></>;
+    if (!authors.length || authors[0] === "") return <></>;
 
     const authSplit = authors[0].split(" ");
 
@@ -77,6 +79,7 @@ export const formatAuthorName = (authors, abbreviate = false) => {
 
     return `${authorsTogether.join("; ")}${abbreviate ? " " : ". "}`;
   }
+  if (!authors) return <></>;
 
   const authorSplit = authors.split(" ");
 

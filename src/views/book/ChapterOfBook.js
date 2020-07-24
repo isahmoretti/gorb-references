@@ -33,7 +33,8 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
+  chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
+  chapterTitle: Yup.string().required("Obrigatório"),
   authorship: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
@@ -82,6 +83,7 @@ const generateReference = (values) => {
     translatorName,
     authorType,
     responsabilityType,
+    chapterCaption
   } = values;
 
   //autor do livro
@@ -108,7 +110,14 @@ const generateReference = (values) => {
       )} */}
       <>{formatAuthorName(chapterAuthors)}</>
       {/* titulo do capitulo */}
-      {chapterTitle && <> {chapterTitle}.</>}
+      {chapterCaption ? (
+        <>
+          <> {chapterTitle}: </>
+          {chapterCaption}.{" "}
+        </>
+      ) : (
+          <>{chapterTitle}. </>
+        )}
       {/* ÚLTIMO NOME, Primeiro nome do autor */}
       {chapterAuthors && (
         <>
@@ -126,20 +135,22 @@ const generateReference = (values) => {
       ) : (
           <b>{title}. </b>
         )}
+      {
+      }
+      {complementaryElements && translator && translatorName.length && (
+        <> Tradução: {translatorName}.</>
+      )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
+      {complementaryElements && volume && <> v.{volume},</>}
       {local}: {publishingCompany}, {yearOfPublication}.
+      {complementaryElements && pagination && <> {pagination} p.</>}
+      {captionPageInit &&
+        captionPageFinish &&
+        `p. ${captionPageInit}-${captionPageFinish}, `}
+      {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && originalTitle && (
         <> Título original: {originalTitle}.</>
       )}
-      {complementaryElements && translator && translatorName.length && (
-        <> Tradução: {translatorName.join("; ")}.</>
-      )}
-      {complementaryElements && volume && <> {volume}.v,</>}
-      {captionPageInit &&
-        captionPageFinish &&
-        `p. ${captionPageInit} - ${captionPageFinish}, `}
-      {complementaryElements && pagination && <> {pagination} p.</>}
-      {complementaryElements && series && <> ({series}).</>}
       {complementaryElements && othersResponsabilities && (
         <> {othersResponsabilities}.</>
       )}
@@ -154,11 +165,11 @@ const generateReference = (values) => {
 };
 const generateCitationWithAuthor = (values) => {
   const {
-    author,
+    authorship,
     yearOfPublication
   } = values;
 
-  const authorSplit = author.split(" ");
+  const authorSplit = authorship.split(" ");
 
   const lastName = authorSplit[authorSplit.length - 1]
 
@@ -166,11 +177,11 @@ const generateCitationWithAuthor = (values) => {
 }
 const generateCitation = (values) => {
   const {
-    author,
+    authorship,
     yearOfPublication
   } = values;
 
-  const authorSplit = author.split(" ");
+  const authorSplit = authorship.split(" ");
 
   const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
 
@@ -189,6 +200,8 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values),
+      citation: generateCitation(values)
     }));
 
     setOpenModal(!openModal);
@@ -224,7 +237,7 @@ const Book = ({ back }) => {
           translatorName: [""],
           chapterTitle: "",
           chapterAuthors: [""],
-          captionChapter: "",
+          chapterCaption: "",
           captionPageInit: "",
           captionPageFinish: "",
         }}
@@ -495,6 +508,8 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Nome do tradutor"
+                      disabled={!props.values.complementaryElements
+                        || !props.values.translator}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.translatorName}
@@ -615,7 +630,7 @@ const Book = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.captionChapter}
-                      name="captionChapter"
+                      name="chapterCaption"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -638,7 +653,7 @@ const Book = ({ back }) => {
                                       onChange={props.handleChange}
                                       onBlur={props.handleBlur}
                                       value={chapterAuthor}
-                                      name={`chapterAuthor.${index}`}
+                                      name={`chapterAuthors.${index}`}
                                       errors={props.errors}
                                       touched={props.touched}
                                     />
@@ -652,13 +667,13 @@ const Book = ({ back }) => {
                                       </ButtonCore>
                                     )}
                                     {(
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon />
-                                        </ButtonCore>
-                                      )}
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() => arrayHelpers.push("")}
+                                      >
+                                        <AddIcon />
+                                      </ButtonCore>
+                                    )}
                                   </div>
                                   <div
                                     style={{
