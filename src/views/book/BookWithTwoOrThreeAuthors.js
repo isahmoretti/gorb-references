@@ -64,7 +64,7 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {formatAuthorName(authors)}
+      <>{formatAuthorName(authors)}</>
       {caption ? (
         <>
           <b> {title}: </b>
