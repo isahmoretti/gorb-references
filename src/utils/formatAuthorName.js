@@ -5,7 +5,7 @@ const replaceNameAuthor = (author, abbreviate) => {
   let lastName = "";
   let otherNames = "";
 
-  const arrAuthor = author.split(" ");
+  const arrAuthor = author.trim().split(" ");
 
   if (author.toLowerCase().includes("filho")) parent = "FILHO";
   if (author.toLowerCase().includes("júnior")) parent = "JÚNIOR";
@@ -20,14 +20,14 @@ const replaceNameAuthor = (author, abbreviate) => {
   }
 
   if (arrAuthor.some((item) => item.toUpperCase().includes(parent))) {
-    const test = arrAuthor.map((item) => {
-      if (item.toUpperCase() === parent || item === lastName) {
-        return item.replace(item, "");
-      }
-      return item;
-    });
-
-    console.log(test);
+    const test = arrAuthor
+      .map((item) => {
+        if (item.toUpperCase() === parent || item === lastName) {
+          return item.replace(item, "");
+        }
+        return item;
+      })
+      .filter((item) => item);
 
     if (abbreviate) {
       const names = test
@@ -51,9 +51,9 @@ const replaceNameAuthor = (author, abbreviate) => {
     }
   }
 
-  return `${lastName.toUpperCase()}${
-    parent ? ` ${parent}` : ""
-  }, ${otherNames.trim()}`;
+  return `${lastName.toUpperCase()}${parent ? ` ${parent}` : ""}${
+    arrAuthor.length === 1 || (arrAuthor.length === 2 && parent) ? "" : ", "
+  }${otherNames.trim()}`;
 };
 
 export const formatAuthorName = (authors, abbreviate = false) => {
