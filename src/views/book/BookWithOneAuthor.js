@@ -62,7 +62,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {formatAuthorName(author)}
+      <>{formatAuthorName(author)} </>
       {caption ? (
         <>
           <b>{title}: </b>
@@ -403,13 +403,13 @@ const Book = ({ back }) => {
                                       errors={props.errors}
                                       touched={props.touched}
                                     />
-                                    <ButtonCore
+                                    {index > 0 && <ButtonCore
                                       type="button"
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
                                       <RemoveIcon />
-                                    </ButtonCore>
+                                    </ButtonCore>}
                                     {index ===
                                       props.values.translatorName.length - 1 &&
                                       props.values.complementaryElements &&

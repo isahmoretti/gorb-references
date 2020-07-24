@@ -37,25 +37,6 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getAuthorName = (authors) => {
-  const authorsTogether = authors.map((author) => {
-    const authorSplit = author.split(" ");
-
-    const firstName = authorSplit[0];
-
-    const lastName =
-      authorSplit.length > 1 &&
-      authorSplit[authorSplit.length - 1].toUpperCase();
-
-    return `${lastName}, ${
-      authorSplit.length <= 2
-        ? firstName + "."
-        : authorSplit.slice(1).map((a) => a[0].toUpperCase() + ".")
-    }`;
-  });
-  return authorsTogether.join("; ");
-};
-
 const generateReference = (values) => {
   const {
     authors,
@@ -167,13 +148,13 @@ const Book = ({ back }) => {
       <Back onClick={back} />
       <Formik
         initialValues={{
-          authors: ["Daniel", "Israel Barbosa", "Daniel Barbosa de Lima"],
-          title: "A bela e a fera",
-          caption: "Na madrugada",
-          edition: "1",
-          local: "São Paulo",
-          publishingCompany: "Vivana",
-          yearOfPublication: "2001",
+          authors: ["", "", ""],
+          title: "",
+          caption: "",
+          edition: "",
+          local: "",
+          publishingCompany: "",
+          yearOfPublication: "",
           complementaryElements: false,
           othersResponsabilities: "",
           pagination: "",
@@ -195,13 +176,9 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Referência de livro com dois ou três autores{" "}
-                </p>
+                <p style={{
+                  fontSize: '20px'
+                }}>Referência de livro com dois ou três <br/> autores </p>
               </Title>
               <Row container className="end">
                 <Button
