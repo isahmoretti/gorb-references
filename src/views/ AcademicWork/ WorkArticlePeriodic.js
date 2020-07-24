@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
 
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
@@ -11,6 +10,9 @@ import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
+
+import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
 
 // styles
 import {
@@ -31,30 +33,19 @@ import {
 const SignupSchema = Yup.object().shape({
   constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
-  // local: Yup.string().required("Obrigatório"),
+  titlePeriodic: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getContructionNames = (names) => {
-  const namesTogether = names.map((author) => {
-    const namesSplit = author.split(" ");
-
-    const firstName = namesSplit[0];
-
-    const lastName = namesSplit[namesSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
-    return `${lastName}, ${firstName[0]}`;
-  });
-  return namesTogether.join("; ");
-};
-
 const generateReference = (values) => {
   const {
     constructionNames,
+    abbreviate,
     title,
     caption,
     titlePeriodic,
+    subtitlePeriodic,
     location,
     volume,
     pageInit,
@@ -66,27 +57,34 @@ const generateReference = (values) => {
     accessedAtUrl,
     url,
     doi,
+    notes,
   } = values;
 
   return (
     <span>
       {" "}
-      {constructionNames.length && getContructionNames(constructionNames)}
-      .&nbsp;
-      {caption ? <>{`${title}: ${caption}.`}</> : `${title}.`}
-      <b>{` ${titlePeriodic}`}</b>,&nbsp; {location && `${location}, `}
+      {constructionNames.length &&
+        formatAuthorName(constructionNames, abbreviate)}
+      {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
+      {titlePeriodic && <b>{`${titlePeriodic}`}</b>}
+      {subtitlePeriodic ? `: ${subtitlePeriodic}, ` : ", "}
+      {location ? `${location}, ` : "[s. l.], "}
       {volume && `v. ${volume}, `}
       {fascicle && `n. ${fascicle}, `}
-      {pageInit && pageFinish && `p. ${pageInit} - ${pageFinish}, `}
-      {accessedAt && `${format(new Date(accessedAt), "MMM. yyyy")}. `}
+      {pageInit && !pageFinish && `p. ${pageInit}, `}
+      {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
+      {accessedAt && `${formatDate(accessedAt)}. `}
+      {doi && `DOI: ${doi}. `}
       {online &&
         accessedAtUrl &&
         url &&
-        `Disponível em: ${url}. Acesso em: ${format(
-          new Date(accessedAtUrl),
-          "d MMM. yyyy"
-        )}. `}
-      {doi && doi}
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAtUrl)}. `}
+      {online &&
+        accessedAtUrl &&
+        !url &&
+        doi &&
+        `Acesso em: ${formatDate(accessedAtUrl)}. `}
+      {notes && notes}
     </span>
   );
 };
@@ -115,9 +113,11 @@ const WorkArticlePeriodic = ({ back }) => {
       <Formik
         initialValues={{
           constructionNames: [""],
+          abbreviate: false,
           title: "",
           caption: "",
           titlePeriodic: "",
+          subtitlePeriodic: "",
           location: "",
           volume: "",
           pageInit: "",
@@ -129,6 +129,7 @@ const WorkArticlePeriodic = ({ back }) => {
           accessedAtUrl: "",
           url: "",
           doi: "",
+          notes: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -155,7 +156,7 @@ const WorkArticlePeriodic = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
+                  <Grid item xs={12} sm={12} md={10}>
                     <FieldArray
                       name="constructionNames"
                       render={(arrayHelpers) => (
@@ -166,11 +167,15 @@ const WorkArticlePeriodic = ({ back }) => {
                               (constructionName, index) => (
                                 <FieldArrayContainer key={index}>
                                   <div
-                                    style={{ display: "flex", width: "100%", marginBottom: 10 }}
+                                    style={{
+                                      display: "flex",
+                                      width: "100%",
+                                      marginBottom: 10,
+                                    }}
                                   >
                                     <Input
                                       name={`constructionNames.${index}`}
-                                      label={`Autor da obra ${index + 1}`}
+                                      label={`${index + 1}º Autor da obra`}
                                       type="text"
                                       placeholder="Nome do autor"
                                       onChange={props.handleChange}
@@ -219,6 +224,22 @@ const WorkArticlePeriodic = ({ back }) => {
                       )}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Select
+                      name="abbreviate"
+                      label="abreviar autor?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.abbreviate}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
@@ -257,12 +278,27 @@ const WorkArticlePeriodic = ({ back }) => {
                       placeholder="Nome do periódico"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.local}
+                      value={props.values.titlePeriodic}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      name="subtitlePeriodic"
+                      label="Subtítulo do periódico"
+                      type="text"
+                      placeholder="Subtítulo do "
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.subtitlePeriodic}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -275,9 +311,7 @@ const WorkArticlePeriodic = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="volume"
                       label="Nº de volume"
@@ -291,7 +325,7 @@ const WorkArticlePeriodic = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pageInit"
                       label="Página inicial"
@@ -304,7 +338,7 @@ const WorkArticlePeriodic = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pageFinish"
                       label="Página Final"
@@ -322,7 +356,7 @@ const WorkArticlePeriodic = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="fascicle"
-                      label="Nº do Fasncílico"
+                      label="Nº do Fascículo"
                       type="text"
                       placeholder="Ex: 4"
                       onChange={props.handleChange}
@@ -334,11 +368,15 @@ const WorkArticlePeriodic = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      name="accessedAt"
                       type="date"
+                      label="Data de acesso"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
-                      name="accessedAt"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -378,6 +416,10 @@ const WorkArticlePeriodic = ({ back }) => {
                     <Input
                       name="accessedAtUrl"
                       type="date"
+                      label="Data de acesso"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
@@ -410,9 +452,34 @@ const WorkArticlePeriodic = ({ back }) => {
                       um padrão de números e
                       letras que identificam
                       publicações."
+                      placeholder="10.1590/S0034-
+                      89102004000600012"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.doi}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <Input
+                      name="notes"
+                      label="Nota"
+                      type="text"
+                      placeholder="Ex: Informações complementares"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.notes}
                       errors={props.errors}
                       touched={props.touched}
                     />

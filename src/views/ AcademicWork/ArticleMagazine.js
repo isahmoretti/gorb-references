@@ -12,6 +12,9 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
+import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
+
 // styles
 import {
   Container,
@@ -31,24 +34,10 @@ import {
 const SignupSchema = Yup.object().shape({
   constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
-  // local: Yup.string().required("Obrigatório"),
+  titleMagazine: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
-
-const getAuthorsNames = (names) => {
-  const namesTogether = names.map((author) => {
-    const namesSplit = author.split(" ");
-
-    const firstName = namesSplit[0];
-
-    const lastName = namesSplit[namesSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
-    return `${lastName}, ${firstName[0]}`;
-  });
-  return namesTogether.join("; ");
-};
-
 const generateReference = (values) => {
   const {
     authors,
@@ -70,21 +59,19 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {authors.length && getAuthorsNames(authors)}
+      {authors.length && formatAuthorName(authors)}
       .&nbsp;
       {caption ? <>{`${title}: ${caption}.`}</> : `${title}.`}
       <b>{` ${titleMagazine}`}</b>,&nbsp; {location && `${location}, `}
       {volume && `v. ${volume}, `}
       {fascicle && `n. ${fascicle}, `}
-      {pageInit && pageFinish && `p. ${pageInit} - ${pageFinish}, `}
-      {accessedAt && `${format(new Date(accessedAt), "MMM. yyyy")}. `}
+      {pageInit && !pageFinish && `p. ${pageInit}. `}
+      {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
+      {accessedAt && `${formatDate(accessedAt)}. `}
       {online &&
         accessedAtUrl &&
         url &&
-        `Disponível em: ${url}. Acesso em: ${format(
-          new Date(accessedAtUrl),
-          "d MMM. yyyy"
-        )}. `}
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAtUrl)}. `}
     </span>
   );
 };
@@ -165,10 +152,16 @@ const ArticleMagazine = ({ back }) => {
                           props.values.authors.length > 0 ? (
                             props.values.authors.map((author, index) => (
                               <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%", marginBottom: 10 }}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
                                   <Input
                                     name={`authors.${index}`}
-                                    label={`Author ${index + 1}`}
+                                    label={`${index + 1}º Autor`}
                                     type="text"
                                     placeholder="Nome do autor"
                                     onChange={props.handleChange}
@@ -318,7 +311,7 @@ const ArticleMagazine = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="fascicle"
-                      label="Nº do Fasncílico"
+                      label="Nº do Fascículo"
                       type="text"
                       placeholder="Ex: 4"
                       onChange={props.handleChange}
@@ -330,11 +323,15 @@ const ArticleMagazine = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      name="accessedAt"
                       type="date"
+                      label="Data de acesso"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
-                      name="accessedAt"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -374,6 +371,10 @@ const ArticleMagazine = ({ back }) => {
                     <Input
                       name="accessedAtUrl"
                       type="date"
+                      label="Data de acesso"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
