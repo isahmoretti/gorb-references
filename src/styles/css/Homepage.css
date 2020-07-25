@@ -88,7 +88,7 @@
 
   padding: 20px;
 
-  background: #eada18;
+  background-color: #eada18;
   border: none;
   outline: none;
 
@@ -96,6 +96,12 @@
   font-weight: bold;
   font-size: 25px;
   text-transform: uppercase;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+.session1 button:hover {
+  background-color: #6666cc;
+  color: #fff;
 }
 
 /** SESSION 2 */

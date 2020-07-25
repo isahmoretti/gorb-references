@@ -11,10 +11,12 @@ import {
 } from "../../styles/Hexagon";
 
 // pages
+import ArticleNewspaper from "./ArticleNewspaper";
 import WorkArticle from "./ WorkArticlePeriodic";
 import ArticleMagazine from "./ArticleMagazine";
-import ArticleNewspaper from "./ArticleNewspaper";
-import Thesis from './Thesis';
+import Dissertation from "./Dissertation";
+import Monography from "./Monography";
+import Thesis from "./Thesis";
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -26,22 +28,16 @@ const BookGeneral = ({ back }) => {
           <Back onClick={back} />
           <Row>
             <Hexagon onClick={() => setState(1)} className="yellow">
-              {" "}
-              {/** setState(1) */}
               <p className="txt-white">Tese</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => { }} className="yellow">
-              {" "}
-              {/** setState(6) */}
+            <Hexagon onClick={() => setState(6)} className="yellow">
               <p className="txt-white">Monografia</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => { }} className="yellow">
-              {" "}
-              {/** setState(2) */}
+            <Hexagon onClick={() => setState(2)} className="yellow">
               <p className="txt-white">Dissertação</p>
             </Hexagon>
             <Title>
@@ -65,10 +61,12 @@ const BookGeneral = ({ back }) => {
         </Content>
       )}
 
-      {state === 5 && <WorkArticle back={() => setState(0)} />}
-      {state === 4 && <ArticleMagazine back={() => setState(0)} />}
-      {state === 3 && <ArticleNewspaper back={() => setState(0)} />}
       {state === 1 && <Thesis back={() => setState(0)} />}
+      {state === 2 && <Dissertation back={() => setState(0)} />}
+      {state === 3 && <ArticleNewspaper back={() => setState(0)} />}
+      {state === 4 && <ArticleMagazine back={() => setState(0)} />}
+      {state === 5 && <WorkArticle back={() => setState(0)} />}
+      {state === 6 && <Monography back={() => setState(0)} />}
     </Conatiner>
   );
 };
