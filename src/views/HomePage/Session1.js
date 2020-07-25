@@ -2,9 +2,11 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import { navi } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Session1 = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="session1">
       <div className="container content p-3">
@@ -17,7 +19,11 @@ const Session1 = () => {
             {" "}
             Gerador Online de <br /> Referências Bibliográficas{" "}
           </p>
-          <button className="wow fadeInUp" data-wow-delay="0.4s">
+          <button
+            onClick={() => navigate("/app")}
+            className="wow fadeInUp"
+            data-wow-delay="0.4s"
+          >
             {" "}
             Acesse o Gerador Grátis{" "}
           </button>
