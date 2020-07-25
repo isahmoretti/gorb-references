@@ -35,6 +35,8 @@ const SignupSchema = Yup.object().shape({
   location: Yup.string().required("Obrigatório"),
   institute: Yup.string().required("Obrigatório"),
   course: Yup.string().required("Obrigatório"),
+  yearOfDelivery: Yup.string().required("Obrigatório"),
+  yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -51,6 +53,10 @@ const generateReference = (values) => {
     online,
     yearOfDelivery,
     url,
+    institute,
+    course,
+    department,
+    chapter
   } = values;
 
   return (
@@ -58,16 +64,27 @@ const generateReference = (values) => {
       {" "}
       {authors.length &&
         formatAuthorName(authors, abbreviate)}
-      {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
-      {location ? `${location}` : "[s. l.], "}
-      {volume && `v. ${volume}, `}
-      {yearOfPublication}.
-      {pages && ` ${pages}.p, `}
-      {accessedAt && `${formatDate(accessedAt)}. `}
+             {caption ? (
+        <>
+          <b>{title}: </b>
+          {caption}.{" "}
+        </>
+      ) : (
+          <b>{title}. </b>
+        )}
+      {yearOfDelivery && <> {yearOfDelivery}, </>}
+      {volume && <> v. {volume},</>}
+      {pages && <> {pages} p.</>}
+      <> Tese (Doutorado) -</> {course && <>curso de {course}, </>}
+      {department && <>{department}, </>}
+      {institute && <>{institute}, </>}
+      {location ? <> {location}, </> : <>[s. l.], </>}
+      {yearOfPublication && <> {yearOfPublication}.</>}
+      {chapter && <>{chapter}. </>}
       {online &&
-        yearOfDelivery &&
+        accessedAt &&
         url &&
-        `Disponível em: ${url}. Entregue em: ${yearOfDelivery}. `}
+        <> Disponível em: {url}. acesso em: {formatDate(accessedAt)}. </>}
     </span>
   );
 };
@@ -109,6 +126,7 @@ const Thesis = ({ back }) => {
           url: "",
           institute: "",
           course: "",
+          chapter: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -389,7 +407,7 @@ const Thesis = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="accessedAtUrl"
+                      name="accessedAt"
                       type="date"
                       label="Data de acesso"
                       InputLabelProps={{
@@ -397,7 +415,7 @@ const Thesis = ({ back }) => {
                       }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.accessedAtUrl}
+                      value={props.values.accessedAt}
                       errors={props.errors}
                       touched={props.touched}
                     />
