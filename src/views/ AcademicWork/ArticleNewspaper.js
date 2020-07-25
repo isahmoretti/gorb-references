@@ -118,7 +118,13 @@ const ArticleNewspaper = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Artigo de jornal</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Artigo de jornal
+                </p>
                 <span>
                   Inclui reportagem, notícia, entrevista, resenha, editorial e
                   outros.

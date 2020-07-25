@@ -121,7 +121,13 @@ const ArticleMagazine = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Artigo de revista</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Artigo de revista
+                </p>
                 <span>
                   Inclui reportagem, notícia, entrevista, resenha, editorial e
                   outross

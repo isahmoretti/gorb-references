@@ -162,7 +162,13 @@ const Monography = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de Monografia</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Referência de Monografia
+                </p>
               </Title>
               <Row container className="end">
                 <Button

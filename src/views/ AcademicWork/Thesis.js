@@ -56,22 +56,21 @@ const generateReference = (values) => {
     institute,
     course,
     department,
-    chapter
+    chapter,
   } = values;
 
   return (
     <span>
       {" "}
-      {authors.length &&
-        formatAuthorName(authors, abbreviate)}
-             {caption ? (
+      {authors.length && formatAuthorName(authors, abbreviate)}
+      {caption ? (
         <>
           <b>{title}: </b>
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {yearOfDelivery && <> {yearOfDelivery}. </>}
       {volume && <> v. {volume},</>}
       {pages && <> {pages} p.</>}
@@ -81,10 +80,12 @@ const generateReference = (values) => {
       {location ? <> {location}, </> : <>[s. l.], </>}
       {yearOfPublication && <> {yearOfPublication}, </>}
       {chapter && <>{chapter}. </>}
-      {online &&
-        accessedAt &&
-        url &&
-        <> Disponível em: {url}. acesso em: {formatDate(accessedAt)}. </>}
+      {online && accessedAt && url && (
+        <>
+          {" "}
+          Disponível em: {url}. acesso em: {formatDate(accessedAt)}.{" "}
+        </>
+      )}
     </span>
   );
 };
@@ -135,7 +136,13 @@ const Thesis = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de Tese</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Referência de Tese
+                </p>
               </Title>
               <Row container className="end">
                 <Button
@@ -159,63 +166,62 @@ const Thesis = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.authors &&
-                            props.values.authors.length > 0 ? (
-                              props.values.authors.map(
-                                (author, index) => (
-                                  <FieldArrayContainer key={index}>
-                                    <div
-                                      style={{
-                                        display: "flex",
-                                        width: "100%",
-                                        marginBottom: 10,
-                                      }}
+                          props.values.authors.length > 0 ? (
+                            props.values.authors.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <Input
+                                    name={`authors.${index}`}
+                                    label={`${index + 1}º Autor`}
+                                    type="text"
+                                    placeholder="Nome do autor"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 0 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <Input
-                                        name={`authors.${index}`}
-                                        label={`${index + 1}º Autor`}
-                                        type="text"
-                                        placeholder="Nome do autor"
-                                        onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={author}
-                                        errors={props.errors}
-                                        touched={props.touched}
-                                      />
-                                      {index > 0 && <ButtonCore
-                                        type="button"
-                                        onClick={() => arrayHelpers.remove(index)}
-                                      >
-                                        <RemoveIcon />
-                                      </ButtonCore>}
-                                      {index ===
-                                        props.values.authors.length -
-                                        1 && (
-                                          <ButtonCore
-                                            type="button"
-                                            onClick={() => arrayHelpers.push("")}
-                                          >
-                                            <AddIcon />
-                                          </ButtonCore>
-                                        )}
-                                    </div>
-                                    <div style={{ width: "100%" }}>
-                                      <ErrorText>
-                                        {props.errors &&
-                                          props.errors.authors &&
-                                          props.errors.authors[index]}
-                                      </ErrorText>
-                                    </div>
-                                  </FieldArrayContainer>
-                                )
-                              )
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                  )}
+                                  {index ===
+                                    props.values.authors.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                                <div style={{ width: "100%" }}>
+                                  <ErrorText>
+                                    {props.errors &&
+                                      props.errors.authors &&
+                                      props.errors.authors[index]}
+                                  </ErrorText>
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />

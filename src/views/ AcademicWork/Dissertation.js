@@ -162,7 +162,13 @@ const Dissertation = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Referência de dissertação</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Referência de dissertação
+                </p>
               </Title>
               <Row container className="end">
                 <Button

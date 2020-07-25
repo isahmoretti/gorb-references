@@ -138,7 +138,13 @@ const WorkArticlePeriodic = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p>Artigo publicado em periódico</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Artigo publicado em periódico
+                </p>
               </Title>
               <Row container className="end">
                 <Button
