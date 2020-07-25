@@ -72,14 +72,14 @@ const generateReference = (values) => {
       ) : (
           <b>{title}. </b>
         )}
-      {yearOfDelivery && <> {yearOfDelivery}, </>}
+      {yearOfDelivery && <> {yearOfDelivery}. </>}
       {volume && <> v. {volume},</>}
       {pages && <> {pages} p.</>}
-      <> Tese (Doutorado) -</> {course && <>curso de {course}, </>}
+      <> Tese (Doutorado) -</> {course && <>Curso de {course}, </>}
       {department && <>{department}, </>}
       {institute && <>{institute}, </>}
       {location ? <> {location}, </> : <>[s. l.], </>}
-      {yearOfPublication && <> {yearOfPublication}.</>}
+      {yearOfPublication && <> {yearOfPublication}, </>}
       {chapter && <>{chapter}. </>}
       {online &&
         accessedAt &&
@@ -279,7 +279,7 @@ const Thesis = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="volume"
                       label="Nº de volume"
@@ -292,12 +292,25 @@ const Thesis = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pages"
                       label="Páginas"
                       type="text"
                       placeholder="Ex: 20"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.page}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      name="chapter"
+                      label="Capítulos"
+                      type="text"
+                      placeholder="Ex: 4"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.page}
