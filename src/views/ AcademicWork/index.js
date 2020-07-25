@@ -14,6 +14,7 @@ import {
 import WorkArticle from "./ WorkArticlePeriodic";
 import ArticleMagazine from "./ArticleMagazine";
 import ArticleNewspaper from "./ArticleNewspaper";
+import Thesis from './Thesis';
 
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -24,13 +25,13 @@ const BookGeneral = ({ back }) => {
         <Content>
           <Back onClick={back} />
           <Row>
-            <Hexagon onClick={() => {}} className="yellow">
+            <Hexagon onClick={() => setState(1)} className="yellow">
               {" "}
               {/** setState(1) */}
               <p className="txt-white">Tese</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => {}} className="yellow">
+            <Hexagon onClick={() => { }} className="yellow">
               {" "}
               {/** setState(6) */}
               <p className="txt-white">Monografia</p>
@@ -38,7 +39,7 @@ const BookGeneral = ({ back }) => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => {}} className="yellow">
+            <Hexagon onClick={() => { }} className="yellow">
               {" "}
               {/** setState(2) */}
               <p className="txt-white">Dissertação</p>
@@ -67,6 +68,7 @@ const BookGeneral = ({ back }) => {
       {state === 5 && <WorkArticle back={() => setState(0)} />}
       {state === 4 && <ArticleMagazine back={() => setState(0)} />}
       {state === 3 && <ArticleNewspaper back={() => setState(0)} />}
+      {state === 1 && <Thesis back={() => setState(0)} />}
     </Conatiner>
   );
 };
