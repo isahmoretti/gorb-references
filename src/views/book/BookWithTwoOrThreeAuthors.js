@@ -176,9 +176,13 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p style={{
-                  fontSize: '20px'
-                }}>Referência de livro com dois ou três <br/> autores </p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Referência de livro com dois ou três <br /> autores{" "}
+                </p>
               </Title>
               <Row container className="end">
                 <Button
@@ -207,12 +211,13 @@ const Book = ({ back }) => {
                               <FieldArrayContainer key={index}>
                                 <div style={{ display: "flex", width: "100%" }}>
                                   <Input
+                                    name={`authors.${index}`}
                                     type="text"
-                                    label={`Author ${index + 1}`}
+                                    label={`${index + 1}º Author`}
+                                    placeholder={`nome do ${index + 1}º autor`}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={author}
-                                    name={`authors.${index}`}
                                     errors={props.errors}
                                     touched={props.touched}
                                   />
