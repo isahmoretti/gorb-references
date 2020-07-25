@@ -1,25 +1,12 @@
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
-  export const formatDate = (d) => {
-    const date = new Date(d)
+export const formatDate = (d) => {
+  const date = new Date(d);
 
-    const months = [
-      'jan.',
-      'fev.',
-      'mar.',
-      'abr.',
-      'maio',
-      'jun.',
-      'jul.',
-      'ago.',
-      'set.',
-      'out.',
-      'nov.',
-      'dez.',
-    ]
+  const response = format(date, "d MMM. yyyy", {
+    locale: ptBR,
+  });
 
-    const day = date.getDate()
-    const month = months[date.getMonth()]
-    const year = date.getFullYear()
-
-    return `${day} ${month} ${year}`
-  }
+  return response;
+};

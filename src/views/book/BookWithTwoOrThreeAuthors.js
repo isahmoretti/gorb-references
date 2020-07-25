@@ -296,7 +296,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Local de publicação"
@@ -309,7 +309,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Editora"
@@ -322,7 +322,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Edição"
@@ -335,7 +335,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Ano de publicação"

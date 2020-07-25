@@ -5,7 +5,7 @@ const replaceNameAuthor = (author, abbreviate) => {
   let lastName = "";
   let otherNames = "";
 
-  if (!author.length) return '';
+  if (!author.length) return "";
 
   const arrAuthor = author.trim().split(" ");
 
@@ -87,5 +87,5 @@ export const formatAuthorName = (authors, abbreviate = false) => {
     return <>{authorSplit[0]}</>;
   }
 
-  return `${replaceNameAuthor(authors)} `;
+  return `${replaceNameAuthor(authors)}. `;
 };
