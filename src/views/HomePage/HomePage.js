@@ -1,32 +1,39 @@
 import React from "react";
 
-import Preloader from "../../components/Preloader";
-import Home from "../../components/Home";
-import About from "../../components/About";
-import Feature from "../../components/Feature";
-import Contact from "../../components/Contact";
-import Footer from "../../components/Footer";
+import Header from "./Header";
+import Session1 from "./Session1";
+import Session2 from "./Session2";
+import Session3 from "./Session3";
+import Session4 from "./Session4";
+import Session5 from "./Session5";
+import Session6 from "./Session6";
+import Footer from "./Footer";
+
+import { Separator } from "./styles";
 
 // assets
 import Logo from "../../assets/images/via-carreira2.png";
-import "./style.css";
+import "../../styles/css/Homepage.css";
 
 const HomePage = () => {
   return (
-    <div id="homepage">
-      <Preloader />
-      <Home />
-      <About />
-      <Feature />
-      <Contact />
+    <>
+      <Header />
+      <Session1 />
+      <Session2 />
+      <Session3 />
+      <Session4 />
+      <Session5 />
+      <Session6 />
+
+      <div className="container">
+        <Separator />
+      </div>
+
       <Footer />
 
-      <a href="#back-top" className="go-top">
-        <i className="fa fa-angle-up"></i>
-      </a>
-
       <img src={Logo} alt="" className="logo" />
-    </div>
+    </>
   );
 };
 
