@@ -16,12 +16,12 @@ export const Content = styled.div`
   position: relative;
 
   width: 1100px;
-  height: 650px;
+  height: 600px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   @media only screen and (max-width: 600px) {
     position: initial;
