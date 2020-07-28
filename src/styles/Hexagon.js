@@ -4,7 +4,7 @@ import { ArrowBack } from "styled-icons/material";
 
 export const Conatiner = styled.div`
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
 
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
   @media only screen and (max-width: 600px) {
     position: initial;
@@ -38,7 +38,7 @@ export const Row = styled.div`
   position: relative;
 
   width: 100%;
-  height: 182px;
+  height: 165px;
 
   @media only screen and (max-width: 600px) {
     height: 117px;
@@ -63,7 +63,7 @@ export const Back = styled(ArrowBack)`
 `;
 
 export const Title = styled.span`
-  width: 216px;
+  width: 209px;
 
   font-size: 20px;
   font-weight: bold;
@@ -77,7 +77,7 @@ export const Title = styled.span`
 `;
 
 export const Separator = styled.div`
-  width: 9px;
+  width: 3px;
   height: 50px;
 `;
 
@@ -85,7 +85,7 @@ export const Hexagon = styled.div`
   position: relative;
 
   width: 200px;
-  height: 120px;
+  height: 107px;
   background: red;
 
   display: flex;
@@ -134,8 +134,8 @@ export const Hexagon = styled.div`
     /* margin: 80px 20px; */
 
     ::before {
-      border-left: 59px solid transparent;
-      border-right: 51px solid transparent;
+      border-left: 54px solid transparent;
+      border-right: 56px solid transparent;
       border-bottom: 36px solid red;
 
       top: -36px;
