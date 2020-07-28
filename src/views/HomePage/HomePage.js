@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "./Header";
+import Header from "./Header/index";
 import Session1 from "./Session1";
 import Session2 from "./Session2";
 import Session3 from "./Session3";

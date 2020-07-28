@@ -170,18 +170,6 @@ const Monography = ({ back }) => {
                   Referência de Monografia
                 </p>
               </Title>
-              <Row container className="end">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={props.resetForm}
-                >
-                  Limpar campos
-                </Button>
-                <Button type="submit" color="primary">
-                  Gerar referência e citação
-                </Button>
-              </Row>
             </Actions>
             <Card>
               <Content>
@@ -466,6 +454,18 @@ const Monography = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+                <Row container className="end">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={props.resetForm}
+                  >
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referência e citação
+                  </Button>
+                </Row>
               </Content>
               <Modal
                 isOpen={openModal}

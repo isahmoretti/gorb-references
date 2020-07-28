@@ -3,11 +3,17 @@ import React, { useState } from "react";
 import {
   Conatiner,
   Content,
+  ContentText,
   Row,
   Hexagon,
   Title,
   Separator,
+  WrapperAdvertising,
+  Advertising,
 } from "../../styles/Hexagon";
+
+import Nav from "../HomePage/Header";
+import Footer from "../HomePage/Footer";
 
 // pages
 import Book from "../book";
@@ -17,58 +23,100 @@ const Dashboard = () => {
   const [state, setState] = useState(0);
 
   return (
-    <Conatiner>
-      {!state && (
-        <Content>
-          <Row>
-            <Hexagon onClick={() => setState(1)} className="blue">
-              <p className="txt-white">Livros</p>
-            </Hexagon>
-            <Separator />
-            <Hexagon className="green">
-              <p className="txt-white">Documento jurídico</p>
-            </Hexagon>
-          </Row>
+    <>
+      <Nav />
+      <Conatiner>
+        {!state && (
+          <Content>
+            <Row>
+              <Hexagon onClick={() => setState(1)} className="blue">
+                <p className="txt-white">Livros</p>
+              </Hexagon>
+              <Separator />
+              <Hexagon className="green">
+                <p className="txt-white">Documento jurídico</p>
+              </Hexagon>
+            </Row>
 
-          <Row>
-            <Hexagon onClick={() => setState(2)} className="yellow">
-              <p className="txt-white">
-                Trabalhos <br />
-                acadêmicos e <br />
-                publicações <br />
-                periódicas
-              </p>
-            </Hexagon>
-            <Title>
-              {" "}
-              Gerador <br /> Online de <br /> Referências <br /> Bibliográficas{" "}
-            </Title>
-            <Hexagon className="">
-              <p className="txt-white">
-                Documentos <br />
-                exclusivos de meio <br />
-                eletrônico
-              </p>
-            </Hexagon>
-          </Row>
+            <Row>
+              <Hexagon onClick={() => setState(2)} className="yellow">
+                <p className="txt-white">
+                  Trabalhos <br />
+                  acadêmicos e <br />
+                  publicações <br />
+                  periódicas
+                </p>
+              </Hexagon>
+              <Title>
+                {" "}
+                Gerador <br /> Online de <br /> Referências <br />{" "}
+                Bibliográficas{" "}
+              </Title>
+              <Hexagon className="">
+                <p className="txt-white">
+                  Documentos <br />
+                  exclusivos de meio <br />
+                  eletrônico
+                </p>
+              </Hexagon>
+            </Row>
 
-          <Row>
-            <Hexagon className="blue-dark">
-              <p className="txt-white">Eventos</p>
-            </Hexagon>
-            <Separator />
-            <Hexagon className="violet">
-              <p className="txt-white">
-                Documentos <br />
-                audiovisuais
-              </p>
-            </Hexagon>
-          </Row>
-        </Content>
+            <Row>
+              <Hexagon className="blue-dark">
+                <p className="txt-white">Eventos</p>
+              </Hexagon>
+              <Separator />
+              <Hexagon className="violet">
+                <p className="txt-white">
+                  Documentos <br />
+                  audiovisuais
+                </p>
+              </Hexagon>
+            </Row>
+          </Content>
+        )}
+        {state === 1 && <Book back={() => setState(0)} />}
+        {state === 2 && <AcademicWork back={() => setState(0)} />}
+      </Conatiner>
+
+      {state !== 0 && (
+        <>
+          <ContentText className="container">
+            <WrapperAdvertising>
+              <Advertising width={728} height={90}>
+                {" "}
+                ContentText{" "}
+              </Advertising>
+            </WrapperAdvertising>
+            <section className="wow fadeInUp" data-wow-delay="0.3s">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </section>
+            <WrapperAdvertising>
+              <Advertising width={728} height={250}>
+                {" "}
+                ContentText{" "}
+              </Advertising>
+            </WrapperAdvertising>
+            <section className="wow fadeInUp" data-wow-delay="0.5s">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </section>
+          </ContentText>
+          <Footer />
+        </>
       )}
-      {state === 1 && <Book back={() => setState(0)} />}
-      {state === 2 && <AcademicWork back={() => setState(0)} />}
-    </Conatiner>
+    </>
   );
 };
 

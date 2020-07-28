@@ -230,3 +230,7 @@ h2 {
     flex-direction: column;
   }
 }
+
+.image-hexagon {
+  height: 485px;
+}

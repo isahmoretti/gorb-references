@@ -181,23 +181,11 @@ const Book = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Referência de livro com responsável <br /> intelectual ao
-                  invés de autor{" "}
+                  Referência de livro com responsável intelectual ao invés de
+                  autor{" "}
                 </p>
                 <span>Editor, coordenador ou organizador.</span>
               </Title>
-              <Row container className="end">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={props.resetForm}
-                >
-                  Limpar campos
-                </Button>
-                <Button type="submit" color="primary">
-                  Gerar referência e citação
-                </Button>
-              </Row>
             </Actions>
             <Card>
               <Content>
@@ -613,6 +601,18 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+                <Row container className="end">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={props.resetForm}
+                  >
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referência e citação
+                  </Button>
+                </Row>
               </Content>
               <Modal
                 isOpen={openModal}

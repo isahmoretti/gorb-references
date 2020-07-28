@@ -185,21 +185,9 @@ const Book = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Referência de livro com quatro <br /> autores ou mais{" "}
+                  Referência de livro com quatro autores ou mais{" "}
                 </p>
               </Title>
-              <Row container className="end">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={props.resetForm}
-                >
-                  Limpar campos
-                </Button>
-                <Button type="submit" color="primary">
-                  Gerar referência e citação
-                </Button>
-              </Row>
             </Actions>
             <Card>
               <Content>
@@ -642,7 +630,18 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid></Grid>
+                <Row container className="end">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={props.resetForm}
+                  >
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referência e citação
+                  </Button>
+                </Row>
               </Content>
               <Modal
                 isOpen={openModal}

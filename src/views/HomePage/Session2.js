@@ -2,6 +2,8 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
+import Hexagon from "../../assets/images/Hexagon.png";
+
 const Session2 = () => {
   return (
     <section className="session2">
@@ -34,7 +36,7 @@ const Session2 = () => {
           className="d-flex justify-content-center align-items-center middle wow fadeInUp"
           data-wow-delay="0.6s"
         >
-          imagem
+          <img className="image-hexagon" src={Hexagon} alt="" />
         </div>
       </div>
     </section>

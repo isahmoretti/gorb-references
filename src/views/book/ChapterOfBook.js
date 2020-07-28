@@ -13,8 +13,8 @@ import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
 // utils
-import { formatDate } from "../../utils/formatDate"
-import { formatAuthorName } from "../../utils/formatAuthorName"
+import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
 
 // styles
 import {
@@ -83,7 +83,7 @@ const generateReference = (values) => {
     translatorName,
     authorType,
     responsabilityType,
-    chapterCaption
+    chapterCaption,
   } = values;
 
   //autor do livro
@@ -116,8 +116,8 @@ const generateReference = (values) => {
           {chapterCaption}.{" "}
         </>
       ) : (
-          <>{chapterTitle}. </>
-        )}
+        <>{chapterTitle}. </>
+      )}
       {/* ÚLTIMO NOME, Primeiro nome do autor */}
       {chapterAuthors && (
         <>
@@ -133,10 +133,9 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
-      {
-      }
+        <b>{title}. </b>
+      )}
+      {}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName}.</>
       )}
@@ -164,29 +163,31 @@ const generateReference = (values) => {
   );
 };
 const generateCitationWithAuthor = (values) => {
-  const {
-    authorship,
-    yearOfPublication
-  } = values;
+  const { authorship, yearOfPublication } = values;
 
   const authorSplit = authorship.split(" ");
 
-  const lastName = authorSplit[authorSplit.length - 1]
+  const lastName = authorSplit[authorSplit.length - 1];
 
-  return <span>{lastName} ({yearOfPublication})</span>
-}
+  return (
+    <span>
+      {lastName} ({yearOfPublication})
+    </span>
+  );
+};
 const generateCitation = (values) => {
-  const {
-    authorship,
-    yearOfPublication
-  } = values;
+  const { authorship, yearOfPublication } = values;
 
   const authorSplit = authorship.split(" ");
 
   const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
 
-  return <span>({lastName}, {yearOfPublication})</span>
-}
+  return (
+    <span>
+      ({lastName}, {yearOfPublication})
+    </span>
+  );
+};
 const Book = ({ back }) => {
   const [state, setState] = useState({
     values: {},
@@ -201,7 +202,7 @@ const Book = ({ back }) => {
       values,
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(values),
-      citation: generateCitation(values)
+      citation: generateCitation(values),
     }));
 
     setOpenModal(!openModal);
@@ -247,22 +248,14 @@ const Book = ({ back }) => {
           <form onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
-                <p style={{
-                  fontSize: '20px'
-                }}>Capítulo de livro </p>
-              </Title>
-              <Row container className="end">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={props.resetForm}
+                <p
+                  style={{
+                    fontSize: "20px",
+                  }}
                 >
-                  Limpar campos
-                </Button>
-                <Button type="submit" color="primary">
-                  Gerar referência e citação
-                </Button>
-              </Row>
+                  Capítulo de livro{" "}
+                </p>
+              </Title>
             </Actions>
             <Card>
               <Content>
@@ -477,11 +470,17 @@ const Book = ({ back }) => {
                       helpText="Número de livro padrão internacional"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3} style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={3}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
                     <Select
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -499,16 +498,24 @@ const Book = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={5} style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={5}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
                     <Input
                       type="text"
                       label="Nome do tradutor"
-                      disabled={!props.values.complementaryElements
-                        || !props.values.translator}
+                      disabled={
+                        !props.values.complementaryElements ||
+                        !props.values.translator
+                      }
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.translatorName}
@@ -642,10 +649,13 @@ const Book = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.chapterAuthors &&
-                            props.values.chapterAuthors.length > 0 ? (
-                              props.values.chapterAuthors.map((chapterAuthor, index) => (
+                          props.values.chapterAuthors.length > 0 ? (
+                            props.values.chapterAuthors.map(
+                              (chapterAuthor, index) => (
                                 <FieldArrayContainer key={index}>
-                                  <div style={{ display: "flex", width: "100%" }}>
+                                  <div
+                                    style={{ display: "flex", width: "100%" }}
+                                  >
                                     <Input
                                       type="text"
                                       label={`Autor do capítulo ${index + 1}`}
@@ -660,19 +670,21 @@ const Book = ({ back }) => {
                                       <ButtonCore
                                         type="button"
                                         disabled={index === 0}
-                                        onClick={() => arrayHelpers.remove(index)}
+                                        onClick={() =>
+                                          arrayHelpers.remove(index)
+                                        }
                                       >
                                         <RemoveIcon />
                                       </ButtonCore>
                                     )}
-                                    {(
+                                    {
                                       <ButtonCore
                                         type="button"
                                         onClick={() => arrayHelpers.push("")}
                                       >
                                         <AddIcon />
                                       </ButtonCore>
-                                    )}
+                                    }
                                   </div>
                                   <div
                                     style={{
@@ -687,15 +699,16 @@ const Book = ({ back }) => {
                                     </ErrorText>
                                   </div>
                                 </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                              )
+                            )
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />
@@ -729,6 +742,18 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+                <Row container className="end">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={props.resetForm}
+                  >
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referência e citação
+                  </Button>
+                </Row>
               </Content>
               <Modal
                 isOpen={openModal}

@@ -15,13 +15,13 @@ import {
 const Footer = () => {
   return (
     <Container className="container">
-      <Content className="wow fadeInUp" data-wow-delay="0.3s">
+      <Content className="wow fadeInUp" data-wow-delay="0.7s">
         <Social>
           <FacebookIcon />
           <TwitterIcon />
           <LinkedinIcon />
         </Social>
-        <Title> @ Via Carreira 2020 - Todos os diretos reservados </Title>
+        <Title> @ Via Carreira 2020 - Todos os direitos reservados </Title>
       </Content>
     </Container>
   );

@@ -144,18 +144,6 @@ const Thesis = ({ back }) => {
                   Referência de Tese
                 </p>
               </Title>
-              <Row container className="end">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={props.resetForm}
-                >
-                  Limpar campos
-                </Button>
-                <Button type="submit" color="primary">
-                  Gerar referência e citação
-                </Button>
-              </Row>
             </Actions>
             <Card>
               <Content>
@@ -440,6 +428,18 @@ const Thesis = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+                <Row container className="end">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={props.resetForm}
+                  >
+                    Limpar campos
+                  </Button>
+                  <Button type="submit" color="primary">
+                    Gerar referência e citação
+                  </Button>
+                </Row>
               </Content>
               <Modal
                 isOpen={openModal}

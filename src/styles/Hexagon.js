@@ -4,11 +4,12 @@ import { ArrowBack } from "styled-icons/material";
 
 export const Conatiner = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 export const Content = styled.div`
@@ -26,6 +27,9 @@ export const Content = styled.div`
     position: initial;
   }
 `;
+
+export const ContentText = styled.div``;
+
 export const Row = styled.div`
   display: flex;
   align-items: center;
@@ -199,4 +203,22 @@ export const Hexagon = styled.div`
   &.violet::after {
     border-top-color: #c71585;
   }
+`;
+
+export const WrapperAdvertising = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: auto;
+
+  margin: 50px 0;
+`;
+
+export const Advertising = styled.div`
+  background-color: #6e6e6e;
+
+  width: ${(props) => `${props.width}px`};
+  height: ${(props) => `${props.height}px`};
 `;
