@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { ArrowBack } from "styled-icons/material";
+import { Plus } from "@styled-icons/boxicons-regular";
 
 export const Conatiner = styled.div`
   width: 100%;
@@ -203,6 +204,16 @@ export const Hexagon = styled.div`
   &.violet::after {
     border-top-color: #c71585;
   }
+
+  &.gray {
+    background: #585858;
+  }
+  &.gray::before {
+    border-bottom-color: #585858;
+  }
+  &.gray::after {
+    border-top-color: #585858;
+  }
 `;
 
 export const WrapperAdvertising = styled.div`
@@ -221,4 +232,9 @@ export const Advertising = styled.div`
 
   width: ${(props) => `${props.width}px`};
   height: ${(props) => `${props.height}px`};
+`;
+
+export const IconPlus = styled(Plus)`
+  width: 50px;
+  height: 50px;
 `;

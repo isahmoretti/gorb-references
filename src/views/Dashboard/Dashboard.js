@@ -10,6 +10,7 @@ import {
   Separator,
   WrapperAdvertising,
   Advertising,
+  IconPlus,
 } from "../../styles/Hexagon";
 
 import Nav from "../HomePage/Header";
@@ -61,7 +62,7 @@ const Dashboard = () => {
               </Hexagon>
             </Row>
 
-            <Row>
+            <Row style={{ marginLeft: 205 }}>
               <Hexagon className="blue-dark">
                 <p className="txt-white">Eventos</p>
               </Hexagon>
@@ -71,6 +72,10 @@ const Dashboard = () => {
                   Documentos <br />
                   audiovisuais
                 </p>
+              </Hexagon>
+              <Separator />
+              <Hexagon className="gray">
+                <IconPlus />
               </Hexagon>
             </Row>
           </Content>
