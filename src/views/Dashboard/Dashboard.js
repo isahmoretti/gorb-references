@@ -35,7 +35,7 @@ const Dashboard = () => {
                 <p className="txt-white">Livros</p>
               </Hexagon>
               <Separator />
-              <Hexagon className="green">
+              <Hexagon onClick={() => setState(6)} className="green">
                 <p className="txt-white">Documento jurídico</p>
               </Hexagon>
             </Row>
