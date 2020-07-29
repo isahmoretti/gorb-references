@@ -10,7 +10,7 @@ const Session5 = () => {
       <div className="container">
         <Title className="wow fadeInUp" data-wow-delay="0.3s">
           {" "}
-          Como deve ser a lista de referências ?{" "}
+          Como deve ser a lista de referências?{" "}
         </Title>
         <Wrapper>
           <Box ata-wow-delay="1s" className="wow fadeInUp ">

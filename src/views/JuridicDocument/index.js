@@ -33,23 +33,21 @@ const JuridicDocumentGeneral = ({ back }) => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(2)} className="green">
+            <Hexagon className="green">
               <p className="txt-white">Medida provisória</p>
             </Hexagon>
             <Title> Livros </Title>
-            <Hexagon onClick={() => setState(5)} className="green">
-              <p className="txt-white">
-              Atos administrativos
-              </p>
+            <Hexagon className="green">
+              <p className="txt-white">Atos administrativos</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(3)} className="green">
+            <Hexagon className="green">
               <p className="txt-white">Constituição</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => setState(4)} className="green">
+            <Hexagon className="green">
               <p className="txt-white"> Parecer</p>
             </Hexagon>
           </Row>
@@ -63,7 +61,7 @@ const JuridicDocumentGeneral = ({ back }) => {
       {state === 5 && (
         <BookIntellectuallyResponsible back={() => setState(0)} />
       )} */}
-      {state === 6 && <Jurisprudence back={() => setState(0)} />} 
+      {state === 6 && <Jurisprudence back={() => setState(0)} />}
     </Conatiner>
   );
 };

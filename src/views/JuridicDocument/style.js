@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   position: relative;
   width: 1100px;
-  height: 650px;
+  height: 600px;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -46,7 +46,7 @@ export const Card = styled.div`
   position: relative;
 
   width: 1000px;
-  height: 570px;
+  height: 500px;
 
   padding: 20px;
 
