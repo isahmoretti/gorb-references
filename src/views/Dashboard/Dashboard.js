@@ -19,6 +19,7 @@ import Footer from "../HomePage/Footer";
 // pages
 import Book from "../book";
 import AcademicWork from "../ AcademicWork";
+import JuridicDocument from "../JuridicDocument";
 
 const Dashboard = () => {
   const [state, setState] = useState(0);
@@ -82,6 +83,7 @@ const Dashboard = () => {
         )}
         {state === 1 && <Book back={() => setState(0)} />}
         {state === 2 && <AcademicWork back={() => setState(0)} />}
+        {state === 6 && <JuridicDocument back={() => setState(0)} />}
       </Conatiner>
 
       {state !== 0 && (
