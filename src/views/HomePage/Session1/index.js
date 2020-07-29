@@ -2,9 +2,13 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
+import { useNavigate } from "react-router-dom";
+
 import { Container, Wrapper, Box } from "./styles";
 
 const Session1 = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Wrapper className="container">
@@ -17,7 +21,11 @@ const Session1 = () => {
             {" "}
             Gerador Online de <br /> Referências Bibliográficas{" "}
           </p>
-          <button className="wow fadeInUp" data-wow-delay="0.4s">
+          <button
+            onClick={() => navigate("/app")}
+            className="wow fadeInUp"
+            data-wow-delay="0.4s"
+          >
             {" "}
             Acesse o Gerador Grátis{" "}
           </button>
