@@ -7,18 +7,6 @@ $(window).load(function () {
 $(document).ready(function () {
   /* Home Slideshow Vegas
   -----------------------------------------------*/
-  $(function () {
-    $("#homepage").vegas({
-      slides: [{ src: "images/slide-1.jpg" }, { src: "images/slide-2.jpg" }],
-      timer: false,
-      transition: ["zoomOut"],
-    });
-
-    // $("#homepage").click(function (event) {
-    //   $("#homepage").vegas("toggle");
-    // });
-  });
-
   /* Back top
   -----------------------------------------------*/
   $(window).scroll(function () {

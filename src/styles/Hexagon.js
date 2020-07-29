@@ -25,7 +25,7 @@ export const Content = styled.div`
   justify-content: center;
 
   @media only screen and (max-width: 600px) {
-    position: initial;
+    width: 100%;
   }
 `;
 
@@ -46,10 +46,10 @@ export const Row = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    height: 117px;
+    height: 107px;
 
     &.mt {
-      margin-left: 117px;
+      margin-left: 99px;
     }
   }
 `;
@@ -81,13 +81,17 @@ export const Title = styled.span`
 
   @media only screen and (max-width: 600px) {
     width: 117px;
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
 export const Separator = styled.div`
   width: 3px;
   height: 50px;
+
+  @media only screen and (max-width: 600px) {
+    width: 9px;
+  }
 `;
 
 export const Hexagon = styled.div`
@@ -137,24 +141,23 @@ export const Hexagon = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    width: 110px;
-    height: 78px;
+    width: 95px;
+    height: 59px;
 
     /* margin: 80px 20px; */
 
     ::before {
-      border-left: 54px solid transparent;
-      border-right: 56px solid transparent;
+      border-left: 49px solid transparent;
+      border-right: 45px solid transparent;
       border-bottom: 36px solid red;
 
       top: -36px;
     }
 
     ::after {
-      border-left: 56px solid transparent;
-      border-right: 54px solid transparent;
+      border-left: 46px solid transparent;
+      border-right: 50px solid transparent;
       border-top: 36px solid red;
-
       bottom: -36px;
     }
   }
