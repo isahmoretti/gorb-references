@@ -41,8 +41,16 @@ export const Row = styled.div`
   width: 100%;
   height: 165px;
 
+  &.mt {
+    margin-left: 205px;
+  }
+
   @media only screen and (max-width: 600px) {
     height: 117px;
+
+    &.mt {
+      margin-left: 117px;
+    }
   }
 `;
 
@@ -72,7 +80,7 @@ export const Title = styled.span`
   text-align: center;
 
   @media only screen and (max-width: 600px) {
-    width: 132px;
+    width: 117px;
     font-size: 16px;
   }
 `;

@@ -62,7 +62,7 @@ const Dashboard = () => {
               </Hexagon>
             </Row>
 
-            <Row style={{ marginLeft: 205 }}>
+            <Row className="mt">
               <Hexagon className="blue-dark">
                 <p className="txt-white">Eventos</p>
               </Hexagon>
