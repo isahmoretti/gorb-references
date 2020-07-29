@@ -51,4 +51,10 @@ export const Title = styled.p`
   font-size: 16px;
 
   color: #000;
+
+  @media (max-width: 992px) {
+    text-align: center;
+
+    margin-top: 20px;
+  }
 `;

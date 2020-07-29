@@ -25,4 +25,13 @@ export const Box = styled.div`
   > span {
     font-size: 12px;
   }
+
+  @media (max-width: 992px) {
+    justify-content: center;
+    align-items: center;
+
+    > img {
+      width: 300px;
+    }
+  }
 `;

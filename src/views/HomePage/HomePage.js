@@ -1,11 +1,11 @@
 import React from "react";
 
 import Header from "./Header/index";
-import Session1 from "./Session1";
-import Session2 from "./Session2";
-import Session3 from "./Session3";
+import Session1 from "./Session1/index";
+import Session2 from "./Session2/index";
+import Session3 from "./Session3/index";
 import Session4 from "./Session4";
-import Session5 from "./Session5";
+import Session5 from "./Session5/index";
 import Session6 from "./Session6";
 import Footer from "./Footer";
 

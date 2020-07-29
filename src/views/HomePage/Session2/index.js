@@ -2,13 +2,15 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import Hexagon from "../../assets/images/Hexagon.png";
+import { Container, Wrapper, Box } from "./styles";
+
+import Hexagon from "../../../assets/images/Hexagon.png";
 
 const Session2 = () => {
   return (
-    <section className="session2">
-      <div className="container d-flex content p-3">
-        <div className="d-flex flex-column align-items-center justify-content-between middle">
+    <Container>
+      <Wrapper className="container">
+        <Box>
           <h1 className="wow fadeInUp" data-wow-delay="0.6s">
             {" "}
             NBR 6023/2018{" "}
@@ -31,15 +33,12 @@ const Session2 = () => {
             Tods as obras citadas no trabalho <br /> devevem estar na lista de
             refenrências.
           </p>
-        </div>
-        <div
-          className="d-flex justify-content-center align-items-center middle wow fadeInUp"
-          data-wow-delay="0.6s"
-        >
-          <img className="image-hexagon" src={Hexagon} alt="" />
-        </div>
-      </div>
-    </section>
+        </Box>
+        <Box className="wow fadeInUp" data-wow-delay="0.6s">
+          <img src={Hexagon} alt="" />
+        </Box>
+      </Wrapper>
+    </Container>
   );
 };
 
