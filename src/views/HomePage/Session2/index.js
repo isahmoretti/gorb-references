@@ -30,7 +30,7 @@ const Session2 = () => {
             (informações aicionais).
           </p>
           <p className="wow fadeInUp" data-wow-delay="0.6s">
-            Tods as obras citadas no trabalho <br /> devevem estar na lista de
+            Todas as obras citadas no trabalho <br /> devevem estar na lista de
             refenrências.
           </p>
         </Box>

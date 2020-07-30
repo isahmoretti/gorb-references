@@ -25,7 +25,7 @@ const Session4 = () => {
 
           <BoxText className="wow fadeInUp" data-wow-delay="0.3s">
             A ferramenta também gera citações para usar no texto ou no final do
-            parágrafo
+            parágrafo.
           </BoxText>
         </BoxContent>
       </Wrapper>

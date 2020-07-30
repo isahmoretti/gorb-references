@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  > h1 {
+    text-align: center;
+  }
+`;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  margin-top: 100px;
 `;
 export const Box = styled.div`
   display: flex;

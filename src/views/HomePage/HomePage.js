@@ -31,8 +31,6 @@ const HomePage = () => {
       </div>
 
       <Footer />
-
-      <img src={Logo} alt="" className="logo" />
     </>
   );
 };

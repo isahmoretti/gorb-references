@@ -40,5 +40,5 @@ export const BoxTitle = styled.h1`
 export const BoxText = styled.p`
   color: #fff;
 
-  font-size: 16px;
+  font-size: 18px;
 `;

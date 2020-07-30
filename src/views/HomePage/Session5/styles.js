@@ -21,6 +21,8 @@ export const Title = styled.h1`
 export const Wrapper = styled.div`
   display: flex;
 
+  margin-top: 100px;
+
   @media (max-width: 992px) {
     flex-direction: column;
   }

@@ -51,6 +51,7 @@ export const Box = styled.div`
 
   > li > p {
     margin: 0 0 0 15px;
+    font-size: 18px;
   }
 
   @media (max-width: 992px) {
