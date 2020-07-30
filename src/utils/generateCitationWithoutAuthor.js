@@ -1,6 +1,23 @@
 import React from 'react'
 
 export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
+    if (Array.isArray(author)) {
+        if (!author.length || author[0] === "") return <></>;
+
+        if (author.length === 1 || author.length === 2 || author.length === 3) {
+            const authors = author.map(auth => {
+                let authSplit = auth.split(" ")
+                return authSplit[authSplit.length - 1].toUpperCase();
+            })
+            return <span>({authors.join("; ")} {yearOfPublication})</span>
+        }
+
+        if (author.length >= 4) {
+            let authSplit = author[0].split(" ")
+            authSplit = authSplit[authSplit.length - 1].toUpperCase();
+            return <span>({authSplit} et al., {yearOfPublication})</span>
+        }
+    }
 
     const authorSplit = author.split(" ");
 

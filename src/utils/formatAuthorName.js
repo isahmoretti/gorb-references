@@ -67,7 +67,7 @@ export const formatAuthorName = (authors, abbreviate = false) => {
     if (authors.length >= 4) {
       return (
         <>
-          {authSplit[authSplit.length - 1].toUpperCase()}, {authSplit[0]}.{" "}
+          {authSplit[authSplit.length - 1].toUpperCase()}, {authSplit.slice(0, authSplit.length - 1).join(" ")}{" "}
           <i>et al.</i>
         </>
       );
