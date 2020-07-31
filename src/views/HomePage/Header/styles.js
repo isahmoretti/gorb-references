@@ -9,13 +9,17 @@ export const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  height: 80px;
 `;
 
 export const Box = styled.div``;
 
 export const BoxLogo = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+
+  height: 50px;
 
   @media (max-width: 600px) {
     display: none;

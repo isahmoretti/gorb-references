@@ -36,7 +36,7 @@ const JuridicDocumentGeneral = ({ back }) => {
             <Hexagon className="green">
               <p className="txt-white">Medida provisória</p>
             </Hexagon>
-            <Title> Livros </Title>
+            <Title> Documentos jurídicos </Title>
             <Hexagon className="green">
               <p className="txt-white">Atos administrativos</p>
             </Hexagon>

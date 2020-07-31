@@ -19,7 +19,7 @@ const Header = () => {
             <img
               src={ViaCarreia}
               alt=""
-              style={{ height: 50, marginTop: 12, cursor: "pointer" }}
+              style={{ height: 50, cursor: "pointer" }}
               onClick={() => navigate("/")}
             />
           </Box>
