@@ -15,7 +15,8 @@ import Modal from "../../components/Modal";
 //utils
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
-
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 // styles
 import {
   Container,
@@ -65,18 +66,17 @@ const generateReference = (values) => {
       <>{formatAuthorName(author)}</>
       {caption ? (
         <>
-          <b>{title}: </b>
-          {caption}.{" "}
+          <b>{title}:</b><>{caption}.</>
         </>
       ) : (
-        <b>{title}. </b>
+        <b>{title}.</b>
       )}
       {complementaryElements && translator && translatorName.length && (
-        <> Tradução: {translatorName.join("; ")}.</>
+        <>Tradução:{translatorName.join("; ")}.</>
       )}
-      {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
+      {edition && <>{edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: <>{publishingCompany}, </>
-      {complementaryElements && volume && <> v. {volume}, </>}
+      {volume && <> v. {volume}, </>}
       {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
@@ -91,32 +91,7 @@ const generateReference = (values) => {
     </span>
   );
 };
-const generateCitationWithAuthor = (values) => {
-  const { author, yearOfPublication } = values;
 
-  const authorSplit = author.split(" ");
-
-  const lastName = authorSplit[authorSplit.length - 1];
-
-  return (
-    <span>
-      {lastName} ({yearOfPublication})
-    </span>
-  );
-};
-const generateCitation = (values) => {
-  const { author, yearOfPublication } = values;
-
-  const authorSplit = author.split(" ");
-
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
-
-  return (
-    <span>
-      ({lastName}, {yearOfPublication})
-    </span>
-  );
-};
 const Book = ({ back }) => {
   const [state, setState] = useState({
     values: {},
@@ -130,8 +105,8 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values),
-      citation: generateCitation(values),
+      citationWithAuthor: generateCitationWithAuthor(values.author, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.author, values.yearOfPublication),
     }));
 
     setOpenModal(!openModal);
@@ -279,6 +254,38 @@ const Book = ({ back }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      label="Volume"
+                      placeholder="Ex: 10"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      label="Páginas"
+                      placeholder="Ex: 223"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.pagination}
+                      name="pagination"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                <Grid item xs={12} sm={12} md={3}     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}>
                     <Select
                       type="text"
                       label="Elementos complementares"
@@ -294,27 +301,11 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Páginas"
-                      placeholder="Ex: 223"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.pagination}
-                      name="pagination"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid
                     item
                     xs={12}
                     sm={12}
-                    md={4}
+                    md={3}
                     style={{
                       display: "flex",
                       flexDirection: "column",
@@ -334,7 +325,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -354,7 +345,7 @@ const Book = ({ back }) => {
                     item
                     xs={12}
                     sm={12}
-                    md={4}
+                    md={3}
                     style={{
                       display: "flex",
                       flexDirection: "column",
@@ -444,7 +435,7 @@ const Book = ({ back }) => {
                       )}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -457,21 +448,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Select
                       disabled={!props.values.complementaryElements}
                       type="text"

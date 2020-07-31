@@ -45,7 +45,7 @@ function SimpleDialog(props) {
     >
       <DialogContent>
         <div id="simple-dialog-title">
-          <div style={{ color: "black", fontSize: "20px" }}>REFERÊNCIA</div>
+          <div style={{ color: "#6666cc", fontSize: "20px", fontWeight: 'bold' }}>REFERÊNCIA</div>
         </div>
         <div
           ref={refDiv1}
@@ -70,7 +70,7 @@ function SimpleDialog(props) {
       {citationWithAuthor && (
         <DialogContent>
           <div id="simple-dialog-title">
-            <div style={{ color: "black", fontSize: "20px" }}>
+            <div style={{ color: "#6666cc", fontSize: "20px", fontWeight: 'bold' }}>
               CITAÇÃO COM AUTOR INCLUÍDO NO TEXTO
             </div>
           </div>
@@ -97,7 +97,7 @@ function SimpleDialog(props) {
       {citation && (
         <DialogContent>
           <div id="simple-dialog-title">
-            <div style={{ color: "black", fontSize: "20px" }}>CITAÇÃO</div>
+            <div style={{ color: "#6666cc", fontSize: "20px", fontWeight: 'bold' }}>CITAÇÃO NO FINAL DO PARÁGRAFO</div>
           </div>
           <div
             ref={refDiv3}
