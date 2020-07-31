@@ -82,7 +82,8 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {namesResponsible.length && formatAuthorName(namesResponsible)}
+      {/* precisei pegar sem o ponto */}
+      {namesResponsible.length && formatAuthorName(namesResponsible).slice(0, formatAuthorName(namesResponsible).length - 2)}
       {getResposabilityTypes(responbiltyTypes)}&nbsp;
       {caption ? (
         <>
