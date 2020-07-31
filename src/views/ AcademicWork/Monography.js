@@ -36,6 +36,7 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
   location: Yup.string().required("Obrigatório"),
   institute: Yup.string().required("Obrigatório"),
+  type: Yup.string().required("Obrigatório"),
   course: Yup.string().required("Obrigatório"),
 });
 
@@ -76,6 +77,7 @@ const generateReference = (values) => {
     yearOfPublication,
     pages,
     volume,
+    type,
     course,
     department,
     institute,
@@ -96,9 +98,9 @@ const generateReference = (values) => {
       </b>
       {caption && `${caption}. `}
       {`${yearOfDelivery}. `}
-      {pages && `p. ${pages}, `}
+      {pages && `${pages} f. `}
       {volume && `v. ${volume}, `}
-      Monografia (Especialização) - Curso de&nbsp;
+      Monografia ({type}) - Curso de&nbsp;
       {`${course}, `}
       {department && `${department}, `}
       {`${institute}, `}
@@ -145,6 +147,7 @@ const Monography = ({ back }) => {
           yearOfPublication: "",
           pages: "",
           volume: "",
+          type: "",
           course: "",
           department: "",
           institute: "",
@@ -167,7 +170,7 @@ const Monography = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Referência de Monografia
+                  Referência de Monografia e tcc
                 </p>
               </Title>
             </Actions>
@@ -286,7 +289,23 @@ const Monography = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="type"
+                      label="Grau"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.type}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "Especialização", name: "Especialização" },
+                        { value: "Graduação", name: "Graduação" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -315,7 +334,7 @@ const Monography = ({ back }) => {
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pages"
-                      label="Páginas"
+                      label="Folhas"
                       type="text"
                       placeholder="Ex: 20"
                       onChange={props.handleChange}
@@ -431,6 +450,7 @@ const Monography = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
@@ -446,6 +466,7 @@ const Monography = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}

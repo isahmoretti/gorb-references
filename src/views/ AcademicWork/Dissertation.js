@@ -96,7 +96,7 @@ const generateReference = (values) => {
       </b>
       {caption && `${caption}. `}
       {`${yearOfDelivery}. `}
-      {pages && `p. ${pages}, `}
+      {pages && `${pages} f. `}
       {volume && `v. ${volume}, `}
       Dissertação (Mestrado) - Curso de&nbsp;
       {`${course}, `}
@@ -108,7 +108,7 @@ const generateReference = (values) => {
       {online &&
         accessedAt &&
         url &&
-        `Disponível em: ${url}. acesso em: ${formatDate(accessedAt)}. `}
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -169,6 +169,10 @@ const Dissertation = ({ back }) => {
                 >
                   Referência de dissertação
                 </p>
+                <span>
+                  Trabalho acadêmico-científico apresentado para a conclusão do
+                  mestrado.
+                </span>
               </Title>
             </Actions>
             <Card>
@@ -315,7 +319,7 @@ const Dissertation = ({ back }) => {
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pages"
-                      label="Páginas"
+                      label="Folhas"
                       type="text"
                       placeholder="Ex: 20"
                       onChange={props.handleChange}
@@ -431,6 +435,7 @@ const Dissertation = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
@@ -446,6 +451,7 @@ const Dissertation = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}

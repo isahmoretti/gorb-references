@@ -32,7 +32,7 @@ const BookGeneral = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon onClick={() => setState(6)} className="yellow">
-              <p className="txt-white">Monografia</p>
+              <p className="txt-white">Monografia e TCC</p>
             </Hexagon>
           </Row>
 

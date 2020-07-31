@@ -54,12 +54,24 @@ const generateReference = (values) => {
     url,
   } = values;
 
+  let tempTitle = "";
+  if (!formatAuthorName(authors)) {
+    const frist = title.split(" ")[0];
+    const temp = title.split(" ")[0].toUpperCase();
+
+    tempTitle = title.replace(frist, temp);
+  }
+
   return (
     <span>
       {" "}
       {authors.length && formatAuthorName(authors)}
-      {caption ? <>{` ${title}: ${caption}.`}</> : ` ${title}. `}
-      {titleNewspaper && <b>{` ${titleNewspaper}, `}</b>}
+      {caption ? (
+        <>{` ${tempTitle || title}: ${caption}.`}</>
+      ) : (
+        ` ${tempTitle || title}. `
+      )}
+      {titleNewspaper && <b>{` ${titleNewspaper}. `}</b>}
       {location && `${location}, `}
       {numerNewspaper && `n. ${numerNewspaper}, `}
       {accessedAt && `${formatDate(accessedAt)}, `}
@@ -288,7 +300,7 @@ const ArticleNewspaper = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="date"
-                      label="Data de acesso"
+                      label="Data de publicação"
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -352,6 +364,7 @@ const ArticleNewspaper = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
@@ -365,6 +378,7 @@ const ArticleNewspaper = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

@@ -74,7 +74,8 @@ const generateReference = (values) => {
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
       {accessedAt && `${formatDate(accessedAt)}. `}
-      {doi && `DOI: ${doi}. `}
+      {notes && `${notes}. `}
+      {doi && `DOI: https://doi.org/${doi}. `}
       {online &&
         accessedAtUrl &&
         url &&
@@ -84,7 +85,6 @@ const generateReference = (values) => {
         !url &&
         doi &&
         `Acesso em: ${formatDate(accessedAtUrl)}. `}
-      {notes && notes}
     </span>
   );
 };
@@ -364,7 +364,7 @@ const WorkArticlePeriodic = ({ back }) => {
                     <Input
                       name="accessedAt"
                       type="date"
-                      label="Data de acesso"
+                      label="Data de publicação"
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -384,6 +384,51 @@ const WorkArticlePeriodic = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="doi"
+                      label="DOI"
+                      type="text"
+                      help
+                      helpText="Digital Object Identifier é
+                      um padrão de números e
+                      letras que identificam
+                      publicações."
+                      placeholder="https://doi.org/10.1590/1981-
+                      5794-1911-5"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.doi}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <Input
+                      name="notes"
+                      label="Nota"
+                      type="text"
+                      placeholder="Ex: Informações complementares"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.notes}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -414,6 +459,7 @@ const WorkArticlePeriodic = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
@@ -427,53 +473,10 @@ const WorkArticlePeriodic = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="doi"
-                      label="DOI"
-                      type="text"
-                      help
-                      helpText="Digital Object Identifier é
-                      um padrão de números e
-                      letras que identificam
-                      publicações."
-                      placeholder="10.1590/S0034-
-                      89102004000600012"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.doi}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={6}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      name="notes"
-                      label="Nota"
-                      type="text"
-                      placeholder="Ex: Informações complementares"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.notes}
                       errors={props.errors}
                       touched={props.touched}
                     />

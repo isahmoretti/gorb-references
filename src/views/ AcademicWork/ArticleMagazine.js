@@ -45,6 +45,7 @@ const generateReference = (values) => {
     caption,
     titleMagazine,
     location,
+    frequency,
     volume,
     pageInit,
     pageFinish,
@@ -60,14 +61,14 @@ const generateReference = (values) => {
     <span>
       {" "}
       {authors.length && formatAuthorName(authors)}
-      .&nbsp;
       {caption ? <>{`${title}: ${caption}.`}</> : `${title}.`}
-      <b>{` ${titleMagazine}`}</b>,&nbsp; {location && `${location}, `}
+      <b>{` ${titleMagazine}`}</b>,&nbsp;{location && `${location}, `}
       {volume && `v. ${volume}, `}
       {fascicle && `n. ${fascicle}, `}
       {pageInit && !pageFinish && `p. ${pageInit}. `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
       {accessedAt && `${formatDate(accessedAt)}. `}
+      {frequency && `${frequency}. `}
       {online &&
         accessedAtUrl &&
         url &&
@@ -104,6 +105,7 @@ const ArticleMagazine = ({ back }) => {
           caption: "",
           titleMagazine: "",
           location: "",
+          frequency: "",
           volume: "",
           pageInit: "",
           pageFinish: "",
@@ -250,7 +252,7 @@ const ArticleMagazine = ({ back }) => {
                       name="location"
                       label="Local de publicação"
                       type="text"
-                      placeholder="Local de publicação"
+                      placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -261,6 +263,25 @@ const ArticleMagazine = ({ back }) => {
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
+                    <Select
+                      name="frequency"
+                      label="Periodicidade."
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.frequency}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "Semanal", name: "Semanal" },
+                        { value: "Mensal", name: "Mensal" },
+                        { value: "Bimestral", name: "Bimestral" },
+                        { value: "Semestral", name: "Semestral" },
+                        { value: "Anual", name: "Anual" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="volume"
                       label="Nº de volume"
@@ -274,7 +295,7 @@ const ArticleMagazine = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="pageInit"
                       label="Página inicial"
@@ -287,7 +308,7 @@ const ArticleMagazine = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="pageFinish"
                       label="Página Final"
@@ -319,7 +340,7 @@ const ArticleMagazine = ({ back }) => {
                     <Input
                       name="accessedAt"
                       type="date"
-                      label="Data de acesso"
+                      label="Data de publicação"
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -369,6 +390,7 @@ const ArticleMagazine = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
@@ -382,6 +404,7 @@ const ArticleMagazine = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

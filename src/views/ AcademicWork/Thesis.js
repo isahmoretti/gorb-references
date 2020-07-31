@@ -73,7 +73,7 @@ const generateReference = (values) => {
       )}
       {yearOfDelivery && <> {yearOfDelivery}. </>}
       {volume && <> v. {volume},</>}
-      {pages && <> {pages} p.</>}
+      {pages && <> {pages} f.</>}
       <> Tese (Doutorado) -</> {course && <>Curso de {course}, </>}
       {department && <>{department}, </>}
       {institute && <>{institute}, </>}
@@ -83,7 +83,7 @@ const generateReference = (values) => {
       {online && accessedAt && url && (
         <>
           {" "}
-          Disponível em: {url}. acesso em: {formatDate(accessedAt)}.{" "}
+          Disponível em: {url}. Acesso em: {formatDate(accessedAt)}.{" "}
         </>
       )}
     </span>
@@ -289,7 +289,7 @@ const Thesis = ({ back }) => {
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pages"
-                      label="Páginas"
+                      label="Folhas"
                       type="text"
                       placeholder="Ex: 20"
                       onChange={props.handleChange}
@@ -405,6 +405,7 @@ const Thesis = ({ back }) => {
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
@@ -420,6 +421,7 @@ const Thesis = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}

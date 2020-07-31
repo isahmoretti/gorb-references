@@ -67,8 +67,8 @@ export const formatAuthorName = (authors, abbreviate = false) => {
     if (authors.length >= 4) {
       return (
         <>
-          {authSplit[authSplit.length - 1].toUpperCase()}, {authSplit.slice(0, authSplit.length - 1).join(" ")}{" "}
-          <i>et al.</i>
+          {authSplit[authSplit.length - 1].toUpperCase()},{" "}
+          {authSplit.slice(0, authSplit.length - 1).join(" ")} <i>et al.</i>
         </>
       );
     }
@@ -79,7 +79,7 @@ export const formatAuthorName = (authors, abbreviate = false) => {
 
     return `${authorsTogether.join("; ")}${abbreviate ? " " : ". "}`;
   }
-  if (!authors) return <></>;
+  if (!authors) return "";
 
   const authorSplit = authors.split(" ");
 
