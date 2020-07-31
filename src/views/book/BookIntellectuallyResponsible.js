@@ -8,6 +8,8 @@ import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 import { formatAuthorName } from "../../utils/formatAuthorName";
 import { formatDate } from "../../utils/formatDate";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -39,18 +41,6 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-const getNamesResponsible = (names) => {
-  const namesTogether = names.map((author) => {
-    const nameSplit = author.split(" ");
-
-    const firstName = nameSplit[0];
-
-    const lastName = nameSplit[nameSplit.length - 1].toUpperCase(); // TODO: ultimo sobrenome ou primeiro?
-
-    return `${lastName}, ${firstName[0]}.`;
-  });
-  return namesTogether.join("; ");
-};
 
 const getResposabilityTypes = (responsabiltyTypes) => {
   switch (responsabiltyTypes) {
@@ -122,7 +112,7 @@ const generateReference = (values) => {
         accessedAt &&
         url &&
         ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}.`}
-      {complementaryElements && isbn && <> {isbn}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };
@@ -139,6 +129,8 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.namesResponsible, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.namesResponsible, values.yearOfPublication),
     }));
 
     setOpenModal(!openModal);
@@ -149,7 +141,7 @@ const Book = ({ back }) => {
       <Back onClick={back} />
       <Formik
         initialValues={{
-          namesResponsible: ["", "", ""],
+          namesResponsible: [""],
           responbiltyTypes: "",
           title: "",
           caption: "",
