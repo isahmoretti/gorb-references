@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: #fff;
   height: 550px;
 
-  padding: 30px;
+  padding: 30px 0;
 
   @media (max-width: 992px) {
     height: auto;
@@ -62,6 +62,8 @@ export const Box = styled.div`
     > img {
       width: 100%;
       height: 300px;
+
+      max-width: 400px;
     }
   }
 `;

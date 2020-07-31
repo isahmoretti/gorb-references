@@ -4,13 +4,14 @@ export const Container = styled.div`
   background-color: #6666cc;
   height: 300px;
 
+  padding: 30px 0;
+
   @media (max-width: 992px) {
     height: auto;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
-  padding: 30px;
 
   @media (max-width: 992px) {
     flex-direction: column;

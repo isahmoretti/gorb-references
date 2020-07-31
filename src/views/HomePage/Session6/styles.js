@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 
   margin-top: 100px;
+
+  @media (max-width: 992px) {
+    margin-top: 20px;
+  }
 `;
 export const Box = styled.div`
   display: flex;

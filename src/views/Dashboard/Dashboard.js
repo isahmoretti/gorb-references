@@ -36,7 +36,7 @@ const Dashboard = () => {
               </Hexagon>
               <Separator />
               <Hexagon onClick={() => setState(6)} className="green">
-                <p className="txt-white">Documento jurídico</p>
+                <p className="txt-white">Documentos jurídicos</p>
               </Hexagon>
             </Row>
 

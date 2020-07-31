@@ -5,7 +5,7 @@ export const Container = styled.div`
 
   height: auto;
 
-  padding: 30px;
+  padding: 30px 0;
 `;
 export const Wrapper = styled.div`
   display: flex;

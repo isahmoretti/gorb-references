@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: #e6e6e6;
   height: 400px;
 
-  padding: 30px;
+  padding: 30px 0;
 
   @media (max-width: 992px) {
     height: auto;
@@ -29,6 +29,12 @@ export const Box = styled.div`
   justify-content: space-between;
 
   flex-direction: column;
+
+  :nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   > h1 {
     color: #6666cc;
