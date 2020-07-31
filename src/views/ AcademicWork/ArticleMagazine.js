@@ -265,7 +265,7 @@ const ArticleMagazine = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Select
                       name="frequency"
-                      label="Periodicidade."
+                      label="Periodicidade"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
