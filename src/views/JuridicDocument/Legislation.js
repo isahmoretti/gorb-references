@@ -81,7 +81,7 @@ const generateReference = (values) => {
             {yearOfConstitutionalText && <>Constituição ({yearOfConstitutionalText}). </>}
             {legislationType && <>{legislationType} </>}
             {legislationNumber && <>{legislationNumber}, </>}
-            {legislationDate && <>de {formatDate(legislationDate, "d MMMM yyyy")}. </>} {/* EX: de 21 de novembro de 2009.*/}
+            {legislationDate && <>de {formatDate(legislationDate, "d MMMM yyyy")}. </>}
             {menu && <>{menu}. </>}
             {publicationCaption ? (
                 <>
@@ -123,8 +123,8 @@ const Legislation = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.jurisdiction, values.yearOfConstitutionalText),
-            citation: generateCitationWithoutAuthor(values.jurisdiction, values.yearOfConstitutionalText)
+            citationWithAuthor: generateCitationWithAuthor(values.jurisdiction, values.legislationDate),
+            citation: generateCitationWithoutAuthor(values.jurisdiction, values.legislationDate)
         }));
 
         setOpenModal(!openModal);
