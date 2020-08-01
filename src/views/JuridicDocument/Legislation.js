@@ -14,7 +14,6 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
-import { formatAuthorName } from "../../utils/formatAuthorName"
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -26,46 +25,48 @@ import {
     Row,
     Content,
     Back,
-    AddIcon,
-    RemoveIcon,
-    FieldArrayContainer,
-    ErrorText,
     Actions,
     Title,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
     jurisdiction: Yup.string().required("Obrigatório"),
-    judicialOrgan: Yup.string().required("Obrigatório"),
-    title: Yup.string().required("Obrigatório"),
-    decisionNumber: Yup.string().required("Obrigatório"),
-    relatedParties: Yup.string().required("Obrigatório"),
-    decisionDate: Yup.string().required("Obrigatório"),
+    legislationNumber: Yup.string().required("Obrigatório"),
+    legislationDate: Yup.string().required("Obrigatório"),
     publicationTitle: Yup.string().required("Obrigatório"),
     publicationLocal: Yup.string().required("Obrigatório"),
 });
 
+const territorialScopeOptions = [
+    { value: "dontIsCase", name: "Não é o caso" },
+    { value: "state", name: "Estado" },
+    { value: "city", name: "Município" },
+    { value: "Senate", name: "Congresso Senado" },
+    { value: "parliament", name: "Congresso Camara dos Deputados" },
+    { value: "legislativeAssembly", name: "Assembléia Legislativa" },
+    { value: "cityCouncil", name: "Câmara de Vereadores" },
+]
+
+
 const generateReference = (values) => {
     const {
         jurisdiction,
-        judicialOrgan,
-        title,
-        decisionNumber,
-        complementaryElements,
-        relatedParties,
-        proposed,
-        reporter,
-        decisionLocal,
-        decisionUF,
-        yearOfDecision,
+        territorialScope,
+        yearOfConstitutionalText,
+        legislationType,
+        legislationNumber,
+        legislationDate,
+        menu,
         publicationTitle,
-        captionPublication,
+        publicationCaption,
+        editionNumber,
         publicationLocal,
         UF,
         publishingCompany,
-        yearOfPublication,
+        publicationDate,
         volume,
         publicationNumber,
+        sessionNumber,
         initialPage,
         finalPage,
         online,
@@ -75,7 +76,36 @@ const generateReference = (values) => {
 
     return (
         <span>
-
+            {jurisdiction && <>{jurisdiction.toUpperCase()} </>}
+            {territorialScope && <>({territorialScopeOptions.find(t => t.value === territorialScope).name }). </>}
+            {yearOfConstitutionalText && <>Constituição ({yearOfConstitutionalText}). </>}
+            {legislationType && <>{legislationType} </>}
+            {legislationNumber && <>{legislationNumber}, </>}
+            {legislationDate && <>de {formatDate(legislationDate, "d MMMM yyyy")}. </>} {/* EX: de 21 de novembro de 2009.*/}
+            {menu && <>{menu}. </>}
+            {publicationCaption ? (
+                <>
+                    <b>{publicationTitle}: </b>
+                    {publicationCaption}.{" "}
+                </>
+            ) : (
+                    <b>{publicationTitle}. </b>
+                )
+            }
+            {editionNumber && <>{<>{editionNumber > 1 ? <>{editionNumber}.</> : <>{editionNumber}</>} ed.</>} </>}
+            {publicationLocal && <>{publicationLocal}, </>}
+            {UF && <>{UF}: </>}
+            {publishingCompany && <>{publishingCompany}, </>}
+            {publicationDate && <>{formatDate(publicationDate, "d MMMM yyyy")}. </>}
+            {volume && <>v. {volume}, </>}
+            {publicationNumber && <>n. {publicationNumber}, </>}
+            {sessionNumber && <>Seção {sessionNumber}, </>}
+            {(initialPage && finalPage) && <>p. {initialPage}-{finalPage}. </>}
+            {(online && accessedAt && url) && <>{online &&
+                accessedAt &&
+                url &&
+                ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+            </>}
         </span>
     );
 };
@@ -93,8 +123,8 @@ const Legislation = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.yearOfPublication),
-            citation: generateCitationWithoutAuthor(values.author, values.yearOfPublication)
+            citationWithAuthor: generateCitationWithAuthor(values.jurisdiction, values.yearOfConstitutionalText),
+            citation: generateCitationWithoutAuthor(values.jurisdiction, values.yearOfConstitutionalText)
         }));
 
         setOpenModal(!openModal);
@@ -106,26 +136,23 @@ const Legislation = ({ back }) => {
 
             <Formik
                 initialValues={{
-                    jurisdiction: "Brasil",
-                    judicialOrgan: "Superior Tribunal da Justiça",
-                    title: "Súmula",
-                    decisionNumber: "48",
-                    complementaryElements: "",
-                    relatedParties: "Apelante: Joaquim de Assis e outros",
-                    proposed: "",
-                    reporter: "",
-                    decisionLocal: "",
-                    decisionUF: "",
-                    yearOfDecision: "",
-                    decisionDate: "25/11/2010",
-                    publicationTitle: "Diário Oficial da União",
-                    captionPublication: "",
-                    publicationLocal: "Brasília",
+                    jurisdiction: "",
+                    territorialScope: "",
+                    yearOfConstitutionalText: "",
+                    legislationType: "",
+                    legislationNumber: "",
+                    legislationDate: "",
+                    menu: "",
+                    publicationTitle: "",
+                    publicationCaption: "",
+                    editionNumber: "",
+                    publicationLocal: "",
                     UF: "",
                     publishingCompany: "",
-                    yearOfPublication: "",
+                    publicationDate: "",
                     volume: "",
                     publicationNumber: "",
+                    sessionNumber: "",
                     initialPage: "",
                     finalPage: "",
                     online: false,
@@ -166,19 +193,11 @@ const Legislation = ({ back }) => {
                                             label="Abrangência Territorial"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.translator}
+                                            value={props.values.territorialScope}
                                             name="territorialScope"
                                             errors={props.errors}
                                             touched={props.touched}
-                                            options={[
-                                                { value: "dontIsCase", name: "Não é o caso" },
-                                                { value: "state", name: "Estado" },
-                                                { value: "city", name: "Município" },
-                                                { value: "Senate", name: "Congresso.Senado" },
-                                                { value: "parliament", name: "Congresso.Camara dos Deputados" },
-                                                { value: "legislativeAssembly", name: "Assembléia Legislativa" },
-                                                { value: "cityCouncil", name: "Câmara de Vereadores" },
-                                            ]}
+                                            options={territorialScopeOptions}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={4}>
@@ -213,25 +232,27 @@ const Legislation = ({ back }) => {
                                     <Grid item xs={12} sm={12} md={3}>
                                         <Input
                                             type="text"
-                                            label="Número da Legislation"
+                                            label="Número da Legislação"
                                             placeholder="Ex: 55"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.decisionNumber}
-                                            name="decisionNumber"
+                                            value={props.values.legislationNumber}
+                                            name="legislationNumber"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={4}>
                                         <Input
-                                            type="text"
-                                            label="Ano da Legislação"
-                                            placeholder="Ex: 2020"
+                                            type="date"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.yearOfLegislation}
-                                            name="yearOfLegislation"
+                                            value={props.values.legislationDate}
+                                            label="Data da legislação"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            name="legislationDate"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -257,7 +278,7 @@ const Legislation = ({ back }) => {
                                         <Input
                                             type="text"
                                             label="Título da Publicação"
-                                            placeholder="EX: Diário Oficial da União"
+                                            placeholder="EX: Lex"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.publicationTitle}
@@ -273,8 +294,8 @@ const Legislation = ({ back }) => {
                                             placeholder="EX: Diário Oficial da União"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.captionPublication}
-                                            name="captionPublication"
+                                            value={props.values.publicationCaption}
+                                            name="publicationCaption"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -335,13 +356,15 @@ const Legislation = ({ back }) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3}>
                                         <Input
-                                            type="text"
-                                            label="Ano de publicação"
-                                            placeholder="Ex: 2008"
+                                            type="date"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.yearOfPublication}
-                                            name="yearOfPublication"
+                                            value={props.values.publicationDate}
+                                            label="Data da publicação"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            name="publicationDate"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -368,8 +391,8 @@ const Legislation = ({ back }) => {
                                             label="Nº da Seção"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.publicationNumber}
-                                            name="publicationSection"
+                                            value={props.values.sessionNumber}
+                                            name="sessionNumber"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />

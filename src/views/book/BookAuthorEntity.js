@@ -17,7 +17,7 @@ import Modal from "../../components/Modal";
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 
-// styles
+// styles 
 import {
   Container,
   Card,
