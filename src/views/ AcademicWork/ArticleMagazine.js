@@ -132,7 +132,7 @@ const ArticleMagazine = ({ back }) => {
                 </p>
                 <span>
                   Inclui reportagem, notícia, entrevista, resenha, editorial e
-                  outross
+                  outros
                 </span>
               </Title>
             </Actions>

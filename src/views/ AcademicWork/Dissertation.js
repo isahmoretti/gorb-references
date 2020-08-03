@@ -80,7 +80,7 @@ const generateReference = (values) => {
     department,
     institute,
     location,
-    chapter,
+    advisor,
     yearOfDelivery,
     online,
     accessedAt,
@@ -95,6 +95,7 @@ const generateReference = (values) => {
         {caption ? ": " : ". "}
       </b>
       {caption && `${caption}. `}
+      {advisor && `Orientador: ${advisor}. `}
       {`${yearOfDelivery}. `}
       {pages && `${pages} f. `}
       {volume && `v. ${volume}, `}
@@ -104,7 +105,6 @@ const generateReference = (values) => {
       {`${institute}, `}
       {location ? `${location}, ` : "[s. l.], "}
       {yearOfPublication && `${yearOfPublication}. `}
-      {chapter && `Cap. ${chapter}. `}
       {online &&
         accessedAt &&
         url &&
@@ -149,7 +149,7 @@ const Dissertation = ({ back }) => {
           department: "",
           institute: "",
           location: "",
-          chapter: "",
+          advisor: "",
           yearOfDelivery: "",
           online: false,
           accessedAt: "",
@@ -290,7 +290,20 @@ const Dissertation = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="advisor"
+                      label="Orientador"
+                      type="text"
+                      placeholder="Nome do orientador"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.advisor}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -325,19 +338,6 @@ const Dissertation = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.page}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="chapter"
-                      label="Capítulo"
-                      type="text"
-                      placeholder="Ex: 87"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.chapter}
                       errors={props.errors}
                       touched={props.touched}
                     />

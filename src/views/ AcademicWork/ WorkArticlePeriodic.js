@@ -56,6 +56,7 @@ const generateReference = (values) => {
     online,
     accessedAtUrl,
     url,
+    issn,
     doi,
     notes,
   } = values;
@@ -74,6 +75,7 @@ const generateReference = (values) => {
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
       {accessedAt && `${formatDate(accessedAt)}. `}
+      {issn && `${issn}. `}
       {notes && `${notes}. `}
       {doi && `DOI: https://doi.org/${doi}. `}
       {online &&
@@ -128,6 +130,7 @@ const WorkArticlePeriodic = ({ back }) => {
           online: false,
           accessedAtUrl: "",
           url: "",
+          issn: "",
           doi: "",
           notes: "",
         }}
@@ -391,7 +394,22 @@ const WorkArticlePeriodic = ({ back }) => {
                 </Grid>
 
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="issn"
+                      label="ISSN"
+                      type="text"
+                      help
+                      helpText="Identificador único para revistas e periódicos"
+                      placeholder="Ex: 2175-7941"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.issn}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="doi"
                       label="DOI"
@@ -414,7 +432,7 @@ const WorkArticlePeriodic = ({ back }) => {
                     item
                     xs={12}
                     sm={12}
-                    md={6}
+                    md={4}
                     style={{
                       display: "flex",
                       flexDirection: "column",

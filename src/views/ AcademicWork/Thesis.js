@@ -56,7 +56,7 @@ const generateReference = (values) => {
     institute,
     course,
     department,
-    chapter,
+    advisor,
   } = values;
 
   return (
@@ -71,6 +71,7 @@ const generateReference = (values) => {
       ) : (
         <b>{title}. </b>
       )}
+      {advisor && `Orientador: ${advisor}. `}
       {yearOfDelivery && <> {yearOfDelivery}. </>}
       {volume && <> v. {volume},</>}
       {pages && <> {pages} f.</>}
@@ -78,8 +79,7 @@ const generateReference = (values) => {
       {department && <>{department}, </>}
       {institute && <>{institute}, </>}
       {location ? <> {location}, </> : <>[s. l.], </>}
-      {yearOfPublication && <> {yearOfPublication}, </>}
-      {chapter && <>{chapter}. </>}
+      {yearOfPublication && <> {yearOfPublication}. </>}
       {online && accessedAt && url && (
         <>
           {" "}
@@ -127,7 +127,7 @@ const Thesis = ({ back }) => {
           url: "",
           institute: "",
           course: "",
-          chapter: "",
+          advisor: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -143,6 +143,10 @@ const Thesis = ({ back }) => {
                 >
                   Referência de Tese
                 </p>
+                <span>
+                  Trabalho acadêmico-científico apresentado para a conclusão do
+                  Doutorado
+                </span>
               </Title>
             </Actions>
             <Card>
@@ -260,7 +264,20 @@ const Thesis = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="advisor"
+                      label="Orientador"
+                      type="text"
+                      placeholder="Nome do orientador"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.advisor}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -292,19 +309,6 @@ const Thesis = ({ back }) => {
                       label="Folhas"
                       type="text"
                       placeholder="Ex: 20"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.page}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="chapter"
-                      label="Capítulos"
-                      type="text"
-                      placeholder="Ex: 4"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.page}

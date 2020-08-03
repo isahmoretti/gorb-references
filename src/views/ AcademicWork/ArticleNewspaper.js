@@ -33,6 +33,7 @@ const SignupSchema = Yup.object().shape({
   constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titleNewspaper: Yup.string().required("Obrigatório"),
+  accessedAt: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
@@ -46,6 +47,7 @@ const generateReference = (values) => {
     numerNewspaper,
     titleNotebook,
     location,
+    volume,
     pageInit,
     pageFinish,
     accessedAt,
@@ -55,12 +57,15 @@ const generateReference = (values) => {
   } = values;
 
   let tempTitle = "";
+  console.log("test: ", !formatAuthorName(authors));
   if (!formatAuthorName(authors)) {
     const frist = title.split(" ")[0];
     const temp = title.split(" ")[0].toUpperCase();
 
     tempTitle = title.replace(frist, temp);
   }
+
+  console.log("temptitle: ", tempTitle);
 
   return (
     <span>
@@ -71,10 +76,11 @@ const generateReference = (values) => {
       ) : (
         ` ${tempTitle || title}. `
       )}
-      {titleNewspaper && <b>{` ${titleNewspaper}. `}</b>}
+      {titleNewspaper && <b>{` ${titleNewspaper}, `}</b>}
       {location && `${location}, `}
+      {volume && `v. ${volume}, `}
       {numerNewspaper && `n. ${numerNewspaper}, `}
-      {accessedAt && `${formatDate(accessedAt)}, `}
+      {accessedAt && `${formatDate(accessedAt)}. `}
       {titleNotebook && `${titleNotebook}, `}
       {pageInit && !pageFinish && `p. ${pageInit}. `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}. `}
@@ -116,6 +122,7 @@ const ArticleNewspaper = ({ back }) => {
           titleNotebook: "",
           numerNewspaper: "",
           location: "",
+          volume: "",
           pageInit: "",
           pageFinish: "",
           accessedAt: "",
@@ -282,7 +289,7 @@ const ArticleNewspaper = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={9}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -291,6 +298,20 @@ const ArticleNewspaper = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      name="volume"
+                      label="Volume"
+                      type="text"
+                      placeholder="Ex: 4"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
                       errors={props.errors}
                       touched={props.touched}
                     />

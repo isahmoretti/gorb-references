@@ -82,7 +82,7 @@ const generateReference = (values) => {
     department,
     institute,
     location,
-    chapter,
+    advisor,
     yearOfDelivery,
     online,
     accessedAt,
@@ -97,16 +97,16 @@ const generateReference = (values) => {
         {caption ? ": " : ". "}
       </b>
       {caption && `${caption}. `}
+      {advisor && `Orientador: ${advisor}. `}
       {`${yearOfDelivery}. `}
       {pages && `${pages} f. `}
       {volume && `v. ${volume}, `}
-      Monografia ({type}) - Curso de&nbsp;
+      TCC ({type}) - Curso de&nbsp;
       {`${course}, `}
       {department && `${department}, `}
       {`${institute}, `}
       {location ? `${location}, ` : "[s. l.], "}
       {yearOfPublication && `${yearOfPublication}. `}
-      {chapter && `Cap. ${chapter}. `}
       {online &&
         accessedAt &&
         url &&
@@ -152,7 +152,7 @@ const Monography = ({ back }) => {
           department: "",
           institute: "",
           location: "",
-          chapter: "",
+          advisor: "",
           yearOfDelivery: "",
           online: false,
           accessedAt: "",
@@ -172,6 +172,10 @@ const Monography = ({ back }) => {
                 >
                   Referência de Monografia e tcc
                 </p>
+                <span>
+                  Trabalho acadêmico apresentado para a conclusão da Graduação
+                  ou Especialização
+                </span>
               </Title>
             </Actions>
             <Card>
@@ -289,23 +293,20 @@ const Monography = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="type"
-                      label="Grau"
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="advisor"
+                      label="Orientador"
                       type="text"
+                      placeholder="Nome do orientador"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.type}
+                      value={props.values.advisor}
                       errors={props.errors}
                       touched={props.touched}
-                      options={[
-                        { value: "Especialização", name: "Especialização" },
-                        { value: "Graduação", name: "Graduação" },
-                      ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -344,22 +345,25 @@ const Monography = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="chapter"
-                      label="Capítulo"
-                      type="text"
-                      placeholder="Ex: 87"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.chapter}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="type"
+                      label="Grau"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.type}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "Especialização", name: "Especialização" },
+                        { value: "Graduação", name: "Graduação" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="institute"
                       label="Instituíção"
@@ -372,7 +376,7 @@ const Monography = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="course"
                       label="Curso"

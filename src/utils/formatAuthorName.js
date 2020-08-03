@@ -60,7 +60,7 @@ const replaceNameAuthor = (author, abbreviate) => {
 
 export const formatAuthorName = (authors, abbreviate = false) => {
   if (Array.isArray(authors)) {
-    if (!authors.length || authors[0] === "") return <></>;
+    if (!authors.length || authors[0] === "") return false;
 
     const authSplit = authors[0].split(" ");
 
