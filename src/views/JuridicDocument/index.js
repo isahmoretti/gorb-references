@@ -13,6 +13,8 @@ import {
 // pages
 import Legislation from "./Legislation";
 import Jurisprudence from "./Jurisprudence";
+import Constitution from "./Constitution";
+import AdministrativeActs from "./AdministrativeActs";
 
 const JuridicDocumentGeneral = ({ back }) => {
   const [state, setState] = useState(0);
@@ -37,13 +39,13 @@ const JuridicDocumentGeneral = ({ back }) => {
               <p className="txt-white">Medida provisória</p>
             </Hexagon>
             <Title> Documentos jurídicos </Title>
-            <Hexagon className="green">
+            <Hexagon className="green" onClick={() => setState(4)}>
               <p className="txt-white">Atos administrativos</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon className="green">
+            <Hexagon className="green" onClick={() => setState(3)}>
               <p className="txt-white">Constituição</p>
             </Hexagon>
             <Separator />
@@ -55,13 +57,14 @@ const JuridicDocumentGeneral = ({ back }) => {
       )}
 
       {state === 1 && <Legislation back={() => setState(0)} />}
-      {/* {state === 2 && <BookWithTwoOrThreeAuthors back={() => setState(0)} />}
-      {state === 3 && <BookWithFourOrMoreAuthors back={() => setState(0)} />}
-      {state === 4 && <ChapterOfBook back={() => setState(0)} />}
-      {state === 5 && (
+      {state === 6 && <Jurisprudence back={() => setState(0)} />}
+      {state === 3 && <Constitution back={() => setState(0)} />}
+      {state === 4 && <AdministrativeActs back={() => setState(0)} />}
+      {/* {state === 3 && <BookWithFourOrMoreAuthors back={() => setState(0)} />} */}
+      {/* {state === 4 && <ChapterOfBook back={() => setState(0)} />} */}
+      {/* {state === 5 && (
         <BookIntellectuallyResponsible back={() => setState(0)} />
       )} */}
-      {state === 6 && <Jurisprudence back={() => setState(0)} />}
     </Conatiner>
   );
 };
