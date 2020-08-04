@@ -530,7 +530,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Select
                       disabled={!props.values.complementaryElements}
                       type="text"
