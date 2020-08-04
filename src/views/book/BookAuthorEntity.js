@@ -36,7 +36,6 @@ const SignupSchema = Yup.object().shape({
   entities: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
-  publishingCompany: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
@@ -81,7 +80,7 @@ const generateReference = (values) => {
       )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany},
-      <>{complementaryElements && volume && <> v. {volume}</>} </>
+      <>{complementaryElements && volume && <> v. {volume}</>}, </>
       {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
@@ -92,12 +91,12 @@ const generateReference = (values) => {
         <> {othersResponsabilities}.</>
       )}
       {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements &&
         online &&
         accessedAt &&
         url &&
         ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };
@@ -319,7 +318,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       type="text"
                       label="Edição"
@@ -343,6 +342,18 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      type="text"
+                      label="Volume"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Select
                       type="text"
@@ -359,7 +370,7 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -515,19 +526,6 @@ const Book = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.originalTitle}
                       name="originalTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Volume"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
                       errors={props.errors}
                       touched={props.touched}
                     />

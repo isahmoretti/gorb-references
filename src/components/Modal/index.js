@@ -60,7 +60,7 @@ function SimpleDialog(props) {
           {text}
         </div>
         <CopyToClipboard text={content1} onCopy={handleCopy1}>
-          <Button style={{ margin: 0 }} color="primary">
+          <Button style={{ margin: 0, float: 'right' }} color="primary">
             Copiar
           </Button>
         </CopyToClipboard>
@@ -68,7 +68,7 @@ function SimpleDialog(props) {
           style={{
             height: 2,
             backgroundColor: "#6e6e6e",
-            margin: "7px 0",
+            margin: "44px 0 0 0",
           }}
         />
       </DialogContent>
@@ -91,7 +91,7 @@ function SimpleDialog(props) {
             {citationWithAuthor}
           </div>
           <CopyToClipboard text={content2} onCopy={handleCopy2}>
-            <Button style={{ margin: 0 }} color="primary">
+            <Button style={{ margin: 0, float: 'right' }} color="primary">
               Copiar
             </Button>
           </CopyToClipboard>
@@ -99,7 +99,7 @@ function SimpleDialog(props) {
             style={{
               height: 2,
               backgroundColor: "#6e6e6e",
-              margin: "7px 0",
+              margin: "44px 0 0 0",
             }}
           />
         </DialogContent>
@@ -123,7 +123,7 @@ function SimpleDialog(props) {
             {citation}
           </div>
           <CopyToClipboard text={content3} onCopy={handleCopy3}>
-            <Button style={{ margin: 0 }} color="primary">
+            <Button style={{ margin: 0, float: 'right' }} color="primary">
               Copiar
             </Button>
           </CopyToClipboard>

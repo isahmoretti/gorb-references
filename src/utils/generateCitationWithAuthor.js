@@ -38,10 +38,26 @@ export const generateCitationWithAuthor = (author, yearOfPublication) => {
     }
 
     if (author.length >= 4) {
+      let parent = "";
+      let lastName = "";
+
+      if (author[0].toLowerCase().includes("filho")) parent = "FILHO";
+      if (author[0].toLowerCase().includes("júnior")) parent = "JÚNIOR";
+      if (author[0].toLowerCase().includes("junior")) parent = "JUNIOR";
+      if (author[0].toLowerCase().includes("neto")) parent = "NETO";
+      if (author[0].toLowerCase().includes("sobrinho")) parent = "SOBRINHO";
+    
       let authSplit = author[0].split(" ");
+      
+      if (authSplit[authSplit.length - 1].toUpperCase() === parent) {
+        lastName = authSplit[authSplit.length - 2];
+      } else {
+        lastName = authSplit[authSplit.length - 1];
+      }
+      
       return (
         <>
-          {authSplit[authSplit.length - 1].toUpperCase()}, {authSplit[0]}{" "}
+          {lastName.toUpperCase()}, {authSplit[0]}{" "}
           <i>et al.</i> ({date})
         </>
       );

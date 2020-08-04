@@ -93,12 +93,12 @@ const generateReference = (values) => {
         <> {othersResponsabilities}.</>
       )}
       {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements &&
         online &&
         accessedAt &&
         url &&
         ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };

@@ -13,17 +13,31 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
       });
       return (
         <span>
-          ({authors.join("; ")} {date})
+          ({authors.join("; ")}, {date})
         </span>
       );
     }
 
     if (author.length >= 4) {
+      let parent = "";
+      let lastName = "";
+      if (author[0].toLowerCase().includes("filho")) parent = "FILHO";
+      if (author[0].toLowerCase().includes("júnior")) parent = "JÚNIOR";
+      if (author[0].toLowerCase().includes("junior")) parent = "JUNIOR";
+      if (author[0].toLowerCase().includes("neto")) parent = "NETO";
+      if (author[0].toLowerCase().includes("sobrinho")) parent = "SOBRINHO";
+    
       let authSplit = author[0].split(" ");
-      authSplit = authSplit[authSplit.length - 1].toUpperCase();
+      
+      if (authSplit[authSplit.length - 1].toUpperCase() === parent) {
+        lastName = authSplit[authSplit.length - 2];
+      } else {
+        lastName = authSplit[authSplit.length - 1];
+      }
+      
       return (
         <span>
-          ({authSplit} et al., {date})
+          ({lastName.toUpperCase()} et al., {date})
         </span>
       );
     }

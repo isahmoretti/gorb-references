@@ -65,14 +65,11 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      <>{formatAuthorName(authors)}</>
+      <>{formatAuthorName(authors)} </>
       {caption ? (
-        <>
-          <b> {title}:</b>
-          {caption}.
-        </>
+        <><b>{title}: </b>{caption}. </>
       ) : (
-          <b> {title}.</b>
+          <b>{title}. </b>
         )}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName.join("; ")}.</>
@@ -90,11 +87,11 @@ const generateReference = (values) => {
         <> {othersResponsabilities}.</>
       )}
       {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
       {complementaryElements && online && accessedAt && (
         <> Acesso em: {formatDate(accessedAt)}.</>
       )}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };
@@ -176,7 +173,7 @@ const Book = ({ back }) => {
                                     <Input
                                       name={`authors.${index}`}
                                       type="text"
-                                      label={`${index + 1}º Author`}
+                                      label={`${index + 1}º Autor`}
                                       placeholder={`nome do ${index + 1}º autor`}
                                       onChange={props.handleChange}
                                       onBlur={props.handleBlur}
@@ -313,6 +310,24 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                <Grid item xs={12} sm={12} md={3}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                }}>
+                    <Input
+                      type="text"
+                      label="Volume"
+                      placeholder="Ex: 10"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
                   <Grid
                     item
                     xs={12}
@@ -387,7 +402,9 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                <Grid item xs={12} sm={12} md={3}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -403,8 +420,6 @@ const Book = ({ back }) => {
                       helpText="Número de livro padrão internacional"
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid
                     item
                     xs={12}
@@ -509,20 +524,6 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
                   <Grid item xs={12} sm={12} md={4}>
                     <Select
                       disabled={!props.values.complementaryElements}

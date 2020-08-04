@@ -66,13 +66,13 @@ const generateReference = (values) => {
       <>{formatAuthorName(author)}</>
       {caption ? (
         <>
-          <b>{title}:</b><>{caption}.</>
+          <b>{title}: </b><>{caption}. </>
         </>
       ) : (
-        <b>{title}.</b>
+        <b>{title}. </b>
       )}
       {complementaryElements && translator && translatorName.length && (
-        <>Tradução:{translatorName.join("; ")}.</>
+        <>Tradução: {translatorName.join("; ")}. </>
       )}
       {edition && <>{edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: <>{publishingCompany}, </>

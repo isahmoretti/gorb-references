@@ -71,7 +71,7 @@ const generateReference = (values) => {
     complementaryElements,
     othersResponsabilities,
     series,
-    pagination,
+    chapter,
     captionPageInit,
     captionPageFinish,
     grades,
@@ -111,16 +111,13 @@ const generateReference = (values) => {
       {chapterAuthors && (
         <>
           {" "}
-          In: {lastNameAuthorship}, {firstNameAuthorship[0]}.
+          <i>In</i>: {lastNameAuthorship}, {firstNameAuthorship[0]}.
         </>
       )}
-      <> {getResposabilityTypes(responsabilityType)}. </>
+      {responsabilityType && <> {getResposabilityTypes(responsabilityType)}. </>}
       {/* Titulo da obra */}
       {caption ? (
-        <>
-          <b> {title}: </b>
-          {caption}.{" "}
-        </>
+        <><b> {title}: </b>{caption}. </>
       ) : (
           <b>{title}. </b>
         )}
@@ -129,9 +126,10 @@ const generateReference = (values) => {
         <> Tradução: {translatorName}.</>
       )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
-      {complementaryElements && volume && <> v.{volume},</>}
+      {complementaryElements && volume && <> v.{volume}, </>}
       {local}: {publishingCompany}, {yearOfPublication}.
-      {complementaryElements && pagination && <> {pagination} p.</>}
+      {complementaryElements && chapter && <> Cap. {chapter}.</>}
+
       {captionPageInit &&
         captionPageFinish &&
         `p. ${captionPageInit}-${captionPageFinish}, `}
@@ -143,11 +141,11 @@ const generateReference = (values) => {
         <> {othersResponsabilities}.</>
       )}
       {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements && online && url && <> Disponível em: {url}.</>}
       {complementaryElements && online && accessedAt && (
         <> Acesso em: {formatDate(accessedAt)}.</>
       )}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };
@@ -197,6 +195,7 @@ const Book = ({ back }) => {
           accessedAt: "",
           url: "",
           translator: false,
+          chapter: "",
           translatorName: [""],
           chapterTitle: "",
           chapterAuthors: [""],
@@ -216,7 +215,8 @@ const Book = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Capítulo de livro{" "}
+                  Capítulo de livro{" "}<br />
+                  Informações sobre a obra toda
                 </p>
               </Title>
             </Actions>
@@ -262,7 +262,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Autoria"
+                      label="Autoria do livro"
                       placeholder="Nome e sobrenome do autor do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -275,7 +275,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Título"
+                      label="Título do Livro"
                       placeholder="Título do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -290,7 +290,7 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Subtítulo"
+                      label="Subtítulo do Livro"
                       placeholder="Subtítulo do livro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -386,20 +386,6 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Paginas"
-                      placeholder="Ex: 223"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.pagination}
-                      name="pagination"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.complementaryElements}
@@ -554,7 +540,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Páginas do capítulo (início)"
@@ -567,7 +553,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Páginas do capítulo (fim)"
@@ -576,6 +562,19 @@ const Book = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.captionPageFinish}
                       name="captionPageFinish"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      label="Capítulo"
+                      placeholder="Ex: 24"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.chapter}
+                      name="chapter"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -647,7 +646,7 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Título original"
+                      label="Título original da obra"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.originalTitle}

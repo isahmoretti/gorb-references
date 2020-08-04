@@ -56,6 +56,16 @@ const getResposabilityTypes = (responsabiltyTypes) => {
   }
 };
 
+const getNamesResponsible = (namesResponsible) => {
+  if(namesResponsible.length >=4 ){
+    return formatAuthorName(namesResponsible)
+  }
+  
+  const name = formatAuthorName(namesResponsible)
+
+  return name.slice(0, name.length - 2);
+}
+
 const generateReference = (values) => {
   const {
     namesResponsible,
@@ -84,7 +94,7 @@ const generateReference = (values) => {
     <span>
       {" "}
       {/* precisei pegar sem o ponto */}
-      {namesResponsible.length && formatAuthorName(namesResponsible).slice(0, formatAuthorName(namesResponsible).length - 2)}
+      <>{namesResponsible.length && getNamesResponsible(namesResponsible)} </>
       {getResposabilityTypes(responbiltyTypes)}&nbsp;
       {caption ? (
         <>
@@ -109,12 +119,12 @@ const generateReference = (values) => {
         <> {othersResponsabilities}.</>
       )}
       {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements &&
         online &&
         accessedAt &&
         url &&
         ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}.`}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
     </span>
   );
 };
@@ -331,7 +341,7 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       type="text"
                       label="Edição"
@@ -371,7 +381,7 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -380,6 +390,19 @@ const Book = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
                       name="pagination"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      disabled={!props.values.complementaryElements}
+                      type="text"
+                      label="Volume"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.volume}
+                      name="volume"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -400,7 +423,7 @@ const Book = ({ back }) => {
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
-                      label="Serie"
+                      label="Série"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
@@ -532,21 +555,8 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Volume"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
 
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Select
                       disabled={!props.values.complementaryElements}
                       type="text"

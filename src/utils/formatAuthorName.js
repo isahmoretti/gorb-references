@@ -55,7 +55,7 @@ const replaceNameAuthor = (author, abbreviate) => {
 
   return `${lastName.toUpperCase()}${parent ? ` ${parent}` : ""}${
     arrAuthor.length === 1 || (arrAuthor.length === 2 && parent) ? "" : ", "
-  }${otherNames.trim()}`;
+    }${otherNames.trim()}`;
 };
 
 export const formatAuthorName = (authors, abbreviate = false) => {
@@ -67,8 +67,9 @@ export const formatAuthorName = (authors, abbreviate = false) => {
     if (authors.length >= 4) {
       return (
         <>
-          {authSplit[authSplit.length - 1].toUpperCase()},{" "}
-          {authSplit.slice(0, authSplit.length - 1).join(" ")} <i>et al.</i>
+          {replaceNameAuthor(authors[0], abbreviate)} <i>et al</i>
+          {/* {authSplit[authSplit.length - 1].toUpperCase()},{" "}
+          {authSplit.slice(0, authSplit.length - 1).join(" ")} <i>et al.</i> */}
         </>
       );
     }
