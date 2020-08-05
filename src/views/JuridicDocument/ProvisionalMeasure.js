@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik } from "formik";
 
 import * as Yup from "yup";
 
-import { Grid, Button as ButtonCore, TextareaAutosize } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
-import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
 // utils
@@ -30,7 +29,10 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-    // jurisdiction: Yup.string().required("Obrigatório"),
+    publicationDate: Yup.string().required("Obrigatório"),
+    author: Yup.string().required("Obrigatório"),
+    type: Yup.string().required("Obrigatório"),
+    number: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -52,7 +54,22 @@ const generateReference = (values) => {
 
     return (
         <span>
-
+            {author && <>{author}. </>}
+            {type && <>{type} </>}
+            {number && <>nº {number}, </>}
+            {documentSigningDate && <>de{formatDate(documentSigningDate)}. </>}
+            {menu && <>{menu}. </>}
+            {publication && <b>{publication.split(", ")[publication.split.length - 1 ].toUpperCase()}, </b>}
+            {publicationLocal && <>{publicationLocal}, </>}
+            {publicationDate && <>{formatDate(publicationDate)}. </>}
+            {section && <>{section}, </>}
+            {page && <>{page} p. </>}
+            {url && <>{url}. </>}
+            
+            {note && <>{note}. </>}
+            {accessedAt &&
+                url &&
+                ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
         </span>
     );
 };
@@ -70,8 +87,8 @@ const ProvisionalMeasure = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.jurisdiction, values.legislationDate),
-            citation: generateCitationWithoutAuthor(values.jurisdiction, values.legislationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
+            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
         }));
 
         setOpenModal(!openModal);
@@ -225,9 +242,11 @@ const ProvisionalMeasure = ({ back }) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={4}>
                                         <Input
-                                            type="text"
+                                            type="date"
                                             label="Data de publicação"
-                                            placeholder="Ex: 4 jun. 2014"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.publicationDate}
@@ -268,11 +287,11 @@ const ProvisionalMeasure = ({ back }) => {
                                         <Input
                                             type="text"
                                             label="Disponível em"
-                                            placeholder="Ex: www.viacarreira.com)"
+                                            placeholder="Ex: www.viacarreira.com"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.page}
-                                            name="page"
+                                            value={props.values.url}
+                                            name="url"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
