@@ -51,8 +51,9 @@ const generateReference = (values) => {
     pageInit,
     pageFinish,
     fascicle,
-    accessedAt,
-    yearOfPublication,
+    day,
+    month,
+    yaer,
     online,
     accessedAtUrl,
     url,
@@ -74,7 +75,9 @@ const generateReference = (values) => {
       {fascicle && `n. ${fascicle}, `}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
-      {accessedAt && `${formatDate(accessedAt)}. `}
+      {day && month && yaer && `${day} ${month}. ${yaer} `}
+      {!day && month && yaer && `${month}. ${yaer} `}
+      {!day && !month && yaer && `${yaer}. `}
       {issn && `${issn}. `}
       {notes && `${notes}. `}
       {doi && `DOI: https://doi.org/${doi}. `}
@@ -125,8 +128,9 @@ const WorkArticlePeriodic = ({ back }) => {
           pageInit: "",
           pageFinish: "",
           fascicle: "",
-          accessedAt: "",
-          yearOfPublication: "",
+          day: "",
+          month: "",
+          yaer: "",
           online: false,
           accessedAtUrl: "",
           url: "",
@@ -363,30 +367,53 @@ const WorkArticlePeriodic = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="accessedAt"
-                      type="date"
-                      label="Data de publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+                      name="day"
+                      type="number"
+                      label="Dia"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
+                      value={props.values.day}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="yearOfPublication"
-                      label="Ano de publicação"
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="month"
+                      label="Mês"
                       type="text"
-                      placeholder="Ex: 2005"
+                      placeholder="Mês"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
+                      value={props.values.month}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "jan", name: "Janeiro" },
+                        { value: "fev", name: "Fevereiro" },
+                        { value: "mar", name: "Março" },
+                        { value: "abr", name: "Abril" },
+                        { value: "mai", name: "Maio" },
+                        { value: "jun", name: "Junho" },
+                        { value: "jul", name: "Julho" },
+                        { value: "ago", name: "Agosto" },
+                        { value: "set", name: "Setembro" },
+                        { value: "out", name: "Outubro" },
+                        { value: "nov", name: "Novembro" },
+                        { value: "dev", name: "Dezembro" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      name="yaer"
+                      type="number"
+                      label="Ano"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.yaer}
                       errors={props.errors}
                       touched={props.touched}
                     />
