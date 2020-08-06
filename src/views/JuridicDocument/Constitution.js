@@ -39,11 +39,34 @@ const generateReference = (values) => {
     publishingCompany,
     notes,
     online,
-    ur,
-    accessedA,
+    url,
+    accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+      {`${country.toUpperCase()}. `}
+      {`Constituição (${year}). `}
+      {subtitle ? (
+        <>
+          <b>{title}:</b> {`${subtitle}. `}
+        </>
+      ) : (
+        <b> {`${title}. `} </b>
+      )}
+      {`Organização do texto: ${responsible}. `}
+      {`${edition}. ed. `}
+      {`${location}: `}
+      {`${publishingCompany}, `}
+      {`${yaerPublication}. `}
+      {`${numberPages}. p. `}
+      {`${notes}. `}
+      {online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const Constitution = ({ back }) => {
@@ -59,14 +82,6 @@ const Constitution = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.yearOfPublication
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.yearOfPublication
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -82,7 +97,7 @@ const Constitution = ({ back }) => {
           year: "1998",
           title: "Constituição da República Federativa do Brasil",
           subtitle: "promulgada em 5 de outubro de 1988",
-          responsible: "Responsável pela organização do texto",
+          responsible: "Juarez de Oliveira",
           edition: "4",
           yaerPublication: "1988",
           numberPages: "3",
@@ -328,8 +343,8 @@ const Constitution = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                // citationWithAuthor={state.citationWithAuthor}
+                // citation={state.citation}
               />
             </Card>
           </form>

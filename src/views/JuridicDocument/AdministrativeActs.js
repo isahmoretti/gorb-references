@@ -32,20 +32,39 @@ const generateReference = (values) => {
     type,
     number,
     dateDoc,
-    manu,
+    menu,
     notes,
     publication,
     location,
     year,
     numberl,
     page,
-    yaerPublication,
+    yearPublication,
     online,
-    ur,
-    accessedA,
+    url,
+    accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+      {`${author.toUpperCase()}. `}
+      {`${responsible}. `}
+      {`${type} `}
+      {`nº ${number}, `}
+      {`${dateDoc}. `}
+      {`${menu}. `}
+      <b>{publication}: </b>
+      {`${location}, `}
+      {`ano ${year}, `}
+      {`n. ${numberl}, `}
+      {`p. ${page}, `}
+      {yearPublication && `${formatDate(yearPublication)}. `}
+      {online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const AdministrativeActs = ({ back }) => {
@@ -61,14 +80,6 @@ const AdministrativeActs = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.yearOfPublication
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.yearOfPublication
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -91,10 +102,10 @@ const AdministrativeActs = ({ back }) => {
 
           publication: "Diário Oficial da União",
           location: "Brasília, DF",
-          yaer: "2000",
+          year: "2000",
           numberl: "3",
           page: "32",
-          yaerPublication: "",
+          yearPublication: "",
 
           online: false,
           url: "",
@@ -104,7 +115,7 @@ const AdministrativeActs = ({ back }) => {
         onSubmit={handleSubmit}
       >
         {(props) => (
-          <form onSubmit={props.handleSubmit}>
+          <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
                 <p
@@ -254,7 +265,7 @@ const AdministrativeActs = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="yaerPublication"
+                      name="yearPublication"
                       type="date"
                       label="Data de publicação"
                       InputLabelProps={{
@@ -262,20 +273,20 @@ const AdministrativeActs = ({ back }) => {
                       }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaerPublication}
+                      value={props.values.yearPublication}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="yaer"
+                      name="year"
                       label="Ano"
                       placeholder="Ex: 144"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -372,8 +383,8 @@ const AdministrativeActs = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                // citationWithAuthor={state.citationWithAuthor}
+                // citation={state.citation}
               />
             </Card>
           </form>

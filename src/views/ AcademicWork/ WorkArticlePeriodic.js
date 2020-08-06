@@ -372,6 +372,7 @@ const WorkArticlePeriodic = ({ back }) => {
                       name="day"
                       type="number"
                       label="Dia"
+                      InputProps={{ inputProps: { min: 0 } }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.day}
@@ -411,6 +412,7 @@ const WorkArticlePeriodic = ({ back }) => {
                       name="yaer"
                       type="number"
                       label="Ano"
+                      InputProps={{ inputProps: { min: 0 } }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yaer}

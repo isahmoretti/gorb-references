@@ -24,7 +24,7 @@ const Header = () => {
             />
           </Box>
 
-          <BoxLogo>
+          <BoxLogo onClick={() => navigate("/")}>
             <h1>GORB</h1>
             <span>
               Gerador Online de <br /> Referências Bibliográficas{" "}

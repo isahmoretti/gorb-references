@@ -17,9 +17,13 @@ export const Box = styled.div``;
 
 export const BoxLogo = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
   height: 50px;
+
+  margin-top: 20px;
+
+  cursor: pointer;
 
   @media (max-width: 600px) {
     display: none;
