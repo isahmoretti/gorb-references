@@ -30,9 +30,11 @@ import {
 
 const SignupSchema = Yup.object().shape({
     publicationDate: Yup.string().required("Obrigatório"),
+    publication: Yup.string().required("Obrigatório"),
     author: Yup.string().required("Obrigatório"),
     type: Yup.string().required("Obrigatório"),
     number: Yup.string().required("Obrigatório"),
+    documentSigningDate:  Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -56,16 +58,14 @@ const generateReference = (values) => {
         <span>
             {author && <>{author}. </>}
             {type && <>{type} </>}
-            {number && <>nº {number}, </>}
-            {documentSigningDate && <>de{formatDate(documentSigningDate)}. </>}
+            {number && <>nº {number},&nbsp;</>}
+            {documentSigningDate && <>de {formatDate(documentSigningDate)}. </>}
             {menu && <>{menu}. </>}
-            {publication && <b>{publication.split(", ")[publication.split.length - 1 ].toUpperCase()}, </b>}
+            {publication && <b>{publication}, </b>}
             {publicationLocal && <>{publicationLocal}, </>}
             {publicationDate && <>{formatDate(publicationDate)}. </>}
-            {section && <>{section}, </>}
-            {page && <>{page} p. </>}
-            {url && <>{url}. </>}
-            
+            {section && <>Seção {section}, </>}
+            {page && <> p. {page}. </>}
             {note && <>{note}. </>}
             {accessedAt &&
                 url &&
@@ -104,7 +104,7 @@ const ProvisionalMeasure = ({ back }) => {
                     type: "Medida Provisória",
                     number: "",
                     documentSigningDate: "",
-                    menu: "", // ementa
+                    menu: "",
                     note: "",
                     publication: "",
                     publicationLocal: "",
