@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { Formik } from "formik";
 
@@ -25,63 +25,92 @@ const SignupSchema = Yup.object().shape({
   // jurisdiction: Yup.string().required("Obrigatório"),
 });
 
-const generateReference = (values) => {
-  const {
-    country,
-    year,
-    title,
-    subtitle,
-    responsible,
-    edition,
-    yaerPublication,
-    numberPages,
-    location,
-    publishingCompany,
-    notes,
-    online,
-    url,
-    accessedAt,
-  } = values;
-
-  return (
-    <span>
-      {`${country.toUpperCase()}. `}
-      {`Constituição (${year}). `}
-      {subtitle ? (
-        <>
-          <b>{title}:</b> {`${subtitle}. `}
-        </>
-      ) : (
-        <b> {`${title}. `} </b>
-      )}
-      {`Organização do texto: ${responsible}. `}
-      {`${edition}. ed. `}
-      {`${location}: `}
-      {`${publishingCompany}, `}
-      {`${yaerPublication}. `}
-      {`${numberPages}. p. `}
-      {`${notes}. `}
-      {online &&
-        accessedAt &&
-        url &&
-        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-    </span>
-  );
-};
-
 const Constitution = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
   });
 
+  const refSpan = useRef(null);
+
+  const generateReference = (values) => {
+    const {
+      country,
+      year,
+      title,
+      subtitle,
+      responsible,
+      edition,
+      yaerPublication,
+      numberPages,
+      location,
+      publishingCompany,
+      notes,
+      online,
+      url,
+      accessedAt,
+    } = values;
+
+    // necessário para mostrar a referencia
+    const text = (
+      <span>
+        {`${country.toUpperCase()}. `}
+        {`Constituição (${year}). `}
+        {subtitle ? (
+          <>
+            <b>{title}:</b> {`${subtitle}. `}
+          </>
+        ) : (
+          <b> {`${title}. `} </b>
+        )}
+        {`Organização do texto: ${responsible}. `}
+        {`${edition}. ed. `}
+        {`${location}: `}
+        {`${publishingCompany}, `}
+        {`${yaerPublication}. `}
+        {`${numberPages}. p. `}
+        {`${notes}. `}
+        {online &&
+          accessedAt &&
+          url &&
+          `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+      </span>
+    );
+
+    // necessário para o botão de copiar
+    refSpan.current.innerHTML = `
+    ${country.toUpperCase()}. 
+    Constituição (${year}). 
+    ${subtitle ? `<b> ${title}: </b> ${subtitle}` : `<b> ${title} </b>`}
+    Organização do texto: ${responsible}. 
+    ${edition}. ed. 
+    ${location}: 
+    ${publishingCompany}, 
+    ${yaerPublication}. 
+    ${numberPages}. p. 
+    ${notes}. 
+    ${
+      online && accessedAt && url
+        ? `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}.`
+        : ""
+    }`;
+
+    return {
+      span: refSpan.current.innerHTML,
+      text,
+    };
+  };
+
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (values) => {
+    const { span, text } = generateReference(values);
+
     setState((prev) => ({
       ...prev,
       values,
-      references: generateReference(values),
+      references: span,
+      text,
     }));
 
     setOpenModal(!openModal);
@@ -89,6 +118,7 @@ const Constitution = ({ back }) => {
 
   return (
     <Container>
+      <span ref={refSpan} style={{ display: "none" }}></span>
       <Back onClick={back} />
 
       <Formik
@@ -339,13 +369,16 @@ const Constitution = ({ back }) => {
                   </Button>
                 </Row>
               </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
-              />
+              {state.references && (
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.text}
+                  span={state.references}
+                  // citationWithAuthor={state.citationWithAuthor}
+                  // citation={state.citation}
+                />
+              )}
             </Card>
           </form>
         )}

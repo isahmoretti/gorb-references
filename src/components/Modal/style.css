@@ -1,0 +1,10 @@
+.CodeMirror {
+  /* visibility: hidden; */
+
+  display: none;
+}
+
+textarea {
+  visibility: hidden;
+  height: 0;
+}

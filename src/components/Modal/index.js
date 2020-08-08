@@ -1,38 +1,31 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
+import cm from "codemirror";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
 import Button from "../../components/Buttons";
 
-function SimpleDialog(props) {
-  const { isOpen, handleClose, text, citationWithAuthor, citation } = props;
+import { copyFormatted } from "./magic";
 
-  const refDiv1 = useRef();
-  const refDiv2 = useRef();
-  const refDiv3 = useRef();
+import "./style.css";
 
-  const [content1, setContent1] = useState("");
-  const [content2, setContent2] = useState("");
-  const [content3, setContent3] = useState("");
+const Modal = ({
+  isOpen,
+  handleClose,
+  text,
+  span,
+  citationWithAuthor,
+  citation,
+}) => {
+  const refTextarea = useRef(null);
 
-  const handleCopy1 = () => {
-    const copyText = refDiv1.current.textContent;
+  const handleCopy = () => {
+    var htmlEditor = cm.fromTextArea(refTextarea.current, {
+      mode: "text/html",
+    });
 
-    setContent1(copyText);
-  };
-  const handleCopy2 = () => {
-    const copyText = refDiv2.current.textContent;
-
-    setContent2(copyText);
-  };
-  const handleCopy3 = () => {
-    const copyText = refDiv3.current.textContent;
-
-    setContent3(copyText);
+    copyFormatted(htmlEditor.getValue());
   };
 
   return (
@@ -44,6 +37,7 @@ function SimpleDialog(props) {
       maxWidth="md"
     >
       <DialogContent>
+        <textarea ref={refTextarea} value={span}></textarea>
         <div id="simple-dialog-title">
           <div
             style={{ color: "#6666cc", fontSize: "20px", fontWeight: "bold" }}
@@ -52,18 +46,20 @@ function SimpleDialog(props) {
           </div>
         </div>
         <div
-          ref={refDiv1}
           style={{
             fontSize: "18px",
           }}
         >
           {text}
         </div>
-        <CopyToClipboard text={content1} onCopy={handleCopy1}>
-          <Button style={{ margin: 0, float: 'right' }} color="primary">
-            Copiar
-          </Button>
-        </CopyToClipboard>
+
+        <Button
+          style={{ margin: 0, float: "right" }}
+          color="primary"
+          onClick={handleCopy}
+        >
+          Copiar
+        </Button>
         <div
           style={{
             height: 2,
@@ -72,65 +68,8 @@ function SimpleDialog(props) {
           }}
         />
       </DialogContent>
-
-      {citationWithAuthor && (
-        <DialogContent>
-          <div id="simple-dialog-title">
-            <div
-              style={{ color: "#6666cc", fontSize: "20px", fontWeight: "bold" }}
-            >
-              CITAÇÃO COM AUTOR INCLUÍDO NO TEXTO
-            </div>
-          </div>
-          <div
-            ref={refDiv2}
-            style={{
-              fontSize: "18px",
-            }}
-          >
-            {citationWithAuthor}
-          </div>
-          <CopyToClipboard text={content2} onCopy={handleCopy2}>
-            <Button style={{ margin: 0, float: 'right' }} color="primary">
-              Copiar
-            </Button>
-          </CopyToClipboard>
-          <div
-            style={{
-              height: 2,
-              backgroundColor: "#6e6e6e",
-              margin: "44px 0 0 0",
-            }}
-          />
-        </DialogContent>
-      )}
-
-      {citation && (
-        <DialogContent>
-          <div id="simple-dialog-title">
-            <div
-              style={{ color: "#6666cc", fontSize: "20px", fontWeight: "bold" }}
-            >
-              CITAÇÃO NO FINAL DO PARÁGRAFO
-            </div>
-          </div>
-          <div
-            ref={refDiv3}
-            style={{
-              fontSize: "18px",
-            }}
-          >
-            {citation}
-          </div>
-          <CopyToClipboard text={content3} onCopy={handleCopy3}>
-            <Button style={{ margin: 0, float: 'right' }} color="primary">
-              Copiar
-            </Button>
-          </CopyToClipboard>
-        </DialogContent>
-      )}
     </Dialog>
   );
-}
+};
 
-export default SimpleDialog;
+export default Modal;
