@@ -31,8 +31,6 @@ const Constitution = ({ back }) => {
     clearInitialValues: false,
   });
 
-  const refSpan = useRef(null);
-
   const generateReference = (values) => {
     const {
       country,
@@ -51,8 +49,7 @@ const Constitution = ({ back }) => {
       accessedAt,
     } = values;
 
-    // necessário para mostrar a referencia
-    const text = (
+    return (
       <span>
         {`${country.toUpperCase()}. `}
         {`Constituição (${year}). `}
@@ -76,41 +73,17 @@ const Constitution = ({ back }) => {
           `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
       </span>
     );
-
-    // necessário para o botão de copiar
-    refSpan.current.innerHTML = `
-    ${country.toUpperCase()}. 
-    Constituição (${year}). 
-    ${subtitle ? `<b> ${title}: </b> ${subtitle}` : `<b> ${title} </b>`}
-    Organização do texto: ${responsible}. 
-    ${edition}. ed. 
-    ${location}: 
-    ${publishingCompany}, 
-    ${yaerPublication}. 
-    ${numberPages}. p. 
-    ${notes}. 
-    ${
-      online && accessedAt && url
-        ? `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}.`
-        : ""
-    }`;
-
-    return {
-      span: refSpan.current.innerHTML,
-      text,
-    };
   };
 
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (values) => {
-    const { span, text } = generateReference(values);
+    const references = generateReference(values);
 
     setState((prev) => ({
       ...prev,
       values,
-      references: span,
-      text,
+      references,
     }));
 
     setOpenModal(!openModal);
@@ -118,7 +91,6 @@ const Constitution = ({ back }) => {
 
   return (
     <Container>
-      <span ref={refSpan} style={{ display: "none" }}></span>
       <Back onClick={back} />
 
       <Formik
@@ -373,8 +345,7 @@ const Constitution = ({ back }) => {
                 <Modal
                   isOpen={openModal}
                   handleClose={() => setOpenModal(!openModal)}
-                  text={state.text}
-                  span={state.references}
+                  text={state.references}
                   // citationWithAuthor={state.citationWithAuthor}
                   // citation={state.citation}
                 />
