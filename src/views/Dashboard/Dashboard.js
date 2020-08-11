@@ -18,8 +18,9 @@ import Footer from "../HomePage/Footer";
 
 // pages
 import Book from "../book";
-import AcademicWork from "../ AcademicWork";
+import AcademicWork from "../AcademicWork";
 import JuridicDocument from "../JuridicDocument";
+import ElectronicMediaDocuments from "../ElectronicMediaDocuments";
 
 const Dashboard = () => {
   const [state, setState] = useState(0);
@@ -54,7 +55,7 @@ const Dashboard = () => {
                 Gerador <br /> Online de <br /> Referências <br />{" "}
                 Bibliográficas{" "}
               </Title>
-              <Hexagon className="">
+              <Hexagon onClick={() => setState(5)} className="wine">
                 <p className="txt-white">
                   Documentos <br />
                   exclusivos de meio <br />
@@ -84,6 +85,7 @@ const Dashboard = () => {
         {state === 1 && <Book back={() => setState(0)} />}
         {state === 2 && <AcademicWork back={() => setState(0)} />}
         {state === 6 && <JuridicDocument back={() => setState(0)} />}
+        {state === 5 && <ElectronicMediaDocuments back={() => setState(0)} />}
       </Conatiner>
 
       {state !== 0 && (
