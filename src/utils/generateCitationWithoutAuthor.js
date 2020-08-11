@@ -29,6 +29,9 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
     
       let authSplit = author[0].split(" ");
       
+      // if(authSplit.find(a => a === parent)){
+      //   const v = authSplit[0]
+      // }
       if (authSplit[authSplit.length - 1].toUpperCase() === parent) {
         lastName = authSplit[authSplit.length - 2];
       } else {

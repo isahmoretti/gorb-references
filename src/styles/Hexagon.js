@@ -216,6 +216,16 @@ export const Hexagon = styled.div`
     border-top-color: #c71585;
   }
 
+  &.wine {
+    background: #800000;
+  }
+  &.wine::before {
+    border-bottom-color: #800000;
+  }
+  &.wine::after {
+    border-top-color: #800000;
+  }
+
   &.gray {
     background: #585858;
   }

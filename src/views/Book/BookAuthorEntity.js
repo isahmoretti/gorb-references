@@ -15,7 +15,8 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 
 // styles 
 import {
@@ -36,6 +37,7 @@ const SignupSchema = Yup.object().shape({
   entities: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
+  publishingCompany: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
@@ -66,7 +68,7 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      <>{entities.length && entities.join("; ").toUpperCase()}. </>
+      <>{entities.length && entities.length < 4 ? entities.join("; ").toUpperCase() : <>{entities[0].toUpperCase()} <i>et al.</i></>}. </>
       {caption ? (
         <>
           <b>{title}: </b>
@@ -76,11 +78,11 @@ const generateReference = (values) => {
           <b>{title}. </b>
         )}
       {complementaryElements && translator && translatorName.length && (
-        <> Tradução: {translatorName.join("; ")}.</>
+        <> Tradução: {translatorName.join("; ")}. </>
       )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: {publishingCompany},
-      <>{complementaryElements && volume && <> v. {volume}</>}, </>
+      <>{complementaryElements && volume && <> v. {volume},</>} </>
       {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
@@ -100,33 +102,6 @@ const generateReference = (values) => {
     </span>
   );
 };
-const generateCitationWithAuthor = (values) => {
-  const { entities, yearOfPublication } = values;
-
-  const authorSplit = entities[0].split(" ");
-
-  const lastName = authorSplit[authorSplit.length - 1];
-
-  return (
-    <span>
-      {lastName} ({yearOfPublication})
-    </span>
-  );
-};
-
-const generateCitation = (values) => {
-  const { entities, yearOfPublication } = values;
-
-  const authorSplit = entities[0].split(" ");
-
-  const lastName = authorSplit[authorSplit.length - 1].toUpperCase();
-
-  return (
-    <span>
-      ({lastName}, {yearOfPublication})
-    </span>
-  );
-};
 
 const Book = ({ back }) => {
   const [state, setState] = useState({
@@ -141,8 +116,8 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values),
-      citation: generateCitation(values),
+      citationWithAuthor: generateCitationWithAuthor(values.entities, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.entities, values.yearOfPublication),
     }));
 
     setOpenModal(!openModal);
@@ -213,7 +188,7 @@ const Book = ({ back }) => {
                                     <Input
                                       type="text"
                                       label={`${index + 1}º Entidade`}
-                                      placeholder={`nome da ${
+                                      placeholder={`Nome da ${
                                         index + 1
                                         }º entidade`}
                                       onChange={props.handleChange}
