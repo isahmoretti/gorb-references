@@ -17,7 +17,7 @@ import Nav from "../HomePage/Header";
 import Footer from "../HomePage/Footer";
 
 // pages
-import Book from "../book";
+import Book from "../Book";
 import AcademicWork from "../AcademicWork";
 import JuridicDocument from "../JuridicDocument";
 import ElectronicMediaDocuments from "../ElectronicMediaDocuments";

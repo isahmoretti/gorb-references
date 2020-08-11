@@ -18,7 +18,6 @@ import Email from "./Email";
 import SocialNetworkPost from "./SocialNetworkPost";
 import BlogArticle from "./BlogArticle";
 
-
 const ElectronicMediaDocuments = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -32,25 +31,23 @@ const ElectronicMediaDocuments = ({ back }) => {
               <p className="txt-white">Site</p>
             </Hexagon>
             <Separator />
-            <Hexagon className="wine" onClick={() => setState(6)}>
+            <Hexagon className="wine" onClick={() => {}}>
               <p className="txt-white">Artigo de blog</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(2)} className="wine">
+            <Hexagon onClick={() => {}} className="wine">
               <p className="txt-white">Software e jogo eletrônico</p>
             </Hexagon>
             <Title> DOCUMENTO DE MEIO ELETRÔNICO </Title>
-            <Hexagon onClick={() => setState(5)} className="wine">
-              <p className="txt-white">
-                Postagem de rede social
-              </p>
+            <Hexagon onClick={() => {}} className="wine">
+              <p className="txt-white">Postagem de rede social</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(3)} className="wine">
+            <Hexagon onClick={() => {}} className="wine">
               <p className="txt-white">Apresentação de slides</p>
             </Hexagon>
             <Separator />
