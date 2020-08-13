@@ -31,24 +31,24 @@ const ElectronicMediaDocuments = ({ back }) => {
               <p className="txt-white">Site</p>
             </Hexagon>
             <Separator />
-            <Hexagon className="wine" onClick={() => {}}>
+            <Hexagon className="wine" onClick={() => setState(6)} >
               <p className="txt-white">Artigo de blog</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => {}} className="wine">
+            <Hexagon onClick={() =>  setState(2)} className="wine">
               <p className="txt-white">Software e jogo eletrônico</p>
             </Hexagon>
             <Title> DOCUMENTO DE MEIO ELETRÔNICO </Title>
-            <Hexagon onClick={() => {}} className="wine">
+            <Hexagon onClick={() => setState(5)} className="wine">
               <p className="txt-white">Postagem de rede social</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => {}} className="wine">
-              <p className="txt-white">Apresentação de slides</p>
+            <Hexagon onClick={() => setState(3)} className="wine">
+              <p className="txt-white">Apresentação <br/>de slides</p>
             </Hexagon>
             <Separator />
             <Hexagon onClick={() => setState(4)} className="wine">

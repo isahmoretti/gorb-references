@@ -109,7 +109,7 @@ const Site = ({ back }) => {
                             <Title>
                                 <p style={{
                                     fontSize: '20px'
-                                }}>Medida Provisória</p>
+                                }}>Site(Homepage)</p>
                             </Title>
                         </Actions>
                         <Card>
