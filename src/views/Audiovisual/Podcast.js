@@ -137,7 +137,7 @@ const Podcast = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="locutors"
                       type="text"
@@ -150,7 +150,7 @@ const Podcast = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       name="hasInterviewee"
                       label="Tem entrevistado?"
@@ -166,7 +166,7 @@ const Podcast = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="nameInterviewee"
                       type="text"
@@ -179,7 +179,9 @@ const Podcast = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       name="location"
                       type="text"
@@ -192,7 +194,7 @@ const Podcast = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="date"
                       type="date"
@@ -207,7 +209,9 @@ const Podcast = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
                       name="url"
                       label="Disponível em"

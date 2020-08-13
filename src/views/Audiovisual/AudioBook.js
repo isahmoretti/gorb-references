@@ -138,7 +138,7 @@ const AudioBook = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="author"
                       type="text"
@@ -151,7 +151,7 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="ledor"
                       type="text"
@@ -164,7 +164,7 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       type="text"
@@ -177,7 +177,9 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="publication"
                       type="text"
@@ -190,7 +192,7 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="yaer"
                       type="text"
@@ -203,7 +205,7 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="specification"
                       type="text"
@@ -216,7 +218,9 @@ const AudioBook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Select
                       name="online"
                       label="Online"
@@ -232,20 +236,6 @@ const AudioBook = ({ back }) => {
                       ]}
                     />
                   </Grid>
-
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="url"
-                      label="Disponível em"
-                      type="text"
-                      placeholder="https://viacarreira.com/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="accessedAt"
@@ -257,6 +247,19 @@ const AudioBook = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="url"
+                      label="Disponível em"
+                      type="text"
+                      placeholder="https://viacarreira.com/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
                       errors={props.errors}
                       touched={props.touched}
                     />

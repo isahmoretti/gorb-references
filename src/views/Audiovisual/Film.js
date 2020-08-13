@@ -153,7 +153,7 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={2}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="productor"
                       label="Produtor"
@@ -167,7 +167,7 @@ const AdministrativeActs = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={2}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="screenwriter"
                       label="Roterista"
@@ -181,7 +181,7 @@ const AdministrativeActs = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="interpreters"
                       label="Intérpretes"
@@ -196,7 +196,7 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="location"
                       label="Local"
@@ -209,7 +209,7 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="company"
                       label="Emprsa produtora ou distribuidora"
@@ -222,9 +222,7 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="year"
                       label="Ano de publicação"
@@ -237,7 +235,9 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       name="colorful"
                       label="Colorido ?"
@@ -253,7 +253,7 @@ const AdministrativeActs = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       name="sound"
                       label="Som ?"
@@ -269,7 +269,7 @@ const AdministrativeActs = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       name="suport"
                       label="Suporte Físico?"
@@ -300,7 +300,7 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="specificationSuport"
                       label="Especificação física do suporte"
@@ -313,7 +313,7 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="duration"
                       label="Duração do filme"
@@ -326,7 +326,7 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       name="subtitled"
                       label="Legendado? "
@@ -342,7 +342,7 @@ const AdministrativeActs = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="whatSubtitled"
                       label="Qual língua?"
@@ -357,7 +357,7 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="serie"
                       label="Série"
@@ -370,7 +370,7 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="notes"
                       label="Nota"

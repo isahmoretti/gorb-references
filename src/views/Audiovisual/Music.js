@@ -117,7 +117,7 @@ const Music = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="title"
                       type="text"
@@ -130,7 +130,7 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="interpreters"
                       type="text"
@@ -143,9 +143,7 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="composer"
                       type="text"
@@ -158,6 +156,8 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       name="titleAlbum"
@@ -184,7 +184,9 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="location"
                       label="Local"
@@ -197,9 +199,7 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="recordCompany"
                       type="text"
@@ -212,7 +212,7 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="yaer"
                       type="text"
@@ -225,38 +225,37 @@ const Music = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Select
-                      name="suport"
-                      label="Suporte físico? "
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.suport}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="whatSuport"
-                      label="Qual suporte"
+                      name="duration"
+                      label="Duração"
                       type="text"
-                      placeholder="Ex: 1 disco vinil, lado A, faixa 4, (3 min)"
+                      placeholder="Ex: 4 min"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.whatSuport}
+                      value={props.values.duration}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={9}>
+                    <Input
+                      name="specificationSuport"
+                      label="Especificações do suporte"
+                      type="text"
+                      placeholder="Ex: 33 1/3 rpm, estéreo., 12 pol."
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.specificationSuport}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
                       name="url"
                       label="Disponível em"
@@ -285,34 +284,7 @@ const Music = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="duration"
-                      label="Duração"
-                      type="text"
-                      placeholder="Ex: 4 min"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.duration}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="specificationSuport"
-                      label="Especificações do suporte"
-                      type="text"
-                      placeholder="Ex: 33 1/3 rpm, estéreo., 12 pol."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.specificationSuport}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
+
                 <Row container className="end">
                   <Button
                     variant="outlined"

@@ -96,7 +96,7 @@ const VideoInternet = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={12}>
                     <Input
                       type="text"
                       label="Título do vídeo"
@@ -109,7 +109,9 @@ const VideoInternet = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
                       label="Ano"
@@ -122,9 +124,7 @@ const VideoInternet = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="time"
                       type="text"
@@ -150,7 +150,7 @@ const VideoInternet = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
                       name="url"
                       label="Disponível em"

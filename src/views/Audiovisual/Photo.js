@@ -131,7 +131,7 @@ const Photo = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="date"
                       type="date"
@@ -146,7 +146,7 @@ const Photo = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="specification"
                       type="text"
@@ -159,7 +159,7 @@ const Photo = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="elements"
                       type="text"
@@ -172,19 +172,8 @@ const Photo = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="url"
-                      label="Disponível em"
-                      type="text"
-                      placeholder="https://viacarreira.com/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Select
                       name="online"
@@ -212,6 +201,19 @@ const Photo = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="url"
+                      label="Disponível em"
+                      type="text"
+                      placeholder="https://viacarreira.com/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
                       errors={props.errors}
                       touched={props.touched}
                     />
