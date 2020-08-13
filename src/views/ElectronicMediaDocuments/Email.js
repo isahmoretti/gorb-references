@@ -104,7 +104,7 @@ const Email = ({ back }) => {
                             <Title>
                                 <p style={{
                                     fontSize: '20px'
-                                }}>Medida Provisória</p>
+                                }}>Email</p>
                             </Title>
                         </Actions>
                         <Card>

@@ -180,7 +180,7 @@ const Book = ({ back }) => {
                                   <div style={{ display: "flex", width: "100%" }}>
                                     <Input
                                       type="text"
-                                      label={`${index + 1}º Author`}
+                                      label={`${index + 1}º Autor`}
                                       name={`authors.${index}`}
                                       placeholder={`nome do ${index + 1}º autor`}
                                       onChange={props.handleChange}
