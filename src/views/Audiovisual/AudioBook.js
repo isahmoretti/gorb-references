@@ -21,29 +21,29 @@ import { generateCitationWithoutAuthor } from "../../utils/generateCitationWitho
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  jurisdiction: Yup.string().required("Obrigatório"),
-  nameOfTheNotaryOrIssuingBody: Yup.string().required("Obrigatório"),
-  documentType: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  ledor: Yup.string().required("Obrigatório"),
+  publication: Yup.string().required("Obrigatório"),
+  yaer: Yup.string().required("Obrigatório"),
+  specification: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
-    jurisdiction,
-    nameOfTheNotaryOrIssuingBody,
-    documentType,
-    registrationDate,
-    complementaryElement,
+    title,
+    subtitle,
+    author,
+    ledor,
+    location,
+    publication,
+    yaer,
+    specification,
+    online,
+    url,
+    accessedAt,
   } = values;
 
-  return (
-    <span>
-      {jurisdiction && <>{jurisdiction}. </>}
-      {nameOfTheNotaryOrIssuingBody && <>{nameOfTheNotaryOrIssuingBody}. </>}
-      {documentType && <b>{documentType}. </b>}
-      {registrationDate && <>Registro em:{formatDate(registrationDate)}. </>}
-      {complementaryElement && <>{complementaryElement}. </>}
-    </span>
-  );
+  return <span></span>;
 };
 
 const AudioBook = ({ back }) => {

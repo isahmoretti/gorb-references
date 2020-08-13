@@ -22,49 +22,40 @@ import { generateCitationWithoutAuthor } from "../../utils/generateCitationWitho
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // jurisdiction: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  director: Yup.string().required("Obrigatório"),
+  productor: Yup.string().required("Obrigatório"),
+  location: Yup.string().required("Obrigatório"),
+  company: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
-    author,
-    responsible,
-    type,
-    number,
-    dateDoc,
-    menu,
-    notes,
-    publication,
+    title,
+    director,
+    productor,
+    screenwriter,
+    interpreters,
     location,
+    company,
     year,
-    numberl,
-    page,
-    yearPublication,
+    colorful,
+    sound,
+    suport,
+    whatSuport,
+    specificationSuport,
+    durantion,
+    subtitled,
+    whatSubtitled,
+    serie,
+    notes,
     online,
     url,
     accessedAt,
   } = values;
 
-  return (
-    <span>
-      {`${author.toUpperCase()}. `}
-      {`${responsible}. `}
-      {`${type} `}
-      {`nº ${number}, `}
-      {`${dateDoc}. `}
-      {`${menu}. `}
-      <b>{publication}: </b>
-      {`${location}, `}
-      {`ano ${year}, `}
-      {`n. ${numberl}, `}
-      {`p. ${page}, `}
-      {yearPublication && `${formatDate(yearPublication)}. `}
-      {online &&
-        accessedAt &&
-        url &&
-        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-    </span>
-  );
+  return <span></span>;
 };
 
 const AdministrativeActs = ({ back }) => {

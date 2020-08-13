@@ -21,29 +21,33 @@ import { generateCitationWithoutAuthor } from "../../utils/generateCitationWitho
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  jurisdiction: Yup.string().required("Obrigatório"),
-  nameOfTheNotaryOrIssuingBody: Yup.string().required("Obrigatório"),
-  documentType: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  interpreters: Yup.string().required("Obrigatório"),
+  titleAlbum: Yup.string().required("Obrigatório"),
+  interpretersAlbum: Yup.string().required("Obrigatório"),
+  recordCompany: Yup.string().required("Obrigatório"),
+  yaer: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
-    jurisdiction,
-    nameOfTheNotaryOrIssuingBody,
-    documentType,
-    registrationDate,
-    complementaryElement,
+    title,
+    interpreters,
+    composer,
+    titleAlbum,
+    interpretersAlbum,
+    location,
+    recordCompany,
+    yaer,
+    suport,
+    whatSuport,
+    url,
+    accessedAt,
+    duration,
+    specificationSuport,
   } = values;
 
-  return (
-    <span>
-      {jurisdiction && <>{jurisdiction}. </>}
-      {nameOfTheNotaryOrIssuingBody && <>{nameOfTheNotaryOrIssuingBody}. </>}
-      {documentType && <b>{documentType}. </b>}
-      {registrationDate && <>Registro em:{formatDate(registrationDate)}. </>}
-      {complementaryElement && <>{complementaryElement}. </>}
-    </span>
-  );
+  return <span></span>;
 };
 
 const Music = ({ back }) => {

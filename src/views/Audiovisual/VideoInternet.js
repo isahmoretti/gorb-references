@@ -20,29 +20,18 @@ import { generateCitationWithoutAuthor } from "../../utils/generateCitationWitho
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  jurisdiction: Yup.string().required("Obrigatório"),
-  nameOfTheNotaryOrIssuingBody: Yup.string().required("Obrigatório"),
-  documentType: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
+  time: Yup.string().required("Obrigatório"),
+  responsible: Yup.string().required("Obrigatório"),
+  url: Yup.string().required("Obrigatório"),
+  accessedAt: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
-  const {
-    jurisdiction,
-    nameOfTheNotaryOrIssuingBody,
-    documentType,
-    registrationDate,
-    complementaryElement,
-  } = values;
+  const { title, year, time, responsible, url, accessedAt } = values;
 
-  return (
-    <span>
-      {jurisdiction && <>{jurisdiction}. </>}
-      {nameOfTheNotaryOrIssuingBody && <>{nameOfTheNotaryOrIssuingBody}. </>}
-      {documentType && <b>{documentType}. </b>}
-      {registrationDate && <>Registro em:{formatDate(registrationDate)}. </>}
-      {complementaryElement && <>{complementaryElement}. </>}
-    </span>
-  );
+  return <span></span>;
 };
 
 const VideoInternet = ({ back }) => {
