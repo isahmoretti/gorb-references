@@ -21,6 +21,7 @@ import Book from "../Book";
 import AcademicWork from "../AcademicWork";
 import JuridicDocument from "../JuridicDocument";
 import ElectronicMediaDocuments from "../ElectronicMediaDocuments";
+import Audiovisual from "../Audiovisual";
 
 const Dashboard = () => {
   const [state, setState] = useState(0);
@@ -69,7 +70,7 @@ const Dashboard = () => {
                 <p className="txt-white">Eventos</p>
               </Hexagon>
               <Separator />
-              <Hexagon className="violet">
+              <Hexagon onClick={() => setState(3)} className="violet">
                 <p className="txt-white">
                   Documentos <br />
                   audiovisuais
@@ -84,8 +85,9 @@ const Dashboard = () => {
         )}
         {state === 1 && <Book back={() => setState(0)} />}
         {state === 2 && <AcademicWork back={() => setState(0)} />}
-        {state === 6 && <JuridicDocument back={() => setState(0)} />}
+        {state === 3 && <Audiovisual back={() => setState(0)} />}
         {state === 5 && <ElectronicMediaDocuments back={() => setState(0)} />}
+        {state === 6 && <JuridicDocument back={() => setState(0)} />}
       </Conatiner>
 
       {state !== 0 && (
