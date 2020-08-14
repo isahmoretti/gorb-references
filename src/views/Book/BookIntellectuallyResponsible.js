@@ -8,8 +8,8 @@ import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 import { formatAuthorName } from "../../utils/formatAuthorName";
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -42,7 +42,6 @@ const SignupSchema = Yup.object().shape({
   yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
-
 const getResposabilityTypes = (responsabiltyTypes) => {
   switch (responsabiltyTypes) {
     case "organizator":
@@ -57,14 +56,14 @@ const getResposabilityTypes = (responsabiltyTypes) => {
 };
 
 const getNamesResponsible = (namesResponsible) => {
-  if(namesResponsible.length >=4 ){
-    return formatAuthorName(namesResponsible)
+  if (namesResponsible.length >= 4) {
+    return formatAuthorName(namesResponsible);
   }
-  
-  const name = formatAuthorName(namesResponsible)
+
+  const name = formatAuthorName(namesResponsible);
 
   return name.slice(0, name.length - 2);
-}
+};
 
 const generateReference = (values) => {
   const {
@@ -141,8 +140,14 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values.namesResponsible, values.yearOfPublication),
-      citation: generateCitationWithoutAuthor(values.namesResponsible, values.yearOfPublication),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.namesResponsible,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.namesResponsible,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -154,6 +159,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           namesResponsible: [""],
+          abbreviate: "",
           responbiltyTypes: "",
           title: "",
           caption: "",
@@ -272,6 +278,22 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="abbreviate"
+                      label="abreviar autor?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.abbreviate}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Select
                       type="text"
@@ -289,7 +311,7 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
                       label="Título"

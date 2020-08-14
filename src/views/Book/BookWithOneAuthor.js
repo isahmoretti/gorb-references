@@ -15,8 +15,8 @@ import Modal from "../../components/Modal";
 //utils
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 // styles
 import {
   Container,
@@ -66,7 +66,8 @@ const generateReference = (values) => {
       <>{formatAuthorName(author)}</>
       {caption ? (
         <>
-          <b>{title}: </b><>{caption}. </>
+          <b>{title}: </b>
+          <>{caption}. </>
         </>
       ) : (
         <b>{title}. </b>
@@ -105,8 +106,14 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values.author, values.yearOfPublication),
-      citation: generateCitationWithoutAuthor(values.author, values.yearOfPublication),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.author,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.author,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -119,6 +126,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           author: "",
+          abbreviate: "",
           title: "",
           caption: "",
           edition: "",
@@ -170,7 +178,24 @@ const Book = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="abbreviate"
+                      label="abreviar autor?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.abbreviate}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
                       label="Título"
@@ -281,11 +306,17 @@ const Book = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                <Grid item xs={12} sm={12} md={3}     style={{
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={3}
+                    style={{
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "flex-end",
-                    }}>
+                    }}
+                  >
                     <Select
                       type="text"
                       label="Elementos complementares"

@@ -15,8 +15,8 @@ import Modal from "../../components/Modal";
 // utils
 import { formatAuthorName } from "../../utils/formatAuthorName";
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 
 // styles
 import {
@@ -75,8 +75,8 @@ const generateReference = (values) => {
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName.join("; ")}.</>
       )}
@@ -115,8 +115,14 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values.authors, values.yearOfPublication),
-      citation: generateCitationWithoutAuthor(values.authors, values.yearOfPublication),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -129,6 +135,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           authors: ["", "", "", ""],
+          abbreviate: "",
           title: "",
           caption: "",
           edition: "",
@@ -174,68 +181,84 @@ const Book = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.authors &&
-                            props.values.authors.length > 0 ? (
-                              props.values.authors.map((author, index) => (
-                                <FieldArrayContainer key={index}>
-                                  <div style={{ display: "flex", width: "100%" }}>
-                                    <Input
-                                      type="text"
-                                      label={`${index + 1}º Autor`}
-                                      name={`authors.${index}`}
-                                      placeholder={`nome do ${index + 1}º autor`}
-                                      onChange={props.handleChange}
-                                      onBlur={props.handleBlur}
-                                      value={author}
-                                      errors={props.errors}
-                                      touched={props.touched}
-                                    />
-                                    {index > 3 && (
+                          props.values.authors.length > 0 ? (
+                            props.values.authors.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div style={{ display: "flex", width: "100%" }}>
+                                  <Input
+                                    type="text"
+                                    label={`${index + 1}º Autor`}
+                                    name={`authors.${index}`}
+                                    placeholder={`nome do ${index + 1}º autor`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 3 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.remove("")}
+                                    >
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                  )}
+                                  {index === props.values.authors.length - 1 &&
+                                    index >= 3 && (
                                       <ButtonCore
                                         type="button"
-                                        onClick={() => arrayHelpers.remove("")}
+                                        onClick={() => arrayHelpers.push("")}
                                       >
-                                        <RemoveIcon />
+                                        <AddIcon />
                                       </ButtonCore>
                                     )}
-                                    {index === props.values.authors.length - 1 &&
-                                      index >= 3 && (
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon />
-                                        </ButtonCore>
-                                      )}
-                                  </div>
-                                  <div
-                                    style={{
-                                      width: "100%",
-                                      marginBottom: "10px",
-                                    }}
-                                  >
-                                    <ErrorText>
-                                      {props.errors &&
-                                        props.errors.authors &&
-                                        props.errors.authors[index]}
-                                    </ErrorText>
-                                  </div>
-                                </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                                </div>
+                                <div
+                                  style={{
+                                    width: "100%",
+                                    marginBottom: "10px",
+                                  }}
+                                >
+                                  <ErrorText>
+                                    {props.errors &&
+                                      props.errors.authors &&
+                                      props.errors.authors[index]}
+                                  </ErrorText>
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="abbreviate"
+                      label="abreviar autor?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.abbreviate}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Título"
@@ -248,7 +271,7 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
                       label="Subtítulo"
@@ -346,7 +369,7 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3} >
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       disabled={!props.values.complementaryElements}
                       type="text"
@@ -477,58 +500,58 @@ const Book = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.translatorName &&
-                            props.values.translatorName.length > 0 ? (
-                              props.values.translatorName.map((author, index) => (
-                                <FieldArrayContainer key={index}>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      width: "100%",
-                                      marginBottom: 10,
-                                    }}
-                                  >
-                                    <Input
-                                      disabled={
-                                        !props.values.complementaryElements ||
-                                        !props.values.translator
-                                      }
-                                      type="text"
-                                      label={`Tradutor ${index + 1}`}
-                                      onChange={props.handleChange}
-                                      onBlur={props.handleBlur}
-                                      value={author}
-                                      name={`translatorName.${index}`}
-                                      errors={props.errors}
-                                      touched={props.touched}
-                                    />
-                                    {index > 0 && (
-                                      <ButtonCore
-                                        type="button"
-                                        onClick={() => arrayHelpers.remove(index)}
-                                      >
-                                        <RemoveIcon />
-                                      </ButtonCore>
-                                    )}
-                                    {index ===
-                                      props.values.translatorName.length - 1 && (
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon />
-                                        </ButtonCore>
-                                      )}
-                                  </div>
-                                </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Adicione um tradutor
-                              </ButtonCore>
-                            )}
+                          props.values.translatorName.length > 0 ? (
+                            props.values.translatorName.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <Input
+                                    disabled={
+                                      !props.values.complementaryElements ||
+                                      !props.values.translator
+                                    }
+                                    type="text"
+                                    label={`Tradutor ${index + 1}`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    name={`translatorName.${index}`}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 0 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    >
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                  )}
+                                  {index ===
+                                    props.values.translatorName.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Adicione um tradutor
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />

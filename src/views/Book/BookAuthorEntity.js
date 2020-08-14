@@ -15,10 +15,10 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 
-// styles 
+// styles
 import {
   Container,
   Card,
@@ -68,15 +68,24 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      <>{entities.length && entities.length < 4 ? entities.join("; ").toUpperCase() : <>{entities[0].toUpperCase()} <i>et al.</i></>}. </>
+      <>
+        {entities.length && entities.length < 4 ? (
+          entities.join("; ").toUpperCase()
+        ) : (
+          <>
+            {entities[0].toUpperCase()} <i>et al.</i>
+          </>
+        )}
+        .{" "}
+      </>
       {caption ? (
         <>
           <b>{title}: </b>
           {caption}.{" "}
         </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName.join("; ")}. </>
       )}
@@ -116,8 +125,14 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values.entities, values.yearOfPublication),
-      citation: generateCitationWithoutAuthor(values.entities, values.yearOfPublication),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.entities,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.entities,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -130,6 +145,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           entities: [""],
+          abbreviate: "",
           title: "",
           caption: "",
           edition: "",
@@ -169,73 +185,89 @@ const Book = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={12}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <FieldArray
                       name="entities"
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.entities &&
-                            props.values.entities.length > 0 ? (
-                              props.values.entities.map((entity, index) => (
-                                <FieldArrayContainer key={index}>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      width: "100%",
-                                      marginBottom: 10,
-                                    }}
-                                  >
-                                    <Input
-                                      type="text"
-                                      label={`${index + 1}º Entidade`}
-                                      placeholder={`Nome da ${
-                                        index + 1
-                                        }º entidade`}
-                                      onChange={props.handleChange}
-                                      onBlur={props.handleBlur}
-                                      value={entity}
-                                      name={`entities.${index}`}
-                                      errors={props.errors}
-                                      touched={props.touched}
-                                    />
-                                    {index > 0 && (
-                                      <ButtonCore
-                                        type="button"
-                                        disabled={index === 0}
-                                        onClick={() => arrayHelpers.remove(index)}
-                                      >
-                                        <RemoveIcon />
-                                      </ButtonCore>
-                                    )}
-                                    {index ===
-                                      props.values.entities.length - 1 && (
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon />
-                                        </ButtonCore>
-                                      )}
-                                  </div>
-                                  <div style={{ width: "100%" }}>
-                                    <ErrorText>
-                                      {props.errors &&
-                                        props.errors.entities &&
-                                        props.errors.entities[index]}
-                                    </ErrorText>
-                                  </div>
-                                </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                          props.values.entities.length > 0 ? (
+                            props.values.entities.map((entity, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <Input
+                                    type="text"
+                                    label={`${index + 1}º Entidade`}
+                                    placeholder={`Nome da ${
+                                      index + 1
+                                    }º entidade`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={entity}
+                                    name={`entities.${index}`}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 0 && (
+                                    <ButtonCore
+                                      type="button"
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    >
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                  )}
+                                  {index ===
+                                    props.values.entities.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                                <div style={{ width: "100%" }}>
+                                  <ErrorText>
+                                    {props.errors &&
+                                      props.errors.entities &&
+                                      props.errors.entities[index]}
+                                  </ErrorText>
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="abbreviate"
+                      label="abreviar autor?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.abbreviate}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
                     />
                   </Grid>
                 </Grid>
@@ -433,59 +465,59 @@ const Book = ({ back }) => {
                       render={(arrayHelpers) => (
                         <div>
                           {props.values.translatorName &&
-                            props.values.translatorName.length > 0 ? (
-                              props.values.translatorName.map((author, index) => (
-                                <FieldArrayContainer key={index}>
-                                  <div
-                                    style={{
-                                      display: "flex",
-                                      width: "100%",
-                                      marginBottom: 10,
-                                    }}
-                                  >
-                                    <Input
-                                      disabled={
-                                        !props.values.complementaryElements ||
-                                        !props.values.translator
-                                      }
-                                      type="text"
-                                      label={`Tradutor ${index + 1}`}
-                                      onChange={props.handleChange}
-                                      onBlur={props.handleBlur}
-                                      value={author}
-                                      name={`translatorName.${index}`}
-                                      errors={props.errors}
-                                      touched={props.touched}
-                                    />
-                                    {index > 0 && (
-                                      <ButtonCore
-                                        type="button"
-                                        disabled={index === 0}
-                                        onClick={() => arrayHelpers.remove(index)}
-                                      >
-                                        <RemoveIcon />
-                                      </ButtonCore>
-                                    )}
-                                    {index ===
-                                      props.values.translatorName.length - 1 && (
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon />
-                                        </ButtonCore>
-                                      )}
-                                  </div>
-                                </FieldArrayContainer>
-                              ))
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Adicione um tradutor
-                              </ButtonCore>
-                            )}
+                          props.values.translatorName.length > 0 ? (
+                            props.values.translatorName.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <Input
+                                    disabled={
+                                      !props.values.complementaryElements ||
+                                      !props.values.translator
+                                    }
+                                    type="text"
+                                    label={`Tradutor ${index + 1}`}
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    name={`translatorName.${index}`}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 0 && (
+                                    <ButtonCore
+                                      type="button"
+                                      disabled={index === 0}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    >
+                                      <RemoveIcon />
+                                    </ButtonCore>
+                                  )}
+                                  {index ===
+                                    props.values.translatorName.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Adicione um tradutor
+                            </ButtonCore>
+                          )}
                         </div>
                       )}
                     />

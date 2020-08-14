@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Collapse } from "@material-ui/core";
+
 import { Formik, Field, FieldArray } from "formik";
 
 import * as Yup from "yup";
@@ -15,8 +17,8 @@ import Modal from "../../components/Modal";
 // utils
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 // styles
 import {
@@ -105,8 +107,8 @@ const generateReference = (values) => {
           {chapterCaption}.{" "}
         </>
       ) : (
-          <>{chapterTitle}. </>
-        )}
+        <>{chapterTitle}. </>
+      )}
       {/* ÚLTIMO NOME, Primeiro nome do autor */}
       {chapterAuthors && (
         <>
@@ -114,13 +116,18 @@ const generateReference = (values) => {
           <i>In</i>: {lastNameAuthorship}, {firstNameAuthorship[0]}.
         </>
       )}
-      {responsabilityType && <> {getResposabilityTypes(responsabilityType)}. </>}
+      {responsabilityType && (
+        <> {getResposabilityTypes(responsabilityType)}. </>
+      )}
       {/* Titulo da obra */}
       {caption ? (
-        <><b> {title}: </b>{caption}. </>
+        <>
+          <b> {title}: </b>
+          {caption}.{" "}
+        </>
       ) : (
-          <b>{title}. </b>
-        )}
+        <b>{title}. </b>
+      )}
       {}
       {complementaryElements && translator && translatorName.length && (
         <> Tradução: {translatorName}.</>
@@ -129,7 +136,6 @@ const generateReference = (values) => {
       {complementaryElements && volume && <> v.{volume}, </>}
       {local}: {publishingCompany}, {yearOfPublication}.
       {complementaryElements && chapter && <> Cap. {chapter}.</>}
-
       {captionPageInit &&
         captionPageFinish &&
         `p. ${captionPageInit}-${captionPageFinish}, `}
@@ -155,6 +161,8 @@ const Book = ({ back }) => {
     clearInitialValues: false,
   });
 
+  const [collapse, setCollapase] = useState(false);
+
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = (values) => {
@@ -162,11 +170,21 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(values.chapterAuthors, values.yearOfPublication),
-      citation: generateCitationWithoutAuthor(values.chapterAuthors, values.yearOfPublication),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.chapterAuthors,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.chapterAuthors,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
+  };
+
+  const handleSetCollapse = () => {
+    setCollapase(!collapse);
   };
 
   return (
@@ -215,265 +233,66 @@ const Book = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Capítulo de livro{" "}<br />
-                  Informações sobre a obra toda
+                  Capítulo de livro Informações sobre a obra toda
                 </p>
               </Title>
             </Actions>
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Select
-                      type="text"
-                      label="Tipo do autor"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.authorType}
-                      name="authorType"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "person", name: "Pessoa" },
-                        { value: "entitie", name: "Entidade" },
-                        { value: "withoutAuthorship", name: "Sem autoria" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Select
-                      type="text"
-                      label="Tipo de responsabilidade"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.responsabilityType}
-                      name="responsabilityType"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "author", name: "Autor" },
-                        { value: "organizator", name: "Organizador" },
-                        { value: "coordinator", name: "Coordenador" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Autoria do livro"
-                      placeholder="Nome e sobrenome do autor do livro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.authorship}
-                      name="authorship"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Título do Livro"
-                      placeholder="Título do livro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      name="title"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Subtítulo do Livro"
-                      placeholder="Subtítulo do livro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      name="caption"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local de publicação"
-                      placeholder="Ex: São Paulo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.local}
-                      name="local"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Empresa de publicação(editora)"
-                      placeholder="Ex: Objetivo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Edição"
-                      placeholder="Ex: 4"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.edition}
-                      name="edition"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Ano de publicação"
-                      placeholder="Ex: 2010"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
-                      name="yearOfPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      type="text"
-                      label="Elementos complementares"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.complementaryElements}
-                      name="complementaryElements"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Séries e coleções"
-                      placeholder="Ex: Grandes Autores Nacionais"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.series}
-                      name="series"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Nota"
-                      placeholder="Ex: Informações complementares"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.grades}
-                      name="grades"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="ISBN"
-                      placeholder="EX: 9788535238693"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.isbn}
-                      name="isbn"
-                      errors={props.errors}
-                      touched={props.touched}
-                      help
-                      helpText="Número de livro padrão internacional"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4} style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
-                    <Input
-                      type="text"
-                      label="Título do capítulo"
-                      placeholder="Título do capítulo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.chapterTitle}
-                      name="chapterTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5} style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                  }}>
-                    <Input
-                      type="text"
-                      label="Subtítulo do capítulo"
-                      placeholder="Subtítulo do capítulo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionChapter}
-                      name="chapterCaption"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <FieldArray
-                      name="chapterAuthors"
-                      render={(arrayHelpers) => (
-                        <div>
-                          {props.values.chapterAuthors &&
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Input
+                        type="text"
+                        label="Título do capítulo"
+                        placeholder="Título do capítulo"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.chapterTitle}
+                        name="chapterTitle"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Input
+                        type="text"
+                        label="Subtítulo do capítulo"
+                        placeholder="Subtítulo do capítulo"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.captionChapter}
+                        name="chapterCaption"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
+                        name="chapterAuthors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.chapterAuthors &&
                             props.values.chapterAuthors.length > 0 ? (
                               props.values.chapterAuthors.map(
                                 (chapterAuthor, index) => (
@@ -534,177 +353,425 @@ const Book = ({ back }) => {
                                 Add a author
                               </ButtonCore>
                             )}
-                        </div>
-                      )}
-                    />
+                          </div>
+                        )}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Páginas do capítulo (início)"
+                        placeholder="Ex: 45"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.captionPageInit}
+                        name="captionPageInit"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Páginas do capítulo (fim)"
+                        placeholder="Ex: 67"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.captionPageFinish}
+                        name="captionPageFinish"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Capítulo"
+                        placeholder="Ex: 24"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.chapter}
+                        name="chapter"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Páginas do capítulo (início)"
-                      placeholder="Ex: 45"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionPageInit}
-                      name="captionPageInit"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Páginas do capítulo (fim)"
-                      placeholder="Ex: 67"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionPageFinish}
-                      name="captionPageFinish"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Capítulo"
-                      placeholder="Ex: 24"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.chapter}
-                      name="chapter"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={4}
-                  >
-                    <Select
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Tradutor"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.translator}
-                      name="translator"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
 
+                <div
+                  onClick={handleSetCollapse}
+                  style={{
+                    width: "100%",
+                    height: 50,
+                    backgroundColor: "#e6e6e6",
+                    borderRadius: 5,
 
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={5}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      type="text"
-                      label="Nome do tradutor"
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.translator
-                      }
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.translatorName}
-                      name="translatorName"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                    margin: "20px 0",
+                    cursor: "pointer",
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {collapse
+                    ? "Fechar informações"
+                    : "Abrir informações sobre a obra toda"}
+                </div>
+
+                <Collapse in={collapse}>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Select
+                        type="text"
+                        label="Tipo do autor"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.authorType}
+                        name="authorType"
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: "person", name: "Pessoa" },
+                          { value: "entitie", name: "Entidade" },
+                          { value: "withoutAuthorship", name: "Sem autoria" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Select
+                        type="text"
+                        label="Tipo de responsabilidade"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.responsabilityType}
+                        name="responsabilityType"
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: "author", name: "Autor" },
+                          { value: "organizator", name: "Organizador" },
+                          { value: "coordinator", name: "Coordenador" },
+                        ]}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={9}>
+                      <Input
+                        type="text"
+                        label="Autoria do livro"
+                        placeholder="Nome e sobrenome do autor do livro"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.authorship}
+                        name="authorship"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        name="abbreviate"
+                        label="abreviar autor?"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.abbreviate}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Input
+                        type="text"
+                        label="Título do Livro"
+                        placeholder="Título do livro"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.title}
+                        name="title"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Subtítulo do Livro"
+                        placeholder="Subtítulo do livro"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.caption}
+                        name="caption"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Local de publicação"
+                        placeholder="Ex: São Paulo"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.local}
+                        name="local"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Empresa de publicação (editora)"
+                        placeholder="Ex: Objetivo"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.publishingCompany}
+                        name="publishingCompany"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        type="text"
+                        label="Edição"
+                        placeholder="Ex: 4"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.edition}
+                        name="edition"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        type="text"
+                        label="Ano de publicação"
+                        placeholder="Ex: 2010"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.yearOfPublication}
+                        name="yearOfPublication"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Volume"
+                        placeholder="Ex: 10"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.volume}
+                        name="volume"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
 
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={5}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Título original da obra"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.originalTitle}
-                      name="originalTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        type="text"
+                        label="Elementos complementares"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.complementaryElements}
+                        name="complementaryElements"
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="Séries e coleções"
+                        placeholder="Ex: Grandes Autores Nacionais"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.series}
+                        name="series"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="Nota"
+                        placeholder="Ex: Informações complementares"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.grades}
+                        name="grades"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Select
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Online"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      name="online"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Input
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="ISBN"
+                        placeholder="EX: 9788535238693"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.isbn}
+                        name="isbn"
+                        errors={props.errors}
+                        touched={props.touched}
+                        help
+                        helpText="Número de livro padrão internacional"
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Select
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="Tradutor"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.translator}
+                        name="translator"
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8} >
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="text"
-                      label="Endereço(URL)"
-                      placeholder="https://viacarreira.com/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Input
+                        type="text"
+                        label="Nome do tradutor"
+                        disabled={
+                          !props.values.complementaryElements ||
+                          !props.values.translator
+                        }
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.translatorName}
+                        name="translatorName"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <Input
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="Título original da obra"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.originalTitle}
+                        name="originalTitle"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="date"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      name="accessedAt"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        disabled={!props.values.complementaryElements}
+                        type="text"
+                        label="Online"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.online}
+                        name="online"
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        disabled={
+                          !props.values.complementaryElements ||
+                          !props.values.online
+                        }
+                        type="text"
+                        label="Endereço(URL)"
+                        placeholder="https://viacarreira.com/"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        name="url"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        disabled={
+                          !props.values.complementaryElements ||
+                          !props.values.online
+                        }
+                        type="date"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        name="accessedAt"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                </Grid>
+                </Collapse>
+
                 <Row container className="end">
                   <Button
                     variant="outlined"
@@ -727,10 +794,9 @@ const Book = ({ back }) => {
               />
             </Card>
           </form>
-        )
-        }
-      </Formik >
-    </Container >
+        )}
+      </Formik>
+    </Container>
   );
 };
 
