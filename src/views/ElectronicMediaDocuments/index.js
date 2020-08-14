@@ -26,18 +26,20 @@ const ElectronicMediaDocuments = ({ back }) => {
       {!state && (
         <Content>
           <Back onClick={back} />
-          <Row>
+          <Row className="ml">
+            <Hexagon className="wine">Sei la</Hexagon>
+            <Separator />
             <Hexagon onClick={() => setState(1)} className="wine">
               <p className="txt-white">Site</p>
             </Hexagon>
             <Separator />
-            <Hexagon className="wine" onClick={() => setState(6)} >
+            <Hexagon className="wine" onClick={() => setState(6)}>
               <p className="txt-white">Artigo de blog</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() =>  setState(2)} className="wine">
+            <Hexagon onClick={() => setState(2)} className="wine">
               <p className="txt-white">Software e jogo eletrônico</p>
             </Hexagon>
             <Title> DOCUMENTO DE MEIO ELETRÔNICO </Title>
@@ -46,14 +48,19 @@ const ElectronicMediaDocuments = ({ back }) => {
             </Hexagon>
           </Row>
 
-          <Row>
+          <Row className="mt">
             <Hexagon onClick={() => setState(3)} className="wine">
-              <p className="txt-white">Apresentação <br/>de slides</p>
+              <p className="txt-white">
+                Apresentação <br />
+                de slides
+              </p>
             </Hexagon>
             <Separator />
             <Hexagon onClick={() => setState(4)} className="wine">
               <p className="txt-white">E-mail</p>
             </Hexagon>
+            <Separator />
+            <Hexagon className="wine">Sei la</Hexagon>
           </Row>
         </Content>
       )}

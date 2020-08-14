@@ -45,6 +45,10 @@ export const Row = styled.div`
     margin-left: 205px;
   }
 
+  &.ml {
+    margin-left: -205px;
+  }
+
   @media only screen and (max-width: 600px) {
     height: 107px;
 
