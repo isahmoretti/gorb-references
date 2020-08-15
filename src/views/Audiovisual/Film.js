@@ -30,6 +30,23 @@ const SignupSchema = Yup.object().shape({
   year: Yup.string().required("Obrigatório"),
 });
 
+const citation1 = (title, yaer) => {
+  const frist = title.split(" ")[0];
+  const temp = title.split(" ")[0].toUpperCase();
+
+  const name = title.replace(frist, temp);
+
+  return `${name} (${yaer})`;
+};
+const citation2 = (title, yaer) => {
+  const frist = title.split(" ")[0];
+  const temp = title.split(" ")[0].toUpperCase();
+
+  const name = title.replace(frist, temp);
+
+  return `(${name}, ${yaer})`;
+};
+
 const generateReference = (values) => {
   const {
     title,
@@ -45,7 +62,7 @@ const generateReference = (values) => {
     suport,
     whatSuport,
     specificationSuport,
-    durantion,
+    duration,
     subtitled,
     whatSubtitled,
     serie,
@@ -55,7 +72,44 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  return <span></span>;
+  const formatTitle = (title) => {
+    const frist = title.split(" ")[0];
+    const temp = title.split(" ")[0].toUpperCase();
+
+    return title.replace(frist, temp);
+  };
+
+  // title: Yup.string().required("Obrigatório"),
+  // director: Yup.string().required("Obrigatório"),
+  // productor: Yup.string().required("Obrigatório"),
+  // location: Yup.string().required("Obrigatório"),
+  // company: Yup.string().required("Obrigatório"),
+  // year: Yup.string().required("Obrigatório"),
+
+  return (
+    <span>
+      {`${formatTitle(title)}. `}
+      {`Direção: ${director}. `}
+      {`Produção: ${productor}. `}
+      {interpreters && `Intérpretes: ${interpreters}. `}
+      {screenwriter && `Roteiro: ${screenwriter}. `}
+      {location ? `${location}: ` : `[S. l.]: `}
+      {`${company}, `}
+      {`${year}. `}
+      {specificationSuport && `${specificationSuport} `}
+      {duration && `(${duration}), `}
+      {suport && whatSuport && `${whatSuport}, `}
+      {sound && `son. `}
+      {colorful && `color. `}
+      {subtitled && whatSubtitled && `Legendado. ${whatSubtitled}. `}
+      {serie && `${serie}. `}
+      {notes && `${notes}. `}
+      {online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const AdministrativeActs = ({ back }) => {
@@ -71,6 +125,8 @@ const AdministrativeActs = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citation: citation2(values.title, values.year),
+      citationWithAuthor: citation1(values.title, values.year),
     }));
 
     setOpenModal(!openModal);
@@ -97,7 +153,7 @@ const AdministrativeActs = ({ back }) => {
           suport: "sim",
           whatSuport: "VHS",
           specificationSuport: "1 fta de vídeo",
-          durantion: "106min",
+          duration: "106min",
           subtitled: "sim",
           whatSubtitled: "Port",
           serie: "Série se Houver",
@@ -449,8 +505,8 @@ const AdministrativeActs = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

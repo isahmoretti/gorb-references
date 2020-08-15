@@ -47,7 +47,31 @@ const generateReference = (values) => {
     specificationSuport,
   } = values;
 
-  return <span></span>;
+  const formatTitle = (title) => {
+    const frist = title.split(" ")[0];
+    const temp = title.split(" ")[0].toUpperCase();
+
+    return title.replace(frist, temp);
+  };
+
+  return (
+    <span>
+      {`${formatTitle(title)}. `}
+      {`Intérprete: ${interpreters}. `}
+      {composer && `Compositor: ${composer}. `}
+      {`In: ${titleAlbum}. `}
+      {`Intérprete: ${interpretersAlbum}. `}
+      {location ? `${location}: ` : `[S. l.]: `}
+      {`${recordCompany}, `}
+      {`${yaer}. `}
+      {specificationSuport && `${specificationSuport}, `}
+      {suport && whatSuport && `${whatSuport}, `}
+      {duration && `(${duration}). `}
+      {accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const Music = ({ back }) => {
@@ -63,14 +87,6 @@ const Music = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -90,12 +106,12 @@ const Music = ({ back }) => {
           location: "São Paulo",
           recordCompany: "RCA Victor",
           yaer: "1988",
-          suport: "sim",
-          whatSuport: "1 disco vinil, lado A, faixa 4, (3 min)",
+          suport: true,
+          whatSuport: "1 disco vinil, lado A, faixa 4",
           url: "",
           accessedAt: "",
           duration: "4 min",
-          specificationSuport: "33 1/3 rpm, estéreo., 12 pol",
+          specificationSuport: "33 1/3 rpm, estéreo, 12 pol",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -221,6 +237,37 @@ const Music = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yaer}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="suport"
+                      label="Suporte Físico?"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.suport}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={9}>
+                    <Input
+                      name="whatSuport"
+                      label="Qual tipo de suporte"
+                      placeholder="Ex: VHS"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.whatSuport}
                       errors={props.errors}
                       touched={props.touched}
                     />

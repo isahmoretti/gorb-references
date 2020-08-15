@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
@@ -43,7 +44,29 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+      {formatAuthorName(author)}
+      {subtitle ? (
+        <span>
+          {" "}
+          <b>{`${title}: `}</b>
+          {`${subtitle}. `}{" "}
+        </span>
+      ) : (
+        <b> {`${title}. `} </b>
+      )}
+      {`Na voz de ${ledor}. `}
+      {location ? `${location}: ` : "[S.l.]: "}
+      {`${publication}, `}
+      {`${yaer}. `}
+      {`1 audiolivro ${specification}. `}
+      {online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const AudioBook = ({ back }) => {
@@ -59,14 +82,6 @@ const AudioBook = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
     }));
 
     setOpenModal(!openModal);

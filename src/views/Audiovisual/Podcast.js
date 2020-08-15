@@ -43,7 +43,29 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+      {subtitle
+        ? `${title.toUpperCase()}: ${subtitle}. `
+        : `${title.toUpperCase()}. `}
+      {`[Locução de]: ${locutors}. `}
+      {hasInterviewee &&
+        nameInterviewee &&
+        `Entrevistada: ${nameInterviewee}. `}
+      {location ? `${location}: ` : `[S.l.]: `}
+      {`${productor}, `}
+      {`${formatDate(date)}. `}
+      {accessedAt && url && (
+        <span>
+          {" "}
+          <i>Podcast.</i>
+          {` Disponível em: ${url}. Acesso em: ${formatDate(
+            accessedAt
+          )}. `}{" "}
+        </span>
+      )}
+    </span>
+  );
 };
 
 const Podcast = ({ back }) => {
@@ -59,14 +81,6 @@ const Podcast = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -78,10 +92,10 @@ const Podcast = ({ back }) => {
 
       <Formik
         initialValues={{
-          title: "Dragões de Garagem",
-          subtitle: "#137: vó Maria: vacinas e escolhas #semanadavacina",
+          title: "Dragões de Garagem #137",
+          subtitle: "vó Maria vacinas e escolhas #semanadavacina",
           locutors: "Barbara Paes",
-          hasInterviewee: "sim",
+          hasInterviewee: true,
           nameInterviewee: "Ex: Maria da Silva",
           location: "São Paulo",
           productor: "Dragões de Garagem",

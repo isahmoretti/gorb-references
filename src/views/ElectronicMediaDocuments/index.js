@@ -27,7 +27,7 @@ const ElectronicMediaDocuments = ({ back }) => {
         <Content>
           <Back onClick={back} />
           <Row className="ml">
-            <Hexagon className="wine">Sei la</Hexagon>
+            <Hexagon className="wine">Entidade X</Hexagon>
             <Separator />
             <Hexagon onClick={() => setState(1)} className="wine">
               <p className="txt-white">Site</p>
@@ -60,7 +60,7 @@ const ElectronicMediaDocuments = ({ back }) => {
               <p className="txt-white">E-mail</p>
             </Hexagon>
             <Separator />
-            <Hexagon className="wine">Sei la</Hexagon>
+            <Hexagon className="wine">Entidade X</Hexagon>
           </Row>
         </Content>
       )}

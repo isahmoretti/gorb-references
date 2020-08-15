@@ -31,7 +31,25 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const { title, year, time, responsible, url, accessedAt } = values;
 
-  return <span></span>;
+  const formatTitle = (title) => {
+    const frist = title.split(" ")[0];
+    const temp = title.split(" ")[0].toUpperCase();
+
+    return title.replace(frist, temp);
+  };
+
+  return (
+    <span>
+      {`${formatTitle(title)}. `}
+      {`[S. l.: s. n.], `}
+      {`${year}. `}
+      {`1 vídeo (${time}). `}
+      {`Publicado pelo ${responsible}. `}
+      {accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const VideoInternet = ({ back }) => {
@@ -47,14 +65,6 @@ const VideoInternet = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
     }));
 
     setOpenModal(!openModal);

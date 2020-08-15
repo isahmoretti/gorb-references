@@ -57,15 +57,12 @@ const generateReference = (values) => {
   } = values;
 
   let tempTitle = "";
-  console.log("test: ", !formatAuthorName(authors));
   if (!formatAuthorName(authors)) {
     const frist = title.split(" ")[0];
     const temp = title.split(" ")[0].toUpperCase();
 
     tempTitle = title.replace(frist, temp);
   }
-
-  console.log("temptitle: ", tempTitle);
 
   return (
     <span>

@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
@@ -39,7 +40,19 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+      {`${formatAuthorName(author)} `}
+      <b> {`${title}. `} </b>
+      {`${formatDate(date)}. `}
+      {`${specification}. `}
+      {elements && `${elements}. `}
+      {online &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+    </span>
+  );
 };
 
 const Photo = ({ back }) => {
@@ -55,14 +68,6 @@ const Photo = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
     }));
 
     setOpenModal(!openModal);
