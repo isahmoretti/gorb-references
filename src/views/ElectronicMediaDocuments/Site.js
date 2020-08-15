@@ -29,7 +29,6 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-    publicationDate: Yup.string().required("Obrigatório"),
     author: Yup.string().required("Obrigatório"),
     siteName: Yup.string().required("Obrigatório"),
     publishingCompany: Yup.string().required("Obrigatório"),
@@ -54,13 +53,12 @@ const generateReference = (values) => {
         <span>
             {author && <>{author}. </>}
             {siteName && <b>{siteName}. </b>}
-            {local && <>{local}: </>}
+            {local ? <>{local}: </> : <>[S.l.]. </>}
             {publishingCompany && <>{publishingCompany}, </>}
             {yearOfPublication && <>{yearOfPublication}. </>}
             {complementaryInformations && <b>{complementaryInformations}, </b>}
             {accessedAt &&
-                url &&
-                ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+                url && <>{` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}</>}
         </span>
     );
 };
@@ -78,8 +76,8 @@ const Site = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.author, values.yearOfPublication),
+            citation: generateCitationWithoutAuthor(values.author, values.yearOfPublication)
         }));
 
         setOpenModal(!openModal);

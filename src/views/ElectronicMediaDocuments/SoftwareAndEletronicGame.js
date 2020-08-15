@@ -51,11 +51,10 @@ const generateReference = (values) => {
 
     return (
         <span>
-            {title && <>{title}. </>}
-            {caption && <>{caption}. </>}
-            {editionOrVersion && <>{editionOrVersion}. </>}
-            {local && <>{local}. </>}
-            {producer && <>{producer}. </>}
+            <>{title}: {caption}. </>
+            {editionOrVersion && <>{editionOrVersion} </>}
+            {local && <>{local}: </>}
+            {producer && <>{producer}, </>}
             {releaseYear && <>{releaseYear}. </>}
             {supportSpecification && <>{supportSpecification}. </>}
         </span>
@@ -75,8 +74,8 @@ const SoftwareAndEletronicGame = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.title, values.releaseYear),
+            citation: generateCitationWithoutAuthor(values.title, values.releaseYear)
         }));
 
         setOpenModal(!openModal);

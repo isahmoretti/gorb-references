@@ -13,6 +13,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
+import { formatAuthorName } from '../../utils/formatAuthorName'
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -32,7 +33,6 @@ const SignupSchema = Yup.object().shape({
     sender: Yup.string().required("Obrigatório"),
     subject: Yup.string().required("Obrigatório"),
     recipient: Yup.string().required("Obrigatório"),
-    publicationLocal: Yup.string().required("Obrigatório"),
     sendDate: Yup.string().required("Obrigatório"),
     supportSpecification: Yup.string().required("Obrigatório"),
 });
@@ -49,15 +49,12 @@ const generateReference = (values) => {
 
     return (
         <span>
-            {sender && <>{sender}. </>}
+            {sender && <>{formatAuthorName(sender)}. </>}
             {subject && <b>{subject}. </b>}
-            {/* {local && <>{local}: </>}
-            {publishingCompany && <>{publishingCompany}, </>}
-            {yearOfPublication && <>{yearOfPublication}. </>}
-            {complementaryInformations && <b>{complementaryInformations}, </b>}
-            {accessedAt &&
-                url &&
-                ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `} */}
+            {<>Destinatário: {recipient}. </>}
+            {publicationLocal ? <>{publicationLocal}: </> : <>[S.l.]. </>}
+            {<>{formatDate(sendDate)}. </>}
+            {supportSpecification}.
         </span>
     );
 };
@@ -75,8 +72,8 @@ const Email = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.sender, values.sendDate),
+            citation: generateCitationWithoutAuthor(values.sender, values.sendDate)
         }));
 
         setOpenModal(!openModal);
@@ -145,8 +142,8 @@ const Email = ({ back }) => {
                                             placeholder="Ex: Rede de bibliotecas do SIBi"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.recipent}
-                                            name="recipent"
+                                            value={props.values.recipient}
+                                            name="recipient"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />

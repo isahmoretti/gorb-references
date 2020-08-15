@@ -14,6 +14,7 @@ import Select from "../../components/InputWrapper/Select";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
+import { formatAuthorName } from "../../utils/formatAuthorName"
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -33,6 +34,7 @@ const SignupSchema = Yup.object().shape({
     author: Yup.string().required("Obrigatório"),
     title: Yup.string().required("Obrigatório"),
     type: Yup.string().required("Obrigatório"),
+    year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -40,7 +42,9 @@ const generateReference = (values) => {
         author,
         title,
         caption,
-        date,
+        day,
+        month,
+        year,
         type,
         local,
         producer,
@@ -53,17 +57,43 @@ const generateReference = (values) => {
         accessedAt,
     } = values;
 
+    const getColorFormatted = (colorType) => {
+        console.log('colorType ---> ' ,colorType)
+        switch (colorType) {
+            case 'colorfull':
+                return `color`
+            case 'blackAndWhite':
+                return `P&B`
+            default:
+                break;
+        }
+
+        return
+    }
     return (
         <span>
-            {author && <>{author}. </>}
-            {title && <b>{title}. </b>}
-            {caption && <>{caption}: </>}
-            {date && <>{date}, </>}
-            {type && <>{type}. </>}
+            {author && <>{formatAuthorName(author)}</>}
+
+            {caption ? (
+                <>
+                    <b> {title}: </b>
+                    {caption}.{" "}
+                </>
+            ) : (
+                    <b>{title}. </b>
+                )
+            }
+
             {local && <>{local}. </>}
             {producer && <>{producer}. </>}
-            {numberOfSlides && <>{numberOfSlides}. </>}
-            {colorType && <>{colorType}. </>}
+
+            {day && month && year && `${day} ${month}. ${year} `}
+            {!day && month && year && `${month}. ${year} `}
+            {!day && !month && year && `${year}. `}
+
+            {type && <>{type}. </>}
+            {numberOfSlides && <>{numberOfSlides} slides. </>}
+            {colorType && <>{getColorFormatted(colorType)}, </>}
             {dimension && <>{dimension}. </>}
             {note && <>{note}. </>}
             {accessedAt &&
@@ -86,8 +116,8 @@ const SlideShow = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.author, String(values.year)),
+            citation: generateCitationWithoutAuthor(values.author, String(values.year))
         }));
 
         setOpenModal(!openModal);
@@ -99,14 +129,16 @@ const SlideShow = ({ back }) => {
 
             <Formik
                 initialValues={{
-                    author: '',
-                    title: '',
-                    caption: '',
-                    date: '',
-                    type: '',
-                    local: '',
-                    producer: '',
-                    numberOfSlides: '',
+                    author: 'Ana Carolina Puga',
+                    title: 'Ozonioterapia na Biomedicina',
+                    caption: 'Subtítulo',
+                    day: '22',
+                    month: '06',
+                    year: '1998',
+                    type: 'Apresentação de Power Point',
+                    local: 'Sertãozinho, SP',
+                    producer: 'SBBME',
+                    numberOfSlides: '52',
                     colorType: '',
                     dimension: '',
                     note: '',
@@ -213,14 +245,14 @@ const SlideShow = ({ back }) => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={3}>
                                         <Input
-                                            name="yaer"
                                             type="number"
                                             label="Ano da apresentação"
                                             placeholder="Ex: 2020"
                                             InputProps={{ inputProps: { min: 0 } }}
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.yaer}
+                                            value={props.values.year}
+                                            name="year"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />

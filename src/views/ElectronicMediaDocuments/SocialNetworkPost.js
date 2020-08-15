@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
+import { formatMessage } from '../../utils/formatMessage'
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -33,7 +34,7 @@ const SignupSchema = Yup.object().shape({
     type: Yup.string().required("Obrigatório"),
     firstName: Yup.string().required("Obrigatório"),
     lastSurname: Yup.string().required("Obrigatório"),
-    message: Yup.string().required("Obrigatório"),
+    // message: Yup.string().required("Obrigatório"),
     publicationDate: Yup.string().required("Obrigatório"),
     accountAddress: Yup.string().required("Obrigatório"),
     url: Yup.string().required("Obrigatório"),
@@ -55,12 +56,12 @@ const generateReference = (values) => {
 
     return (
         <span>
-            {type && <>{type}. </>}
+            {lastSurname && <>{lastSurname}, </>}
             {firstName && <>{firstName}. </>}
-            {lastSurname && <>{lastSurname}. </>}
-            {message && <>{message}. </>}
-            {local && <>{local}. </>}
-            {publicationDate && <>{publicationDate}. </>}
+            {message && <b>{formatMessage(message)}. </b>}
+            {local && <>{local}, </>}
+            {publicationDate && <>{formatDate(publicationDate)}. </>}
+            {type && <>{type}: </>}
             {accountAddress && <>{accountAddress}. </>}
             {accessedAt &&
                 url &&
@@ -82,8 +83,8 @@ const SocialNetworkPost = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.firstName, values.publicationDate),
+            citation: generateCitationWithoutAuthor(values.firstName, values.publicationDate)
         }));
 
         setOpenModal(!openModal);
@@ -101,7 +102,7 @@ const SocialNetworkPost = ({ back }) => {
                     message: '',
                     local: '',
                     publicationDate: '',
-                    accountaddress: '',
+                    accountAddress: '',
                     url: '',
                     accessedAt: '',
                 }}

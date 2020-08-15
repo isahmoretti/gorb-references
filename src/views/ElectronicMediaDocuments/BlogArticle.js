@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
+import { formatAuthorName } from "../../utils/formatAuthorName"
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -40,6 +41,7 @@ const SignupSchema = Yup.object().shape({
     blogTitle: Yup.string().required("Obrigatório"),
     url: Yup.string().required("Obrigatório"),
     accessedAt: Yup.string().required("Obrigatório"),
+    publicationDate: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -57,13 +59,13 @@ const generateReference = (values) => {
 
     return (
         <span>
-            {/* {authors && <>{authors}. </>} */}
+            {authors && <>{formatAuthorName(authors)} </>}
             {articleTitle && <>{articleTitle}. </>}
             {caption && <>{caption}. </>}
-            {responsible && <>{responsible}. </>}
+            {responsible && <><i>ln</i>{responsible}. </>}
             {blogTitle && <>{blogTitle}. </>}
             {local && <>{local}. </>}
-            {publicationDate && <>{publicationDate}. </>}
+            {publicationDate && <>{formatDate(publicationDate)}. </>}
             {accessedAt &&
                 url &&
                 ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
@@ -84,8 +86,8 @@ const BlogArticle = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.author, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.authors, values.publicationDate),
+            citation: generateCitationWithoutAuthor(values.authors, values.publicationDate)
         }));
 
         setOpenModal(!openModal);

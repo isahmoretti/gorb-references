@@ -1,6 +1,8 @@
 import React from "react";
 
 export const generateCitationWithAuthor = (author, yearOfPublication) => {
+  yearOfPublication = String(yearOfPublication)
+  
   const date = yearOfPublication.split("-")[0];
 
   if (Array.isArray(author)) {
