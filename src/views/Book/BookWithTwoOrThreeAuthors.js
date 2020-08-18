@@ -41,6 +41,7 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     authors,
+    abbreviate,
     title,
     caption,
     edition,
@@ -65,7 +66,7 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      <>{formatAuthorName(authors)} </>
+      <>{formatAuthorName(authors, abbreviate)} </>
       {caption ? (
         <>
           <b>{title}: </b>
@@ -129,7 +130,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           authors: ["", "", ""],
-          abbreviate: "",
+          abbreviate: false,
           title: "",
           caption: "",
           edition: "",

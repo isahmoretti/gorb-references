@@ -42,6 +42,7 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     author,
+    abbreviate,
     title,
     caption,
     edition,
@@ -63,7 +64,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      <>{formatAuthorName(author)}</>
+      <>{formatAuthorName([author], abbreviate)}</>
       {caption ? (
         <>
           <b>{title}: </b>
@@ -126,7 +127,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           author: "",
-          abbreviate: "",
+          abbreviate: false,
           title: "",
           caption: "",
           edition: "",
@@ -168,7 +169,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Autor"
-                      placeholder="Nome e sobrenome do autor"
+                      placeholder="Ex: Steven Johnson"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.author}
@@ -199,7 +200,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título"
-                      placeholder="Título do livro"
+                      placeholder="Ex: Cultura da Interface"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -214,7 +215,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
-                      placeholder="Subtítulo do livro"
+                      placeholder="Ex: Como o computador transforma nossa maneira de criar e se comunicar"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -228,7 +229,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Local de publicação"
-                      placeholder="Ex: São Paulo"
+                      placeholder="Ex: Rio de Janeiro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -240,8 +241,8 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Empresa de publicação(editora)"
-                      placeholder="Ex: Objetivo"
+                      label="Empresa de publicação (editora)"
+                      placeholder="Ex: Zahar"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -256,7 +257,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Edição"
-                      placeholder="Ex: 4"
+                      placeholder="Ex: 2"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -269,7 +270,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
-                      placeholder="Ex: 2010"
+                      placeholder="Ex: 2001"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -282,7 +283,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Volume"
-                      placeholder="Ex: 10"
+                      placeholder="Ex: 3"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
@@ -347,7 +348,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Séries e coleções"
-                      placeholder="Ex: Grandes Autores Nacionais"
+                      placeholder="Série ou coleção"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
@@ -361,7 +362,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="ISBN"
-                      placeholder="EX: 9788535238693"
+                      placeholder="Ex: 9788571195898"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.isbn}
@@ -387,6 +388,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Tradutor"
+                      placeholder="Ex: Maria Luiza X. de A. Borges"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.translator}
@@ -471,6 +473,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Título original"
+                      placeholder="Ex: Interface Culture: How New Technology Transforms the Way We Create and Communicate"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.originalTitle}

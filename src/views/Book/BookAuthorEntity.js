@@ -44,6 +44,7 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     entities,
+    abbreviate,
     title,
     caption,
     edition,
@@ -145,7 +146,6 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           entities: [""],
-          abbreviate: "",
           title: "",
           caption: "",
           edition: "",
@@ -185,7 +185,7 @@ const Book = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={9}>
+                  <Grid item xs={12} sm={12} md={12}>
                     <FieldArray
                       name="entities"
                       render={(arrayHelpers) => (
@@ -204,9 +204,7 @@ const Book = ({ back }) => {
                                   <Input
                                     type="text"
                                     label={`${index + 1}º Entidade`}
-                                    placeholder={`Nome da ${
-                                      index + 1
-                                    }º entidade`}
+                                    placeholder="Ex: OMS - Organização Mundial da Saúde"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={entity}
@@ -254,28 +252,13 @@ const Book = ({ back }) => {
                       )}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="abbreviate"
-                      label="abreviar autor?"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.abbreviate}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
                     <Input
                       type="text"
                       label="Título"
+                      placeholder=" Ex: Mulheres e saúde"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -290,6 +273,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
+                      placeholder="Ex: Evidências de hoje agenda de amanhã"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -303,6 +287,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Local de publicação"
+                      placeholder="Ex: Geneva"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -314,7 +299,8 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Empresa de publicação(editora)"
+                      label="Publicadora"
+                      placeholder="Ex: OMS"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -329,6 +315,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Edição"
+                      placeholder="Ex: 2"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -341,6 +328,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
+                      placeholder="Ex: 2009"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -353,6 +341,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Volume"
+                      placeholder="Ex: 2"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
@@ -382,6 +371,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Páginas"
+                      placeholder="Ex: 92"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -407,6 +397,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Série"
+                      placeholder="Ex: Nome da série (se houver)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.series}
@@ -420,6 +411,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="ISBN"
+                      placeholder="Ex: 9789241563857"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.isbn}
@@ -445,6 +437,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Tradutor"
+                      placeholder="Ex: Jean-Pierre Barakat"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.translator}
@@ -529,6 +522,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Título original"
+                      placeholder="Ex: Women and health: today’s evidence tomorrow’s agenda"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.originalTitle}
@@ -561,7 +555,8 @@ const Book = ({ back }) => {
                         !props.values.online
                       }
                       type="text"
-                      label="Endereço(URL)"
+                      label="Endereço (URL)"
+                      placeholder="https://www.who.int/eportuguese/publications/Mulheres_Saude.pdf"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

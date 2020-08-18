@@ -37,121 +37,104 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
-  chapterTitle: Yup.string().required("Obrigatório"),
-  authorship: Yup.string().required("Obrigatório"),
-  title: Yup.string().required("Obrigatório"),
-  local: Yup.string().required("Obrigatório"),
-  publishingCompany: Yup.string().required("Obrigatório"),
-  yearOfPublication: Yup.string().required("Obrigatório"),
+  // chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
+  // chapterTitle: Yup.string().required("Obrigatório"),
+  // authorship: Yup.string().required("Obrigatório"),
+  // title: Yup.string().required("Obrigatório"),
+  // local: Yup.string().required("Obrigatório"),
+  // publishingCompany: Yup.string().required("Obrigatório"),
+  // yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const getResposabilityTypes = (responsabiltyTypes) => {
-  switch (responsabiltyTypes) {
-    case "organizator":
-      return "(Org.)";
-    case "author":
-      return "(Aut.)";
-    case "coordinator":
-      return "(Coord.)";
-    default:
-      return "";
-  }
+  if (responsabiltyTypes === "organizator") return "(Org.)";
+  if (responsabiltyTypes === "author") return "(Aut.)";
+  if (responsabiltyTypes === "coordinator") return "(Coord.)";
+
+  return "";
+};
+
+const getAuthorType = (authorType) => {
+  if (authorType === "entitie") return "";
+  if (authorType === "person") return "";
+  if (authorType === "withoutAuthorship") return "";
+
+  return "";
 };
 
 const generateReference = (values) => {
   const {
-    authorship,
-    chapterAuthors,
-    chapterTitle,
+    authorType,
+    responsabilityType,
     title,
     caption,
-    edition,
     local,
     publishingCompany,
+    originalTitle,
+    edition,
     yearOfPublication,
     complementaryElements,
-    othersResponsabilities,
+    pagination,
     series,
-    chapter,
-    captionPageInit,
-    captionPageFinish,
     grades,
     isbn,
     volume,
-    originalTitle,
     online,
-    url,
     accessedAt,
+    url,
     translator,
+    chapter,
     translatorName,
-    authorType,
-    responsabilityType,
+    chapterTitle,
+    chapterAuthors,
     chapterCaption,
+    captionPageInit,
+    captionPageFinish,
+    authors,
+    abbreviate,
   } = values;
-
-  //autor do livro
-  const authorshipSplit = authorship.split(" ");
-  const firstNameAuthorship = authorshipSplit[0];
-  const lastNameAuthorship = authorshipSplit[
-    authorshipSplit.length - 1
-  ].toUpperCase();
 
   return (
     <span>
-      <>{formatAuthorName(chapterAuthors)}</>
-      {/* titulo do capitulo */}
-      {chapterCaption ? (
-        <>
-          <> {chapterTitle}: </>
-          {chapterCaption}.{" "}
-        </>
-      ) : (
-        <>{chapterTitle}. </>
-      )}
-      {/* ÚLTIMO NOME, Primeiro nome do autor */}
-      {chapterAuthors && (
-        <>
-          {" "}
-          <i>In</i>: {lastNameAuthorship}, {firstNameAuthorship[0]}.
-        </>
-      )}
-      {responsabilityType && (
-        <> {getResposabilityTypes(responsabilityType)}. </>
-      )}
-      {/* Titulo da obra */}
+      {formatAuthorName(chapterAuthors)}&nbsp;
+      {chapterCaption
+        ? `${chapterTitle}: ${chapterCaption}. `
+        : `${chapterTitle}. `}
+      <i>In</i>: {formatAuthorName(authors, abbreviate)}
+      {responsabilityType && `${getResposabilityTypes(responsabilityType)}. `}
       {caption ? (
-        <>
-          <b> {title}: </b>
-          {caption}.{" "}
-        </>
+        <span>
+          <b>{`${title}: `}</b>
+          {`${caption}. `}
+        </span>
       ) : (
-        <b>{title}. </b>
+        <b> {`${title}. `} </b>
       )}
-      {}
-      {complementaryElements && translator && translatorName.length && (
-        <> Tradução: {translatorName}.</>
-      )}
-      {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
-      {complementaryElements && volume && <> v.{volume}, </>}
-      {local}: {publishingCompany}, {yearOfPublication}.
-      {complementaryElements && chapter && <> Cap. {chapter}.</>}
+      {complementaryElements &&
+        translator &&
+        translatorName.length &&
+        `Tradução: ${translatorName}. `}
+      {edition && edition > 1 ? `${edition}. ` : `${edition} ed. `}
+      {complementaryElements && volume && `v. ${volume}, `}
+      {`${local}: ${publishingCompany}, ${yearOfPublication}. `}
+      {complementaryElements && chapter && `Cap. ${chapter}. `}
       {captionPageInit &&
         captionPageFinish &&
         `p. ${captionPageInit}-${captionPageFinish}, `}
-      {complementaryElements && series && <> ({series}).</>}
-      {complementaryElements && originalTitle && (
-        <> Título original: {originalTitle}.</>
-      )}
-      {complementaryElements && othersResponsabilities && (
-        <> {othersResponsabilities}.</>
-      )}
-      {complementaryElements && grades && <> {grades}.</>}
-      {complementaryElements && isbn && <> ISBN: {isbn}.</>}
-      {complementaryElements && online && url && <> Disponível em: {url}.</>}
-      {complementaryElements && online && accessedAt && (
-        <> Acesso em: {formatDate(accessedAt)}.</>
-      )}
+      {complementaryElements && series && `(${series}). `}
+      {complementaryElements &&
+        originalTitle &&
+        `Título original: ${originalTitle}. `}
+      {/* {complementaryElements &&
+        othersResponsabilities &&
+        `${othersResponsabilities}. `} */}
+      {complementaryElements && grades && `${grades}. `}
+      {complementaryElements && isbn && `ISBN: ${isbn}. `}
+      {complementaryElements && online && url && `Disponível em: ${url}. `}
+      {complementaryElements &&
+        online &&
+        accessedAt &&
+        `Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -193,33 +176,39 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authorType: "",
-          responsabilityType: "",
-          authorship: "",
-          title: "",
-          caption: "",
-          local: "",
-          publishingCompany: "",
-          originalTitle: "",
-          edition: "",
-          yearOfPublication: "",
-          complementaryElements: false,
-          pagination: "",
-          series: "",
-          grades: "",
-          isbn: "",
-          volume: "",
+          authorType: "person",
+          responsabilityType: "organizator",
+          title: "Navegando em águas desconhecidas",
+          caption: "Mar aberto",
+          local: "São Paulo",
+          publishingCompany: "Ikatec",
+          originalTitle: "Mar vermelho",
+          edition: "2",
+          yearOfPublication: "1522",
+          complementaryElements: true,
+          pagination: "4",
+          series: "3",
+          grades: "Informações complementares",
+          isbn: "3423423423423",
+          volume: "3",
           online: false,
           accessedAt: "",
           url: "",
-          translator: false,
-          chapter: "",
-          translatorName: [""],
-          chapterTitle: "",
-          chapterAuthors: [""],
-          chapterCaption: "",
-          captionPageInit: "",
-          captionPageFinish: "",
+          translator: true,
+          chapter: "2",
+          translatorName: ["Lucas zinner Ferreira"],
+          chapterTitle: "Eu pensei errado",
+          chapterAuthors: ["Matheus Paice Ferreira"],
+          chapterCaption: "Agora aguenta",
+          captionPageInit: "45",
+          captionPageFinish: "23",
+          authors: [
+            "Daniel Barbosa de Lima",
+            "Vanessa Vasconcelos Oliveira Ferreira",
+            "Matheus Ferreira",
+            "Matheus Ferreira",
+          ],
+          abbreviate: true,
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -281,7 +270,7 @@ const Book = ({ back }) => {
                         placeholder="Subtítulo do capítulo"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
-                        value={props.values.captionChapter}
+                        value={props.values.chapterCaption}
                         name="chapterCaption"
                         errors={props.errors}
                         touched={props.touched}
@@ -460,19 +449,78 @@ const Book = ({ back }) => {
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                    <Grid item xs={12} sm={12} md={9}>
-                      <Input
-                        type="text"
-                        label="Autoria do livro"
-                        placeholder="Nome e sobrenome do autor do livro"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.authorship}
-                        name="authorship"
-                        errors={props.errors}
-                        touched={props.touched}
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
+                        name="authors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authors &&
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map(
+                                (chapterAuthor, index) => (
+                                  <FieldArrayContainer key={index}>
+                                    <div
+                                      style={{ display: "flex", width: "100%" }}
+                                    >
+                                      <Input
+                                        type="text"
+                                        label={`${index + 1}º Autoria do livro`}
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={chapterAuthor}
+                                        name={`authors.${index}`}
+                                        errors={props.errors}
+                                        touched={props.touched}
+                                      />
+                                      {index > 0 && (
+                                        <ButtonCore
+                                          type="button"
+                                          disabled={index === 0}
+                                          onClick={() =>
+                                            arrayHelpers.remove(index)
+                                          }
+                                        >
+                                          <RemoveIcon />
+                                        </ButtonCore>
+                                      )}
+                                      {
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.push("")}
+                                        >
+                                          <AddIcon />
+                                        </ButtonCore>
+                                      }
+                                    </div>
+                                    <div
+                                      style={{
+                                        width: "100%",
+                                        marginBottom: "10px",
+                                      }}
+                                    >
+                                      <ErrorText>
+                                        {props.errors &&
+                                          props.errors.authors &&
+                                          props.errors.authors[index]}
+                                      </ErrorText>
+                                    </div>
+                                  </FieldArrayContainer>
+                                )
+                              )
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                          </div>
+                        )}
                       />
                     </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={3}>
                       <Select
                         name="abbreviate"
@@ -489,9 +537,7 @@ const Book = ({ back }) => {
                         ]}
                       />
                     </Grid>
-                  </Grid>
-                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                    <Grid item xs={12} sm={12} md={8}>
+                    <Grid item xs={12} sm={12} md={5}>
                       <Input
                         type="text"
                         label="Título do Livro"
@@ -519,7 +565,7 @@ const Book = ({ back }) => {
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                    <Grid item xs={12} sm={12} md={4}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Input
                         type="text"
                         label="Local de publicação"
@@ -532,7 +578,7 @@ const Book = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={4}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Input
                         type="text"
                         label="Empresa de publicação (editora)"
@@ -545,7 +591,9 @@ const Book = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={2}>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={4}>
                       <Input
                         type="text"
                         label="Edição"
@@ -558,7 +606,7 @@ const Book = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={2}>
+                    <Grid item xs={12} sm={12} md={4}>
                       <Input
                         type="text"
                         label="Ano de publicação"
@@ -585,7 +633,6 @@ const Book = ({ back }) => {
                       />
                     </Grid>
                   </Grid>
-
                   <Grid container spacing={2} style={{ marginBottom: 0 }}>
                     <Grid item xs={12} sm={12} md={3}>
                       <Select

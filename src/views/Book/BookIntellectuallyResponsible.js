@@ -55,12 +55,12 @@ const getResposabilityTypes = (responsabiltyTypes) => {
   }
 };
 
-const getNamesResponsible = (namesResponsible) => {
+const getNamesResponsible = (namesResponsible, abbreviate) => {
   if (namesResponsible.length >= 4) {
-    return formatAuthorName(namesResponsible);
+    return formatAuthorName(namesResponsible, abbreviate);
   }
 
-  const name = formatAuthorName(namesResponsible);
+  const name = formatAuthorName(namesResponsible, abbreviate);
 
   return name.slice(0, name.length - 2);
 };
@@ -68,6 +68,7 @@ const getNamesResponsible = (namesResponsible) => {
 const generateReference = (values) => {
   const {
     namesResponsible,
+    abbreviate,
     responbiltyTypes,
     title,
     caption,
@@ -93,7 +94,10 @@ const generateReference = (values) => {
     <span>
       {" "}
       {/* precisei pegar sem o ponto */}
-      <>{namesResponsible.length && getNamesResponsible(namesResponsible)} </>
+      <>
+        {namesResponsible.length &&
+          getNamesResponsible(namesResponsible, abbreviate)}{" "}
+      </>
       {getResposabilityTypes(responbiltyTypes)}&nbsp;
       {caption ? (
         <>
@@ -159,7 +163,7 @@ const Book = ({ back }) => {
       <Formik
         initialValues={{
           namesResponsible: [""],
-          abbreviate: "",
+          abbreviate: false,
           responbiltyTypes: "",
           title: "",
           caption: "",
