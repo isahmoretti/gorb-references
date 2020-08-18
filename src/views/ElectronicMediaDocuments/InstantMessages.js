@@ -13,6 +13,8 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate"
+import { formatTime } from "../../utils/formatTime"
+import { formatAuthorName } from "../../utils/formatAuthorName"
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor"
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor"
 
@@ -30,40 +32,37 @@ import {
 
 const SignupSchema = Yup.object().shape({
     author: Yup.string().required("Obrigatório"),
-    siteName: Yup.string().required("Obrigatório"),
-    publishingCompany: Yup.string().required("Obrigatório"),
-    yearOfPublication: Yup.string().required("Obrigatório"),
-    url: Yup.string().required("Obrigatório"),
-    accessedAt: Yup.string().required("Obrigatório"),
+    title: Yup.string().required("Obrigatório"),
+    type: Yup.string().required("Obrigatório"),
+    sendDate: Yup.string().required("Obrigatório"),
+    description: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
     const {
         author,
-        siteName,
-        local,
-        publishingCompany,
-        yearOfPublication,
-        complementaryInformations,
-        url,
-        accessedAt,
+        title,
+        type,
+        complementaryElements,
+        sendDate,
+        schedule,
+        description,
     } = values;
 
     return (
         <span>
-            {author && <>{author}. </>}
-            {siteName && <b>{siteName}. </b>}
-            {local ? <>{local}: </> : <>[S.l.]. </>}
-            {publishingCompany && <>{publishingCompany}, </>}
-            {yearOfPublication && <>{yearOfPublication}. </>}
-            {complementaryInformations && <>{complementaryInformations}, </>}
-            {accessedAt &&
-                url && <>{` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}</>}
+            {author && <>{formatAuthorName(author)} </>}
+            {title && <b>[{title}]. </b>}
+            {type && complementaryElements ? <>{type}: </> : <>{type}. </>}
+            {complementaryElements && <>[{complementaryElements}]. </>}
+            {sendDate && <>{formatDate(sendDate)}. </>}
+            {schedule && <>{formatTime(schedule)}. </>}
+            {description && <>{description}. </>}
         </span>
     );
 };
 
-const Site = ({ back }) => {
+const InstantMessages = ({ back }) => {
     const [state, setState] = useState({
         values: {},
         clearInitialValues: false,
@@ -76,8 +75,8 @@ const Site = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.author, values.yearOfPublication),
-            citation: generateCitationWithoutAuthor(values.author, values.yearOfPublication)
+            citationWithAuthor: generateCitationWithAuthor(values.author, values.sendDate),
+            citation: generateCitationWithoutAuthor(values.author, values.sendDate)
         }));
 
         setOpenModal(!openModal);
@@ -90,13 +89,12 @@ const Site = ({ back }) => {
             <Formik
                 initialValues={{
                     author: '',
-                    siteName: '',
-                    local: '',
-                    publishingCompany: '',
-                    yearOfPublication: '',
-                    complementaryInformations: '',
-                    url: '',
-                    accessedAt: '',
+                    title: '',
+                    type: '',
+                    complementaryElements: '',
+                    sendDate: '',
+                    schedule: '',
+                    description: '',
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={handleSubmit}
@@ -107,7 +105,8 @@ const Site = ({ back }) => {
                             <Title>
                                 <p style={{
                                     fontSize: '20px'
-                                }}>Site(Homepage)</p>
+                                }}>Mensagens instantâneas</p>
+                                Mensagens enviadas por WhatsApp e Telegram
                             </Title>
                         </Actions>
                         <Card>
@@ -116,8 +115,8 @@ const Site = ({ back }) => {
                                     <Grid item xs={12} sm={12} md={6}>
                                         <Input
                                             type="text"
-                                            label="Autor ou Organização"
-                                            placeholder="Ex: CAPES - Coordenação de Aperfeiçoamento de Pessoal de Nível Superior"
+                                            label="Autor"
+                                            placeholder="Ex: Maria Paula Souza"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
                                             value={props.values.author}
@@ -129,12 +128,12 @@ const Site = ({ back }) => {
                                     <Grid item xs={12} sm={12} md={6}>
                                         <Input
                                             type="text"
-                                            label="Nome do site"
-                                            placeholder="Ex: Plataforma Sucupira"
+                                            label="Título da informação"
+                                            placeholder="Ex: Uso da biblioteca pelos alunos do ensino médio"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.siteName}
-                                            name="siteName"
+                                            value={props.values.title}
+                                            name="title"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -144,12 +143,12 @@ const Site = ({ back }) => {
                                     <Grid item xs={12} sm={12} md={6}>
                                         <Input
                                             type="text"
-                                            label="Local"
-                                            placeholder="Ex: Brasília"
+                                            label="Tipo de aplicativo"
+                                            placeholder="Ex: WhatsApp"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.local}
-                                            name="local"
+                                            value={props.values.type}
+                                            name="type"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -157,12 +156,12 @@ const Site = ({ back }) => {
                                     <Grid item xs={12} sm={12} md={6}>
                                         <Input
                                             type="text"
-                                            label="Publicadora"
-                                            placeholder="Ex: CAPES"
+                                            label="Elemento complementar"
+                                            placeholder="Ex: Grupo de funcionários EE. Prof. Baltazar de Godoy Moreira"
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.publishingCompany}
-                                            name="publishingCompany"
+                                            value={props.values.complementaryElements}
+                                            name="complementaryElements"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -171,55 +170,43 @@ const Site = ({ back }) => {
                                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                                     <Grid item xs={12} sm={12} md={3}>
                                         <Input
-                                            type="text"
-                                            label="Ano"
-                                            onChange={props.handleChange}
-                                            onBlur={props.handleBlur}
-                                            value={props.values.yearOfPublication}
-                                            name="yearOfPublication"
-                                            errors={props.errors}
-                                            touched={props.touched}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={5}>
-                                        <Input
-                                            type="text"
-                                            label="Informações complementáres"
-                                            placeholder="Ex: Elaborado por..."
-                                            onChange={props.handleChange}
-                                            onBlur={props.handleBlur}
-                                            value={props.values.complementaryInformations}
-                                            name="complementaryInformations"
-                                            errors={props.errors}
-                                            touched={props.touched}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={4}>
-                                        <Input
-                                            type="text"
-                                            label="Disponível em"
-                                            placeholder="Ex: https://sucupira.capes.gov.br/sucupira/"
-                                            onChange={props.handleChange}
-                                            onBlur={props.handleBlur}
-                                            value={props.values.url}
-                                            name="url"
-                                            errors={props.errors}
-                                            touched={props.touched}
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                                    <Grid item xs={12} sm={12} md={4}>
-                                        <Input
                                             type="date"
-                                            label="Acesso em"
+                                            label="Data de envio"
+                                            onChange={props.handleChange}
+                                            onBlur={props.handleBlur}
                                             InputLabelProps={{
-                                                shrink: true,
+                                                shrink: true
+                                            }}
+                                            value={props.values.sendDate}
+                                            name="sendDate"
+                                            errors={props.errors}
+                                            touched={props.touched}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={2}>
+                                        <Input
+                                            type="time"
+                                            label="Horário"
+                                            InputLabelProps={{
+                                                shrink: true
                                             }}
                                             onChange={props.handleChange}
                                             onBlur={props.handleBlur}
-                                            value={props.values.accessedAt}
-                                            name="accessedAt"
+                                            value={props.values.schedule}
+                                            name="schedule"
+                                            errors={props.errors}
+                                            touched={props.touched}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={12} md={7}>
+                                        <Input
+                                            type="text"
+                                            label="Descrição"
+                                            placeholder="Ex: 1 mensagem de WhatsApp"
+                                            onChange={props.handleChange}
+                                            onBlur={props.handleBlur}
+                                            value={props.values.description}
+                                            name="description"
                                             errors={props.errors}
                                             touched={props.touched}
                                         />
@@ -249,4 +236,4 @@ const Site = ({ back }) => {
     );
 };
 
-export default Site;
+export default InstantMessages;
