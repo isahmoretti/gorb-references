@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Collapse } from "@material-ui/core";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 

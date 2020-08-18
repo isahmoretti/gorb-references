@@ -58,7 +58,6 @@ const generateReference = (values) => {
     } = values;
 
     const getColorFormatted = (colorType) => {
-        console.log('colorType ---> ' ,colorType)
         switch (colorType) {
             case 'colorfull':
                 return `color`
