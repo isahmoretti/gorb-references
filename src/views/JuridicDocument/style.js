@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { ArrowBack, Add, Remove } from "styled-icons/material";
-
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -17,7 +15,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Back = styled(ArrowBack)`
+export const Back = styled.img`
   width: 50px;
   height: 50px;
 
@@ -94,14 +92,14 @@ export const Row = styled.div`
 export const Content = styled.div``;
 export const Footer = styled.div``;
 
-export const AddIcon = styled(Add)`
+export const AddIcon = styled.img`
   width: 30px;
   height: 30px;
 
   color: #eada18;
 `;
 
-export const RemoveIcon = styled(Remove)`
+export const RemoveIcon = styled.img`
   width: 30px;
   height: 30px;
 

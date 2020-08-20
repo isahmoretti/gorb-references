@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-import { FacebookCircle } from "styled-icons/boxicons-logos";
-import { TwitterWithCircle } from "styled-icons/entypo-social";
-import { LinkedinWithCircle } from "styled-icons/entypo-social";
-
 export const Container = styled.section`
   height: 200px;
 
@@ -23,23 +19,25 @@ export const Social = styled.div`
   display: flex;
 `;
 
-export const FacebookIcon = styled(FacebookCircle)`
-  width: 40px;
-  height: 40px;
+export const FacebookIcon = styled.img`
+  width: 30px;
+  height: 30px;
 
   color: #3b5998;
 `;
 
-export const TwitterIcon = styled(TwitterWithCircle)`
-  width: 40px;
-  height: 40px;
+export const TwitterIcon = styled.img`
+  width: 30px;
+  height: 30px;
+
+  margin: 0 10px;
 
   color: #00acee;
 `;
 
-export const LinkedinIcon = styled(LinkedinWithCircle)`
-  width: 40px;
-  height: 40px;
+export const LinkedinIcon = styled.img`
+  width: 30px;
+  height: 30px;
 
   color: #0e76a8;
 `;

@@ -20,13 +20,16 @@ import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 // styles
 import {
   Container,
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
@@ -54,17 +57,8 @@ const getResposabilityTypes = (responsabiltyTypes) => {
   return "";
 };
 
-const getAuthorType = (authorType) => {
-  if (authorType === "entitie") return "";
-  if (authorType === "person") return "";
-  if (authorType === "withoutAuthorship") return "";
-
-  return "";
-};
-
 const generateReference = (values) => {
   const {
-    authorType,
     responsabilityType,
     title,
     caption,
@@ -74,7 +68,6 @@ const generateReference = (values) => {
     edition,
     yearOfPublication,
     complementaryElements,
-    pagination,
     series,
     grades,
     isbn,
@@ -172,7 +165,7 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -307,7 +300,7 @@ const Book = ({ back }) => {
                                             arrayHelpers.remove(index)
                                           }
                                         >
-                                          <RemoveIcon />
+                                          <RemoveIcon src={Minus} />
                                         </ButtonCore>
                                       )}
                                       {
@@ -315,7 +308,7 @@ const Book = ({ back }) => {
                                           type="button"
                                           onClick={() => arrayHelpers.push("")}
                                         >
-                                          <AddIcon />
+                                          <AddIcon src={Plus} />
                                         </ButtonCore>
                                       }
                                     </div>
@@ -480,7 +473,7 @@ const Book = ({ back }) => {
                                             arrayHelpers.remove(index)
                                           }
                                         >
-                                          <RemoveIcon />
+                                          <RemoveIcon src={Minus} />
                                         </ButtonCore>
                                       )}
                                       {
@@ -488,7 +481,7 @@ const Book = ({ back }) => {
                                           type="button"
                                           onClick={() => arrayHelpers.push("")}
                                         >
-                                          <AddIcon />
+                                          <AddIcon src={Plus} />
                                         </ButtonCore>
                                       }
                                     </div>

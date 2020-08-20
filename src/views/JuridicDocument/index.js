@@ -15,8 +15,11 @@ import Legislation from "./Legislation";
 import Jurisprudence from "./Jurisprudence";
 import Constitution from "./Constitution";
 import AdministrativeActs from "./AdministrativeActs";
-import ProvisionalMeasure from './ProvisionalMeasure'
-import CivilAndNotary from './CivilAndNotary'
+import ProvisionalMeasure from "./ProvisionalMeasure";
+import CivilAndNotary from "./CivilAndNotary";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 const JuridicDocumentGeneral = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -24,7 +27,7 @@ const JuridicDocumentGeneral = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row>
             <Hexagon onClick={() => setState(1)} className="green">
               <p className="txt-white">Legislação</p>
@@ -63,7 +66,6 @@ const JuridicDocumentGeneral = ({ back }) => {
       {state === 6 && <Jurisprudence back={() => setState(0)} />}
       {state === 3 && <Constitution back={() => setState(0)} />}
       {state === 4 && <AdministrativeActs back={() => setState(0)} />}
-
     </Conatiner>
   );
 };

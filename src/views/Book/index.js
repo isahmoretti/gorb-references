@@ -18,6 +18,8 @@ import BookIntellectuallyResponsible from "./BookIntellectuallyResponsible";
 import BookWithFourOrMoreAuthors from "./BookWithFourOrMoreAuthors";
 import ChapterOfBook from "./ChapterOfBook";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -25,7 +27,7 @@ const BookGeneral = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row>
             <Hexagon onClick={() => setState(1)} className="blue">
               <p className="txt-white">Livros com um único autor</p>

@@ -15,8 +15,8 @@ import Modal from "../../components/Modal";
 // utils
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -75,7 +75,7 @@ const Photo = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{

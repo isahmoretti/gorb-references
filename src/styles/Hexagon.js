@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-import { ArrowBack } from "styled-icons/material";
-import { Plus } from "@styled-icons/boxicons-regular";
-
 export const Conatiner = styled.div`
   width: 100%;
   height: calc(100vh - 80px);
@@ -58,7 +55,7 @@ export const Row = styled.div`
   }
 `;
 
-export const Back = styled(ArrowBack)`
+export const Back = styled.img`
   width: 50px;
   height: 50px;
 
@@ -69,10 +66,6 @@ export const Back = styled(ArrowBack)`
   left: 0;
 
   transition: color 0.3s;
-
-  :hover {
-    color: #6666cc;
-  }
 `;
 
 export const Title = styled.span`
@@ -259,7 +252,7 @@ export const Advertising = styled.div`
   height: ${(props) => `${props.height}px`};
 `;
 
-export const IconPlus = styled(Plus)`
+export const IconPlus = styled.img`
   width: 50px;
   height: 50px;
 `;

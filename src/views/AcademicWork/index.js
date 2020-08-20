@@ -18,6 +18,8 @@ import Dissertation from "./Dissertation";
 import Monography from "./Monography";
 import Thesis from "./Thesis";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 const BookGeneral = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -25,7 +27,7 @@ const BookGeneral = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row>
             <Hexagon onClick={() => setState(1)} className="yellow">
               <p className="txt-white">Tese</p>

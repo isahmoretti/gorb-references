@@ -18,6 +18,8 @@ import Film from "./Film";
 import AudioBook from "./AudioBook";
 import VideoInternet from "./VideoInternet";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 const Audiovisual = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -25,7 +27,7 @@ const Audiovisual = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row>
             <Hexagon onClick={() => setState(4)} className="violet">
               <p className="txt-white">Filme</p>

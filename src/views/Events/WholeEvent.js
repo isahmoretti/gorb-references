@@ -17,6 +17,8 @@ import { formatDate } from "../../utils/formatDate";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
@@ -52,11 +54,7 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-
-  return (
-    <span>
-    </span>
-  );
+  return <span></span>;
 };
 
 const WholeEvent = ({ back }) => {
@@ -79,26 +77,26 @@ const WholeEvent = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
-          mainEventName: '',
-          mainEventNumber: '',
-          participationEventName: '',
-          participationEventNumbering: '',
-          year: '',
-          placeOfPerformance: '',
-          title: '',
-          placeOfPublication: '',
-          publishingCompany: '',
-          publicationDate: '',
-          pages: '',
-          theme: '',
-          note: '',
+          mainEventName: "",
+          mainEventNumber: "",
+          participationEventName: "",
+          participationEventNumbering: "",
+          year: "",
+          placeOfPerformance: "",
+          title: "",
+          placeOfPublication: "",
+          publishingCompany: "",
+          publicationDate: "",
+          pages: "",
+          theme: "",
+          note: "",
           online: false,
-          url: '',
-          accessedAt: '',
+          url: "",
+          accessedAt: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -312,8 +310,8 @@ const WholeEvent = ({ back }) => {
                       value={props.values.online}
                       name="online"
                       options={[
-                        { value: true, name: 'Sim' },
-                        { value: false, name: 'Não  ' }
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não  " },
                       ]}
                       errors={props.errors}
                       touched={props.touched}

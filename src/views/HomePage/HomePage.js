@@ -12,7 +12,6 @@ import Footer from "./Footer";
 import { Separator } from "./styles";
 
 // assets
-import Logo from "../../assets/images/via-carreira2.png";
 import "../../styles/css/Homepage.css";
 
 const HomePage = () => {

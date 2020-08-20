@@ -17,8 +17,10 @@ import SlideShow from "./SlideShow";
 import Email from "./Email";
 import SocialNetworkPost from "./SocialNetworkPost";
 import BlogArticle from "./BlogArticle";
-import InstantMessages from "./InstantMessages"
-import Ebook from "./Ebook"
+import InstantMessages from "./InstantMessages";
+import Ebook from "./Ebook";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
 
 const ElectronicMediaDocuments = ({ back }) => {
   const [state, setState] = useState(0);
@@ -27,9 +29,11 @@ const ElectronicMediaDocuments = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row className="ml">
-            <Hexagon onClick={() => setState(8)} className="wine">Mensagens instantâneas</Hexagon>
+            <Hexagon onClick={() => setState(8)} className="wine">
+              Mensagens instantâneas
+            </Hexagon>
             <Separator />
             <Hexagon onClick={() => setState(1)} className="wine">
               <p className="txt-white">Site</p>
@@ -62,7 +66,9 @@ const ElectronicMediaDocuments = ({ back }) => {
               <p className="txt-white">E-mail</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => setState(7)} className="wine">E-book</Hexagon>
+            <Hexagon onClick={() => setState(7)} className="wine">
+              E-book
+            </Hexagon>
           </Row>
         </Content>
       )}

@@ -4,6 +4,8 @@ import { TextField, Button, Popover, Typography } from "@material-ui/core";
 
 import { Container, ErrorText, IconHelp, ContainerHelp } from "./style";
 
+import HelpCircle from "../../assets/images/help-circle.svg";
+
 import "./style.css";
 
 const InputWrapper = ({ ...rest }) => {
@@ -33,7 +35,7 @@ const InputWrapper = ({ ...rest }) => {
             color="primary"
             onClick={handleClick}
           >
-            <IconHelp />
+            <IconHelp src={HelpCircle} />
           </Button>
           <Popover
             id={id}

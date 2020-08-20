@@ -9,21 +9,17 @@ const Session4 = () => {
     <Container>
       <Wrapper className="container">
         <BoxContent>
-          <BoxTitle className="wow fadeInUp" data-wow-delay="0.3s">
-            Mais de 30 tipos de documentos
-          </BoxTitle>
+          <BoxTitle>Mais de 30 tipos de documentos</BoxTitle>
 
-          <BoxText className="wow fadeInUp" data-wow-delay="0.3s">
+          <BoxText>
             Crie referêcias de livros, artigos de periódicos, teses, vídeos de
             internet, filmes, leis, entre outros documentos.
           </BoxText>
         </BoxContent>
         <BoxContent>
-          <BoxTitle className="wow fadeInUp" data-wow-delay="0.3s">
-            Citações prontas
-          </BoxTitle>
+          <BoxTitle>Citações prontas</BoxTitle>
 
-          <BoxText className="wow fadeInUp" data-wow-delay="0.3s">
+          <BoxText>
             A ferramenta também gera citações para usar no texto ou no final do
             parágrafo.
           </BoxText>

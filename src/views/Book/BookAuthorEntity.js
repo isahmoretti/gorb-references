@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
@@ -17,6 +16,10 @@ import Modal from "../../components/Modal";
 import { formatDate } from "../../utils/formatDate";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
 
 // styles
 import {
@@ -44,7 +47,6 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     entities,
-    abbreviate,
     title,
     caption,
     edition,
@@ -141,7 +143,7 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -218,7 +220,7 @@ const Book = ({ back }) => {
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index ===
@@ -227,7 +229,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>
@@ -488,7 +490,7 @@ const Book = ({ back }) => {
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index ===
@@ -497,7 +499,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>

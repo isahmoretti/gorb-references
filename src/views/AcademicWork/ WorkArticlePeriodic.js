@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -14,13 +14,16 @@ import Modal from "../../components/Modal";
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 // styles
 import {
   Container,
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
@@ -113,7 +116,7 @@ const WorkArticlePeriodic = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -190,7 +193,7 @@ const WorkArticlePeriodic = ({ back }) => {
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                     {index ===
                                       props.values.constructionNames.length -
@@ -199,7 +202,7 @@ const WorkArticlePeriodic = ({ back }) => {
                                         type="button"
                                         onClick={() => arrayHelpers.push("")}
                                       >
-                                        <AddIcon />
+                                        <AddIcon src={Plus} />
                                       </ButtonCore>
                                     )}
                                   </div>

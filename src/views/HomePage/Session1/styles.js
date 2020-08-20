@@ -70,6 +70,8 @@ export const Box = styled.div`
     font-size: 25px;
     text-transform: uppercase;
 
+    cursor: pointer;
+
     transition: background-color 0.3s, color 0.3s;
   }
 

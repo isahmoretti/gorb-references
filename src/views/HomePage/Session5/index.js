@@ -8,48 +8,40 @@ const Session5 = () => {
   return (
     <Container>
       <div className="container">
-        <Title className="wow fadeInUp" data-wow-delay="0.3s">
-          {" "}
-          Como deve ser a lista de referências?{" "}
-        </Title>
+        <Title> Como deve ser a lista de referências? </Title>
         <Wrapper>
-          <Box ata-wow-delay="1s" className="wow fadeInUp ">
+          <Box ata-wow-delay="1s" className=" ">
             {" "}
             imagem{" "}
           </Box>
           <Box>
-            <h2 className="wow fadeInUp" data-wow-delay="0.3s">
-              {" "}
-              Formatação{" "}
-            </h2>
-            <BoxContent className="wow fadeInUp" data-wow-delay="0.5s">
+            <h2> Formatação </h2>
+            <BoxContent>
               <span>
                 {" "}
                 <b>Espaçamento: </b> Simples, com 1 espaço simples entre elas.{" "}
               </span>
             </BoxContent>
-            <BoxContent className="wow fadeInUp" data-wow-delay="0.6s">
+            <BoxContent>
               <span>
                 <b>Tamanho de letra: </b> 12{" "}
               </span>
             </BoxContent>
-            <BoxContent className="wow fadeInUp" data-wow-delay="0.7s">
+            <BoxContent>
               <span>
                 <b>Alinhamento: </b> à esquerda para texto e contralizado para
                 título.{" "}
               </span>
             </BoxContent>
-            <BoxContent className="wow fadeInUp" data-wow-delay="0.8s">
+            <BoxContent>
               <span>
                 <b>Margens: </b> Superior a Esquerda - 3cm; Inferior a Direita -
                 2cm{" "}
               </span>
             </BoxContent>
-            <h2 className="wow fadeInUp" data-wow-delay="0.9s">
+            <h2> Fontes de mesmo autor </h2>
+            <p>
               {" "}
-              Fontes de mesmo autor{" "}
-            </h2>
-            <p className="wow fadeInUp" data-wow-delay="1s">
               Quando um mesmo autor tem várias obras citadas, coloca-se o nome
               do autor na primeira referência. Nas outras, usa-se um traço com
               cerca de 1 cm de comprimento.

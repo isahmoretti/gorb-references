@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
 
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
@@ -11,6 +10,10 @@ import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
@@ -108,7 +111,7 @@ const ArticleNewspaper = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -182,7 +185,7 @@ const ArticleNewspaper = ({ back }) => {
                                     disabled={index === 0}
                                     onClick={() => arrayHelpers.remove(index)}
                                   >
-                                    <RemoveIcon />
+                                    <RemoveIcon src={Minus} />
                                   </ButtonCore>
                                   {index ===
                                     props.values.authors.length - 1 && (
@@ -190,7 +193,7 @@ const ArticleNewspaper = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>

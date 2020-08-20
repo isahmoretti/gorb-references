@@ -13,6 +13,8 @@ import {
 // pages
 import WholeEvent from "./WholeEvent";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 const Events = ({ back }) => {
   const [state, setState] = useState(0);
 
@@ -20,14 +22,16 @@ const Events = ({ back }) => {
     <Conatiner>
       {!state && (
         <Content>
-          <Back onClick={back} />
+          <Back onClick={back} src={ArrowLeft} />
           <Row>
             <Hexagon onClick={() => setState(1)} className="blue-dark">
               <p className="txt-white">Evento no todo</p>
             </Hexagon>
             <Separator />
             <Hexagon className="blue-dark" onClick={() => setState(6)}>
-              <p className="txt-white">Evento no todo em publicação periódica</p>
+              <p className="txt-white">
+                Evento no todo em publicação periódica
+              </p>
             </Hexagon>
           </Row>
 
@@ -38,11 +42,13 @@ const Events = ({ back }) => {
             <Title>
               {" "}
               Eventos,
-              <br />patentes e
-              <br />normas
-              <br />técnicas
               <br />
-              {" "}
+              patentes e
+              <br />
+              normas
+              <br />
+              técnicas
+              <br />{" "}
             </Title>
             <Hexagon className="blue-dark" onClick={() => setState(5)}>
               <p className="txt-white">Trabalhos em anais</p>
@@ -55,7 +61,10 @@ const Events = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon className="blue-dark" onClick={() => setState(4)}>
-              <p className="txt-white">Trabalhos de eventos publicados em <br/>revistas</p>
+              <p className="txt-white">
+                Trabalhos de eventos publicados em <br />
+                revistas
+              </p>
             </Hexagon>
           </Row>
         </Content>

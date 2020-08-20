@@ -4,6 +4,7 @@ export const Container = styled.div`
   background-color: #eada18;
 
   height: 80px;
+  width: 100%;
 `;
 export const Nav = styled.div`
   display: flex;
@@ -38,5 +39,7 @@ export const BoxLogo = styled.div`
   > span {
     text-transform: uppercase;
     font-size: 10px;
+
+    margin-left: 10px;
   }
 `;

@@ -13,26 +13,17 @@ const Session1 = () => {
     <Container>
       <Wrapper className="container">
         <Box>
-          <h1 className="wow fadeInUp" data-wow-delay="0.4s">
-            {" "}
-            GORB{" "}
-          </h1>
-          <p className="wow fadeInUp" data-wow-delay="0.4s">
+          <h1> GORB </h1>
+          <p>
             {" "}
             Gerador Online de <br /> Referências Bibliográficas{" "}
           </p>
-          <button
-            onClick={() => navigate("/app")}
-            className="wow fadeInUp"
-            data-wow-delay="0.4s"
-          >
+          <button onClick={() => navigate("/app")}>
             {" "}
             Acesse o Gerador Grátis{" "}
           </button>
         </Box>
-        <Box className="wow fadeInUp" data-wow-delay="0.4s">
-          imagem
-        </Box>
+        <Box>imagem</Box>
       </Wrapper>
     </Container>
   );

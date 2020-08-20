@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -12,6 +11,10 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 
@@ -21,7 +24,6 @@ import {
   Card,
   Row,
   Content,
-  Footer,
   Back,
   AddIcon,
   RemoveIcon,
@@ -51,7 +53,6 @@ const generateReference = (values) => {
     pageFinish,
     fascicle,
     accessedAt,
-    yearOfPublication,
     online,
     accessedAtUrl,
     url,
@@ -96,7 +97,7 @@ const ArticleMagazine = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -171,7 +172,7 @@ const ArticleMagazine = ({ back }) => {
                                     disabled={index === 0}
                                     onClick={() => arrayHelpers.remove(index)}
                                   >
-                                    <RemoveIcon />
+                                    <RemoveIcon src={Minus} />
                                   </ButtonCore>
                                   {index ===
                                     props.values.authors.length - 1 && (
@@ -179,7 +180,7 @@ const ArticleMagazine = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>

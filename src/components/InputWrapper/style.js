@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { HelpOutline } from "styled-icons/material";
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,11 +14,9 @@ export const ErrorText = styled.span`
   color: #6666cc;
 `;
 
-export const IconHelp = styled(HelpOutline)`
+export const IconHelp = styled.img`
   width: 24px;
   height: 24px;
-
-  color: #6666cc;
 `;
 
 export const ButtonHelp = styled.button`

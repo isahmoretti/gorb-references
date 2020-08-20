@@ -9,22 +9,19 @@ const Session3 = () => {
     <Container>
       <Wrapper className="container p-3">
         <Box>
-          <h1 className="wow fadeInUp" data-wow-delay="0.3s">
-            {" "}
-            Como funciona o GORB?{" "}
-          </h1>
-          <li className="wow fadeInUp" data-wow-delay="0.3s">
+          <h1> Como funciona o GORB? </h1>
+          <li>
             <span>1</span>{" "}
             <p>Escolha o tipo de documento que será referenciado; </p>
           </li>
-          <li className="wow fadeInUp" data-wow-delay="0.3s">
+          <li>
             <span>2</span>{" "}
             <p>Preencha um formulário com os dados do documento consultado; </p>
           </li>
-          <li className="wow fadeInUp" data-wow-delay="0.3s">
+          <li>
             <span>3</span> <p>Clique no botão "Gerar referência";</p>
           </li>
-          <li className="wow fadeInUp" data-wow-delay="0.3s">
+          <li>
             <span>4</span>{" "}
             <p>Copie e cole na lista de referências do seu trabalho;</p>
           </li>

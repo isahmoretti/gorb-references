@@ -17,6 +17,11 @@ import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 // styles
 import {
   Container,
@@ -122,7 +127,7 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -439,7 +444,7 @@ const Book = ({ back }) => {
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index ===
@@ -450,7 +455,7 @@ const Book = ({ back }) => {
                                         type="button"
                                         onClick={() => arrayHelpers.push("")}
                                       >
-                                        <AddIcon />
+                                        <AddIcon src={Plus} />
                                       </ButtonCore>
                                     )}
                                 </div>

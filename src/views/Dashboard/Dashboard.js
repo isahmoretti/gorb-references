@@ -16,13 +16,15 @@ import {
 import Nav from "../HomePage/Header";
 import Footer from "../HomePage/Footer";
 
+import Plus from "../../assets/images/plus-dark.svg";
+
 // pages
 import Book from "../Book";
 import AcademicWork from "../AcademicWork";
 import JuridicDocument from "../JuridicDocument";
 import ElectronicMediaDocuments from "../ElectronicMediaDocuments";
 import Audiovisual from "../Audiovisual";
-import Events from "../Events"
+import Events from "../Events";
 const Dashboard = () => {
   const [state, setState] = useState(0);
 
@@ -78,7 +80,7 @@ const Dashboard = () => {
               </Hexagon>
               <Separator />
               <Hexagon className="gray">
-                <IconPlus />
+                <IconPlus src={Plus} />
               </Hexagon>
             </Row>
           </Content>

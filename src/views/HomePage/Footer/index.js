@@ -2,6 +2,10 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
+import Facebook from "../../../assets/images/facebook.svg";
+import Linkedin from "../../../assets/images/linkedin.svg";
+import Twitter from "../../../assets/images/twitter.svg";
+
 import {
   Container,
   Content,
@@ -15,11 +19,11 @@ import {
 const Footer = () => {
   return (
     <Container className="container">
-      <Content className="wow fadeInUp" data-wow-delay="0.7s">
+      <Content>
         <Social>
-          <FacebookIcon />
-          <TwitterIcon />
-          <LinkedinIcon />
+          <FacebookIcon src={Facebook} />
+          <TwitterIcon src={Twitter} />
+          <LinkedinIcon src={Linkedin} />
         </Social>
         <Title> @ Via Carreira 2020 - Todos os direitos reservados </Title>
       </Content>

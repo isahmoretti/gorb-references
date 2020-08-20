@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import { Grid, Button as ButtonCore } from "@material-ui/core";
@@ -13,6 +13,10 @@ import Modal from "../../components/Modal";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
 
 // styles
 import {
@@ -109,7 +113,7 @@ const Thesis = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -184,7 +188,7 @@ const Thesis = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index ===
@@ -193,7 +197,7 @@ const Thesis = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>

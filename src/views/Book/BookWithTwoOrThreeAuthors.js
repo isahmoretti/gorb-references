@@ -15,6 +15,11 @@ import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 // styles
 import {
   Container,
@@ -126,7 +131,7 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
       <Formik
         initialValues={{
           authors: ["", "", ""],
@@ -197,7 +202,7 @@ const Book = ({ back }) => {
                                       disabled={index === 0}
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index === props.values.authors.length - 1 &&
@@ -206,7 +211,7 @@ const Book = ({ back }) => {
                                         type="button"
                                         onClick={() => arrayHelpers.push("")}
                                       >
-                                        <AddIcon />
+                                        <AddIcon src={Plus} />
                                       </ButtonCore>
                                     )}
                                 </div>
@@ -513,7 +518,7 @@ const Book = ({ back }) => {
                                     disabled={index === 0}
                                     onClick={() => arrayHelpers.remove(index)}
                                   >
-                                    <RemoveIcon />
+                                    <RemoveIcon src={Minus} />
                                   </ButtonCore>
                                   {index ===
                                     props.values.translatorName.length - 1 && (
@@ -521,7 +526,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>

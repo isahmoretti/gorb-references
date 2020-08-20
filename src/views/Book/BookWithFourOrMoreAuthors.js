@@ -18,6 +18,10 @@ import { formatDate } from "../../utils/formatDate";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
+
 // styles
 import {
   Container,
@@ -130,7 +134,7 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} />
+      <Back onClick={back} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -201,7 +205,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.remove("")}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index === props.values.authors.length - 1 &&
@@ -210,7 +214,7 @@ const Book = ({ back }) => {
                                         type="button"
                                         onClick={() => arrayHelpers.push("")}
                                       >
-                                        <AddIcon />
+                                        <AddIcon src={Plus} />
                                       </ButtonCore>
                                     )}
                                 </div>
@@ -529,7 +533,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.remove(index)}
                                     >
-                                      <RemoveIcon />
+                                      <RemoveIcon src={Minus} />
                                     </ButtonCore>
                                   )}
                                   {index ===
@@ -538,7 +542,7 @@ const Book = ({ back }) => {
                                       type="button"
                                       onClick={() => arrayHelpers.push("")}
                                     >
-                                      <AddIcon />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
                                   )}
                                 </div>
