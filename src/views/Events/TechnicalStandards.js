@@ -23,41 +23,39 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  mainEventName: Yup.string().required("Obrigatório"),
-  mainEventNumber: Yup.string().required("Obrigatório"),
-  participationEventNumbering: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
-  placeOfPerformance: Yup.string().required("Obrigatório"),
+  firstName: Yup.string().required("Obrigatório"),
+  secondName: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  placeOfPublication: Yup.string().required("Obrigatório"),
-  publishingCompany: Yup.string().required("Obrigatório"),
-  publicationDate: Yup.string().required("Obrigatório"),
+  caption: Yup.string().required("Obrigatório"),
+  place: Yup.string().required("Obrigatório"),
+  publisher: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
+  pages: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
-    mainEventName,
-    mainEventNumber,
-    participationEventName,
-    participationEventNumbering,
-    year,
-    placeOfPerformance,
+    firstName,
+    secondName,
     title,
-    placeOfPublication,
-    publishingCompany,
-    publicationDate,
+    caption,
+    place,
+    publisher,
+    year,
     pages,
-    theme,
-    note,
     online,
     url,
     accessedAt,
   } = values;
 
-  return <span></span>;
+
+  return (
+    <span>
+    </span>
+  );
 };
 
-const WholeEvent = ({ back }) => {
+const TechnicalStandards = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
@@ -81,22 +79,17 @@ const WholeEvent = ({ back }) => {
 
       <Formik
         initialValues={{
-          mainEventName: "",
-          mainEventNumber: "",
-          participationEventName: "",
-          participationEventNumbering: "",
-          year: "",
-          placeOfPerformance: "",
-          title: "",
-          placeOfPublication: "",
-          publishingCompany: "",
-          publicationDate: "",
-          pages: "",
-          theme: "",
-          note: "",
+          firstName: '',
+          secondName: '',
+          title: '',
+          caption: '',
+          place: '',
+          publisher: '',
+          year: '',
+          pages: '',
           online: false,
-          url: "",
-          accessedAt: "",
+          url: '',
+          accessedAt: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -110,100 +103,46 @@ const WholeEvent = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Evento no todo
+                  NORMAS TÉCNICAS
                 </p>
               </Title>
             </Actions>
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={7}>
                     <Input
                       type="text"
-                      label="Nome do evento principal"
-                      placeholder="Ex:Congresso Internacional do INES"
+                      label="Primeira parte do nome da entidade"
+                      placeholder="Ex: Associação Brasileira de Normas Técnicas"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.mainEventName}
-                      name="mainEventName"
+                      value={props.values.firstName}
+                      name="firstName"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
-                      label="Numeração do evento principal"
-                      placeholder="Ex: 8"
+                      label="Segunda parte do nome da entidade"
+                      placeholder="Ex: ABNT"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.mainEventNumber}
-                      name="mainEventNumber"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Nome do evento de participação"
-                      placeholder="Ex: Seminário Nacional do INES"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.participationEventName}
-                      name="participationEventName"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Numeração do evento de participação"
-                      placeholder="Ex: 14"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.participationEventNumbering}
-                      name="participationEventNumbering"
+                      value={props.values.secondName}
+                      name="secondName"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      type="text"
-                      label="Ano"
-                      placeholder="Ex: 2009"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.year}
-                      name="year"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local de realização do evento"
-                      placeholder="Ex: Rio de Janeiro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.placeOfPerformance}
-                      name="placeOfPerformance"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Título do documento"
-                      placeholder="Ex: Atas, Anais, Proceedings"
+                      label="Título da Norma"
+                      placeholder="Ex: ABNT NBR ISO 14001:2015"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -212,55 +151,65 @@ const WholeEvent = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      type="text"
+                      label="Subtítulo"
+                      placeholder="Ex: Sistemas da gestão ambiental: Requisitos com orientações para uso"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      name="caption"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Local de publicação"
+                      label="Local"
                       placeholder="Ex: Rio de Janeiro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.placeOfPublication}
-                      name="placeOfPublication"
+                      value={props.values.place}
+                      name="place"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Editora"
-                      placeholder="Ex: Instituto Nacional de Educação de Surdos"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Data de publicação"
-                      placeholder="Ex: 2009"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Número de páginas"
-                      placeholder="Ex: 160p."
+                      label="Publicador"
+                      placeholder="Ex: ABNT"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.publisher}
+                      name="publisher"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      type="text"
+                      label="Ano"
+                      placeholder="Ex: 2015"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.year}
+                      name="year"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      type="text"
+                      label="Total de Páginas"
+                      placeholder="Ex: 41"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pages}
@@ -269,36 +218,10 @@ const WholeEvent = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Tema"
-                      placeholder="Ex: Múltiplos Atores e Saberes na Educação de Surdos"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.theme}
-                      name="theme"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                 </Grid>
-
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={9}>
-                    <Input
-                      type="text"
-                      label="Nota"
-                      placeholder="Ex: Inclui bibliografia."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.note}
-                      name="note"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+
+                  <Grid item xs={12} sm={12} md={2}>
                     <Select
                       label="Online?"
                       onChange={props.handleChange}
@@ -306,17 +229,15 @@ const WholeEvent = ({ back }) => {
                       value={props.values.online}
                       name="online"
                       options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não  " },
+                        { value: true, name: 'Sim' },
+                        { value: false, name: 'Não  ' }
                       ]}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={9}>
+              
+                  <Grid item xs={12} sm={12} md={7}>
                     <Input
                       disabled={!props.values.online}
                       name="url"
@@ -375,4 +296,4 @@ const WholeEvent = ({ back }) => {
   );
 };
 
-export default WholeEvent;
+export default TechnicalStandards;

@@ -12,52 +12,57 @@ import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
+import ArrowLeft from "../../assets/images/arrow-left.svg";
+
 // utils
 import { formatDate } from "../../utils/formatDate";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
-import ArrowLeft from "../../assets/images/arrow-left.svg";
-
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  mainEventName: Yup.string().required("Obrigatório"),
-  mainEventNumber: Yup.string().required("Obrigatório"),
-  participationEventNumbering: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
-  placeOfPerformance: Yup.string().required("Obrigatório"),
+  name: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  placeOfPublication: Yup.string().required("Obrigatório"),
-  publishingCompany: Yup.string().required("Obrigatório"),
-  publicationDate: Yup.string().required("Obrigatório"),
+  type: Yup.string().required("Obrigatório"),
+  typeDescription: Yup.string().required("Obrigatório"),
+  patentNumber: Yup.string().required("Obrigatório"),
+  depositDate: Yup.string().required("Obrigatório"),
 });
 
+const getTypeName = (type) => {
+  switch (type) {
+    case 'depositor':
+      return 'Depositante'
+    case 'holder':
+      return 'Titular'
+    default:
+      return ''
+  }
+}
 const generateReference = (values) => {
   const {
-    mainEventName,
-    mainEventNumber,
-    participationEventName,
-    participationEventNumbering,
-    year,
-    placeOfPerformance,
+    name,
     title,
-    placeOfPublication,
-    publishingCompany,
-    publicationDate,
-    pages,
-    theme,
-    note,
-    online,
+    type,
+    typeDescription,
+    attorney, // procurador
+    patentNumber,
+    depositDate,
+    patentGrantDate,
+    specification,
     url,
     accessedAt,
   } = values;
 
-  return <span></span>;
+  return (
+    <span>
+    </span>
+  );
 };
 
-const WholeEvent = ({ back }) => {
+const Patents = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
@@ -81,22 +86,17 @@ const WholeEvent = ({ back }) => {
 
       <Formik
         initialValues={{
-          mainEventName: "",
-          mainEventNumber: "",
-          participationEventName: "",
-          participationEventNumbering: "",
-          year: "",
-          placeOfPerformance: "",
-          title: "",
-          placeOfPublication: "",
-          publishingCompany: "",
-          publicationDate: "",
-          pages: "",
-          theme: "",
-          note: "",
-          online: false,
-          url: "",
-          accessedAt: "",
+          name: '',
+          title: '',
+          type: 'holder',
+          typeDescription: '',
+          attorney: '', // procurador
+          patentNumber: '',
+          depositDate: '',
+          patentGrantDate: '',
+          specification: '',
+          url: '',
+          accessedAt: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -110,91 +110,22 @@ const WholeEvent = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Evento no todo
+                  PATENTES
                 </p>
               </Title>
             </Actions>
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Nome do evento principal"
-                      placeholder="Ex:Congresso Internacional do INES"
+                      label="Nome do inventor"
+                      placeholder="Ex: Romeu Lehnen"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.mainEventName}
-                      name="mainEventName"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Numeração do evento principal"
-                      placeholder="Ex: 8"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.mainEventNumber}
-                      name="mainEventNumber"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Nome do evento de participação"
-                      placeholder="Ex: Seminário Nacional do INES"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.participationEventName}
-                      name="participationEventName"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Numeração do evento de participação"
-                      placeholder="Ex: 14"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.participationEventNumbering}
-                      name="participationEventNumbering"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      type="text"
-                      label="Ano"
-                      placeholder="Ex: 2009"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.year}
-                      name="year"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local de realização do evento"
-                      placeholder="Ex: Rio de Janeiro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.placeOfPerformance}
-                      name="placeOfPerformance"
+                      value={props.values.name}
+                      name="name"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -202,8 +133,8 @@ const WholeEvent = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Título do documento"
-                      placeholder="Ex: Atas, Anais, Proceedings"
+                      label="Título da patente"
+                      placeholder="Ex: Salto com mecanismo amortecedor"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -215,56 +146,17 @@ const WholeEvent = ({ back }) => {
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                    <Select
                       type="text"
-                      label="Local de publicação"
-                      placeholder="Ex: Rio de Janeiro"
+                      label="Escolher entre dois itens"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.placeOfPublication}
-                      name="placeOfPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Editora"
-                      placeholder="Ex: Instituto Nacional de Educação de Surdos"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Data de publicação"
-                      placeholder="Ex: 2009"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Número de páginas"
-                      placeholder="Ex: 160p."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.pages}
-                      name="pages"
+                      value={props.values.type}
+                      name="type"
+                      options={[
+                        { value: 'depositor', name: 'Depositante' },
+                        { value: 'holder', name: 'Titular' }
+                      ]}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -272,53 +164,93 @@ const WholeEvent = ({ back }) => {
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
                       type="text"
-                      label="Tema"
-                      placeholder="Ex: Múltiplos Atores e Saberes na Educação de Surdos"
+                      label={getTypeName(props.values.type)}
+                      placeholder="Ex: Custódio de Almeida & Cia"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.theme}
-                      name="theme"
+                      value={props.values.attorney}
+                      name="attorney"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={9}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       type="text"
-                      label="Nota"
-                      placeholder="Ex: Inclui bibliografia."
+                      label="Procurador"
+                      placeholder="Ex: Nome do procurador, se houver"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.note}
-                      name="note"
+                      value={props.values.typeDescription}
+                      name="typeDescription"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="text"
+                      label="Número da patente"
+                      placeholder="Ex: MU 8803472-0 Y1"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.patentNumber}
+                      name="patentNumber"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="date"
+                      label="Data de depósito"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.depositDate}
+                      name="depositDate"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      label="Online?"
+                    <Input
+                      type="date"
+                      label="Data de concessão da patente"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.online}
-                      name="online"
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não  " },
-                      ]}
+                      value={props.values.patentGrantDate}
+                      name="patentGrantDate"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      type="text"
+                      label="Especificações"
+                      placeholder="Ex: Int. Ci. G02B 26/10 (2009.01), G02F 1/29 (2009.01)"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.specification}
+                      name="specification"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={9}>
                     <Input
-                      disabled={!props.values.online}
                       name="url"
                       label="Disponível em"
                       type="text"
@@ -332,7 +264,6 @@ const WholeEvent = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      disabled={!props.values.online}
                       name="accessedAt"
                       type="date"
                       label="Acesso em"
@@ -375,4 +306,4 @@ const WholeEvent = ({ back }) => {
   );
 };
 
-export default WholeEvent;
+export default Patents;
