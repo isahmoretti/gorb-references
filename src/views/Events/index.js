@@ -14,7 +14,11 @@ import {
 import WholeEvent from "./WholeEvent";
 import TechnicalStandards from './TechnicalStandards'
 import Patents from './Patents'
+import EventsWorkPublishedInMagazines from './EventsWorkPublishedInMagazines'
+import WorksInAnnals from "./WorksInAnnals";
+import WholeEventInPeriodicPublication from './WholeEventInPeriodicPublication'
 
+// assets
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
 const Events = ({ back }) => {
@@ -75,10 +79,10 @@ const Events = ({ back }) => {
       {state === 1 && <WholeEvent back={() => setState(0)} />}
       {state === 2 && <TechnicalStandards back={() => setState(0)} />}
       {state === 3 && <Patents back={() => setState(0)} />}
-      {/*
-      {state === 4 && <Film back={() => setState(0)} />}
-      {state === 5 && <VideoInternet back={() => setState(0)} />}
-      {state === 6 && <Podcast back={() => setState(0)} />} */}
+      {state === 4 && <EventsWorkPublishedInMagazines back={() => setState(0)} />}
+      {state === 5 && <WorksInAnnals back={() => setState(0)} />}
+      {state === 6 && <WholeEventInPeriodicPublication back={() => setState(0)} />}
+    
     </Conatiner>
   );
 };
