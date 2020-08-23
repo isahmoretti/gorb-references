@@ -17,6 +17,9 @@ import Minus from "../../assets/images/minus.svg";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+
 // styles
 import {
   Container,
@@ -33,10 +36,11 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
+  authors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titleNewspaper: Yup.string().required("Obrigatório"),
   accessedAt: Yup.string().required("Obrigatório"),
+  yaer: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
@@ -51,6 +55,7 @@ const generateReference = (values) => {
     titleNotebook,
     location,
     volume,
+    yaer,
     pageInit,
     pageFinish,
     accessedAt,
@@ -78,6 +83,7 @@ const generateReference = (values) => {
       )}
       {titleNewspaper && <b>{` ${titleNewspaper}, `}</b>}
       {location && `${location}, `}
+      {yaer && `ano ${yaer}, `}
       {volume && `v. ${volume}, `}
       {numerNewspaper && `n. ${numerNewspaper}, `}
       {accessedAt && `${formatDate(accessedAt)}. `}
@@ -104,6 +110,11 @@ const ArticleNewspaper = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.authors,
+        values.yaer
+      ),
+      citation: generateCitationWithoutAuthor(values.authors, values.yaer),
     }));
 
     setOpenModal(!openModal);
@@ -123,6 +134,7 @@ const ArticleNewspaper = ({ back }) => {
           numerNewspaper: "",
           location: "",
           volume: "",
+          yaer: "",
           pageInit: "",
           pageFinish: "",
           accessedAt: "",
@@ -173,7 +185,7 @@ const ArticleNewspaper = ({ back }) => {
                                     name={`authors.${index}`}
                                     label={`${index + 1}º Autor`}
                                     type="text"
-                                    placeholder="Nome do autor"
+                                    placeholder="Ex: Julio Abramczyk"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={author}
@@ -225,7 +237,7 @@ const ArticleNewspaper = ({ back }) => {
                       name="title"
                       label="Título do artigo"
                       type="text"
-                      placeholder="Nome do artigo"
+                      placeholder="Ex: A fragilidade em idosos e a saúde bucal"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -266,7 +278,7 @@ const ArticleNewspaper = ({ back }) => {
                       name="titleNotebook"
                       label="Título do caderno ou seção"
                       type="text"
-                      placeholder="Ex: Cultura"
+                      placeholder="Ex: Ciência + Saúde"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -281,7 +293,7 @@ const ArticleNewspaper = ({ back }) => {
                       name="numerNewspaper"
                       label="Nº do jornal"
                       type="text"
-                      placeholder="Ex: 78"
+                      placeholder="Ex: 32420"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -289,12 +301,12 @@ const ArticleNewspaper = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       name="location"
                       label="Local de publicação"
                       type="text"
-                      placeholder="Local de publicação"
+                      placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -303,15 +315,28 @@ const ArticleNewspaper = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="volume"
                       label="Volume"
                       type="text"
-                      placeholder="Ex: 4"
+                      placeholder="Ex: 45"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      name="yaer"
+                      label="Ano"
+                      type="text"
+                      placeholder="Ex: 97"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.yaer}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -351,7 +376,7 @@ const ArticleNewspaper = ({ back }) => {
                       name="pageFinish"
                       label="Página Final"
                       type="text"
-                      placeholder="Ex: 42"
+                      placeholder="Ex: 4"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pageFinish}
@@ -408,6 +433,12 @@ const ArticleNewspaper = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
+                <Row>
+                  <span>
+                    Em caso de publicação em uma única página, preencher apenas
+                    o item <b>página inicial</b>
+                  </span>
+                </Row>
                 <Row container className="end">
                   <Button
                     variant="outlined"
@@ -426,6 +457,8 @@ const ArticleNewspaper = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

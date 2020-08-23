@@ -17,6 +17,8 @@ import Minus from "../../assets/images/minus.svg";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 // styles
 import {
@@ -34,11 +36,12 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
+  // authors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titleMagazine: Yup.string().required("Obrigatório"),
+  location: Yup.string().required("Obrigatório"),
+  yearOfPublication: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
-  // yearOfPublication: Yup.string().required("Obrigatório"),
 });
 const generateReference = (values) => {
   const {
@@ -47,8 +50,10 @@ const generateReference = (values) => {
     caption,
     titleMagazine,
     location,
+    publisher,
     frequency,
-    volume,
+    edition,
+    yearOfPublication,
     pageInit,
     pageFinish,
     fascicle,
@@ -62,9 +67,11 @@ const generateReference = (values) => {
     <span>
       {" "}
       {authors.length && formatAuthorName(authors)}
-      {caption ? <>{`${title}: ${caption}.`}</> : `${title}.`}
-      <b>{` ${titleMagazine}`}</b>,&nbsp;{location && `${location}, `}
-      {volume && `v. ${volume}, `}
+      {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
+      <b>{`${titleMagazine}`}</b>,&nbsp;
+      {publisher ? <>{`${location}: ${publisher}, `}</> : `${location}, `}
+      {edition && `ed. ${edition}, `}
+      {yearOfPublication && `ano ${yearOfPublication}, `}
       {fascicle && `n. ${fascicle}, `}
       {pageInit && !pageFinish && `p. ${pageInit}. `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
@@ -90,6 +97,14 @@ const ArticleMagazine = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -106,8 +121,9 @@ const ArticleMagazine = ({ back }) => {
           caption: "",
           titleMagazine: "",
           location: "",
+          publisher: "",
           frequency: "",
-          volume: "",
+          edition: "",
           pageInit: "",
           pageFinish: "",
           fascicle: "",
@@ -240,15 +256,15 @@ const ArticleMagazine = ({ back }) => {
                       name="titleMagazine"
                       label="Titulo da revista"
                       type="text"
-                      placeholder="Ex: Época"
+                      placeholder="Ex: VEJA"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.local}
+                      value={props.values.titleMagazine}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       label="Local de publicação"
@@ -256,7 +272,21 @@ const ArticleMagazine = ({ back }) => {
                       placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
+                      value={props.values.location}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="publisher"
+                      label="Publicadora"
+                      type="text"
+                      placeholder="Ex: Abril"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.publisher}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -284,13 +314,13 @@ const ArticleMagazine = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="volume"
-                      label="Nº de volume"
+                      name="edition"
+                      label="Edição"
                       type="text"
-                      placeholder="Ex: 304"
+                      placeholder="Ex: 2373"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.volume}
+                      value={props.values.edition}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -355,9 +385,9 @@ const ArticleMagazine = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="yearOfPublication"
-                      label="Ano de publicação"
+                      label="Ano da Revista"
                       type="text"
-                      placeholder="Ex: 2005"
+                      placeholder="Ex: 37"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -432,6 +462,8 @@ const ArticleMagazine = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>
