@@ -13,6 +13,8 @@ import Modal from "../../components/Modal";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
+import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
@@ -81,13 +83,19 @@ const generateReference = (values) => {
       {caption ? <>{`${workTitle}: ${caption}. `}</> : `${workTitle}. `}
       {periodicTitle && <b>{`${periodicTitle}`}</b>}
       {periodicCaption ? `: ${periodicCaption}, ` : ", "}
-      {place ? `${place}, ` : "[s. l.], "}
+      {place && <>{place},</>}
       {volume && `v. ${volume}, `}
+      {number && <>{number}, </>}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
+      {publicationDate && <>{formatDate(publicationDate)}. </>}
+      {supplement && <>{supplement}. </>}
+      {eventNumber && eventName && <>Trabalho apresentado no {eventNumber} {eventName}, </>}
+      {locationOfTheEvent && <>{locationOfTheEvent}, </>}
+      {year && <>{year}. </>}
       {online &&
         url &&
-        `Disponível em: ${url}. Acesso em: ${formatDate(url)}. `}
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -104,6 +112,8 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.authors, values.year),
+      citation: generateCitationWithoutAuthor(values.authors, values.year)
     }));
 
     setOpenModal(!openModal);
@@ -115,26 +125,26 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          authors: ["Rute Proster Martins Gonçalvez"],
           abbreviate: false,
-          workTitle: "",
-          caption: "",
-          periodicTitle: "",
-          periodicCaption: "",
-          place: "",
-          volume: "",
-          number: "",
-          supplement: "",
-          pageInit: "",
-          pageFinish: "",
-          publicationDate: "",
-          eventNumber: "",
-          eventName: "",
-          locationOfTheEvent: "",
-          year: '',
+          workTitle: "Avaliação do professor realizada pelo aluno: impacto nas práticas docentes",
+          caption: "Subtítulo",
+          periodicTitle: "Revista Brasileira de Educação Médica",
+          periodicCaption: "Subtítulo do Periódico",
+          place: "Rio de Janeiro",
+          volume: "35",
+          number: "4",
+          supplement: "supl. 1",
+          pageInit: "141",
+          pageFinish: "142",
+          publicationDate: "2020-10-10",
+          eventNumber: "49º",
+          eventName: "Congresso Brasileiro de Educação Médica",
+          locationOfTheEvent: "Belo Horizonte",
+          year: '2011',
           online: false,
-          url: "",
-          accessedAt: "",
+          url: "https//www.viacarreira.com/",
+          accessedAt: "2020-12-12",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -148,7 +158,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Artigo publicado em periódico
+                  Trabalhos de eventos publicados em revistas
                 </p>
               </Title>
             </Actions>
@@ -245,13 +255,13 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
-                      name="title"
+                      name="workTitle"
                       label="Título do trabalho"
                       type="text"
                       placeholder="Ex: Avaliação do professor realizada pelo aluno: impacto nas práticas docentes"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.title}
+                      value={props.values.workTitle}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -515,6 +525,8 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

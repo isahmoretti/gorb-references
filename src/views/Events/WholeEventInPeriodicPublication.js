@@ -13,6 +13,8 @@ import Modal from "../../components/Modal";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
+import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
@@ -86,6 +88,8 @@ const WholeEventInPeriodicPublication = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
+            citationWithAuthor: generateCitationWithAuthor(values.mainEventName, values.publicationDate),
+            citation: generateCitationWithoutAuthor(values.mainEventName, values.publicationDate)
         }));
 
         setOpenModal(!openModal);

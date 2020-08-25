@@ -13,6 +13,9 @@ import Modal from "../../components/Modal";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { formatMessage } from "../../utils/formatMessage";
+import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
+import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
@@ -70,6 +73,30 @@ const generateReference = (values) => {
 
   return (
     <span>
+      {authors && <>{formatAuthorName(authors)}</>}
+      {caption ? <>{`${workTitle}: ${caption}. `}</> : `${workTitle}. `}
+      
+      {eventName && <><i>In:</i> {eventName.toUpperCase()}, </>}
+      {eventNumbering && <>{eventNumbering}., </>}
+      {yearOfPerformance && <>{yearOfPerformance}, </>}
+      {placeOfEvent && <>{placeOfEvent}. </>}
+
+      {documentTitle && <b>{formatMessage(documentTitle)}. </b>}
+      {placeOfPublication && <>{placeOfPublication}: </>}
+      {responsibility && <>{responsibility}, </>}
+      {yearOfPublication && <>{yearOfPublication}. </>}
+
+      {volume && `v. ${volume}, `}
+      {pageInit && !pageFinish && `p. ${pageInit}, `}
+      {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
+      
+      {specification && <>{specification}. </>}
+     
+      {online && <>{online}</>}
+      {online &&
+        url &&
+        accessedAt && 
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -86,6 +113,8 @@ const WorksInAnnals = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.authors, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.authors, values.yearOfPublication)
     }));
 
     setOpenModal(!openModal);
@@ -97,25 +126,26 @@ const WorksInAnnals = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          authors: ["Daniel Barbosa de Lima", "José Silva de Andrade"],
           abbreviate: false,
-          workTitle: '',
-          caption: '',
-          eventName: '',
-          eventNumbering: '',
-          yearOfPerformance: '',
-          placeOfEvent: '',
-          documentTitle: '',
-          placeOfPublication: '',
-          responsibility: '',
-          yearOfPublication: '',
-          specification: '',
-          volume: '',
-          pageInit: '',
-          pageFinish: '',
+          workTitle: 'Avaliação do efeito da fototerapia com laser no crescimento de fibroblastos gengivais de pacientes com Síndrome de Down',
+          caption: 'Subtítulo',
+          eventName: 'Congresso Brasileiro de Periodontologia',
+          eventNumbering: '27',
+          yearOfPerformance: '2017',
+          placeOfEvent: 'São Paulo',
+          documentTitle: 'Anais',
+          placeOfPublication: 'Belo Horizonte',
+          responsibility: 'Sociedade Brasileira de Periodontologia',
+          yearOfPublication: '2017',
+          specification: 'Trabalho 149/1085-0',
+          volume: '2',
+          pageInit: '45',
+          pageFinish: '65',
           online: false,
-          url: "",
-          accessedAt: "",
+          url: `https://www.passgroup.com.br/hotsite2/site/default.asp?TroncoID=518080&SecaoID=937153&SubSecaoID=&Template=../../asp/hotsite2/AnaisTrabalhoArquivo.asp&id=149/1085-
+          0&Formato=Resumo`,
+          accessedAt: "2020-10-10",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -131,6 +161,7 @@ const WorksInAnnals = ({ back }) => {
                 >
                   Trabalhos em anais
                 </p>
+                <div>Inclui anais, resumos e proceedings</div>
               </Title>
             </Actions>
             <Card>
@@ -454,6 +485,8 @@ const WorksInAnnals = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citation={state.citation}
+                citationWithAuthor={state.citationWithAuthor}
               />
             </Card>
           </form>
