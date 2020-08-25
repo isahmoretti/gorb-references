@@ -11,6 +11,8 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
+import { formatMessage } from '../../utils/formatMessage'
+import { formatDate } from '../../utils/formatDate'
 import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
 import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
@@ -64,6 +66,25 @@ const generateReference = (values) => {
 
     return (
         <span>
+            {eventName && <>{eventName.toUpperCase()}, </>}
+            {numbering && <>{numbering}, </>}
+            {participationEventName && <>{participationEventName.toUpperCase()}, </>}
+            {participationEventNumbering && <>{participationEventNumbering}., </>}
+            {year && <>{year}, </>}
+            {placeOfTheEvent && <>{placeOfTheEvent}, </>}
+            {documentTitle && <>{formatMessage(documentTitle)} </>}
+            {periodicName && <b>{periodicName}. </b>}
+            {placeOfPublication && <>{placeOfPublication}: </>}
+            {publishingCompany && <>{publishingCompany}, </>}
+            {volume && <>v. {volume}, </>}
+            {issueNumber && <>n. {issueNumber}, </>}
+            {publicationMonth && <>{publicationMonth}. </>}
+            {publicationYear && <>{publicationYear}. </>}
+            {theme && <>Tema: {theme}. </>}
+            {online &&
+                url &&
+                accessedAt &&
+                `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
         </span>
     );
 };
@@ -80,8 +101,8 @@ const WholeEventInPeriodicPublication = ({ back }) => {
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(values.mainEventName, values.publicationDate),
-            citation: generateCitationWithoutAuthor(values.mainEventName, values.publicationDate)
+            citationWithAuthor: generateCitationWithAuthor(values.eventName, values.publicationYear),
+            citation: generateCitationWithoutAuthor(values.eventName, values.publicationYear)
         }));
 
         setOpenModal(!openModal);
@@ -105,7 +126,8 @@ const WholeEventInPeriodicPublication = ({ back }) => {
                     publishingCompany: "",
                     volume: "",
                     issueNumber: "",
-                    publicationDate: "",
+                    publicationMonth: "",
+                    publicationYear: "",
                     theme: "",
                     online: false,
                     url: "",
@@ -414,6 +436,8 @@ const WholeEventInPeriodicPublication = ({ back }) => {
                                 isOpen={openModal}
                                 handleClose={() => setOpenModal(!openModal)}
                                 text={state.references}
+                                citation={state.citation}
+                                citationWithAuthor={state.citationWithAuthor}
                             />
                         </Card>
                     </form>

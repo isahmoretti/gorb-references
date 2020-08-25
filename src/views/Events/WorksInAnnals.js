@@ -125,26 +125,25 @@ const WorksInAnnals = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: ["Daniel Barbosa de Lima", "José Silva de Andrade"],
+          authors: [""],
           abbreviate: false,
-          workTitle: 'Avaliação do efeito da fototerapia com laser no crescimento de fibroblastos gengivais de pacientes com Síndrome de Down',
-          caption: 'Subtítulo',
-          eventName: 'Congresso Brasileiro de Periodontologia',
-          eventNumbering: '27',
-          yearOfPerformance: '2017',
-          placeOfEvent: 'São Paulo',
-          documentTitle: 'Anais',
-          placeOfPublication: 'Belo Horizonte',
-          responsibility: 'Sociedade Brasileira de Periodontologia',
-          yearOfPublication: '2017',
-          specification: 'Trabalho 149/1085-0',
-          volume: '2',
-          pageInit: '45',
-          pageFinish: '65',
+          workTitle: "",
+          caption: "",
+          eventName: "",
+          eventNumbering: "",
+          yearOfPerformance: "",
+          placeOfEvent: "",
+          documentTitle: "",
+          placeOfPublication: "",
+          responsibility: "",
+          yearOfPublication: "",
+          specification: "",
+          volume: "",
+          pageInit: "",
+          pageFinish: "",
           online: false,
-          url: `https://www.passgroup.com.br/hotsite2/site/default.asp?TroncoID=518080&SecaoID=937153&SubSecaoID=&Template=../../asp/hotsite2/AnaisTrabalhoArquivo.asp&id=149/1085-
-          0&Formato=Resumo`,
-          accessedAt: "2020-10-10",
+          url: "",
+          accessedAt: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
