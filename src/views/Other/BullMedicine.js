@@ -14,9 +14,6 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { formatMessage } from "../../utils/formatMessage";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -24,46 +21,31 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  type: Yup.string().required("Obrigatório"),
-  firstName: Yup.string().required("Obrigatório"),
-  lastSurname: Yup.string().required("Obrigatório"),
-  // message: Yup.string().required("Obrigatório"),
-  publicationDate: Yup.string().required("Obrigatório"),
-  accountAddress: Yup.string().required("Obrigatório"),
-  url: Yup.string().required("Obrigatório"),
-  accessedAt: Yup.string().required("Obrigatório"),
+  name: Yup.string().required("Obrigatório"),
+  medicineForm: Yup.string().required("Obrigatório"),
+  responsible: Yup.string().required("Obrigatório"),
+  manufacturer: Yup.string().required("Obrigatório"),
+  yaer: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
-    type,
-    firstName,
-    lastSurname,
-    message,
-    local,
-    publicationDate,
-    accountAddress,
-    url,
+    name,
+    medicineForm,
+    responsible,
+    location,
+    manufacturer,
+    yaer,
+    note,
+    online,
     accessedAt,
+    url,
   } = values;
 
-  return (
-    <span>
-      {lastSurname && <>{lastSurname}, </>}
-      {firstName && <>{firstName}. </>}
-      {message && <b>{formatMessage(message)}. </b>}
-      {local && <>{local}, </>}
-      {publicationDate && <>{formatDate(publicationDate)}. </>}
-      {type && <>{type}: </>}
-      {accountAddress && <>{accountAddress}. </>}
-      {accessedAt &&
-        url &&
-        ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-    </span>
-  );
+  return <span></span>;
 };
 
-const SocialNetworkPost = ({ back }) => {
+const BullMedicine = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
@@ -76,14 +58,6 @@ const SocialNetworkPost = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.firstName,
-        values.publicationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.firstName,
-        values.publicationDate
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -95,21 +69,22 @@ const SocialNetworkPost = ({ back }) => {
 
       <Formik
         initialValues={{
-          type: "",
-          firstName: "",
-          lastSurname: "",
-          message: "",
-          local: "",
-          publicationDate: "",
-          accountAddress: "",
-          url: "",
+          name: "Pantoprazol sódico sesqui-hidratado",
+          medicineForm: "comprimidos",
+          responsible: "Alberto Jorge Garcia Guimarães",
+          location: "São Paulo",
+          manufacturer: "Biosintética Farmacêutica Ltda",
+          yaer: "2018",
+          note: "1 bula de remédio. 2 p",
+          online: true,
           accessedAt: "",
+          url: "https://biosintetica.com.br/arquivos/",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
       >
         {(props) => (
-          <form onSubmit={props.handleSubmit}>
+          <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
                 <p
@@ -117,135 +92,132 @@ const SocialNetworkPost = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Postagem em rede social
+                  BULA DE REMÉDIO
                 </p>
-                Publicações em Facebook, Twitter, Instagram e outras redes
-                sociais digitais.
+                <span></span>
               </Title>
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Select
-                      type="text"
-                      label="Tipo de meio"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.type}
-                      name="type"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "twitter", name: "Twitter" },
-                        { value: "facebook", name: "Facebook" },
-                        { value: "instagram", name: "Instagram" },
-                      ]}
-                    />
-                  </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
+                      name="name"
                       type="text"
-                      label="Primeira parte do nome do Autor ou Entidade"
-                      placeholder="Ex: Agência Nacional de Vigilância Sanitária"
+                      label="Nome do medicamento"
+                      placeholder="Ex: Pantoprazol sódico sesqui-hidratado"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.firstName}
-                      name="firstName"
+                      value={props.values.name}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="medicineForm"
+                      type="text"
+                      label="Forma do remédio:"
+                      placeholder="Ex: comprimidos"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.medicineForm}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={7}>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
+                      name="responsible"
                       type="text"
-                      label="Último Sobrenome do Autor"
-                      placeholder="Ex: ANVISA"
+                      label="Responsável técnico"
+                      placeholder="Ex: Alberto Jorge Garcia Guimarães"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.lastSurname}
-                      name="lastSurname"
+                      value={props.values.responsible}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="location"
+                      type="text"
+                      label="Local"
+                      placeholder="Ex: São Paulo"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.location}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={5}>
+                    <Input
+                      name="manufacturer"
+                      type="text"
+                      label="Fabricante/Laboratório"
+                      placeholder="Ex: Biosintética Farmacêutica Ltda"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.manufacturer}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      name="yaer"
+                      type="text"
+                      label="Ano"
+                      placeholder="Ex: 2018"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.yaer}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
+                      name="note"
                       type="text"
-                      label="Local de publicação"
-                      placeholder="Ex: Brasília - se a pessoa não preencher, completar com [S.l]"
+                      label="Nota indicativa"
+                      placeholder="Ex: 1 bula de remédio. 2 p."
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.local}
-                      name="local"
+                      value={props.values.note}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <Input
+
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="online"
+                      label="Online"
                       type="text"
-                      label="Mensagem"
-                      rowns={3}
-                      placeholder="Ex: Apresentamos um avanço significativo após a implementação do nosso Plano
-                                            Digital, aprovado em 2019. Os serviços digitais passaram de 36 para um total de 113."
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.message}
-                      name="message"
+                      value={props.values.online}
                       errors={props.errors}
                       touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      type="date"
-                      label="Data de publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Endereço da conta"
-                      placeholder="Ex: @anvisa_oficial"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accountAddress}
-                      name="accountAddress"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Disponível em"
-                      placeholder="Ex: https://twitter.com/anvisa_oficial/status/1260575029127000068"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                      name="accessedAt"
                       type="date"
                       label="Acesso em"
                       InputLabelProps={{
@@ -254,12 +226,25 @@ const SocialNetworkPost = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
-                      name="accessedAt"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="url"
+                      label="Disponível em"
+                      type="text"
+                      placeholder="https://viacarreira.com/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
+
                 <Row container className="end">
                   <Button
                     variant="outlined"
@@ -277,8 +262,8 @@ const SocialNetworkPost = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                // citationWithAuthor={state.citationWithAuthor}
+                // citation={state.citation}
               />
             </Card>
           </form>
@@ -288,4 +273,4 @@ const SocialNetworkPost = ({ back }) => {
   );
 };
 
-export default SocialNetworkPost;
+export default BullMedicine;

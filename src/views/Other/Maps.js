@@ -8,13 +8,12 @@ import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
+import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -22,52 +21,34 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  publicationDate: Yup.string().required("Obrigatório"),
-  publication: Yup.string().required("Obrigatório"),
-  author: Yup.string().required("Obrigatório"),
-  type: Yup.string().required("Obrigatório"),
-  number: Yup.string().required("Obrigatório"),
-  documentSigningDate: Yup.string().required("Obrigatório"),
+  typeAuthor: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  location: Yup.string().required("Obrigatório"),
+  yaer: Yup.string().required("Obrigatório"),
+  description: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
+    typeAuthor,
     author,
-    type,
-    number,
-    documentSigningDate,
-    menu, // ementa
-    note,
-    publication,
-    publicationLocal,
-    publicationDate,
-    section,
-    page,
-    url,
+    subordination,
+    title,
+    subtitle,
+    location,
+    editor,
+    yaer,
+    description,
+    scale,
+    online,
     accessedAt,
+    ur,
   } = values;
 
-  return (
-    <span>
-      {author && <>{author}. </>}
-      {type && <>{type} </>}
-      {number && <>nº {number},&nbsp;</>}
-      {documentSigningDate && <>de {formatDate(documentSigningDate)}. </>}
-      {menu && <>{menu}. </>}
-      {publication && <b>{publication}, </b>}
-      {publicationLocal && <>{publicationLocal}, </>}
-      {publicationDate && <>{formatDate(publicationDate)}. </>}
-      {section && <>Seção {section}, </>}
-      {page && <> p. {page}. </>}
-      {note && <>{note}. </>}
-      {accessedAt &&
-        url &&
-        ` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
-    </span>
-  );
+  return <span></span>;
 };
 
-const ProvisionalMeasure = ({ back }) => {
+const Maps = ({ back }) => {
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
@@ -80,14 +61,6 @@ const ProvisionalMeasure = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.author,
-        values.publicationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.author,
-        values.publicationDate
-      ),
     }));
 
     setOpenModal(!openModal);
@@ -99,25 +72,25 @@ const ProvisionalMeasure = ({ back }) => {
 
       <Formik
         initialValues={{
-          author: "",
-          type: "Medida Provisória",
-          number: "",
-          documentSigningDate: "",
-          menu: "",
-          note: "",
-          publication: "",
-          publicationLocal: "",
-          publicationDate: "",
-          section: "",
-          page: "",
-          url: "",
+          typeAuthor: "",
+          author: "Santa Catarina",
+          subordination: "Departamento Estadual de Geografia e Cartografia",
+          title: "Mapa geral do Estado de Santa Catarina",
+          subtitle: "",
+          location: "Florianópolis",
+          editor: "Responsável pela publicação",
+          yaer: "1958",
+          description: "1 mapa, 78 x 57 cm",
+          scale: "1:800:000",
+          online: true,
           accessedAt: "",
+          url: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
       >
         {(props) => (
-          <form onSubmit={props.handleSubmit}>
+          <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
             <Actions>
               <Title>
                 <p
@@ -125,181 +98,180 @@ const ProvisionalMeasure = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Medida Provisória
+                  Mapas
                 </p>
+                <span>
+                  Inclui atlas, globo, fotografia aérea e outros documentos
+                  cartográficos
+                </span>
               </Title>
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="typeAuthor"
+                      label="Tipo de autor"
                       type="text"
-                      label="Autor"
-                      placeholder="Ex: Brasil"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.typeAuthor}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "", name: "Pessoa física" },
+                        { value: "", name: "Entidade" },
+                        { value: "", name: "Entidade coletiva" },
+                        { value: "", name: "Sem autoria" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={5}>
+                    <Input
+                      name="author"
+                      type="text"
+                      label="Nome do autor"
+                      placeholder="Ex: GAÚCHO"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.author}
-                      name="author"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      name="subordination"
                       type="text"
-                      label="Tipo"
+                      label="Subordinação"
+                      placeholder="Ex: Departamento Estadual de Geografia e Cartografia"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.type}
-                      name="type"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Número"
-                      placeholder="Ex: 648"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.number}
-                      name="number"
+                      value={props.values.subordination}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      name="title"
                       type="text"
-                      label="Ementa"
-                      rows="3"
+                      label="Título"
+                      placeholder="Ex: Mapa geral do Estado de Santa Catarina"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.menu}
-                      name="menu"
+                      value={props.values.title}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="subtitle"
+                      type="text"
+                      label="Subtítulo"
+                      placeholder="Ex: nome do subtítulo"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.subtitle}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="location"
+                      type="text"
+                      label="Local"
+                      placeholder="Ex: Florianópolis"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.location}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      type="date"
-                      label="Data de assinatura do documento"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.documentSigningDate}
-                      name="documentSigningDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                      name="editor"
                       type="text"
-                      label="Nota"
+                      label="Editora"
+                      placeholder="Ex: responsável pela publicação"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.note}
-                      name="note"
+                      value={props.values.editor}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
+                      name="yaer"
                       type="text"
-                      label="Publicação"
-                      placeholder="Ex: Diário Oficial da União"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publication}
-                      name="publication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local da publicação"
-                      placeholder="Ex: Brasília, DF"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationLocal}
-                      name="publicationLocal"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="date"
                       label="Data de publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+                      placeholder="Ex: 1958"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
+                      value={props.values.yaer}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      name="description"
                       type="text"
-                      label="Seção"
-                      placeholder="Ex: Seção 1"
+                      label="Descrição física"
+                      placeholder="Ex: 1 mapa, 78 x 57 cm"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.section}
-                      name="section"
+                      value={props.values.description}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      name="scale"
+                      type="text"
+                      label="Escala"
+                      placeholder="Ex: Escala: 1:800:000"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.scale}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
+
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="online"
+                      label="Online"
                       type="text"
-                      label="Página"
-                      placeholder="Ex: 1"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.page}
-                      name="page"
+                      value={props.values.online}
                       errors={props.errors}
                       touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      type="text"
-                      label="Disponível em"
-                      placeholder="Ex: www.viacarreira.com"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
+                      name="accessedAt"
                       type="date"
                       label="Acesso em"
                       InputLabelProps={{
@@ -308,12 +280,25 @@ const ProvisionalMeasure = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
-                      name="accessedAt"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="url"
+                      label="Disponível em"
+                      type="text"
+                      placeholder="https://viacarreira.com/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
+
                 <Row container className="end">
                   <Button
                     variant="outlined"
@@ -331,8 +316,8 @@ const ProvisionalMeasure = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                // citationWithAuthor={state.citationWithAuthor}
+                // citation={state.citation}
               />
             </Card>
           </form>
@@ -342,4 +327,4 @@ const ProvisionalMeasure = ({ back }) => {
   );
 };
 
-export default ProvisionalMeasure;
+export default Maps;

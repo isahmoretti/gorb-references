@@ -25,6 +25,8 @@ import JuridicDocument from "../JuridicDocument";
 import ElectronicMediaDocuments from "../ElectronicMediaDocuments";
 import Audiovisual from "../Audiovisual";
 import Events from "../Events";
+import Other from "../Other";
+
 const Dashboard = () => {
   const [state, setState] = useState(0);
 
@@ -81,7 +83,7 @@ const Dashboard = () => {
                 </p>
               </Hexagon>
               <Separator />
-              <Hexagon className="gray">
+              <Hexagon onClick={() => setState(7)} className="gray">
                 <IconPlus src={Plus} />
               </Hexagon>
             </Row>
@@ -93,6 +95,7 @@ const Dashboard = () => {
         {state === 4 && <Events back={() => setState(0)} />}
         {state === 5 && <ElectronicMediaDocuments back={() => setState(0)} />}
         {state === 6 && <JuridicDocument back={() => setState(0)} />}
+        {state === 7 && <Other back={() => setState(0)} />}
       </Conatiner>
 
       {state !== 0 && (
