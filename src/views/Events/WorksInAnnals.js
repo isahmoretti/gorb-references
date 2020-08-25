@@ -51,7 +51,6 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     authors,
-    abbreviate,
     workTitle,
     caption,
     eventName,

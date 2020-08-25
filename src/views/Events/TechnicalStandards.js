@@ -97,16 +97,16 @@ const TechnicalStandards = ({ back }) => {
 
       <Formik
         initialValues={{
-          firstName: 'Associação Brasileira de Normas Técnicas',
-          secondName: 'ABNT',
-          title: 'ABNT NBR ISO 14001:2015',
-          caption: 'Sistemas da gestão ambiental: Requisitos com orientações para uso',
-          place: 'Rio de Janeiro',
-          publisher: 'ABNT',
-          year: '2015',
-          pages: '41',
+          firstName: '',
+          secondName: '',
+          title: '',
+          caption: '',
+          place: '',
+          publisher: '',
+          year: '',
+          pages: '',
           online: false,
-          url: 'https://www.abntcatalogo.com.br/norma.aspx?ID=345116',
+          url: '',
           accessedAt: '',
         }}
         validationSchema={SignupSchema}

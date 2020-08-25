@@ -55,11 +55,6 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  //TÍTULO DO EVENTO, numeração., NOME DO EVENTO DE PARTICIPAÇÃO, numeração do
-  // evento de participação., ano, Cidade de realização. Título do documento [...].
-  // Local de publicação: Editora, ano de publicação. Número de páginas p. Tema: Assunto do
-  // evento. Nota. Disponível em: URL. Acesso em: dia, mês e ano.
-
   return <span>
     {mainEventName && <>{mainEventName.toUpperCase()}, </>}
     {mainEventNumber && <>{mainEventNumber}., </>}
@@ -114,22 +109,22 @@ const WholeEvent = ({ back }) => {
 
       <Formik
         initialValues={{
-          mainEventName: "Congresso Internacional do INES",
-          mainEventNumber: "8",
-          participationEventName: "Ex: Seminário Nacional do INES",
-          participationEventNumbering: "14",
-          year: "2009",
-          placeOfPerformance: "Ex: Rio de Janeiro",
-          title: "Atas, Anais, Proceedings",
-          placeOfPublication: "Rio de Janeiro",
-          publishingCompany: "Instituto Nacional de Educação de Surdos",
-          yearOfPublication: "2009",
-          pages: "160p.",
-          theme: "Múltiplos Atores e Saberes na Educação de Surdos",
-          note: "Inclui bibliografia",
+          mainEventName: "",
+          mainEventNumber:"",
+          participationEventName:"",
+          participationEventNumbering:"",
+          year:"",
+          placeOfPerformance:"",
+          title:"",
+          placeOfPublication:"",
+          publishingCompany:"",
+          yearOfPublication:"",
+          pages:"",
+          theme:"",
+          note:"",
           online: false,
-          url: "http://www.ines.gov.br/paginas/publicacoes/Anais/anais_2009.pdf",
-          accessedAt: "2020-10-10",
+          url:"",
+          accessedAt:"",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}

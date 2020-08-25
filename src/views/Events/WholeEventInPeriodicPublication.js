@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { Formik, FieldArray } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
-import { Grid, Button as ButtonCore } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -11,14 +11,10 @@ import Button from "../../components/Buttons";
 import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
-import { formatDate } from "../../utils/formatDate";
-import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
 import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
-import Plus from "../../assets/images/plus-dark.svg";
-import Minus from "../../assets/images/minus.svg";
 
 // styles
 import {
@@ -27,10 +23,6 @@ import {
     Row,
     Content,
     Back,
-    AddIcon,
-    RemoveIcon,
-    FieldArrayContainer,
-    ErrorText,
     Actions,
     Title,
 } from "./style";

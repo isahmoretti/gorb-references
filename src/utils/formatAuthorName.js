@@ -62,8 +62,6 @@ export const formatAuthorName = (authors, abbreviate = false) => {
   if (Array.isArray(authors)) {
     if (!authors.length || authors[0] === "") return false;
 
-    const authSplit = authors[0].split(" ");
-
     if (authors.length >= 4) {
       // console.log(replaceNameAuthor(authors[0], abbreviate));
       return (

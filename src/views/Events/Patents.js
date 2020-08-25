@@ -115,17 +115,17 @@ const Patents = ({ back }) => {
 
       <Formik
         initialValues={{
-          invertors: ['Romeu Lehnen'],
-          title: 'Salto com mecanismo amortecedor',
-          type: 'holder',
-          typeDescription: 'Custódio de Almeida & Cia',
-          attorney: 'Nome do procurador', // procurador
-          patentNumber: 'MU 8803472-0 Y1',
-          depositDate: '2020-08-12',
-          patentGrantDate: '2010-02-04',
-          specification: 'Int. Ci. G02B 26/10 (2009.01), G02F 1/29 (2009.01)',
-          url: 'https://gru.inpi.gov.br/',
-          accessedAt: '2020-04-11',
+          invertors: [''],
+          title: '',
+          type: '',
+          typeDescription: '',
+          attorney: '', // procurador
+          patentNumber: '',
+          depositDate: '',
+          patentGrantDate: '',
+          specification: '',
+          url: '',
+          accessedAt: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}

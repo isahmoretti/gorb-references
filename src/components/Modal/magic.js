@@ -26,9 +26,9 @@ export function copyFormatted(html) {
   window.getSelection().addRange(range);
 
   document.execCommand("copy");
-  for (var i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = true;
+  for (let i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = true;
   document.execCommand("copy");
-  for (var i = 0; i < activeSheets.length; i++)
+  for (let i = 0; i < activeSheets.length; i++)
     activeSheets[i].disabled = false;
 
   // Remove the iframe
