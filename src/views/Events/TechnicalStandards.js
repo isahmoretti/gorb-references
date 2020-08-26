@@ -14,8 +14,6 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -51,10 +49,28 @@ const generateReference = (values) => {
 
   return (
     <span>
+      {secondName && <>{secondName} - </>}
+      {firstName && <>{firstName}. </>}
+      {title && <b>{title}: </b>}
+      {caption && <>{caption}. </>}
+      {place && <>{place}: </>}
+      {publisher && <>{publisher}. </>}
+      {year && <>{year}. </>}
+      {pages && <>{pages} p. </>}
+      {online &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
 
+const generateCitationWithAuthor = (author, year) => {
+  return <>{author} ({year})</>
+}
+
+const generateCitationWithoutAuthor = (author, year) => {
+  return <>({author.toUpperCase()}, {year})</>
+}
 const TechnicalStandards = ({ back }) => {
   const [state, setState] = useState({
     values: {},
@@ -68,6 +84,8 @@ const TechnicalStandards = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.secondName, values.year),
+      citation: generateCitationWithoutAuthor(values.secondName, values.year)
     }));
 
     setOpenModal(!openModal);
@@ -236,7 +254,7 @@ const TechnicalStandards = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-              
+
                   <Grid item xs={12} sm={12} md={7}>
                     <Input
                       disabled={!props.values.online}

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { Formik } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
@@ -13,17 +13,32 @@ import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
+import Plus from "../../assets/images/plus-dark.svg";
+import Minus from "../../assets/images/minus.svg";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 // styles
-import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Back,
+  AddIcon,
+  RemoveIcon,
+  FieldArrayContainer,
+  ErrorText,
+  Actions,
+  Title,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
-  name: Yup.string().required("Obrigatório"),
+  invertors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   type: Yup.string().required("Obrigatório"),
   typeDescription: Yup.string().required("Obrigatório"),
@@ -43,7 +58,7 @@ const getTypeName = (type) => {
 }
 const generateReference = (values) => {
   const {
-    name,
+    invertors,
     title,
     type,
     typeDescription,
@@ -58,6 +73,18 @@ const generateReference = (values) => {
 
   return (
     <span>
+      {invertors && <>{formatAuthorName(invertors)} </>}
+      {title && <b>{title}. </b>}
+      {type && <>{getTypeName(type)}: {typeDescription} </>}
+      {typeDescription && <>{typeDescription}. </>}
+      {attorney && <>Procurador: {attorney}. </>}
+      {patentNumber && <>{patentNumber}. </>}
+      {depositDate && <>Depósito: {formatDate(depositDate)}. </>}
+      {patentGrantDate && <>Concessão: {formatDate(patentGrantDate)}. </>}
+      {specification && <>{specification}. </>}
+      {url &&
+        `Disponível em: ${url}. `}
+      {accessedAt && `Acesso em: ${formatDate(accessedAt)}.`}
     </span>
   );
 };
@@ -75,6 +102,8 @@ const Patents = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.invertors, values.depositDate),
+      citation: generateCitationWithoutAuthor(values.invertors, values.depositDate)
     }));
 
     setOpenModal(!openModal);
@@ -86,9 +115,9 @@ const Patents = ({ back }) => {
 
       <Formik
         initialValues={{
-          name: '',
+          invertors: [''],
           title: '',
-          type: 'holder',
+          type: '',
           typeDescription: '',
           attorney: '', // procurador
           patentNumber: '',
@@ -117,20 +146,79 @@ const Patents = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Nome do inventor"
-                      placeholder="Ex: Romeu Lehnen"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.name}
-                      name="name"
-                      errors={props.errors}
-                      touched={props.touched}
+                  <Grid item xs={12} sm={12} md={12}>
+                    <FieldArray
+                      name="invertors"
+                      render={(arrayHelpers) => (
+                        <div>
+                          {props.values.invertors &&
+                            props.values.invertors.length > 0 ? (
+                              props.values.invertors.map(
+                                (constructionName, index) => (
+                                  <FieldArrayContainer key={index}>
+                                    <div
+                                      style={{
+                                        display: "flex",
+                                        width: "100%",
+                                        marginBottom: 10,
+                                      }}
+                                    >
+                                      <Input
+                                        name={`invertors.${index}`}
+                                        label={`${index + 1}º Inventor`}
+                                        type="text"
+                                        placeholder="Nome do inventor"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={constructionName}
+                                        errors={props.errors}
+                                        touched={props.touched}
+                                      />
+                                      {
+                                        index > 0 &&
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.remove(index)}
+                                        >
+                                          <RemoveIcon src={Minus} />
+                                        </ButtonCore>
+                                      }
+                                      {index ===
+                                        props.values.invertors.length -
+                                        1 && (
+                                          <ButtonCore
+                                            type="button"
+                                            onClick={() => arrayHelpers.push("")}
+                                          >
+                                            <AddIcon src={Plus} />
+                                          </ButtonCore>
+                                        )}
+                                    </div>
+                                    <div style={{ width: "100%" }}>
+                                      <ErrorText>
+                                        {props.errors &&
+                                          props.errors.invertors &&
+                                          props.errors.invertors[index]}
+                                      </ErrorText>
+                                    </div>
+                                  </FieldArrayContainer>
+                                )
+                              )
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                        </div>
+                      )}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Título da patente"
@@ -143,8 +231,6 @@ const Patents = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Select
                       type="text"
@@ -161,7 +247,7 @@ const Patents = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label={getTypeName(props.values.type)}

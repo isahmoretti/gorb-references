@@ -13,6 +13,9 @@ import Modal from "../../components/Modal";
 
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
+import { formatMessage } from "../../utils/formatMessage";
+import { generateCitationWithAuthor } from '../../utils/generateCitationWithAuthor'
+import { generateCitationWithoutAuthor } from '../../utils/generateCitationWithoutAuthor'
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
@@ -48,7 +51,6 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     authors,
-    abbreviate,
     workTitle,
     caption,
     eventName,
@@ -70,6 +72,30 @@ const generateReference = (values) => {
 
   return (
     <span>
+      {authors && <>{formatAuthorName(authors)}</>}
+      {caption ? <>{`${workTitle}: ${caption}. `}</> : `${workTitle}. `}
+      
+      {eventName && <><i>In:</i> {eventName.toUpperCase()}, </>}
+      {eventNumbering && <>{eventNumbering}., </>}
+      {yearOfPerformance && <>{yearOfPerformance}, </>}
+      {placeOfEvent && <>{placeOfEvent}. </>}
+
+      {documentTitle && <b>{formatMessage(documentTitle)}. </b>}
+      {placeOfPublication && <>{placeOfPublication}: </>}
+      {responsibility && <>{responsibility}, </>}
+      {yearOfPublication && <>{yearOfPublication}. </>}
+
+      {volume && `v. ${volume}, `}
+      {pageInit && !pageFinish && `p. ${pageInit}, `}
+      {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
+      
+      {specification && <>{specification}. </>}
+     
+      {online && <>{online}</>}
+      {online &&
+        url &&
+        accessedAt && 
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -86,6 +112,8 @@ const WorksInAnnals = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.authors, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.authors, values.yearOfPublication)
     }));
 
     setOpenModal(!openModal);
@@ -99,20 +127,20 @@ const WorksInAnnals = ({ back }) => {
         initialValues={{
           authors: [""],
           abbreviate: false,
-          workTitle: '',
-          caption: '',
-          eventName: '',
-          eventNumbering: '',
-          yearOfPerformance: '',
-          placeOfEvent: '',
-          documentTitle: '',
-          placeOfPublication: '',
-          responsibility: '',
-          yearOfPublication: '',
-          specification: '',
-          volume: '',
-          pageInit: '',
-          pageFinish: '',
+          workTitle: "",
+          caption: "",
+          eventName: "",
+          eventNumbering: "",
+          yearOfPerformance: "",
+          placeOfEvent: "",
+          documentTitle: "",
+          placeOfPublication: "",
+          responsibility: "",
+          yearOfPublication: "",
+          specification: "",
+          volume: "",
+          pageInit: "",
+          pageFinish: "",
           online: false,
           url: "",
           accessedAt: "",
@@ -131,6 +159,7 @@ const WorksInAnnals = ({ back }) => {
                 >
                   Trabalhos em anais
                 </p>
+                <div>Inclui anais, resumos e proceedings</div>
               </Title>
             </Actions>
             <Card>
@@ -454,6 +483,8 @@ const WorksInAnnals = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citation={state.citation}
+                citationWithAuthor={state.citationWithAuthor}
               />
             </Card>
           </form>

@@ -14,8 +14,9 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { formatMessage } from "../../utils/formatMessage"
+// import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+// import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -31,7 +32,7 @@ const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   placeOfPublication: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
-  publicationDate: Yup.string().required("Obrigatório"),
+  yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -45,7 +46,7 @@ const generateReference = (values) => {
     title,
     placeOfPublication,
     publishingCompany,
-    publicationDate,
+    yearOfPublication,
     pages,
     theme,
     note,
@@ -54,8 +55,33 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  return <span></span>;
+  return <span>
+    {mainEventName && <>{mainEventName.toUpperCase()}, </>}
+    {mainEventNumber && <>{mainEventNumber}., </>}
+    {participationEventName && <>{participationEventName.toUpperCase()}, </>}
+    {participationEventNumbering && <>{participationEventNumbering}., </>}
+    {year && <>{year}, </>}
+    {placeOfPerformance && <>{placeOfPerformance}. </>}
+    {title && <b>{formatMessage(title)}. </b>}
+    {placeOfPublication && <>{placeOfPublication}: </>}
+    {publishingCompany && <>{publishingCompany}, </>}
+    {yearOfPublication && <>{yearOfPublication}. </>}
+    {pages && <>{pages}p. </>}
+    {theme && <>Tema: {theme}. </>}
+    {note && <>{note}. </>}
+    {online &&
+      url &&
+      `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+  </span>;
 };
+
+const generateCitationWithAuthor = (author, year) => {
+  return <>{author} ({year})</>
+}
+
+const generateCitationWithoutAuthor = (author, year) => {
+return <>({author.toUpperCase()}, {year})</>
+}
 
 const WholeEvent = ({ back }) => {
   const [state, setState] = useState({
@@ -70,6 +96,8 @@ const WholeEvent = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(values.mainEventName, values.yearOfPublication),
+      citation: generateCitationWithoutAuthor(values.mainEventName, values.yearOfPublication)
     }));
 
     setOpenModal(!openModal);
@@ -82,21 +110,21 @@ const WholeEvent = ({ back }) => {
       <Formik
         initialValues={{
           mainEventName: "",
-          mainEventNumber: "",
-          participationEventName: "",
-          participationEventNumbering: "",
-          year: "",
-          placeOfPerformance: "",
-          title: "",
-          placeOfPublication: "",
-          publishingCompany: "",
-          publicationDate: "",
-          pages: "",
-          theme: "",
-          note: "",
+          mainEventNumber:"",
+          participationEventName:"",
+          participationEventNumbering:"",
+          year:"",
+          placeOfPerformance:"",
+          title:"",
+          placeOfPublication:"",
+          publishingCompany:"",
+          yearOfPublication:"",
+          pages:"",
+          theme:"",
+          note:"",
           online: false,
-          url: "",
-          accessedAt: "",
+          url:"",
+          accessedAt:"",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -247,8 +275,8 @@ const WholeEvent = ({ back }) => {
                       placeholder="Ex: 2009"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
+                      value={props.values.yearOfPublication}
+                      name="yearOfPublication"
                       errors={props.errors}
                       touched={props.touched}
                     />
