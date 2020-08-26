@@ -297,7 +297,7 @@ const AdministrativeActs = ({ back }) => {
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.number}
+                      value={props.values.numberl}
                       errors={props.errors}
                       touched={props.touched}
                     />
