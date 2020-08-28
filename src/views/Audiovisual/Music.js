@@ -26,7 +26,7 @@ const SignupSchema = Yup.object().shape({
   titleAlbum: Yup.string().required("Obrigatório"),
   interpretersAlbum: Yup.string().required("Obrigatório"),
   recordCompany: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -38,7 +38,7 @@ const generateReference = (values) => {
     interpretersAlbum,
     location,
     recordCompany,
-    yaer,
+    year,
     suport,
     whatSuport,
     url,
@@ -63,7 +63,7 @@ const generateReference = (values) => {
       {`Intérprete: ${interpretersAlbum}. `}
       {location ? `${location}: ` : `[S. l.]: `}
       {`${recordCompany}, `}
-      {`${yaer}. `}
+      {`${year}. `}
       {specificationSuport && `${specificationSuport}, `}
       {suport && whatSuport && `${whatSuport}, `}
       {duration && `(${duration}). `}
@@ -105,7 +105,7 @@ const Music = ({ back }) => {
           interpretersAlbum: "Alcione",
           location: "São Paulo",
           recordCompany: "RCA Victor",
-          yaer: "1988",
+          year: "1988",
           suport: true,
           whatSuport: "1 disco vinil, lado A, faixa 4",
           url: "",
@@ -230,13 +230,13 @@ const Music = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Ano"
                       placeholder="Ex: 1988"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />

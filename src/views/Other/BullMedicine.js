@@ -25,7 +25,7 @@ const SignupSchema = Yup.object().shape({
   medicineForm: Yup.string().required("Obrigatório"),
   responsible: Yup.string().required("Obrigatório"),
   manufacturer: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -35,14 +35,24 @@ const generateReference = (values) => {
     responsible,
     location,
     manufacturer,
-    yaer,
+    year,
     note,
     online,
     accessedAt,
     url,
   } = values;
 
-  return <span></span>;
+  return <span>
+    {medicineForm ? <>{`${name.toUpperCase()}: ${medicineForm}. `}</> : `${name.toUpperCase()}. `}
+    {responsible && <>Responsável técnico {responsible}. </>}
+    {manufacturer ? <>{`${location}: ${manufacturer}, `}</> : `${location}, `}
+    {year && <>{year}. </>}
+    {note && <>{note}. </>}
+    {online &&
+      accessedAt &&
+      url &&
+      `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+  </span>;
 };
 
 const BullMedicine = ({ back }) => {
@@ -69,16 +79,16 @@ const BullMedicine = ({ back }) => {
 
       <Formik
         initialValues={{
-          name: "Pantoprazol sódico sesqui-hidratado",
-          medicineForm: "comprimidos",
-          responsible: "Alberto Jorge Garcia Guimarães",
-          location: "São Paulo",
-          manufacturer: "Biosintética Farmacêutica Ltda",
-          yaer: "2018",
-          note: "1 bula de remédio. 2 p",
-          online: true,
+          name: "",
+          medicineForm: "",
+          responsible: "",
+          location: "",
+          manufacturer: "",
+          year: "",
+          note: "",
+          online: false,
           accessedAt: "",
-          url: "https://biosintetica.com.br/arquivos/",
+          url: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -172,13 +182,13 @@ const BullMedicine = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Ano"
                       placeholder="Ex: 2018"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -217,6 +227,7 @@ const BullMedicine = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
+                      disabled={!props.values.online}
                       name="accessedAt"
                       type="date"
                       label="Acesso em"
@@ -232,6 +243,7 @@ const BullMedicine = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
+                      disabled={!props.values.online}
                       name="url"
                       label="Disponível em"
                       type="text"
@@ -262,8 +274,8 @@ const BullMedicine = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+              // citationWithAuthor={state.citationWithAuthor}
+              // citation={state.citation}
               />
             </Card>
           </form>

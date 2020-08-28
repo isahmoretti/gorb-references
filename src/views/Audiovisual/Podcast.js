@@ -32,7 +32,7 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     title,
-    subtitle,
+    caption,
     locutors,
     hasInterviewee,
     nameInterviewee,
@@ -45,8 +45,8 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {subtitle
-        ? `${title.toUpperCase()}: ${subtitle}. `
+      {caption
+        ? `${title.toUpperCase()}: ${caption}. `
         : `${title.toUpperCase()}. `}
       {`[Locução de]: ${locutors}. `}
       {hasInterviewee &&
@@ -93,7 +93,7 @@ const Podcast = ({ back }) => {
       <Formik
         initialValues={{
           title: "Dragões de Garagem #137",
-          subtitle: "vó Maria vacinas e escolhas #semanadavacina",
+          caption: "vó Maria vacinas e escolhas #semanadavacina",
           locutors: "Barbara Paes",
           hasInterviewee: true,
           nameInterviewee: "Ex: Maria da Silva",
@@ -138,13 +138,13 @@ const Podcast = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
-                      name="subtitle"
+                      name="caption"
                       type="text"
                       label="Subtítulo do podcast"
                       placeholder="Ex: #137: vó Maria: vacinas e escolhas #semanadavacina."
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitle}
+                      value={props.values.caption}
                       errors={props.errors}
                       touched={props.touched}
                     />

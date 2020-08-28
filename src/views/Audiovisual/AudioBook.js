@@ -25,19 +25,19 @@ const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   ledor: Yup.string().required("Obrigatório"),
   publication: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   specification: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
     title,
-    subtitle,
+    caption,
     author,
     ledor,
     location,
     publication,
-    yaer,
+    year,
     specification,
     online,
     url,
@@ -47,11 +47,11 @@ const generateReference = (values) => {
   return (
     <span>
       {formatAuthorName(author)}
-      {subtitle ? (
+      {caption ? (
         <span>
           {" "}
           <b>{`${title}: `}</b>
-          {`${subtitle}. `}{" "}
+          {`${caption}. `}{" "}
         </span>
       ) : (
         <b> {`${title}. `} </b>
@@ -59,7 +59,7 @@ const generateReference = (values) => {
       {`Na voz de ${ledor}. `}
       {location ? `${location}: ` : "[S.l.]: "}
       {`${publication}, `}
-      {`${yaer}. `}
+      {`${year}. `}
       {`1 audiolivro ${specification}. `}
       {online &&
         accessedAt &&
@@ -94,12 +94,12 @@ const AudioBook = ({ back }) => {
       <Formik
         initialValues={{
           title: "1822",
-          subtitle: "Subtítulo",
+          caption: "Subtítulo",
           author: "Laurentino Gomes",
           ledor: "Pedro Bial",
           location: "São Paulo",
           publication: "Plugme",
-          yaer: "2011",
+          year: "2011",
           specification: "CD-ROM",
           online: "sim",
           url: "https://www.youtube.com/watch?v=wpLhm0UKTBY",
@@ -140,13 +140,13 @@ const AudioBook = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
-                      name="subtitle"
+                      name="caption"
                       type="text"
                       label="Subtítulo"
                       placeholder="Ex: Subtítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitle}
+                      value={props.values.caption}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -209,13 +209,13 @@ const AudioBook = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Ano de publicação"
                       placeholder="Ex: 2011"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />

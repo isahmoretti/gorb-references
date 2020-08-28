@@ -40,7 +40,7 @@ const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   titleNewspaper: Yup.string().required("Obrigatório"),
   accessedAt: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
@@ -55,7 +55,7 @@ const generateReference = (values) => {
     titleNotebook,
     location,
     volume,
-    yaer,
+    year,
     pageInit,
     pageFinish,
     accessedAt,
@@ -83,7 +83,7 @@ const generateReference = (values) => {
       )}
       {titleNewspaper && <b>{` ${titleNewspaper}, `}</b>}
       {location && `${location}, `}
-      {yaer && `ano ${yaer}, `}
+      {year && `ano ${year}, `}
       {volume && `v. ${volume}, `}
       {numerNewspaper && `n. ${numerNewspaper}, `}
       {accessedAt && `${formatDate(accessedAt)}. `}
@@ -112,9 +112,9 @@ const ArticleNewspaper = ({ back }) => {
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
         values.authors,
-        values.yaer
+        values.year
       ),
-      citation: generateCitationWithoutAuthor(values.authors, values.yaer),
+      citation: generateCitationWithoutAuthor(values.authors, values.year),
     }));
 
     setOpenModal(!openModal);
@@ -134,7 +134,7 @@ const ArticleNewspaper = ({ back }) => {
           numerNewspaper: "",
           location: "",
           volume: "",
-          yaer: "",
+          year: "",
           pageInit: "",
           pageFinish: "",
           accessedAt: "",
@@ -330,13 +330,13 @@ const ArticleNewspaper = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       label="Ano"
                       type="text"
                       placeholder="Ex: 97"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />

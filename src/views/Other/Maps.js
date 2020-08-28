@@ -24,7 +24,7 @@ const SignupSchema = Yup.object().shape({
   typeAuthor: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   location: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   description: Yup.string().required("Obrigatório"),
 });
 
@@ -34,19 +34,63 @@ const generateReference = (values) => {
     author,
     subordination,
     title,
-    subtitle,
+    caption,
     location,
     editor,
-    yaer,
+    year,
     description,
     scale,
     online,
     accessedAt,
-    ur,
+    url,
   } = values;
 
-  return <span></span>;
+  const getTitle = (title) => {
+    if (!title) return
+    const titleSplit = title.split(' ')
+    return `${titleSplit[0].toUpperCase()} ${titleSplit.slice(1).join(' ')}`
+  }
+  return <span>
+    {
+      typeAuthor === 'withoutAuthorship'
+        ? <>
+          {caption ? <><b>{getTitle(title)}: </b>{caption}. </> : <>{getTitle(title)}. </>}
+          {location && <>{location}: </>}
+        </>
+        : <>
+          {author && <>{author.toUpperCase()}. </>}
+          {caption ? <><b>{title}: </b>{caption}. </> : <b>{title}. </b>}
+          {subordination && <>{subordination}. </>}
+          {location && <>{typeAuthor === 'corporateBody' ? <>[{location}]</> : <>{location}</>} </>}
+        </>
+    }
+    {editor && <>{editor}, </>}
+    {year && <>{year}. </>}
+    {description && <>{description}. </>}
+    {scale && <>{scale}. </>}
+    {online &&
+      accessedAt &&
+      url &&
+      `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+  </span>;
 };
+
+// in case we need it
+// eslint-disable-next-line no-unused-vars
+const getTypeAuthor = (type) => {
+  switch (type) {
+    case "physicalPerson":
+      return "Pessoa física"
+    case "entity":
+      return "Entidade"
+    case "corporateBody":
+      return "Entidade coletiva"
+    case "withoutAuthorship":
+      return "Sem autoria"
+    default:
+      break;
+  }
+}
 
 const Maps = ({ back }) => {
   const [state, setState] = useState({
@@ -73,16 +117,16 @@ const Maps = ({ back }) => {
       <Formik
         initialValues={{
           typeAuthor: "",
-          author: "Santa Catarina",
-          subordination: "Departamento Estadual de Geografia e Cartografia",
-          title: "Mapa geral do Estado de Santa Catarina",
-          subtitle: "",
-          location: "Florianópolis",
-          editor: "Responsável pela publicação",
-          yaer: "1958",
-          description: "1 mapa, 78 x 57 cm",
-          scale: "1:800:000",
-          online: true,
+          author: "",
+          subordination: "",
+          title: "",
+          caption: "",
+          location: "",
+          editor: "",
+          year: "",
+          description: "",
+          scale: "",
+          online: false,
           accessedAt: "",
           url: "",
         }}
@@ -120,15 +164,16 @@ const Maps = ({ back }) => {
                       errors={props.errors}
                       touched={props.touched}
                       options={[
-                        { value: "", name: "Pessoa física" },
-                        { value: "", name: "Entidade" },
-                        { value: "", name: "Entidade coletiva" },
-                        { value: "", name: "Sem autoria" },
+                        { value: "physicalPerson", name: "Pessoa física" },
+                        { value: "entity", name: "Entidade" },
+                        { value: "corporateBody", name: "Entidade coletiva" },
+                        { value: "withoutAuthorship", name: "Sem autoria" },
                       ]}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
+                      disabled={props.values.typeAuthor === 'withoutAuthorship'}
                       name="author"
                       type="text"
                       label="Nome do autor"
@@ -142,6 +187,7 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
+                      disabled={props.values.typeAuthor !== 'corporateBody'}
                       name="subordination"
                       type="text"
                       label="Subordinação"
@@ -170,13 +216,13 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      name="subtitle"
+                      name="caption"
                       type="text"
                       label="Subtítulo"
                       placeholder="Ex: nome do subtítulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitle}
+                      value={props.values.caption}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -213,13 +259,13 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Data de publicação"
                       placeholder="Ex: 1958"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -271,6 +317,7 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
+                      disabled={!props.values.online}
                       name="accessedAt"
                       type="date"
                       label="Acesso em"
@@ -286,6 +333,7 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
+                      disabled={!props.values.online}
                       name="url"
                       label="Disponível em"
                       type="text"
@@ -316,8 +364,8 @@ const Maps = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+              // citationWithAuthor={state.citationWithAuthor}
+              // citation={state.citation}
               />
             </Card>
           </form>

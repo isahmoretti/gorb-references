@@ -296,13 +296,13 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
-                      name="subtitlePeriodic"
+                      name="captionPeriodic"
                       label="Subtítulo do periódico"
                       type="text"
                       placeholder="Subtítulo do "
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitlePeriodic}
+                      value={props.values.captionPeriodic}
                       errors={props.errors}
                       touched={props.touched}
                     />

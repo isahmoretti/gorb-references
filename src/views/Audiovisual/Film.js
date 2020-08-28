@@ -29,21 +29,21 @@ const SignupSchema = Yup.object().shape({
   year: Yup.string().required("Obrigatório"),
 });
 
-const citation1 = (title, yaer) => {
+const citation1 = (title, year) => {
   const frist = title.split(" ")[0];
   const temp = title.split(" ")[0].toUpperCase();
 
   const name = title.replace(frist, temp);
 
-  return `${name} (${yaer})`;
+  return `${name} (${year})`;
 };
-const citation2 = (title, yaer) => {
+const citation2 = (title, year) => {
   const frist = title.split(" ")[0];
   const temp = title.split(" ")[0].toUpperCase();
 
   const name = title.replace(frist, temp);
 
-  return `(${name}, ${yaer})`;
+  return `(${name}, ${year})`;
 };
 
 const generateReference = (values) => {
@@ -62,8 +62,8 @@ const generateReference = (values) => {
     whatSuport,
     specificationSuport,
     duration,
-    subtitled,
-    whatSubtitled,
+    captiond,
+    whatCaptiond,
     serie,
     notes,
     online,
@@ -100,7 +100,7 @@ const generateReference = (values) => {
       {suport && whatSuport && `${whatSuport}, `}
       {sound && `son. `}
       {colorful && `color. `}
-      {subtitled && whatSubtitled && `Legendado. ${whatSubtitled}. `}
+      {captiond && whatCaptiond && `Legendado. ${whatCaptiond}. `}
       {serie && `${serie}. `}
       {notes && `${notes}. `}
       {online &&
@@ -153,8 +153,8 @@ const AdministrativeActs = ({ back }) => {
           whatSuport: "VHS",
           specificationSuport: "1 fta de vídeo",
           duration: "106min",
-          subtitled: "sim",
-          whatSubtitled: "Port",
+          captiond: "sim",
+          whatCaptiond: "Port",
           serie: "Série se Houver",
           notes: "Informações complementares",
           online: false,
@@ -383,12 +383,12 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Select
-                      name="subtitled"
+                      name="captiond"
                       label="Legendado? "
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitled}
+                      value={props.values.captiond}
                       errors={props.errors}
                       touched={props.touched}
                       options={[
@@ -399,13 +399,13 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      name="whatSubtitled"
+                      name="whatCaptiond"
                       label="Qual língua?"
                       placeholder="Ex: Port."
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.whatSubtitled}
+                      value={props.values.whatCaptiond}
                       errors={props.errors}
                       touched={props.touched}
                     />

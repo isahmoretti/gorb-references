@@ -8,12 +8,13 @@ import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
-import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
 // utils
-import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -23,14 +24,19 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   specification: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
-  const { author, title, yaer, specification } = values;
+  const { author, title, year, specification } = values;
 
-  return <span></span>;
+  return <span>
+    <>{formatAuthorName(author)} </>
+    <b>{title}. </b>
+    <>{year}. </>
+    <>{specification}. </>
+  </span>;
 };
 
 const WorkArt = ({ back }) => {
@@ -46,6 +52,8 @@ const WorkArt = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citation: generateCitationWithoutAuthor(values.author, values.year),
+      citationWithAuthor: generateCitationWithAuthor(values.author, values.year),
     }));
 
     setOpenModal(!openModal);
@@ -57,10 +65,10 @@ const WorkArt = ({ back }) => {
 
       <Formik
         initialValues={{
-          author: "Candido Portinari",
-          title: "Retirantes",
-          yaer: "1944",
-          specification: "1 original de arte, óleo sobre tela190 x 180cm",
+          author: "",
+          title: "",
+          year: "",
+          specification: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -112,13 +120,13 @@ const WorkArt = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Ano"
                       placeholder="Ex: 1997"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -155,8 +163,8 @@ const WorkArt = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

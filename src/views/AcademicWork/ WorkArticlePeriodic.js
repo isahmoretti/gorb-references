@@ -48,7 +48,7 @@ const generateReference = (values) => {
     title,
     caption,
     titlePeriodic,
-    subtitlePeriodic,
+    captionPeriodic,
     location,
     volume,
     pageInit,
@@ -56,7 +56,7 @@ const generateReference = (values) => {
     fascicle,
     day,
     month,
-    yaer,
+    year,
     online,
     accessedAtUrl,
     url,
@@ -72,15 +72,15 @@ const generateReference = (values) => {
         formatAuthorName(constructionNames, abbreviate)}
       {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
       {titlePeriodic && <b>{`${titlePeriodic}`}</b>}
-      {subtitlePeriodic ? `: ${subtitlePeriodic}, ` : ", "}
+      {captionPeriodic ? `: ${captionPeriodic}, ` : ", "}
       {location ? `${location}, ` : "[s. l.], "}
       {volume && `v. ${volume}, `}
       {fascicle && `n. ${fascicle}, `}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
-      {day && month && yaer && `${day} ${month}. ${yaer} `}
-      {!day && month && yaer && `${month}. ${yaer} `}
-      {!day && !month && yaer && `${yaer}. `}
+      {day && month && year && `${day} ${month}. ${year} `}
+      {!day && month && year && `${month}. ${year} `}
+      {!day && !month && year && `${year}. `}
       {issn && `${issn}. `}
       {notes && `${notes}. `}
       {doi && `DOI: https://doi.org/${doi}. `}
@@ -125,7 +125,7 @@ const WorkArticlePeriodic = ({ back }) => {
           title: "",
           caption: "",
           titlePeriodic: "",
-          subtitlePeriodic: "",
+          captionPeriodic: "",
           location: "",
           volume: "",
           pageInit: "",
@@ -133,7 +133,7 @@ const WorkArticlePeriodic = ({ back }) => {
           fascicle: "",
           day: "",
           month: "",
-          yaer: "",
+          year: "",
           online: false,
           accessedAtUrl: "",
           url: "",
@@ -289,13 +289,13 @@ const WorkArticlePeriodic = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
-                      name="subtitlePeriodic"
+                      name="captionPeriodic"
                       label="Subtítulo do periódico"
                       type="text"
                       placeholder="Subtítulo do "
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitlePeriodic}
+                      value={props.values.captionPeriodic}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -412,13 +412,13 @@ const WorkArticlePeriodic = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="number"
                       label="Ano"
                       InputProps={{ inputProps: { min: 0 } }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />

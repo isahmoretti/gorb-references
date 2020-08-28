@@ -35,10 +35,10 @@ const Constitution = ({ back }) => {
       country,
       year,
       title,
-      subtitle,
+      caption,
       responsible,
       edition,
-      yaerPublication,
+      yearPublication,
       numberPages,
       location,
       publishingCompany,
@@ -52,9 +52,9 @@ const Constitution = ({ back }) => {
       <span>
         {`${country.toUpperCase()}. `}
         {`Constituição (${year}). `}
-        {subtitle ? (
+        {caption ? (
           <>
-            <b>{title}:</b> {`${subtitle}. `}
+            <b>{title}:</b> {`${caption}. `}
           </>
         ) : (
           <b> {`${title}. `} </b>
@@ -63,7 +63,7 @@ const Constitution = ({ back }) => {
         {`${edition}. ed. `}
         {`${location}: `}
         {`${publishingCompany}, `}
-        {`${yaerPublication}. `}
+        {`${yearPublication}. `}
         {`${numberPages}. p. `}
         {`${notes}. `}
         {online &&
@@ -97,10 +97,10 @@ const Constitution = ({ back }) => {
           country: "Brasil",
           year: "1998",
           title: "Constituição da República Federativa do Brasil",
-          subtitle: "promulgada em 5 de outubro de 1988",
+          caption: "promulgada em 5 de outubro de 1988",
           responsible: "Juarez de Oliveira",
           edition: "4",
-          yaerPublication: "1988",
+          yearPublication: "1988",
           numberPages: "3",
           location: "São Paulo",
           publishingCompany: "Saraiva",
@@ -172,13 +172,13 @@ const Constitution = ({ back }) => {
 
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
-                      name="subtitle"
+                      name="caption"
                       label="Subtítulo"
                       placeholder="Ex: promulgada em 5 de outubro de 1988"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.subtitle}
+                      value={props.values.caption}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -213,13 +213,13 @@ const Constitution = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaerPublication"
+                      name="yearPublication"
                       label="Ano de publicação"
                       placeholder="Ex: 1990"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaerPublication}
+                      value={props.values.yearPublication}
                       errors={props.errors}
                       touched={props.touched}
                     />

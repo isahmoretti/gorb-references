@@ -16,7 +16,7 @@ import Score from "./Score";
 import WorkArt from "./WorkArt";
 import Maps from "./Maps";
 import BullMedicine from "./BullMedicine";
-// import WholeEventInPeriodicPublication from './WholeEventInPeriodicPublication'
+// import Entry from './Entry'
 
 // assets
 import ArrowLeft from "../../assets/images/arrow-left.svg";
@@ -37,31 +37,31 @@ const Events = ({ back }) => {
               </p>
             </Hexagon>
             <Separator />
-            <Hexagon className="gray" onClick={() => setState(5)}>
+            <Hexagon className="gray" onClick={() => setState(6)}>
               <p className="txt-white">Bula de remédio</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon onClick={() => setState(4)} className="gray">
+            <Hexagon onClick={() => setState(2)} className="gray">
               <p className="txt-white">Mapas </p>
             </Hexagon>
             <Title>
               Outros <br /> documentos
             </Title>
-            <Hexagon className="gray" onClick={() => setState(3)}>
+            <Hexagon className="gray" onClick={() => setState(5)}>
               <p className="txt-white">Obra de arte</p>
             </Hexagon>
           </Row>
 
           <Row>
-            <Hexagon className="gray" onClick={() => setState(2)}>
+            <Hexagon className="gray" onClick={() => setState(3)}>
               <p className="txt-white">Partitura</p>
             </Hexagon>
             <Separator />
-            <Hexagon className="gray" onClick={() => setState(4)}>
+            <Hexagon className="gray" onClick={() => setState()}>
               <p className="txt-white">
-                Verbete de <br /> Enciclopédia/ Dicionário
+                Verbete de <br /> Enciclopédia/ Dicionário<br/><div style={{color:'red'}}>(Em desenvolvimento)</div>
               </p>
             </Hexagon>
           </Row>
@@ -69,11 +69,11 @@ const Events = ({ back }) => {
       )}
 
       {state === 1 && <ObjectThree back={() => setState(0)} />}
-      {state === 2 && <Score back={() => setState(0)} />}
-      {state === 3 && <WorkArt back={() => setState(0)} />}
-      {state === 4 && <Maps back={() => setState(0)} />}
-      {state === 5 && <BullMedicine back={() => setState(0)} />}
-      {/*{state === 6 && <WholeEventInPeriodicPublication back={() => setState(0)} />} */}
+      {state === 2 && <Maps back={() => setState(0)} />}
+      {state === 3 && <Score back={() => setState(0)} />}
+      {/* {state === 4 && <Entry back={() => setState(0)} />} */}
+      {state === 5 && <WorkArt back={() => setState(0)} />}
+      {state === 6 && <BullMedicine back={() => setState(0)} />}
     </Conatiner>
   );
 };

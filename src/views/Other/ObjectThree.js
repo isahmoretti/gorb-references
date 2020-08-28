@@ -8,12 +8,13 @@ import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
-import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
 // utils
-import { formatDate } from "../../utils/formatDate";
+import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -23,7 +24,7 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  yaer: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   specification: Yup.string().required("Obrigatório"),
 });
 
@@ -33,12 +34,19 @@ const generateReference = (values) => {
     title,
     location,
     manufacturer,
-    yaer,
+    year,
     specification,
     note,
   } = values;
 
-  return <span></span>;
+  return <span>
+    {author && <>{formatAuthorName(author)} </>}
+    {title && <b>{title}. </b>}
+    {manufacturer ? <>{`${location}: ${manufacturer}, `}</> : `${location}, `}
+    {year && <>{year}. </>}
+    {specification && <>{specification}. </>}
+    {note && <>{note}. </>}
+  </span>;
 };
 
 const ObjectThree = ({ back }) => {
@@ -54,6 +62,8 @@ const ObjectThree = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citation: generateCitationWithoutAuthor(values.author, values.year),
+      citationWithAuthor: generateCitationWithAuthor(values.author, values.year),
     }));
 
     setOpenModal(!openModal);
@@ -65,14 +75,13 @@ const ObjectThree = ({ back }) => {
 
       <Formik
         initialValues={{
-          author: "Marcel Duchamp",
-          title: "Roda de bicicleta",
-          location: "Paris",
-          manufacturer: "Lucas Zinner Ferreira",
-          yaer: "1951",
-          specification:
-            "1 escultura de com roda de bicicleta e banco de madeira",
-          note: "Informações complementares sobre o objeto",
+          author: "",
+          title: "",
+          location: "",
+          manufacturer: "",
+          year: "",
+          specification: "",
+          note: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -153,13 +162,13 @@ const ObjectThree = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="yaer"
+                      name="year"
                       type="text"
                       label="Ano"
                       placeholder="Ex: 1951"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yaer}
+                      value={props.values.year}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -212,8 +221,8 @@ const ObjectThree = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>
