@@ -48,34 +48,14 @@ const SignupSchema = Yup.object().shape({
     year: Yup.string().required("Obrigatório"),
 });
 
-const getResposabilityTypes = (responsabiltyTypes) => {
-    if (responsabiltyTypes === "organizator") return "(Org.)";
-    if (responsabiltyTypes === "author") return "(Aut.)";
-    if (responsabiltyTypes === "coordinator") return "(Coord.)";
-
-    return "";
-};
-
-const getTypeAuthor = (type) => {
-    switch (type) {
-        case "physicalPerson":
-            return "Pessoa física"
-        case "entity":
-            return "Entidade"
-        default:
-            break;
-    }
-}
-
 const generateReference = (values) => {
     const {
-        entryAuthorType,
         entryResponsabilityType,
         partAuthors,
+        abbreviate,
         entryTitle,
-        chapterCaption,
+        entryCaption,
 
-        authorType,
         responsabilityType,
         authorOfTheWhole,
         title,
@@ -87,17 +67,81 @@ const generateReference = (values) => {
 
         initialPage,
         finalPage,
-        isolatedPage,
         series,
         notes,
         typeAndSupport,
 
         online,
+        url,
         accessedAt,
     } = values;
 
+    const getResposabilityTypes = (responsabiltyTypes) => {
+        if (responsabiltyTypes === "author") return "(Aut.)";
+        if (responsabiltyTypes === "compiler") return "(Comp.)";
+        if (responsabiltyTypes === "editor") return "(Ed.)";
+        if (responsabiltyTypes === "organizator") return "(Org.)";
+        return "";
+    };
+
+    const getTypeAndSupport = (type) => {
+        switch (type) {
+            case "cd-rom":
+                return "CD-ROM"
+            case "online":
+                return "Online"
+            case "printed":
+                return "Impresso"
+            default:
+                break;
+        }
+    }
+    const getNamesResponsible = (namesResponsible, abbreviate = false) => {
+        if (!namesResponsible.length || namesResponsible[0] === "") return
+
+        if (namesResponsible.length >= 4) {
+            return formatAuthorName(namesResponsible, abbreviate);
+        }
+
+        const name = formatAuthorName(namesResponsible, abbreviate);
+
+        return `${name.slice(0, name.length - 2)}.`;
+    };
+
     return (
         <span>
+            {partAuthors.length > 0 && <>{getNamesResponsible(partAuthors, abbreviate)} </>}
+            {entryResponsabilityType ? (
+                <>{getResposabilityTypes(entryResponsabilityType)}. </>
+            ) : (
+                    <>. </>
+                )
+            }
+            {entryCaption ? <><b>{entryTitle}</b>: {entryCaption}. </> : <b>{entryTitle}. </b>}
+
+            {authorOfTheWhole && <><i>In:</i> {authorOfTheWhole.toUpperCase()} </>}
+            {responsabilityType ? (
+                <>{getResposabilityTypes(responsabilityType)}. </>
+            ) : (
+                    <>. </>
+                )
+            }
+            {caption ? <><b>{title}</b>: {caption}. </> : <>{title}. </>}
+
+            {edition && <>{edition} ed. </>}
+            {local && <>{local}: </>}
+            {publishingCompany && <>{publishingCompany}, </>}
+            {year && <>{year}. </>}
+            {initialPage && !finalPage && `p. ${initialPage}. `}
+            {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
+            {series && <>({series}). </>}
+            {notes && <>{notes}. </>}
+            {typeAndSupport && <>{getTypeAndSupport(typeAndSupport)}. </>}
+
+            {online &&
+                accessedAt &&
+                url &&
+                `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
         </span>
     );
 };
@@ -111,19 +155,33 @@ const Entry = ({ back }) => {
 
     const [openModal, setOpenModal] = useState(false);
 
+    const getCitationWithAuthor = (authors, year) => {
+        return <>{formatAuthorName(authors)} ({year})</>
+    }
+
+    const getCitationWithoutAuthor = (authors, year) => {
+        return <>({authors[0].toUpperCase()}, {year})</>
+    }
+
     const handleSubmit = (values) => {
         setState((prev) => ({
             ...prev,
             values,
             references: generateReference(values),
-            citationWithAuthor: generateCitationWithAuthor(
-                values.partAuthors,
-                values.year
-            ),
-            citation: generateCitationWithoutAuthor(
-                values.partAuthors,
-                values.year
-            ),
+            citationWithAuthor: values.entryAuthorType === 'physicalPerson'
+                ? getCitationWithAuthor(values.partAuthors,
+                    values.year)
+                : generateCitationWithAuthor(
+                    values.partAuthors,
+                    values.year
+                ),
+            citation: values.entryAuthorType === 'physicalPerson'
+                ? getCitationWithoutAuthor(values.partAuthors,
+                    values.year)
+                : generateCitationWithoutAuthor(
+                    values.partAuthors,
+                    values.year
+                ),
         }));
 
         setOpenModal(!openModal);
@@ -136,34 +194,33 @@ const Entry = ({ back }) => {
     return (
         <Container>
             <Back onClick={back} src={ArrowLeft} />
-
             <Formik
                 initialValues={{
-                    entryAuthorType: "physicalPerson",
-                    entryResponsabilityType: "organizator",
-                    partAuthors: [""],
-                    entryTitle: "Audibilidade",
-                    chapterCaption: "",
+                    entryAuthorType: '',
+                    entryResponsabilityType: '',
+                    abbreviate: false,
+                    partAuthors: [''],
+                    entryTitle: '',
+                    entryCaption: '',
 
-                    authorType: "physicalPerson",
-                    responsabilityType: 'organizator',
-                    authorOfTheWhole: 'Ricardo Pizzotti',
-                    title: "Enciclopédia básica da mídia eletrônica",
-                    caption: "",
-                    edition: "2",
-                    local: 'São Paulo',
-                    publishingCompany: "Editora Senac São Paulo",
-                    year: "2003",
+                    authorType: '',
+                    responsabilityType: '',
+                    authorOfTheWhole: '',
+                    title: '',
+                    caption: '',
+                    edition: '',
+                    local: '',
+                    publishingCompany: '',
+                    year: '',
 
-                    initialPage: "23",
-                    finalPage: "25",
-                    isolatedPage: "37",
-                    series: "",
-                    notes: "Informações complementares",
-                    typeAndSupport: "cd-rom",
+                    initialPage: '',
+                    finalPage: '',
+                    series: '',
+                    notes: '',
+                    typeAndSupport: '',
 
                     online: false,
-                    accessedAt: "https://www.sp.senac.br/",
+                    accessedAt: '',
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={handleSubmit}
@@ -185,7 +242,7 @@ const Entry = ({ back }) => {
                             <Content>
                                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                                        <Grid item xs={12} sm={12} md={6}>
+                                        <Grid item xs={12} sm={12} md={5}>
                                             <Select
                                                 type="text"
                                                 label="Tipo do autor"
@@ -201,7 +258,7 @@ const Entry = ({ back }) => {
                                                 ]}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={6}>
+                                        <Grid item xs={12} sm={12} md={5}>
                                             <Select
                                                 type="text"
                                                 label="Tipo de responsabilidade"
@@ -216,6 +273,22 @@ const Entry = ({ back }) => {
                                                     { value: "compiler", name: "Compilador" },
                                                     { value: "editor", name: "editor" },
                                                     { value: "organizator", name: "Organizador" },
+                                                ]}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={2}>
+                                            <Select
+                                                name="abbreviate"
+                                                label="abreviar autor?"
+                                                type="text"
+                                                onChange={props.handleChange}
+                                                onBlur={props.handleBlur}
+                                                value={props.values.abbreviate}
+                                                errors={props.errors}
+                                                touched={props.touched}
+                                                options={[
+                                                    { value: true, name: "Sim" },
+                                                    { value: false, name: "Não" },
                                                 ]}
                                             />
                                         </Grid>
@@ -496,7 +569,7 @@ const Entry = ({ back }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                                        <Grid item xs={12} sm={12} md={2}>
+                                        <Grid item xs={12} sm={12} md={3}>
                                             <Input
                                                 type="text"
                                                 label="Página Inicial"
@@ -509,7 +582,7 @@ const Entry = ({ back }) => {
                                                 touched={props.touched}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={2}>
+                                        <Grid item xs={12} sm={12} md={3}>
                                             <Input
                                                 type="text"
                                                 label="Página Final"
@@ -522,22 +595,8 @@ const Entry = ({ back }) => {
                                                 touched={props.touched}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={2}>
-                                            <Input
-                                                type="text"
-                                                label="Capítulo"
-                                                placeholder="Ex: 24"
-                                                onChange={props.handleChange}
-                                                onBlur={props.handleBlur}
-                                                value={props.values.isolatedPage}
-                                                name="isolatedPage"
-                                                errors={props.errors}
-                                                touched={props.touched}
-                                            />
-                                        </Grid>
                                         <Grid item xs={12} sm={12} md={6}>
                                             <Input
-                                                disabled={!props.values.complementaryElements}
                                                 type="text"
                                                 label="Série e coleção"
                                                 placeholder="Ex: Nome da Série ou Coleção, se houver"
@@ -551,9 +610,8 @@ const Entry = ({ back }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                                        <Grid item xs={12} sm={12} md={5}>
+                                        <Grid item xs={12} sm={12} md={8}>
                                             <Input
-                                                disabled={!props.values.complementaryElements}
                                                 type="text"
                                                 label="Notas"
                                                 placeholder="Ex: Informações complementares"
@@ -565,7 +623,7 @@ const Entry = ({ back }) => {
                                                 touched={props.touched}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={5}>
+                                        <Grid item xs={12} sm={12} md={2}>
                                             <Select
                                                 type="text"
                                                 label="Tipo e suporte"
@@ -584,7 +642,6 @@ const Entry = ({ back }) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={2}>
                                             <Select
-                                                disabled={!props.values.complementaryElements}
                                                 type="text"
                                                 label="Online"
                                                 onChange={props.handleChange}
@@ -604,7 +661,6 @@ const Entry = ({ back }) => {
                                         <Grid item xs={12} sm={12} md={9}>
                                             <Input
                                                 disabled={
-                                                    !props.values.complementaryElements ||
                                                     !props.values.online
                                                 }
                                                 type="text"
@@ -621,7 +677,6 @@ const Entry = ({ back }) => {
                                         <Grid item xs={12} sm={12} md={3}>
                                             <Input
                                                 disabled={
-                                                    !props.values.complementaryElements ||
                                                     !props.values.online
                                                 }
                                                 type="date"
