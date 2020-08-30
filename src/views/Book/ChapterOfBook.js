@@ -418,7 +418,7 @@ const Book = ({ back }) => {
                         touched={props.touched}
                         options={[
                           { value: "person", name: "Pessoa" },
-                          { value: "entitie", name: "Entidade" },
+                          { value: "entity", name: "Entidade" },
                           { value: "withoutAuthorship", name: "Sem autoria" },
                         ]}
                       />
