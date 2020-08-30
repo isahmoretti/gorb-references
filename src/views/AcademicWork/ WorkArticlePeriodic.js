@@ -14,6 +14,10 @@ import Modal from "../../components/Modal";
 import { formatDate } from "../../utils/formatDate";
 import { formatAuthorName } from "../../utils/formatAuthorName";
 
+// citation
+import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
 import Minus from "../../assets/images/minus.svg";
@@ -37,6 +41,7 @@ const SignupSchema = Yup.object().shape({
   constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titlePeriodic: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
@@ -109,6 +114,14 @@ const WorkArticlePeriodic = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.constructionNames,
+        values.year
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.constructionNames,
+        values.year
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -550,6 +563,8 @@ const WorkArticlePeriodic = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

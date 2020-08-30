@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatMonosyllable } from "../../utils/monosyllable";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -71,23 +72,9 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  const formatTitle = (title) => {
-    const frist = title.split(" ")[0];
-    const temp = title.split(" ")[0].toUpperCase();
-
-    return title.replace(frist, temp);
-  };
-
-  // title: Yup.string().required("Obrigatório"),
-  // director: Yup.string().required("Obrigatório"),
-  // productor: Yup.string().required("Obrigatório"),
-  // location: Yup.string().required("Obrigatório"),
-  // company: Yup.string().required("Obrigatório"),
-  // year: Yup.string().required("Obrigatório"),
-
   return (
     <span>
-      {`${formatTitle(title)}. `}
+      {`${formatMonosyllable(title)}. `}
       {`Direção: ${director}. `}
       {`Produção: ${productor}. `}
       {interpreters && `Intérpretes: ${interpreters}. `}

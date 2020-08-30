@@ -51,7 +51,7 @@ const Constitution = ({ back }) => {
     return (
       <span>
         {`${country.toUpperCase()}. `}
-        {`Constituição (${year}). `}
+        {`[Constituição (${year})]. `}
         {caption ? (
           <>
             <b>{title}:</b> {`${caption}. `}

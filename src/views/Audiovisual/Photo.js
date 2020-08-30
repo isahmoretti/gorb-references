@@ -215,7 +215,7 @@ const Photo = ({ back }) => {
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="Ex: https://pixabay.com/en/lungs-heartanatomy-cross-section-2183442/"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

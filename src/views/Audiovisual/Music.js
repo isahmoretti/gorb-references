@@ -14,6 +14,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatMonosyllable } from "../../utils/monosyllable";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -47,21 +48,15 @@ const generateReference = (values) => {
     specificationSuport,
   } = values;
 
-  const formatTitle = (title) => {
-    const frist = title.split(" ")[0];
-    const temp = title.split(" ")[0].toUpperCase();
-
-    return title.replace(frist, temp);
-  };
-
   return (
     <span>
-      {`${formatTitle(title)}. `}
+      {`${formatMonosyllable(title)}. `}
       {`Intérprete: ${interpreters}. `}
       {composer && `Compositor: ${composer}. `}
-      {`In: ${titleAlbum}. `}
+      <i>In: </i>
+      {`${titleAlbum}. `}
       {`Intérprete: ${interpretersAlbum}. `}
-      {location ? `${location}: ` : `[S. l.]: `}
+      {location ? `${location}: ` : <i>[S. l.]: </i>}
       {`${recordCompany}, `}
       {`${year}. `}
       {specificationSuport && `${specificationSuport}, `}

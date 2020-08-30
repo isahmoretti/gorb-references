@@ -195,7 +195,7 @@ const Podcast = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       type="text"
@@ -204,6 +204,19 @@ const Podcast = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.location}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="productor"
+                      type="text"
+                      label="Produtora"
+                      placeholder="Ex: Dragões de Garagem"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.productor}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -230,7 +243,7 @@ const Podcast = ({ back }) => {
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="http://dragoesdegaragem.com/podcast/dragoes-de-garagem-137-vo-maria-vacinas-e-escolhassemanadavacina/"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

@@ -16,6 +16,10 @@ import Modal from "../../components/Modal";
 import { formatDate } from "../../utils/formatDate";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
+import {
+  withAutorArray,
+  finalParagraphArray,
+} from "../../utils/generateSimpleCitation";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 import Plus from "../../assets/images/plus-dark.svg";
@@ -128,14 +132,11 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
+      citationWithAuthor: withAutorArray(
         values.entities,
         values.yearOfPublication
       ),
-      citation: generateCitationWithoutAuthor(
-        values.entities,
-        values.yearOfPublication
-      ),
+      citation: finalParagraphArray(values.entities, values.yearOfPublication),
     }));
 
     setOpenModal(!openModal);

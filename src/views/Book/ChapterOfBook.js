@@ -107,10 +107,10 @@ const generateReference = (values) => {
         translator &&
         translatorName.length &&
         `Tradução: ${translatorName}. `}
-      {edition && edition > 1 ? `${edition}. ` : `${edition} ed. `}
+      {edition && `${edition} ed. `}
       {complementaryElements && volume && `v. ${volume}, `}
       {`${local}: ${publishingCompany}, ${yearOfPublication}. `}
-      {complementaryElements && chapter && `Cap. ${chapter}. `}
+      {complementaryElements && chapter && `cap. ${chapter}. `}
       {captionPageInit &&
         captionPageFinish &&
         `p. ${captionPageInit}-${captionPageFinish}, `}

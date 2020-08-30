@@ -13,6 +13,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatMonosyllable } from "../../utils/monosyllable";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -29,19 +30,19 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
-  const { title, year, time, responsible, url, accessedAt } = values;
-
-  const formatTitle = (title) => {
-    const frist = title.split(" ")[0];
-    const temp = title.split(" ")[0].toUpperCase();
-
-    return title.replace(frist, temp);
-  };
+  const { title, subtitle, year, time, responsible, url, accessedAt } = values;
 
   return (
     <span>
-      {`${formatTitle(title)}. `}
-      {`[S. l.: s. n.], `}
+      {subtitle ? (
+        <>
+          <b>{title}: </b>
+          {subtitle}.&nbsp;
+        </>
+      ) : (
+        <b>{formatMonosyllable(title)}. </b>
+      )}
+      <i>[S. l.: s. n.]</i>,&nbsp;
       {`${year}. `}
       {`1 vídeo (${time}). `}
       {`Publicado pelo ${responsible}. `}
@@ -77,6 +78,7 @@ const VideoInternet = ({ back }) => {
       <Formik
         initialValues={{
           title: "Eva Vertes olha para o futuro da medicina",
+          subtitle: "",
           year: "2015",
           time: "18 min",
           responsible: "Canal TED Brasil",
@@ -106,7 +108,7 @@ const VideoInternet = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={12}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Título do vídeo"
@@ -115,6 +117,19 @@ const VideoInternet = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.title}
                       name="title"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      type="text"
+                      label="Subtítulo"
+                      placeholder="Ex: Eva Vertes olha para o futuro da medicina"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.subtitle}
+                      name="subtitle"
                       errors={props.errors}
                       touched={props.touched}
                     />
