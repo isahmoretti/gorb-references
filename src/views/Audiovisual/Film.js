@@ -64,7 +64,7 @@ const generateReference = (values) => {
       {`Produção: ${productor}. `}
       {interpreters && `Intérpretes: ${interpreters}. `}
       {screenwriter && `Roteiro: ${screenwriter}. `}
-      {location ? `${location}: ` : `[S. l.]: `}
+      {location ? `${location}: ` : <i>[S. l.]: </i>}
       {`${company}, `}
       {`${year}. `}
       {specificationSuport && `${specificationSuport} `}
