@@ -13,6 +13,7 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
+import { formatMonosyllable } from "../../utils/monosyllable"
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
 
@@ -25,6 +26,7 @@ const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
   nameOfTheNotaryOrIssuingBody: Yup.string().required("Obrigatório"),
   documentType: Yup.string().required("Obrigatório"),
+  registrationDate: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -38,10 +40,10 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {jurisdiction && <>{jurisdiction}. </>}
+      {jurisdiction && <>{jurisdiction.toUpperCase()}. </>}
       {nameOfTheNotaryOrIssuingBody && <>{nameOfTheNotaryOrIssuingBody}. </>}
       {documentType && <b>{documentType}. </b>}
-      {registrationDate && <>Registro em:{formatDate(registrationDate)}. </>}
+      {registrationDate && <>Registro em: {formatDate(registrationDate)}. </>}
       {complementaryElement && <>{complementaryElement}. </>}
     </span>
   );
@@ -113,7 +115,7 @@ const CivilAndNotary = ({ back }) => {
                     <Input
                       type="text"
                       label="Jurisdição"
-                      placeholder="Ex: São Paulo"
+                      placeholder="Ex: São Paulo (SP)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.jurisdiction}
@@ -197,7 +199,7 @@ const CivilAndNotary = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
+                // citationWithAuthor={state.citationWithAuthor}
                 citation={state.citation}
               />
             </Card>

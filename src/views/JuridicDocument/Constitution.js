@@ -21,7 +21,9 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // jurisdiction: Yup.string().required("Obrigatório"),
+  country: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
 });
 
 const Constitution = ({ back }) => {
@@ -57,15 +59,15 @@ const Constitution = ({ back }) => {
             <b>{title}:</b> {`${caption}. `}
           </>
         ) : (
-          <b> {`${title}. `} </b>
-        )}
-        {`Organização do texto: ${responsible}. `}
-        {`${edition}. ed. `}
-        {`${location}: `}
-        {`${publishingCompany}, `}
-        {`${yearPublication}. `}
-        {`${numberPages}. p. `}
-        {`${notes}. `}
+            <b> {`${title}. `} </b>
+          )}
+        {responsible && `Organização do texto: ${responsible}. `}
+        {edition && `${edition}. ed. `}
+        {location && `${location}: `}
+        {publishingCompany && `${publishingCompany}, `}
+        {yearPublication && `${yearPublication}. `}
+        {numberPages && `${numberPages}. p. `}
+        {notes && `${notes}. `}
         {online &&
           accessedAt &&
           url &&
@@ -94,17 +96,17 @@ const Constitution = ({ back }) => {
 
       <Formik
         initialValues={{
-          country: "Brasil",
-          year: "1998",
-          title: "Constituição da República Federativa do Brasil",
-          caption: "promulgada em 5 de outubro de 1988",
-          responsible: "Juarez de Oliveira",
-          edition: "4",
-          yearPublication: "1988",
-          numberPages: "3",
-          location: "São Paulo",
-          publishingCompany: "Saraiva",
-          notes: "Série Legislação Brasileira",
+          country: "",
+          year: "",
+          title: "",
+          caption: "",
+          responsible: "",
+          edition: "",
+          yearPublication: "",
+          numberPages: "",
+          location: "",
+          publishingCompany: "",
+          notes: "",
           online: false,
           url: "",
           accessedAt: "",
@@ -345,8 +347,8 @@ const Constitution = ({ back }) => {
                   isOpen={openModal}
                   handleClose={() => setOpenModal(!openModal)}
                   text={state.references}
-                  // citationWithAuthor={state.citationWithAuthor}
-                  // citation={state.citation}
+                // citationWithAuthor={state.citationWithAuthor}
+                // citation={state.citation}
                 />
               )}
             </Card>

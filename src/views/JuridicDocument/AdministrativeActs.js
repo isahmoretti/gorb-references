@@ -21,7 +21,10 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // jurisdiction: Yup.string().required("Obrigatório"),
+  author: Yup.string().required("Obrigatório"),
+  responsible: Yup.string().required("Obrigatório"),
+  year: Yup.string().required("Obrigatório"),
+  publication: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -33,6 +36,7 @@ const generateReference = (values) => {
     dateDoc,
     menu,
     publication,
+    caption,
     location,
     year,
     numberl,
@@ -45,17 +49,17 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {`${author.toUpperCase()}. `}
-      {`${responsible}. `}
-      {`${type} `}
-      {`nº ${number}, `}
-      {`${dateDoc}. `}
-      {`${menu}. `}
-      <b>{publication}: </b>
-      {`${location}, `}
-      {`ano ${year}, `}
-      {`n. ${numberl}, `}
-      {`p. ${page}, `}
+      {author && `${author.toUpperCase()}. `}
+      {responsible && `${responsible}. `}
+      {type && `${type} `}
+      {number && `nº ${number}, `}
+      {dateDoc && `${dateDoc}. `}
+      {menu && `${menu}. `}
+      {caption ? <><b>{publication}: </b><>{caption}</></> : <><b>{publication}. </b></>}
+      {location && `${location}, `}
+      {year && `ano ${year}${numberl || page || yearPublication || online || accessedAt || url ? ', ' : '. '}`}
+      {numberl && `n. ${numberl}, `}
+      {page && `p. ${page}, `}
       {yearPublication && `${formatDate(yearPublication)}. `}
       {online &&
         accessedAt &&
@@ -89,22 +93,19 @@ const AdministrativeActs = ({ back }) => {
 
       <Formik
         initialValues={{
-          author: "Banco Central do Brasil",
-          responsible: "Diretoria Colegiada",
-          type: "Circular",
-          number: "3.336",
-          dateDoc: "29 de dezembro de 1982",
-          menu:
-            "Altera o Regulamento do Mercado de Câmbio e Capitais Internacionais",
-          notes: "Série Legislação Brasileira",
-
-          publication: "Diário Oficial da União",
-          location: "Brasília, DF",
-          year: "2000",
-          numberl: "3",
-          page: "32",
+          author: "",
+          responsible: "",
+          type: "",
+          number: "",
+          dateDoc: "",
+          menu: "",
+          notes: "",
+          publication: "",
+          location: "",
+          year: "",
+          numberl: "",
+          page: "",
           yearPublication: "",
-
           online: false,
           url: "",
           accessedAt: "",
@@ -194,7 +195,7 @@ const AdministrativeActs = ({ back }) => {
                     <Input
                       name="dateDoc"
                       label="Data de assinatura do documento"
-                      placeholder="Ex: 29 de dezembro de 1982"
+                      placeholder="Ex: 3 de maio de 2007"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -222,7 +223,7 @@ const AdministrativeActs = ({ back }) => {
                     <Input
                       name="notes"
                       label="Notas"
-                      placeholder="Notas"
+                      placeholder="Ex: Elementos complementares"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -233,7 +234,7 @@ const AdministrativeActs = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="publication"
                       label="Publicação"
@@ -246,7 +247,20 @@ const AdministrativeActs = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="caption"
+                      label="Subtítulo da publicação"
+                      placeholder="Ex: Subitítulo, se houver"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="location"
                       label="Local da publicação"
@@ -381,14 +395,14 @@ const AdministrativeActs = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                // citationWithAuthor={state.citationWithAuthor}
-                // citation={state.citation}
+              // citationWithAuthor={state.citationWithAuthor}
+              // citation={state.citation}
               />
             </Card>
           </form>
         )}
       </Formik>
-    </Container>
+    </Container >
   );
 };
 
