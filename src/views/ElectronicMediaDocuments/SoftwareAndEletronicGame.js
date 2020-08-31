@@ -9,11 +9,13 @@ import { Grid } from "@material-ui/core";
 // components
 import Input from "../../components/InputWrapper/Input";
 import Button from "../../components/Buttons";
+import Select from "../../components/InputWrapper/Select";
 import Modal from "../../components/Modal";
 
 // utils
 import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { formatDate } from "../../utils/formatDate";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -39,6 +41,9 @@ const generateReference = (values) => {
     producer,
     releaseYear,
     supportSpecification,
+    online,
+    accessedAtUrl,
+    url,
   } = values;
 
   return (
@@ -51,6 +56,10 @@ const generateReference = (values) => {
       {producer && <>{producer}, </>}
       {releaseYear && <>{releaseYear}. </>}
       {supportSpecification && <>{supportSpecification}. </>}
+      {online &&
+        accessedAtUrl &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAtUrl)}. `}
     </span>
   );
 };
@@ -91,6 +100,9 @@ const SoftwareAndEletronicGame = ({ back }) => {
           producer: "",
           releaseYear: "",
           supportSpecification: "",
+          online: false,
+          accessedAtUrl: "",
+          url: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -168,6 +180,21 @@ const SoftwareAndEletronicGame = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
+                      label="Produtora"
+                      placeholder="Ex: FFG no formulário"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.producer}
+                      name="producer"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
                       label="Ano de lançamento"
                       placeholder="Ex: 2017"
                       onChange={props.handleChange}
@@ -178,8 +205,6 @@ const SoftwareAndEletronicGame = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
@@ -189,6 +214,54 @@ const SoftwareAndEletronicGame = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.supportSpecification}
                       name="supportSpecification"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="online"
+                      label="Online"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.online}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: true, name: "Sim" },
+                        { value: false, name: "Não" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      name="accessedAtUrl"
+                      type="date"
+                      label="Data de acesso"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      disabled={!props.values.online}
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.accessedAtUrl}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="url"
+                      label="Endereço (URL)"
+                      type="text"
+                      placeholder="https://viacarreira.com/"
+                      disabled={!props.values.online}
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
                       errors={props.errors}
                       touched={props.touched}
                     />

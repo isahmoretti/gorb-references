@@ -63,16 +63,22 @@ const generateReference = (values) => {
   return (
     <span>
       {authors && <>{formatAuthorName(authors)} </>}
-      {articleTitle && <>{articleTitle}. </>}
-      {caption && <>{caption}. </>}
+      {caption ? (
+        <>
+          <b>{articleTitle}: </b>
+          {caption}.{" "}
+        </>
+      ) : (
+        <b>{articleTitle}. </b>
+      )}
       {responsible && (
         <>
-          <i>ln</i>
+          <i>ln: </i>
           {responsible}.{" "}
         </>
       )}
       {blogTitle && <>{blogTitle}. </>}
-      {local && <>{local}. </>}
+      {local ? <>{local}, </> : <i>[S.l.]. </i>}
       {publicationDate && <>{formatDate(publicationDate)}. </>}
       {accessedAt &&
         url &&
@@ -266,7 +272,7 @@ const BlogArticle = ({ back }) => {
                     <Input
                       type="text"
                       label="Local"
-                      placeholder="Ex: São Paulo - se a pessoa não preencher, completar com [S.l]"
+                      placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.local}
                       value={props.values.message}
@@ -277,7 +283,7 @@ const BlogArticle = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="date"
                       label="Data de publicação"
@@ -292,7 +298,7 @@ const BlogArticle = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Disponível em"
@@ -306,7 +312,7 @@ const BlogArticle = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="date"
                       label="Acesso em"

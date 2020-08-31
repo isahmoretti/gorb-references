@@ -13,8 +13,8 @@ import Modal from "../../components/Modal";
 
 // utils
 import { formatDate } from "../../utils/formatDate";
-import { generateCitationWithAuthor } from "../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../utils/generateCitationWithoutAuthor";
+import { formatAuthorName } from "../../utils/formatAuthorName";
+import { generateCitationWithoutAuthorSpread } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -34,6 +34,7 @@ const generateReference = (values) => {
   const {
     author,
     siteName,
+    description,
     local,
     publishingCompany,
     yearOfPublication,
@@ -44,12 +45,13 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {author && <>{author}. </>}
+      {author && <>{formatAuthorName(author)}</>}
       {siteName && <b>{siteName}. </b>}
-      {local ? <>{local}: </> : <>[S.l.]. </>}
+      {description && <>{description}. </>}
+      {local ? <>{local}: </> : <i>[S.l.]. </i>}
       {publishingCompany && <>{publishingCompany}, </>}
       {yearOfPublication && <>{yearOfPublication}. </>}
-      {complementaryInformations && <>{complementaryInformations}, </>}
+      {complementaryInformations && <>{complementaryInformations}. </>}
       {accessedAt && url && (
         <>{` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}</>
       )}
@@ -70,11 +72,7 @@ const Site = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.author,
-        values.yearOfPublication
-      ),
-      citation: generateCitationWithoutAuthor(
+      citation: generateCitationWithoutAuthorSpread(
         values.author,
         values.yearOfPublication
       ),
@@ -91,6 +89,7 @@ const Site = ({ back }) => {
         initialValues={{
           author: "",
           siteName: "",
+          description: "",
           local: "",
           publishingCompany: "",
           yearOfPublication: "",
@@ -110,7 +109,7 @@ const Site = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Site(Homepage)
+                  Site (Homepage)
                 </p>
               </Title>
             </Actions>
@@ -145,7 +144,20 @@ const Site = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      type="text"
+                      label="Descrição"
+                      placeholder="Ex: GLOBO Comunicações e Participações. G1: o portal de notícias da Globo."
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.description}
+                      name="description"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Local"
@@ -158,7 +170,9 @@ const Site = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
                       label="Publicadora"
@@ -171,12 +185,11 @@ const Site = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       type="text"
                       label="Ano"
+                      placeholder="Ex: 2016"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -198,22 +211,9 @@ const Site = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Disponível em"
-                      placeholder="Ex: https://sucupira.capes.gov.br/sucupira/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="date"
                       label="Acesso em"
@@ -224,6 +224,19 @@ const Site = ({ back }) => {
                       onBlur={props.handleBlur}
                       value={props.values.accessedAt}
                       name="accessedAt"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={9}>
+                    <Input
+                      type="text"
+                      label="Disponível em"
+                      placeholder="Ex: https://sucupira.capes.gov.br/sucupira/"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.url}
+                      name="url"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -246,7 +259,6 @@ const Site = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
                 citation={state.citation}
               />
             </Card>

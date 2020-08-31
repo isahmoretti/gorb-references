@@ -41,6 +41,7 @@ const SignupSchema = Yup.object().shape({
   responsibleName: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   yearOfPublication: Yup.string().required("Obrigatório"),
+  local: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -56,6 +57,7 @@ const generateReference = (values) => {
     series,
     colorType,
     isbn,
+    doi,
     url,
     accessedAt,
   } = values;
@@ -98,7 +100,7 @@ const generateReference = (values) => {
       {/* precisei pegar sem o ponto */}
       <>{responsibleName.length && getNamesResponsible(responsibleName)}</>
       {responsabilityType ? (
-        <>{getResposabilityTypes(responsabilityType)} </>
+        <> {getResposabilityTypes(responsabilityType)} </>
       ) : (
         <>. </>
       )}
@@ -111,7 +113,7 @@ const generateReference = (values) => {
           }
         </>
       ) : (
-        `${title}. `
+        <b>{title}. </b>
       )}
 
       {publishingCompany ? (
@@ -131,7 +133,7 @@ const generateReference = (values) => {
       {series && <>({series}). </>}
       {colorType && <>{getColorFormatted(colorType)}. </>}
       {isbn && <> ISBN: {isbn}. </>}
-
+      {doi && `DOI: ${doi}. `}
       {accessedAt && url && (
         <>{` Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}</>
       )}
@@ -182,6 +184,7 @@ const Ebook = ({ back }) => {
           series: "",
           colorType: "",
           isbn: "",
+          doi: "",
           url: "",
           accessedAt: "",
         }}
@@ -392,10 +395,10 @@ const Ebook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="isbn"
+                      label="ISBN"
                       placeholder="Ex: 978-85-7078-4447-6"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -405,7 +408,22 @@ const Ebook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="text"
+                      label="DOI"
+                      placeholder="Ex: 10.7476/9788575413524"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.doi}
+                      name="doi"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       type="text"
                       label="Disponível em"
@@ -418,8 +436,6 @@ const Ebook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="date"

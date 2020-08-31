@@ -8,6 +8,7 @@ import { Grid } from "@material-ui/core";
 
 // components
 import Input from "../../components/InputWrapper/Input";
+import Select from "../../components/InputWrapper/Select";
 import Button from "../../components/Buttons";
 import Modal from "../../components/Modal";
 
@@ -23,6 +24,7 @@ import ArrowLeft from "../../assets/images/arrow-left.svg";
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
+  type: Yup.string().required("Obrigatório"),
   sender: Yup.string().required("Obrigatório"),
   subject: Yup.string().required("Obrigatório"),
   recipient: Yup.string().required("Obrigatório"),
@@ -32,6 +34,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   const {
+    type,
     sender,
     subject,
     recipient,
@@ -40,12 +43,17 @@ const generateReference = (values) => {
     supportSpecification,
   } = values;
 
+  const handleType = (text) => {
+    if (text === "fisico") return formatAuthorName(sender);
+    if (text === "entity") return <>{sender}. </>;
+  };
+
   return (
     <span>
-      {sender && <>{formatAuthorName(sender)}. </>}
+      {<>{handleType(type)}</>}
       {subject && <b>{subject}. </b>}
       {<>Destinatário: {recipient}. </>}
-      {publicationLocal ? <>{publicationLocal}: </> : <>[S.l.]. </>}
+      {publicationLocal ? <>{publicationLocal}: </> : <i>[S.l.]. </i>}
       {<>{formatDate(sendDate)}. </>}
       {supportSpecification}.
     </span>
@@ -81,6 +89,7 @@ const Email = ({ back }) => {
 
       <Formik
         initialValues={{
+          type: "",
           sender: "",
           subject: "",
           recipient: "",
@@ -107,7 +116,23 @@ const Email = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="type"
+                      label="Tipo de remetente"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.type}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "fisico", name: "Pessoa física" },
+                        { value: "entity", name: "Entidade" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Remetente"
@@ -120,7 +145,7 @@ const Email = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Assunto"

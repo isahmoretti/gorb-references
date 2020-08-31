@@ -1,8 +1,10 @@
 import React from "react";
 
+import monosyllableData from "../data/Monosyllable";
+
 export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
-  yearOfPublication = String(yearOfPublication)
-  
+  yearOfPublication = String(yearOfPublication);
+
   const date = yearOfPublication.split("-")[0];
 
   if (Array.isArray(author)) {
@@ -28,9 +30,9 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
       if (author[0].toLowerCase().includes("junior")) parent = "JUNIOR";
       if (author[0].toLowerCase().includes("neto")) parent = "NETO";
       if (author[0].toLowerCase().includes("sobrinho")) parent = "SOBRINHO";
-    
+
       let authSplit = author[0].split(" ");
-      
+
       // if(authSplit.find(a => a === parent)){
       //   const v = authSplit[0]
       // }
@@ -39,7 +41,7 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
       } else {
         lastName = authSplit[authSplit.length - 1];
       }
-      
+
       return (
         <span>
           ({lastName.toUpperCase()} et al., {date})
@@ -57,4 +59,14 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
       ({lastName}, {date})
     </span>
   );
+};
+
+export const generateCitationWithoutAuthorSpread = (text = "", yaer = 0) => {
+  const [frist, secondary] = text.split(" ");
+
+  if (monosyllableData.includes(frist.toLowerCase())) {
+    return `(${frist.toUpperCase()} ${secondary.toUpperCase()}..., ${yaer})`;
+  }
+
+  return `(${frist.toUpperCase()}..., ${yaer})`;
 };

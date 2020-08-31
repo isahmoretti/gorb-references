@@ -77,11 +77,11 @@ const SocialNetworkPost = ({ back }) => {
       values,
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
-        values.firstName,
+        values.lastSurname,
         values.publicationDate
       ),
       citation: generateCitationWithoutAuthor(
-        values.firstName,
+        values.lastSurname,
         values.publicationDate
       ),
     }));
@@ -137,9 +137,9 @@ const SocialNetworkPost = ({ back }) => {
                       errors={props.errors}
                       touched={props.touched}
                       options={[
-                        { value: "twitter", name: "Twitter" },
-                        { value: "facebook", name: "Facebook" },
-                        { value: "instagram", name: "Instagram" },
+                        { value: "Twitter", name: "Twitter" },
+                        { value: "Facebook", name: "Facebook" },
+                        { value: "Instagram", name: "Instagram" },
                       ]}
                     />
                   </Grid>

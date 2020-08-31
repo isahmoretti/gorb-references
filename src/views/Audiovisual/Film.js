@@ -15,6 +15,8 @@ import Modal from "../../components/Modal";
 // utils
 import { formatDate } from "../../utils/formatDate";
 import { formatMonosyllable } from "../../utils/monosyllable";
+import { generateCitationWithAuthorSpread } from "../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthorSpread } from "../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../assets/images/arrow-left.svg";
 
@@ -29,23 +31,6 @@ const SignupSchema = Yup.object().shape({
   company: Yup.string().required("Obrigatório"),
   year: Yup.string().required("Obrigatório"),
 });
-
-const citation1 = (title, year) => {
-  const frist = title.split(" ")[0];
-  const temp = title.split(" ")[0].toUpperCase();
-
-  const name = title.replace(frist, temp);
-
-  return `${name} (${year})`;
-};
-const citation2 = (title, year) => {
-  const frist = title.split(" ")[0];
-  const temp = title.split(" ")[0].toUpperCase();
-
-  const name = title.replace(frist, temp);
-
-  return `(${name}, ${year})`;
-};
 
 const generateReference = (values) => {
   const {
@@ -111,8 +96,11 @@ const AdministrativeActs = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citation: citation2(values.title, values.year),
-      citationWithAuthor: citation1(values.title, values.year),
+      citation: generateCitationWithoutAuthorSpread(values.title, values.year),
+      citationWithAuthor: generateCitationWithAuthorSpread(
+        values.title,
+        values.year
+      ),
     }));
 
     setOpenModal(!openModal);
