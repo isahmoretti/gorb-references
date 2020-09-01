@@ -101,8 +101,8 @@ const generateReference = (values) => {
           {`${caption}. `}
         </span>
       ) : (
-        <b> {`${title}. `} </b>
-      )}
+          <b> {`${title}. `} </b>
+        )}
       {complementaryElements &&
         translator &&
         translatorName.length &&
@@ -169,38 +169,33 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authorType: "person",
-          responsabilityType: "organizator",
-          title: "Navegando em águas desconhecidas",
-          caption: "Mar aberto",
-          local: "São Paulo",
-          publishingCompany: "Ikatec",
-          originalTitle: "Mar vermelho",
-          edition: "2",
-          yearOfPublication: "1522",
+          authorType: "",
+          responsabilityType: "",
+          title: "",
+          caption: "",
+          local: "",
+          publishingCompany: "",
+          originalTitle: "",
+          edition: "",
+          yearOfPublication: "",
           complementaryElements: true,
-          pagination: "4",
-          series: "3",
-          grades: "Informações complementares",
-          isbn: "3423423423423",
-          volume: "3",
+          pagination: "",
+          series: "",
+          grades: "",
+          isbn: "",
+          volume: "",
           online: false,
           accessedAt: "",
           url: "",
           translator: true,
-          chapter: "2",
+          chapter: "",
           translatorName: ["Lucas zinner Ferreira"],
-          chapterTitle: "Eu pensei errado",
+          chapterTitle: "",
           chapterAuthors: ["Matheus Paice Ferreira"],
-          chapterCaption: "Agora aguenta",
-          captionPageInit: "45",
-          captionPageFinish: "23",
-          authors: [
-            "Daniel Barbosa de Lima",
-            "Vanessa Vasconcelos Oliveira Ferreira",
-            "Matheus Ferreira",
-            "Matheus Ferreira",
-          ],
+          chapterCaption: "",
+          captionPageInit: "",
+          captionPageFinish: "",
+          authors: [""],
           abbreviate: true,
         }}
         validationSchema={SignupSchema}
@@ -237,7 +232,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Título do capítulo"
-                        placeholder="Título do capítulo"
+                        placeholder="Ex:Atos de ameaça à face e à conversação em redes sociais"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.chapterTitle}
@@ -260,7 +255,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Subtítulo do capítulo"
-                        placeholder="Subtítulo do capítulo"
+                        placeholder="Ex: Preencher com o subtítulo (se houver)"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.chapterCaption}
@@ -275,66 +270,66 @@ const Book = ({ back }) => {
                         render={(arrayHelpers) => (
                           <div>
                             {props.values.chapterAuthors &&
-                            props.values.chapterAuthors.length > 0 ? (
-                              props.values.chapterAuthors.map(
-                                (chapterAuthor, index) => (
-                                  <FieldArrayContainer key={index}>
-                                    <div
-                                      style={{ display: "flex", width: "100%" }}
-                                    >
-                                      <Input
-                                        type="text"
-                                        label={`Autor do capítulo ${index + 1}`}
-                                        onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={chapterAuthor}
-                                        name={`chapterAuthors.${index}`}
-                                        errors={props.errors}
-                                        touched={props.touched}
-                                      />
-                                      {index > 0 && (
-                                        <ButtonCore
-                                          type="button"
-                                          disabled={index === 0}
-                                          onClick={() =>
-                                            arrayHelpers.remove(index)
-                                          }
-                                        >
-                                          <RemoveIcon src={Minus} />
-                                        </ButtonCore>
-                                      )}
-                                      {
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon src={Plus} />
-                                        </ButtonCore>
-                                      }
-                                    </div>
-                                    <div
-                                      style={{
-                                        width: "100%",
-                                        marginBottom: "10px",
-                                      }}
-                                    >
-                                      <ErrorText>
-                                        {props.errors &&
-                                          props.errors.chapterAuthors &&
-                                          props.errors.chapterAuthors[index]}
-                                      </ErrorText>
-                                    </div>
-                                  </FieldArrayContainer>
+                              props.values.chapterAuthors.length > 0 ? (
+                                props.values.chapterAuthors.map(
+                                  (chapterAuthor, index) => (
+                                    <FieldArrayContainer key={index}>
+                                      <div
+                                        style={{ display: "flex", width: "100%" }}
+                                      >
+                                        <Input
+                                          type="text"
+                                          label={`Nome do autor do capítulo ${index + 1}`}
+                                          onChange={props.handleChange}
+                                          onBlur={props.handleBlur}
+                                          value={chapterAuthor}
+                                          name={`chapterAuthors.${index}`}
+                                          errors={props.errors}
+                                          touched={props.touched}
+                                        />
+                                        {index > 0 && (
+                                          <ButtonCore
+                                            type="button"
+                                            disabled={index === 0}
+                                            onClick={() =>
+                                              arrayHelpers.remove(index)
+                                            }
+                                          >
+                                            <RemoveIcon src={Minus} />
+                                          </ButtonCore>
+                                        )}
+                                        {
+                                          <ButtonCore
+                                            type="button"
+                                            onClick={() => arrayHelpers.push("")}
+                                          >
+                                            <AddIcon src={Plus} />
+                                          </ButtonCore>
+                                        }
+                                      </div>
+                                      <div
+                                        style={{
+                                          width: "100%",
+                                          marginBottom: "10px",
+                                        }}
+                                      >
+                                        <ErrorText>
+                                          {props.errors &&
+                                            props.errors.chapterAuthors &&
+                                            props.errors.chapterAuthors[index]}
+                                        </ErrorText>
+                                      </div>
+                                    </FieldArrayContainer>
+                                  )
                                 )
-                              )
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                              ) : (
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.push("")}
+                                >
+                                  Add a author
+                                </ButtonCore>
+                              )}
                           </div>
                         )}
                       />
@@ -344,8 +339,8 @@ const Book = ({ back }) => {
                     <Grid item xs={12} sm={12} md={4}>
                       <Input
                         type="text"
-                        label="Páginas do capítulo (início)"
-                        placeholder="Ex: 45"
+                        label="Página inícial"
+                        placeholder="Ex: 51"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.captionPageInit}
@@ -357,8 +352,8 @@ const Book = ({ back }) => {
                     <Grid item xs={12} sm={12} md={4}>
                       <Input
                         type="text"
-                        label="Páginas do capítulo (fim)"
-                        placeholder="Ex: 67"
+                        label="Página final"
+                        placeholder="Ex: 69"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.captionPageFinish}
@@ -371,7 +366,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Capítulo"
-                        placeholder="Ex: 24"
+                        placeholder="Ex: 3"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.chapter}
@@ -448,66 +443,66 @@ const Book = ({ back }) => {
                         render={(arrayHelpers) => (
                           <div>
                             {props.values.authors &&
-                            props.values.authors.length > 0 ? (
-                              props.values.authors.map(
-                                (chapterAuthor, index) => (
-                                  <FieldArrayContainer key={index}>
-                                    <div
-                                      style={{ display: "flex", width: "100%" }}
-                                    >
-                                      <Input
-                                        type="text"
-                                        label={`${index + 1}º Autoria do livro`}
-                                        onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={chapterAuthor}
-                                        name={`authors.${index}`}
-                                        errors={props.errors}
-                                        touched={props.touched}
-                                      />
-                                      {index > 0 && (
-                                        <ButtonCore
-                                          type="button"
-                                          disabled={index === 0}
-                                          onClick={() =>
-                                            arrayHelpers.remove(index)
-                                          }
-                                        >
-                                          <RemoveIcon src={Minus} />
-                                        </ButtonCore>
-                                      )}
-                                      {
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon src={Plus} />
-                                        </ButtonCore>
-                                      }
-                                    </div>
-                                    <div
-                                      style={{
-                                        width: "100%",
-                                        marginBottom: "10px",
-                                      }}
-                                    >
-                                      <ErrorText>
-                                        {props.errors &&
-                                          props.errors.authors &&
-                                          props.errors.authors[index]}
-                                      </ErrorText>
-                                    </div>
-                                  </FieldArrayContainer>
+                              props.values.authors.length > 0 ? (
+                                props.values.authors.map(
+                                  (chapterAuthor, index) => (
+                                    <FieldArrayContainer key={index}>
+                                      <div
+                                        style={{ display: "flex", width: "100%" }}
+                                      >
+                                        <Input
+                                          type="text"
+                                          label={`${index + 1}º Autoria do livro`}
+                                          onChange={props.handleChange}
+                                          onBlur={props.handleBlur}
+                                          value={chapterAuthor}
+                                          name={`authors.${index}`}
+                                          errors={props.errors}
+                                          touched={props.touched}
+                                        />
+                                        {index > 0 && (
+                                          <ButtonCore
+                                            type="button"
+                                            disabled={index === 0}
+                                            onClick={() =>
+                                              arrayHelpers.remove(index)
+                                            }
+                                          >
+                                            <RemoveIcon src={Minus} />
+                                          </ButtonCore>
+                                        )}
+                                        {
+                                          <ButtonCore
+                                            type="button"
+                                            onClick={() => arrayHelpers.push("")}
+                                          >
+                                            <AddIcon src={Plus} />
+                                          </ButtonCore>
+                                        }
+                                      </div>
+                                      <div
+                                        style={{
+                                          width: "100%",
+                                          marginBottom: "10px",
+                                        }}
+                                      >
+                                        <ErrorText>
+                                          {props.errors &&
+                                            props.errors.authors &&
+                                            props.errors.authors[index]}
+                                        </ErrorText>
+                                      </div>
+                                    </FieldArrayContainer>
+                                  )
                                 )
-                              )
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                              ) : (
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.push("")}
+                                >
+                                  Add a author
+                                </ButtonCore>
+                              )}
                           </div>
                         )}
                       />
@@ -534,7 +529,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Título do Livro"
-                        placeholder="Título do livro"
+                        placeholder="Ex: Interações em Rede"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.title}
@@ -547,7 +542,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Subtítulo do Livro"
-                        placeholder="Subtítulo do livro"
+                        placeholder="Ex: Preencher com o subtítulo (se houver)"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.caption}
@@ -562,7 +557,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Local de publicação"
-                        placeholder="Ex: São Paulo"
+                        placeholder="Ex: Porto Alegre"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.local}
@@ -575,7 +570,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Empresa de publicação (editora)"
-                        placeholder="Ex: Objetivo"
+                        placeholder="Ex: Editora Sulina"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.publishingCompany}
@@ -590,7 +585,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Edição"
-                        placeholder="Ex: 4"
+                        placeholder="Ex: 2"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.edition}
@@ -602,8 +597,8 @@ const Book = ({ back }) => {
                     <Grid item xs={12} sm={12} md={4}>
                       <Input
                         type="text"
-                        label="Ano de publicação"
-                        placeholder="Ex: 2010"
+                        label="Ano"
+                        placeholder="Ex: 2016"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.yearOfPublication}
@@ -616,7 +611,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Volume"
-                        placeholder="Ex: 10"
+                        placeholder="Ex: 4"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.volume}
@@ -648,7 +643,7 @@ const Book = ({ back }) => {
                         disabled={!props.values.complementaryElements}
                         type="text"
                         label="Séries e coleções"
-                        placeholder="Ex: Grandes Autores Nacionais"
+                        placeholder="Ex: Coleção Cibercultura"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.series}
@@ -678,7 +673,7 @@ const Book = ({ back }) => {
                         disabled={!props.values.complementaryElements}
                         type="text"
                         label="ISBN"
-                        placeholder="EX: 9788535238693"
+                        placeholder="Ex: 9788520506837"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.isbn}
@@ -726,6 +721,7 @@ const Book = ({ back }) => {
                           !props.values.complementaryElements ||
                           !props.values.translator
                         }
+                        placeholder="Ex: Nome do tradutor (se houver)"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.translatorName}
@@ -750,6 +746,7 @@ const Book = ({ back }) => {
                         disabled={!props.values.complementaryElements}
                         type="text"
                         label="Título original da obra"
+                        placeholder="Ex: Título original do livro (se houver)"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.originalTitle}

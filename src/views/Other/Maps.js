@@ -55,16 +55,14 @@ const generateReference = (values) => {
       typeAuthor === 'withoutAuthorship'
         ? <>
           {caption ? <><b>{getTitle(title)}: </b>{caption}. </> : <>{getTitle(title)}. </>}
-          {location && <>{location}: </>}
         </>
         : <>
           {author && <>{author.toUpperCase()}. </>}
           {caption ? <><b>{title}: </b>{caption}. </> : <b>{title}. </b>}
           {subordination && <>{subordination}. </>}
-          {location && <>{typeAuthor === 'corporateBody' ? <>[{location}]</> : <>{location}</>} </>}
         </>
     }
-    {editor && <>{editor}, </>}
+    {editor ? <>{location}: {editor}, </> : <>{location}, </>}
     {year && <>{year}. </>}
     {description && <>{description}. </>}
     {scale && <>{scale}. </>}
@@ -83,8 +81,6 @@ const getTypeAuthor = (type) => {
       return "Pessoa física"
     case "entity":
       return "Entidade"
-    case "corporateBody":
-      return "Entidade coletiva"
     case "withoutAuthorship":
       return "Sem autoria"
     default:
@@ -166,7 +162,6 @@ const Maps = ({ back }) => {
                       options={[
                         { value: "physicalPerson", name: "Pessoa física" },
                         { value: "entity", name: "Entidade" },
-                        { value: "corporateBody", name: "Entidade coletiva" },
                         { value: "withoutAuthorship", name: "Sem autoria" },
                       ]}
                     />
@@ -177,7 +172,7 @@ const Maps = ({ back }) => {
                       name="author"
                       type="text"
                       label="Nome do autor"
-                      placeholder="Ex: GAÚCHO"
+                      placeholder="Ex: Santa Catarina"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.author}
@@ -187,7 +182,6 @@ const Maps = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      disabled={props.values.typeAuthor !== 'corporateBody'}
                       name="subordination"
                       type="text"
                       label="Subordinação"

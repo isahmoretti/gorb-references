@@ -40,7 +40,7 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-    entryResponsabilityType: Yup.string().required("Obrigatório"),
+    // entryResponsabilityType: Yup.string().required("Obrigatório"),
     entryTitle: Yup.string().required("Obrigatório"),
     title: Yup.string().required("Obrigatório"),
     local: Yup.string().required("Obrigatório"),
@@ -71,13 +71,12 @@ const generateReference = (values) => {
         notes,
         typeAndSupport,
 
-        online,
         url,
         accessedAt,
     } = values;
 
     const getResposabilityTypes = (responsabiltyTypes) => {
-        if (responsabiltyTypes === "author") return "(Aut.)";
+        // if (responsabiltyTypes === "author") return "(Aut.)";
         if (responsabiltyTypes === "compiler") return "(Comp.)";
         if (responsabiltyTypes === "editor") return "(Ed.)";
         if (responsabiltyTypes === "organizator") return "(Org.)";
@@ -97,6 +96,8 @@ const generateReference = (values) => {
         }
     }
     const getNamesResponsible = (namesResponsible, abbreviate = false) => {
+        if (responsabilityType === 'author') abbreviate = false
+
         if (!namesResponsible.length || namesResponsible[0] === "") return
 
         if (namesResponsible.length >= 4) {
@@ -105,28 +106,34 @@ const generateReference = (values) => {
 
         const name = formatAuthorName(namesResponsible, abbreviate);
 
-        return `${name.slice(0, name.length - 2)}.`;
+        return `${name.slice(0, name.length - 2)}`;
     };
 
+    const firstUpperCase = (title) => {
+        if (!title) return
+
+        const titleSplit = title.split(" ")
+
+        if (titleSplit.length === 1) return title
+
+        return `${titleSplit[0].toUpperCase()} ${titleSplit.slice(1).join(' ')}`
+    }
+
+    const hasAuthor = (partAuthors.length > 0 && partAuthors[0] !== "")
+    const entryTitleFormatted = hasAuthor ? entryTitle : firstUpperCase(entryTitle)
     return (
         <span>
-            {partAuthors.length > 0 && <>{getNamesResponsible(partAuthors, abbreviate)} </>}
-            {entryResponsabilityType ? (
-                <>{getResposabilityTypes(entryResponsabilityType)}. </>
-            ) : (
-                    <>. </>
-                )
+            {
+                hasAuthor && <>
+                    {<>{getNamesResponsible(partAuthors, abbreviate)} </>}
+                    {entryResponsabilityType && <>{getResposabilityTypes(entryResponsabilityType)}. </>}
+                </>
             }
-            {entryCaption ? <><b>{entryTitle}</b>: {entryCaption}. </> : <b>{entryTitle}. </b>}
+            {entryCaption ? <><b>{entryTitleFormatted}</b>: {entryCaption}. </> : <b>{entryTitleFormatted}. </b>}
 
-            {authorOfTheWhole && <><i>In:</i> {authorOfTheWhole.toUpperCase()} </>}
-            {responsabilityType ? (
-                <>{getResposabilityTypes(responsabilityType)}. </>
-            ) : (
-                    <>. </>
-                )
-            }
-            {caption ? <><b>{title}</b>: {caption}. </> : <>{title}. </>}
+            {authorOfTheWhole && <><i>In:</i> <>{authorOfTheWhole.toUpperCase()}</> </>}
+            {responsabilityType && <>{getResposabilityTypes(responsabilityType)}. </>}
+            {caption ? <>{title}: {caption}. </> : <>{title}. </>}
 
             {edition && <>{edition} ed. </>}
             {local && <>{local}: </>}
@@ -138,8 +145,7 @@ const generateReference = (values) => {
             {notes && <>{notes}. </>}
             {typeAndSupport && <>{getTypeAndSupport(typeAndSupport)}. </>}
 
-            {online &&
-                accessedAt &&
+            {accessedAt &&
                 url &&
                 `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
         </span>
@@ -219,7 +225,6 @@ const Entry = ({ back }) => {
                     notes: '',
                     typeAndSupport: '',
 
-                    online: false,
                     accessedAt: '',
                 }}
                 validationSchema={SignupSchema}
@@ -236,6 +241,7 @@ const Entry = ({ back }) => {
                                 >
                                     Verbete de dicionário/enciclopédia
                     </p>
+                    Informações do Verbete
                             </Title>
                         </Actions>
                         <Card>
@@ -255,6 +261,7 @@ const Entry = ({ back }) => {
                                                 options={[
                                                     { value: "physicalPerson", name: "Pessoa física" },
                                                     { value: "entity", name: "Entidade" },
+                                                    { value: "sameAuthor", name: "Mesmo autor da enciclopédia" },
                                                 ]}
                                             />
                                         </Grid>
@@ -271,7 +278,7 @@ const Entry = ({ back }) => {
                                                 options={[
                                                     { value: "author", name: "Autor" },
                                                     { value: "compiler", name: "Compilador" },
-                                                    { value: "editor", name: "editor" },
+                                                    { value: "editor", name: "Editor" },
                                                     { value: "organizator", name: "Organizador" },
                                                 ]}
                                             />
@@ -308,6 +315,7 @@ const Entry = ({ back }) => {
                                                                                 style={{ display: "flex", width: "100%" }}
                                                                             >
                                                                                 <Input
+                                                                                    disabled={props.values.entryAuthorType === 'sameAuthor'}
                                                                                     type="text"
                                                                                     label={`Autor da parte ${index + 1}`}
                                                                                     onChange={props.handleChange}
@@ -432,8 +440,8 @@ const Entry = ({ back }) => {
                                     }}
                                 >
                                     {collapse
-                                        ? "Fechar informações"
-                                        : "Abrir informações sobre dicionário/enciclopédia"}
+                                        ? "Fechar informações do todo"
+                                        : "Abrir informações do todo"}
                                 </div>
 
                                 <Collapse in={collapse}>
@@ -467,7 +475,7 @@ const Entry = ({ back }) => {
                                                 options={[
                                                     { value: "author", name: "Autor" },
                                                     { value: "compiler", name: "Compilador" },
-                                                    { value: "editor", name: "editor" },
+                                                    { value: "editor", name: "Editor" },
                                                     { value: "organizator", name: "Organizador" },
                                                 ]}
                                             />
@@ -610,7 +618,7 @@ const Entry = ({ back }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                                        <Grid item xs={12} sm={12} md={8}>
+                                        <Grid item xs={12} sm={12} md={9}>
                                             <Input
                                                 type="text"
                                                 label="Notas"
@@ -623,7 +631,7 @@ const Entry = ({ back }) => {
                                                 touched={props.touched}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={2}>
+                                        <Grid item xs={12} sm={12} md={3}>
                                             <Select
                                                 type="text"
                                                 label="Tipo e suporte"
@@ -640,29 +648,10 @@ const Entry = ({ back }) => {
                                                 ]}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={2}>
-                                            <Select
-                                                type="text"
-                                                label="Online"
-                                                onChange={props.handleChange}
-                                                onBlur={props.handleBlur}
-                                                value={props.values.online}
-                                                name="online"
-                                                errors={props.errors}
-                                                touched={props.touched}
-                                                options={[
-                                                    { value: true, name: "Sim" },
-                                                    { value: false, name: "Não" },
-                                                ]}
-                                            />
-                                        </Grid>
                                     </Grid>
                                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
                                         <Grid item xs={12} sm={12} md={9}>
                                             <Input
-                                                disabled={
-                                                    !props.values.online
-                                                }
                                                 type="text"
                                                 label="Endereço(URL)"
                                                 placeholder="https://viacarreira.com/"
@@ -676,9 +665,6 @@ const Entry = ({ back }) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={3}>
                                             <Input
-                                                disabled={
-                                                    !props.values.online
-                                                }
                                                 type="date"
                                                 onChange={props.handleChange}
                                                 onBlur={props.handleBlur}

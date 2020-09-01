@@ -108,7 +108,7 @@ const WorkArt = ({ back }) => {
                       name="title"
                       type="text"
                       label="Título"
-                      placeholder="Ex: GAÚCHO"
+                      placeholder="Ex: Retirantes"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -123,7 +123,7 @@ const WorkArt = ({ back }) => {
                       name="year"
                       type="text"
                       label="Ano"
-                      placeholder="Ex: 1997"
+                      placeholder="Ex: 1944"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.year}

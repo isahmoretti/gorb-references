@@ -247,7 +247,7 @@ const BullMedicine = ({ back }) => {
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="Ex: https://biosintetica.com.br/arquivos/"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}
