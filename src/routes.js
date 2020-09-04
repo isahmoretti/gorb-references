@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // pages
 import HomePage from "./views/HomePage";
 import Dashboard from "./views/Dashboard";
+import VocationalTest from "./views/VocationalTest"
 
 const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/app" element={<Dashboard />} />
+        <Route path="/test" element={<VocationalTest />} />
       </Routes>
     </Router>
   );
