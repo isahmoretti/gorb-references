@@ -1,19 +1,21 @@
 import React from 'react';
+import { OPTIONS } from './constants'
 
 const Content = (props) => {
-    const { data, answers } = props
+    const { data, nextAnswer, setAnswer } = props
     const { question, alternatives } = data
 
-    // const options = alternatives
-    console.log('data content --> ', alternatives)
-    console.log('answers --> ', answers)
+    const handleAnswer = (answer) => {
+        setAnswer(OPTIONS[answer])
+        nextAnswer()
+    }
 
     return (
         <div>
             <h2>{question}</h2>
-            {
-                alternatives?.map((alternative, index) => <div key={index}>{alternative}</div>)
-            }
+            <div>
+                {alternatives?.map((alternative, index) => <div key={index} onClick={() => handleAnswer(index)}>{alternative}</div>)}
+            </div>
         </div>
     );
 }
