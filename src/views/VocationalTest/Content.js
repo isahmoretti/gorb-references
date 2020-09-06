@@ -18,10 +18,7 @@ const Content = (props) => {
             </Question>
 
             <Alternatives>
-                {alternatives?.map((alternative, index) => <Option
-                    style={{
-
-                    }}>
+                {alternatives?.map((alternative, index) => <Option>
                     <Hexagon key={index} onClick={() => handleAnswer(index)}>
                         imagem
                     </Hexagon>
