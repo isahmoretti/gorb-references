@@ -2,39 +2,18 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import { Container, Wrapper, Box } from "./styles";
-
-import SearchImage from "../../../assets/images/pesquisa.png";
+import { Container, Wrapper } from "./styles";
 
 const Session6 = () => {
   return (
-    <Container className="container">
-      <h1> Outros conteúdos que ajudam no seu trabalho </h1>
-      <Wrapper>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
-        <Box>
-          <img src={SearchImage} alt="" />
-          <span>Regras para uma documentação completa em pouco minutos</span>
-        </Box>
+    <Container>
+      <Wrapper className="container">
+        <h1>
+          Faça o seu cadastro gratuito e simplifique a <br /> realização dos
+          trabalhos acadêmicos
+        </h1>
+
+        <button> CRIAR PERFIL </button>
       </Wrapper>
     </Container>
   );

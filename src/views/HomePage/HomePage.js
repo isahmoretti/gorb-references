@@ -7,6 +7,7 @@ import Session3 from "./Session3/index";
 import Session4 from "./Session4";
 import Session5 from "./Session5/index";
 import Session6 from "./Session6";
+import Session7 from "./Session7";
 import Footer from "./Footer";
 
 import { Separator } from "./styles";
@@ -24,6 +25,7 @@ const HomePage = () => {
       <Session4 />
       <Session5 />
       <Session6 />
+      <Session7 />
 
       <div className="container">
         <Separator />

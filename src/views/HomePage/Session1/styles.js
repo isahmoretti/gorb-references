@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #e6e6e6;
-  height: 400px;
+  height: 600px;
 
   padding: 30px 0;
 
@@ -21,12 +21,12 @@ export const Wrapper = styled.div`
   }
 `;
 export const Box = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   flex-direction: column;
 
@@ -36,23 +36,24 @@ export const Box = styled.div`
     justify-content: center;
   }
 
+  > img {
+    width: 100%;
+    height: 450px;
+  }
+
   > h1 {
+    width: 100%;
+
     color: #6666cc;
     text-transform: uppercase;
-    font-size: 120px;
+    text-align: justify;
 
     margin: 0;
   }
 
   > p {
     color: #000;
-    text-transform: uppercase;
-    text-align: center;
-
-    font-size: 30px;
-    font-weight: bold;
-
-    line-height: inherit;
+    text-align: justify;
   }
 
   > button {
