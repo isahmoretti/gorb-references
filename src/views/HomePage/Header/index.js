@@ -25,7 +25,7 @@ const Header = () => {
           <span> Criar referência </span>
           <span> Criar fichamento </span>
           <span> Cadastre-se </span>
-          <span> Login </span>
+          <span onClick={() => navigate("/login")}> Login </span>
           <h1>GORB</h1>
         </Nav>
       </div>
