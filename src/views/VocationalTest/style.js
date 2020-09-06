@@ -149,7 +149,6 @@ export const Frame = styled.div`
 margin-top: 70px;
 width: 150px;
 height: 110px;
-border: 1px solid black;
 background-color: rgb(255, 255, 255);
 text-align: center;
 cursor: pointer;
