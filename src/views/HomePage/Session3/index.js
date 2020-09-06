@@ -2,30 +2,17 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import { Container, Wrapper, Box } from "./styles";
+import { Container, Wrapper } from "./styles";
 
 const Session3 = () => {
   return (
     <Container>
-      <Wrapper className="container p-3">
-        <Box>
-          <h1> Como funciona o GORB? </h1>
-          <li>
-            <span>1</span>{" "}
-            <p>Escolha o tipo de documento que será referenciado; </p>
-          </li>
-          <li>
-            <span>2</span>{" "}
-            <p>Preencha um formulário com os dados do documento consultado; </p>
-          </li>
-          <li>
-            <span>3</span> <p>Clique no botão "Gerar referência";</p>
-          </li>
-          <li>
-            <span>4</span>{" "}
-            <p>Copie e cole na lista de referências do seu trabalho;</p>
-          </li>
-        </Box>
+      <Wrapper className="container">
+        <h1>Chamadas para citações</h1>
+        <span>
+          A ferramenta também gera citações para usar no texto ou <br /> no
+          final do parágrafo.
+        </span>
       </Wrapper>
     </Container>
   );

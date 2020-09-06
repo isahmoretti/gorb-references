@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 700px;
+  height: 500px;
 
   padding: 30px 0;
 
@@ -10,44 +10,38 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.h1`
-  text-align: center;
-
-  @media (max-width: 992px) {
-    font-size: 23px;
-  }
-`;
-
 export const Wrapper = styled.div`
+  height: 100%;
+
   display: flex;
+  flex-direction: column;
 
-  margin-top: 100px;
+  > h1 {
+    text-align: center;
 
-  @media (max-width: 992px) {
-    flex-direction: column;
-
-    margin-top: 20px;
+    margin: 0 0 30px 0;
   }
 `;
-export const Box = styled.div`
-  width: 100%;
 
-  :nth-child(1) {
+export const WrapperBox = styled.div``;
+
+export const Box = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  > div {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin-bottom: 50px;
   }
 
-  > h2,
-  p {
-    color: #000;
+  > div > img {
+    height: 200px;
   }
-`;
 
-export const BoxContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  margin: 15px 0;
+  > span {
+    text-align: center;
+  }
 `;

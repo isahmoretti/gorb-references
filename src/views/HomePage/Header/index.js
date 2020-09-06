@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import ViaCarreia from "../../../assets/images/Logo-roxo.png";
 
-import { Container, Nav, Box, BoxLogo } from "./styles";
+import { Container, Nav } from "./styles";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -15,21 +15,18 @@ const Header = () => {
     <Container>
       <div className="container">
         <Nav>
-          <Box>
-            <img
-              src={ViaCarreia}
-              alt=""
-              style={{ height: 50, cursor: "pointer" }}
-              onClick={() => navigate("/")}
-            />
-          </Box>
+          <img
+            src={ViaCarreia}
+            alt=""
+            style={{ height: 50, cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          />
 
-          <BoxLogo onClick={() => navigate("/")}>
-            <h1>GORB</h1>
-            <span>
-              Gerador Online de <br /> Referências Bibliográficas{" "}
-            </span>
-          </BoxLogo>
+          <span> Criar referência </span>
+          <span> Criar fichamento </span>
+          <span> Cadastre-se </span>
+          <span onClick={() => navigate("/login")}> Login </span>
+          <h1>GORB</h1>
         </Nav>
       </div>
     </Container>

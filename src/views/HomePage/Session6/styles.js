@@ -1,49 +1,38 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  > h1 {
-    text-align: center;
-  }
+  background-color: #6666cc;
+  height: 250px;
+
+  padding: 30px 0;
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  height: 100%;
 
-  margin-top: 100px;
-
-  @media (max-width: 992px) {
-    margin-top: 20px;
-  }
-`;
-export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 
-  margin-bottom: 60px;
-
-  width: 350px;
-  height: 200px;
-
-  > img {
-    width: 350px;
-    height: 180px;
+  > h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+    color: #fff;
   }
 
-  > span {
-    font-size: 12px;
+  > button {
+    color: #000;
+    background-color: #ff0;
+    padding: 20px 15px;
+    border-radius: 30px;
+
+    transition: 0.2s;
   }
 
-  @media (max-width: 992px) {
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-
-    > img {
-      width: 300px;
-    }
+  > button:hover {
+    background-color: #fff;
+    color: #6666cc;
+    font-weight: bold;
   }
 `;

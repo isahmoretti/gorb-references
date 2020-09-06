@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #fff;
-  height: 550px;
+  height: 430px;
 
   padding: 30px 0;
 
@@ -13,57 +13,51 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
 
   height: 100%;
+
+  > h1 {
+    width: 100%;
+    margin: 0;
+  }
 
   @media (max-width: 992px) {
     flex-direction: column;
   }
 `;
 
+export const WrapperBox = styled.div`
+  display: flex;
+`;
+
 export const Box = styled.div`
   width: 100%;
   height: 100%;
 
+  margin-bottom: 50px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   flex-direction: column;
 
-  > h1 {
-    width: 100%;
+  > ul {
+    list-style: none;
+    margin: 0;
   }
 
-  > p {
-    width: 100%;
-
+  > ul > li {
     margin: 15px 0;
+  }
 
-    font-size: 18px;
-    text-align: initial;
-    color: #000;
+  > ul > li > span {
+    color: #6666cc;
+    font-weight: bold;
   }
 
   > img {
-    height: 485px;
-  }
-
-  @media (max-width: 992px) {
-    > h1,
-    p {
-      text-align: center;
-    }
-
-    > p {
-      font-size: 15px;
-    }
-
-    > img {
-      width: 100%;
-      height: 300px;
-
-      max-width: 400px;
-    }
+    height: 262px;
   }
 `;
