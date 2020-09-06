@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { TEST_CONTENT } from "./constants";
 import Content from "./Content";
 import Result from './Result';
-import { Progress } from "./style";
+import { Progress, Header, Background } from "./style";
+
 const VocationalTest = () => {
     const [state, setState] = useState({
         testIsOver: false,
@@ -49,7 +50,12 @@ const VocationalTest = () => {
 
     return (
         <div>
-            <Progress width={fragment}>{part}/{total}</Progress>
+            <Header>
+                <center>Teste vocacional</center>
+                <Background>
+                    <Progress width={fragment}>{part}/{total}</Progress>
+                </Background>
+            </Header>
             <Content data={data} nextAnswer={nextAnswer} setAnswer={setAnswer} />
         </div>
     );
