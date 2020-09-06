@@ -11,6 +11,7 @@ import Routes from "./routes";
 import { theme } from "./styles/theme";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "normalize.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function App() {
   return (

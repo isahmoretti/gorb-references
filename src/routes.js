@@ -9,6 +9,8 @@ import Hexagon from "./views/Hexagon";
 import VocationalTest from "./views/VocationalTest";
 import HomePageTest from "./views/HomePageTest";
 
+import Dashboard from "./views/Dashborad";
+
 const AppRoutes = () => {
   return (
     <Router>
@@ -19,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/test" element={<VocationalTest />} />
         <Route path="/home" element={<HomePageTest />} />
         {/* private route */}
+        <Route path="/dash" element={<Dashboard />} />
       </Routes>
     </Router>
   );
