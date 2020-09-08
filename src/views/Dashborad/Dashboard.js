@@ -1,46 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // import PropTypes from "prop-types";
 
-import Header from "../HomePage/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import Editor from "../../components/Editor";
+// actions
+import { actions } from "../../store/modules/entity/actions";
 
-import { Container, Nav, Sidebar, Content, Logo, WrapperEditor } from "./style";
+// selectors
+import { getElements } from "../../store/modules/common/selectors";
+
+import { WrapperEntity, Entity } from "./style";
 
 const Dashboard = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const entities = useSelector((state) => getElements(state.entities));
+
+  useEffect(() => {
+    dispatch(actions.load());
+  }, [dispatch]);
+
   return (
-    <Container>
-      <Nav>
-        <Header />
-      </Nav>
-      <Sidebar>
-        <Logo> Paice </Logo>
-        <ul>
-          <li>Minha conta</li>
-          <li>
-            Coleção de <br /> fichamentos
-          </li>
-          <li>
-            Minha lista de <br /> referências
-          </li>
-          <li>
-            Outros modelos <br /> de fichas
-          </li>
-          <li>
-            Criar outro <br /> fichamento
-          </li>
-          <li>
-            Gerador de referências <br /> bibliográficas
-          </li>
-        </ul>
-      </Sidebar>
-      <Content>
-        <WrapperEditor>
-          <Editor />
-        </WrapperEditor>
-      </Content>
-    </Container>
+    <WrapperEntity>
+      {entities.length &&
+        entities.map((entity) => (
+          <Entity
+            key={entity.id}
+            onClick={() => history.push(`/entity/${entity.id}`)}
+          >
+            {entity.name}
+          </Entity>
+        ))}
+    </WrapperEntity>
   );
 };
 

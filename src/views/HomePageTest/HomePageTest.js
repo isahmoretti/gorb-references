@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 // import PropTypes from "prop-types";
 
 import {
@@ -19,7 +19,7 @@ import {
 } from "./style";
 
 const HomePageTest = () => {
-  const navigate = useNavigate()
+  const history = useHistory();
   return (
     <Container>
       <Nav>
@@ -40,7 +40,10 @@ const HomePageTest = () => {
           <Box>
             <Content>
               <h2> Então responda as perguntas com atenção. </h2>
-              <Button onClick={() => navigate('/test')}> Fazer teste vocacional </Button>
+              <Button onClick={() => history.push("/test")}>
+                {" "}
+                Fazer teste vocacional{" "}
+              </Button>
             </Content>
           </Box>
         </ContentHome>
@@ -188,7 +191,10 @@ const HomePageTest = () => {
         </BoxImage>
       </WrapperText>
 
-      <Button onClick={() => navigate('/test')} className="center"> Fazer teste vocacional </Button>
+      <Button onClick={() => history.push("/test")} className="center">
+        {" "}
+        Fazer teste vocacional{" "}
+      </Button>
     </Container>
   );
 };

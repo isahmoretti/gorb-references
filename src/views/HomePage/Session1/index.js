@@ -2,25 +2,49 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Container, Wrapper, Box } from "./styles";
 
 import Hexagon from "../../../assets/images/Hexagon.png";
 
+const styles = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "#6666cc",
+    color: "#fff",
+    padding: "20px 15px",
+    marginLeft: 7,
+  },
+};
+
 const Session1 = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   return (
     <Container>
+      <div style={styles.container}>
+        <button
+          style={styles.button}
+          onClick={() => history.push("/dashboard")}
+        >
+          Ir para Admin
+        </button>
+        <button style={styles.button} onClick={() => history.push("/home")}>
+          Ir para Teste
+        </button>
+      </div>
       <Wrapper className="container">
         <Box>
           <img src={Hexagon} alt="" />
         </Box>
         <Box>
           <h1>
-            {" "}
-            GORB - O seu gerador <br /> de referências{" "}
+            GORB - O seu gerador <br /> de referências
           </h1>
           <p>
             O Gerador Online de Referências Bibliográfica (GORB) foi criado pelo
@@ -35,9 +59,8 @@ const Session1 = () => {
             <br /> Organize e guarde suas referências bibliográficas em uma
             folha A4, formatada conforme as recomendações da NBR 6023.
           </p>
-          <button onClick={() => navigate("/app")}>
-            {" "}
-            Acesse o Gerador Grátis{" "}
+          <button onClick={() => history.push("/app")}>
+            Acesse o Gerador Grátis
           </button>
         </Box>
       </Wrapper>

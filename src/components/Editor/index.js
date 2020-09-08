@@ -6,14 +6,11 @@ import { convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 
-const Editpr = () => {
+const Editpr = ({ handleChange }) => {
   const [text, setText] = useState(null);
 
-  useEffect(() => {
-    if (text) console.log(draftToHtml(convertToRaw(text.getCurrentContent())));
-  }, [text]);
-
   const onEditorStateChange = (editorState) => {
+    handleChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setText(editorState);
   };
 
