@@ -17,9 +17,13 @@ const reducerById = (state = {}, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "persist/REHYDRATE":
-      return action.payload.entities.byId;
+    case "persist/REHYDRATE": {
+      if (action && action.payload) {
+        return action.payload.entities.byId;
+      }
 
+      return initialState.byId;
+    }
     case types.ENTITY_LOAD_SUCCESS:
       return createTreeById(payload);
     case types.ENTITY_SHOW_SUCCESS:
@@ -33,9 +37,13 @@ const reducerAllId = (state = [], action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "persist/REHYDRATE":
-      return action.payload.entities.allId;
+    case "persist/REHYDRATE": {
+      if (action && action.payload) {
+        return action.payload.entities.allId;
+      }
 
+      return initialState.allId;
+    }
     case types.ENTITY_LOAD_SUCCESS:
       return createTreeAllId(payload);
     case types.ENTITY_SHOW_SUCCESS:
