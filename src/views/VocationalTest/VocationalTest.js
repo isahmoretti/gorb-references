@@ -4,10 +4,8 @@ import { TEST_CONTENT } from "./constants";
 
 // components
 import Content from "./Content";
-import Result from "./Result";
-
-// styles
-import { Progress } from "./style";
+import Result from './Result';
+import { Progress, Header, Background } from "./style";
 
 const VocationalTest = () => {
   const [state, setState] = useState({
@@ -54,14 +52,17 @@ const VocationalTest = () => {
   if (testIsOver)
     return <Result answers={answers} thirteenAnswer={thirteenAnswer} />;
 
-  return (
-    <div>
-      <Progress width={fragment}>
-        {part}/{total}
-      </Progress>
-      <Content data={data} nextAnswer={nextAnswer} setAnswer={setAnswer} />
-    </div>
-  );
-};
+    return (
+        <div>
+            <Header>
+                <center>Teste vocacional</center>
+                <Background>
+                    <Progress width={fragment}>{part}/{total}</Progress>
+                </Background>
+            </Header>
+            <Content data={data} nextAnswer={nextAnswer} setAnswer={setAnswer} />
+        </div>
+    );
+}
 
 export default VocationalTest;
