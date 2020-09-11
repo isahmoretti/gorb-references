@@ -15,7 +15,7 @@ export const TEST_CONTENT = [
             'Educação Física',
             'Artes',
             'Biologia'
-        ]
+        ],
     },
     {
         question: 'Você considera mais fácil aprender:',

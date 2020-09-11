@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { TEST_CONTENT } from "./constants";
+import imgHeader from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
 
 // components
 import Content from "./Content";
@@ -54,13 +55,12 @@ const VocationalTest = () => {
 
     return (
         <div>
-            <Header>
-                <center>Teste vocacional</center>
+            <Header src={imgHeader}>
                 <Background>
                     <Progress width={fragment}>{part}/{total}</Progress>
                 </Background>
             </Header>
-            <Content data={data} nextAnswer={nextAnswer} setAnswer={setAnswer} />
+            <Content data={data} part={part} nextAnswer={nextAnswer} setAnswer={setAnswer} />
         </div>
     );
 }
