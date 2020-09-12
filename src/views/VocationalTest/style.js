@@ -67,6 +67,14 @@ export const Box = styled.div`
 };
 @media only screen and (max-width: 800px) {
 background-image: url(${imgBackground});
+
+
+#image{
+  position: absolute;
+  width: 100%;
+  min-height: 88px;
+  height: 162px;
+};
 }
 
 `;
