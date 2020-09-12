@@ -24,43 +24,28 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
-  legislationNumber: Yup.string().required("Obrigatório"),
-  legislationDate: Yup.string().required("Obrigatório"),
+  numbering: Yup.string().required("Obrigatório"),
+  publicationDate: Yup.string().required("Obrigatório"),
   publicationTitle: Yup.string().required("Obrigatório"),
-  publicationLocal: Yup.string().required("Obrigatório"),
+  local: Yup.string().required("Obrigatório"),
 });
 
-const territorialScopeOptions = [
-  { value: "dontIsCase", name: "Não é o caso" },
-  { value: "state", name: "Estado" },
-  { value: "city", name: "Município" },
-  { value: "Senate", name: "Congresso Senado" },
-  { value: "parliament", name: "Congresso Camara dos Deputados" },
-  { value: "legislativeAssembly", name: "Assembléia Legislativa" },
-  { value: "cityCouncil", name: "Câmara de Vereadores" },
-];
 
 const generateReference = (values) => {
   const {
     jurisdiction,
-    territorialScope,
-    yearOfConstitutionalText,
-    legislationType,
-    legislationNumber,
-    legislationDate,
+    title,
+    numbering,
+    caption,
     menu,
-    publicationTitle,
-    publicationCaption,
-    editionNumber,
-    publicationLocal,
-    UF,
-    publishingCompany,
     publicationDate,
-    volume,
-    publicationNumber,
+    publicationTitle,
+    captionPublication,
     sessionNumber,
+    local,
     initialPage,
     finalPage,
+    notes,
     online,
     url,
     accessedAt,
@@ -68,55 +53,33 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {jurisdiction && <>{jurisdiction.toUpperCase()} </>}
-      {territorialScope && (
-        <>
-          (
-          {
-            territorialScopeOptions.find((t) => t.value === territorialScope)
-              .name
-          }
-          ).{" "}
-        </>
-      )}
-      {yearOfConstitutionalText && (
-        <>Constituição ({yearOfConstitutionalText}). </>
-      )}
-      {legislationType && <>{legislationType} </>}
-      {legislationNumber && <>{legislationNumber}, </>}
-      {legislationDate && (
-        <>de {formatDate(legislationDate, "d MMMM yyyy")}. </>
-      )}
+      {jurisdiction && <>{jurisdiction.toUpperCase()}. </>}
+      {title && <>{title} </>}
+      {!numbering && <>, </>}
+      {numbering && <>nº {numbering}, </>}
+      {caption && <>{caption}, </>}
       {menu && <>{menu}. </>}
-      {publicationCaption ? (
-        <>
-          <b>{publicationTitle}: </b>
-          {publicationCaption}.{" "}
-        </>
-      ) : (
-        <b>{publicationTitle}. </b>
-      )}
-      {editionNumber && (
-        <>
-          {
-            <>
-              {editionNumber > 1 ? <>{editionNumber}.</> : <>{editionNumber}</>}{" "}
-              ed.
-            </>
-          }{" "}
-        </>
-      )}
-      {publicationLocal && <>{publicationLocal}, </>}
-      {UF && <>{UF}: </>}
-      {publishingCompany && <>{publishingCompany}, </>}
-      {publicationDate && <>{formatDate(publicationDate, "d MMMM yyyy")}. </>}
-      {volume && <>v. {volume}, </>}
-      {publicationNumber && <>n. {publicationNumber}, </>}
-      {sessionNumber && <>Seção {sessionNumber}, </>}
+
+      {captionPublication ? <>
+        <b>{publicationTitle}: </b>
+        {captionPublication}.{" "}
+      </>
+        : <b>{publicationTitle}. </b>
+      }
+      
+      {sessionNumber && <>seção {sessionNumber}, </>}
+
+      {local && <>{local}, </>}
+
+      {notes && <>{notes}. </>}
+
       {initialPage && finalPage && (
         <>
-          p. {initialPage}-{finalPage}.{" "}
+          p. {initialPage}-{finalPage},{" "}
         </>
+      )}
+      {publicationDate && (
+        <>{formatDate(publicationDate)}. </>
       )}
       {online && accessedAt && url && (
         <>
@@ -145,11 +108,11 @@ const Legislation = ({ back }) => {
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
         values.jurisdiction,
-        values.legislationDate
+        values.publicationDate
       ),
       citation: generateCitationWithoutAuthor(
         values.jurisdiction,
-        values.legislationDate
+        values.publicationDate
       ),
     }));
 
@@ -162,27 +125,21 @@ const Legislation = ({ back }) => {
 
       <Formik
         initialValues={{
-          jurisdiction: "",
-          territorialScope: "",
-          yearOfConstitutionalText: "",
-          legislationType: "",
-          legislationNumber: "",
-          legislationDate: "",
-          menu: "",
-          publicationTitle: "",
-          publicationCaption: "",
-          editionNumber: "",
-          publicationLocal: "",
-          UF: "",
-          publishingCompany: "",
+          jurisdiction: "Brasil",
+          title: "Lei",
+          numbering: "10.406",
+          caption: "de 10 de janeiro de 2002",
+          menu: "Institui o Código Civil",
           publicationDate: "",
-          volume: "",
-          publicationNumber: "",
-          sessionNumber: "",
-          initialPage: "",
-          finalPage: "",
+          publicationTitle: "Diário Oficial da União",
+          captionPublication: "Subtítulo",
+          sessionNumber: "1",
+          local: "Brasília, DF",
+          initialPage: "1",
+          finalPage: "74",
+          notes: "ano 139, n. 8",
           online: false,
-          url: "",
+          url: "http://www.planalto.gov.br/ccivil_03/leis/2002/L10406compilada.htm",
           accessedAt: "",
         }}
         validationSchema={SignupSchema}
@@ -199,6 +156,9 @@ const Legislation = ({ back }) => {
                 >
                   Legislação
                 </p>
+                <span>
+                  Inclui leis e decretos
+                </span>
               </Title>
             </Actions>
             <Card>
@@ -207,7 +167,7 @@ const Legislation = ({ back }) => {
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Jurisdição ou cabeçalho da entidade"
+                      label="Jurisdição ou Cabeçalho da Entidade"
                       placeholder="Ex: Brasil"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -218,82 +178,51 @@ const Legislation = ({ back }) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
-                    <Select
-                      type="text"
-                      label="Abrangência Territorial"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.territorialScope}
-                      name="territorialScope"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={territorialScopeOptions}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Se texto Consitucional, informar ano "
-                      placeholder="Ex: 1998"
+                      label="Título"
+                      placeholder="Ex: Lei"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yearOfConstitutionalText}
-                      name="yearOfConstitutionalText"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Tipo da Legislação (Lei, Decreto, etc)"
-                      placeholder="Ex: Emenda Constitucional"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.legislationType}
-                      name="legislationType"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Número da Legislação"
-                      placeholder="Ex: 55"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.legislationNumber}
-                      name="legislationNumber"
+                      value={props.values.title}
+                      name="title"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      type="date"
+                      type="text"
+                      label="Numeração"
+                      placeholder="Ex: 10.406"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.legislationDate}
-                      label="Data da legislação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      name="legislationDate"
+                      value={props.values.numbering}
+                      name="numbering"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={12}>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
-                      label="Ementa (s.f.c.)"
-                      placeholder="s.f.c. Transcrever a ementa do dispositivo legal."
+                      label="Subtítulo"
+                      placeholder="Ex: de 10 de janeiro de 2002"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      name="caption"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      type="text"
+                      label="Ementa"
+                      placeholder="Ex: Institui o Código Civil"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.menu}
@@ -304,6 +233,21 @@ const Legislation = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="date"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.publicationDate}
+                      label="Data de publicação"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      name="publicationDate"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
@@ -321,7 +265,7 @@ const Legislation = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo da Publicação"
-                      placeholder="EX: Diário Oficial da União"
+                      placeholder="EX: se houver"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publicationCaption}
@@ -330,90 +274,8 @@ const Legislation = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local da Publicação"
-                      placeholder="Ex: Brasília"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationLocal}
-                      name="publicationLocal"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Nº da edição"
-                      placeholder="Ex: 4"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.editionNumber}
-                      name="editionNumber"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Unidade da Federação"
-                      placeholder="Ex: SP"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.UF}
-                      name="UF"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Editora"
-                      placeholder="Ex: Saraiva"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.PublishingCompany}
-                      name="PublishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      label="Data da publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      name="publicationDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 4"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
@@ -430,8 +292,21 @@ const Legislation = ({ back }) => {
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
+                      label="Local"
+                      placeholder="Ex: Brasília"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.local}
+                      name="local"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
                       label="Página inicial"
-                      placeholder="Ex: 56"
+                      placeholder="Ex: 1"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.initialPage}
@@ -444,7 +319,7 @@ const Legislation = ({ back }) => {
                     <Input
                       type="text"
                       label="Página final"
-                      placeholder="Ex: 78"
+                      placeholder="Ex: 74"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.finalPage}
@@ -455,7 +330,20 @@ const Legislation = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={8}>
+                    <Input
+                      type="text"
+                      label="Notas"
+                      placeholder="Ex: ano 139, n. 8"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.notes}
+                      name="notes"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Select
                       name="online"
                       label="Online"
@@ -471,7 +359,9 @@ const Legislation = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       disabled={!props.values.online}
                       name="url"
@@ -485,7 +375,7 @@ const Legislation = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       disabled={!props.values.online}
                       name="accessedAt"
