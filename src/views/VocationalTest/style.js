@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
 import imgHeaderMobile from "../../assets/images/VocationalTest/Mobile/Perguntas e respostas/mobile_cabeçalho_perguntas.png";
-import imgBackground from "../../assets/images/VocationalTest/Mobile/Perguntas e respostas/mobile_cabeçalho_perguntas.png";
+import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 export const Progress = styled.div`
     height: 23px;
@@ -33,8 +33,10 @@ export const Background = styled.div`
 `
 export const Box = styled.div`
   background-color: #dcdcdc;
-  background-image: url(${imgBackground})
-  
+  background-image: url(${imgBackground});
+  background-repeat: space;
+  background-size: cover;
+
 .container{
   padding-top: 20px;
   position: relative;
@@ -48,7 +50,8 @@ export const Box = styled.div`
 };
 
 #text {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   left: 15%;
   width: 70%;
   top: 19px;
@@ -62,6 +65,10 @@ export const Box = styled.div`
   display: grid;
   align-content: center;
 };
+@media only screen and (max-width: 800px) {
+background-image: url(${imgBackground});
+}
+
 `;
 
 export const Alternatives = styled.div`

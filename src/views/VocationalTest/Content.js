@@ -18,8 +18,12 @@ const Content = (props) => {
     return (
         <Box>
             <div className="container">
-                <img id="image" src={imgBalloon} alt="" />
-                <label id="text">{question}</label>
+                <div style={{
+                       
+                }}>
+                    <img id="image" src={imgBalloon} alt="" />
+                    <label id="text">{question}</label>
+                </div>
             </div>
             <Alternatives>
                 {alternatives?.map((alternative, index) => <Option key={index}>
