@@ -23,7 +23,20 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const WrapperBox = styled.div``;
+export const WrapperBoxMobile = styled.div`
+  display: none;
+
+  @media (max-width: 992px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const WrapperBox = styled.div`
+  @media (max-width: 992px) {
+    display: none;
+  }
+`;
 
 export const Box = styled.div`
   display: grid;
@@ -38,6 +51,23 @@ export const Box = styled.div`
   }
 
   > div > img {
+    height: 200px;
+  }
+
+  > span {
+    text-align: center;
+  }
+`;
+
+export const BoxMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 15px 0;
+
+  > img {
     height: 200px;
   }
 

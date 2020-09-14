@@ -50,4 +50,8 @@ export const Box = styled.div`
   > img {
     height: 388px;
   }
+
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 `;

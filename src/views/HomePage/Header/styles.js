@@ -20,4 +20,22 @@ export const Nav = styled.div`
   > h1 {
     margin: 0;
   }
+
+  @media (max-width: 992px) {
+    display: none;
+
+    > h1 {
+      font-size: 20px !important;
+    }
+  }
+`;
+
+export const NavMobile = styled.div`
+  display: none;
+
+  @media (max-width: 992px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
