@@ -62,14 +62,14 @@ const CivilAndNotary = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.jurisdiction,
-        values.registrationDate
-      ),
+      // citationWithAuthor: generateCitationWithAuthor(
+      //   values.jurisdiction,
+      //   values.registrationDate
+      // ),
+      // citation: generateCitationWithoutAuthor(
+      //   values.jurisdiction,
+      //   values.registrationDate
+      // ),
     }));
 
     setOpenModal(!openModal);
@@ -174,6 +174,7 @@ const CivilAndNotary = ({ back }) => {
                       type="text"
                       label="Elemento complementar"
                       onChange={props.handleChange}
+                      placeholder="Ex: Certidão registrada às fs. 198 do livro n. 367"
                       onBlur={props.handleBlur}
                       value={props.values.complementaryElement}
                       name="complementaryElement"
@@ -200,7 +201,7 @@ const CivilAndNotary = ({ back }) => {
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
                 // citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                // citation={state.citation}
               />
             </Card>
           </form>

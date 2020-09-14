@@ -38,7 +38,7 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array().of(Yup.string().required("Obrigatório")),
+  author:Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -47,8 +47,9 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   const {
-    authors,
+    author,
     title,
+    abbreviate,
     caption,
     edition,
     local,
@@ -72,7 +73,7 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      <>{formatAuthorName(authors)} </>
+      <>{formatAuthorName([author], abbreviate)} </>
       {caption ? (
         <>
           <b>{title}:</b>
@@ -120,11 +121,11 @@ const Book = ({ back }) => {
       values,
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
-        values.authors,
+        values.author,
         values.yearOfPublication
       ),
       citation: generateCitationWithoutAuthor(
-        values.authors,
+        values.author,
         values.yearOfPublication
       ),
     }));
@@ -138,8 +139,8 @@ const Book = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: ["", "", "", ""],
-          abbreviate: "",
+          author: "",
+          abbreviate: false,
           title: "",
           caption: "",
           edition: "",
@@ -180,68 +181,16 @@ const Book = ({ back }) => {
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={12}>
-                    <FieldArray
-                      name="authors"
-                      render={(arrayHelpers) => (
-                        <div>
-                          {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
-                                  <Input
-                                    type="text"
-                                    label={`${index + 1}º Autor`}
-                                    name={`authors.${index}`}
-                                    placeholder={`nome do ${index + 1}º autor`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  {index > 3 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.remove("")}
-                                    >
-                                      <RemoveIcon src={Minus} />
-                                    </ButtonCore>
-                                  )}
-                                  {index === props.values.authors.length - 1 &&
-                                    index >= 3 && (
-                                      <ButtonCore
-                                        type="button"
-                                        onClick={() => arrayHelpers.push("")}
-                                      >
-                                        <AddIcon src={Plus} />
-                                      </ButtonCore>
-                                    )}
-                                </div>
-                                <div
-                                  style={{
-                                    width: "100%",
-                                    marginBottom: "10px",
-                                  }}
-                                >
-                                  <ErrorText>
-                                    {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
-                                  </ErrorText>
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Add a author
-                            </ButtonCore>
-                          )}
-                        </div>
-                      )}
+                    <Input
+                      type="text"
+                      label="Autor principal"
+                      placeholder="Ex: Keith J. Karren"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.author}
+                      name="author"
+                      errors={props.errors}
+                      touched={props.touched}
                     />
                   </Grid>
                 </Grid>
@@ -266,7 +215,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título"
-                      placeholder="Título do livro"
+                      placeholder="Ex: Primeiros Socorros para Estudantes"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -279,7 +228,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
-                      placeholder="Subtítulo do livro"
+                      placeholder="Ex: Subtítulo do livro (se houver)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -306,8 +255,8 @@ const Book = ({ back }) => {
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
-                      label="Empresa de publicação(editora)"
-                      placeholder="Ex: Objetiva"
+                      label="Empresa de publicação"
+                      placeholder="Ex: Editora Manole"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -320,7 +269,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Edição"
-                      placeholder="Ex: 4"
+                      placeholder="Ex: 10"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -335,7 +284,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
-                      placeholder="Ex: 2010"
+                      placeholder="Ex: 2013"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -378,7 +327,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Páginas"
-                      placeholder="Ex: 233"
+                      placeholder="Ex: 592"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -459,6 +408,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="ISBN"
+                      placeholder="Ex: 978-8520434789"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.isbn}

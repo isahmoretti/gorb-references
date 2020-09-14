@@ -189,9 +189,9 @@ const Book = ({ back }) => {
           url: "",
           translator: true,
           chapter: "",
-          translatorName: ["Lucas zinner Ferreira"],
+          translatorName: [""],
           chapterTitle: "",
-          chapterAuthors: ["Matheus Paice Ferreira"],
+          chapterAuthors: [""],
           chapterCaption: "",
           captionPageInit: "",
           captionPageFinish: "",
@@ -282,6 +282,7 @@ const Book = ({ back }) => {
                                         label={`Nome do autor do capítulo ${
                                           index + 1
                                         }`}
+                                        placeholder="Raquel Recuero"
                                         onChange={props.handleChange}
                                         onBlur={props.handleBlur}
                                         value={chapterAuthor}
@@ -723,7 +724,7 @@ const Book = ({ back }) => {
                           !props.values.complementaryElements ||
                           !props.values.translator
                         }
-                        placeholder="Ex: Nome do tradutor (se houver)"
+                        placeholder="Ex: Tradutor (se houver)"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.translatorName}

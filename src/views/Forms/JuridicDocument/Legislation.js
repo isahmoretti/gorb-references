@@ -57,7 +57,7 @@ const generateReference = (values) => {
       {title && <>{title} </>}
       {!numbering && <>, </>}
       {numbering && <>nº {numbering}, </>}
-      {caption && <>{caption}, </>}
+      {caption && <>{caption}. </>}
       {menu && <>{menu}. </>}
 
       {captionPublication ? <>
@@ -125,21 +125,21 @@ const Legislation = ({ back }) => {
 
       <Formik
         initialValues={{
-          jurisdiction: "Brasil",
-          title: "Lei",
-          numbering: "10.406",
-          caption: "de 10 de janeiro de 2002",
-          menu: "Institui o Código Civil",
+          jurisdiction: "",
+          title: "",
+          numbering: "",
+          caption: "",
+          menu: "",
           publicationDate: "",
-          publicationTitle: "Diário Oficial da União",
-          captionPublication: "Subtítulo",
-          sessionNumber: "1",
-          local: "Brasília, DF",
-          initialPage: "1",
-          finalPage: "74",
-          notes: "ano 139, n. 8",
+          publicationTitle: "",
+          captionPublication: "",
+          sessionNumber: "",
+          local: "",
+          initialPage: "",
+          finalPage: "",
+          notes: "",
           online: false,
-          url: "http://www.planalto.gov.br/ccivil_03/leis/2002/L10406compilada.htm",
+          url: "",
           accessedAt: "",
         }}
         validationSchema={SignupSchema}
@@ -252,7 +252,7 @@ const Legislation = ({ back }) => {
                     <Input
                       type="text"
                       label="Título da Publicação"
-                      placeholder="EX: Lex"
+                      placeholder="EX: Diário Oficial da União"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publicationTitle}

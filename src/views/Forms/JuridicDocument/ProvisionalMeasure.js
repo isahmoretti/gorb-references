@@ -176,7 +176,8 @@ const ProvisionalMeasure = ({ back }) => {
                     <Input
                       type="text"
                       label="Ementa"
-                      rows="3"
+                      rows="2"
+                      placeholder="Altera a Lei nº 4.117, de 27 de agosto de 1962, e dispõe sobre a flexibilização do horário de transmissão do programa oficial de informações dos Poderes da República, durante a Copa do Mundo FIFA 2014"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.menu}
