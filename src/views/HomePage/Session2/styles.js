@@ -21,14 +21,14 @@ export const Wrapper = styled.div`
     width: 100%;
     margin: 0;
   }
-
-  @media (max-width: 992px) {
-    flex-direction: column;
-  }
 `;
 
 export const WrapperBox = styled.div`
   display: flex;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
 `;
 
 export const Box = styled.div`

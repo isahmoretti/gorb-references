@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: 992px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 export const Box = styled.div`
@@ -82,7 +83,7 @@ export const Box = styled.div`
   }
 
   @media (max-width: 992px) {
-    > h1 {
+    /* > h1 {
       font-size: 80px;
     }
     > p {
@@ -90,6 +91,8 @@ export const Box = styled.div`
     }
     > button {
       font-size: 15px;
-    }
+    } */
+
+    width: 100%;
   }
 `;

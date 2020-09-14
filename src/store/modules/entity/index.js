@@ -38,7 +38,7 @@ const reducerAllId = (state = [], action) => {
 
   switch (type) {
     case "persist/REHYDRATE": {
-      if (action && action.payload) {
+      if (action && action.payload && action.payload.entities) {
         return action.payload.entities.allId;
       }
 
