@@ -268,8 +268,8 @@ const Legislation = ({ back }) => {
                       placeholder="EX: se houver"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publicationCaption}
-                      name="publicationCaption"
+                      value={props.values.captionPublication}
+                      name="captionPublication"
                       errors={props.errors}
                       touched={props.touched}
                     />
