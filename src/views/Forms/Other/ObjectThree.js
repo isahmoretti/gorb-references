@@ -157,7 +157,8 @@ const ObjectThree = ({ back }) => {
                       name="manufacturer"
                       type="text"
                       label="Produtor ou fabricante"
-                      placeholder="Ex: Paris"
+                      placeholder="Ex: Nome do
+                      fabricante, se houver"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.manufacturer}

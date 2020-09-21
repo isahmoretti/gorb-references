@@ -270,7 +270,7 @@ const TechnicalStandards = ({ back }) => {
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="Ex: https://www.abntcatalogo.com.br/norma.aspx?ID=345116"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

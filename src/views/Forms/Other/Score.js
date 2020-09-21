@@ -184,7 +184,7 @@ const Score = ({ back }) => {
                       name="instrument"
                       type="text"
                       label="Instrumento ao qual se destina"
-                      placeholder="Ex: Paris"
+                      placeholder="Ex: Piano"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.instrument}
@@ -289,7 +289,7 @@ const Score = ({ back }) => {
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="http://www.chiquinhagonzaga.com/acervo/?musica=gaucho&post_id=1463"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

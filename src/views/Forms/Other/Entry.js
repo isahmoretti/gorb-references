@@ -40,22 +40,22 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // entryResponsabilityType: Yup.string().required("Obrigatório"),
   entryTitle: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
   year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
+    entryAuthorType,
     entryResponsabilityType,
     partAuthors,
     abbreviate,
     entryTitle,
     entryCaption,
 
+    authorType,
     responsabilityType,
     authorOfTheWhole,
     title,
@@ -76,7 +76,6 @@ const generateReference = (values) => {
   } = values;
 
   const getResposabilityTypes = (responsabiltyTypes) => {
-    // if (responsabiltyTypes === "author") return "(Aut.)";
     if (responsabiltyTypes === "compiler") return "(Comp.)";
     if (responsabiltyTypes === "editor") return "(Ed.)";
     if (responsabiltyTypes === "organizator") return "(Org.)";
@@ -125,7 +124,7 @@ const generateReference = (values) => {
     : firstUpperCase(entryTitle);
   return (
     <span>
-      {hasAuthor && (
+      {hasAuthor && (entryAuthorType !== "withoutAuthorship" || entryAuthorType !== "sameAuthor") && (
         <>
           {<>{getNamesResponsible(partAuthors, abbreviate)} </>}
           {entryResponsabilityType && (
@@ -135,28 +134,32 @@ const generateReference = (values) => {
       )}
       {entryCaption ? (
         <>
-          <b>{entryTitleFormatted}</b>: {entryCaption}.{" "}
+          {entryAuthorType === "withoutAuthorship" ?
+            <><>{entryTitleFormatted}</> : { entryCaption}.{" "}</>
+            : <><b>{entryTitleFormatted}</b>: {entryCaption}.{" "}</>
+
+          }
         </>
       ) : (
-        <b>{entryTitleFormatted}. </b>
-      )}
+          <>{entryTitleFormatted}. </>
+        )}
 
-      {authorOfTheWhole && (
+      {authorOfTheWhole && authorType !== "withoutAuthorship" && (
         <>
-          <i>In:</i> <>{authorOfTheWhole.toUpperCase()}</>{" "}
+          <i>In:</i> <>{formatAuthorName(authorOfTheWhole)}</>{" "}
         </>
       )}
       {responsabilityType && <>{getResposabilityTypes(responsabilityType)}. </>}
       {caption ? (
-        <>
+        <b>
           {title}: {caption}.{" "}
-        </>
+        </b>
       ) : (
-        <>{title}. </>
-      )}
+          <>{title}. </>
+        )}
 
       {edition && <>{edition} ed. </>}
-      {local && <>{local}: </>}
+      {local ? <>{local}: </> : <>[S. l.]: </>}
       {publishingCompany && <>{publishingCompany}, </>}
       {year && <>{year}. </>}
       {initialPage && !finalPage && `p. ${initialPage}. `}
@@ -165,7 +168,7 @@ const generateReference = (values) => {
       {notes && <>{notes}. </>}
       {typeAndSupport && <>{getTypeAndSupport(typeAndSupport)}. </>}
 
-      {accessedAt &&
+      {(typeAndSupport && typeAndSupport !== 'printed') && accessedAt &&
         url &&
         `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
@@ -203,11 +206,11 @@ const Entry = ({ back }) => {
       values,
       references: generateReference(values),
       citationWithAuthor:
-        values.entryAuthorType === "physicalPerson"
+      values.local && values.entryAuthorType === "physicalPerson"
           ? getCitationWithAuthor(values.partAuthors, values.year)
           : generateCitationWithAuthor(values.partAuthors, values.year),
       citation:
-        values.entryAuthorType === "physicalPerson"
+      values.local && values.entryAuthorType === "physicalPerson"
           ? getCitationWithoutAuthor(values.partAuthors, values.year)
           : generateCitationWithoutAuthor(values.partAuthors, values.year),
     }));
@@ -233,7 +236,7 @@ const Entry = ({ back }) => {
 
           authorType: "",
           responsabilityType: "",
-          authorOfTheWhole: "",
+          authorOfTheWhole: [""],
           title: "",
           caption: "",
           edition: "",
@@ -287,6 +290,7 @@ const Entry = ({ back }) => {
                             value: "sameAuthor",
                             name: "Mesmo autor da enciclopédia",
                           },
+                          { value: "withoutAuthorship", name: "Sem autoria" },
                         ]}
                       />
                     </Grid>
@@ -332,70 +336,72 @@ const Entry = ({ back }) => {
                         render={(arrayHelpers) => (
                           <div>
                             {props.values.partAuthors &&
-                            props.values.partAuthors.length > 0 ? (
-                              props.values.partAuthors.map(
-                                (chapterAuthor, index) => (
-                                  <FieldArrayContainer key={index}>
-                                    <div
-                                      style={{ display: "flex", width: "100%" }}
-                                    >
-                                      <Input
-                                        disabled={
-                                          props.values.entryAuthorType ===
-                                          "sameAuthor"
-                                        }
-                                        type="text"
-                                        label={`Autor da parte ${index + 1}`}
-                                        onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={chapterAuthor}
-                                        name={`partAuthors.${index}`}
-                                        errors={props.errors}
-                                        touched={props.touched}
-                                      />
-                                      {index > 0 && (
-                                        <ButtonCore
-                                          type="button"
-                                          disabled={index === 0}
-                                          onClick={() =>
-                                            arrayHelpers.remove(index)
+                              props.values.partAuthors.length > 0 ? (
+                                props.values.partAuthors.map(
+                                  (chapterAuthor, index) => (
+                                    <FieldArrayContainer key={index}>
+                                      <div
+                                        style={{ display: "flex", width: "100%" }}
+                                      >
+                                        <Input
+                                          disabled={
+                                            props.values.entryAuthorType ===
+                                            "sameAuthor" ||
+                                            props.values.entryAuthorType ===
+                                            "withoutAuthorship"
                                           }
-                                        >
-                                          <RemoveIcon src={Minus} />
-                                        </ButtonCore>
-                                      )}
-                                      {
-                                        <ButtonCore
-                                          type="button"
-                                          onClick={() => arrayHelpers.push("")}
-                                        >
-                                          <AddIcon src={Plus} />
-                                        </ButtonCore>
-                                      }
-                                    </div>
-                                    <div
-                                      style={{
-                                        width: "100%",
-                                        marginBottom: "10px",
-                                      }}
-                                    >
-                                      <ErrorText>
-                                        {props.errors &&
-                                          props.errors.partAuthors &&
-                                          props.errors.partAuthors[index]}
-                                      </ErrorText>
-                                    </div>
-                                  </FieldArrayContainer>
+                                          type="text"
+                                          label={`Autor da parte ${index + 1}`}
+                                          onChange={props.handleChange}
+                                          onBlur={props.handleBlur}
+                                          value={chapterAuthor}
+                                          name={`partAuthors.${index}`}
+                                          errors={props.errors}
+                                          touched={props.touched}
+                                        />
+                                        {index > 0 && (
+                                          <ButtonCore
+                                            type="button"
+                                            disabled={index === 0}
+                                            onClick={() =>
+                                              arrayHelpers.remove(index)
+                                            }
+                                          >
+                                            <RemoveIcon src={Minus} />
+                                          </ButtonCore>
+                                        )}
+                                        {
+                                          <ButtonCore
+                                            type="button"
+                                            onClick={() => arrayHelpers.push("")}
+                                          >
+                                            <AddIcon src={Plus} />
+                                          </ButtonCore>
+                                        }
+                                      </div>
+                                      <div
+                                        style={{
+                                          width: "100%",
+                                          marginBottom: "10px",
+                                        }}
+                                      >
+                                        <ErrorText>
+                                          {props.errors &&
+                                            props.errors.partAuthors &&
+                                            props.errors.partAuthors[index]}
+                                        </ErrorText>
+                                      </div>
+                                    </FieldArrayContainer>
+                                  )
                                 )
-                              )
-                            ) : (
-                              <ButtonCore
-                                type="button"
-                                onClick={() => arrayHelpers.push("")}
-                              >
-                                Add a author
-                              </ButtonCore>
-                            )}
+                              ) : (
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.push("")}
+                                >
+                                  Add a author
+                                </ButtonCore>
+                              )}
                           </div>
                         )}
                       />
@@ -474,7 +480,7 @@ const Entry = ({ back }) => {
 
                 <Collapse in={collapse}>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                    <Grid item xs={12} sm={12} md={3}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Select
                         type="text"
                         label="Tipo do autor"
@@ -487,10 +493,11 @@ const Entry = ({ back }) => {
                         options={[
                           { value: "physicalPerson", name: "Pessoa física" },
                           { value: "entity", name: "Entidade" },
+                          { value: "withoutAuthorship", name: "Sem autoria" },
                         ]}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={3}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Select
                         type="text"
                         label="Tipo de responsabilidade"
@@ -508,17 +515,83 @@ const Entry = ({ back }) => {
                         ]}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6}>
-                      <Input
-                        type="text"
-                        label="Nome do autor do todo"
-                        placeholder="Ex: Ricardo Pizzotti"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.authorOfTheWhole}
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
                         name="authorOfTheWhole"
-                        errors={props.errors}
-                        touched={props.touched}
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authorOfTheWhole &&
+                              props.values.authorOfTheWhole.length > 0 ? (
+                                props.values.authorOfTheWhole.map(
+                                  (chapterAuthor, index) => (
+                                    <FieldArrayContainer key={index}>
+                                      <div
+                                        style={{ display: "flex", width: "100%" }}
+                                      >
+                                        <Input
+                                          disabled={
+                                            props.values.entryAuthorType ===
+                                            "sameAuthor" ||
+                                            props.values.entryAuthorType ===
+                                            "withoutAuthorship"
+                                          }
+                                          type="text"
+                                          label={`Autor da obra toda ${index + 1}`}
+                                          onChange={props.handleChange}
+                                          placeholder="Ex: Ricardo Pizzotti"
+                                          onBlur={props.handleBlur}
+                                          value={chapterAuthor}
+                                          name={`authorOfTheWhole.${index}`}
+                                          errors={props.errors}
+                                          touched={props.touched}
+                                        />
+                                        {index > 0 && (
+                                          <ButtonCore
+                                            type="button"
+                                            disabled={index === 0}
+                                            onClick={() =>
+                                              arrayHelpers.remove(index)
+                                            }
+                                          >
+                                            <RemoveIcon src={Minus} />
+                                          </ButtonCore>
+                                        )}
+                                        {
+                                          <ButtonCore
+                                            type="button"
+                                            onClick={() => arrayHelpers.push("")}
+                                          >
+                                            <AddIcon src={Plus} />
+                                          </ButtonCore>
+                                        }
+                                      </div>
+                                      <div
+                                        style={{
+                                          width: "100%",
+                                          marginBottom: "10px",
+                                        }}
+                                      >
+                                        <ErrorText>
+                                          {props.errors &&
+                                            props.errors.authorOfTheWhole &&
+                                            props.errors.authorOfTheWhole[index]}
+                                        </ErrorText>
+                                      </div>
+                                    </FieldArrayContainer>
+                                  )
+                                )
+                              ) : (
+                                <ButtonCore
+                                  type="button"
+                                  onClick={() => arrayHelpers.push("")}
+                                >
+                                  Add a author
+                                </ButtonCore>
+                              )}
+                          </div>
+                        )}
                       />
                     </Grid>
                   </Grid>
@@ -680,6 +753,7 @@ const Entry = ({ back }) => {
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={9}>
                       <Input
+                        disabled={props.values.typeAndSupport === 'printed'}
                         type="text"
                         label="Endereço(URL)"
                         placeholder="https://viacarreira.com/"
@@ -693,6 +767,7 @@ const Entry = ({ back }) => {
                     </Grid>
                     <Grid item xs={12} sm={12} md={3}>
                       <Input
+                        disabled={props.values.typeAndSupport === 'printed'}
                         type="date"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
@@ -722,8 +797,8 @@ const Entry = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
+                citationWithAuthor={props.values.local && props.values.partAuthors[0].length ? state.citationWithAuthor : ''}
+                citation={props.values.local && props.values.partAuthors[0].length ? state.citation : ''}
               />
             </Card>
           </form>

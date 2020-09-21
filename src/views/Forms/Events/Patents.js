@@ -76,11 +76,8 @@ const generateReference = (values) => {
       {invertors && <>{formatAuthorName(invertors)} </>}
       {title && <b>{title}. </b>}
       {type && (
-        <>
-          {getTypeName(type)}: {typeDescription}{" "}
-        </>
+        <>{getTypeName(type)}: {typeDescription}. </>
       )}
-      {typeDescription && <>{typeDescription}. </>}
       {attorney && <>Procurador: {attorney}. </>}
       {patentNumber && <>{patentNumber}. </>}
       {depositDate && <>Depósito: {formatDate(depositDate)}. </>}
@@ -263,8 +260,8 @@ const Patents = ({ back }) => {
                       placeholder="Ex: Custódio de Almeida & Cia"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.attorney}
-                      name="attorney"
+                      value={props.values.typeDescription}
+                      name="typeDescription"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -278,8 +275,8 @@ const Patents = ({ back }) => {
                       placeholder="Ex: Nome do procurador, se houver"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.typeDescription}
-                      name="typeDescription"
+                      value={props.values.attorney}
+                      name="attorney"
                       errors={props.errors}
                       touched={props.touched}
                     />

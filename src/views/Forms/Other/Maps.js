@@ -56,7 +56,7 @@ const generateReference = (values) => {
         <>
           {caption ? (
             <>
-              <b>{getTitle(title)}: </b>
+              <>{getTitle(title)}: </>
               {caption}.{" "}
             </>
           ) : (
@@ -66,6 +66,7 @@ const generateReference = (values) => {
       ) : (
         <>
           {author && <>{author.toUpperCase()}. </>}
+          {subordination && <>{subordination}. </>}
           {caption ? (
             <>
               <b>{title}: </b>
@@ -74,7 +75,6 @@ const generateReference = (values) => {
           ) : (
             <b>{title}. </b>
           )}
-          {subordination && <>{subordination}. </>}
         </>
       )}
       {editor ? (

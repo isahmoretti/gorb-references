@@ -40,15 +40,11 @@ const SignupSchema = Yup.object().shape({
   workTitle: Yup.string().required("Obrigatório"),
   periodicTitle: Yup.string().required("Obrigatório"),
   place: Yup.string().required("Obrigatório"),
-  volume: Yup.string().required("Obrigatório"),
   number: Yup.string().required("Obrigatório"),
   eventNumber: Yup.string().required("Obrigatório"),
   eventName: Yup.string().required("Obrigatório"),
   locationOfTheEvent: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
-  online: false,
-  url: "",
-  accessedAt: "",
+  eventYear: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -65,11 +61,13 @@ const generateReference = (values) => {
     supplement,
     pageInit,
     pageFinish,
-    publicationDate,
+    day,
+    month,
+    year,
     eventNumber,
     eventName,
     locationOfTheEvent,
-    year,
+    eventYear,
     online,
     url,
     accessedAt,
@@ -87,7 +85,10 @@ const generateReference = (values) => {
       {number && <>{number}, </>}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
-      {publicationDate && <>{formatDate(publicationDate)}. </>}
+      {day && month && year && `${day} ${month}. ${year} `}
+      {!day && month && year && `${month}. ${year} `}
+      {!day && !month && year && `${year}. `}
+
       {supplement && <>{supplement}. </>}
       {eventNumber && eventName && (
         <>
@@ -95,7 +96,7 @@ const generateReference = (values) => {
         </>
       )}
       {locationOfTheEvent && <>{locationOfTheEvent}, </>}
-      {year && <>{year}. </>}
+      {eventYear && <>{eventYear}. </>}
       {online &&
         url &&
         `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
@@ -117,9 +118,9 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
         values.authors,
-        values.year
+        values.eventYear
       ),
-      citation: generateCitationWithoutAuthor(values.authors, values.year),
+      citation: generateCitationWithoutAuthor(values.authors, values.eventYear),
     }));
 
     setOpenModal(!openModal);
@@ -143,11 +144,13 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           supplement: "",
           pageInit: "",
           pageFinish: "",
-          publicationDate: "",
+          day: "",
+          month: "",
+          year: "",
           eventNumber: "",
           eventName: "",
           locationOfTheEvent: "",
-          year: "",
+          eventYear: "",
           online: false,
           url: "",
           accessedAt: "",
@@ -305,7 +308,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       name="captionPeriodic"
                       label="Subtítulo do periódico"
                       type="text"
-                      placeholder="Subtítulo do "
+                      placeholder="Subtítulo do periódico"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.captionPeriodic}
@@ -395,22 +398,60 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="publicationDate"
-                      type="date"
-                      label="Data de publicação do periódico"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+                      name="day"
+                      type="number"
+                      label="Dia"
+                      InputProps={{ inputProps: { min: 0 } }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
+                      value={props.values.day}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Select
+                      name="month"
+                      label="Mês"
+                      type="text"
+                      placeholder="Mês"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.month}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "jan", name: "Janeiro" },
+                        { value: "fev", name: "Fevereiro" },
+                        { value: "mar", name: "Março" },
+                        { value: "abr", name: "Abril" },
+                        { value: "mai", name: "Maio" },
+                        { value: "jun", name: "Junho" },
+                        { value: "jul", name: "Julho" },
+                        { value: "ago", name: "Agosto" },
+                        { value: "set", name: "Setembro" },
+                        { value: "out", name: "Outubro" },
+                        { value: "nov", name: "Novembro" },
+                        { value: "dev", name: "Dezembro" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
+                    <Input
+                      name="year"
+                      type="number"
+                      label="Ano"
+                      InputProps={{ inputProps: { min: 0 } }}
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.year}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="eventNumber"
                       label="Número do evento"
@@ -427,13 +468,13 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      name="eventNumber"
+                      name="eventName"
                       label="Nome do evento"
                       type="text"
                       placeholder="Ex: Congresso Brasileiro de Educação Médica"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.eventNumber}
+                      value={props.values.eventName}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -453,13 +494,13 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
-                      name="year"
+                      name="eventYear"
                       label="Ano"
                       type="text"
                       placeholder="Ex: 2011"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.year}
+                      value={props.values.eventYear}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -484,7 +525,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
-                      name="accessedAtUrl"
+                      name="accessedAt"
                       type="date"
                       label="Data de acesso"
                       InputLabelProps={{
@@ -493,7 +534,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.accessedAtUrl}
+                      value={props.values.accessedAt}
                       errors={props.errors}
                       touched={props.touched}
                     />
