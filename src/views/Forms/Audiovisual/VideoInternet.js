@@ -30,7 +30,17 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
-  const { title, subtitle, year, time, responsible, url, accessedAt } = values;
+  const {
+    title,
+    subtitle,
+    year,
+    time,
+    responsible,
+    url,
+    accessedAt,
+    local,
+    publisher,
+  } = values;
 
   return (
     <span>
@@ -42,7 +52,8 @@ const generateReference = (values) => {
       ) : (
         <b>{formatMonosyllable(title)}. </b>
       )}
-      <i>[S. l.: s. n.]</i>,&nbsp;
+      {local ? `${local}. ` : "[S. l.]"}
+      {publisher ? `${publisher}. ` : "[s. n.]"}
       {`${year}. `}
       {`1 vídeo (${time}). `}
       {`Publicado pelo ${responsible}. `}
@@ -77,13 +88,16 @@ const VideoInternet = ({ back }) => {
 
       <Formik
         initialValues={{
-          title: "Eva Vertes olha para o futuro da medicina",
+          title: "",
           subtitle: "",
-          year: "2015",
-          time: "18 min",
-          responsible: "Canal TED Brasil",
-          url: "https://www.youtube.com/watch?v=wpLhm0UKTBY",
+          year: "",
+          time: "",
+          responsible: "",
+          url: "",
           accessedAt: "",
+
+          local: "",
+          publisher: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -125,7 +139,7 @@ const VideoInternet = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
-                      placeholder="Ex: Eva Vertes olha para o futuro da medicina"
+                      placeholder="Ex: Subtítulo (se houver)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.subtitle}
@@ -175,12 +189,41 @@ const VideoInternet = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="local"
+                      type="text"
+                      label="Local"
+                      placeholder="Ex: Brasília"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.local}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Input
+                      name="publisher"
+                      type="text"
+                      label="Publicadora"
+                      placeholder="Ex: Publicadora"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.publisher}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
                   <Grid item xs={12} sm={12} md={9}>
                     <Input
                       name="url"
                       label="Disponível em"
                       type="text"
-                      placeholder="https://viacarreira.com/"
+                      placeholder="https://www.youtube.com/watch?v=wpLhm0UKTB"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

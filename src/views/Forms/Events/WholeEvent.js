@@ -27,7 +27,6 @@ const SignupSchema = Yup.object().shape({
   mainEventName: Yup.string().required("Obrigatório"),
   mainEventNumber: Yup.string().required("Obrigatório"),
   participationEventNumbering: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
   placeOfPerformance: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   placeOfPublication: Yup.string().required("Obrigatório"),
@@ -63,7 +62,11 @@ const generateReference = (values) => {
       {participationEventNumbering && <>{participationEventNumbering}., </>}
       {year && <>{year}, </>}
       {placeOfPerformance && <>{placeOfPerformance}: </>}
-      {title && <b>{formatMessage(title)}. </b>}
+      {title && (
+        <>
+          <b>{formatMessage(title)}</b> [...].
+        </>
+      )}
       {placeOfPublication && <>{placeOfPublication}: </>}
       {publishingCompany && <>{publishingCompany}, </>}
       {yearOfPublication && <>{yearOfPublication}. </>}
@@ -304,7 +307,7 @@ const WholeEvent = ({ back }) => {
                     <Input
                       type="text"
                       label="Número de páginas"
-                      placeholder="Ex: 160p."
+                      placeholder="Ex: 160"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pages}

@@ -11,6 +11,9 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 
+import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
+import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
+
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
 
@@ -106,6 +109,14 @@ const Thesis = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
+      citationWithAuthor: generateCitationWithAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.authors,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -455,6 +466,8 @@ const Thesis = ({ back }) => {
                 isOpen={openModal}
                 handleClose={() => setOpenModal(!openModal)}
                 text={state.references}
+                citationWithAuthor={state.citationWithAuthor}
+                citation={state.citation}
               />
             </Card>
           </form>

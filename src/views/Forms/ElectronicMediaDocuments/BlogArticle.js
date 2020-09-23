@@ -162,7 +162,7 @@ const BlogArticle = ({ back }) => {
                                     type="text"
                                     label={`${index + 1}º Autor`}
                                     name={`authors.${index}`}
-                                    placeholder={`Nome do ${index + 1}º autor`}
+                                    placeholder={`Ex: Abel Laerte Packer`}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={author}

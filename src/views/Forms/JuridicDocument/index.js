@@ -42,7 +42,7 @@ const JuridicDocumentGeneral = ({ back }) => {
             <Hexagon onClick={() => setState(2)} className="green">
               <p className="txt-white">Medida provisória</p>
             </Hexagon>
-            <Title> Documentos jurídicos </Title>
+            <Title> Documentos jurídicos e civis </Title>
             <Hexagon className="green" onClick={() => setState(4)}>
               <p className="txt-white">Atos administrativos</p>
             </Hexagon>

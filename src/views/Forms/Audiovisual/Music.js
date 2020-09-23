@@ -93,20 +93,20 @@ const Music = ({ back }) => {
 
       <Formik
         initialValues={{
-          title: "Vizinha Faladeira",
-          interpreters: "Alcione",
-          composer: "Acyr Marques",
-          titleAlbum: "Ouro e Cobre",
-          interpretersAlbum: "Alcione",
-          location: "São Paulo",
-          recordCompany: "RCA Victor",
-          year: "1988",
+          title: "",
+          interpreters: "",
+          composer: "",
+          titleAlbum: "",
+          interpretersAlbum: "",
+          location: "",
+          recordCompany: "",
+          year: "",
           suport: true,
-          whatSuport: "1 disco vinil, lado A, faixa 4",
+          whatSuport: "",
           url: "",
           accessedAt: "",
-          duration: "4 min",
-          specificationSuport: "33 1/3 rpm, estéreo, 12 pol",
+          duration: "",
+          specificationSuport: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}

@@ -259,6 +259,22 @@ const WorkArticlePeriodic = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="typeAthor"
+                      label="Tipo de autor"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.typeAthor}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "fisic", name: "Pessoa física" },
+                        { value: "entity", name: "Entidade" },
+                      ]}
+                    />
+                  </Grid>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input
                       name="title"

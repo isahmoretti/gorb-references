@@ -97,8 +97,10 @@ const generateReference = (values) => {
         <> Tradução: {translatorName.join("; ")}. </>
       )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
-      {local}: {publishingCompany},
-      <>{complementaryElements && volume && <> v. {volume},</>} </>
+      <>
+        {local}: {`${publishingCompany}, `}
+      </>
+      <>{volume && <> v. {volume},</>} </>
       {yearOfPublication}.
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
@@ -539,10 +541,10 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Online"
+                      name="online"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.online}
-                      name="online"
                       errors={props.errors}
                       touched={props.touched}
                       options={[

@@ -16,6 +16,7 @@ import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
 
 import { formatDate } from "../../../utils/formatDate";
+import { formatMonosyllable } from "../../../utils/monosyllable";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
@@ -35,12 +36,18 @@ import {
   Title,
 } from "./style";
 
+const firstUpperCase = (name) => {
+  const firstName = name.split(" ")[0];
+
+  return name.replace(firstName, firstName.toUpperCase());
+};
+
 const SignupSchema = Yup.object().shape({
   // authors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titleMagazine: Yup.string().required("Obrigatório"),
   location: Yup.string().required("Obrigatório"),
-  yearOfPublication: Yup.string().required("Obrigatório"),
+  // yearOfPublication: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
 });
 const generateReference = (values) => {
@@ -66,8 +73,18 @@ const generateReference = (values) => {
   return (
     <span>
       {" "}
-      {authors.length && formatAuthorName(authors)}
-      {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
+      {authors.length !== 0 && formatAuthorName(authors)}
+      {!authors.length ? (
+        caption ? (
+          <>{`${formatMonosyllable(title)}: ${caption}. `}</>
+        ) : (
+          `${formatMonosyllable(title)}. `
+        )
+      ) : caption ? (
+        <>{`${title}: ${caption}. `}</>
+      ) : (
+        `${title}. `
+      )}
       <b>{`${titleMagazine}`}</b>,&nbsp;
       {publisher ? <>{`${location}: ${publisher}, `}</> : `${location}, `}
       {edition && `ed. ${edition}, `}
@@ -97,14 +114,18 @@ const ArticleMagazine = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.authors,
-        values.yearOfPublication
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.authors,
-        values.yearOfPublication
-      ),
+      ...(values.authors.length && {
+        citationWithAuthor: generateCitationWithAuthor(
+          values.authors,
+          values.yearOfPublication
+        ),
+      }),
+      ...(values.authors.length && {
+        citation: generateCitationWithoutAuthor(
+          values.authors,
+          values.yearOfPublication
+        ),
+      }),
     }));
 
     setOpenModal(!openModal);
@@ -116,7 +137,7 @@ const ArticleMagazine = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          authors: [],
           title: "",
           caption: "",
           titleMagazine: "",
@@ -214,7 +235,7 @@ const ArticleMagazine = ({ back }) => {
                               type="button"
                               onClick={() => arrayHelpers.push("")}
                             >
-                              Add a author
+                              Adicionar autor
                             </ButtonCore>
                           )}
                         </div>

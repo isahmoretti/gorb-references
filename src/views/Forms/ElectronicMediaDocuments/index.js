@@ -48,7 +48,7 @@ const ElectronicMediaDocuments = ({ back }) => {
             <Hexagon onClick={() => setState(2)} className="wine">
               <p className="txt-white">Software e jogo eletrônico</p>
             </Hexagon>
-            <Title> DOCUMENTO DE MEIO ELETRÔNICO </Title>
+            <Title> Documentos exclusivos de meio eletrônico </Title>
             <Hexagon onClick={() => setState(5)} className="wine">
               <p className="txt-white">Postagem de rede social</p>
             </Hexagon>

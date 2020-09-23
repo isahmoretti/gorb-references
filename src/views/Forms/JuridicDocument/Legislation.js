@@ -30,7 +30,6 @@ const SignupSchema = Yup.object().shape({
   local: Yup.string().required("Obrigatório"),
 });
 
-
 const generateReference = (values) => {
   const {
     jurisdiction,
@@ -60,13 +59,15 @@ const generateReference = (values) => {
       {caption && <>{caption}. </>}
       {menu && <>{menu}. </>}
 
-      {captionPublication ? <>
-        <b>{publicationTitle}: </b>
-        {captionPublication}.{" "}
-      </>
-        : <b>{publicationTitle}. </b>
-      }
-      
+      {captionPublication ? (
+        <>
+          <b>{publicationTitle}: </b>
+          {captionPublication}.{" "}
+        </>
+      ) : (
+        <b>{publicationTitle}. </b>
+      )}
+
       {sessionNumber && <>seção {sessionNumber}, </>}
 
       {local && <>{local}, </>}
@@ -78,9 +79,7 @@ const generateReference = (values) => {
           p. {initialPage}-{finalPage},{" "}
         </>
       )}
-      {publicationDate && (
-        <>{formatDate(publicationDate)}. </>
-      )}
+      {publicationDate && <>{formatDate(publicationDate)}. </>}
       {online && accessedAt && url && (
         <>
           {online &&
@@ -156,9 +155,7 @@ const Legislation = ({ back }) => {
                 >
                   Legislação
                 </p>
-                <span>
-                  Inclui leis e decretos
-                </span>
+                <span>Inclui leis e decretos</span>
               </Title>
             </Actions>
             <Card>
@@ -252,7 +249,7 @@ const Legislation = ({ back }) => {
                     <Input
                       type="text"
                       label="Título da Publicação"
-                      placeholder="EX: Diário Oficial da União"
+                      placeholder="Ex: Diário Oficial da União"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publicationTitle}

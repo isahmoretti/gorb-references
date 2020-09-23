@@ -5,6 +5,8 @@ import monosyllableData from "../data/Monosyllable";
 export const generateCitationWithAuthor = (author, yearOfPublication) => {
   yearOfPublication = String(yearOfPublication);
 
+  console.log(yearOfPublication);
+
   const date = yearOfPublication.split("-")[0];
 
   if (Array.isArray(author)) {
@@ -61,7 +63,7 @@ export const generateCitationWithAuthor = (author, yearOfPublication) => {
 
       return (
         <>
-          {lastName.toUpperCase()}, {authSplit[0]} <i>et al.</i> ({date})
+          {lastName.toUpperCase()} <i>et al.</i> ({date})
         </>
       );
     }

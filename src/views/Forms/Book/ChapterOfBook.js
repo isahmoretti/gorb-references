@@ -40,13 +40,12 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  // chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
-  // chapterTitle: Yup.string().required("Obrigatório"),
-  // authorship: Yup.string().required("Obrigatório"),
-  // title: Yup.string().required("Obrigatório"),
-  // local: Yup.string().required("Obrigatório"),
-  // publishingCompany: Yup.string().required("Obrigatório"),
-  // yearOfPublication: Yup.string().required("Obrigatório"),
+  chapterAuthors: Yup.array().of(Yup.string().required("Obrigatório")),
+  chapterTitle: Yup.string().required("Obrigatório"),
+  title: Yup.string().required("Obrigatório"),
+  local: Yup.string().required("Obrigatório"),
+  publishingCompany: Yup.string().required("Obrigatório"),
+  yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const getResposabilityTypes = (responsabiltyTypes) => {
@@ -89,7 +88,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {formatAuthorName(chapterAuthors)}&nbsp;
+      {formatAuthorName(chapterAuthors, abbreviate)}&nbsp;
       {chapterCaption
         ? `${chapterTitle}: ${chapterCaption}. `
         : `${chapterTitle}. `}
@@ -178,7 +177,7 @@ const Book = ({ back }) => {
           originalTitle: "",
           edition: "",
           yearOfPublication: "",
-          complementaryElements: true,
+          complementaryElements: false,
           pagination: "",
           series: "",
           grades: "",
@@ -196,7 +195,7 @@ const Book = ({ back }) => {
           captionPageInit: "",
           captionPageFinish: "",
           authors: [""],
-          abbreviate: true,
+          abbreviate: false,
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -232,7 +231,7 @@ const Book = ({ back }) => {
                       <Input
                         type="text"
                         label="Título do capítulo"
-                        placeholder="Ex:Atos de ameaça à face e à conversação em redes sociais"
+                        placeholder="Ex: Atos de ameaça à face e à conversação em redes sociais"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.chapterTitle}
@@ -282,7 +281,7 @@ const Book = ({ back }) => {
                                         label={`Nome do autor do capítulo ${
                                           index + 1
                                         }`}
-                                        placeholder="Raquel Recuero"
+                                        placeholder="Ex: Raquel Recuero"
                                         onChange={props.handleChange}
                                         onBlur={props.handleBlur}
                                         value={chapterAuthor}

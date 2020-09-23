@@ -52,7 +52,7 @@ const generateReference = (values) => {
       {lastSurname && <>{lastSurname}, </>}
       {firstName && <>{firstName}. </>}
       {message && <b>{formatMessage(message)}. </b>}
-      {local && <>{local}, </>}
+      {local ? <>{local}, </> : <i>[S.l.]. </i>}
       {publicationDate && <>{formatDate(publicationDate)}. </>}
       {type && <>{type}: </>}
       {accountAddress && <>{accountAddress}. </>}
@@ -71,19 +71,23 @@ const SocialNetworkPost = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const handleCitation = (text, yaer) => {
+    return {
+      cit1: `${text} (${yaer})`,
+      cit2: `(${text.toUpperCase()}, ${yaer})`,
+    };
+  };
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
+      citationWithAuthor: handleCitation(
         values.lastSurname,
         values.publicationDate
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.lastSurname,
-        values.publicationDate
-      ),
+      ).cit1,
+      citation: handleCitation(values.lastSurname, values.publicationDate).cit2,
     }));
 
     setOpenModal(!openModal);
@@ -174,12 +178,12 @@ const SocialNetworkPost = ({ back }) => {
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
-                      label="Local de publicação"
-                      placeholder="Ex: Brasília - se a pessoa não preencher, completar com [S.l]"
+                      name="local"
+                      label="Local de envio"
+                      placeholder="Ex: Brasília"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
-                      name="local"
                       errors={props.errors}
                       touched={props.touched}
                     />

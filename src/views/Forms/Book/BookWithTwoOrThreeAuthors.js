@@ -189,7 +189,7 @@ const Book = ({ back }) => {
                                     name={`authors.${index}`}
                                     type="text"
                                     label={`${index + 1}º Autor`}
-                                    placeholder={`nome do ${index + 1}º autor`}
+                                    placeholder={`Ex: Philip Kotler`}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     value={author}
@@ -263,7 +263,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Título"
-                      placeholder="Título do livro"
+                      placeholder="Ex: Marketing 4.0"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -276,7 +276,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Subtítulo"
-                      placeholder="Subtítulo do livro"
+                      placeholder="Ex: Do tradicional ao digital"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.caption}
@@ -291,7 +291,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Local de publicação"
-                      placeholder="Ex: São Paulo"
+                      placeholder="Ex: Rio de Janeiro"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.local}
@@ -304,7 +304,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Editora"
-                      placeholder="Ex: Objetiva"
+                      placeholder="Ex: Sextante"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.publishingCompany}
@@ -317,7 +317,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Edição"
-                      placeholder="Ex: 4"
+                      placeholder="Ex: 2"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.edition}
@@ -330,7 +330,7 @@ const Book = ({ back }) => {
                     <Input
                       type="text"
                       label="Ano de publicação"
-                      placeholder="Ex: 2010"
+                      placeholder="Ex: 2017"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.yearOfPublication}
@@ -405,7 +405,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Páginas"
-                      placeholder="Ex: 233"
+                      placeholder="Ex: 201"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.pagination}
@@ -445,7 +445,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="ISBN"
-                      placeholder="EX: 9788535238693"
+                      placeholder="EX: 8543105338"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.isbn}
@@ -551,7 +551,7 @@ const Book = ({ back }) => {
                       disabled={!props.values.complementaryElements}
                       type="text"
                       label="Título original"
-                      placeholder="Título original do livro"
+                      placeholder="Ex: Marketing 4.0: Moving from Traditional to Digital"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.originalTitle}

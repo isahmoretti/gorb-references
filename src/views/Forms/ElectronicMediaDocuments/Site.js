@@ -45,7 +45,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {author && <>{formatAuthorName(author)}</>}
+      {author && <>{author.toUpperCase()} </>}
       {siteName && <b>{siteName}. </b>}
       {description && <>{description}. </>}
       {local ? <>{local}: </> : <i>[S.l.]. </i>}
@@ -148,7 +148,7 @@ const Site = ({ back }) => {
                     <Input
                       type="text"
                       label="Descrição"
-                      placeholder="Ex: GLOBO Comunicações e Participações. G1: o portal de notícias da Globo."
+                      placeholder="Ex: Incluir descrição (se houver)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.description}

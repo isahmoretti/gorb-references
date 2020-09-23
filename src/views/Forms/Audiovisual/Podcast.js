@@ -92,15 +92,15 @@ const Podcast = ({ back }) => {
 
       <Formik
         initialValues={{
-          title: "Dragões de Garagem #137",
-          caption: "vó Maria vacinas e escolhas #semanadavacina",
-          locutors: "Barbara Paes",
+          title: "",
+          caption: "",
+          locutors: "",
           hasInterviewee: true,
-          nameInterviewee: "Ex: Maria da Silva",
-          location: "São Paulo",
-          productor: "Dragões de Garagem",
+          nameInterviewee: "",
+          location: "",
+          productor: "",
           date: "",
-          url: "https://www.youtube.com/watch?v=wpLhm0UKTBY",
+          url: "",
           accessedAt: "",
         }}
         validationSchema={SignupSchema}

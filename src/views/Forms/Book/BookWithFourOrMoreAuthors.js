@@ -1,44 +1,30 @@
 import React, { useState } from "react";
 
-import { Formik, FieldArray } from "formik";
+import { Formik } from "formik";
 
 import * as Yup from "yup";
 
-import { Grid, Button as ButtonCore } from "@material-ui/core";
-
 // components
+import Select from "../../../components/InputWrapper/Select";
 import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
-import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 
+import Fields from "../../../components/Fields";
+
 // utils
-import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { formatDate } from "../../../utils/formatDate";
+import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
-import Plus from "../../../assets/images/plus-dark.svg";
-import Minus from "../../../assets/images/minus.svg";
 
 // styles
-import {
-  Container,
-  Card,
-  Row,
-  Content,
-  Back,
-  AddIcon,
-  RemoveIcon,
-  FieldArrayContainer,
-  ErrorText,
-  Actions,
-  Title,
-} from "./style";
+import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  author:Yup.string().required("Obrigatório"),
+  author: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
@@ -59,7 +45,7 @@ const generateReference = (values) => {
     othersResponsabilities,
     series,
     pagination,
-    grades,
+    notes,
     isbn,
     volume,
     originalTitle,
@@ -72,22 +58,22 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {" "}
-      <>{formatAuthorName([author], abbreviate)} </>
+      <>
+        {formatAuthorName([author], abbreviate)} <i>et al. </i>
+      </>
       {caption ? (
         <>
-          <b>{title}:</b>
-          {caption}.{" "}
+          <b>{title}: </b> {`${caption}. `}
         </>
       ) : (
         <b>{title}. </b>
       )}
       {complementaryElements && translator && translatorName.length && (
-        <> Tradução: {translatorName.join("; ")}.</>
+        <> Tradução: {translatorName.join("; ")}. </>
       )}
       {edition && <> {edition > 1 ? <>{edition}.</> : <>{edition}</>} ed. </>}
       {local}: <>{publishingCompany},</>
-      {volume && <> v.{volume},</>}
+      {volume && <> v. {volume},</>}
       <> {yearOfPublication}.</>
       {complementaryElements && pagination && <> {pagination} p.</>}
       {complementaryElements && series && <> ({series}).</>}
@@ -97,7 +83,7 @@ const generateReference = (values) => {
       {complementaryElements && othersResponsabilities && (
         <> {othersResponsabilities}.</>
       )}
-      {complementaryElements && grades && <> {grades}.</>}
+      {complementaryElements && notes && <> {notes}.</>}
       {complementaryElements && isbn && <> ISBN: {isbn}.</>}
       {complementaryElements &&
         online &&
@@ -151,7 +137,7 @@ const Book = ({ back }) => {
           othersResponsabilities: "",
           pagination: "",
           series: "",
-          grades: "",
+          notes: "",
           isbn: "",
           originalTitle: "",
           volume: "",
@@ -173,414 +159,206 @@ const Book = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Referência de livro com quatro autores ou mais{" "}
+                  Referência de livro com quatro autores ou mais
                 </p>
               </Title>
             </Actions>
             <Card>
               <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <Input
-                      type="text"
-                      label="Autor principal"
-                      placeholder="Ex: Keith J. Karren"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="abbreviate"
-                      label="abreviar autor?"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.abbreviate}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Título"
-                      placeholder="Ex: Primeiros Socorros para Estudantes"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      name="title"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Subtítulo"
-                      placeholder="Ex: Subtítulo do livro (se houver)"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      name="caption"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local de publicação"
-                      placeholder="Ex: São Paulo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.local}
-                      name="local"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Empresa de publicação"
-                      placeholder="Ex: Editora Manole"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Edição"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.edition}
-                      name="edition"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Ano de publicação"
-                      placeholder="Ex: 2013"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
-                      name="yearOfPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Volume"
-                      placeholder="Ex: 10"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      name="volume"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      type="text"
-                      label="Elementos complementares"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.complementaryElements}
-                      name="complementaryElements"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Páginas"
-                      placeholder="Ex: 592"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.pagination}
-                      name="pagination"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Outras responsabilidades"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.othersResponsabilities}
-                      name="othersResponsabilities"
-                      errors={props.errors}
-                      touched={props.touched}
-                      help
-                      helpText="Abreviatura de: Organizador, editor, compilador ou coordenador."
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={5}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Séries e coleções"
-                      placeholder="Ex: Grandes Autores Nacionais"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.series}
-                      name="series"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={4}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Nota"
-                      placeholder="Ex: Informações complementares"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.grades}
-                      name="grades"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="ISBN"
-                      placeholder="Ex: 978-8520434789"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.isbn}
-                      name="isbn"
-                      errors={props.errors}
-                      touched={props.touched}
-                      help
-                      helpText="Número de livro padrão internacional"
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={3}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Select
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Tradutor"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.translator}
-                      name="translator"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <FieldArray
-                      name="translatorName"
-                      render={(arrayHelpers) => (
-                        <div>
-                          {props.values.translatorName &&
-                          props.values.translatorName.length > 0 ? (
-                            props.values.translatorName.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    width: "100%",
-                                    marginBottom: 10,
-                                  }}
-                                >
-                                  <Input
-                                    disabled={
-                                      !props.values.complementaryElements ||
-                                      !props.values.translator
-                                    }
-                                    type="text"
-                                    label={`Tradutor ${index + 1}`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    name={`translatorName.${index}`}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  {index > 0 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.remove(index)}
-                                    >
-                                      <RemoveIcon src={Minus} />
-                                    </ButtonCore>
-                                  )}
-                                  {index ===
-                                    props.values.translatorName.length - 1 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.push("")}
-                                    >
-                                      <AddIcon src={Plus} />
-                                    </ButtonCore>
-                                  )}
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Adicione um tradutor
-                            </ButtonCore>
-                          )}
-                        </div>
-                      )}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Título original"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.originalTitle}
-                      name="originalTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Select
-                      disabled={!props.values.complementaryElements}
-                      type="text"
-                      label="Online"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      name="online"
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                {/* <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  
-                </Grid> */}
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="text"
-                      label="Endereço(URL)"
-                      placeholder="https://viacarreira.com/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={
-                        !props.values.complementaryElements ||
-                        !props.values.online
-                      }
-                      type="date"
-                      // label="Acessado em"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      name="accessedAt"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
+                <Fields
+                  data={{
+                    fields: [
+                      // row [1]
+                      {
+                        type: "text",
+                        name: "author",
+                        label: "Autor principal",
+                        placeholder: "Ex: Keith J. Karren",
+                        grid: 9,
+                      },
+                      {
+                        type: "text",
+                        name: "abbreviate",
+                        label: "Abreviar",
+                        placeholder: "",
+                        grid: 3,
+                        options: [
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ],
+                      },
+                      // row [2]
+                      {
+                        type: "text",
+                        name: "title",
+                        label: "Título",
+                        placeholder: "​Ex: Primeiros Socorros para Estudantes",
+                        grid: 6,
+                      },
+                      {
+                        type: "text",
+                        name: "caption",
+                        label: "Subtítulo",
+                        placeholder: "Ex: Subtítulo do livro (se houver)",
+                        grid: 6,
+                      },
+                      // row [3]
+                      {
+                        type: "text",
+                        name: "local",
+                        label: "Local da publicação",
+                        placeholder: "Ex: São Paulo",
+                        grid: 4,
+                      },
+                      {
+                        type: "text",
+                        name: "publishingCompany",
+                        label: "Empresa de publicação (editora)",
+                        placeholder: "Ex: Editora Manole",
+                        grid: 4,
+                      },
+                      {
+                        type: "text",
+                        name: "edition",
+                        label: "Edição",
+                        placeholder: "Ex: 10",
+                        grid: 4,
+                      },
+                      // row [4]
+                      {
+                        type: "text",
+                        name: "yearOfPublication",
+                        label: "Ano de publicação",
+                        placeholder: "Ex: 2013",
+                        grid: 3,
+                      },
+                      {
+                        type: "text",
+                        name: "volume",
+                        label: "Volume",
+                        placeholder: "Ex: 10",
+                        grid: 3,
+                      },
+                      {
+                        type: "text",
+                        name: "complementaryElements",
+                        label: "Elementos complementares",
+                        placeholder: "",
+                        grid: 3,
+                        options: [
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ],
+                      },
+                      {
+                        type: "text",
+                        name: "pagination",
+                        label: "Páginas",
+                        placeholder: "Ex: 592",
+                        disabled: !props.values.complementaryElements,
+                        grid: 3,
+                      },
+                      // row [5]
+                      {
+                        type: "text",
+                        name: "othersResponsabilities",
+                        label: "Outras responsabilidades",
+                        placeholder: "",
+                        disabled: !props.values.complementaryElements,
+                        grid: 4,
+                      },
+                      {
+                        type: "text",
+                        name: "series",
+                        label: "Séries e coleções",
+                        placeholder: "Ex: Grandes Autores Nacionais",
+                        disabled: !props.values.complementaryElements,
+                        grid: 4,
+                      },
+                      {
+                        type: "text",
+                        name: "notes",
+                        label: "Nota",
+                        placeholder: "Ex: Informações complementares",
+                        disabled: !props.values.complementaryElements,
+                        grid: 4,
+                      },
+                      // row [6]
+                      {
+                        type: "text",
+                        name: "isbn",
+                        label: "ISBN",
+                        placeholder: "",
+                        disabled: !props.values.complementaryElements,
+                        grid: 5,
+                      },
+                      {
+                        type: "text",
+                        name: "translator",
+                        label: "Tradutor",
+                        placeholder: "Ex: 978-8520434789",
+                        disabled: !props.values.complementaryElements,
+                        grid: 3,
+                        options: [
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ],
+                      },
+                      // row [7]
+                      {
+                        type: "text",
+                        name: "translatorName",
+                        label: "Tradutor",
+                        placeholder: "Ex: Matheus Paice",
+                        disabled:
+                          !props.values.complementaryElements ||
+                          !props.values.translator,
+                        isFieldArray: true,
+                        grid: 12,
+                      },
+                      // row[8]
+                      {
+                        type: "text",
+                        name: "originalTitle",
+                        label: "Título original",
+                        placeholder: "",
+                        disabled: !props.values.complementaryElements,
+                        grid: 12,
+                      },
+                      // online
+                      {
+                        type: "text",
+                        name: "online",
+                        label: "Online",
+                        placeholder: "",
+                        disabled: !props.values.complementaryElements,
+                        grid: 2,
+                        options: [
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ],
+                      },
+                      {
+                        type: "date",
+                        name: "accessedAt",
+                        label: "",
+                        placeholder: "",
+                        disabled: !props.values.complementaryElements,
+                        grid: 3,
+                      },
+                      {
+                        type: "text",
+                        name: "url",
+                        label: "Endereço (URL)",
+                        placeholder: "https://viacarreira.com.br",
+                        disabled: !props.values.complementaryElements,
+                        grid: 7,
+                      },
+                    ],
+                    fieldsProps: { ...props },
+                  }}
+                />
+
                 <Row container className="end">
                   <Button
                     variant="outlined"

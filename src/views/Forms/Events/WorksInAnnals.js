@@ -54,6 +54,7 @@ const generateReference = (values) => {
     workTitle,
     caption,
     eventName,
+    eventNumber,
     eventNumbering,
     yearOfPerformance,
     placeOfEvent,
@@ -80,6 +81,7 @@ const generateReference = (values) => {
           <i>In:</i> {eventName.toUpperCase()},{" "}
         </>
       )}
+      {eventNumber && <>{eventNumber}. </>}
       {eventNumbering && <>{eventNumbering}., </>}
       {yearOfPerformance && <>{yearOfPerformance}, </>}
       {placeOfEvent && <>{placeOfEvent}. </>}
@@ -154,6 +156,8 @@ const WorksInAnnals = ({ back }) => {
           online: false,
           url: "",
           accessedAt: "",
+
+          eventNumber: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -305,6 +309,21 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="eventNumber"
+                      label="Numeração do evento"
+                      type="text"
+                      placeholder="Ex: 112"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.eventNumber}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="placeOfEvent"
@@ -392,7 +411,7 @@ const WorksInAnnals = ({ back }) => {
                       name="volume"
                       label="Volume"
                       type="text"
-                      placeholder="Ex: v. 2"
+                      placeholder="Ex: 2"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}

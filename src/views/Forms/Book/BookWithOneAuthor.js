@@ -297,21 +297,6 @@ const Book = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Páginas"
-                      placeholder="Ex: 223"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.pagination}
-                      name="pagination"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid
                     item
                     xs={12}
@@ -338,6 +323,33 @@ const Book = ({ back }) => {
                       ]}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={3}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <Input
+                      type="text"
+                      label="Páginas"
+                      placeholder="Ex: 223"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.pagination}
+                      name="pagination"
+                      errors={props.errors}
+                      touched={props.touched}
+                      disabled={!props.values.complementaryElements}
+                    />
+                  </Grid>
+
                   <Grid
                     item
                     xs={12}

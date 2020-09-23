@@ -73,7 +73,17 @@ const HexagonPage = () => {
 
             <Row className="mt">
               <Hexagon onClick={() => setState(4)} className="blue-dark">
-                <p className="txt-white">Eventos</p>
+                <p className="txt-white">
+                  {" "}
+                  Eventos,
+                  <br />
+                  patentes e
+                  <br />
+                  normas
+                  <br />
+                  técnicas
+                  <br />{" "}
+                </p>
               </Hexagon>
               <Separator />
               <Hexagon onClick={() => setState(3)} className="violet">

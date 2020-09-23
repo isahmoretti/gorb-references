@@ -16,6 +16,7 @@ import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
 
 import { formatDate } from "../../../utils/formatDate";
+import { formatMonosyllable } from "../../../utils/monosyllable";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
@@ -36,7 +37,7 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  authors: Yup.array().of(Yup.string().required("Obrigatório")),
+  // authors: Yup.array().of(Yup.string().required("Obrigatório")),
   title: Yup.string().required("Obrigatório"),
   titleNewspaper: Yup.string().required("Obrigatório"),
   accessedAt: Yup.string().required("Obrigatório"),
@@ -44,6 +45,12 @@ const SignupSchema = Yup.object().shape({
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });
+
+const firstUpperCase = (name) => {
+  const firstName = name.split(" ")[0];
+
+  return name.replace(firstName, firstName.toUpperCase());
+};
 
 const generateReference = (values) => {
   const {
@@ -64,22 +71,21 @@ const generateReference = (values) => {
     url,
   } = values;
 
-  let tempTitle = "";
-  if (!formatAuthorName(authors)) {
-    const frist = title.split(" ")[0];
-    const temp = title.split(" ")[0].toUpperCase();
-
-    tempTitle = title.replace(frist, temp);
-  }
-
   return (
     <span>
       {" "}
-      {authors.length && formatAuthorName(authors)}
-      {caption ? (
-        <>{` ${tempTitle || title}: ${caption}.`}</>
+      {authors.length !== 0 && formatAuthorName(authors)}
+      {console.log("authors: ", authors)}
+      {!authors.length || authors.length === 0 ? (
+        caption ? (
+          <>{`${formatMonosyllable(title)}: ${caption}. `}</>
+        ) : (
+          `${formatMonosyllable(title)}. `
+        )
+      ) : caption ? (
+        <>{`${title}: ${caption}. `}</>
       ) : (
-        ` ${tempTitle || title}. `
+        `${title}. `
       )}
       {titleNewspaper && <b>{` ${titleNewspaper}, `}</b>}
       {location && `${location}, `}
@@ -110,11 +116,18 @@ const ArticleNewspaper = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.authors,
-        values.year
-      ),
-      citation: generateCitationWithoutAuthor(values.authors, values.year),
+      ...(values.authors.length && {
+        citationWithAuthor: generateCitationWithAuthor(
+          values.authors,
+          values.accessedAt
+        ),
+      }),
+      ...(values.authors.length && {
+        citation: generateCitationWithoutAuthor(
+          values.authors,
+          values.accessedAt
+        ),
+      }),
     }));
 
     setOpenModal(!openModal);
@@ -126,7 +139,7 @@ const ArticleNewspaper = ({ back }) => {
 
       <Formik
         initialValues={{
-          authors: [""],
+          authors: [],
           title: "",
           caption: "",
           titleNewspaper: "",
@@ -194,7 +207,6 @@ const ArticleNewspaper = ({ back }) => {
                                   />
                                   <ButtonCore
                                     type="button"
-                                    disabled={index === 0}
                                     onClick={() => arrayHelpers.remove(index)}
                                   >
                                     <RemoveIcon src={Minus} />
@@ -223,7 +235,7 @@ const ArticleNewspaper = ({ back }) => {
                               type="button"
                               onClick={() => arrayHelpers.push("")}
                             >
-                              Add a author
+                              Adicionar autor
                             </ButtonCore>
                           )}
                         </div>

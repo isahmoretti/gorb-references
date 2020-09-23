@@ -46,10 +46,16 @@ const generateReference = (values) => {
     url,
   } = values;
 
+  const handleText = (text) => {
+    const firstName = text.split(" ")[0];
+
+    return text.replace(firstName, firstName.toUpperCase());
+  };
+
   return (
     <span>
       <>
-        {title}: {caption}.{" "}
+        {handleText(title)}: {caption}.{" "}
       </>
       {editionOrVersion && <>{editionOrVersion} </>}
       {local && <>{local}: </>}
@@ -77,10 +83,10 @@ const SoftwareAndEletronicGame = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.title,
-        values.releaseYear
-      ),
+      // citationWithAuthor: generateCitationWithAuthor(
+      //   values.title,
+      //   values.releaseYear
+      // ),
       citation: generateCitationWithoutAuthor(values.title, values.releaseYear),
     }));
 
@@ -181,7 +187,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
                     <Input
                       type="text"
                       label="Produtora"
-                      placeholder="Ex: FFG no formulário"
+                      placeholder="Ex: FFG"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.producer}

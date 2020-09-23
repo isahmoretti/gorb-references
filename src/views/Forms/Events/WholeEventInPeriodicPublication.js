@@ -61,9 +61,9 @@ const generateReference = (values) => {
       {eventName && <>{eventName.toUpperCase()}, </>}
       {numbering && <>{numbering}, </>}
       {participationEventName && <>{participationEventName.toUpperCase()}, </>}
-      {participationEventNumbering && <>{participationEventNumbering}., </>}
+      {participationEventNumbering && <>{participationEventNumbering}.; </>}
       {year && <>{year}, </>}
-      {placeOfTheEvent && <>{placeOfTheEvent}, </>}
+      {placeOfTheEvent && <>{placeOfTheEvent}. </>}
       {documentTitle && <>{formatMessage(documentTitle)} </>}
       {periodicName && <b>{periodicName}. </b>}
       {placeOfPublication && <>{placeOfPublication}: </>}
@@ -72,6 +72,7 @@ const generateReference = (values) => {
       {issueNumber && <>n. {issueNumber}, </>}
       {publicationMonth && <>{publicationMonth}. </>}
       {publicationYear && <>{publicationYear}. </>}
+      <>Suplemento. </>
       {theme && <>Tema: {theme}. </>}
       {online &&
         url &&
@@ -88,19 +89,23 @@ const WholeEventInPeriodicPublication = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const handleCitation = (text, yaer) => {
+    return {
+      cit1: `${text} (${yaer})`,
+      cit2: `(${text.toUpperCase()}, ${yaer})`,
+    };
+  };
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
+      citationWithAuthor: handleCitation(
         values.eventName,
         values.publicationYear
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.eventName,
-        values.publicationYear
-      ),
+      ).cit1,
+      citation: handleCitation(values.eventName, values.publicationYear).cit2,
     }));
 
     setOpenModal(!openModal);
@@ -359,6 +364,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
                       name="theme"
                       type="text"
                       label="Tema"
+                      placeholder="Ex: Dos orgânicos aos transgênicos"
                       InputProps={{ inputProps: { min: 0 } }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}

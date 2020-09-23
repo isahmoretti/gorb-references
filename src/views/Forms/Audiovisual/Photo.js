@@ -43,7 +43,7 @@ const generateReference = (values) => {
   return (
     <span>
       {`${formatAuthorName(author)} `}
-      <b> {`${title}. `} </b>
+      {`${title}. `}
       {`${formatDate(date)}. `}
       {`${specification}. `}
       {elements && `${elements}. `}
@@ -79,13 +79,13 @@ const Photo = ({ back }) => {
 
       <Formik
         initialValues={{
-          author: "Chris Frank",
-          title: "Chris Frank",
+          author: "",
+          title: "",
           date: "",
-          specification: "1 fotografia",
-          elements: "1024 × 683 pixels",
-          online: "sim",
-          url: "https://www.youtube.com/watch?v=wpLhm0UKTBY",
+          specification: "",
+          elements: "",
+          online: "",
+          url: "",
           accessedAt: "",
         }}
         validationSchema={SignupSchema}

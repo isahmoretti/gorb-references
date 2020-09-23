@@ -25,37 +25,31 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
   judicialOrgan: Yup.string().required("Obrigatório"),
+  typeDocument: Yup.string().required("Obrigatório"),
+  nameRelator: Yup.string().required("Obrigatório"),
+  yearOfJudgment: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  decisionNumber: Yup.string().required("Obrigatório"),
-  relatedParties: Yup.string().required("Obrigatório"),
-  publicationTitle: Yup.string().required("Obrigatório"),
-  publicationLocal: Yup.string().required("Obrigatório"),
-  UF: Yup.string().required("Obrigatório"),
-  yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
   const {
     jurisdiction,
     judicialOrgan,
+    classOrRegion,
+    typeDocument,
+    numberProcess,
+    menu,
+    litigants,
+    nameRelator,
+    yearOfJudgment,
     title,
-    decisionNumber,
-    complementaryElements,
-    relatedParties,
-    proposed,
-    reporter,
-    decisionLocal,
-    decisionUF,
-    yearOfDecision,
-    publicationTitle,
-    captionPublication,
-    publicationLocal,
-    publishingCompany,
-    yearOfPublication,
+    location,
+    dateOfPublication,
     volume,
-    publicationNumber,
-    initialPage,
-    finalPage,
+    numberPublication,
+    pageInit,
+    pageFinish,
+    yearOfPublication,
     online,
     url,
     accessedAt,
@@ -63,32 +57,20 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {`${jurisdiction.toUpperCase()}. `}
-      {`${judicialOrgan}. `}
-      {`${title} `}
-      {`nº ${decisionNumber}. `}
-      {complementaryElements && `${complementaryElements}. `}
-      {relatedParties && `${relatedParties}. `}
-      {proposed && `${proposed}. `}
-      {reporter && `Relator: ${reporter}. `}
-      {decisionLocal && `${decisionLocal}, `}
-      {decisionUF && `${decisionUF}, `}
-      {yearOfDecision && `${formatDate(yearOfDecision)}. `}
-      {captionPublication ? (
-        <>
-          <b>{publicationTitle}: </b>
-          {captionPublication}.{" "}
-        </>
-      ) : (
-        <b>{publicationTitle}. </b>
-      )}
-      {`${publicationLocal}: `}
-      {publishingCompany && `${publishingCompany}, `}
-      {`${formatDate(yearOfPublication)}. `}
-      {volume && `v. ${volume}, `}
-      {publicationNumber && `n. ${publicationNumber}, `}
-      {initialPage && !finalPage && `p. ${initialPage}. `}
-      {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
+      <>{jurisdiction.toUpperCase()}. </>
+      <>{judicialOrgan} </>
+      <>{classOrRegion ? `(${classOrRegion}).` : "."} </>
+      <>{typeDocument}. </>
+      <>{menu ? `${menu}. ` : ""} </>
+      <>{litigants ? `${litigants}.` : ""} </>
+      <>Relatora: {nameRelator}, </>
+      <>{yearOfJudgment}. </>
+      <b>{title}. </b>
+      <>{location ? `${location},` : ""} </>
+      <>{volume ? `${volume},` : ""} </>
+      <>{numberPublication ? `${numberPublication},` : ""} </>
+      <>{pageInit && pageFinish ? `${pageInit}-${pageFinish},` : ""} </>
+      <>{yearOfPublication ? `${yearOfPublication}.` : ""} </>
       {online &&
         accessedAt &&
         url &&
@@ -131,25 +113,21 @@ const Jurisprudence = ({ back }) => {
         initialValues={{
           jurisdiction: "",
           judicialOrgan: "",
+          classOrRegion: "",
+          typeDocument: "",
+          numberProcess: "",
+          menu: "",
+          litigants: "",
+          nameRelator: "",
+          yearOfJudgment: "",
           title: "",
-          decisionNumber: "",
-          complementaryElements: "",
-          relatedParties: "",
-          proposed: "",
-          reporter: "",
-          decisionLocal: "",
-          decisionUF: "",
-          yearOfDecision: "",
-          publicationTitle: "",
-          captionPublication: "",
-          publicationLocal: "",
-          UF: "",
-          publishingCompany: "",
-          yearOfPublication: "",
+          location: "",
+          dateOfPublication: "",
           volume: "",
-          publicationNumber: "",
-          initialPage: "",
-          finalPage: "",
+          numberPublication: "",
+          pageInit: "",
+          pageFinish: "",
+          yearOfPublication: "",
           online: false,
           url: "",
           accessedAt: "",
@@ -168,6 +146,10 @@ const Jurisprudence = ({ back }) => {
                 >
                   Jurisprudência
                 </p>
+                <span>
+                  Inclui súmula, enunciado, acórdão, sentença e outras decisões
+                  judiciais.
+                </span>
               </Title>
             </Actions>
             <Card>
@@ -176,12 +158,12 @@ const Jurisprudence = ({ back }) => {
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
+                      name="jurisdiction"
                       label="Jurisdição"
                       placeholder="Ex: Brasil"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.jurisdiction}
-                      name="jurisdiction"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -189,12 +171,12 @@ const Jurisprudence = ({ back }) => {
                   <Grid item xs={12} sm={12} md={7}>
                     <Input
                       type="text"
-                      label="Órgão Judiciário Compesmall-10te"
-                      placeholder="Ex: Superior Tribunal da Justiça"
+                      name="judicialOrgan"
+                      label="cut"
+                      placeholder="Ex: Superior Tribunal da Federal"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.judicialOrgan}
-                      name="judicialOrgan"
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -204,12 +186,25 @@ const Jurisprudence = ({ back }) => {
                   <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
-                      label="Título(natureza da decisão ou ementa)"
-                      placeholder="Súmula"
+                      name="classOrRegion"
+                      label="Turma e/ou região"
+                      placeholder="Ex: (2. Turma)"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.title}
-                      name="title"
+                      value={props.values.classOrRegion}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={5}>
+                    <Input
+                      type="text"
+                      name="typeDocument"
+                      label="Tipo de documento"
+                      placeholder="Ex: Recurso Extraordinário"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.typeDocument}
                       errors={props.errors}
                       touched={props.touched}
                     />
@@ -218,291 +213,205 @@ const Jurisprudence = ({ back }) => {
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Número da Decisão"
-                      placeholder="Ex: 22"
+                      name="numberProcess"
+                      label="Número do processo"
+                      placeholder="Ex: 313060/SP"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.decisionNumber}
-                      name="decisionNumber"
+                      value={props.values.numberProcess}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Elementos Complementares"
-                      placeholder="Adicionar informações complementares"
+                      name="menu"
+                      label="Ementa"
+                      placeholder="E
+                      x: Leis 10.927/91 e 11.262 do município de São Paulo.
+                      Seguro obrigatório contra furto e roubo de automóveis. Shopping
+                      centers, lojas de departamento, supermercados e empresas com
+                      estacionamento para mais de cinquenta veículos."
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.complementaryElements}
-                      name="complementaryElements"
+                      value={props.values.menu}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Partes envolvidas"
-                      placeholder="Ex: Apelante: Joaquim de Assis e outros"
+                      label="litigants"
+                      name=""
+                      placeholder="Ex: Recorrente: Banco do Estado de São Paulo S/A.
+                      Recorrido: Município de São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.relatedParties}
-                      name="relatedParties"
+                      value={props.values.litigants}
                       errors={props.errors}
                       touched={props.touched}
-                      help
-                      helpText="Partes Envolvidas (se houver) 
-                                            Propositor (qualificar o propositor. p.ex.: 
-                                            'Apelante: Joaquim de Assis e outros')"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={6}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Proposto"
-                      placeholder="Ex: Apelada: Escola Técnica Federal do Acre"
+                      name="nameRelator"
+                      label="Nome do relator"
+                      placeholder="Ex: Min. Ellen Gracie"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.proposed}
-                      name="proposed"
+                      value={props.values.nameRelator}
                       errors={props.errors}
                       touched={props.touched}
-                      help
-                      helpText="Proposto (qualificar o proposto. p.ex.: 
-                                                'Apelada: Escola Técnica Federal do Acre')"
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Relator"
-                      placeholder="Desembargador José de Souza"
+                      name="yearOfJudgment"
+                      label="Data de julgamento"
+                      placeholder="Ex: 29 de novembro de 2005"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.pagination}
-                      name="reporter"
+                      value={props.values.yearOfJudgment}
                       errors={props.errors}
                       touched={props.touched}
-                      help
-                      helpText="Relator (incluir o cargo do proposto. p.ex.: 'Juiz Nereu Santos')"
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={3}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Local da Decisão (cidade)"
+                      name="title"
+                      label="Título da publicação"
+                      placeholder="Ex: Lex: jurisprudência do Supremo Tribunal
+                      Federal"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.title}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      name="location"
+                      label="Local da publicação"
                       placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.decisionLocal}
-                      name="decisionLocal"
+                      value={props.values.location}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={3}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <Input
-                      type="text"
-                      label="UF onde ocorreu a Decisão"
-                      placeholder="Ex: SP"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.decisionUF}
-                      name="decisionUF"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="date"
-                      label="Data da Decisão"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+                      name="dateOfPublication"
+                      label="Data da publicação"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.yearOfDecision}
-                      name="yearOfDecision"
+                      value={props.values.dateOfPublication}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Título da Publicação"
-                      placeholder="EX: Diário Oficial da União"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationTitle}
-                      name="publicationTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Subtítulo da Publicação"
-                      placeholder="EX: Diário Oficial da União"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.captionPublication}
-                      name="captionPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="Local da Publicação"
-                      placeholder="Ex: Brasília"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationLocal}
-                      name="publicationLocal"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Unidade da Federação"
-                      placeholder="Ex: DF"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.UF}
-                      name="UF"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
-                      label="Editora"
-                      placeholder="Ex: Saraiva"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      label="Data da Publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
-                      name="yearOfPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="text"
+                      name="volume"
                       label="Volume"
-                      placeholder="Ex: 4"
+                      placeholder="Ex: 28"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.volume}
-                      name="volume"
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
+
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      placeholder="Ex: 7"
-                      label="Nº da Publicação"
+                      name="numberPublication"
+                      label="Número da publicação"
+                      placeholder="Ex: 327"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.publicationNumber}
-                      name="publicationNumber"
+                      value={props.values.numberPublication}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
+
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
+                      name="pageInit"
                       label="Página inicial"
-                      placeholder="Ex: 56"
+                      placeholder="Ex: 226"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.initialPage}
-                      name="initialPage"
+                      value={props.values.pageInit}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
+
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
+                      name="pageFinish"
                       label="Página final"
-                      placeholder="Ex: 78"
+                      placeholder="Ex: 230"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.finalPage}
-                      name="finalPage"
+                      value={props.values.pageFinish}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      name="yearOfPublication"
+                      label="Ano da publicação"
+                      placeholder="Ex: 2006"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.yearOfPublication}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      type="text"
+                      name="decisionNumber"
+                      label="Notas"
+                      placeholder="Ex: informações complementares"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.decisionNumber}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
                 </Grid>
+
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Select
@@ -551,7 +460,7 @@ const Jurisprudence = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Row container className="end">
+                <Row container classOrRegionName="end">
                   <Button
                     variant="outlined"
                     color="secondary"

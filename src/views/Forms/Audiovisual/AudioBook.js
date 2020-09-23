@@ -93,16 +93,16 @@ const AudioBook = ({ back }) => {
 
       <Formik
         initialValues={{
-          title: "1822",
-          caption: "Subtítulo",
-          author: "Laurentino Gomes",
-          ledor: "Pedro Bial",
-          location: "São Paulo",
-          publication: "Plugme",
-          year: "2011",
-          specification: "CD-ROM",
-          online: "sim",
-          url: "https://www.youtube.com/watch?v=wpLhm0UKTBY",
+          title: "",
+          caption: "",
+          author: "",
+          ledor: "",
+          location: "",
+          publication: "",
+          year: "",
+          specification: "",
+          online: "",
+          url: "",
           accessedAt: "",
         }}
         validationSchema={SignupSchema}

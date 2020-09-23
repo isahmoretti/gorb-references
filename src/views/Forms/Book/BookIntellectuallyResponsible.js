@@ -120,7 +120,7 @@ const generateReference = (values) => {
       {complementaryElements && originalTitle && (
         <> Título original: {originalTitle}.</>
       )}
-      {complementaryElements && volume && <> v.{volume}.</>}
+      {complementaryElements && volume && <> v.{volume}. </>}
       {complementaryElements && othersResponsabilities && (
         <> {othersResponsabilities}.</>
       )}
