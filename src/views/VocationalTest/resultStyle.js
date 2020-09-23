@@ -1,0 +1,90 @@
+import styled from "styled-components";
+import hexagonImage from "../../assets/images/VocationalTest/Desktop/Hexagono.png";
+
+const especialCharMask = (especialChar) => {
+    especialChar = especialChar.replace(/[áàãâä]/ui, 'a');
+    especialChar = especialChar.replace(/[éèêë]/ui, 'e');
+    especialChar = especialChar.replace(/[íìîï]/ui, 'i');
+    especialChar = especialChar.replace(/[óòõôö]/ui, 'o');
+    especialChar = especialChar.replace(/[úùûü]/ui, 'u');
+    especialChar = especialChar.replace(/[ç]/ui, 'c');
+    especialChar = especialChar.replace(/[^a-z0-9]/i, '_');
+    especialChar = especialChar.replace(/_+/, '_');
+    especialChar = especialChar.split("_")[1];
+    return especialChar;
+}
+
+const getBackgroundImage = (type) => {
+    type = especialCharMask(type).toLowerCase();
+    const type1 = (type[0].toUpperCase() + type.slice(1))
+    return require(`../../assets/images/VocationalTest/Desktop/Results/${type1}/Desktop-Resultado-background-${type}.png`);
+}
+
+const getQuotationMarksImage = (type) => {
+    type = especialCharMask(type).toLowerCase();
+    const type1 = (type[0].toUpperCase() + type.slice(1))
+    return require(`../../assets/images/VocationalTest/Desktop/Results/${type1}/desktop_resultado_aspas_${type}.png`);
+}
+
+export const Background = styled.div`
+    background: url(${({ type }) => getBackgroundImage(type)});
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 40px;
+`;
+
+export const Hexagon = styled.div`
+    padding-top: 90px;
+    height: 782px;
+    width: 678px;
+    background: url(${hexagonImage});
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+    top: 150px;
+ .text{
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: inherit;
+    padding-left: 120px;
+    padding-right: 120px;
+    top: 100px;
+    >h1{
+        font-family: 'Pathway Gothic';
+        font-size: 37pt;
+        color: #3C3C3C;
+        margin: 0;
+    }
+    p {
+        padding: 30px;
+        font-family: 'Source Han Sans JP Medium';
+        color: #3C3C3C;
+        font-weight: 38pt;
+        line-height: 30pt;
+    }
+    i {
+        height: min-content;
+    }
+}
+`;
+
+export const Phrase = styled.div`
+display: flex;
+width: 430px;
+font-family: 'Pathway Gothic';
+color: #3C3C3C;
+font-size: 16px;
+
+>div {
+    width: 170px;
+    height: auto;
+    background: url(${({ type }) => getQuotationMarksImage(type)});
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+>span {
+    font-family: 'Montserrat Classic';
+    font-weight: 14pt;
+}
+`;

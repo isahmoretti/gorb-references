@@ -1,9 +1,10 @@
 import React from "react";
-
 import { RESULT_CONTENT } from "./constants";
 
+import { Background, Hexagon, Phrase } from './resultStyle'
 const Result = (props) => {
   const { answers, thirteenAnswer } = props;
+
 
   //Regra: Em caso de empate, resposta da questão 13 como decisiva.
   const calculateResult = () => {
@@ -16,19 +17,21 @@ const Result = (props) => {
   ];
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <h3>{description}</h3>
-      <br />
-      <hr />
-      <br />
-      <i>{phrase}</i>
-      <p>{author}</p>
-      <br />
-      <hr />
-      <br />
-      {courses.join(" - ")}
-    </div>
+    <Background type={name}>
+      <Hexagon>
+        <div className="text">
+          <h1>{name}</h1>
+          <p>{description}</p>
+          <Phrase type={name}>
+            <div />
+            <i>{phrase}</i>
+          </Phrase>
+          <span>{author}</span>
+        </div>
+      </Hexagon>
+      {/* {courses.join(" - ")} */}
+
+    </Background>
   );
 };
 
