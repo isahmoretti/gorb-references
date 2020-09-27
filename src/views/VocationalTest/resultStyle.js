@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import hexagonImage from "../../assets/images/VocationalTest/Desktop/Hexagono.png";
 
+const resultsPath = '../../assets/images/VocationalTest/Desktop/Results'
+
 const especialCharMask = (especialChar) => {
     especialChar = especialChar.replace(/[áàãâä]/ui, 'a');
     especialChar = especialChar.replace(/[éèêë]/ui, 'e');
@@ -26,16 +28,21 @@ const getQuotationMarksImage = (type) => {
     return require(`../../assets/images/VocationalTest/Desktop/Results/${type1}/desktop_resultado_aspas_${type}.png`);
 }
 
+const getCourseImage = (imgPath) => {
+    return require(`../../assets/images/VocationalTest/Desktop/Results/${imgPath}`);
+}
+
 export const Background = styled.div`
     background: url(${({ type }) => getBackgroundImage(type)});
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     padding-top: 40px;
+    height: 938px;
 `;
 
 export const Hexagon = styled.div`
     padding-top: 90px;
-    height: 782px;
+    height: 600px;
     width: 678px;
     background: url(${hexagonImage});
     background-size: contain;
@@ -87,4 +94,39 @@ font-size: 16px;
     font-family: 'Montserrat Classic';
     font-weight: 14pt;
 }
+`;
+
+export const Courses = styled.div`
+    width: 80vw;
+    margin: auto;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fff;
+    >h1 {
+        width: 100%;
+        text-align: center;
+    }
+`;
+export const Course = styled.div`
+    width: 134px;
+    height: 148px;
+    background-color: blue;
+    position: relative;
+    margin: 50px;
+    background: url(${({ imgPath }) => getCourseImage(imgPath)});
+    background-size: contain;
+    background-repeat: repeat;
+    cursor: pointer;
+    :hover {
+        opacity: 0.6;
+    }
+    >div {
+        position: absolute;
+        bottom: -49px;
+        text-align: center;
+        font-weight: bolder;
+        width: 100%;
+    }
 `;

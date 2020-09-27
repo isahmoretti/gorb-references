@@ -1,7 +1,7 @@
 import React from "react";
 import { RESULT_CONTENT } from "./constants";
 
-import { Background, Hexagon, Phrase } from './resultStyle'
+import { Background, Hexagon, Phrase, Courses, Course } from './resultStyle'
 const Result = (props) => {
   const { answers, thirteenAnswer } = props;
 
@@ -29,7 +29,17 @@ const Result = (props) => {
           <span>{author}</span>
         </div>
       </Hexagon>
-      {/* {courses.join(" - ")} */}
+      <Courses>
+        <h1>
+          CURSOS INDICADOS
+        </h1>
+        {console.log(courses)}
+        {courses.map((course, index) => <Course key={index} imgPath={course.imgPath}>
+          <div>
+            {course.name}
+          </div>
+        </Course>)}
+      </Courses>
 
     </Background>
   );

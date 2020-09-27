@@ -40,7 +40,6 @@ const SignupSchema = Yup.object().shape({
   authors: Yup.array().of(Yup.string().required("Obrigatório")),
   workTitle: Yup.string().required("Obrigatório"),
   eventName: Yup.string().required("Obrigatório"),
-  yearOfPerformance: Yup.string().required("Obrigatório"),
   placeOfEvent: Yup.string().required("Obrigatório"),
   documentTitle: Yup.string().required("Obrigatório"),
   placeOfPublication: Yup.string().required("Obrigatório"),
@@ -56,7 +55,6 @@ const generateReference = (values) => {
     eventName,
     eventNumber,
     eventNumbering,
-    yearOfPerformance,
     placeOfEvent,
     documentTitle,
     placeOfPublication,
@@ -83,7 +81,6 @@ const generateReference = (values) => {
       )}
       {eventNumber && <>{eventNumber}. </>}
       {eventNumbering && <>{eventNumbering}., </>}
-      {yearOfPerformance && <>{yearOfPerformance}, </>}
       {placeOfEvent && <>{placeOfEvent}. </>}
 
       {documentTitle && <b>{formatMessage(documentTitle)}. </b>}
@@ -143,7 +140,6 @@ const WorksInAnnals = ({ back }) => {
           caption: "",
           eventName: "",
           eventNumbering: "",
-          yearOfPerformance: "",
           placeOfEvent: "",
           documentTitle: "",
           placeOfPublication: "",
@@ -337,7 +333,9 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       name="documentTitle"
                       label="Título do Documento"
@@ -350,8 +348,6 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="placeOfPublication"
@@ -365,7 +361,9 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <Input
                       name="responsibility"
                       label="Responsabilidade da publicação"
@@ -378,7 +376,7 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="yearOfPublication"
                       label="Ano de publicação"

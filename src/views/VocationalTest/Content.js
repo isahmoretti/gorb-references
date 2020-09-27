@@ -13,7 +13,10 @@ const Content = (props) => {
     }
 
     const getImages = (n) => {
-        return require(`../../assets/images/VocationalTest/Desktop/Answers/Question${part}/DESKTOP_hexagonos_respostas-${part}-${OPTIONS[n]}.png`)
+        console.log("n ---> ", n)
+        console.log("OPTIONS -->", OPTIONS)
+        const option = OPTIONS[n]
+        return require(`../../assets/images/VocationalTest/Desktop/Answers/Question${part}/DESKTOP_hexagonos_respostas-${part}-${option}.png`)
     }
     return (
         <Box>
