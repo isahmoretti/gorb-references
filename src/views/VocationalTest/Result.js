@@ -1,10 +1,10 @@
 import React from "react";
 import { RESULT_CONTENT } from "./constants";
+import IMAGES from "./imagesImports";
 
-import { Background, Hexagon, Phrase, Courses, Course } from './resultStyle'
+import { Background, Hexagon, Phrase, Courses, Course } from "./resultStyle";
 const Result = (props) => {
   const { answers, thirteenAnswer } = props;
-
 
   //Regra: Em caso de empate, resposta da questão 13 como decisiva.
   const calculateResult = () => {
@@ -12,17 +12,19 @@ const Result = (props) => {
     const repeat = Object.values(answers).some((i) => i === bigger);
     return repeat ? thirteenAnswer : bigger;
   };
-  const { name, description, phrase, author, courses } = RESULT_CONTENT[
-    calculateResult()
-  ];
+  
+  const result = calculateResult();
+  const { name, description, phrase, author, courses } = RESULT_CONTENT[result];
+  const images = IMAGES[result];
+  const { fundo, aspas } = images;
 
   return (
-    <Background type={name}>
+    <Background image={fundo}>
       <Hexagon>
         <div className="text">
           <h1>{name}</h1>
           <p>{description}</p>
-          <Phrase type={name}>
+          <Phrase image={aspas}>
             <div />
             <i>{phrase}</i>
           </Phrase>
@@ -30,17 +32,13 @@ const Result = (props) => {
         </div>
       </Hexagon>
       <Courses>
-        <h1>
-          CURSOS INDICADOS
-        </h1>
-        {console.log(courses)}
-        {courses.map((course, index) => <Course key={index} imgPath={course.imgPath}>
-          <div>
-            {course.name}
-          </div>
-        </Course>)}
+        <h1>CURSOS INDICADOS</h1>
+        {courses.map(({ name, imageName }, index) => (
+          <Course key={index} image={images[imageName]}>
+            <div>{name}</div>
+          </Course>
+        ))}
       </Courses>
-
     </Background>
   );
 };

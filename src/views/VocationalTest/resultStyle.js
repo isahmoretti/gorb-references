@@ -1,39 +1,8 @@
 import styled from "styled-components";
 import hexagonImage from "../../assets/images/VocationalTest/Desktop/Hexagono.png";
 
-const resultsPath = '../../assets/images/VocationalTest/Desktop/Results'
-
-const especialCharMask = (especialChar) => {
-    especialChar = especialChar.replace(/[áàãâä]/ui, 'a');
-    especialChar = especialChar.replace(/[éèêë]/ui, 'e');
-    especialChar = especialChar.replace(/[íìîï]/ui, 'i');
-    especialChar = especialChar.replace(/[óòõôö]/ui, 'o');
-    especialChar = especialChar.replace(/[úùûü]/ui, 'u');
-    especialChar = especialChar.replace(/[ç]/ui, 'c');
-    especialChar = especialChar.replace(/[^a-z0-9]/i, '_');
-    especialChar = especialChar.replace(/_+/, '_');
-    especialChar = especialChar.split("_")[1];
-    return especialChar;
-}
-
-const getBackgroundImage = (type) => {
-    type = especialCharMask(type).toLowerCase();
-    const type1 = (type[0].toUpperCase() + type.slice(1))
-    return require(`../../assets/images/VocationalTest/Desktop/Results/${type1}/Desktop-Resultado-background-${type}.png`);
-}
-
-const getQuotationMarksImage = (type) => {
-    type = especialCharMask(type).toLowerCase();
-    const type1 = (type[0].toUpperCase() + type.slice(1))
-    return require(`../../assets/images/VocationalTest/Desktop/Results/${type1}/desktop_resultado_aspas_${type}.png`);
-}
-
-const getCourseImage = (imgPath) => {
-    return require(`../../assets/images/VocationalTest/Desktop/Results/${imgPath}`);
-}
-
 export const Background = styled.div`
-    background: url(${({ type }) => getBackgroundImage(type)});
+    background: url(${({ image }) => image});
     background-size: contain;
     background-repeat: repeat;
     padding-top: 40px;
@@ -86,7 +55,7 @@ font-size: 16px;
 >div {
     width: 170px;
     height: auto;
-    background: url(${({ type }) => getQuotationMarksImage(type)});
+    background: url(${({ image }) => image });
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -115,7 +84,7 @@ export const Course = styled.div`
     background-color: blue;
     position: relative;
     margin: 50px;
-    background: url(${({ imgPath }) => getCourseImage(imgPath)});
+    background: url(${({ image }) => image });
     background-size: contain;
     background-repeat: repeat;
     cursor: pointer;

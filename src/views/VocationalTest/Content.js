@@ -2,6 +2,7 @@ import React from 'react';
 import { OPTIONS } from './constants'
 import { Box, Alternatives, Hexagon, Option, Frame } from "./style";
 import imgBalloon from "../../assets/images/VocationalTest/Desktop/Answers/desktop_balao_amarelo.png";
+import imagens from "./imagesImports";
 
 const Content = (props) => {
     const { data, part, nextAnswer, setAnswer } = props
