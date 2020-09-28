@@ -389,7 +389,7 @@ const AdministrativeActs = ({ back }) => {
                     <Input
                       name="serie"
                       label="Série"
-                      placeholder="Ex: Sua séria aqui."
+                      placeholder="Ex: nome da série, se houver"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}

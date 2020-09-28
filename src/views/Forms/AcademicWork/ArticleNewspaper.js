@@ -41,7 +41,7 @@ const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   titleNewspaper: Yup.string().required("Obrigatório"),
   accessedAt: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
+  // year: Yup.string().required("Obrigatório"),
   // publishingCompany: Yup.string().required("Obrigatório"),
   // yearOfPublication: Yup.string().required("Obrigatório"),
 });

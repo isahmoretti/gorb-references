@@ -65,19 +65,18 @@ const generateReference = (values) => {
       {authors && <>{formatAuthorName(authors)} </>}
       {caption ? (
         <>
-          <b>{articleTitle}: </b>
-          {caption}.{" "}
+          {articleTitle}: {caption}.&nbsp;
         </>
       ) : (
-        <b>{articleTitle}. </b>
+        <>{articleTitle}. </>
       )}
       {responsible && (
         <>
           <i>ln: </i>
-          {responsible}.{" "}
+          {responsible}.&nbsp;
         </>
       )}
-      {blogTitle && <>{blogTitle}. </>}
+      {blogTitle && <b>{blogTitle}. </b>}
       {local ? <>{local}, </> : <i>[S.l.]. </i>}
       {publicationDate && <>{formatDate(publicationDate)}. </>}
       {accessedAt &&

@@ -13,8 +13,11 @@ import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 
 // utils
-import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
-import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
+import { formatMonosyllable } from "../../../utils/monosyllable";
+import {
+  generateCitationWithoutAuthor,
+  generateCitationWithoutAuthorSpread,
+} from "../../../utils/generateCitationWithoutAuthor";
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
@@ -41,7 +44,6 @@ const generateReference = (values) => {
     producer,
     releaseYear,
     supportSpecification,
-    online,
     accessedAtUrl,
     url,
   } = values;
@@ -55,15 +57,14 @@ const generateReference = (values) => {
   return (
     <span>
       <>
-        {handleText(title)}: {caption}.{" "}
+        {formatMonosyllable(title)}: {caption}.{" "}
       </>
       {editionOrVersion && <>{editionOrVersion} </>}
       {local && <>{local}: </>}
       {producer && <>{producer}, </>}
       {releaseYear && <>{releaseYear}. </>}
       {supportSpecification && <>{supportSpecification}. </>}
-      {online &&
-        accessedAtUrl &&
+      {accessedAtUrl &&
         url &&
         `Disponível em: ${url}. Acesso em: ${formatDate(accessedAtUrl)}. `}
     </span>
@@ -87,7 +88,10 @@ const SoftwareAndEletronicGame = ({ back }) => {
       //   values.title,
       //   values.releaseYear
       // ),
-      citation: generateCitationWithoutAuthor(values.title, values.releaseYear),
+      citation: generateCitationWithoutAuthorSpread(
+        values.title,
+        values.releaseYear
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -106,7 +110,6 @@ const SoftwareAndEletronicGame = ({ back }) => {
           producer: "",
           releaseYear: "",
           supportSpecification: "",
-          online: false,
           accessedAtUrl: "",
           url: "",
         }}
@@ -227,22 +230,6 @@ const SoftwareAndEletronicGame = ({ back }) => {
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="online"
-                      label="Online"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="accessedAtUrl"
                       type="date"
@@ -250,7 +237,6 @@ const SoftwareAndEletronicGame = ({ back }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
-                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.accessedAtUrl}
@@ -258,13 +244,12 @@ const SoftwareAndEletronicGame = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
                       name="url"
                       label="Endereço (URL)"
                       type="text"
                       placeholder="https://viacarreira.com/"
-                      disabled={!props.values.online}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.url}

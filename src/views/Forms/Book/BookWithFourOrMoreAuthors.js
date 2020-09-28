@@ -101,19 +101,23 @@ const Book = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const handleCitation = (text, yaer) => {
+    return {
+      cit1: `${text} et al. (${yaer})`,
+      cit2: `(${text.toUpperCase()} et al., ${yaer})`,
+    };
+  };
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
+      citationWithAuthor: handleCitation(
         values.author,
         values.yearOfPublication
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.author,
-        values.yearOfPublication
-      ),
+      ).cit1,
+      citation: handleCitation(values.author, values.yearOfPublication).cit2,
     }));
 
     setOpenModal(!openModal);

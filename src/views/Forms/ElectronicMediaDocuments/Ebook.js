@@ -149,41 +149,19 @@ const Ebook = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const handleCitation = (namesResponsible, yaer) => {
-    if (namesResponsible.length >= 4) {
-      const name = namesResponsible[0].split(" ")[0];
-
-      return {
-        cit1: `${name} et al. (${yaer})`,
-        cit2: `(${name} et al., ${yaer})`,
-      };
-    }
-
-    const names = [];
-
-    namesResponsible.forEach((name) => {
-      const part = name.split(" ")[0];
-
-      names.push(part);
-    });
-
-    return {
-      cit1: `${names.join(" e ")} (${yaer})`,
-      cit2: `(${names.join(" e ")}, ${yaer})`,
-    };
-  };
-
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: handleCitation(
+      citationWithAuthor: generateCitationWithAuthor(
         values.responsibleName,
         values.yearOfPublication
-      ).cit1,
-      citation: handleCitation(values.responsibleName, values.yearOfPublication)
-        .cit2,
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.responsibleName,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);

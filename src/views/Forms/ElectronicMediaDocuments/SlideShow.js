@@ -138,7 +138,6 @@ const SlideShow = ({ back }) => {
           colorType: "",
           dimension: "",
           note: "",
-          online: false,
           url: "",
           accessedAt: "",
         }}
@@ -343,24 +342,8 @@ const SlideShow = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      label="Online?"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      name="online"
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não  " },
-                      ]}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
-                      disabled={!props.values.online}
                       type="text"
                       label="Disponível em"
                       placeholder="Ex: https://pt.slideshare.net/biomedicinaestetica/ozonioterapia-na-biomedicina"
@@ -374,7 +357,6 @@ const SlideShow = ({ back }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
-                      disabled={!props.values.online}
                       type="date"
                       label="Acesso em"
                       InputLabelProps={{

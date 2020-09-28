@@ -48,6 +48,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   const {
+    typeAthor,
     constructionNames,
     abbreviate,
     title,
@@ -72,10 +73,22 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {" "}
-      {constructionNames.length &&
-        formatAuthorName(constructionNames, abbreviate)}
-      {caption ? <>{`${title}: ${caption}. `}</> : `${title}. `}
+      {typeAthor === "fisic" ? (
+        formatAuthorName(constructionNames, abbreviate)
+      ) : caption ? (
+        <>{`${title.toUpperCase()}: ${caption}. `}</>
+      ) : (
+        `${title.toUpperCase()}. `
+      )}
+      {typeAthor === "fisic" ? (
+        caption ? (
+          <>{`${title}: ${caption}. `}</>
+        ) : (
+          <>{title}. </>
+        )
+      ) : (
+        ""
+      )}
       {titlePeriodic && <b>{`${titlePeriodic}`}</b>}
       {captionPeriodic ? `: ${captionPeriodic}, ` : ", "}
       {location ? `${location}, ` : "[s. l.], "}
@@ -153,6 +166,7 @@ const WorkArticlePeriodic = ({ back }) => {
           issn: "",
           doi: "",
           notes: "",
+          typeAthor: "fisic",
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
@@ -172,6 +186,50 @@ const WorkArticlePeriodic = ({ back }) => {
             </Actions>
             <Card>
               <Content>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Select
+                      name="typeAthor"
+                      label="Tipo de autor"
+                      type="text"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.typeAthor}
+                      errors={props.errors}
+                      touched={props.touched}
+                      options={[
+                        { value: "fisic", name: "Pessoa física" },
+                        { value: "entity", name: "Entidade" },
+                      ]}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={5}>
+                    <Input
+                      name="title"
+                      label="Título do artigo"
+                      type="text"
+                      placeholder="Nome do artigo"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.title}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="caption"
+                      label="Subtítulo do artigo"
+                      type="text"
+                      placeholder="Subtítulo do artigo"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={10}>
                     <FieldArray
@@ -258,50 +316,7 @@ const WorkArticlePeriodic = ({ back }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="typeAthor"
-                      label="Tipo de autor"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.typeAthor}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "fisic", name: "Pessoa física" },
-                        { value: "entity", name: "Entidade" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      name="title"
-                      label="Título do artigo"
-                      type="text"
-                      placeholder="Nome do artigo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="caption"
-                      label="Subtítulo do artigo"
-                      type="text"
-                      placeholder="Subtítulo do artigo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
+
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={4}>
                     <Input

@@ -145,7 +145,7 @@ const Email = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={5}>
                     <Input
                       type="text"
                       label="Assunto"
@@ -176,7 +176,7 @@ const Email = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Local de publicação"
+                      label="Local de envio"
                       placeholder="Ex: São Paulo"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}

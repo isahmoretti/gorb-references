@@ -46,14 +46,14 @@ const generateReference = (values) => {
     <span>
       {subtitle ? (
         <>
-          <b>{title}: </b>
-          {subtitle}.&nbsp;
+          {title}: {subtitle}.&nbsp;
         </>
       ) : (
-        <b>{formatMonosyllable(title)}. </b>
+        <>{formatMonosyllable(title)}. </>
       )}
-      {local ? `${local}. ` : "[S. l.]"}
-      {publisher ? `${publisher}. ` : "[s. n.]"}
+      {local && `${local}, `}
+      {publisher && `${publisher}, `}
+      {!local && !publisher && <>[S. l.:s. n.], </>}
       {`${year}. `}
       {`1 vídeo (${time}). `}
       {`Publicado pelo ${responsible}. `}

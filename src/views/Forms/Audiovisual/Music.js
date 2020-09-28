@@ -258,7 +258,7 @@ const Music = ({ back }) => {
                     <Input
                       name="whatSuport"
                       label="Qual tipo de suporte"
-                      placeholder="Ex: VHS"
+                      placeholder="Ex: 1 disco vinil, lado A, faixa 4"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}

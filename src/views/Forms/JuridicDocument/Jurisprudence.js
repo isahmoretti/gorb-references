@@ -26,6 +26,7 @@ const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
   judicialOrgan: Yup.string().required("Obrigatório"),
   typeDocument: Yup.string().required("Obrigatório"),
+  numberProcess: Yup.string().required("Obrigatório"),
   nameRelator: Yup.string().required("Obrigatório"),
   yearOfJudgment: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
@@ -58,14 +59,20 @@ const generateReference = (values) => {
   return (
     <span>
       <>{jurisdiction.toUpperCase()}. </>
-      <>{judicialOrgan} </>
-      <>{classOrRegion ? `(${classOrRegion}).` : "."} </>
-      <>{typeDocument}. </>
+      <>{judicialOrgan}</>
+      <>{classOrRegion ? ` (${classOrRegion}).` : ". "} </>
+      {!online ? (
+        `${typeDocument} ${numberProcess}. `
+      ) : (
+        <b>
+          {typeDocument} {numberProcess}.
+        </b>
+      )}
       <>{menu ? `${menu}. ` : ""} </>
       <>{litigants ? `${litigants}.` : ""} </>
       <>Relatora: {nameRelator}, </>
       <>{yearOfJudgment}. </>
-      <b>{title}. </b>
+      {!online ? <b>{title}. </b> : `${title}. `}
       <>{location ? `${location},` : ""} </>
       <>{volume ? `${volume},` : ""} </>
       <>{numberPublication ? `${numberPublication},` : ""} </>
@@ -172,7 +179,7 @@ const Jurisprudence = ({ back }) => {
                     <Input
                       type="text"
                       name="judicialOrgan"
-                      label="cut"
+                      label="Corte ou Tribunal"
                       placeholder="Ex: Superior Tribunal da Federal"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -183,7 +190,7 @@ const Jurisprudence = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={5}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       name="classOrRegion"
@@ -196,7 +203,7 @@ const Jurisprudence = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       name="typeDocument"
@@ -224,7 +231,7 @@ const Jurisprudence = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={9}>
                     <Input
                       type="text"
                       name="menu"
@@ -245,8 +252,8 @@ const Jurisprudence = ({ back }) => {
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       type="text"
-                      label="litigants"
-                      name=""
+                      label="Partes litigantes"
+                      name="litigants"
                       placeholder="Ex: Recorrente: Banco do Estado de São Paulo S/A.
                       Recorrido: Município de São Paulo"
                       onChange={props.handleChange}
@@ -290,8 +297,7 @@ const Jurisprudence = ({ back }) => {
                       type="text"
                       name="title"
                       label="Título da publicação"
-                      placeholder="Ex: Lex: jurisprudência do Supremo Tribunal
-                      Federal"
+                      placeholder="Ex: Lex"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.title}
@@ -319,6 +325,9 @@ const Jurisprudence = ({ back }) => {
                       type="date"
                       name="dateOfPublication"
                       label="Data da publicação"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.dateOfPublication}

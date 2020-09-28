@@ -117,13 +117,13 @@ const ArticleMagazine = ({ back }) => {
       ...(values.authors.length && {
         citationWithAuthor: generateCitationWithAuthor(
           values.authors,
-          values.yearOfPublication
+          values.accessedAt
         ),
       }),
       ...(values.authors.length && {
         citation: generateCitationWithoutAuthor(
           values.authors,
-          values.yearOfPublication
+          values.accessedAt
         ),
       }),
     }));

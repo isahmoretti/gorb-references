@@ -45,7 +45,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {author && <>{author.toUpperCase()} </>}
+      {author && <>{author.toUpperCase()}. </>}
       {siteName && <b>{siteName}. </b>}
       {description && <>{description}. </>}
       {local ? <>{local}: </> : <i>[S.l.]. </i>}
