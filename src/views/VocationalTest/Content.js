@@ -2,7 +2,6 @@ import React from 'react';
 import { OPTIONS } from './constants'
 import { Box, Alternatives, Hexagon, Option, Frame } from "./style";
 import imgBalloon from "../../assets/images/VocationalTest/Desktop/Answers/desktop_balao_amarelo.png";
-import imagens from "./imagesImports";
 
 const Content = (props) => {
     const { data, part, nextAnswer, setAnswer } = props
@@ -14,10 +13,9 @@ const Content = (props) => {
     }
 
     const getImages = (n) => {
-        console.log("n ---> ", n)
-        console.log("OPTIONS -->", OPTIONS)
         const option = OPTIONS[n]
-        return require(`../../assets/images/VocationalTest/Desktop/Answers/Question${part}/DESKTOP_hexagonos_respostas-${part}-${option}.png`)
+        const imgs = require(`../../assets/images/VocationalTest/Desktop/Answers/Question${part}/DESKTOP_hexagonos_respostas-${part}-${option}.png`)
+        return imgs.default
     }
     return (
         <Box>
