@@ -25,13 +25,13 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
   mainEventName: Yup.string().required("Obrigatório"),
-  mainEventNumber: Yup.string().required("Obrigatório"),
+  // mainEventNumber: Yup.string().required("Obrigatório"),
   participationEventNumbering: Yup.string().required("Obrigatório"),
   placeOfPerformance: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
-  placeOfPublication: Yup.string().required("Obrigatório"),
+  // placeOfPublication: Yup.string().required("Obrigatório"),
   publishingCompany: Yup.string().required("Obrigatório"),
-  yearOfPublication: Yup.string().required("Obrigatório"),
+  // yearOfPublication: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -57,14 +57,14 @@ const generateReference = (values) => {
   return (
     <span>
       {mainEventName && <>{mainEventName.toUpperCase()}, </>}
-      {mainEventNumber && <>{mainEventNumber}., </>}
+      {mainEventNumber && <>{mainEventNumber}.; </>}
       {participationEventName && <>{participationEventName.toUpperCase()}, </>}
       {participationEventNumbering && <>{participationEventNumbering}., </>}
       {year && <>{year}, </>}
       {placeOfPerformance && <>{placeOfPerformance}: </>}
       {title && (
         <>
-          <b>{formatMessage(title)}</b> [...].
+          <b>{formatMessage(title)}</b> [...].&nbps;
         </>
       )}
       {placeOfPublication && <>{placeOfPublication}: </>}

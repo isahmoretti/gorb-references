@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { Formik } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../../components/InputWrapper/Input";
@@ -14,11 +14,26 @@ import Modal from "../../../components/Modal";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
+import { formatAuthorName } from "../../../utils/formatAuthorName";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Plus from "../../../assets/images/plus-dark.svg";
+import Minus from "../../../assets/images/minus.svg";
 
 // styles
-import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Back,
+  Actions,
+  Title,
+  FieldArrayContainer,
+  ErrorText,
+  AddIcon,
+  RemoveIcon,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
   typeAuthor: Yup.string().required("Obrigatório"),
@@ -32,6 +47,7 @@ const generateReference = (values) => {
   const {
     typeAuthor,
     author,
+    authors,
     subordination,
     title,
     caption,
@@ -63,7 +79,7 @@ const generateReference = (values) => {
             <>{getTitle(title)}. </>
           )}
         </>
-      ) : (
+      ) : typeAuthor === "entity" ? (
         <>
           {author && <>{author.toUpperCase()}. </>}
           {subordination && <>{subordination}. </>}
@@ -76,6 +92,8 @@ const generateReference = (values) => {
             <b>{title}. </b>
           )}
         </>
+      ) : (
+        formatAuthorName(authors)
       )}
       {editor ? (
         <>
@@ -136,6 +154,7 @@ const Maps = ({ back }) => {
         initialValues={{
           typeAuthor: "",
           author: "",
+          authors: [""],
           subordination: "",
           title: "",
           caption: "",
@@ -188,20 +207,98 @@ const Maps = ({ back }) => {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      disabled={props.values.typeAuthor === "withoutAuthorship"}
-                      name="author"
-                      type="text"
-                      label="Nome do autor"
-                      placeholder="Ex: Santa Catarina"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
+                  {props.values.typeAuthor !== "physicalPerson" ? (
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        disabled={
+                          props.values.typeAuthor === "withoutAuthorship"
+                        }
+                        name="author"
+                        type="text"
+                        label="Nome do autor"
+                        placeholder="Ex: Santa Catarina"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.author}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  ) : (
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
+                        name="authors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authors &&
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map(
+                                (chapterAuthor, index) => (
+                                  <FieldArrayContainer key={index}>
+                                    <div
+                                      style={{ display: "flex", width: "100%" }}
+                                    >
+                                      <Input
+                                        type="text"
+                                        label={`Nome do autor do capítulo ${
+                                          index + 1
+                                        }`}
+                                        placeholder="Ex: Raquel Recuero"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={chapterAuthor}
+                                        name={`authors.${index}`}
+                                        errors={props.errors}
+                                        touched={props.touched}
+                                      />
+                                      {index > 0 && (
+                                        <ButtonCore
+                                          type="button"
+                                          disabled={index === 0}
+                                          onClick={() =>
+                                            arrayHelpers.remove(index)
+                                          }
+                                        >
+                                          <RemoveIcon src={Minus} />
+                                        </ButtonCore>
+                                      )}
+                                      {
+                                        <ButtonCore
+                                          type="button"
+                                          onClick={() => arrayHelpers.push("")}
+                                        >
+                                          <AddIcon src={Plus} />
+                                        </ButtonCore>
+                                      }
+                                    </div>
+                                    <div
+                                      style={{
+                                        width: "100%",
+                                        marginBottom: "10px",
+                                      }}
+                                    >
+                                      <ErrorText>
+                                        {props.errors &&
+                                          props.errors.authors &&
+                                          props.errors.authors[index]}
+                                      </ErrorText>
+                                    </div>
+                                  </FieldArrayContainer>
+                                )
+                              )
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                          </div>
+                        )}
+                      />
+                    </Grid>
+                  )}
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="subordination"
@@ -213,6 +310,7 @@ const Maps = ({ back }) => {
                       value={props.values.subordination}
                       errors={props.errors}
                       touched={props.touched}
+                      disabled={props.values.typeAuthor !== "entity"}
                     />
                   </Grid>
                 </Grid>

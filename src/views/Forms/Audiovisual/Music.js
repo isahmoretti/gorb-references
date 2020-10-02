@@ -54,7 +54,7 @@ const generateReference = (values) => {
       {`Intérprete: ${interpreters}. `}
       {composer && `Compositor: ${composer}. `}
       <i>In: </i>
-      {`${titleAlbum}. `}
+      {`${formatMonosyllable(titleAlbum)}. `}
       {`Intérprete: ${interpretersAlbum}. `}
       {location ? `${location}: ` : <i>[S. l.]: </i>}
       {`${recordCompany}, `}

@@ -54,6 +54,7 @@ const generateReference = (values) => {
     caption,
     eventName,
     eventNumber,
+    eventYaer,
     eventNumbering,
     placeOfEvent,
     documentTitle,
@@ -80,10 +81,11 @@ const generateReference = (values) => {
         </>
       )}
       {eventNumber && <>{eventNumber}. </>}
+      {eventYaer && <>{eventYaer}, </>}
       {eventNumbering && <>{eventNumbering}., </>}
       {placeOfEvent && <>{placeOfEvent}. </>}
 
-      {documentTitle && <b>{formatMessage(documentTitle)}. </b>}
+      {documentTitle && <b>{documentTitle} [...]. </b>}
       {placeOfPublication && <>{placeOfPublication}: </>}
       {responsibility && <>{responsibility}, </>}
       {yearOfPublication && <>{yearOfPublication}. </>}
@@ -140,6 +142,7 @@ const WorksInAnnals = ({ back }) => {
           caption: "",
           eventName: "",
           eventNumbering: "",
+          eventYaer: "",
           placeOfEvent: "",
           documentTitle: "",
           placeOfPublication: "",
@@ -292,7 +295,7 @@ const WorksInAnnals = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="eventName"
                       label="Nome do evento"
@@ -306,7 +309,7 @@ const WorksInAnnals = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="eventNumber"
                       label="Numeração do evento"
@@ -320,7 +323,21 @@ const WorksInAnnals = ({ back }) => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={4}>
+                  <Grid item xs={12} sm={12} md={3}>
+                    <Input
+                      name="eventYaer"
+                      label="Ano de realização"
+                      type="text"
+                      placeholder="Ex: 2017"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.eventYaer}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="placeOfEvent"
                       label="Local do evento"
@@ -333,7 +350,7 @@ const WorksInAnnals = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  </Grid>
+                </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={8}>
                     <Input

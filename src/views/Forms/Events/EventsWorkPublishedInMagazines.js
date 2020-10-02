@@ -40,7 +40,7 @@ const SignupSchema = Yup.object().shape({
   workTitle: Yup.string().required("Obrigatório"),
   periodicTitle: Yup.string().required("Obrigatório"),
   place: Yup.string().required("Obrigatório"),
-  number: Yup.string().required("Obrigatório"),
+  // number: Yup.string().required("Obrigatório"),
   eventNumber: Yup.string().required("Obrigatório"),
   eventName: Yup.string().required("Obrigatório"),
   locationOfTheEvent: Yup.string().required("Obrigatório"),
@@ -75,24 +75,22 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {" "}
       {authors.length && formatAuthorName(authors, abbreviate)}
       {caption ? <>{`${workTitle}: ${caption}. `}</> : `${workTitle}. `}
       {periodicTitle && <b>{`${periodicTitle}`}</b>}
       {periodicCaption ? `: ${periodicCaption}, ` : ", "}
-      {place && <>{place},</>}
+      {place && <>{place}, </>}
       {volume && `v. ${volume}, `}
-      {number && <>{number}, </>}
+      {number && <>n. {number}, </>}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
-      {day && month && year && `${day} ${month}. ${year} `}
-      {!day && month && year && `${month}. ${year} `}
+      {day && month && year && `${day} ${month}. ${year}. `}
+      {!day && month && year && `${month}. ${year}. `}
       {!day && !month && year && `${year}. `}
-
-      {supplement && <>{supplement}. </>}
+      {supplement && <>​{supplement}. </>}
       {eventNumber && eventName && (
         <>
-          Trabalho apresentado no {eventNumber} {eventName},{" "}
+          Trabalho apresentado no {eventNumber}° {eventName},&nbsp;
         </>
       )}
       {locationOfTheEvent && <>{locationOfTheEvent}, </>}
@@ -357,21 +355,6 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="supplement"
-                      label="Suplemento"
-                      type="text"
-                      placeholder="Ex: supl. 1"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.supplement}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="pageInit"
@@ -398,6 +381,8 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={2}>
                     <Input
                       name="day"
@@ -447,6 +432,19 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
                       value={props.values.year}
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      name="supplement"
+                      label="Suplemento"
+                      type="text"
+                      placeholder="Ex: supl. 1"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.supplement}
                       errors={props.errors}
                       touched={props.touched}
                     />

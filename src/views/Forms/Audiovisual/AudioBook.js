@@ -44,17 +44,33 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
+  const handleToUpperCase = (text = "") => {
+    const [frist] = text.split(" ");
+
+    return text.replace(frist, frist.toUpperCase());
+  };
+
   return (
     <span>
       {formatAuthorName(author)}
-      {caption ? (
+      {!author ? (
+        caption ? (
+          <span>
+            {" "}
+            {`${handleToUpperCase(title)}: `}
+            {`${caption}. `}{" "}
+          </span>
+        ) : (
+          <>{`${handleToUpperCase(title)}. `}</>
+        )
+      ) : caption ? (
         <span>
           {" "}
-          <b>{`${title}: `}</b>
+          {`${title}: `}
           {`${caption}. `}{" "}
         </span>
       ) : (
-        <b> {`${title}. `} </b>
+        <> {`${title}. `} </>
       )}
       {`Na voz de ${ledor}. `}
       {location ? `${location}: ` : "[S.l.]: "}

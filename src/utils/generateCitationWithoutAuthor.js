@@ -44,7 +44,7 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
 
       return (
         <span>
-          ({lastName.toUpperCase()} et al., {date})
+          ({lastName.toUpperCase()} <i>et al.</i>, {date})
         </span>
       );
     }
