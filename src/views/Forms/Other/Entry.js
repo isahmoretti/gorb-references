@@ -75,10 +75,10 @@ const generateReference = (values) => {
     accessedAt,
   } = values;
 
-  const getResposabilityTypes = (responsabiltyTypes) => {
-    if (responsabiltyTypes === "compiler") return "(Comp.)";
-    if (responsabiltyTypes === "editor") return "(Ed.)";
-    if (responsabiltyTypes === "organizator") return "(Org.)";
+  const getResposabilityTypes = (responsabilityType) => {
+    if (responsabilityType === "compiler") return "(Comp.)";
+    if (responsabilityType === "editor") return "(Ed.)";
+    if (responsabilityType === "organizator") return "(Org.)";
     return "";
   };
 
@@ -86,10 +86,10 @@ const generateReference = (values) => {
     switch (type) {
       case "cd-rom":
         return "CD-ROM";
-      case "online":
-        return "Online";
-      case "printed":
-        return "Impresso";
+      // case "online":
+      //   return "Online";
+      // case "printed":
+      //   return "Impresso";
       default:
         break;
     }
@@ -118,44 +118,42 @@ const generateReference = (values) => {
     return `${titleSplit[0].toUpperCase()} ${titleSplit.slice(1).join(" ")}`;
   };
 
-  const hasAuthor = partAuthors.length > 0 && partAuthors[0] !== "";
-  const entryTitleFormatted = hasAuthor
-    ? entryTitle
-    : firstUpperCase(entryTitle);
+  const hasAuthor = !!partAuthors.length && !!partAuthors[0].length;
+  const entryTitleFormatted = hasAuthor ? firstUpperCase(entryTitle) : entryTitle;
   return (
     <span>
       {hasAuthor && (entryAuthorType !== "withoutAuthorship" || entryAuthorType !== "sameAuthor") && (
         <>
-          {<>{getNamesResponsible(partAuthors, abbreviate)} </>}
+          {<>{getNamesResponsible(partAuthors, abbreviate)}. </>}
           {entryResponsabilityType && (
-            <>{getResposabilityTypes(entryResponsabilityType)}. </>
+            <>{getResposabilityTypes(entryResponsabilityType)}{responsabilityType !== 'author' && <>. </>}</>
           )}
         </>
       )}
       {entryCaption ? (
         <>
           {entryAuthorType === "withoutAuthorship" ?
-            <><>{entryTitleFormatted}</> : { entryCaption}.{" "}</>
+            <>{entryTitleFormatted}: {entryCaption}.{" "}</>
             : <><b>{entryTitleFormatted}</b>: {entryCaption}.{" "}</>
 
           }
         </>
       ) : (
-          <>{entryTitleFormatted}. </>
+          <>{entryTitle && <>{entryTitleFormatted}. </>}</>
         )}
 
-      {authorOfTheWhole && authorType !== "withoutAuthorship" && (
+      {authorOfTheWhole && authorOfTheWhole[0] !== "" && authorType !== "withoutAuthorship" && (
         <>
           <i>In:</i> <>{formatAuthorName(authorOfTheWhole)}</>{" "}
         </>
       )}
       {responsabilityType && <>{getResposabilityTypes(responsabilityType)}. </>}
       {caption ? (
-        <b>
-          {title}: {caption}.{" "}
-        </b>
+        <>
+          <i>In: </i><>{authorType === 'withoutAuthorship' || !authorOfTheWhole[0].trim().length ? firstUpperCase(title): <b>{title}</b>}</>: {caption}.{" "}
+        </>
       ) : (
-          <>{title}. </>
+          <><i>In: </i><>{authorType === 'withoutAuthorship' || !authorOfTheWhole[0].trim().length  ? firstUpperCase(title): <b>{title}</b>}</>. </>
         )}
 
       {edition && <>{edition} ed. </>}
@@ -166,7 +164,7 @@ const generateReference = (values) => {
       {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
       {series && <>({series}). </>}
       {notes && <>{notes}. </>}
-      {typeAndSupport && <>{getTypeAndSupport(typeAndSupport)}. </>}
+      {typeAndSupport && typeAndSupport === 'cd-rom' && <>{getTypeAndSupport(typeAndSupport)}. </>} 
 
       {(typeAndSupport && typeAndSupport !== 'printed') && accessedAt &&
         url &&
@@ -205,14 +203,17 @@ const Entry = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor:
-      values.local && values.entryAuthorType === "physicalPerson"
-          ? getCitationWithAuthor(values.partAuthors, values.year)
-          : generateCitationWithAuthor(values.partAuthors, values.year),
+      citationWithAuthor: values.local && 
+      // values.entryAuthorType === "physicalPerson"
+          // ? getCitationWithAuthor(values.partAuthors, values.year)
+          // : 
+          generateCitationWithAuthor(values.partAuthors, values.year),
       citation:
-      values.local && values.entryAuthorType === "physicalPerson"
-          ? getCitationWithoutAuthor(values.partAuthors, values.year)
-          : generateCitationWithoutAuthor(values.partAuthors, values.year),
+      values.local && 
+      // values.entryAuthorType === "physicalPerson"
+          // ? getCitationWithoutAuthor(values.partAuthors, values.year)
+          // : 
+          generateCitationWithoutAuthor(values.partAuthors, values.year),
     }));
 
     setOpenModal(!openModal);
@@ -532,8 +533,6 @@ const Entry = ({ back }) => {
                                       >
                                         <Input
                                           disabled={
-                                            props.values.entryAuthorType ===
-                                            "sameAuthor" ||
                                             props.values.entryAuthorType ===
                                             "withoutAuthorship"
                                           }
