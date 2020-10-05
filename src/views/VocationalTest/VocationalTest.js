@@ -5,7 +5,7 @@ import imgHeader from "../../assets/images/VocationalTest/Desktop/Answers/deskto
 
 // components
 import Content from "./Content";
-import Result from './Result';
+import Result from "./Result";
 import { Progress, Header, Background } from "./style";
 
 const VocationalTest = () => {
@@ -53,16 +53,23 @@ const VocationalTest = () => {
   if (testIsOver)
     return <Result answers={answers} thirteenAnswer={thirteenAnswer} />;
 
-    return (
-        <div>
-            <Header src={imgHeader}>
-                <Background>
-                    <Progress width={fragment}>{part}/{total}</Progress>
-                </Background>
-            </Header>
-            <Content data={data} part={part} nextAnswer={nextAnswer} setAnswer={setAnswer} />
-        </div>
-    );
-}
+  return (
+    <div>
+      <Header src={imgHeader}>
+        <Background>
+          <Progress width={fragment}>
+            {part}/{total}
+          </Progress>
+        </Background>
+      </Header>
+      <Content
+        data={data}
+        part={part}
+        nextAnswer={nextAnswer}
+        setAnswer={setAnswer}
+      />
+    </div>
+  );
+};
 
 export default VocationalTest;
