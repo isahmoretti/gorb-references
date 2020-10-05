@@ -9,6 +9,7 @@ import designDeGames from "./Desktop-resultado-criativo-design-de-games.png"
 import designGrafico from "./Desktop-resultado-criativo-design-grafico.png"
 import moda from "./Desktop-resultado-criativo-moda.png"
 import multimidia from "./Desktop-resultado-criativo-multimidia.png"
+import iconeDoFundo from "./resultado_icone_criativo_lampada.png"
 
 export default {
   fundo,
@@ -22,4 +23,5 @@ export default {
   designGrafico,
   moda,
   multimidia,
+  iconeDoFundo,
 };

@@ -10,6 +10,8 @@ import publicidade from "./Desktop-resultado-sociavel-publicidade.png";
 import recursosHumanos from "./Desktop-resultado-sociavel-recursos-humanos.png";
 import relacoesInternacionais from "./Desktop-resultado-sociavel-relacoes-internacionais.png";
 import terapiaOcupacional from "./Desktop-resultado-sociavel-terapia-ocupacional.png";
+import iconeDoFundo from "./resultado_icone_sociavel.png"
+
 export default {
   fundo,
   aspas,
@@ -23,4 +25,5 @@ export default {
   recursosHumanos,
   relacoesInternacionais,
   terapiaOcupacional,
+  iconeDoFundo,
 };

@@ -10,6 +10,8 @@ import letras from "./Desktop-resultado-comunicativo-letras.png";
 import pedagogia from "./Desktop-resultado-comunicativo-pedagogia.png";
 import radioTvInternet from "./Desktop-resultado-comunicativo-radio-tv-internet.png";
 import relacoesPublicas from "./Desktop-resultado-comunicativo-relacoes-publicas.png";
+//TODO: trocar para comunicativo
+import iconeDoFundo from "../Criativo/resultado_icone_criativo_lampada.png"
 
 export default {
   fundo,
@@ -24,4 +26,5 @@ export default {
   pedagogia,
   radioTvInternet,
   relacoesPublicas,
+  iconeDoFundo,
 };

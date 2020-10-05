@@ -14,6 +14,7 @@ import engenhariaDeSoftware from "./Desktop-resultado-racional-engenharia-de-sof
 import estatistica from "./Desktop-resultado-racional-estatistica.png"
 import marketing from "./Desktop-resultado-racional-marketing.png"
 import matematicaIndustrial from "./Desktop-resultado-racional-matematica-industrial.png"
+import iconeDoFundo from "./resultado_icone_racional.png"
 
 export default {
   fundo,
@@ -32,4 +33,5 @@ export default {
   estatistica,
   marketing,
   matematicaIndustrial,
+  iconeDoFundo,
 };

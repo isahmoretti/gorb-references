@@ -10,6 +10,7 @@ import gastronomia from "./Desktop-resultado-pratico-gastronomia.png";
 import pilotoDeAviao from "./Desktop-resultado-pratico-piloto-de-aviao.png";
 import pilotoDeDrones from "./Desktop-resultado-pratico-piloto-de-drones.png";
 import zootecnia from "./Desktop-resultado-pratico-zootecnia.png";
+import iconeDoFundo from "./resultado_icone_pratico.png";
 
 export default {
   fundo,
@@ -24,4 +25,5 @@ export default {
   pilotoDeAviao,
   pilotoDeDrones,
   zootecnia,
+  iconeDoFundo,
 };

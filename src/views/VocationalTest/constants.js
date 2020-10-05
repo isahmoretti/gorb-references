@@ -155,6 +155,7 @@ export const RESULT_CONTENT = {
         description: 'Tem facilidade com a comunicação oral e escrita. A afinidade com a leitura faz de você uma pessoa investigativa, que valoriza o conhecimento teórico e o compartilhamento de ideias.',
         phrase: 'As grandes conquistas da humanidade foram obtidas conversando, e as grandes falhas pela falta de diálogo.',
         author: 'Stephen Hawking',
+        color: '#4963f6',
         courses: [
             { name: 'Biblioteconomia', imageName: 'biblioteconomia', imgPath: 'Comunicativo/Desktop-resultado-comunicativo-biblioteconomia.png' },
             { name: 'Filosofia', imageName: 'filosofia', imgPath: 'Comunicativo/Desktop-resultado-comunicativo-filosofia.png' },
@@ -173,6 +174,7 @@ export const RESULT_CONTENT = {
         description: 'Tem bom raciocínio lógico e boa percepção de causa e efeito. Diante de situações atípicas, tende a agir de maneira analítica e estratégica. Você preza pela precisão, característica essencial para desempenhar atividades que exigem a entrega de resultados pontuais.',
         phrase: 'Quem não sabe o que busca, não identifica o que acha.',
         author: 'Immanuel Kant',
+        color: '#C62D29',
         courses: [
             { name: 'Administração', imageName: 'administracao', imgPath: 'Racional/Desktop-resultado-racional-administracao.png' },
             { name: 'Análise de Sistemas', imageName: 'analiseDeSistemas', imgPath: 'Racional/Desktop-resultado-racional-analise-de-sistemas.png' },
@@ -196,6 +198,7 @@ export const RESULT_CONTENT = {
         description: 'É ágil na maneira de pensar e agir. Desenvolve habilidades manuais ou corporais com facilidade, já que tende a aprender muito mais através da experiência física e da ação do que por meio da teoria.',
         phrase: 'Nossa maior fraqueza está em desistir. O caminho mais certo de vencer é tentar mais uma vez.',
         author: 'Thomas Edison',
+        color: '#F8CC5B',
         courses: [
             { name: 'Artes Cênicas', imageName: 'artesCenicas', imgPath: 'Pratico/Desktop-resultado-pratico-artes-cenicas.png' },
             { name: 'Agronomia', imageName: 'agronomia', imgPath: 'Pratico/Desktop-resultado-pratico-agronomia.png' },
@@ -213,6 +216,8 @@ export const RESULT_CONTENT = {
         description: 'É observador e aprecia tudo o que é inovador. Consegue expressar muito bem as próprias emoções e não tem dificuldade para colocar ideias em prática. Tem facilidade para criar e projetar.',
         phrase: 'Todo o nosso conhecimento tem sua origem em nossas percepções',
         author: 'Leonardo da Vinci',
+        // iconName: 'resultado_icone_criativo_lampada',
+        color: '#E37536',
         courses: [
             { name: 'Arquitetura e Urbanismo', imageName: 'arquitetura', imgPath: 'Criativo/Desktop-resultado-criativo-arquitetura.png' },
             { name: 'Artes Visuais', imageName: 'artesVisuais', imgPath: 'Criativo/Desktop-resultado-criativo-artes-visuais.png' },
@@ -231,6 +236,7 @@ export const RESULT_CONTENT = {
         description: 'Compreende a importância das relações humanas e aprecia o trabalho em equipe. Empático, consegue interpretar as necessidade dos outros com facilidade. Tem um interesse natural por áreas que exigem habilidade em lidar com pessoas.',
         phrase: 'Cada pessoa deve trabalhar pelo seu aperfeiçoamento e, ao mesmo tempo, participar da responsabilidade coletiva por toda a humanidade.',
         author: 'Marie Curie',
+        color: '#4CA753',
         courses: [
             { name: 'Direito', imageName: 'direito', imgPath: 'Sociavel/Desktop-resultado-sociavel-direito.png' },
             { name: 'Publicidade e Propaganda', imageName: 'publicidade', imgPath: 'Sociavel/Desktop-resultado-sociavel-publicidade.png' },

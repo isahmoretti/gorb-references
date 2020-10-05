@@ -12,14 +12,21 @@ const Result = (props) => {
     const repeat = Object.values(answers).some((i) => i === bigger);
     return repeat ? thirteenAnswer : bigger;
   };
-  
+
   const result = calculateResult();
-  const { name, description, phrase, author, courses } = RESULT_CONTENT[result];
+  const {
+    name,
+    description,
+    phrase,
+    author,
+    color,
+    courses,
+  } = RESULT_CONTENT[result];
   const images = IMAGES[result];
-  const { fundo, aspas } = images;
+  const { fundo, aspas, iconeDoFundo } = images;
 
   return (
-    <Background image={fundo}>
+    <Background image={iconeDoFundo} color={color}>
       <Hexagon>
         <div className="text">
           <h1>{name}</h1>
