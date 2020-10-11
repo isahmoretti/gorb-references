@@ -2,7 +2,7 @@ import styled from "styled-components";
 import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
 import imgHeaderMobile from "../../assets/images/VocationalTest/Mobile/Perguntas e respostas/mobile_cabeçalho_perguntas.png";
 import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
-import backgroundIcons from "../../assets/images/VocationalTest/Desktop/backgroundIcons";
+import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 
 export const Progress = styled.div`
@@ -34,13 +34,8 @@ export const Background = styled.div`
   bottom: 13px;
 `;
 export const Box = styled.div`
+  background: url(${backgroundIcons});
   background-color: #dcdcdc;
-  background: 
-  url(${backgroundIcons[0]}),
-  url(${backgroundIcons[1]});
-  background-repeat: no-repeat, no-repeat;
-  background-color: #dcdcdc;
-  background-size: 40px;
 
   .container {
     padding-top: 20px;
