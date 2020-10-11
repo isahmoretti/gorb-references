@@ -16,7 +16,7 @@ import Modal from "../../../components/Modal";
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 import { formatDate } from "../../../utils/formatDate";
-
+import { formatMonosyllable } from "../../../utils/monosyllable";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 // styles
@@ -46,16 +46,10 @@ const generateReference = (values) => {
     url,
   } = values;
 
-  const handleText = (text) => {
-    const firstName = text.split(" ")[0];
-
-    return text.replace(firstName, firstName.toUpperCase());
-  };
-
   return (
     <span>
       <>
-        {handleText(title)}: {caption}.{" "}
+        {formatMonosyllable(title)}: {caption}.{" "}
       </>
       {editionOrVersion && <>{editionOrVersion} </>}
       {local && <>{local}: </>}

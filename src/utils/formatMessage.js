@@ -5,7 +5,7 @@ export const formatMessage = (message, length = 100) => {
   const len = msgs.length
   
   if (len > length) {
-    return msgs.slice(0, length - 1).join(" ") + ' [...]' 
+    return msgs.slice(0, length).join(" ") + ' [...]' 
   }
 
   return message

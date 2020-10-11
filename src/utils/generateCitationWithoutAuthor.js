@@ -2,7 +2,7 @@ import React from "react";
 
 import monosyllableData from "../data/Monosyllable";
 
-export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
+export const generateCitationWithoutAuthor = (author, yearOfPublication, abbreviate = false) => {
   yearOfPublication = String(yearOfPublication);
 
   const date = yearOfPublication.split("-")[0];
@@ -56,7 +56,7 @@ export const generateCitationWithoutAuthor = (author, yearOfPublication) => {
 
   return (
     <span>
-      ({lastName}, {date})
+      ({lastName} {abbreviate && 'et al.'}, {date})
     </span>
   );
 };

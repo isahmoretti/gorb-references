@@ -2,10 +2,8 @@ import React from "react";
 
 import monosyllableData from "../data/Monosyllable";
 
-export const generateCitationWithAuthor = (author, yearOfPublication) => {
+export const generateCitationWithAuthor = (author, yearOfPublication, abbreviate = false) => {
   yearOfPublication = String(yearOfPublication);
-
-  console.log(yearOfPublication);
 
   const date = yearOfPublication.split("-")[0];
 
@@ -63,7 +61,7 @@ export const generateCitationWithAuthor = (author, yearOfPublication) => {
 
       return (
         <>
-          {lastName.toUpperCase()} <i>et al.</i> ({date})
+          {lastName.toUpperCase()} <>et al.</> ({date})
         </>
       );
     }
@@ -75,17 +73,17 @@ export const generateCitationWithAuthor = (author, yearOfPublication) => {
 
   return (
     <span>
-      {lastName} ({date})
+      {lastName} {abbreviate && 'et al.'} ({date})
     </span>
   );
 };
 
-export const generateCitationWithAuthorSpread = (text = "", yaer = 0) => {
-  const [frist, secondary] = text.split(" ");
+export const generateCitationWithAuthorSpread = (text = "", year = 0) => {
+  const [first, secondary] = text.split(" ");
 
-  if (monosyllableData.includes(frist.toLowerCase())) {
-    return `${frist} ${secondary}... (${yaer})`;
+  if (monosyllableData.includes(first.toLowerCase())) {
+    return `${first} ${secondary}... (${year})`;
   }
 
-  return `${frist}... (${yaer})`;
+  return `${first}... (${year})`;
 };

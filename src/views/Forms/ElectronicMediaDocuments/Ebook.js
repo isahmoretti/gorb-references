@@ -129,7 +129,7 @@ const generateReference = (values) => {
       )}
 
       {yearOfPublication && <>{yearOfPublication}. </>}
-      {pages && <>E-book ({pages}p.) </>}
+      {pages && <><i>E-book</i> ({pages}p.) </>}
       {series && <>({series}). </>}
       {colorType && <>{getColorFormatted(colorType)}. </>}
       {isbn && <> ISBN: {isbn}. </>}
