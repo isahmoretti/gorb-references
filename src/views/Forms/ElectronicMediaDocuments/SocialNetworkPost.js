@@ -49,7 +49,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {lastSurname && <>{lastSurname}, </>}
+      {lastSurname && <>{lastSurname.toUpperCase()}, </>}
       {firstName && <>{firstName}. </>}
       {message && <b>{formatMessage(message)}. </b>}
       {local ? <>{local}, </> : <i>[S.l.]. </i>}

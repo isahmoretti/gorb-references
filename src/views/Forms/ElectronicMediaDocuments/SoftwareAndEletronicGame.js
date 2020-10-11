@@ -19,7 +19,7 @@ import {
   generateCitationWithoutAuthorSpread,
 } from "../../../utils/generateCitationWithoutAuthor";
 import { formatDate } from "../../../utils/formatDate";
-
+import { formatMonosyllable } from "../../../utils/monosyllable";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 // styles
@@ -47,12 +47,6 @@ const generateReference = (values) => {
     accessedAtUrl,
     url,
   } = values;
-
-  const handleText = (text) => {
-    const firstName = text.split(" ")[0];
-
-    return text.replace(firstName, firstName.toUpperCase());
-  };
 
   return (
     <span>

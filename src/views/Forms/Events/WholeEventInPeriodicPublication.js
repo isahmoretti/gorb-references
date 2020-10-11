@@ -23,7 +23,6 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
   eventName: Yup.string().required("Obrigatório"),
-  numbering: Yup.string().required("Obrigatório"),
   year: Yup.string().required("Obrigatório"),
   placeOfTheEvent: Yup.string().required("Obrigatório"),
   documentTitle: Yup.string().required("Obrigatório"),
@@ -59,7 +58,7 @@ const generateReference = (values) => {
   return (
     <span>
       {eventName && <>{eventName.toUpperCase()}, </>}
-      {numbering && <>{numbering}, </>}
+      {numbering && <>{numbering}.; </>}
       {participationEventName && <>{participationEventName.toUpperCase()}, </>}
       {participationEventNumbering && <>{participationEventNumbering}.; </>}
       {year && <>{year}, </>}

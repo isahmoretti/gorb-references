@@ -113,11 +113,16 @@ const Book = ({ back }) => {
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: handleCitation(
+      citationWithAuthor: generateCitationWithAuthor(
         values.author,
-        values.yearOfPublication
-      ).cit1,
-      citation: handleCitation(values.author, values.yearOfPublication).cit2,
+        values.yearOfPublication,
+        true
+      ),
+      citation: generateCitationWithoutAuthor(
+        values.author,
+        values.yearOfPublication,
+        true
+      ),
     }));
 
     setOpenModal(!openModal);
