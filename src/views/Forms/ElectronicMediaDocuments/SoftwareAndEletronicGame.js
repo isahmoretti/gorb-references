@@ -13,7 +13,6 @@ import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 
 // utils
-import { formatMonosyllable } from "../../../utils/monosyllable";
 import {
   generateCitationWithoutAuthor,
   generateCitationWithoutAuthorSpread,
