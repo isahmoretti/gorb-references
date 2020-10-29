@@ -62,7 +62,7 @@ const HexagonPage = () => {
             </Hexagon>
           </Row>
 
-          <Row className="mt">
+          <Row>
             <Hexagon onClick={() => history.push("/")} className="blue-dark">
               <p className="txt-white">
                 {" "}

@@ -33,6 +33,7 @@ import {
   ErrorText,
   Actions,
   Title,
+  Header,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -131,7 +132,20 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Header>
+        <Back onClick={back} src={ArrowLeft} />
+        <Actions>
+          <Title>
+            <p
+              style={{
+                fontSize: "20px",
+              }}
+            >
+              Referência de livro com dois ou três autores{" "}
+            </p>
+          </Title>
+        </Actions>
+      </Header>
       <Formik
         initialValues={{
           authors: ["", "", ""],
@@ -161,17 +175,6 @@ const Book = ({ back }) => {
       >
         {(props) => (
           <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Referência de livro com dois ou três autores{" "}
-                </p>
-              </Title>
-            </Actions>
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>

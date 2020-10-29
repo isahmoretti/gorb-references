@@ -13,8 +13,9 @@ export const Conatiner = styled.div`
 export const Content = styled.div`
   position: relative;
 
-  width: 1100px;
-  height: 600px;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -195,6 +196,7 @@ export const Hexagon = styled.div`
 
   &.blue-dark {
     background: #191970;
+    margin-left: 203px;
   }
   &.blue-dark::before {
     border-bottom-color: #191970;

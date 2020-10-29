@@ -21,7 +21,16 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 // styles
-import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Back,
+  Actions,
+  Title,
+  Header,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -130,7 +139,20 @@ const Book = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Header>
+        <Back onClick={back} src={ArrowLeft} />
+        <Actions>
+          <Title>
+            <p
+              style={{
+                fontSize: "20px",
+              }}
+            >
+              Referência de livro com quatro autores ou mais
+            </p>
+          </Title>
+        </Actions>
+      </Header>
 
       <Formik
         initialValues={{
@@ -161,17 +183,6 @@ const Book = ({ back }) => {
       >
         {(props) => (
           <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Referência de livro com quatro autores ou mais
-                </p>
-              </Title>
-            </Actions>
             <Card>
               <Content>
                 <Fields

@@ -4,12 +4,15 @@ import React from "react";
 
 import { Container, Wrapper } from "./styles";
 
+import LogoViaCarreira from "../../assets/images/Logo-roxo.png";
+import LogoGorb from "../../assets/images/logo-gorb.png";
+
 const Header = () => {
   return (
     <Container>
-      <Wrapper>
-        <span>logo</span>
-        <span>nome</span>
+      <Wrapper className="container">
+        <img src={LogoViaCarreira} alt="" className="src" />
+        <span> GORB </span>
       </Wrapper>
     </Container>
   );
