@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 
 import {
   Conatiner,
-  Content,
+  ContentHome,
+  ContentMobile,
   Row,
   Hexagon,
   Title,
@@ -13,6 +14,8 @@ import {
   Advertising,
   ContentText,
   IconPlus,
+  HeaderTitle,
+  TitleMobile,
 } from "../../styles/Hexagon";
 
 // components
@@ -27,7 +30,7 @@ const HexagonPage = () => {
     <>
       <Header />
       <Conatiner>
-        <Content>
+        <ContentHome>
           <Row>
             <Hexagon onClick={() => history.push("/book")} className="blue">
               <p className="txt-white">Livros</p>
@@ -88,7 +91,68 @@ const HexagonPage = () => {
               <IconPlus src={Plus} />
             </Hexagon>
           </Row>
-        </Content>
+        </ContentHome>
+        <ContentMobile>
+          <HeaderTitle>
+            <TitleMobile>
+              Gerador Online de Referências Bibliográficas
+            </TitleMobile>
+          </HeaderTitle>
+          <Row>
+            <Hexagon onClick={() => history.push("/book")} className="blue">
+              <p className="txt-white">Livros</p>
+            </Hexagon>
+            <Separator />
+            <Hexagon onClick={() => history.push("/")} className="green">
+              <p className="txt-white">
+                Documentos <br /> jurídicos e civis
+              </p>
+            </Hexagon>
+          </Row>
+
+          <Row>
+            <Hexagon onClick={() => history.push("/")} className="yellow">
+              <p className="txt-white">
+                Trabalhos <br />
+                acadêmicos e publicações periódicas
+              </p>
+            </Hexagon>
+            <Separator />
+            <Hexagon onClick={() => history.push("/")} className="gray">
+              <IconPlus src={Plus} />
+            </Hexagon>
+            <Separator />
+            <Hexagon onClick={() => history.push("/")} className="wine">
+              <p className="txt-white">
+                Documentos <br />
+                exclusivos de meio <br />
+                eletrônico
+              </p>
+            </Hexagon>
+          </Row>
+
+          <Row>
+            <Hexagon onClick={() => history.push("/")} className="blue-dark">
+              <p className="txt-white">
+                {" "}
+                Eventos,
+                <br />
+                patentes e
+                <br />
+                normas técnicas
+                <br />{" "}
+              </p>
+            </Hexagon>
+            <Separator />
+            <Hexagon onClick={() => history.push("/")} className="violet">
+              <p className="txt-white">
+                Documentos <br />
+                audiovisuais
+              </p>
+            </Hexagon>
+            <Separator />
+          </Row>
+        </ContentMobile>
       </Conatiner>
     </>
   );

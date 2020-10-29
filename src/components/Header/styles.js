@@ -25,4 +25,10 @@ export const Wrapper = styled.div`
 
     color: #6666cc;
   }
+
+  @media only screen and (max-width: 600px) {
+    > span {
+      display: none;
+    }
+  }
 `;

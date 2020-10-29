@@ -27,6 +27,24 @@ export const Content = styled.div`
   }
 `;
 
+export const ContentHome = styled.div`
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    display: none;
+  }
+`;
+
 export const ContentText = styled.div``;
 
 export const Row = styled.div`
@@ -88,7 +106,7 @@ export const Separator = styled.div`
   height: 50px;
 
   @media only screen and (max-width: 600px) {
-    width: 9px;
+    width: 14px;
   }
 `;
 
@@ -146,17 +164,20 @@ export const Hexagon = styled.div`
 
     ::before {
       border-left: 49px solid transparent;
-      border-right: 45px solid transparent;
+      border-right: 47px solid transparent;
       border-bottom: 36px solid red;
-
-      top: -36px;
+      top: -35px;
     }
 
     ::after {
       border-left: 46px solid transparent;
       border-right: 50px solid transparent;
       border-top: 36px solid red;
-      bottom: -36px;
+      bottom: -35px;
+    }
+
+    > p {
+      font-size: 9px;
     }
   }
 
@@ -197,6 +218,10 @@ export const Hexagon = styled.div`
   &.blue-dark {
     background: #191970;
     margin-left: 203px;
+
+    @media (max-width: 600px) {
+      margin-left: unset;
+    }
   }
   &.blue-dark::before {
     border-bottom-color: #191970;
@@ -257,4 +282,27 @@ export const Advertising = styled.div`
 export const IconPlus = styled.img`
   width: 50px;
   height: 50px;
+`;
+
+export const ContentMobile = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: unset;
+  }
+`;
+
+export const HeaderTitle = styled.div`
+  width: 100%;
+
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+export const TitleMobile = styled.span`
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+
+  text-align: center;
 `;
