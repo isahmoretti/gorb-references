@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -85,6 +86,8 @@ const Score = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -102,7 +105,7 @@ const Score = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/outros')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

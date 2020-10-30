@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik, FieldArray } from "formik";
 
@@ -105,8 +106,10 @@ const Book = ({ back }) => {
     values: {},
     clearInitialValues: false,
   });
-
+  
   const [openModal, setOpenModal] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -129,7 +132,7 @@ const Book = ({ back }) => {
   return (
     <Container>
       <Header>
-        <Back onClick={back} src={ArrowLeft} />
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
         <Actions>
           <Title>
             <p

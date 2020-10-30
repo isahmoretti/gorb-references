@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -57,6 +58,8 @@ const CivilAndNotary = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -77,7 +80,7 @@ const CivilAndNotary = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

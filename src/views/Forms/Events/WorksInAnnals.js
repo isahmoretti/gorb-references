@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
@@ -112,6 +113,8 @@ const WorksInAnnals = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -132,7 +135,7 @@ const WorksInAnnals = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/evento')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

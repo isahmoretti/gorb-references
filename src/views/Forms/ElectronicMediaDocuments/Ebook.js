@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik, FieldArray } from "formik";
 
@@ -129,7 +130,11 @@ const generateReference = (values) => {
       )}
 
       {yearOfPublication && <>{yearOfPublication}. </>}
-      {pages && <><i>E-book</i> ({pages}p.) </>}
+      {pages && (
+        <>
+          <i>E-book</i> ({pages}p.){" "}
+        </>
+      )}
       {series && <>({series}). </>}
       {colorType && <>{getColorFormatted(colorType)}. </>}
       {isbn && <> ISBN: {isbn}. </>}
@@ -148,6 +153,8 @@ const Ebook = ({ back }) => {
   });
 
   const [openModal, setOpenModal] = useState(false);
+
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -169,7 +176,7 @@ const Ebook = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
 
       <Formik
         initialValues={{

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -31,6 +32,8 @@ const Constitution = ({ back }) => {
     values: {},
     clearInitialValues: false,
   });
+
+  const history = useHistory()
 
   const generateReference = (values) => {
     const {
@@ -92,7 +95,7 @@ const Constitution = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

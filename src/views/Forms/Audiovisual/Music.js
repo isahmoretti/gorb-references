@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom'
 
 import { Formik } from "formik";
 
@@ -77,6 +78,8 @@ const Music = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -89,7 +92,7 @@ const Music = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/audiovisual')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

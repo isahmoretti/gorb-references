@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -71,6 +72,8 @@ const SocialNetworkPost = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+
   const handleCitation = (text, yaer) => {
     return {
       cit1: `${text} (${yaer})`,
@@ -95,7 +98,7 @@ const SocialNetworkPost = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

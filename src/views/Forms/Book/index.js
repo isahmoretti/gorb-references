@@ -23,20 +23,11 @@ import {
   ContentText,
 } from "../../../styles/Hexagon";
 
-// pages
-import BookWithOneAuthor from "./BookWithOneAuthor";
-import BookWithTwoOrThreeAuthors from "./BookWithTwoOrThreeAuthors";
-import BookAuthorEntity from "./BookAuthorEntity";
-import BookIntellectuallyResponsible from "./BookIntellectuallyResponsible";
-import BookWithFourOrMoreAuthors from "./BookWithFourOrMoreAuthors";
-import ChapterOfBook from "./ChapterOfBook";
-
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 const BookGeneral = ({ back }) => {
   const history = useHistory();
 
-  const [state, setState] = useState(0);
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -55,57 +46,53 @@ const BookGeneral = ({ back }) => {
     fetchData();
   }, []);
 
-  console.log(data);
-
   return (
     <>
       <Header />
       <Conatiner>
-        {!state && (
-          <Content>
-            <Back onClick={() => history.push("/")} src={ArrowLeft} />
-            <Row>
-              <Hexagon onClick={() => setState(1)} className="blue">
-                <p className="txt-white">Livros com um único autor</p>
-              </Hexagon>
-              <Separator />
-              <Hexagon className="blue" onClick={() => setState(6)}>
-                <p className="txt-white">Livro com autor entidade</p>
-              </Hexagon>
-            </Row>
+        <Content>
+          <Back onClick={() => history.push("/")} src={ArrowLeft} />
+          <Row>
+            <Hexagon
+              onClick={() => history.push("/livro/um-autor")}
+              className="blue"
+            >
+              <p className="txt-white">Livros com um único autor</p>
+            </Hexagon>
+            <Separator />
+            <Hexagon className="blue" onClick={() => history.push('/livro/autor-entidade')}>
+              <p className="txt-white">Livro com autor entidade</p>
+            </Hexagon>
+          </Row>
 
-            <Row>
-              <Hexagon onClick={() => setState(2)} className="blue">
-                <p className="txt-white">Livros com dois ou três autores</p>
-              </Hexagon>
-              <Title> Livros </Title>
-              <Hexagon onClick={() => setState(5)} className="blue">
-                <p className="txt-white">
-                  Livro com responsável intelectual ao invés de autor
-                </p>
-              </Hexagon>
-            </Row>
+          <Row>
+            <Hexagon
+              onClick={() => history.push("/livro/dois-ou-tres-autores")}
+              className="blue"
+            >
+              <p className="txt-white">Livros com dois ou três autores</p>
+            </Hexagon>
+            <Title> Livros </Title>
+            <Hexagon onClick={() => history.push('/livro/responsavel-intelectual')} className="blue">
+              <p className="txt-white">
+                Livro com responsável intelectual ao invés de autor
+              </p>
+            </Hexagon>
+          </Row>
 
-            <Row>
-              <Hexagon onClick={() => setState(3)} className="blue">
-                <p className="txt-white">Livro com quatro autores ou mais</p>
-              </Hexagon>
-              <Separator />
-              <Hexagon onClick={() => setState(4)} className="blue">
-                <p className="txt-white"> Capítulo de livro</p>
-              </Hexagon>
-            </Row>
-          </Content>
-        )}
-
-        {state === 1 && <BookWithOneAuthor back={() => setState(0)} />}
-        {state === 2 && <BookWithTwoOrThreeAuthors back={() => setState(0)} />}
-        {state === 3 && <BookWithFourOrMoreAuthors back={() => setState(0)} />}
-        {state === 4 && <ChapterOfBook back={() => setState(0)} />}
-        {state === 5 && (
-          <BookIntellectuallyResponsible back={() => setState(0)} />
-        )}
-        {state === 6 && <BookAuthorEntity back={() => setState(0)} />}
+          <Row>
+            <Hexagon
+              onClick={() => history.push("/livro/quatro-autores-ou-mais")}
+              className="blue"
+            >
+              <p className="txt-white">Livro com quatro autores ou mais</p>
+            </Hexagon>
+            <Separator />
+            <Hexagon onClick={() => history.push("/livro/capitulo-de-livro")} className="blue">
+              <p className="txt-white"> Capítulo de livro</p>
+            </Hexagon>
+          </Row>
+        </Content>
       </Conatiner>
 
       <ContentText className="container">
