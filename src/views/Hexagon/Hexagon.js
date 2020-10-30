@@ -32,11 +32,11 @@ const HexagonPage = () => {
       <Conatiner>
         <ContentHome>
           <Row>
-            <Hexagon onClick={() => history.push("/book")} className="blue">
+            <Hexagon onClick={() => history.push("/livro")} className="blue">
               <p className="txt-white">Livros</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => history.push("/")} className="green">
+            <Hexagon onClick={() => history.push("/documentos-juridicos")} className="green">
               <p className="txt-white">
                 Documentos <br /> jurídicos e civis
               </p>
@@ -44,7 +44,7 @@ const HexagonPage = () => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => history.push("/")} className="yellow">
+            <Hexagon onClick={() => history.push("/trabalhos-academicos")} className="yellow">
               <p className="txt-white">
                 Trabalhos <br />
                 acadêmicos e <br />
@@ -56,7 +56,7 @@ const HexagonPage = () => {
               {" "}
               Gerador <br /> Online de <br /> Referências <br /> Bibliográficas{" "}
             </Title>
-            <Hexagon onClick={() => history.push("/")} className="wine">
+            <Hexagon onClick={() => history.push("/meio-eletronico")} className="wine">
               <p className="txt-white">
                 Documentos <br />
                 exclusivos de meio <br />
@@ -66,7 +66,7 @@ const HexagonPage = () => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => history.push("/")} className="blue-dark">
+            <Hexagon onClick={() => history.push("/evento")} className="blue-dark">
               <p className="txt-white">
                 {" "}
                 Eventos,
@@ -80,14 +80,14 @@ const HexagonPage = () => {
               </p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => history.push("/")} className="violet">
+            <Hexagon onClick={() => history.push("/audiovisual")} className="violet">
               <p className="txt-white">
                 Documentos <br />
                 audiovisuais
               </p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => history.push("/")} className="gray">
+            <Hexagon onClick={() => history.push("/outros")} className="gray">
               <IconPlus src={Plus} />
             </Hexagon>
           </Row>

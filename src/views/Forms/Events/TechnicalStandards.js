@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -86,6 +87,8 @@ const TechnicalStandards = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory()
+  
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -103,7 +106,7 @@ const TechnicalStandards = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={back} src={ArrowLeft} />
+      <Back onClick={() => history.push('/evento')} src={ArrowLeft} />
 
       <Formik
         initialValues={{

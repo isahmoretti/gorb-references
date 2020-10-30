@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -110,6 +111,8 @@ const Book = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const history = useHistory();
+
   const handleCitation = (text, yaer) => {
     return {
       cit1: `${text} et al. (${yaer})`,
@@ -140,7 +143,7 @@ const Book = ({ back }) => {
   return (
     <Container>
       <Header>
-        <Back onClick={back} src={ArrowLeft} />
+        <Back onClick={() => history.push('/livro')} src={ArrowLeft} />
         <Actions>
           <Title>
             <p
