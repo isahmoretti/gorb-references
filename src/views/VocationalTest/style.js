@@ -4,7 +4,6 @@ import imgHeaderMobile from "../../assets/images/VocationalTest/Mobile/Perguntas
 import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
-
 export const Progress = styled.div`
   height: 23px;
   background-color: #eada18;
@@ -34,23 +33,19 @@ export const Background = styled.div`
   bottom: 13px;
 `;
 export const Box = styled.div`
-  background: url(${backgroundIcons});
-  background-color: #dcdcdc;
+  /* background: url(${backgroundIcons});
+  background-color: #dcdcdc; */
 
   .container {
-    padding-top: 20px;
-    position: relative;
   }
 
   #image {
-    position: absolute;
     width: 100%;
     min-height: 88px;
     height: 107px;
   }
 
   #text {
-    /* position: absolute; */
     position: relative;
     left: 15%;
     width: 70%;
@@ -65,30 +60,22 @@ export const Box = styled.div`
     display: grid;
     align-content: center;
   }
-  @media only screen and (max-width: 800px) {
-    background-image: url(${imgBackground});
-
-    #image {
-      position: absolute;
-      width: 100%;
-      min-height: 88px;
-      height: 162px;
-    }
-  }
 `;
 
 export const Alternatives = styled.div`
-  margin: auto;
   display: flex;
+  justify-content: space-between;
 
-  @media only screen and (max-width: 800px) {
-    flex-wrap: wrap;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 export const Hexagon = styled.img`
   position: relative;
-  margin-top: 150px;
+  /* margin-top: 150px; */
   width: 162px;
   height: 140px;
   align-items: center;
@@ -109,10 +96,24 @@ export const Hexagon = styled.img`
 export const Option = styled.div`
   margin: auto;
   display: block;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 15px 0;
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+  }
 `;
 
 export const Frame = styled.div`
-  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 162px;
   height: 133px;
   background-color: rgb(255, 255, 255);
@@ -125,5 +126,47 @@ export const Frame = styled.div`
 
   :hover {
     opacity: 0.6;
+  }
+`;
+
+export const ContainerQuestion = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ImageMobile = styled.img`
+  position: absolute;
+  width: 100%;
+  display: none;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  width: 100%;
+  display: block;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+export const TitleQuestion = styled.div`
+  width: 280px;
+  text-align: center;
+  z-index: 1;
+  font-size: 24px;
+
+  @media (min-width: 600px) {
+    width: 720px;
   }
 `;

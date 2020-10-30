@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { TEST_CONTENT } from "./constants";
 import imgHeader from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
+import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 // components
 import Content from "./Content";
@@ -54,7 +55,13 @@ const VocationalTest = () => {
     return <Result answers={answers} thirteenAnswer={thirteenAnswer} />;
 
   return (
-    <div>
+    <div
+      style={{
+        background: `url(${backgroundIcons})`,
+        height: "100%",
+      }}
+    >
+      <div id="top"></div>
       <Header src={imgHeader}>
         <Background>
           <Progress width={fragment}>

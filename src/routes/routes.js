@@ -2,6 +2,8 @@ import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import HomePage from "../views/HomePage";
+
 // pages
 import Hexagon from "../views/Hexagon";
 import Book from "../views/Forms/Book";
@@ -19,6 +21,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Switch>
+        <Route exact path="/home" component={HomePage} />
         <Route exact path="/" component={Hexagon} />
         <Route exact path="/book" component={Book} />
         <Route exact path="/academicWork" component={AcademicWork} />

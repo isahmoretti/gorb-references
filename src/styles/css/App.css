@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
 .public-DraftStyleDefault-ltr {
   height: 300px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
