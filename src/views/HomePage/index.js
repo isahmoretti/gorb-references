@@ -3,7 +3,11 @@ import { useHistory } from "react-router-dom";
 // import PropTypes from "prop-types";
 
 import layub_logo from "../../assets/images/layub_logo.png";
-import logo_viacarreira from "../../assets/images/logo-viacarreira.png";
+import logo_viacarreira from "../../assets/images/logo-lilas.png";
+
+import facebook from "../../assets/images/facebook.svg";
+import twitter from "../../assets/images/twitter.svg";
+import linkedin from "../../assets/images/linkedin.svg";
 
 // components
 import GoogleAds from "../../components/GoogleAds";
@@ -29,6 +33,9 @@ import {
   WrapperContent,
   LogoFooter,
   TitleReservation,
+  ButtonFooter,
+  Title,
+  Icon,
 } from "./style";
 
 const HomePageTest = () => {
@@ -51,7 +58,7 @@ const HomePageTest = () => {
               <h2> Então responda as perguntas com atenção. </h2>
               <Button onClick={() => history.push("/test")}>
                 {" "}
-                Fazer teste vocacional{" "}
+                Fazer teste
               </Button>
             </Content>
           </Box>
@@ -203,8 +210,9 @@ const HomePageTest = () => {
           }}
         >
           <iframe
-            width="700"
-            height="686"
+            width="100%"
+            style={{ maxWidth: 700 }}
+            height="400"
             src="https://www.youtube.com/embed/UN3umcvjCg8"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -221,13 +229,31 @@ const HomePageTest = () => {
       <Footer>
         <Logo src={logo_viacarreira} />
         <WrapperIcons>
-          <Icons> facebok </Icons>
-          <Icons> twiter </Icons>
-          <Icons> linkedin </Icons>
-          <Icons> youtube </Icons>
-          <Icons> point </Icons>
+          <Icons src={facebook} />
+          <Icons src={twitter} />
+          <Icons src={linkedin} />
         </WrapperIcons>
-        <WrapperContent></WrapperContent>
+        <WrapperContent className="container">
+          <ButtonFooter>
+            <Title> Home </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Sobre </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Políticas de privacidade </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Fale conosco </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+        </WrapperContent>
         <LogoFooter src={layub_logo} />
         <TitleReservation>
           {" "}

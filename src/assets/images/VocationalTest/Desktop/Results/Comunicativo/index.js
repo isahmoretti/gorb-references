@@ -1,5 +1,5 @@
 import fundo from "./Desktop-Resultado-background-comunicativo.png";
-import aspas from "./desktop_resultado_aspas_comunicativo.png"
+import aspas from "./desktop_resultado_aspas_comunicativo.png";
 import biblioteconomia from "./Desktop-resultado-comunicativo-biblioteconomia.png";
 import cienciasSociais from "./Desktop-resultado-comunicativo-ciencias-sociais.png";
 import filosofia from "./Desktop-resultado-comunicativo-filosofia.png";
@@ -11,7 +11,7 @@ import pedagogia from "./Desktop-resultado-comunicativo-pedagogia.png";
 import radioTvInternet from "./Desktop-resultado-comunicativo-radio-tv-internet.png";
 import relacoesPublicas from "./Desktop-resultado-comunicativo-relacoes-publicas.png";
 //TODO: trocar para comunicativo
-import iconeDoFundo from "../Criativo/resultado_icone_criativo_lampada.png"
+import iconeDoFundo from "../../../../balao.png";
 
 export default {
   fundo,

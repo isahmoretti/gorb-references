@@ -20,7 +20,7 @@ import {
 } from "./style";
 
 // assets
-import imgBalloon from "../../assets/images/balao.png";
+import imgBalloon from "../../assets/images/balao-amarelo.png";
 import imgBalloon2 from "../../assets/images/VocationalTest/Desktop/Answers/desktop_balao_amarelo.png";
 
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
-import imgHeaderMobile from "../../assets/images/VocationalTest/Mobile/Perguntas e respostas/mobile_cabeçalho_perguntas.png";
+import imgHeaderMobile from "../../assets/images/topo_mobile_teste_600x100.png";
 import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
@@ -138,6 +138,10 @@ export const ContainerQuestion = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    height: 150px;
+  }
 `;
 
 export const ImageMobile = styled.img`
@@ -164,9 +168,10 @@ export const TitleQuestion = styled.div`
   width: 280px;
   text-align: center;
   z-index: 1;
-  font-size: 24px;
+  font-size: 19px;
 
   @media (min-width: 600px) {
     width: 720px;
+    font-size: 24px;
   }
 `;

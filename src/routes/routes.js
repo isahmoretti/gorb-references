@@ -1,6 +1,11 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import HomePage from "../views/HomePage";
 
@@ -79,8 +84,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/home" component={HomePage} />
-        <Route exact path="/" component={Hexagon} />
+        {/* <Route exact path="/" component={Hexagon} />
         
         <Route exact path="/livro" component={Book} />
         <Route exact path="/livro/um-autor" component={BookWithOneAuthor} />
@@ -140,9 +144,14 @@ const AppRoutes = () => {
         <Route exact path="/documentos-juridicos/constituicao" component={Constitution} />
         <Route exact path="/documentos-juridicos/jurisprudencia" component={Jurisprudence} />
         <Route exact path="/documentos-juridicos/legislacao" component={Legislation} />
-        <Route exact path="/documentos-juridicos/medida-provisoria" component={ProvisionalMeasure} />
+        <Route exact path="/documentos-juridicos/medida-provisoria" component={ProvisionalMeasure} /> */}
+
+        {/* <Route path="*">
+          <Redirect to="/" />
+        </Route> */}
 
         {/* teste vocacional */}
+        <Route exact path="/" component={HomePage} />
         <Route exact path="/test" component={VocationalTest} />
       </Switch>
     </Router>

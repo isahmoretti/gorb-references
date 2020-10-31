@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   height: 80px;
   width: 100%;
 
-  background-color: #000;
+  background-color: #171715;
 
   color: #fff;
 `;
@@ -15,8 +15,10 @@ export const WrapperNav = styled.div`
   height: 100%;
 
   > img {
-    height: 240px;
-    margin-top: -78px;
+    width: 100%;
+    max-width: 400px;
+    height: 70px;
+    /* margin-top: -78px; */
   }
 `;
 export const HambugerIcon = styled.div``;
@@ -176,6 +178,8 @@ export const Footer = styled.div`
   background-color: #000;
   color: #fff;
 
+  padding: 14px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,23 +187,46 @@ export const Footer = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 180px;
+  width: 200px;
+  height: 50px;
 `;
 
 export const WrapperIcons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin: 15px 0;
 `;
 
-export const Icons = styled.div`
-  margin-left: 15px;
+export const Icons = styled.img`
+  margin-left: 30px;
+
+  width: 20px;
+  height: 20px;
 `;
 
-export const WrapperContent = styled.div``;
+export const WrapperContent = styled.div`
+  width: 100%;
+`;
 
 export const LogoFooter = styled.img``;
 
 export const TitleReservation = styled.p`
   text-align: center;
 `;
+
+export const ButtonFooter = styled.div`
+  width: 100%;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+`;
+export const Title = styled.div`
+  text-transform: uppercase;
+`;
+export const Icon = styled.div``;
