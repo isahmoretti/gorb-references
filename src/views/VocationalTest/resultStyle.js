@@ -11,6 +11,8 @@ export const Background = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  padding-bottom: 10px;
 `;
 
 export const Hexagon = styled.div`
@@ -58,7 +60,7 @@ export const Hexagon = styled.div`
 
     .text {
       h1 {
-        font-size: 19pt;
+        font-size: 14pt;
         font-weight: bold;
       }
 
@@ -66,7 +68,7 @@ export const Hexagon = styled.div`
         padding: 0;
         margin: 0;
         line-height: unset;
-        font-size: 17px;
+        font-size: 16px;
       }
 
       i {
@@ -144,3 +146,81 @@ export const WrapperContent = styled.div`
     width: 225px;
   }
 `;
+
+export const Nav = styled.nav`
+  height: 60px;
+  width: 100%;
+
+  background-color: #171715;
+
+  color: #fff;
+`;
+export const WrapperNav = styled.div`
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  > a > img {
+    width: 220px;
+    height: 45px;
+    /* margin-top: -78px; */
+  }
+`;
+
+export const Footer = styled.div`
+  background-color: #000;
+  color: #fff;
+
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Logo = styled.img`
+  width: 200px;
+  height: 50px;
+`;
+
+export const WrapperIcons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 15px 0;
+`;
+
+export const Icons = styled.img`
+  margin-left: 30px;
+
+  width: 20px;
+  height: 20px;
+`;
+
+export const WrapperContentFooter = styled.div`
+  width: 100%;
+`;
+
+export const LogoFooter = styled.img``;
+
+export const TitleReservation = styled.p`
+  text-align: center;
+`;
+
+export const ButtonFooter = styled.div`
+  width: 100%;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+`;
+export const Title = styled.div`
+  text-transform: uppercase;
+`;
+export const Icon = styled.div``;
