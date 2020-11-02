@@ -2,7 +2,14 @@ import React from "react";
 import { RESULT_CONTENT } from "./constants";
 import IMAGES from "./imagesImports";
 
-import { Background, Hexagon, Phrase, Courses, Course } from "./resultStyle";
+import {
+  Background,
+  Hexagon,
+  Phrase,
+  Courses,
+  Course,
+  WrapperContent,
+} from "./resultStyle";
 const Result = (props) => {
   const { answers, thirteenAnswer } = props;
 
@@ -14,21 +21,16 @@ const Result = (props) => {
   };
 
   const result = calculateResult();
-  const {
-    name,
-    description,
-    phrase,
-    author,
-    color,
-    courses,
-  } = RESULT_CONTENT[result];
+  const { name, description, phrase, author, color, courses } = RESULT_CONTENT[
+    result
+  ];
   const images = IMAGES[result];
   const { fundo, aspas, iconeDoFundo } = images;
 
   return (
     <Background image={iconeDoFundo} color={color}>
       <Hexagon>
-        <div className="text">
+        <WrapperContent className="text">
           <h1>{name}</h1>
           <p>{description}</p>
           <Phrase image={aspas}>
@@ -36,7 +38,7 @@ const Result = (props) => {
             <i>{phrase}</i>
           </Phrase>
           <span>{author}</span>
-        </div>
+        </WrapperContent>
       </Hexagon>
       <Courses>
         <h1>CURSOS INDICADOS</h1>

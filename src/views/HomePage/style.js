@@ -4,7 +4,7 @@ import fundo from "../../assets/images/fundo-referencia.png";
 
 export const Container = styled.div``;
 export const Nav = styled.nav`
-  height: 80px;
+  height: 60px;
   width: 100%;
 
   background-color: #171715;
@@ -14,10 +14,12 @@ export const Nav = styled.nav`
 export const WrapperNav = styled.div`
   height: 100%;
 
-  > img {
-    width: 100%;
-    max-width: 400px;
-    height: 70px;
+  display: flex;
+  align-items: center;
+
+  > a > img {
+    width: 220px;
+    height: 45px;
     /* margin-top: -78px; */
   }
 `;
@@ -50,7 +52,7 @@ export const ContentHome = styled.div`
 
     padding: 25px;
 
-    background-color: #6666cc;
+    background-color: rgba(102, 102, 204, 0.9);
   }
 
   @media (max-width: 600px) {
@@ -104,6 +106,8 @@ export const Content = styled.div`
 `;
 
 export const WrapperText = styled.div`
+  max-width: 800px;
+
   > ul {
     list-style: none;
   }
@@ -134,6 +138,11 @@ export const BoxImage = styled.div`
   margin: 0 auto;
 
   background-color: #e6e6e6;
+
+  > img {
+    width: 100%;
+    max-width: 900px;
+  }
 `;
 
 export const Button = styled.button`

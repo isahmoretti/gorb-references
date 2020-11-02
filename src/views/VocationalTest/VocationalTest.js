@@ -13,7 +13,7 @@ const VocationalTest = () => {
   const [state, setState] = useState({
     testIsOver: false,
     total: 14,
-    part: 1,
+    part: 13,
     thirteenAnswer: "",
     answers: {
       a: 0,

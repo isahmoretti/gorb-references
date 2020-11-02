@@ -6,33 +6,35 @@ export const Background = styled.div`
   background-size: 142px;
   background-repeat: space;
   background-color: ${({ color }) => color};
-  padding-top: 40px;
-  height: 938px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Hexagon = styled.div`
-  padding-top: 90px;
   height: 600px;
   width: 678px;
   background: url(${hexagonImage});
   background-size: contain;
   background-repeat: no-repeat;
-  margin: auto;
-  top: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   .text {
-    display: block;
     text-align: center;
-    margin: auto;
-    width: inherit;
-    padding-left: 120px;
-    padding-right: 120px;
-    top: 100px;
+
     > h1 {
       font-family: "Pathway Gothic";
       font-size: 37pt;
       color: #3c3c3c;
       margin: 0;
     }
+
     p {
       padding: 30px;
       font-family: "Source Han Sans JP Medium";
@@ -40,15 +42,43 @@ export const Hexagon = styled.div`
       font-weight: 38pt;
       line-height: 30pt;
     }
+
     i {
       height: min-content;
+    }
+  }
+
+  @media (max-width: 600px) {
+    width: 350px;
+    height: 310px;
+
+    margin-top: 8px;
+
+    justify-content: flex-start;
+
+    .text {
+      h1 {
+        font-size: 19pt;
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        line-height: unset;
+        font-size: 17px;
+      }
+
+      i {
+        font-size: 10px;
+      }
     }
   }
 `;
 
 export const Phrase = styled.div`
   display: flex;
-  width: 430px;
+  width: 100%;
   font-family: "Pathway Gothic";
   color: #3c3c3c;
   font-size: 16px;
@@ -63,6 +93,12 @@ export const Phrase = styled.div`
   > span {
     font-family: "Montserrat Classic";
     font-weight: 14pt;
+  }
+
+  @media (max-width: 600px) {
+    > div {
+      width: 80px;
+    }
   }
 `;
 
@@ -87,7 +123,7 @@ export const Course = styled.div`
   margin: 50px;
   background: url(${({ image }) => image});
   background-size: contain;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   cursor: pointer;
   :hover {
     opacity: 0.6;
@@ -98,5 +134,13 @@ export const Course = styled.div`
     text-align: center;
     font-weight: bolder;
     width: 100%;
+  }
+`;
+
+export const WrapperContent = styled.div`
+  width: 415px;
+
+  @media (max-width: 600px) {
+    width: 225px;
   }
 `;

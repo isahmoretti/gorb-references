@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 // import PropTypes from "prop-types";
 
 import layub_logo from "../../assets/images/layub_logo.png";
-import logo_viacarreira from "../../assets/images/logo-lilas.png";
+import logo_viacarreira from "../../assets/images/logo-branco-rodape.png";
+import testevocacional from "../../assets/images/teste-vocacional.jpg";
+import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
 
 import facebook from "../../assets/images/facebook.svg";
 import twitter from "../../assets/images/twitter.svg";
@@ -45,7 +47,9 @@ const HomePageTest = () => {
     <Container>
       <Nav>
         <WrapperNav className="container">
-          <img src={logo_viacarreira} alt="" />
+          <a href="https://viacarreira.com/">
+            <img src={logo_viacarreiraRoxo} alt="" />
+          </a>
         </WrapperNav>
       </Nav>
 
@@ -96,8 +100,8 @@ const HomePageTest = () => {
           e pontos fortes.
         </p>
         <br /> <br />
-        <BoxImage width={700} height={700}>
-          700x700
+        <BoxImage>
+          <img src={testevocacional} alt="" />
         </BoxImage>
         <p>
           <br /> <br /> Ao finalizar, a descrição do perfil auxilia na
@@ -229,9 +233,15 @@ const HomePageTest = () => {
       <Footer>
         <Logo src={logo_viacarreira} />
         <WrapperIcons>
-          <Icons src={facebook} />
-          <Icons src={twitter} />
-          <Icons src={linkedin} />
+          <a href="https://www.facebook.com/viacarreira/">
+            <Icons src={facebook} />
+          </a>
+          <a href="https://twitter.com/viacarreira">
+            <Icons src={twitter} />
+          </a>
+          <a href="https://www.linkedin.com/company/viacarreira/">
+            <Icons src={linkedin} />
+          </a>
         </WrapperIcons>
         <WrapperContent className="container">
           <ButtonFooter>
