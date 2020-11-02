@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { TEST_CONTENT } from "./constants";
 import imgHeader from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
+
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 // components
@@ -13,7 +14,7 @@ const VocationalTest = () => {
   const [state, setState] = useState({
     testIsOver: false,
     total: 14,
-    part: 13,
+    part: 1,
     thirteenAnswer: "",
     answers: {
       a: 0,
@@ -62,7 +63,7 @@ const VocationalTest = () => {
       }}
     >
       <div id="top"></div>
-      <Header src={imgHeader}>
+      <Header>
         <Background>
           <Progress width={fragment}>
             {part}/{total}

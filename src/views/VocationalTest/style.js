@@ -2,6 +2,7 @@ import styled from "styled-components";
 import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
 import imgHeaderMobile from "../../assets/images/topo_mobile_teste_600x100.png";
 import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
+import headerForMobile from "../../assets/images/header-paginas-de-questoes-telas-menores.png";
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 export const Progress = styled.div`
@@ -19,7 +20,12 @@ export const Header = styled.div`
   background-size: 100% 100%;
 
   @media only screen and (max-width: 600px) {
-    background-image: url(${imgHeaderMobile});
+    background-image: url(${headerForMobile});
+    background-size: unset;
+    background-repeat: no-repeat;
+    height: 100px;
+
+    background-color: #6666cc;
   } ;
 `;
 
