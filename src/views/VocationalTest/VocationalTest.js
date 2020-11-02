@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import { TEST_CONTENT } from "./constants";
-import imgHeader from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
+import imgHeaderMobile from "../../assets/images/topo_mobile_teste_600x100.png";
+import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
 
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
@@ -64,6 +65,16 @@ const VocationalTest = () => {
     >
       <div id="top"></div>
       <Header>
+        <img
+          src={window.innerWidth < 600 ? imgHeaderMobile : imgHeaderDesktop}
+          alt=""
+          style={{
+            width: "100%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        />
         <Background>
           <Progress width={fragment}>
             {part}/{total}

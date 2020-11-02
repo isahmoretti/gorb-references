@@ -116,6 +116,10 @@ export const Courses = styled.div`
     width: 100%;
     text-align: center;
   }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
 `;
 export const Course = styled.div`
   width: 134px;

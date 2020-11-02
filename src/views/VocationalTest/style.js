@@ -16,16 +16,13 @@ export const Header = styled.div`
   width: 100%;
   height: 188px;
   position: relative;
-  background-image: url(${imgHeaderDesktop});
-  background-size: 100% 100%;
+
+  background-color: #6666cc;
+
+  display: flex;
 
   @media only screen and (max-width: 600px) {
-    background-image: url(${headerForMobile});
-    background-size: unset;
-    background-repeat: no-repeat;
     height: 100px;
-
-    background-color: #6666cc;
   } ;
 `;
 
