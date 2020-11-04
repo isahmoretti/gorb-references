@@ -56,19 +56,20 @@ export const Hexagon = styled.div`
 
     margin-top: 8px;
 
-    justify-content: flex-start;
+    justify-content: center;
 
     .text {
       h1 {
         font-size: 14pt;
-        font-weight: bold;
+
+        font-family: Oswald;
       }
 
       p {
         padding: 0;
         margin: 0;
         line-height: unset;
-        font-size: 16px;
+        font-size: 13px;
       }
 
       i {
@@ -98,6 +99,8 @@ export const Phrase = styled.div`
   }
 
   @media (max-width: 600px) {
+    text-align: right;
+
     > div {
       width: 80px;
     }
@@ -123,10 +126,10 @@ export const Courses = styled.div`
 `;
 export const Course = styled.div`
   width: 134px;
-  height: 148px;
+  height: 200px;
   background-color: blue;
   position: relative;
-  margin: 50px;
+  /* margin: 50px; */
   background: url(${({ image }) => image});
   background-size: contain;
   background-repeat: no-repeat;
@@ -136,7 +139,7 @@ export const Course = styled.div`
   }
   > div {
     position: absolute;
-    bottom: -49px;
+    bottom: -2px;
     text-align: center;
     font-weight: bolder;
     width: 100%;
@@ -148,6 +151,10 @@ export const WrapperContent = styled.div`
 
   @media (max-width: 600px) {
     width: 225px;
+    height: 239px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 
@@ -228,3 +235,19 @@ export const Title = styled.div`
   text-transform: uppercase;
 `;
 export const Icon = styled.div``;
+
+export const AuthorName = styled.div`
+  @media (max-width: 600px) {
+    text-align: right;
+    font-size: 11px;
+    margin-right: 11px;
+    font-family: Oswald;
+  }
+`;
+
+export const WrapperCourse = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`;

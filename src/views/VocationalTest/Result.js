@@ -21,6 +21,8 @@ import {
   ButtonFooter,
   Title,
   Icon,
+  AuthorName,
+  WrapperCourse,
 } from "./resultStyle";
 
 // assets
@@ -67,16 +69,18 @@ const Result = (props) => {
               <div />
               <i>{phrase}</i>
             </Phrase>
-            <span>{author}</span>
+            <AuthorName>{author}</AuthorName>
           </WrapperContent>
         </Hexagon>
         <Courses>
           <h1>CURSOS INDICADOS</h1>
-          {courses.map(({ name, imageName }, index) => (
-            <Course key={index} image={images[imageName]}>
-              <div>{name}</div>
-            </Course>
-          ))}
+          <WrapperCourse>
+            {courses.map(({ name, imageName }, index) => (
+              <Course key={index} image={images[imageName]}>
+                <div>{name}</div>
+              </Course>
+            ))}
+          </WrapperCourse>
         </Courses>
       </Background>
 

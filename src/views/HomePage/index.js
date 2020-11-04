@@ -84,7 +84,7 @@ const HomePageTest = () => {
         </p>
       </WrapperText>
 
-      <GoogleAds slot="9562629284" width={300} height={250} />
+      {/* <GoogleAds slot="9562629284" width={300} height={250} /> */}
 
       <WrapperText className="container">
         <h1> Como o teste vocacional pode te ajudar? </h1>
@@ -148,7 +148,7 @@ const HomePageTest = () => {
 
             <br />
 
-            <GoogleAds slot="6185479291" width={728} height={80} />
+            {/* <GoogleAds slot="6185479291" width={728} height={80} /> */}
 
             <br />
           </li>
@@ -193,7 +193,7 @@ const HomePageTest = () => {
           <br /> <br />
         </p>
 
-        <GoogleAds slot="5095758904" width={728} height={250} />
+        {/* <GoogleAds slot="5095758904" width={728} height={250} /> */}
 
         <p>
           <br /> <br />
