@@ -75,8 +75,12 @@ const Result = (props) => {
         <Courses>
           <h1>CURSOS INDICADOS</h1>
           <WrapperCourse>
-            {courses.map(({ name, imageName }, index) => (
-              <Course key={index} image={images[imageName]}>
+            {courses.map(({ name, imageName, link }, index) => (
+              <Course
+                key={index}
+                image={images[imageName]}
+                onClick={() => window.open(link)}
+              >
                 <div>{name}</div>
               </Course>
             ))}

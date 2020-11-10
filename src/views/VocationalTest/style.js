@@ -94,6 +94,10 @@ export const Hexagon = styled.img`
   :hover {
     opacity: 0.6;
   }
+  @media (max-width: 600px) {
+    height: 90px;
+    width: 90px;
+  }
 `;
 
 export const Option = styled.div`
@@ -109,6 +113,7 @@ export const Option = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: row;
+    margin: 10px;
   }
 `;
 
@@ -129,6 +134,10 @@ export const Frame = styled.div`
 
   :hover {
     opacity: 0.6;
+  }
+  @media (max-width: 600px) {
+    height: 90px;
+    width: 250px;
   }
 `;
 

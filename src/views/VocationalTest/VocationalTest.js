@@ -6,10 +6,28 @@ import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers
 
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
-// components
 import Content from "./Content";
 import Result from "./Result";
 import { Progress, Header, Background } from "./style";
+
+import {
+  Footer,
+  Logo,
+  WrapperIcons,
+  Icons,
+  WrapperContentFooter,
+  LogoFooter,
+  TitleReservation,
+  ButtonFooter,
+  Title,
+  Icon,
+} from "./resultStyle";
+
+import logo_viacarreira from "../../assets/images/logo-branco-rodape.png";
+import layub_logo from "../../assets/images/layub_logo.png";
+import facebook from "../../assets/images/facebook.svg";
+import twitter from "../../assets/images/twitter.svg";
+import linkedin from "../../assets/images/linkedin.svg";
 
 const VocationalTest = () => {
   const [state, setState] = useState({
@@ -87,6 +105,46 @@ const VocationalTest = () => {
         nextAnswer={nextAnswer}
         setAnswer={setAnswer}
       />
+      <Footer>
+        <Logo src={logo_viacarreira} />
+        <WrapperIcons>
+          <a href="https://www.facebook.com/viacarreira/">
+            <Icons src={facebook} />
+          </a>
+          <a href="https://twitter.com/viacarreira">
+            <Icons src={twitter} />
+          </a>
+          <a href="https://www.linkedin.com/company/viacarreira/">
+            <Icons src={linkedin} />
+          </a>
+        </WrapperIcons>
+        <WrapperContentFooter className="container">
+          <ButtonFooter>
+            <Title> Home </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Sobre </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Políticas de privacidade </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+
+          <ButtonFooter>
+            <Title> Fale conosco </Title>
+            <Icon> > </Icon>
+          </ButtonFooter>
+        </WrapperContentFooter>
+        <LogoFooter src={layub_logo} />
+        <TitleReservation>
+          {" "}
+          2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
+        </TitleReservation>
+      </Footer>
     </div>
   );
 };
