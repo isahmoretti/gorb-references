@@ -172,9 +172,11 @@ export const WrapperNav = styled.div`
   display: flex;
   align-items: center;
 
+  justify-content: center;
+
   > a > img {
-    width: 220px;
-    height: 45px;
+    width: 175px;
+    height: 35px;
     /* margin-top: -78px; */
   }
 `;
