@@ -211,8 +211,8 @@ export const Footer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 200px;
-  height: 50px;
+  width: 174px;
+  height: 35px;
 `;
 
 export const WrapperIcons = styled.div`
@@ -252,6 +252,9 @@ export const ButtonFooter = styled.div`
 `;
 export const Title = styled.div`
   text-transform: uppercase;
+
+  text-decoration: none;
+  color: #fff;
 `;
 export const Icon = styled.div``;
 

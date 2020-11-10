@@ -99,15 +99,15 @@ const HomePageTest = () => {
           concluída é possível reconhecer as próprias preferências, habilidades
           e pontos fortes.
         </p>
-        <br /> <br />
+        <br />
         <BoxImage>
           <img src={testevocacional} alt="" />
         </BoxImage>
         <p>
-          <br /> <br /> Ao finalizar, a descrição do perfil auxilia na
-          identificação de competências com grande potencial de desenvolvimento,
-          acompanhada de uma lista de cursos que correspondem às principais
-          características do avaliado.
+          <br /> Ao finalizar, a descrição do perfil auxilia na identificação de
+          competências com grande potencial de desenvolvimento, acompanhada de
+          uma lista de cursos que correspondem às principais características do
+          avaliado.
         </p>
       </WrapperText>
 
@@ -146,11 +146,7 @@ const HomePageTest = () => {
               estudo ou de disputar por uma vaga em universidades públicas.
             </p>
 
-            <br />
-
             {/* <GoogleAds slot="6185479291" width={728} height={80} /> */}
-
-            <br />
           </li>
 
           <li>
@@ -190,13 +186,11 @@ const HomePageTest = () => {
           considerar todo o caminho a ser percorrido até atingir o topo da
           carreira, normalmente, o momento de maior satisfação da trajetória
           profissional.
-          <br /> <br />
         </p>
 
         {/* <GoogleAds slot="5095758904" width={728} height={250} /> */}
 
         <p>
-          <br /> <br />
           Em qualquer profissão, a formação, a atualização constante e a
           experiência são essenciais para conquistar as melhores oportunidades
           do mercado. Portanto, não basta se identificar com a área, a
@@ -245,22 +239,30 @@ const HomePageTest = () => {
         </WrapperIcons>
         <WrapperContent className="container">
           <ButtonFooter>
-            <Title> Home </Title>
+            <a href="https://viacarreira.com/">
+              <Title>Home</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Sobre </Title>
+            <a href="https://viacarreira.com/sobre/">
+              <Title>Sobre</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Políticas de privacidade </Title>
+            <a href="https://viacarreira.com/politica-de-privacidade/">
+              <Title>Políticas de privacidade</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Fale conosco </Title>
+            <a href="https://viacarreira.com/contato/">
+              <Title>Fale conosco</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
         </WrapperContent>
