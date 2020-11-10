@@ -78,9 +78,9 @@ const Result = (props) => {
             {courses.map(({ name, imageName, link }, index) => (
               <Course
                 key={index}
-                image={images[imageName]}
                 onClick={() => window.open(link)}
               >
+                <img src={images[imageName]}/>
                 <div>{name}</div>
               </Course>
             ))}

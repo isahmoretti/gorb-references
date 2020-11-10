@@ -115,24 +115,29 @@ export const Courses = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   background-color: #fff;
+
   > h1 {
+    font-family: "Oswald";
     width: 100%;
     text-align: center;
   }
 
   @media (max-width: 600px) {
+    width: 100vw;
+    > h1 {
+      font-size: 1em;
+    }
     padding: 10px;
   }
 `;
 export const Course = styled.div`
   width: 134px;
   height: 200px;
-  background-color: blue;
   position: relative;
   /* margin: 50px; */
-  background: url(${({ image }) => image});
+  /* background: url(${({ image }) => image});
   background-size: contain;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   cursor: pointer;
   :hover {
     opacity: 0.6;
@@ -143,6 +148,18 @@ export const Course = styled.div`
     text-align: center;
     font-weight: bolder;
     width: 100%;
+  }
+  @media (max-width: 600px) {
+    > img {
+      width: 110px;
+      height: 120px;
+    }
+    > div {
+      height: 48px;
+    }
+    margin: 0 20px 0 20px;
+    width: 110px;
+    height: 168px;
   }
 `;
 
