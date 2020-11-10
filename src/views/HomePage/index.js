@@ -245,22 +245,30 @@ const HomePageTest = () => {
         </WrapperIcons>
         <WrapperContent className="container">
           <ButtonFooter>
-            <Title> Home </Title>
+            <a href="https://viacarreira.com/">
+              <Title>Home</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Sobre </Title>
+            <a href="https://viacarreira.com/sobre/">
+              <Title>Sobre</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Políticas de privacidade </Title>
+            <a href="https://viacarreira.com/politica-de-privacidade/">
+              <Title>Políticas de privacidade</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
 
           <ButtonFooter>
-            <Title> Fale conosco </Title>
+            <a href="https://viacarreira.com/contato/">
+              <Title>Fale conosco</Title>
+            </a>
             <Icon> > </Icon>
           </ButtonFooter>
         </WrapperContent>
