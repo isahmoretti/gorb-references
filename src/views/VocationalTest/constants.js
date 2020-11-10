@@ -202,7 +202,7 @@ export const RESULT_CONTENT = {
       },
       {
         name: "Pedagogia",
-        link: 'https://viacarreira.com/pedagogia/', // Link não foi passado
+        link: 'https://viacarreira.com/curso-de-pedagogia/',
         imageName: "pedagogia",
         imgPath: "Comunicativo/Desktop-resultado-comunicativo-pedagogia.png",
       },
