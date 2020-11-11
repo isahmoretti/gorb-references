@@ -131,24 +131,28 @@ export const Courses = styled.div`
   }
 `;
 export const Course = styled.div`
-  width: 134px;
-  height: 200px;
+  width: 195px;
   position: relative;
-  /* margin: 50px; */
-  /* background: url(${({ image }) => image});
-  background-size: contain;
-  background-repeat: no-repeat; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0px 20px 0px 20px;
   cursor: pointer;
   :hover {
     opacity: 0.6;
   }
+
   > div {
-    position: absolute;
-    bottom: -2px;
     text-align: center;
+    height: auto;
     font-weight: bolder;
-    width: 100%;
   }
+
+  > img {
+    width: 175px;
+    height: 200px;
+  }
+
   @media (max-width: 600px) {
     > img {
       width: 110px;
