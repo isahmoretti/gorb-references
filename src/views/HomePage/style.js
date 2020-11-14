@@ -243,7 +243,7 @@ export const Button = styled.button`
 `;
 
 export const Footer = styled.div`
-  background-color: #000;
+  background-color: #333;
   color: #fff;
 
   padding: 14px;
