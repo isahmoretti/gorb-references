@@ -22,6 +22,7 @@ import {
   Title,
   Icon,
   AuthorName,
+  Share,
   WrapperCourse,
 } from "./resultStyle";
 
@@ -30,6 +31,7 @@ import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
 import logo_viacarreira from "../../assets/images/logo-branco-rodape.png";
 import layub_logo from "../../assets/images/layub_logo.png";
 
+import share from "../../assets/images/compartilhar.svg";
 import facebook from "../../assets/images/facebook.svg";
 import twitter from "../../assets/images/twitter.svg";
 import linkedin from "../../assets/images/linkedin.svg";
@@ -72,15 +74,16 @@ const Result = (props) => {
             <AuthorName>{author}</AuthorName>
           </WrapperContent>
         </Hexagon>
-        <Courses>
+        <Share>
           <h1>CURSOS INDICADOS</h1>
+        </Share>
+        <Courses>
+        <img src={share} />
+        <hr/>
           <WrapperCourse>
             {courses.map(({ name, imageName, link }, index) => (
-              <Course
-                key={index}
-                onClick={() => window.open(link)}
-              >
-                <img src={images[imageName]}/>
+              <Course key={index} onClick={() => window.open(link)}>
+                <img src={images[imageName]} />
                 <div>{name}</div>
               </Course>
             ))}

@@ -19,9 +19,8 @@ export const WrapperNav = styled.div`
   justify-content: center;
 
   > a > img {
-    width: 175px;
-    height: 35px;
-    /* margin-top: -78px; */
+    width: 170px;
+    height: 30px;
   }
 `;
 export const HambugerIcon = styled.div``;
@@ -31,8 +30,29 @@ export const SearchIcon = styled.div``;
 export const WrapperHome = styled.div`
   background: url(${fundo});
   background-color: #6666cc;
+
+  @media (max-width: 600px) {
+    background: url("#");
+    background-color: #6666cc;
+  }
 `;
 
+export const Fundo1 = styled.img`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+    src: ${({ src }) => src};
+    width: 100%;
+  }
+`;
+export const Fundo2 = styled.img`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+    src: ${({ src }) => src};
+    width: 100%;
+  }
+`;
 export const ContentHome = styled.div`
   width: 100%;
   height: calc(100vh - 80px);
@@ -57,8 +77,13 @@ export const ContentHome = styled.div`
   }
 
   @media (max-width: 600px) {
+    height: auto;
+    margin: 140px 0px 0 0;
     > h1 {
-      font-size: 24px;
+      position: absolute;
+      top: 130px;
+      font-size: 25px !important ;
+      margin-bottom: 0px;
     }
   }
 `;
@@ -74,7 +99,11 @@ export const Box = styled.div`
   background-color: #6666cc;
 
   @media (max-width: 600px) {
-    padding: 25px;
+    position: relative;
+    top: -25px;
+    border: 5px solid #fff;
+    padding: 18px;
+    height: auto;
   }
 `;
 export const Content = styled.div`
@@ -88,8 +117,8 @@ export const Content = styled.div`
 
   padding: 30px;
 
-  background-color: #fff;
-  color: #444;
+  background-color: #fff2e9;
+  color: #3c3c3c;
 
   > h2 {
     font-size: 44px;
@@ -101,8 +130,10 @@ export const Content = styled.div`
 
   @media (max-width: 600px) {
     > h2 {
-      font-size: 33px;
+      font-size: 20px;
+      margin-bottom: 5px;
     }
+    height: auto;
   }
 `;
 
@@ -124,6 +155,26 @@ export const WrapperText = styled.div`
 
   > h1 {
     font-family: Oswald;
+  }
+
+  > img {
+    width: 30px;
+    float: right;
+    margin: 0px 10% 0px 90%;
+  }
+
+  hr {
+    width: inherit;
+    display: inline-block;
+  }
+  @media (max-width: 600px) {
+    font-size: 20px;
+    > h1 {
+      margin-bottom: 0;
+    }
+    > img {
+      margin: 0px 4% 0px 96%;
+    }
   }
 `;
 
@@ -159,7 +210,7 @@ export const Button = styled.button`
 
   font-size: 25px;
   font-weight: 700;
-  color: #444;
+  color: #3c3c3c;
   outline: transparent;
 
   transition: 0.2s;
@@ -181,6 +232,13 @@ export const Button = styled.button`
 
   @media (max-width: 600px) {
     font-size: 20px;
+    &.last {
+      width: 310px;
+    }
+    &.first {
+      padding: 20px;
+    margin-top: 10px;
+    }
   }
 `;
 
@@ -189,7 +247,7 @@ export const Footer = styled.div`
   color: #fff;
 
   padding: 14px;
-
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,8 +255,7 @@ export const Footer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 174px;
-  height: 35px;
+  width: 115px;
 `;
 
 export const WrapperIcons = styled.div`

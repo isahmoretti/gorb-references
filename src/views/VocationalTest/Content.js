@@ -54,12 +54,7 @@ const Content = (props) => {
         <Image src={imgBalloon2} />
         <TitleQuestion>{question}</TitleQuestion>
       </ContainerQuestion>
-      <Alternatives
-        style={{
-          background: `url(${backgroundIcons})`,
-          height: "100%",
-        }}
-      >
+      <Alternatives>
         {alternatives?.map((alternative, index) => (
           <a key={index} href="#top" style={{ textDecoration: "none" }}>
             <Grow

@@ -21,6 +21,8 @@ export const Hexagon = styled.div`
   background: url(${hexagonImage});
   background-size: contain;
   background-repeat: no-repeat;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
@@ -31,7 +33,7 @@ export const Hexagon = styled.div`
     text-align: center;
 
     > h1 {
-      font-family: "Pathway Gothic";
+      font-family: Oswald;
       font-size: 37pt;
       color: #3c3c3c;
       margin: 0;
@@ -39,7 +41,7 @@ export const Hexagon = styled.div`
 
     p {
       padding: 30px;
-      font-family: "Source Han Sans JP Medium";
+      font-family: "sans-serif";
       color: #3c3c3c;
       font-weight: 38pt;
       line-height: 30pt;
@@ -53,8 +55,6 @@ export const Hexagon = styled.div`
   @media (max-width: 600px) {
     width: 350px;
     height: 310px;
-
-    margin-top: 8px;
 
     justify-content: center;
 
@@ -108,26 +108,38 @@ export const Phrase = styled.div`
 `;
 
 export const Courses = styled.div`
-  width: 80vw;
+  width: 65vw;
   margin: auto;
+  margin-top: 0px;
+  margin-bottom: -10px;
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   background-color: #fff;
 
-  > h1 {
-    font-family: "Oswald";
-    width: 100%;
-    text-align: center;
+  > hr {
+    display: flex;
+    width: 70vw;
   }
-
+  > img {
+    width: 30px;
+    float: right;
+    margin: 0px 17vw 0px 73vw;
+  }
   @media (max-width: 600px) {
     width: 100vw;
-    > h1 {
-      font-size: 1em;
-    }
     padding: 10px;
+
+    > hr {
+      width: 227px;
+    }
+
+    > img {
+      width: 30px;
+      float: right;
+      margin: 0px 17vw 0px 73vw;
+    }
   }
 `;
 export const Course = styled.div`
@@ -136,7 +148,7 @@ export const Course = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 28px 0px 28px !important;
   cursor: pointer;
   :hover {
     opacity: 0.6;
@@ -146,6 +158,7 @@ export const Course = styled.div`
     text-align: center;
     height: auto;
     font-weight: bolder;
+    white-space: nowrap;
   }
 
   > img {
@@ -159,6 +172,7 @@ export const Course = styled.div`
       height: 120px;
     }
     > div {
+      font-family: Oswald;
       height: 48px;
     }
     margin: 0 20px 0 20px;
@@ -196,18 +210,18 @@ export const WrapperNav = styled.div`
   justify-content: center;
 
   > a > img {
-    width: 175px;
-    height: 35px;
+    width: 170px;
+    height: 30px;
     /* margin-top: -78px; */
   }
 `;
 
 export const Footer = styled.div`
-  background-color: #000;
+  background-color: #333;
   color: #fff;
 
   padding: 14px;
-
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,8 +229,7 @@ export const Footer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 174px;
-  height: 35px;
+  width: 115px;
 `;
 
 export const WrapperIcons = styled.div`
@@ -263,11 +276,12 @@ export const Title = styled.div`
 export const Icon = styled.div``;
 
 export const AuthorName = styled.div`
+  text-align: right;
+  margin-right: 25px;
+  font-family: Oswald;
   @media (max-width: 600px) {
-    text-align: right;
     font-size: 11px;
-    margin-right: 11px;
-    font-family: Oswald;
+    margin-right: 20px;
   }
 `;
 
@@ -276,4 +290,26 @@ export const WrapperCourse = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+`;
+
+export const Share = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  height: 80px;
+  width: 65vw;
+  > h1 {
+    font-family: "Oswald";
+    width: 100%;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    height: 77px;
+    width: 278px;
+    margin-bottom: -3px;
+    > h1 {
+      font-size: 1em;
+    }
+  }
 `;

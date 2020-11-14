@@ -5,6 +5,16 @@ import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/de
 import headerForMobile from "../../assets/images/header-paginas-de-questoes-telas-menores.png";
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
+export const MainBackground = styled.div`
+  background: url(${backgroundIcons});
+  background-size: auto;
+  height: 100%;
+
+  @media only screen and (max-width: 600px) {
+    background-size: contain;
+    background-repeat: round;
+  }
+`;
 export const Progress = styled.div`
   height: 23px;
   background-color: #eada18;
@@ -59,7 +69,7 @@ export const Box = styled.div`
     font-family: "Source Han Sans JP Mediu";
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #3c3c3c;
     display: grid;
     align-content: center;
   }
@@ -83,7 +93,7 @@ export const Hexagon = styled.img`
   height: 140px;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #3c3c3c;
   font-weight: bold;
   font-size: 16px;
   text-align: center;
@@ -95,7 +105,7 @@ export const Hexagon = styled.img`
     opacity: 0.6;
   }
   @media (max-width: 600px) {
-    height: 90px;
+    height: 78px;
     width: 90px;
   }
 `;
@@ -113,7 +123,7 @@ export const Option = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: row;
-    margin: 10px;
+    margin: 5px 0px;
   }
 `;
 
@@ -129,14 +139,15 @@ export const Frame = styled.div`
   cursor: pointer;
   font-size: 18px;
   color: #333;
+
   font-weight: bold;
-  font-family: "Source Han Sans JP Mediu";
+  font-family: Roboto, sans-serif;
 
   :hover {
     opacity: 0.6;
   }
   @media (max-width: 600px) {
-    height: 90px;
+    height: 78px;
     width: 250px;
   }
 `;
@@ -153,6 +164,7 @@ export const ContainerQuestion = styled.div`
 
   @media (max-width: 600px) {
     height: 150px;
+    margin-bottom: -42px;
   }
 `;
 
@@ -163,6 +175,8 @@ export const ImageMobile = styled.img`
 
   @media (max-width: 600px) {
     display: block;
+    margin-top: -37px;
+    max-height: 370px;
   }
 `;
 
@@ -177,13 +191,16 @@ export const Image = styled.img`
 `;
 
 export const TitleQuestion = styled.div`
-  width: 280px;
   text-align: center;
+  font-weight: bold;
+  color: #333;
   z-index: 1;
-  font-size: 19px;
+  font-size: 24px;
+  width: 720px;
 
-  @media (min-width: 600px) {
-    width: 720px;
-    font-size: 24px;
+  @media (max-width: 600px) {
+    width: 280px;
+    font-size: 21px;
+    margin-top: -37px;
   }
 `;

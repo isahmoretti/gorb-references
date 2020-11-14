@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 // import PropTypes from "prop-types";
 
+import fundo1 from "../../assets/images/fundo1.png";
+import fundo2 from "../../assets/images/fundo2.png";
 import layub_logo from "../../assets/images/layub_logo.png";
 import logo_viacarreira from "../../assets/images/logo-branco-rodape.png";
 import testevocacional from "../../assets/images/teste-vocacional.jpg";
@@ -10,6 +12,7 @@ import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
 import facebook from "../../assets/images/facebook.svg";
 import twitter from "../../assets/images/twitter.svg";
 import linkedin from "../../assets/images/linkedin.svg";
+import share from "../../assets/images/compartilhar.svg";
 
 // components
 import GoogleAds from "../../components/GoogleAds";
@@ -38,6 +41,8 @@ import {
   ButtonFooter,
   Title,
   Icon,
+  Fundo1,
+  Fundo2,
 } from "./style";
 
 const HomePageTest = () => {
@@ -54,24 +59,27 @@ const HomePageTest = () => {
       </Nav>
 
       <WrapperHome>
+        <Fundo1 src={fundo1} />
         <ContentHome className="container">
           <h1> Quer descobrir quais cursos mais combinam com você? </h1>
 
           <Box>
             <Content>
               <h2> Então responda as perguntas com atenção. </h2>
-              <Button onClick={() => history.push("/test")}>
+              <Button onClick={() => history.push("/test")} className="first">
                 {" "}
                 Fazer teste
               </Button>
             </Content>
           </Box>
         </ContentHome>
+      <Fundo2 src={fundo2} />
       </WrapperHome>
 
       <WrapperText className="container">
         <h1> O que é o Teste Vocacional? </h1>
-
+        <img src={share} />
+        <hr/>
         <p>
           O teste vocacional é uma ferramenta que auxilia na escolha da
           profissão. Para isso, relaciona as áreas de atuação com os perfis
@@ -219,7 +227,7 @@ const HomePageTest = () => {
         </div>
       </WrapperText>
 
-      <Button onClick={() => history.push("/test")} className="center">
+      <Button onClick={() => history.push("/test")} className="center last">
         {" "}
         Fazer teste vocacional{" "}
       </Button>

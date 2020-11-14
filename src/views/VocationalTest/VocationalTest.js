@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TEST_CONTENT } from "./constants";
 import imgHeaderMobile from "../../assets/images/topo_mobile_teste_600x100.png";
@@ -8,7 +8,7 @@ import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/
 
 import Content from "./Content";
 import Result from "./Result";
-import { Progress, Header, Background } from "./style";
+import { Progress, Header, Background, MainBackground } from "./style";
 
 import {
   Footer,
@@ -28,6 +28,7 @@ import layub_logo from "../../assets/images/layub_logo.png";
 import facebook from "../../assets/images/facebook.svg";
 import twitter from "../../assets/images/twitter.svg";
 import linkedin from "../../assets/images/linkedin.svg";
+import { set } from "date-fns";
 
 const VocationalTest = () => {
   const [state, setState] = useState({
@@ -43,6 +44,7 @@ const VocationalTest = () => {
       e: 0,
     },
   });
+
   const { testIsOver, total, part, thirteenAnswer, answers } = state;
   const data = TEST_CONTENT[part - 1];
   const fragment = (100 / 14) * part;
@@ -75,12 +77,7 @@ const VocationalTest = () => {
     return <Result answers={answers} thirteenAnswer={thirteenAnswer} />;
 
   return (
-    <div
-      style={{
-        background: `url(${backgroundIcons})`,
-        height: "100%",
-      }}
-    >
+    <MainBackground>
       <div id="top"></div>
       <Header>
         <img
@@ -155,7 +152,7 @@ const VocationalTest = () => {
           2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
         </TitleReservation>
       </Footer>
-    </div>
+    </MainBackground>
   );
 };
 
