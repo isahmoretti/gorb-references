@@ -34,7 +34,7 @@ const VocationalTest = () => {
   const [state, setState] = useState({
     testIsOver: false,
     total: 14,
-    part: 13,
+    part: 1,
     thirteenAnswer: "",
     answers: {
       a: 0,
@@ -91,7 +91,7 @@ const VocationalTest = () => {
           }}
         />
         <Background>
-          <Progress width={fragment}>
+          <Progress width={Math.ceil(fragment)}>
             {part}/{total}
           </Progress>
         </Background>

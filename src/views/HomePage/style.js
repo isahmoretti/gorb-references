@@ -267,7 +267,7 @@ export const WrapperIcons = styled.div`
 `;
 
 export const Icons = styled.img`
-  margin-left: 30px;
+  margin: 0px 15px;
 
   width: 20px;
   height: 20px;

@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers/desktop_cabeçalho_perguntas.png";
-import imgHeaderMobile from "../../assets/images/topo_mobile_teste_600x100.png";
-import imgBackground from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
-import headerForMobile from "../../assets/images/header-paginas-de-questoes-telas-menores.png";
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
 export const MainBackground = styled.div`
   background: url(${backgroundIcons});
   background-size: auto;
-  height: 100%;
+  height: auto;
 
   @media only screen and (max-width: 600px) {
     background-size: contain;
@@ -100,13 +96,14 @@ export const Hexagon = styled.img`
 
   cursor: pointer;
   transition: opacity 0.2s;
-
+    margin-bottom: 20px;
   :hover {
     opacity: 0.6;
   }
   @media (max-width: 600px) {
     height: 78px;
     width: 90px;
+  margin-bottom: 0px;
   }
 `;
 
