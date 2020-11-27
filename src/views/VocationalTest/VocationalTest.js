@@ -8,7 +8,13 @@ import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/
 
 import Content from "./Content";
 import Result from "./Result";
-import { Progress, Header, Background, MainBackground } from "./style";
+import {
+  Progress,
+  Header,
+  Background,
+  MainBackground,
+  MobileFooter,
+} from "./style";
 
 import {
   Footer,
@@ -102,56 +108,58 @@ const VocationalTest = () => {
         nextAnswer={nextAnswer}
         setAnswer={setAnswer}
       />
-      <Footer>
-        <Logo src={logo_viacarreira} />
-        <WrapperIcons>
-          <a href="https://www.facebook.com/viacarreira/">
-            <Icons src={facebook} />
-          </a>
-          <a href="https://twitter.com/viacarreira">
-            <Icons src={twitter} />
-          </a>
-          <a href="https://www.linkedin.com/company/viacarreira/">
-            <Icons src={linkedin} />
-          </a>
-        </WrapperIcons>
-        <WrapperContentFooter className="container">
-          <ButtonFooter>
-            <a href="https://viacarreira.com/">
-              {" "}
-              <Title> Home </Title>
+      <MobileFooter>
+        <Footer>
+          <Logo src={logo_viacarreira} />
+          <WrapperIcons>
+            <a href="https://www.facebook.com/viacarreira/">
+              <Icons src={facebook} />
             </a>
-
-            <Icon> > </Icon>
-          </ButtonFooter>
-
-          <ButtonFooter>
-            <a href="https://viacarreira.com/sobre/">
-              <Title>Sobre</Title>
+            <a href="https://twitter.com/viacarreira">
+              <Icons src={twitter} />
             </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
-
-          <ButtonFooter>
-            <a href="https://viacarreira.com/politica-de-privacidade/">
-              <Title>Políticas de privacidade</Title>
+            <a href="https://www.linkedin.com/company/viacarreira/">
+              <Icons src={linkedin} />
             </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
+          </WrapperIcons>
+          <WrapperContentFooter className="container">
+            <ButtonFooter>
+              <a href="https://viacarreira.com/">
+                {" "}
+                <Title> Home </Title>
+              </a>
 
-          <ButtonFooter>
-            <a href="https://viacarreira.com/contato/">
-              <Title>Fale conosco</Title>
-            </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
-        </WrapperContentFooter>
-        <LogoFooter src={layub_logo} />
-        <TitleReservation>
-          {" "}
-          2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
-        </TitleReservation>
-      </Footer>
+              <Icon> > </Icon>
+            </ButtonFooter>
+
+            <ButtonFooter>
+              <a href="https://viacarreira.com/sobre/">
+                <Title>Sobre</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
+
+            <ButtonFooter>
+              <a href="https://viacarreira.com/politica-de-privacidade/">
+                <Title>Políticas de privacidade</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
+
+            <ButtonFooter>
+              <a href="https://viacarreira.com/contato/">
+                <Title>Fale conosco</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
+          </WrapperContentFooter>
+          <LogoFooter src={layub_logo} />
+          <TitleReservation>
+            {" "}
+            2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
+          </TitleReservation>
+        </Footer>
+      </MobileFooter>
     </MainBackground>
   );
 };

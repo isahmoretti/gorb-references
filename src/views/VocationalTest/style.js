@@ -96,14 +96,14 @@ export const Hexagon = styled.img`
 
   cursor: pointer;
   transition: opacity 0.2s;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
   :hover {
     opacity: 0.6;
   }
   @media (max-width: 600px) {
     height: 78px;
     width: 90px;
-  margin-bottom: 0px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -199,5 +199,13 @@ export const TitleQuestion = styled.div`
     width: 280px;
     font-size: 21px;
     margin-top: -37px;
+  }
+`;
+
+export const MobileFooter = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: unset;
   }
 `;

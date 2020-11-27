@@ -43,6 +43,14 @@ import {
   Icon,
   Fundo1,
   Fundo2,
+  MobileFooter,
+  DesktopFooter,
+  ContainerDesktopFooter,
+  BoxDesktopFooter,
+  LogoDesktopFooter,
+  ContentDesktopFooter,
+  IconsDesktopFooter,
+  LabelDesktopFooter,
 } from "./style";
 
 const HomePageTest = () => {
@@ -73,13 +81,17 @@ const HomePageTest = () => {
             </Content>
           </Box>
         </ContentHome>
-      <Fundo2 src={fundo2} />
+        <Fundo2 src={fundo2} />
       </WrapperHome>
 
       <WrapperText className="container">
         <h1> O que é o Teste Vocacional? </h1>
-        <img src={share} />
-        <hr/>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+        >
+          <img src={share} width="50" height="50" />
+        </a>
+        <hr />
         <p>
           O teste vocacional é uma ferramenta que auxilia na escolha da
           profissão. Para isso, relaciona as áreas de atuação com os perfis
@@ -232,54 +244,129 @@ const HomePageTest = () => {
         Fazer teste vocacional{" "}
       </Button>
 
-      <Footer>
-        <Logo src={logo_viacarreira} />
-        <WrapperIcons>
-          <a href="https://www.facebook.com/viacarreira/">
-            <Icons src={facebook} />
-          </a>
-          <a href="https://twitter.com/viacarreira">
-            <Icons src={twitter} />
-          </a>
-          <a href="https://www.linkedin.com/company/viacarreira/">
-            <Icons src={linkedin} />
-          </a>
-        </WrapperIcons>
-        <WrapperContent className="container">
-          <ButtonFooter>
-            <a href="https://viacarreira.com/">
-              <Title>Home</Title>
+      <MobileFooter>
+        <Footer>
+          <Logo src={logo_viacarreira} />
+          <WrapperIcons>
+            <a href="https://www.facebook.com/viacarreira/">
+              <Icons src={facebook} />
             </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
+            <a href="https://twitter.com/viacarreira">
+              <Icons src={twitter} />
+            </a>
+            <a href="https://www.linkedin.com/company/viacarreira/">
+              <Icons src={linkedin} />
+            </a>
+          </WrapperIcons>
+          <WrapperContent className="container">
+            <ButtonFooter>
+              <a href="https://viacarreira.com/">
+                <Title>Home</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
 
-          <ButtonFooter>
-            <a href="https://viacarreira.com/sobre/">
-              <Title>Sobre</Title>
-            </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
+            <ButtonFooter>
+              <a href="https://viacarreira.com/sobre/">
+                <Title>Sobre</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
 
-          <ButtonFooter>
-            <a href="https://viacarreira.com/politica-de-privacidade/">
-              <Title>Políticas de privacidade</Title>
-            </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
+            <ButtonFooter>
+              <a href="https://viacarreira.com/politica-de-privacidade/">
+                <Title>Políticas de privacidade</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
 
-          <ButtonFooter>
-            <a href="https://viacarreira.com/contato/">
-              <Title>Fale conosco</Title>
-            </a>
-            <Icon> > </Icon>
-          </ButtonFooter>
-        </WrapperContent>
-        <LogoFooter src={layub_logo} />
-        <TitleReservation>
-          {" "}
-          2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
-        </TitleReservation>
-      </Footer>
+            <ButtonFooter>
+              <a href="https://viacarreira.com/contato/">
+                <Title>Fale conosco</Title>
+              </a>
+              <Icon> > </Icon>
+            </ButtonFooter>
+          </WrapperContent>
+
+          <TitleReservation>
+            {" "}
+            2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
+          </TitleReservation>
+        </Footer>
+      </MobileFooter>
+
+      <DesktopFooter>
+        <ContainerDesktopFooter>
+          <BoxDesktopFooter>
+            <LogoDesktopFooter>
+              <img src={logo_viacarreiraRoxo} alt="" />
+            </LogoDesktopFooter>
+            <ContentDesktopFooter>
+              O Via Carreira é um portal que facilita o planejamento da
+              carreira, com conselhos e informações sobre formação, trabalhos
+              acadêmicos e busca por emprego. Também temos conteúdos sobre
+              empreendedorismo e desenvolvimento pessoal.
+            </ContentDesktopFooter>
+            <IconsDesktopFooter>
+              <a href="https://www.facebook.com/viacarreira/">
+                <Icons src={facebook} />
+              </a>
+              <a href="https://twitter.com/viacarreira">
+                <Icons src={twitter} />
+              </a>
+              <a href="https://www.linkedin.com/company/viacarreira/">
+                <Icons src={linkedin} />
+              </a>
+            </IconsDesktopFooter>
+          </BoxDesktopFooter>
+          <BoxDesktopFooter>
+            <ContentDesktopFooter>
+              <ul>
+                <li>
+                  {" "}
+                  <a href="https://viacarreira.com/">
+                    <Title>Home</Title>
+                  </a>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <a href="https://viacarreira.com/sobre/">
+                    <Title>Sobre</Title>
+                  </a>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <a href="https://viacarreira.com/politica-de-privacidade/">
+                    <Title>Políticas de privacidade</Title>
+                  </a>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <a href="https://viacarreira.com/contato/">
+                    <Title>Fale conosco</Title>
+                  </a>{" "}
+                </li>
+                <li> FANUNCIE </li>
+              </ul>
+            </ContentDesktopFooter>
+          </BoxDesktopFooter>
+          <BoxDesktopFooter>
+            <ContentDesktopFooter>
+              <ul>
+                <li> ACADÊMICO </li>
+                <li> CURSOS </li>
+                <li> PROFISSÕES </li>
+                <li> EMPREGO </li>
+                <li> MEU NEGÓCIO </li>
+              </ul>
+            </ContentDesktopFooter>
+          </BoxDesktopFooter>
+        </ContainerDesktopFooter>
+
+        <LabelDesktopFooter>
+          2013 - 2020 © Layub - Todos os direitos reservados
+        </LabelDesktopFooter>
+      </DesktopFooter>
     </Container>
   );
 };

@@ -157,10 +157,10 @@ export const WrapperText = styled.div`
     font-family: Oswald;
   }
 
-  > img {
+  > a > img {
     width: 30px;
+    height: 30px;
     float: right;
-    margin: 0px 10% 0px 90%;
   }
 
   hr {
@@ -237,7 +237,7 @@ export const Button = styled.button`
     }
     &.first {
       padding: 20px;
-    margin-top: 10px;
+      margin-top: 10px;
     }
   }
 `;
@@ -267,7 +267,7 @@ export const WrapperIcons = styled.div`
 `;
 
 export const Icons = styled.img`
-  margin: 0px 15px;
+  margin-right: 20px;
 
   width: 20px;
   height: 20px;
@@ -300,3 +300,64 @@ export const Title = styled.div`
   color: #fff;
 `;
 export const Icon = styled.div``;
+
+export const MobileFooter = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: unset;
+  }
+`;
+
+export const DesktopFooter = styled.div`
+  display: unset;
+  padding: 50px 0%;
+  background-color: #333;
+  color: #fff;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+
+  display: flex;
+  flex-direction: column;
+`;
+export const ContainerDesktopFooter = styled.div`
+  display: flex;
+
+  padding: 10px 30px;
+`;
+export const BoxDesktopFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 33%;
+`;
+export const LogoDesktopFooter = styled.div`
+  margin-bottom: 15px;
+
+  > img {
+    width: 170px;
+    height: 30px;
+  }
+`;
+export const ContentDesktopFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  > ul > li {
+    list-style: none;
+    text-transform: uppercase;
+    line-height: 2.5;
+  }
+`;
+export const IconsDesktopFooter = styled.div`
+  margin: 15px 0;
+`;
+
+export const LabelDesktopFooter = styled.div`
+  text-align: center;
+`;
