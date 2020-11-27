@@ -6,6 +6,8 @@ import imgHeaderDesktop from "../../assets/images/VocationalTest/Desktop/Answers
 
 import backgroundIcons from "../../assets/images/VocationalTest/Desktop/Answers/desktop-perguntas.png";
 
+import FooterComponent from "../../components/Footer";
+
 import Content from "./Content";
 import Result from "./Result";
 import {
@@ -91,6 +93,7 @@ const VocationalTest = () => {
           alt=""
           style={{
             width: "100%",
+            height: window.innerWidth < 600 ? 63 : 188,
             position: "absolute",
             top: 0,
             left: 0,
@@ -108,58 +111,7 @@ const VocationalTest = () => {
         nextAnswer={nextAnswer}
         setAnswer={setAnswer}
       />
-      <MobileFooter>
-        <Footer>
-          <Logo src={logo_viacarreira} />
-          <WrapperIcons>
-            <a href="https://www.facebook.com/viacarreira/">
-              <Icons src={facebook} />
-            </a>
-            <a href="https://twitter.com/viacarreira">
-              <Icons src={twitter} />
-            </a>
-            <a href="https://www.linkedin.com/company/viacarreira/">
-              <Icons src={linkedin} />
-            </a>
-          </WrapperIcons>
-          <WrapperContentFooter className="container">
-            <ButtonFooter>
-              <a href="https://viacarreira.com/">
-                {" "}
-                <Title> Home </Title>
-              </a>
-
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/sobre/">
-                <Title>Sobre</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/politica-de-privacidade/">
-                <Title>Políticas de privacidade</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/contato/">
-                <Title>Fale conosco</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-          </WrapperContentFooter>
-          <LogoFooter src={layub_logo} />
-          <TitleReservation>
-            {" "}
-            2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
-          </TitleReservation>
-        </Footer>
-      </MobileFooter>
+      <FooterComponent />
     </MainBackground>
   );
 };

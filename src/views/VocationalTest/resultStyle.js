@@ -122,10 +122,11 @@ export const Courses = styled.div`
     display: flex;
     width: 70vw;
   }
-  > img {
+  > a > img {
     width: 30px;
+    height: 30px;
     float: right;
-    margin: 0px 17vw 0px 73vw;
+    /* margin: 0px 17vw 0px 73vw; */
   }
   @media (max-width: 600px) {
     width: 100vw;
@@ -138,7 +139,7 @@ export const Courses = styled.div`
     > img {
       width: 30px;
       float: right;
-      margin: 0px 17vw 0px 73vw;
+      /* margin: 0px 17vw 0px 73vw; */
     }
   }
 `;

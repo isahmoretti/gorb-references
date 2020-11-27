@@ -97,9 +97,7 @@ export const Hexagon = styled.img`
   cursor: pointer;
   transition: opacity 0.2s;
   margin-bottom: 20px;
-  :hover {
-    opacity: 0.6;
-  }
+
   @media (max-width: 600px) {
     height: 78px;
     width: 90px;
@@ -137,12 +135,8 @@ export const Frame = styled.div`
   font-size: 18px;
   color: #333;
 
-  font-weight: bold;
   font-family: Roboto, sans-serif;
 
-  :hover {
-    opacity: 0.6;
-  }
   @media (max-width: 600px) {
     height: 78px;
     width: 250px;

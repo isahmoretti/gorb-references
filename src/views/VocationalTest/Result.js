@@ -78,8 +78,12 @@ const Result = (props) => {
           <h1>CURSOS INDICADOS</h1>
         </Share>
         <Courses>
-        <img src={share} />
-        <hr/>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+          >
+            <img src={share} width="50" height="50" />
+          </a>
+          <hr />
           <WrapperCourse>
             {courses.map(({ name, imageName, link }, index) => (
               <Course key={index} onClick={() => window.open(link)}>
@@ -105,7 +109,7 @@ const Result = (props) => {
           </a>
         </WrapperIcons>
         <WrapperContentFooter className="container">
-        <ButtonFooter>
+          <ButtonFooter>
             <a href="https://viacarreira.com/">
               {" "}
               <Title> Home </Title>
