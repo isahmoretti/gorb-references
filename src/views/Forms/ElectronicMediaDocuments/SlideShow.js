@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Formik } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../../components/InputWrapper/Input";
@@ -20,12 +20,26 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Plus from "../../../assets/images/plus-dark.svg";
+import Minus from "../../../assets/images/minus.svg";
 
 // styles
-import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Back,
+  Actions,
+  Title,
+  FieldArrayContainer,
+  AddIcon,
+  RemoveIcon,
+  ErrorText,
+} from "./style";
 
 const SignupSchema = Yup.object().shape({
-  author: Yup.string().required("Obrigatório"),
+  authors: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   type: Yup.string().required("Obrigatório"),
   year: Yup.string().required("Obrigatório"),
@@ -33,7 +47,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   const {
-    author,
+    authors,
     title,
     caption,
     day,
@@ -64,7 +78,7 @@ const generateReference = (values) => {
   };
   return (
     <span>
-      {author && <>{formatAuthorName(author)}</>}
+      {authors && <>{formatAuthorName(authors)}</>}
 
       {caption ? (
         <>
@@ -84,7 +98,7 @@ const generateReference = (values) => {
 
       {type && <>{type}. </>}
       {numberOfSlides && <>{numberOfSlides} slides. </>}
-      {colorType && <>{getColorFormatted(colorType)}, </>}
+      {colorType && <>{getColorFormatted(colorType)}. </>}
       {dimension && <>{dimension}. </>}
       {note && <>{note}. </>}
       {accessedAt &&
@@ -110,11 +124,11 @@ const SlideShow = ({ back }) => {
       values,
       references: generateReference(values),
       citationWithAuthor: generateCitationWithAuthor(
-        values.author,
+        values.authors,
         String(values.year)
       ),
       citation: generateCitationWithoutAuthor(
-        values.author,
+        values.authors,
         String(values.year)
       ),
     }));
@@ -124,11 +138,11 @@ const SlideShow = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
 
       <Formik
         initialValues={{
-          author: "",
+          authors: [""],
           title: "",
           caption: "",
           day: "",
@@ -164,19 +178,74 @@ const SlideShow = ({ back }) => {
             <Card>
               <Content>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Nome do autor"
-                      placeholder="Ex: Ana Carolina Puga"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
-                      errors={props.errors}
-                      touched={props.touched}
+                  <Grid item xs={12} sm={12} md={12}>
+                    <FieldArray
+                      name="authors"
+                      render={(arrayHelpers) => (
+                        <div>
+                          {props.values.authors &&
+                          props.values.authors.length > 0 ? (
+                            props.values.authors.map((author, index) => (
+                              <FieldArrayContainer key={index}>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    marginBottom: 10,
+                                  }}
+                                >
+                                  <Input
+                                    name={`authors.${index}`}
+                                    label={`${index + 1}º Autor`}
+                                    type="text"
+                                    placeholder="Nome do autor"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={author}
+                                    errors={props.errors}
+                                    touched={props.touched}
+                                  />
+                                  {index > 0 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    >
+                                      <RemoveIcon src={Minus} />
+                                    </ButtonCore>
+                                  )}
+                                  {index ===
+                                    props.values.authors.length - 1 && (
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon src={Plus} />
+                                    </ButtonCore>
+                                  )}
+                                </div>
+                                <div style={{ width: "100%" }}>
+                                  <ErrorText>
+                                    {props.errors &&
+                                      props.errors.authors &&
+                                      props.errors.authors[index]}
+                                  </ErrorText>
+                                </div>
+                              </FieldArrayContainer>
+                            ))
+                          ) : (
+                            <ButtonCore
+                              type="button"
+                              onClick={() => arrayHelpers.push("")}
+                            >
+                              Add a author
+                            </ButtonCore>
+                          )}
+                        </div>
+                      )}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
@@ -190,9 +259,7 @@ const SlideShow = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
                       label="Subtítulo"
@@ -205,6 +272,8 @@ const SlideShow = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2} style={{ marginBottom: 5 }}>
                   <Grid item xs={12} sm={12} md={3}>
                     <Input
                       name="day"
@@ -219,7 +288,7 @@ const SlideShow = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Select
                       name="month"
                       label="Mês da apresentação"
@@ -241,7 +310,7 @@ const SlideShow = ({ back }) => {
                         { value: "set", name: "Setembro" },
                         { value: "out", name: "Outubro" },
                         { value: "nov", name: "Novembro" },
-                        { value: "dev", name: "Dezembro" },
+                        { value: "dez", name: "Dezembro" },
                       ]}
                     />
                   </Grid>

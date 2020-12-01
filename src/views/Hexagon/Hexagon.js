@@ -36,7 +36,10 @@ const HexagonPage = () => {
               <p className="txt-white">Livros</p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => history.push("/documentos-juridicos")} className="green">
+            <Hexagon
+              onClick={() => history.push("/documentos-juridicos")}
+              className="green"
+            >
               <p className="txt-white">
                 Documentos <br /> jurídicos e civis
               </p>
@@ -44,7 +47,10 @@ const HexagonPage = () => {
           </Row>
 
           <Row>
-            <Hexagon onClick={() => history.push("/trabalhos-academicos")} className="yellow">
+            <Hexagon
+              onClick={() => history.push("/trabalhos-academicos")}
+              className="yellow"
+            >
               <p className="txt-white">
                 Trabalhos <br />
                 acadêmicos e <br />
@@ -56,7 +62,10 @@ const HexagonPage = () => {
               {" "}
               Gerador <br /> Online de <br /> Referências <br /> Bibliográficas{" "}
             </Title>
-            <Hexagon onClick={() => history.push("/meio-eletronico")} className="wine">
+            <Hexagon
+              onClick={() => history.push("/meio-eletronico")}
+              className="wine"
+            >
               <p className="txt-white">
                 Documentos <br />
                 exclusivos de meio <br />
@@ -64,9 +73,12 @@ const HexagonPage = () => {
               </p>
             </Hexagon>
           </Row>
-
+          {/* f2f2f8 */}
           <Row>
-            <Hexagon onClick={() => history.push("/evento")} className="blue-dark">
+            <Hexagon
+              onClick={() => history.push("/evento")}
+              className="blue-dark"
+            >
               <p className="txt-white">
                 {" "}
                 Eventos,
@@ -80,7 +92,10 @@ const HexagonPage = () => {
               </p>
             </Hexagon>
             <Separator />
-            <Hexagon onClick={() => history.push("/audiovisual")} className="violet">
+            <Hexagon
+              onClick={() => history.push("/audiovisual")}
+              className="violet"
+            >
               <p className="txt-white">
                 Documentos <br />
                 audiovisuais

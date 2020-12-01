@@ -69,18 +69,33 @@ const Email = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
+
+  const handleCitation1 = (name, date) => {
+    const year = date.split("-")[0];
+
+    return `${name}, (${year})`;
+  };
+
+  const handleCitation2 = (name, date) => {
+    const year = date.split("-")[0];
+
+    return `(${name}, ${year})`;
+  };
 
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.sender,
-        values.sendDate
-      ),
-      citation: generateCitationWithoutAuthor(values.sender, values.sendDate),
+      citationWithAuthor:
+        values.type === "entity"
+          ? handleCitation1(values.sender, values.sendDate)
+          : generateCitationWithAuthor(values.sender, values.sendDate),
+      citation:
+        values.type === "entity"
+          ? handleCitation2(values.sender, values.sendDate)
+          : generateCitationWithoutAuthor(values.sender, values.sendDate),
     }));
 
     setOpenModal(!openModal);
@@ -88,7 +103,7 @@ const Email = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
 
       <Formik
         initialValues={{

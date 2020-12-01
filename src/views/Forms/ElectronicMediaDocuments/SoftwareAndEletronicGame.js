@@ -27,7 +27,7 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
-  caption: Yup.string().required("Obrigatório"),
+  // caption: Yup.string().required("Obrigatório"),
   editionOrVersion: Yup.string().required("Obrigatório"),
   local: Yup.string().required("Obrigatório"),
   producer: Yup.string().required("Obrigatório"),
@@ -50,10 +50,18 @@ const generateReference = (values) => {
 
   return (
     <span>
-      <>
-        {formatMonosyllable(title)}: {caption}.{" "}
-      </>
-      {editionOrVersion && <>{editionOrVersion} </>}
+      {caption ? (
+        <>
+          {
+            <>
+              {formatMonosyllable(title)}: <>{caption}. </>
+            </>
+          }
+        </>
+      ) : (
+        <>{formatMonosyllable(title)}. </>
+      )}
+      {editionOrVersion && <>{editionOrVersion}. </>}
       {local && <>{local}: </>}
       {producer && <>{producer}, </>}
       {releaseYear && <>{releaseYear}. </>}
@@ -73,7 +81,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -95,7 +103,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
 
       <Formik
         initialValues={{

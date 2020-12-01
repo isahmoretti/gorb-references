@@ -72,12 +72,13 @@ const SocialNetworkPost = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleCitation = (text, yaer) => {
+    const date = yaer.split("-")[0];
     return {
-      cit1: `${text} (${yaer})`,
-      cit2: `(${text.toUpperCase()}, ${yaer})`,
+      cit1: `${text} (${date})`,
+      cit2: `(${text.toUpperCase()}, ${date})`,
     };
   };
 
@@ -98,7 +99,7 @@ const SocialNetworkPost = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
 
       <Formik
         initialValues={{

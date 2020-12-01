@@ -306,7 +306,7 @@ const Ebook = ({ back }) => {
                   <Grid item xs={12} sm={12} md={6}>
                     <Input
                       type="text"
-                      label="Título:"
+                      label="Título"
                       placeholder="Ex: Noventa Anos de Rádio no Brasil"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -318,7 +318,20 @@ const Ebook = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <Input
+                      type="text"
+                      label="Subtítulo"
+                      placeholder="Ex: Nome a ser difinido"
+                      onChange={props.handleChange}
+                      onBlur={props.handleBlur}
+                      value={props.values.caption}
+                      name="caption"
+                      errors={props.errors}
+                      touched={props.touched}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Local"
@@ -331,7 +344,7 @@ const Ebook = ({ back }) => {
                       touched={props.touched}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
+                  <Grid item xs={12} sm={12} md={4}>
                     <Input
                       type="text"
                       label="Editora"
