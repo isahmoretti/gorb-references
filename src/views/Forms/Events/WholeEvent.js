@@ -27,7 +27,7 @@ import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 const SignupSchema = Yup.object().shape({
   mainEventName: Yup.string().required("Obrigatório"),
   // mainEventNumber: Yup.string().required("Obrigatório"),
-  participationEventNumbering: Yup.string().required("Obrigatório"),
+  // participationEventNumbering: Yup.string().required("Obrigatório"),
   placeOfPerformance: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
   // placeOfPublication: Yup.string().required("Obrigatório"),
@@ -105,8 +105,8 @@ const WholeEvent = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
-  
+  const history = useHistory();
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -127,7 +127,7 @@ const WholeEvent = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/evento')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/evento")} src={ArrowLeft} />
 
       <Formik
         initialValues={{

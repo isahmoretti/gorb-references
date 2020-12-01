@@ -62,9 +62,7 @@ const generateReference = (values) => {
     supplement,
     pageInit,
     pageFinish,
-    day,
-    month,
-    year,
+    date,
     eventNumber,
     eventName,
     locationOfTheEvent,
@@ -85,9 +83,7 @@ const generateReference = (values) => {
       {number && <>n. {number}, </>}
       {pageInit && !pageFinish && `p. ${pageInit}, `}
       {pageInit && pageFinish && `p. ${pageInit}-${pageFinish}, `}
-      {day && month && year && `${day} ${month}. ${year}. `}
-      {!day && month && year && `${month}. ${year}. `}
-      {!day && !month && year && `${year}. `}
+      {date && `${date} `}
       {supplement && <>​{supplement}. </>}
       {eventNumber && eventName && (
         <>
@@ -110,7 +106,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -129,7 +125,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/evento')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/evento")} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -145,9 +141,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           supplement: "",
           pageInit: "",
           pageFinish: "",
-          day: "",
-          month: "",
-          year: "",
+          date: "",
           eventNumber: "",
           eventName: "",
           locationOfTheEvent: "",
@@ -386,59 +380,19 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={2}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Input
-                      name="day"
-                      type="number"
-                      label="Dia"
-                      InputProps={{ inputProps: { min: 0 } }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.day}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Select
-                      name="month"
-                      label="Mês"
+                      name="date"
                       type="text"
-                      placeholder="Mês"
+                      label="Data"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
-                      value={props.values.month}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "jan", name: "Janeiro" },
-                        { value: "fev", name: "Fevereiro" },
-                        { value: "mar", name: "Março" },
-                        { value: "abr", name: "Abril" },
-                        { value: "mai", name: "Maio" },
-                        { value: "jun", name: "Junho" },
-                        { value: "jul", name: "Julho" },
-                        { value: "ago", name: "Agosto" },
-                        { value: "set", name: "Setembro" },
-                        { value: "out", name: "Outubro" },
-                        { value: "nov", name: "Novembro" },
-                        { value: "dev", name: "Dezembro" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="year"
-                      type="number"
-                      label="Ano"
-                      InputProps={{ inputProps: { min: 0 } }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.year}
+                      value={props.values.date}
                       errors={props.errors}
                       touched={props.touched}
                     />
                   </Grid>
+
                   <Grid item xs={12} sm={12} md={4}>
                     <Input
                       name="supplement"

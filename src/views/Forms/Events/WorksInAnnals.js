@@ -51,6 +51,7 @@ const SignupSchema = Yup.object().shape({
 const generateReference = (values) => {
   const {
     authors,
+    abbreviate,
     workTitle,
     caption,
     eventName,
@@ -73,7 +74,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {authors && <>{formatAuthorName(authors)}</>}
+      {authors && <>{formatAuthorName(authors, abbreviate)}</>}
       {caption ? <>{`${workTitle}: ${caption}. `}</> : `${workTitle}. `}
 
       {eventName && (
@@ -81,12 +82,16 @@ const generateReference = (values) => {
           <i>In:</i> {eventName.toUpperCase()},{" "}
         </>
       )}
-      {eventNumber && <>{eventNumber}. </>}
+      {eventNumber && <>{eventNumber}, </>}
       {eventYaer && <>{eventYaer}, </>}
       {eventNumbering && <>{eventNumbering}., </>}
       {placeOfEvent && <>{placeOfEvent}. </>}
 
-      {documentTitle && <b>{documentTitle} [...]. </b>}
+      {documentTitle && (
+        <>
+          <b>{documentTitle}</b> [...].{" "}
+        </>
+      )}
       {placeOfPublication && <>{placeOfPublication}: </>}
       {responsibility && <>{responsibility}, </>}
       {yearOfPublication && <>{yearOfPublication}. </>}
@@ -113,7 +118,7 @@ const WorksInAnnals = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -135,7 +140,7 @@ const WorksInAnnals = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/evento')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/evento")} src={ArrowLeft} />
 
       <Formik
         initialValues={{
