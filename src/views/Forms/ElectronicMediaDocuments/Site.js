@@ -11,6 +11,7 @@ import { Grid } from "@material-ui/core";
 import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -68,7 +69,7 @@ const Site = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -85,190 +86,196 @@ const Site = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back
+          onClick={() => history.push("/meio-eletronico")}
+          src={ArrowLeft}
+        />
 
-      <Formik
-        initialValues={{
-          author: "",
-          siteName: "",
-          description: "",
-          local: "",
-          publishingCompany: "",
-          yearOfPublication: "",
-          complementaryInformations: "",
-          url: "",
-          accessedAt: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Site (Homepage)
-                </p>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Autor ou Organização"
-                      placeholder="Ex: CAPES - Coordenação de Aperfeiçoamento de Pessoal de Nível Superior"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      name="author"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Nome do site"
-                      placeholder="Ex: Plataforma Sucupira"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.siteName}
-                      name="siteName"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      type="text"
-                      label="Descrição"
-                      placeholder="Ex: Incluir descrição (se houver)"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.description}
-                      name="description"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Local"
-                      placeholder="Ex: Brasília"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.local}
-                      name="local"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Publicadora"
-                      placeholder="Ex: CAPES"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      name="publishingCompany"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      type="text"
-                      label="Ano"
-                      placeholder="Ex: 2016"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
-                      name="yearOfPublication"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Informações complementáres"
-                      placeholder="Ex: Elaborado por..."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.complementaryInformations}
-                      name="complementaryInformations"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      label="Acesso em"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      name="accessedAt"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={9}>
-                    <Input
-                      type="text"
-                      label="Disponível em"
-                      placeholder="Ex: https://sucupira.capes.gov.br/sucupira/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
+        <Formik
+          initialValues={{
+            author: "",
+            siteName: "",
+            description: "",
+            local: "",
+            publishingCompany: "",
+            yearOfPublication: "",
+            complementaryInformations: "",
+            url: "",
+            accessedAt: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
                   >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                    Site (Homepage)
+                  </p>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Autor ou Organização"
+                        placeholder="Ex: CAPES - Coordenação de Aperfeiçoamento de Pessoal de Nível Superior"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.author}
+                        name="author"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Nome do site"
+                        placeholder="Ex: Plataforma Sucupira"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.siteName}
+                        name="siteName"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Input
+                        type="text"
+                        label="Descrição"
+                        placeholder="Ex: Incluir descrição (se houver)"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.description}
+                        name="description"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Local"
+                        placeholder="Ex: Brasília"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.local}
+                        name="local"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        type="text"
+                        label="Publicadora"
+                        placeholder="Ex: CAPES"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.publishingCompany}
+                        name="publishingCompany"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        type="text"
+                        label="Ano"
+                        placeholder="Ex: 2016"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.yearOfPublication}
+                        name="yearOfPublication"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        type="text"
+                        label="Informações complementáres"
+                        placeholder="Ex: Elaborado por..."
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.complementaryInformations}
+                        name="complementaryInformations"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        type="date"
+                        label="Acesso em"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        name="accessedAt"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={9}>
+                      <Input
+                        type="text"
+                        label="Disponível em"
+                        placeholder="Ex: https://sucupira.capes.gov.br/sucupira/"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        name="url"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

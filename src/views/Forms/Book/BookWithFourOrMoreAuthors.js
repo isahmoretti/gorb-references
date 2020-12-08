@@ -11,6 +11,8 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 
+import Nav from "../../../components/Header";
+
 import Fields from "../../../components/Fields";
 
 // utils
@@ -141,272 +143,276 @@ const Book = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Header>
-        <Back onClick={() => history.push('/livro')} src={ArrowLeft} />
-        <Actions>
-          <Title>
-            <p
-              style={{
-                fontSize: "20px",
-              }}
-            >
-              Referência de livro com quatro autores ou mais
-            </p>
-          </Title>
-        </Actions>
-      </Header>
+    <>
+      <Nav />
+      <Container>
+        <Header>
+          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
+          <Actions>
+            <Title>
+              <p
+                style={{
+                  fontSize: "20px",
+                }}
+              >
+                Referência de livro com quatro autores ou mais
+              </p>
+            </Title>
+          </Actions>
+        </Header>
 
-      <Formik
-        initialValues={{
-          author: "",
-          abbreviate: false,
-          title: "",
-          caption: "",
-          edition: "",
-          local: "",
-          publishingCompany: "",
-          yearOfPublication: "",
-          complementaryElements: false,
-          othersResponsabilities: "",
-          pagination: "",
-          series: "",
-          notes: "",
-          isbn: "",
-          originalTitle: "",
-          volume: "",
-          online: false,
-          url: "",
-          accessedAt: "",
-          translator: false,
-          translatorName: [""],
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Card>
-              <Content>
-                <Fields
-                  data={{
-                    fields: [
-                      // row [1]
-                      {
-                        type: "text",
-                        name: "author",
-                        label: "Autor principal",
-                        placeholder: "Ex: Keith J. Karren",
-                        grid: 9,
-                      },
-                      {
-                        type: "text",
-                        name: "abbreviate",
-                        label: "Abreviar",
-                        placeholder: "",
-                        grid: 3,
-                        options: [
-                          { value: true, name: "Sim" },
-                          { value: false, name: "Não" },
-                        ],
-                      },
-                      // row [2]
-                      {
-                        type: "text",
-                        name: "title",
-                        label: "Título",
-                        placeholder: "​Ex: Primeiros Socorros para Estudantes",
-                        grid: 6,
-                      },
-                      {
-                        type: "text",
-                        name: "caption",
-                        label: "Subtítulo",
-                        placeholder: "Ex: Subtítulo do livro (se houver)",
-                        grid: 6,
-                      },
-                      // row [3]
-                      {
-                        type: "text",
-                        name: "local",
-                        label: "Local da publicação",
-                        placeholder: "Ex: São Paulo",
-                        grid: 4,
-                      },
-                      {
-                        type: "text",
-                        name: "publishingCompany",
-                        label: "Empresa de publicação (editora)",
-                        placeholder: "Ex: Editora Manole",
-                        grid: 4,
-                      },
-                      {
-                        type: "text",
-                        name: "edition",
-                        label: "Edição",
-                        placeholder: "Ex: 10",
-                        grid: 4,
-                      },
-                      // row [4]
-                      {
-                        type: "text",
-                        name: "yearOfPublication",
-                        label: "Ano de publicação",
-                        placeholder: "Ex: 2013",
-                        grid: 3,
-                      },
-                      {
-                        type: "text",
-                        name: "volume",
-                        label: "Volume",
-                        placeholder: "Ex: 10",
-                        grid: 3,
-                      },
-                      {
-                        type: "text",
-                        name: "complementaryElements",
-                        label: "Elementos complementares",
-                        placeholder: "",
-                        grid: 3,
-                        options: [
-                          { value: true, name: "Sim" },
-                          { value: false, name: "Não" },
-                        ],
-                      },
-                      {
-                        type: "text",
-                        name: "pagination",
-                        label: "Páginas",
-                        placeholder: "Ex: 592",
-                        disabled: !props.values.complementaryElements,
-                        grid: 3,
-                      },
-                      // row [5]
-                      {
-                        type: "text",
-                        name: "othersResponsabilities",
-                        label: "Outras responsabilidades",
-                        placeholder: "",
-                        disabled: !props.values.complementaryElements,
-                        grid: 4,
-                      },
-                      {
-                        type: "text",
-                        name: "series",
-                        label: "Séries e coleções",
-                        placeholder: "Ex: Grandes Autores Nacionais",
-                        disabled: !props.values.complementaryElements,
-                        grid: 4,
-                      },
-                      {
-                        type: "text",
-                        name: "notes",
-                        label: "Nota",
-                        placeholder: "Ex: Informações complementares",
-                        disabled: !props.values.complementaryElements,
-                        grid: 4,
-                      },
-                      // row [6]
-                      {
-                        type: "text",
-                        name: "isbn",
-                        label: "ISBN",
-                        placeholder: "",
-                        disabled: !props.values.complementaryElements,
-                        grid: 5,
-                      },
-                      {
-                        type: "text",
-                        name: "translator",
-                        label: "Tradutor",
-                        placeholder: "Ex: 978-8520434789",
-                        disabled: !props.values.complementaryElements,
-                        grid: 3,
-                        options: [
-                          { value: true, name: "Sim" },
-                          { value: false, name: "Não" },
-                        ],
-                      },
-                      // row [7]
-                      {
-                        type: "text",
-                        name: "translatorName",
-                        label: "Tradutor",
-                        placeholder: "Ex: Matheus Paice",
-                        disabled:
-                          !props.values.complementaryElements ||
-                          !props.values.translator,
-                        isFieldArray: true,
-                        grid: 12,
-                      },
-                      // row[8]
-                      {
-                        type: "text",
-                        name: "originalTitle",
-                        label: "Título original",
-                        placeholder: "",
-                        disabled: !props.values.complementaryElements,
-                        grid: 12,
-                      },
-                      // online
-                      {
-                        type: "text",
-                        name: "online",
-                        label: "Online",
-                        placeholder: "",
-                        disabled: !props.values.complementaryElements,
-                        grid: 2,
-                        options: [
-                          { value: true, name: "Sim" },
-                          { value: false, name: "Não" },
-                        ],
-                      },
-                      {
-                        type: "date",
-                        name: "accessedAt",
-                        label: "",
-                        placeholder: "",
-                        disabled: !props.values.complementaryElements,
-                        grid: 3,
-                      },
-                      {
-                        type: "text",
-                        name: "url",
-                        label: "Endereço (URL)",
-                        placeholder: "https://viacarreira.com.br",
-                        disabled: !props.values.complementaryElements,
-                        grid: 7,
-                      },
-                    ],
-                    fieldsProps: { ...props },
-                  }}
+        <Formik
+          initialValues={{
+            author: "",
+            abbreviate: false,
+            title: "",
+            caption: "",
+            edition: "",
+            local: "",
+            publishingCompany: "",
+            yearOfPublication: "",
+            complementaryElements: false,
+            othersResponsabilities: "",
+            pagination: "",
+            series: "",
+            notes: "",
+            isbn: "",
+            originalTitle: "",
+            volume: "",
+            online: false,
+            url: "",
+            accessedAt: "",
+            translator: false,
+            translatorName: [""],
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Card>
+                <Content>
+                  <Fields
+                    data={{
+                      fields: [
+                        // row [1]
+                        {
+                          type: "text",
+                          name: "author",
+                          label: "Autor principal",
+                          placeholder: "Ex: Keith J. Karren",
+                          grid: 9,
+                        },
+                        {
+                          type: "text",
+                          name: "abbreviate",
+                          label: "Abreviar",
+                          placeholder: "",
+                          grid: 3,
+                          options: [
+                            { value: true, name: "Sim" },
+                            { value: false, name: "Não" },
+                          ],
+                        },
+                        // row [2]
+                        {
+                          type: "text",
+                          name: "title",
+                          label: "Título",
+                          placeholder:
+                            "​Ex: Primeiros Socorros para Estudantes",
+                          grid: 6,
+                        },
+                        {
+                          type: "text",
+                          name: "caption",
+                          label: "Subtítulo",
+                          placeholder: "Ex: Subtítulo do livro (se houver)",
+                          grid: 6,
+                        },
+                        // row [3]
+                        {
+                          type: "text",
+                          name: "local",
+                          label: "Local da publicação",
+                          placeholder: "Ex: São Paulo",
+                          grid: 4,
+                        },
+                        {
+                          type: "text",
+                          name: "publishingCompany",
+                          label: "Empresa de publicação (editora)",
+                          placeholder: "Ex: Editora Manole",
+                          grid: 4,
+                        },
+                        {
+                          type: "text",
+                          name: "edition",
+                          label: "Edição",
+                          placeholder: "Ex: 10",
+                          grid: 4,
+                        },
+                        // row [4]
+                        {
+                          type: "text",
+                          name: "yearOfPublication",
+                          label: "Ano de publicação",
+                          placeholder: "Ex: 2013",
+                          grid: 3,
+                        },
+                        {
+                          type: "text",
+                          name: "volume",
+                          label: "Volume",
+                          placeholder: "Ex: 10",
+                          grid: 3,
+                        },
+                        {
+                          type: "text",
+                          name: "complementaryElements",
+                          label: "Elementos complementares",
+                          placeholder: "",
+                          grid: 3,
+                          options: [
+                            { value: true, name: "Sim" },
+                            { value: false, name: "Não" },
+                          ],
+                        },
+                        {
+                          type: "text",
+                          name: "pagination",
+                          label: "Páginas",
+                          placeholder: "Ex: 592",
+                          disabled: !props.values.complementaryElements,
+                          grid: 3,
+                        },
+                        // row [5]
+                        {
+                          type: "text",
+                          name: "othersResponsabilities",
+                          label: "Outras responsabilidades",
+                          placeholder: "",
+                          disabled: !props.values.complementaryElements,
+                          grid: 4,
+                        },
+                        {
+                          type: "text",
+                          name: "series",
+                          label: "Séries e coleções",
+                          placeholder: "Ex: Grandes Autores Nacionais",
+                          disabled: !props.values.complementaryElements,
+                          grid: 4,
+                        },
+                        {
+                          type: "text",
+                          name: "notes",
+                          label: "Nota",
+                          placeholder: "Ex: Informações complementares",
+                          disabled: !props.values.complementaryElements,
+                          grid: 4,
+                        },
+                        // row [6]
+                        {
+                          type: "text",
+                          name: "isbn",
+                          label: "ISBN",
+                          placeholder: "",
+                          disabled: !props.values.complementaryElements,
+                          grid: 5,
+                        },
+                        {
+                          type: "text",
+                          name: "translator",
+                          label: "Tradutor",
+                          placeholder: "Ex: 978-8520434789",
+                          disabled: !props.values.complementaryElements,
+                          grid: 3,
+                          options: [
+                            { value: true, name: "Sim" },
+                            { value: false, name: "Não" },
+                          ],
+                        },
+                        // row [7]
+                        {
+                          type: "text",
+                          name: "translatorName",
+                          label: "Tradutor",
+                          placeholder: "Ex: Matheus Paice",
+                          disabled:
+                            !props.values.complementaryElements ||
+                            !props.values.translator,
+                          isFieldArray: true,
+                          grid: 12,
+                        },
+                        // row[8]
+                        {
+                          type: "text",
+                          name: "originalTitle",
+                          label: "Título original",
+                          placeholder: "",
+                          disabled: !props.values.complementaryElements,
+                          grid: 12,
+                        },
+                        // online
+                        {
+                          type: "text",
+                          name: "online",
+                          label: "Online",
+                          placeholder: "",
+                          disabled: !props.values.complementaryElements,
+                          grid: 2,
+                          options: [
+                            { value: true, name: "Sim" },
+                            { value: false, name: "Não" },
+                          ],
+                        },
+                        {
+                          type: "date",
+                          name: "accessedAt",
+                          label: "",
+                          placeholder: "",
+                          disabled: !props.values.complementaryElements,
+                          grid: 3,
+                        },
+                        {
+                          type: "text",
+                          name: "url",
+                          label: "Endereço (URL)",
+                          placeholder: "https://viacarreira.com.br",
+                          disabled: !props.values.complementaryElements,
+                          grid: 7,
+                        },
+                      ],
+                      fieldsProps: { ...props },
+                    }}
+                  />
+
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
                 />
-
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
-                  >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

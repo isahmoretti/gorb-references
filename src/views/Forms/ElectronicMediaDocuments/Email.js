@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -102,164 +103,170 @@ const Email = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push("/meio-eletronico")} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back
+          onClick={() => history.push("/meio-eletronico")}
+          src={ArrowLeft}
+        />
 
-      <Formik
-        initialValues={{
-          type: "",
-          sender: "",
-          subject: "",
-          recipient: "",
-          publicationLocal: "",
-          sendDate: "",
-          supportSpecification: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Email
-                </p>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="type"
-                      label="Tipo de remetente"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.type}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "fisico", name: "Pessoa física" },
-                        { value: "entity", name: "Entidade" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      type="text"
-                      label="Remetente"
-                      placeholder="Ex: SIBi – Sistema Integrado de Bibliotecas."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.sender}
-                      name="sender"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Assunto"
-                      placeholder="Ex: Portal de Revistas da USP tem novo design"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.subject}
-                      name="subject"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Destinatário"
-                      placeholder="Ex: Rede de bibliotecas do SIBi"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.recipient}
-                      name="recipient"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Local de envio"
-                      placeholder="Ex: São Paulo"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationLocal}
-                      name="publicationLocal"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      label="Data de envio"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.sendDate}
-                      name="sendDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Especificações do suporte"
-                      placeholder="Ex: 1 mensagem eletrônica"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.supportSpecification}
-                      name="supportSpecification"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
+        <Formik
+          initialValues={{
+            type: "",
+            sender: "",
+            subject: "",
+            recipient: "",
+            publicationLocal: "",
+            sendDate: "",
+            supportSpecification: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
                   >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                    Email
+                  </p>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        name="type"
+                        label="Tipo de remetente"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.type}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: "fisico", name: "Pessoa física" },
+                          { value: "entity", name: "Entidade" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        type="text"
+                        label="Remetente"
+                        placeholder="Ex: SIBi – Sistema Integrado de Bibliotecas."
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.sender}
+                        name="sender"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        type="text"
+                        label="Assunto"
+                        placeholder="Ex: Portal de Revistas da USP tem novo design"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.subject}
+                        name="subject"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Destinatário"
+                        placeholder="Ex: Rede de bibliotecas do SIBi"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.recipient}
+                        name="recipient"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Local de envio"
+                        placeholder="Ex: São Paulo"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.publicationLocal}
+                        name="publicationLocal"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        type="date"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        label="Data de envio"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.sendDate}
+                        name="sendDate"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        type="text"
+                        label="Especificações do suporte"
+                        placeholder="Ex: 1 mensagem eletrônica"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.supportSpecification}
+                        name="supportSpecification"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

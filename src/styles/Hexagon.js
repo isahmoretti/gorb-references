@@ -217,7 +217,6 @@ export const Hexagon = styled.div`
 
   &.blue-dark {
     background: #191970;
-    margin-left: 203px;
 
     @media (max-width: 600px) {
       margin-left: unset;
@@ -227,6 +226,21 @@ export const Hexagon = styled.div`
     border-bottom-color: #191970;
   }
   &.blue-dark::after {
+    border-top-color: #191970;
+  }
+
+  &.blue-dark-left {
+    background: #191970;
+    margin-left: 203px;
+
+    @media (max-width: 600px) {
+      margin-left: unset;
+    }
+  }
+  &.blue-dark-left::before {
+    border-bottom-color: #191970;
+  }
+  &.blue-dark-left::after {
     border-top-color: #191970;
   }
 

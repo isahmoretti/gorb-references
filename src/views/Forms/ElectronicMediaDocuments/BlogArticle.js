@@ -11,6 +11,7 @@ import { Grid } from "@material-ui/core";
 import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -95,7 +96,7 @@ const BlogArticle = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -116,245 +117,253 @@ const BlogArticle = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push('/meio-eletronico')} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back
+          onClick={() => history.push("/meio-eletronico")}
+          src={ArrowLeft}
+        />
 
-      <Formik
-        initialValues={{
-          authors: [""],
-          articleTitle: "",
-          caption: "",
-          responsible: "",
-          blogTitle: "",
-          local: "",
-          publicationDate: "",
-          url: "",
-          accessedAt: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  ARTIGO DE BLOG
-                </p>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <FieldArray
-                      name="authors"
-                      render={(arrayHelpers) => (
-                        <div>
-                          {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div style={{ display: "flex", width: "100%" }}>
-                                  <Input
-                                    type="text"
-                                    label={`${index + 1}º Autor`}
-                                    name={`authors.${index}`}
-                                    placeholder={`Ex: Abel Laerte Packer`}
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  {index > 0 && (
+        <Formik
+          initialValues={{
+            authors: [""],
+            articleTitle: "",
+            caption: "",
+            responsible: "",
+            blogTitle: "",
+            local: "",
+            publicationDate: "",
+            url: "",
+            accessedAt: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    ARTIGO DE BLOG
+                  </p>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
+                        name="authors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authors &&
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div
+                                    style={{ display: "flex", width: "100%" }}
+                                  >
+                                    <Input
+                                      type="text"
+                                      label={`${index + 1}º Autor`}
+                                      name={`authors.${index}`}
+                                      placeholder={`Ex: Abel Laerte Packer`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
+                                    {index > 0 && (
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() => arrayHelpers.remove("")}
+                                      >
+                                        <RemoveIcon src={Minus} />
+                                      </ButtonCore>
+                                    )}
                                     <ButtonCore
                                       type="button"
-                                      onClick={() => arrayHelpers.remove("")}
+                                      onClick={() => arrayHelpers.push("")}
                                     >
-                                      <RemoveIcon src={Minus} />
+                                      <AddIcon src={Plus} />
                                     </ButtonCore>
-                                  )}
-                                  <ButtonCore
-                                    type="button"
-                                    onClick={() => arrayHelpers.push("")}
+                                  </div>
+                                  <div
+                                    style={{
+                                      width: "100%",
+                                      marginBottom: "10px",
+                                    }}
                                   >
-                                    <AddIcon src={Plus} />
-                                  </ButtonCore>
-                                </div>
-                                <div
-                                  style={{
-                                    width: "100%",
-                                    marginBottom: "10px",
-                                  }}
-                                >
-                                  <ErrorText>
-                                    {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
-                                  </ErrorText>
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Add a author
-                            </ButtonCore>
-                          )}
-                        </div>
-                      )}
-                    />
+                                    <ErrorText>
+                                      {props.errors &&
+                                        props.errors.authors &&
+                                        props.errors.authors[index]}
+                                    </ErrorText>
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                          </div>
+                        )}
+                      />
+                    </Grid>
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Título do artigo"
-                      placeholder="Ex: SciELO pós 20 Anos"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.articleTitle}
-                      name="articleTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Título do artigo"
+                        placeholder="Ex: SciELO pós 20 Anos"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.articleTitle}
+                        name="articleTitle"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Subtítulo do artigo"
+                        placeholder="Ex: o futuro continua aberto"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.caption}
+                        name="caption"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Subtítulo do artigo"
-                      placeholder="Ex: o futuro continua aberto"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      name="caption"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={7}>
+                      <Input
+                        type="text"
+                        label="Responsável pelo blog"
+                        placeholder="Ex: SCIELO - Scientific Electronic Library Online."
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.responsible}
+                        name="responsible"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        type="text"
+                        label="Título do blog"
+                        placeholder="Ex: SciELO em Perspectiva"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.blogTitle}
+                        name="blogTitle"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={7}>
-                    <Input
-                      type="text"
-                      label="Responsável pelo blog"
-                      placeholder="Ex: SCIELO - Scientific Electronic Library Online."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.responsible}
-                      name="responsible"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <Input
+                        type="text"
+                        label="Local"
+                        placeholder="Ex: São Paulo"
+                        onChange={props.handleChange}
+                        onBlur={props.local}
+                        value={props.values.message}
+                        name="local"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      type="text"
-                      label="Título do blog"
-                      placeholder="Ex: SciELO em Perspectiva"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.blogTitle}
-                      name="blogTitle"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={12}>
-                    <Input
-                      type="text"
-                      label="Local"
-                      placeholder="Ex: São Paulo"
-                      onChange={props.handleChange}
-                      onBlur={props.local}
-                      value={props.values.message}
-                      name="local"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      label="Data de publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publicationDate}
-                      name="publicationDate"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      type="text"
-                      label="Disponível em"
-                      placeholder="Ex: https://blog.scielo.org/blog/2018/12/19/scielo-pos-20-anos-o-futuro-continua-
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        type="date"
+                        label="Data de publicação"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.publicationDate}
+                        name="publicationDate"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        type="text"
+                        label="Disponível em"
+                        placeholder="Ex: https://blog.scielo.org/blog/2018/12/19/scielo-pos-20-anos-o-futuro-continua-
                                             aberto"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      name="url"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        name="url"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        type="date"
+                        label="Acesso em"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        name="accessedAt"
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      type="date"
-                      label="Acesso em"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      name="accessedAt"
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
-                  >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

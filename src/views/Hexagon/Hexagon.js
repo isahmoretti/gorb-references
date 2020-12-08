@@ -77,7 +77,7 @@ const HexagonPage = () => {
           <Row>
             <Hexagon
               onClick={() => history.push("/evento")}
-              className="blue-dark"
+              className="blue-dark-left"
             >
               <p className="txt-white">
                 {" "}

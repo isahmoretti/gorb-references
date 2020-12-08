@@ -11,6 +11,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -127,7 +128,7 @@ const Monography = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -142,375 +143,383 @@ const Monography = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push('/trabalhos-academicos')} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back
+          onClick={() => history.push("/trabalhos-academicos")}
+          src={ArrowLeft}
+        />
 
-      <Formik
-        initialValues={{
-          authors: [""],
-          abbreviate: false,
-          title: "",
-          caption: "",
-          yearOfPublication: "",
-          pages: "",
-          volume: "",
-          type: "",
-          course: "",
-          department: "",
-          institute: "",
-          location: "",
-          advisor: "",
-          yearOfDelivery: "",
-          online: false,
-          accessedAt: "",
-          url: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Referência de Monografia e tcc
-                </p>
-                <span>
-                  Trabalho acadêmico apresentado para a conclusão da Graduação
-                  ou Especialização
-                </span>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={10}>
-                    <FieldArray
-                      name="authors"
-                      render={(arrayHelpers) => (
-                        <div>
-                          {props.values.authors &&
-                          props.values.authors.length > 0 ? (
-                            props.values.authors.map((author, index) => (
-                              <FieldArrayContainer key={index}>
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    width: "100%",
-                                    marginBottom: 10,
-                                  }}
-                                >
-                                  <Input
-                                    name={`authors.${index}`}
-                                    label={`${index + 1}º Autor`}
-                                    type="text"
-                                    placeholder="Nome do autor"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={author}
-                                    errors={props.errors}
-                                    touched={props.touched}
-                                  />
-                                  {index > 0 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.remove(index)}
-                                    >
-                                      <RemoveIcon src={Minus} />
-                                    </ButtonCore>
-                                  )}
-                                  {index ===
-                                    props.values.authors.length - 1 && (
-                                    <ButtonCore
-                                      type="button"
-                                      onClick={() => arrayHelpers.push("")}
-                                    >
-                                      <AddIcon src={Plus} />
-                                    </ButtonCore>
-                                  )}
-                                </div>
-                                <div style={{ width: "100%" }}>
-                                  <ErrorText>
-                                    {props.errors &&
-                                      props.errors.authors &&
-                                      props.errors.authors[index]}
-                                  </ErrorText>
-                                </div>
-                              </FieldArrayContainer>
-                            ))
-                          ) : (
-                            <ButtonCore
-                              type="button"
-                              onClick={() => arrayHelpers.push("")}
-                            >
-                              Add a author
-                            </ButtonCore>
-                          )}
-                        </div>
-                      )}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Select
-                      name="abbreviate"
-                      label="abreviar autor?"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.abbreviate}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      name="title"
-                      label="Título da monografia"
-                      type="text"
-                      placeholder="Nome da monografia"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="caption"
-                      label="Subtítulo da monografia"
-                      type="text"
-                      placeholder="Subtítulo da monografia"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="advisor"
-                      label="Orientador"
-                      type="text"
-                      placeholder="Nome do orientador"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.advisor}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="location"
-                      label="Local de publicação"
-                      type="text"
-                      placeholder="Local de publicação"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.publishingCompany}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="volume"
-                      label="Nº de volume"
-                      type="text"
-                      placeholder="Ex: 304"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.volume}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="pages"
-                      label="Folhas"
-                      type="text"
-                      placeholder="Ex: 20"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.page}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="type"
-                      label="Grau"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.type}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: "Especialização", name: "Especialização" },
-                        { value: "Graduação", name: "Graduação" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="institute"
-                      label="Instituíção"
-                      type="text"
-                      placeholder="Ex: Universidade Federal..."
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.institute}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="course"
-                      label="Curso"
-                      type="text"
-                      placeholder="Ex: Arquitetura"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.course}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="department"
-                      label="Departamento"
-                      type="text"
-                      placeholder="Ex: Centro urbano"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.department}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="yearOfDelivery"
-                      label="Ano de entrega"
-                      type="text"
-                      placeholder="Ex: 2005"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfDelivery}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="yearOfPublication"
-                      label="Ano de publicação"
-                      type="text"
-                      placeholder="Ex: 2005"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.yearOfPublication}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="online"
-                      label="Online"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="url"
-                      label="Endereço (URL)"
-                      type="text"
-                      placeholder="https://viacarreira.com/"
-                      disabled={!props.values.online}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="accessedAt"
-                      type="date"
-                      label="Data de acesso"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      disabled={!props.values.online}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
+        <Formik
+          initialValues={{
+            authors: [""],
+            abbreviate: false,
+            title: "",
+            caption: "",
+            yearOfPublication: "",
+            pages: "",
+            volume: "",
+            type: "",
+            course: "",
+            department: "",
+            institute: "",
+            location: "",
+            advisor: "",
+            yearOfDelivery: "",
+            online: false,
+            accessedAt: "",
+            url: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
                   >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                    Referência de Monografia e tcc
+                  </p>
+                  <span>
+                    Trabalho acadêmico apresentado para a conclusão da Graduação
+                    ou Especialização
+                  </span>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={10}>
+                      <FieldArray
+                        name="authors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authors &&
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      width: "100%",
+                                      marginBottom: 10,
+                                    }}
+                                  >
+                                    <Input
+                                      name={`authors.${index}`}
+                                      label={`${index + 1}º Autor`}
+                                      type="text"
+                                      placeholder="Nome do autor"
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
+                                    {index > 0 && (
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() =>
+                                          arrayHelpers.remove(index)
+                                        }
+                                      >
+                                        <RemoveIcon src={Minus} />
+                                      </ButtonCore>
+                                    )}
+                                    {index ===
+                                      props.values.authors.length - 1 && (
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() => arrayHelpers.push("")}
+                                      >
+                                        <AddIcon src={Plus} />
+                                      </ButtonCore>
+                                    )}
+                                  </div>
+                                  <div style={{ width: "100%" }}>
+                                    <ErrorText>
+                                      {props.errors &&
+                                        props.errors.authors &&
+                                        props.errors.authors[index]}
+                                    </ErrorText>
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                          </div>
+                        )}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Select
+                        name="abbreviate"
+                        label="abreviar autor?"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.abbreviate}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Input
+                        name="title"
+                        label="Título da monografia"
+                        type="text"
+                        placeholder="Nome da monografia"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.title}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        name="caption"
+                        label="Subtítulo da monografia"
+                        type="text"
+                        placeholder="Subtítulo da monografia"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.caption}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        name="advisor"
+                        label="Orientador"
+                        type="text"
+                        placeholder="Nome do orientador"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.advisor}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        name="location"
+                        label="Local de publicação"
+                        type="text"
+                        placeholder="Local de publicação"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.publishingCompany}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        name="volume"
+                        label="Nº de volume"
+                        type="text"
+                        placeholder="Ex: 304"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.volume}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        name="pages"
+                        label="Folhas"
+                        type="text"
+                        placeholder="Ex: 20"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.page}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        name="type"
+                        label="Grau"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.type}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: "Especialização", name: "Especialização" },
+                          { value: "Graduação", name: "Graduação" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="institute"
+                        label="Instituíção"
+                        type="text"
+                        placeholder="Ex: Universidade Federal..."
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.institute}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="course"
+                        label="Curso"
+                        type="text"
+                        placeholder="Ex: Arquitetura"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.course}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="department"
+                        label="Departamento"
+                        type="text"
+                        placeholder="Ex: Centro urbano"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.department}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="yearOfDelivery"
+                        label="Ano de entrega"
+                        type="text"
+                        placeholder="Ex: 2005"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.yearOfDelivery}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="yearOfPublication"
+                        label="Ano de publicação"
+                        type="text"
+                        placeholder="Ex: 2005"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.yearOfPublication}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        name="online"
+                        label="Online"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.online}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="url"
+                        label="Endereço (URL)"
+                        type="text"
+                        placeholder="https://viacarreira.com/"
+                        disabled={!props.values.online}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="accessedAt"
+                        type="date"
+                        label="Data de acesso"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        disabled={!props.values.online}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

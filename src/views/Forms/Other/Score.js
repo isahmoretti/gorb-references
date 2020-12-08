@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 // utils
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -86,7 +87,7 @@ const Score = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -104,229 +105,232 @@ const Score = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push('/outros')} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back onClick={() => history.push("/outros")} src={ArrowLeft} />
 
-      <Formik
-        initialValues={{
-          compositor: "",
-          title: "",
-          caption: "",
-          instrument: "",
-          location: "",
-          editor: "",
-          year: "",
-          description: "",
-          online: false,
-          accessedAt: "",
-          url: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  PARTITURA
-                </p>
-                <span></span>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="compositor"
-                      type="text"
-                      label="Compositor"
-                      placeholder="Ex: Chiquinha Gonzaga"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.compositor}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="title"
-                      type="text"
-                      label="Título"
-                      placeholder="Ex: GAÚCHO"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="caption"
-                      type="text"
-                      label="Subtítulo"
-                      placeholder="Ex: O Corta Jaca da revista de costumes e fatos nacionais e estrangeiros CÁ E LÁ"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.caption}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="instrument"
-                      type="text"
-                      label="Instrumento ao qual se destina"
-                      placeholder="Ex: Piano"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.instrument}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      name="location"
-                      type="text"
-                      label="Local"
-                      placeholder="Ex: Rio de Janeiro"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.location}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      name="editor"
-                      type="text"
-                      label="Editor"
-                      placeholder="Ex: Acervo digital Chiquinha Gonzaga"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.editor}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Input
-                      name="year"
-                      type="text"
-                      label="Ano"
-                      placeholder="Ex: 1997"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.year}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={10}>
-                    <Input
-                      name="description"
-                      type="text"
-                      label="Descrição"
-                      placeholder="Ex: 1 partitura"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.description}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={2}>
-                    <Select
-                      name="online"
-                      label="Online"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      disabled={!props.values.online}
-                      name="accessedAt"
-                      type="date"
-                      label="Acesso em"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={8}>
-                    <Input
-                      disabled={!props.values.online}
-                      name="url"
-                      label="Disponível em"
-                      type="text"
-                      placeholder="http://www.chiquinhagonzaga.com/acervo/?musica=gaucho&post_id=1463"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
+        <Formik
+          initialValues={{
+            compositor: "",
+            title: "",
+            caption: "",
+            instrument: "",
+            location: "",
+            editor: "",
+            year: "",
+            description: "",
+            online: false,
+            accessedAt: "",
+            url: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
                   >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                    PARTITURA
+                  </p>
+                  <span></span>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="compositor"
+                        type="text"
+                        label="Compositor"
+                        placeholder="Ex: Chiquinha Gonzaga"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.compositor}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="title"
+                        type="text"
+                        label="Título"
+                        placeholder="Ex: GAÚCHO"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.title}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="caption"
+                        type="text"
+                        label="Subtítulo"
+                        placeholder="Ex: O Corta Jaca da revista de costumes e fatos nacionais e estrangeiros CÁ E LÁ"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.caption}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="instrument"
+                        type="text"
+                        label="Instrumento ao qual se destina"
+                        placeholder="Ex: Piano"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.instrument}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        name="location"
+                        type="text"
+                        label="Local"
+                        placeholder="Ex: Rio de Janeiro"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.location}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        name="editor"
+                        type="text"
+                        label="Editor"
+                        placeholder="Ex: Acervo digital Chiquinha Gonzaga"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.editor}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Input
+                        name="year"
+                        type="text"
+                        label="Ano"
+                        placeholder="Ex: 1997"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.year}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={10}>
+                      <Input
+                        name="description"
+                        type="text"
+                        label="Descrição"
+                        placeholder="Ex: 1 partitura"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.description}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={2}>
+                      <Select
+                        name="online"
+                        label="Online"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.online}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        disabled={!props.values.online}
+                        name="accessedAt"
+                        type="date"
+                        label="Acesso em"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={8}>
+                      <Input
+                        disabled={!props.values.online}
+                        name="url"
+                        label="Disponível em"
+                        type="text"
+                        placeholder="http://www.chiquinhagonzaga.com/acervo/?musica=gaucho&post_id=1463"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 

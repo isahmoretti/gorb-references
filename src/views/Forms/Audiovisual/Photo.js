@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
+import Nav from "../../../components/Header";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -77,181 +78,184 @@ const Photo = ({ back }) => {
   };
 
   return (
-    <Container>
-      <Back onClick={() => history.push("/audiovisual")} src={ArrowLeft} />
+    <>
+      <Nav />
+      <Container>
+        <Back onClick={() => history.push("/audiovisual")} src={ArrowLeft} />
 
-      <Formik
-        initialValues={{
-          author: "",
-          title: "",
-          date: "",
-          specification: "",
-          elements: "",
-          online: "",
-          url: "",
-          accessedAt: "",
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={handleSubmit}
-      >
-        {(props) => (
-          <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
-            <Actions>
-              <Title>
-                <p
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Fotografia
-                </p>
-                <span></span>
-              </Title>
-            </Actions>
-            <Card>
-              <Content>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="author"
-                      type="text"
-                      label="Autor"
-                      placeholder="Ex: Chris Frank"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.author}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="title"
-                      type="text"
-                      label="Título"
-                      placeholder="Ex: Big and Bigger"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.title}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="date"
-                      type="date"
-                      label="Data de publicação"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.date}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={4}>
-                    <Input
-                      name="specification"
-                      type="text"
-                      label="Especificação do suporte"
-                      placeholder="Ex: 1 fotografia"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.specification}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={5}>
-                    <Input
-                      name="elements"
-                      type="text"
-                      label="Elementos complementares"
-                      placeholder="Ex: 1024 × 683 pixels"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.elements}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Select
-                      name="online"
-                      label="Online"
-                      type="text"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.online}
-                      errors={props.errors}
-                      touched={props.touched}
-                      options={[
-                        { value: true, name: "Sim" },
-                        { value: false, name: "Não" },
-                      ]}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Input
-                      name="accessedAt"
-                      type="date"
-                      label="Acesso em"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.accessedAt}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <Input
-                      name="url"
-                      label="Disponível em"
-                      type="text"
-                      placeholder="Ex: https://pixabay.com/en/lungs-heartanatomy-cross-section-2183442/"
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.url}
-                      errors={props.errors}
-                      touched={props.touched}
-                    />
-                  </Grid>
-                </Grid>
-                <Row container className="end">
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={props.resetForm}
+        <Formik
+          initialValues={{
+            author: "",
+            title: "",
+            date: "",
+            specification: "",
+            elements: "",
+            online: "",
+            url: "",
+            accessedAt: "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props) => (
+            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
                   >
-                    Limpar campos
-                  </Button>
-                  <Button type="submit" color="primary">
-                    Gerar referência e citação
-                  </Button>
-                </Row>
-              </Content>
-              <Modal
-                isOpen={openModal}
-                handleClose={() => setOpenModal(!openModal)}
-                text={state.references}
-                citationWithAuthor={state.citationWithAuthor}
-                citation={state.citation}
-              />
-            </Card>
-          </form>
-        )}
-      </Formik>
-    </Container>
+                    Fotografia
+                  </p>
+                  <span></span>
+                </Title>
+              </Actions>
+              <Card>
+                <Content>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="author"
+                        type="text"
+                        label="Autor"
+                        placeholder="Ex: Chris Frank"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.author}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="title"
+                        type="text"
+                        label="Título"
+                        placeholder="Ex: Big and Bigger"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.title}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="date"
+                        type="date"
+                        label="Data de publicação"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.date}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <Input
+                        name="specification"
+                        type="text"
+                        label="Especificação do suporte"
+                        placeholder="Ex: 1 fotografia"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.specification}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={5}>
+                      <Input
+                        name="elements"
+                        type="text"
+                        label="Elementos complementares"
+                        placeholder="Ex: 1024 × 683 pixels"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.elements}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Select
+                        name="online"
+                        label="Online"
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.online}
+                        errors={props.errors}
+                        touched={props.touched}
+                        options={[
+                          { value: true, name: "Sim" },
+                          { value: false, name: "Não" },
+                        ]}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={3}>
+                      <Input
+                        name="accessedAt"
+                        type="date"
+                        label="Acesso em"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.accessedAt}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <Input
+                        name="url"
+                        label="Disponível em"
+                        type="text"
+                        placeholder="Ex: https://pixabay.com/en/lungs-heartanatomy-cross-section-2183442/"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.url}
+                        errors={props.errors}
+                        touched={props.touched}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Row container className="end">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      onClick={props.resetForm}
+                    >
+                      Limpar campos
+                    </Button>
+                    <Button type="submit" color="primary">
+                      Gerar referência e citação
+                    </Button>
+                  </Row>
+                </Content>
+                <Modal
+                  isOpen={openModal}
+                  handleClose={() => setOpenModal(!openModal)}
+                  text={state.references}
+                  citationWithAuthor={state.citationWithAuthor}
+                  citation={state.citation}
+                />
+              </Card>
+            </form>
+          )}
+        </Formik>
+      </Container>
+    </>
   );
 };
 
