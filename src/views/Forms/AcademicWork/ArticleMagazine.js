@@ -136,7 +136,10 @@ const ArticleMagazine = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push("/trabalhos-academicos")} src={ArrowLeft} />
+      <Back
+        onClick={() => history.push("/trabalhos-academicos")}
+        src={ArrowLeft}
+      />
 
       <Formik
         initialValues={{
@@ -493,6 +496,10 @@ const ArticleMagazine = ({ back }) => {
           </form>
         )}
       </Formik>
+      <span>
+        Em caso de publicação em uma única página, preencher apenas o item ​{" "}
+        <b>página inicial</b>
+      </span>
     </Container>
   );
 };

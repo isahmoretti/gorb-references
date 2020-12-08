@@ -47,7 +47,7 @@ const generateReference = (values) => {
     <span>
       {subtitle ? (
         <>
-          {title}: {subtitle}.&nbsp;
+          {formatMonosyllable(title)}: {subtitle}.&nbsp;
         </>
       ) : (
         <>{formatMonosyllable(title)}. </>

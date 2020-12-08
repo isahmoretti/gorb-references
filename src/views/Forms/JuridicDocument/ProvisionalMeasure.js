@@ -50,7 +50,7 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {author && <>{author}. </>}
+      {author && <>{author.toUpperCase()}. </>}
       {type && <>{type} </>}
       {number && <>nº {number},&nbsp;</>}
       {documentSigningDate && <>de {formatDate(documentSigningDate)}. </>}
@@ -76,8 +76,8 @@ const ProvisionalMeasure = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
-  
+  const history = useHistory();
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
@@ -98,7 +98,10 @@ const ProvisionalMeasure = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
+      <Back
+        onClick={() => history.push("/documentos-juridicos")}
+        src={ArrowLeft}
+      />
 
       <Formik
         initialValues={{

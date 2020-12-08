@@ -59,7 +59,7 @@ const generateReference = (values) => {
       {caption ? (
         <>
           <b>{publication}: </b>
-          <>{caption}</>
+          <>{caption}, </>
         </>
       ) : (
         <>
@@ -92,7 +92,7 @@ const AdministrativeActs = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -106,7 +106,10 @@ const AdministrativeActs = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
+      <Back
+        onClick={() => history.push("/documentos-juridicos")}
+        src={ArrowLeft}
+      />
 
       <Formik
         initialValues={{

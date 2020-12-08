@@ -75,6 +75,8 @@ const generateReference = (values) => {
 
       {notes && <>{notes}. </>}
 
+      {initialPage && !finalPage && <>p. {initialPage}, </>}
+
       {initialPage && finalPage && (
         <>
           p. {initialPage}-{finalPage},{" "}
@@ -101,7 +103,7 @@ const Legislation = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -123,7 +125,10 @@ const Legislation = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
+      <Back
+        onClick={() => history.push("/documentos-juridicos")}
+        src={ArrowLeft}
+      />
 
       <Formik
         initialValues={{

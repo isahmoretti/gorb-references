@@ -28,7 +28,7 @@ const SignupSchema = Yup.object().shape({
   judicialOrgan: Yup.string().required("Obrigatório"),
   typeDocument: Yup.string().required("Obrigatório"),
   numberProcess: Yup.string().required("Obrigatório"),
-  nameRelator: Yup.string().required("Obrigatório"),
+  // nameRelator: Yup.string().required("Obrigatório"),
   yearOfJudgment: Yup.string().required("Obrigatório"),
   title: Yup.string().required("Obrigatório"),
 });
@@ -75,9 +75,10 @@ const generateReference = (values) => {
       <>{yearOfJudgment}. </>
       {!online ? <b>{title}. </b> : `${title}. `}
       <>{location ? `${location},` : ""} </>
-      <>{volume ? `${volume},` : ""} </>
-      <>{numberPublication ? `${numberPublication},` : ""} </>
-      <>{pageInit && pageFinish ? `${pageInit}-${pageFinish},` : ""} </>
+      <>v. {volume ? `${volume},` : ""} </>
+      <>n. {numberPublication ? `${numberPublication},` : ""} </>
+      <>p. {pageInit && !pageFinish ? `${pageInit},` : ""} </>
+      <>p. {pageInit && pageFinish ? `${pageInit}-${pageFinish},` : ""} </>
       <>{yearOfPublication ? `${yearOfPublication}.` : ""} </>
       {online &&
         accessedAt &&
@@ -95,7 +96,7 @@ const Jurisprudence = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -117,7 +118,10 @@ const Jurisprudence = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/documentos-juridicos')} src={ArrowLeft} />
+      <Back
+        onClick={() => history.push("/documentos-juridicos")}
+        src={ArrowLeft}
+      />
 
       <Formik
         initialValues={{

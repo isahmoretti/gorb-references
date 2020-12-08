@@ -133,16 +133,35 @@ const Book = ({ back }) => {
 
   const history = useHistory();
 
+  const finalParagraphArraySimple = (names = [], year = 0) => {
+    const namesAuthors = names.map((name) => name).join(", ");
+
+    const response = `(${namesAuthors}, ${year})`;
+
+    return response;
+  };
+
+  const withAutorArraySimple = (names = [], year = 0) => {
+    const namesAuthors = names.map((name) => name).join(", ");
+
+    const response = `${namesAuthors} (${year})`;
+
+    return response;
+  };
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: withAutorArray(
+      citationWithAuthor: withAutorArraySimple(
         values.entities,
         values.yearOfPublication
       ),
-      citation: finalParagraphArray(values.entities, values.yearOfPublication),
+      citation: finalParagraphArraySimple(
+        values.entities,
+        values.yearOfPublication
+      ),
     }));
 
     setOpenModal(!openModal);
@@ -151,7 +170,7 @@ const Book = ({ back }) => {
   return (
     <Container>
       <Header>
-        <Back onClick={() => history.push('/livro')} src={ArrowLeft} />
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
         <Actions>
           <Title>
             <p

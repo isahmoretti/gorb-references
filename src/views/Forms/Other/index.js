@@ -11,55 +11,68 @@ import {
   Separator,
 } from "../../../styles/Hexagon";
 
-
 // assets
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 const Events = ({ back }) => {
-  
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <Conatiner>
-        <Content>
-          <Back onClick={() => history.push('/')} src={ArrowLeft} />
-          <Row>
-            <Hexagon onClick={() => history.push('/outros/objetos-tridimensional')} className="gray">
-              <p className="txt-white">
-                Objeto tridimensional (fósseis, esqueletos, maquetes,
-                monumentos)
-              </p>
-            </Hexagon>
-            <Separator />
-            <Hexagon className="gray" onClick={() => history.push('/outros/bula-de-remedio')}>
-              <p className="txt-white">Bula de remédio</p>
-            </Hexagon>
-          </Row>
+      <Content>
+        <Back onClick={() => history.push("/")} src={ArrowLeft} />
+        <Row>
+          <Hexagon
+            onClick={() => history.push("/outros/objetos-tridimensional")}
+            className="gray"
+          >
+            <p className="txt-white">Tridimensional</p>
+          </Hexagon>
+          <Separator />
+          <Hexagon
+            className="gray"
+            onClick={() => history.push("/outros/bula-de-remedio")}
+          >
+            <p className="txt-white">Bula de remédio</p>
+          </Hexagon>
+        </Row>
 
-          <Row>
-            <Hexagon onClick={() => history.push('/outros/mapas')} className="gray">
-              <p className="txt-white">Mapas </p>
-            </Hexagon>
-            <Title>
-              Outros <br /> documentos
-            </Title>
-            <Hexagon className="gray" onClick={() => history.push('/outros/obra-de-arte')}>
-              <p className="txt-white">Obra de arte</p>
-            </Hexagon>
-          </Row>
+        <Row>
+          <Hexagon
+            onClick={() => history.push("/outros/mapas")}
+            className="gray"
+          >
+            <p className="txt-white">Mapas </p>
+          </Hexagon>
+          <Title>
+            Outros <br /> documentos
+          </Title>
+          <Hexagon
+            className="gray"
+            onClick={() => history.push("/outros/obra-de-arte")}
+          >
+            <p className="txt-white">Obra de arte</p>
+          </Hexagon>
+        </Row>
 
-          <Row>
-            <Hexagon className="gray" onClick={() => history.push('/outros/partitura')}>
-              <p className="txt-white">Partitura</p>
-            </Hexagon>
-            <Separator />
-            <Hexagon className="gray" onClick={() => history.push('/outros/verbete')}>
-              <p className="txt-white">
-                Verbete de <br /> enciclopédia/dicionário
-              </p>
-            </Hexagon>
-          </Row>
-        </Content>
+        <Row>
+          <Hexagon
+            className="gray"
+            onClick={() => history.push("/outros/partitura")}
+          >
+            <p className="txt-white">Partitura</p>
+          </Hexagon>
+          <Separator />
+          <Hexagon
+            className="gray"
+            onClick={() => history.push("/outros/verbete")}
+          >
+            <p className="txt-white">
+              Verbete de <br /> enciclopédia/dicionário
+            </p>
+          </Hexagon>
+        </Row>
+      </Content>
     </Conatiner>
   );
 };

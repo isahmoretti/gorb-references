@@ -60,7 +60,7 @@ const ObjectThree = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -79,7 +79,7 @@ const ObjectThree = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/outros')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/outros")} src={ArrowLeft} />
 
       <Formik
         initialValues={{
@@ -103,7 +103,7 @@ const ObjectThree = ({ back }) => {
                     fontSize: "20px",
                   }}
                 >
-                  Objeto tridimensional
+                  Tridimensional
                 </p>
                 <span>
                   Inclui fósseis, esqueletos, esculturas, animais empalhados,

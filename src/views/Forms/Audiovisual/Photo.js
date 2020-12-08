@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 import { Formik } from "formik";
 
@@ -44,7 +44,7 @@ const generateReference = (values) => {
   return (
     <span>
       {`${formatAuthorName(author)} `}
-      {`${title}. `}
+      <b>{`${title}. `}</b>
       {`${formatDate(date)}. `}
       {`${specification}. `}
       {elements && `${elements}. `}
@@ -64,7 +64,7 @@ const Photo = ({ back }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (values) => {
     setState((prev) => ({
@@ -78,7 +78,7 @@ const Photo = ({ back }) => {
 
   return (
     <Container>
-      <Back onClick={() => history.push('/audiovisual')} src={ArrowLeft} />
+      <Back onClick={() => history.push("/audiovisual")} src={ArrowLeft} />
 
       <Formik
         initialValues={{
