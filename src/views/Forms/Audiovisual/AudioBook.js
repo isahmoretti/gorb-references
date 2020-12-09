@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -133,7 +134,7 @@ const AudioBook = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -231,7 +232,7 @@ const AudioBook = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={2}>
+                    <Grid item xs={12} sm={12} md={3}>
                       <Input
                         name="year"
                         type="text"
@@ -244,7 +245,7 @@ const AudioBook = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={5}>
+                    <Grid item xs={12} sm={12} md={4}>
                       <Input
                         name="specification"
                         type="text"
@@ -331,7 +332,7 @@ const AudioBook = ({ back }) => {
       </Container>
       <div
         className="container"
-        style={{ textAlign: "justify", paddingBottom: "40px" }}
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
       >
         <h1 style={{ textAlign: "left" }}>
           Referência bibliográfica de audiolivro
@@ -357,7 +358,7 @@ const AudioBook = ({ back }) => {
           negrito.
         </p>
         <p>
-          <b>Elementos essenciais na referência de audiolivro</b>
+          <h3>Elementos essenciais na referência de audiolivro</h3>
         </p>
         <p>
           <ul>
@@ -401,7 +402,7 @@ const AudioBook = ({ back }) => {
           automaticamente para você não se preocupe.
         </p>
         <p>
-          <b>Formato básico</b>
+          <h3>Formato básico</h3>
         </p>
         <p>
           <mark>
@@ -420,7 +421,7 @@ const AudioBook = ({ back }) => {
         </p>
 
         <p>
-          <b>Exemplos aplicando o formato</b>
+          <h3>Exemplos aplicando o formato</h3>
         </p>
         <img src={Img} alt="audio-livro" width="100%" />
         <p>
@@ -444,7 +445,7 @@ const AudioBook = ({ back }) => {
         </p>
 
         <p>
-          <b>E quando o audiolivro está disponível na internet?</b>
+          <h3>E quando o audiolivro está disponível na internet?</h3>
         </p>
         <p>
           Quando a consulta ao audiobook ocorre online, é necessário especificar
@@ -471,6 +472,7 @@ const AudioBook = ({ back }) => {
           </mark>
         </p>
       </div>
+      <Footer />
     </>
   );
 };

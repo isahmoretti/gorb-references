@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   > form {
     width: 100%;
-    max-width: 900px;
+    max-width: 830px;
   }
 
   @media only screen and (max-width: 600px) {

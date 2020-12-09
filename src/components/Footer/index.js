@@ -135,7 +135,6 @@ const FooterComponent = () => {
                     <Title>Fale conosco</Title>
                   </a>{" "}
                 </li>
-                <li> FANUNCIE </li>
               </ul>
             </ContentDesktopFooter>
           </BoxDesktopFooter>
