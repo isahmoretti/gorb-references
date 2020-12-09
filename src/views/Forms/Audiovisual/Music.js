@@ -23,6 +23,8 @@ import ArrowLeft from "../../../assets/images/arrow-left.svg";
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
+import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-musica (1).jpg";
+
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   interpreters: Yup.string().required("Obrigatório"),
@@ -358,6 +360,157 @@ const Music = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ textAlign: "justify", paddingBottom: "40px" }}
+      >
+        <h1 style={{ textAlign: "left" }}>
+          Referência Bibliográfica de música
+        </h1>
+        <p>
+          Músicas também podem ser referenciadas nos trabalhos acadêmicos, desde
+          que as normas da ABNT sejam respeitadas. A NBR 6023:2018 fala sobre
+          referência bibliográfica de música no item "parte de documento
+          sonoro".
+        </p>
+
+        <p>
+          A escrita da referência começa sempre pelo título da música, com a
+          primeira palavra em letras maiúsculas. Usa-se a expressão "In" para
+          indicar que o documento se encontra dentro de um álbum.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b> Título da música: </b> nome da canção;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Intérprete: </b> nome do cantor, precedido da expressão
+            "Intérprete:";{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Compositor: </b> nome do compositor, precedido da expressão
+            "Compositor:";{" "}
+          </li>
+          <li>
+            {" "}
+            <b>
+              {" "}
+              <i>In</i>:{" "}
+            </b>{" "}
+            significa "dentro de";{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Título do álbum: </b> nome do álbum no qual a música se
+            encontra;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Intérprete do álbum: </b> cantor do álbum, precedido da
+            expressão "Intérprete:";{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Local: </b> Cidade da gravadora;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Gravadora: </b> nome da empresa responsável pela gravação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Ano: </b> ano de lançamento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Suporte: </b> descrição do suporte;{" "}
+          </li>
+        </ul>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            TÍTULO da música. Intérprete: Nome do intérprete. Compositor: Nome
+            do compositor. In: Título do álbum. Intérprete: Nome do intérprete
+            do álbum. Local: Gravadora, Ano. Especificações do suporte (duração
+            da música).
+          </mark>
+        </p>
+
+        <h3>Exemplos aplicando o formato</h3>
+
+        <img src={Img} alt="musica" width="100%" />
+
+        <p>
+          <mark>
+            PROCISSÃO. Intérprete: Gilberto Gil. Compositor: Gilberto Gil. In:
+            EM CONCERTO. Intérprete: Gilberto Gil. Rio de Janeiro: Geleia Geral,
+            1987. 1 disco vinil, lado A, faixa 2, (2m).
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            JURA Secreta. Intérprete: Simone. Compositor: S. Costa e A. Silva.
+            In: FACE a Face. Intérprete: Simone. [S. l.]: Emi-Odeon Brasil,
+            1977. 1 CD, faixa 7, (2 min).
+          </mark>
+        </p>
+
+        <h3>E se a música for online?</h3>
+
+        <p>
+          No caso de um documento acessado pela internet, é necessário incluir a
+          URL, precedida da expressão "Disponível em", e a data de acesso,
+          precedida por "Acesso em". Veja um exemplo:
+        </p>
+
+        <p>
+          <mark>
+            TE ENSINEI certin. Intérprete: Ludmilla. Compositores: Umberto
+            Tavares Oliveira e Jefferson Júnior. In: HELLO Mundo (Ao vivo).
+            Intérprete: Ludmilla. Rio de Janeiro: Warner Music, 2019. Streaming
+            de música Spotify, faixa 2 (4 min). Disponível em:
+            https://open.spotify.com/album/3VDQ3Oa1bICtnbII8HowVw. Acesso em: 31
+            out. 2020.
+          </mark>
+        </p>
+
+        <h3>Como fazer referência de álbum completo?</h3>
+
+        <p>
+          Na seção “Documento sonoro no todo”, a ABNT ensina como fazer
+          referência de álbum musical completo. Os elementos essenciais são
+          título, intérprete, compositor, local, gravadora, data e descrição do
+          suporte.
+        </p>
+
+        <p>Veja exemplos:</p>
+
+        <p>
+          <mark>
+            THE NINE symphonies. Compositor: Ludwig van Beethoven. Orquestra:
+            Wiener Philharmoniker. Regente: Leonard Bernstein. Soprano: Gwyneth
+            Jones. Contralto: Hanna Schwarz. Tenor: René Kollo. Baixo: Kurt
+            Moll. Coro: Konzertvereinigung Wiener Staatsopernchor. Hamburg:
+            Deutsche Gramophon, 1980. 5 CD.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            DE REPENTE. Intérprete: Arthur Moreira Lima. Rio de Janeiro:
+            Polygram do Brasil, 1984. 1 disco vinil.
+          </mark>
+        </p>
+      </div>
     </>
   );
 };

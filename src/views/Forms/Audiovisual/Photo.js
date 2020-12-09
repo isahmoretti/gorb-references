@@ -20,6 +20,8 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
+import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-fotografia.jpg";
+
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
@@ -255,6 +257,114 @@ const Photo = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ textAlign: "justify", paddingBottom: "40px" }}
+      >
+        <h1 style={{ textAlign: "left" }}>
+          Referência bibliográfica de fotografia ABNT
+        </h1>
+        <p>
+          A fotografia é um documento iconográfico e sua referência
+          bibliográfica nos trabalhos acadêmicos segue as normas da ABNT. As
+          regras valem não só para fotos reveladas, mas também para imagens
+          digitais.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <p>
+          De acordo com a NBR 6023: 2018, os elementos essenciais para
+          referenciar fotografia são:
+        </p>
+
+        <ul>
+          <li>
+            <b> Autor: </b> Nome do fotógrafo;
+          </li>
+          <li>
+            {" "}
+            <b> Título: </b> Quando não existir título, criar um e colocá-lo
+            entre colchetes;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Ano: </b> data em que a imagem foi registrada;{" "}
+          </li>
+          <li>
+            <b> Suporte: </b> descrição do suporte;{" "}
+          </li>
+        </ul>
+        <p>
+          Elementos complementares não são obrigatórios, mas servem para
+          melhorar a identificação do documento consultado. Informações sobre
+          dimensões (largura x altura pixels ou cm) e cor (colorido ou preto e
+          branco) são exemplos.
+        </p>
+        <h3>E quando a fotografia for online?</h3>
+        <p>
+          Quando uma fotografia é consultada pela internet, é necessário
+          especificar a URL, precedida da expressão "Disponível em". Em seguida,
+          a data de acesso deve ser mencionada, precedida de "Acesso em".
+        </p>
+        <h3>Formato básico</h3>
+        <p>
+          <mark>
+            SOBRENOME, Nome do fotógrafo. <b>Título da fotografia.</b> Data de
+            publicação. Especificação do suporte. Elementos complementares.
+            Disponível em: URL. Acesso em: dia, mês e ano.
+          </mark>
+        </p>
+        <h3>Exemplos aplicando o formato</h3>
+        <img src={Img} alt="fotografia" width="100%" />
+        <p>
+          <mark>
+            MACMILLAN, Iain. <b>Os Beatles atravessando a Abbey Road.</b> 1969.
+            1 fotografia . 31 cm X 31 cm.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SASSE, Arthur. <b>Einstein mostrando a língua.</b> 1951. 1
+            fotografia.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            FRANK, Chris. <b>Big and Bigger.</b> 2017. 1 fotografia. 1024 × 683
+            pixels. Disponível em:
+            https://www.flickr.com/photos/chrisnaton/34880385211/. Acesso em: 8
+            ago. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            STRUCK, Mathieu. <b>Carnaval de Curitiba.</b> 22 mar. 2020. 1
+            fotografia . Disponível em:
+            https://www.instagram.com/p/B84-YG0lw4Q/. Acesso em: 30 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            STRUCK, Mathieu Bertrand. <b>Caranguejo aratu</b>: goniopsis
+            cruentata. 3 abr. 2010. 1 fotografia. 1024 x 683 pixels. .
+            Disponível em:
+            https://www.flickr.com/photos/mathieustruck/4573207989/. Acesso em:
+            30 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          As normas usadas para referenciar fotografia também servem para
+          gravuras, cartazes, transparências, postais, ilustrações e desenhos
+          técnicos. Você pode usar o mesmo formulário para gerar as referências
+          destes documentos, basta especificar o suporte.
+        </p>
+      </div>
     </>
   );
 };

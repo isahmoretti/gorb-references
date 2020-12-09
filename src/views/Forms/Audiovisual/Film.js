@@ -25,6 +25,8 @@ import ArrowLeft from "../../../assets/images/arrow-left.svg";
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
+import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-filme.jpg";
+
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   director: Yup.string().required("Obrigatório"),
@@ -491,6 +493,183 @@ const AdministrativeActs = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ textAlign: "justify", paddingBottom: "40px" }}
+      >
+        <h1 style={{ textAlign: "left" }}>
+          Referência bibliográfica de filme (ABNT)
+        </h1>
+        <p>
+          A NBR 6023 ensina como fazer referência bibliográfica de filme no item
+          7.13, que fala sobre documento audiovisual. Nessa norma, a ABNT aponta
+          quais são os elementos essenciais e os elementos complementares.
+        </p>
+        <p>
+          Alunos podem citar trechos ou descrever cenas de filmes em seus
+          trabalhos acadêmicos, desde que elaborem corretamente a referência.
+        </p>
+        <h3>Elementos essenciais para referenciar filme</h3>
+        <ul>
+          <li>
+            {" "}
+            <b>Título:</b> nome do filme;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Diretor:</b> pessoa responsável pela direção;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Produtor:</b> pessoa responsável pela produção;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> local de gravação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Produtora ou distribuidora:</b> empresa responsável por produzir
+            ou distribuir o filme;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> Ano de lançamento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Descrição:</b> especificação do suporte;{" "}
+          </li>
+        </ul>
+        <h3>Elementos complementares</h3>
+        <p>
+          Os elementos complementares são informações adicionais que ajudam a
+          identificar melhor o documento audiovisual.
+        </p>
+        <ul>
+          <li>
+            {" "}
+            <b> Intérpretes: </b> nomes dos principais atores por extenso;{" "}
+          </li>
+          <li>
+            {" "}
+            <b> Roteiro: </b> nome do roteirista por extenso;{" "}
+          </li>
+        </ul>
+        <p>
+          Quando o filme pertence a um arquivo, é recomendado incluir na
+          referência o nome do acervo. Assim, você evita problemas relacionados
+          à qualidade da cópia ou erros de edição. O dado sobre o arquivo pode
+          ser inserido como uma nota.
+        </p>
+        <h3>Formato básico</h3>
+        <p>
+          A referência sempre começa com o nome do filme por extenso, sendo a
+          primeira palavra transcrita em letras maiúsculas. Especificações sobre
+          cor (colorido ou p&b), legenda e saga melhoram a descrição do
+          documento audiovisual. Veja o formato básico:
+        </p>
+        <p>
+          <mark>
+            NOME do Filme. Direção: Nome do diretor por extenso. Produção: Nome
+            do produtor por extenso. Intérpretes: Nomes dos atores por extenso
+            Roteiro: Nome do roteirista por extenso. Cidade: Empresa produtora,
+            Ano. Especificação do suporte físico (duração do filme), Tipo de
+            Suporte físico, son., color. Legendado. Idioma. Série. Notas
+            especiais.
+          </mark>
+        </p>
+        <img src={Img} alt="" width="100%" />
+        <h3>Exemplos aplicando o formato</h3>
+        <p>
+          <b>Cinema</b>
+        </p>
+        <p>
+          <mark>
+            CENTRAL do Brasil. Direção: Walter Salles Júnior. Produção: Martire
+            de ClermontTonnerre e Arthur Cohn. Intérpretes: Fernanda Montenegro,
+            Marilia Pera, Vinicius de Oliveira, Sônia Lira, Othon Bastos,
+            Matheus Nachtergaele et al. Roteiro: Marcos Bernstein, João Emanuel
+            Carneiro e Walter Salles Júnior. [S. l.]: Le Studio Canal; Riofilme;
+            MACT Productions, 1998. 5 rolos de filme (106 min), son., color., 35
+            mm.
+          </mark>
+        </p>
+        <p>
+          <b> Cópia de um acervo </b>
+        </p>
+        <p>
+          <mark>
+            TERRA em transe. Direção: Gláuber Rocha. Rio de Janeiro: Mapa
+            Produções Cinematográficas, 1967 [produção]. 1 filme (105 min), 35
+            mm, p&b. Cópia da Cinemateca Brasileira.
+          </mark>
+        </p>
+        <p>
+          <b>DVD</b>
+        </p>
+        <p>
+          <mark>
+            CIDADE de Deus. Direção de Fernando Meirelles. Rio de Janeiro: Globo
+            Filmes, 2002. 1 DVD (130 min.).
+          </mark>
+        </p>
+        <p>
+          <b>VHS</b>
+        </p>
+        <p>
+          <mark>
+            OS PERIGOS do uso de tóxicos. Produção de Jorge Ramos de Andrade.
+            São Paulo: CERAVI, 1983. 1 fta de vídeo (30 min), VHS, son., color.
+          </mark>
+        </p>
+        <p>
+          <b>Amazon Prime (também serve para filme da Netflix)</b>
+        </p>
+        <p>
+          <mark>
+            QUERIDO Menino. Direção: Felix Van Groeningen. Produção: Dede
+            Gardner; Jeremy Kleiner; Brad Pitt. Intérpretes: Steve Carell;
+            Timothée Chalamet;Maura Tierney Amy Ryan et al.[S. l.]: Amazon
+            Studios, 2018. Filme original da plataforma streaming de Amazon
+            Prime Video.
+          </mark>
+        </p>
+        <p>
+          <b>Outras situações com vídeos</b>
+        </p>
+        <p>
+          <b>Seriado de Televisão</b>
+        </p>
+        <p>
+          Depois de inserir o título da série, é interessante especificar a
+          temporada e o número do episódio referenciado. Informações como
+          criador e produtor também são importantes. Veja um exemplo:
+        </p>
+        <p>
+          <mark>
+            LOST (Temporada 1, ep. 5). Criadores: Jeffrey Lieber; J. J. Abrams;
+            Damon Lindelof. Produtores: Sarah Caplan et al. Hawaii: Produtora
+            ABC Network, 2004. 1 DVD (45 min.), son., color.
+          </mark>
+        </p>
+        <p>
+          <b>Série da Netflix</b>
+        </p>
+        <p>
+          No caso de uma série da Netflix, você pode adicionar a especificação
+          do serviço de streaming na parte de informações adicionais. Veja um
+          exemplo:
+        </p>
+        <p>
+          <mark>
+            HOUSE of cards (primeira temporada). Criação Beau Willimon.
+            Produtores: David Fincher; Kevin Spacey; Eric Roth. S.l.: Media
+            Rights Capital; Panic Pictures, 2013. 13 episódios, son., col. Série
+            exibida pela Netflix. Acesso em: 24 jul. 2019.
+          </mark>
+        </p>
+      </div>
     </>
   );
 };
