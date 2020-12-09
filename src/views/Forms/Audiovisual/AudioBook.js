@@ -23,6 +23,8 @@ import ArrowLeft from "../../../assets/images/arrow-left.svg";
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
 
+import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-audiolivro.jpg";
+
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
   ledor: Yup.string().required("Obrigatório"),
@@ -327,6 +329,148 @@ const AudioBook = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ textAlign: "justify", paddingBottom: "40px" }}
+      >
+        <h1 style={{ textAlign: "left" }}>
+          Referência bibliográfica de audiolivro
+        </h1>
+        <p>
+          A ABNT apresenta as recomendações de referência bibliográfica para
+          audiolivro na seção 7.13.3 da NBR 6023:2018, que fala a respeito de
+          documento sonoro no todo.
+        </p>
+        <p>
+          A norma determina que, para referenciar um audiobook, é necessário
+          informar autor da obra, título, ledor, empresa responsável pela
+          gravação, entre outras informações consideradas essenciais.
+        </p>
+        <p>
+          Quando há indicação de autor do audiolivro, a regra pede para iniciar
+          a referência com o nome do autor do livro. Desse modo, o título da
+          obra recebe destaque em negrito.
+        </p>
+        <p>
+          Na ausência de autoria declarada, inicia-se com o título da obra por
+          extenso, sendo a primeira palavra em letras maiúsculas. Não há
+          negrito.
+        </p>
+        <p>
+          <b>Elementos essenciais na referência de audiolivro</b>
+        </p>
+        <p>
+          <ul>
+            <li>
+              {" "}
+              <b>Título:</b> Título do audiobook;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Subtítulo:</b> Subtítulo (se houver){" "}
+            </li>
+            <li>
+              {" "}
+              <b>Autoria:</b> Nome do autor da obra;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Ledor:</b> Nome do responsável pela narração;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Local:</b> Cidade de origem da gravadora;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Publicadora:</b> nome da gravadora;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Ano:</b> ano de lançamento;{" "}
+            </li>
+            <li>
+              {" "}
+              <b>Especificações do suporte:</b> se é online ou CD, por exemplo.{" "}
+            </li>
+          </ul>
+        </p>
+        <p>
+          Quando o local de gravação é desconhecido, utiliza-se a expressão [S.
+          l.], que significa sine loco. O GORB se encarrega de inserir isso
+          automaticamente para você não se preocupe.
+        </p>
+        <p>
+          <b>Formato básico</b>
+        </p>
+        <p>
+          <mark>
+            SOBRENOME, Nome. <b>Título</b>: Subtítulo. Na voz de Nome do ledor.
+            Local: Publicadora, ano. 1 audiolivro (Especificação do suporte).
+          </mark>
+          <br />
+          <br />
+          ou
+          <br />
+          <br />
+          <mark>
+            TÍTULO da obra: Subtítulo. Na voz de Nome do ledor. Local:
+            Publicadora, ano. 1 audiolivro (Especificação do Suporte).
+          </mark>
+        </p>
+
+        <p>
+          <b>Exemplos aplicando o formato</b>
+        </p>
+        <img src={Img} alt="audio-livro" width="100%" />
+        <p>
+          <mark>
+            GOMES, Laurentino. <b>1822.</b> Na voz de Pedro Bial. [S. l.]:
+            Plugme, 2011. 1 audiolivro (CD-ROM).
+          </mark>
+          <br />
+          <br />
+          <mark>
+            BÍBLIA em áudio: novo testamento. Na voz de Cid Moreira. Brasília:
+            Sociedade Bíblica do Brasil, 2010. 1 audiolivro (Disco blue-ray).
+          </mark>
+          <br />
+          <br />
+          <mark>
+            BAUM, L. F. <b>The wonderful land of Oz.</b> Ledor: Roy Trumbull.
+            [S. l.]: Project Gutenberg, 2005. 1 audiolivro (CD-ROM), extensão
+            MP3 (4 MB).
+          </mark>
+        </p>
+
+        <p>
+          <b>E quando o audiolivro está disponível na internet?</b>
+        </p>
+        <p>
+          Quando a consulta ao audiobook ocorre online, é necessário especificar
+          a URL e a data de acesso. O primeiro elemento vem precedido da
+          expressão "Disponível em". Já o segundo elemento é precedido de
+          "Acesso em".
+        </p>
+        <p>Veja exemplos:</p>
+        <p>
+          <mark>
+            LOBATO, Monteiro. <b>Narizinho Arrebitado.</b> Na voz de Paola
+            Molinari, Clayton Heringer, Juscelino Filho. [S.l.]: Tocalivros
+            Studios, 2020. 1 audiolivro (online). Disponível em:
+            https://www.tocalivros.com/audiolivro/narizinho-arrebitado-monteiro-lobato-paola-molinari-clayton-heringer-j-tocalivros-studios.
+            Acesso em: 30 out. 2020.
+          </mark>
+          <br />
+          <br />
+          <mark>
+            ASSIS, Machado de. <b>Memórias Póstumas de Brás Cubas.</b> Na voz de
+            Rafael Cortez. [S.l.]: Audible, 2019. 1 audiolivro (com 6h14 min).
+            Disponível em: https://stories.audible.com/pdp/B00U2S7BSO. Acesso
+            em: 30 out. 2020.
+          </mark>
+        </p>
+      </div>
     </>
   );
 };

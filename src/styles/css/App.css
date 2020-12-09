@@ -7,3 +7,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+mark {
+  background-color: yellow !important;
+}
