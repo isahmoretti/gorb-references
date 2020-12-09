@@ -334,9 +334,7 @@ const AudioBook = ({ back }) => {
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
       >
-        <h1 style={{ textAlign: "left" }}>
-          Referência bibliográfica de audiolivro
-        </h1>
+        <h1>Referência bibliográfica de audiolivro</h1>
         <p>
           A ABNT apresenta as recomendações de referência bibliográfica para
           audiolivro na seção 7.13.3 da NBR 6023:2018, que fala a respeito de

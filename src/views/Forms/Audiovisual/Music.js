@@ -120,7 +120,7 @@ const Music = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form style={{ maxWidth: 830 }} onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -362,7 +362,7 @@ const Music = ({ back }) => {
       </Container>
       <div
         className="container"
-        style={{ textAlign: "justify", paddingBottom: "40px" }}
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
       >
         <h1 style={{ textAlign: "left" }}>
           Referência Bibliográfica de música

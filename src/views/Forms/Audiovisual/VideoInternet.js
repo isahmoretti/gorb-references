@@ -18,6 +18,7 @@ import { formatDate } from "../../../utils/formatDate";
 import { formatMonosyllable } from "../../../utils/monosyllable";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-video-de-internet.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -109,7 +110,7 @@ const VideoInternet = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form style={{ maxWidth: 830 }} onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -278,6 +279,164 @@ const VideoInternet = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de vídeo de internet ABNT</h1>
+
+        <p>
+          As referências bibliográficas de vídeos de internet devem obedecer os
+          padrões estabelecidos para filmes. Contudo, é necessário acrescentar
+          especificações sobre o suporte, como é o caso do endereço eletrônico e
+          a data de acesso.
+        </p>
+        <p>
+          No Youtube e outras plataformas online de vídeo, é possível encontrar
+          vários conteúdos audiovisuais, como palestras, entrevistas com
+          especialistas, documentários, propagandas e curtas.
+        </p>
+
+        <h3>Elementos essenciais na referência de vídeo online</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Título do vídeo:</b> Título do vídeo referenciado;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> subtítulo (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano:</b> ano de publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tempo de duração:</b> descrito em minutos ou horas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Responsabilidade:</b> Nome do canal;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Publicadora:</b> responsável pela publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Disponibilidade:</b> URL, precedida de "Disponível em";{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Acesso:</b> dia, mês e ano de acesso, precedido de "Acesso em";{" "}
+          </li>
+        </ul>
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Os elementos complementares de uma referência são aqueles que não
+          possuem caráter obrigatório, mas melhoram a descrição do documento.
+        </p>
+
+        <p>
+          No vídeo de internet, se houver informações sobre produção,
+          reportagem, imagem e edição, você pode adicionar, seguindo o padrão de
+          referência de filme.
+        </p>
+
+        <h3>Regras de formatação</h3>
+
+        <p>
+          A referência de vídeo de internet começa com o título do conteúdo,
+          sendo que a primeira palavra deve ser transcrita com letras
+          maiúsculas. Em caso de artigo ou preposição acompanhando, também é
+          necessário colocar em letras maiúsculas.
+        </p>
+
+        <p>
+          Quando não se sabe o local de publicação, usa-se a expressão [s. l.],
+          que significa sine loco.
+        </p>
+
+        <p>
+          No caso de publicadora não identificada, o correto é usar a expressão
+          [s. n.], que significa sine nomine.
+        </p>
+
+        <p>
+          Em uma referência de vídeo com local e publicadora desconhecidos,
+          usa-se a expressão [S. l.: s. n.] - sempre entre colchetes, abreviadas
+          e separadas por dois pontos.
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>Veja no esquema abaixo a ordem dos elementos e pontuação:</p>
+
+        <p>
+          <mark>
+            TÍTULO do vídeo: Subtítulo. Local: Publicadora, Ano. 1 vídeo (tempo
+            de duração). Publicado pelo Responsabilidade. Disponível em: URL.
+            Acesso em: dia, mês e ano.
+          </mark>
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="video-de-internet" width="100%" />
+
+        <p>
+          <mark>
+            DE BEM com a saúde - AVC: Qual a importância do rápido atendimento?
+            Bauru: USP, 2018. 1 vídeo (1 min). Publicado pela TV USP Bauru.
+            Disponível em: https://www.youtube.com/watch?v=gkT-eMYlrKw. Acesso
+            em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            THE KEY to a better malaria vaccine. [New York]: TED, 2018. 1 vídeo
+            (7 min). Disponível em: https://www.youtube.com/watch?v=b2Jv8vC-m3g.
+            Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            UM MANIFESTO 2.0 do bibliotecário. Mash up por Laura Cohen.
+            Tradução: Maria José Vicentini Jorente. [S. l.: s. n.], 2007. 1
+            vídeo (4 min). Disponível em:
+            http://www.youtube.com/watch?vYj1p0A8DMrE. Acesso em: 12 maio 2010.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            O QUE É PLÁGIO acadêmico e quais são suas consequências. Produção:
+            Gabriel José. Reportagem: Gabriel José, Ludmilla Cabral. [S.l.]: TV
+            UFMG, 2018. Publicado pelo canal TV UFMG em 11 abr. 2018. Disponível
+            em: https://www.youtube.com/watch?v=jj9elw6MSw0. Acesso em: 29 out.
+            2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            TELECURSO 2000 Normalizacao 03 Normalização no Brasil. Direção:
+            Adrina Mesquita, José Messina Netto, André Martirani. Produção:
+            Cristiane Marie, José Alves da Silva, Caito Nucci, Juliana
+            Santonieri, Emerson Luis, Marcelo Fonseca. [S.l.]: Fundação Roberto
+            Marinho, [2000?]. Publicado pelo canal de Bruno Albert em 26 dez.
+            2011. Disponível em:
+            https://www.youtube.com/watch?v=qF4fPwmosjI&list=PL7D9C30CD55F4FFF8&index=3.
+            Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+      </div>
     </>
   );
 };
