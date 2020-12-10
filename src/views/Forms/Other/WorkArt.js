@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -19,6 +20,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-obra-de-arte.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -85,7 +87,7 @@ const WorkArt = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -182,6 +184,102 @@ const WorkArt = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de obra de arte ABNT</h1>
+
+        <p>
+          A obra de arte, segundo a NBR 6023 da ABNT, é um documento
+          iconográfico. A norma apresenta os elementos essenciais e exemplos no
+          tópico 7.15.
+        </p>
+
+        <p>
+          Quando não houver um título definido para a obra de arte, o autor do
+          trabalho <b>não pode criar uma denominação</b> que identifique o
+          conteúdo do documento, como ocorre com cartazes, fotografias, desenhos
+          técnicos, transparências entre outros documentos.
+        </p>
+
+        <p>
+          A recomendação da ABNT é incluir a expressão sem título, entre
+          colchetes: <b>[Sem título]</b>.
+        </p>
+
+        <h3>Elementos</h3>
+
+        <p>Os elementos essenciais são:</p>
+
+        <ul>
+          <li> Autor: SOBRENOME e nome do criador da obra; </li>
+          <li> Título: título da obra em destaque; </li>
+          <li> Data: ano de criação da obra; </li>
+          <li> Especificação do suporte: descrição física do documento. </li>
+        </ul>
+
+        <p>
+          A parte final da referência inclui as especificações, ou seja, uma
+          descrição sobre dimensões e tipo de pintura. Além disso, é
+          interessante incluir dados sobre disponibilidade, mencionando se a
+          obra integra uma coleção particular ou está disponível em um
+          museu/galeria.
+        </p>
+
+        <h3>Estrutura</h3>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome do autor. <b>Título da obra.</b> Data. Especificação
+            do suporte. Disponibilidade.
+          </mark>
+        </p>
+
+        <h3>Mais exemplos</h3>
+
+        <img src={Img} alt="trabalho-arte" width="100%" />
+
+        <p>
+          <mark>
+            MATTOS, M. D. <b>Paisagem-Quatro Barras.</b> 1987. 1 original de
+            arte, óleo sobre tela, 40 x 50 cm. Coleção particular.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            FERRARI, León. <b>[Sem título]</b>. 1990. Pintura, pastel e tinta
+            acrílica sobre madeira, 160 × 220 × 5 cm.
+          </mark>
+        </p>
+
+        <h3>Citação de obra de arte</h3>
+
+        <p>
+          A ABNT adota o sistema autor-data para normalizar citações em
+          trabalhos acadêmicos. Portanto, ao mencionar uma obra de arte no
+          texto, é necessário citar o sobrenome do autor e o ano.
+        </p>
+
+        <p>
+          No final do texto, o sobrenome do autor é colocado entre parênteses e
+          com letras maiúsculas. Por outro lado, quando faz parte do texto, o
+          sobrenome aparece sem parênteses e apenas com a letra inicial
+          maiúscula.
+        </p>
+
+        <p>Exemplos:</p>
+
+        <p>
+          <mark>[...] (PORTINARI , 1944)</mark>
+        </p>
+
+        <p>
+          <mark>Portinari (1944) [...]</mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

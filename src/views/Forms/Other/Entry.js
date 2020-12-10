@@ -15,6 +15,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -25,6 +26,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-verbete.jpg";
 
 // styles
 import {
@@ -870,6 +872,167 @@ const Entry = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de verbete de dicionário ou enciclopédia (ABNT)</h1>
+
+        <p>
+          A NBR 6023 explica como fazer referência de verbete de dicionário ou
+          enciclopédia no tópico "parte de monografia". A estrutura é bem
+          semelhante ao de capítulo de livro.
+        </p>
+
+        <p>
+          O pesquisador, muitas vezes, precisa apresentar conceitos e definições
+          no seu trabalho acadêmico. Por esse motivo, torna-se necessária à
+          consulta aos dicionários e enciclopédias.
+        </p>
+
+        <p>
+          O verbete é parte da obra dicionário ou enciclopédia, assim como
+          acontece com capítulo, volume ou outro tipo de fragmento.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li> Autor da parte: nome do responsável pela parte; </li>
+          <li> Título da parte: título do verbete ou conceito; </li>
+          <li> Expressão In: indica "dentro de"; </li>
+          <li>
+            {" "}
+            Nome do autor do todo: nome de quem escreveu ou organizou a obra
+            toda;{" "}
+          </li>
+          <li> Título do todo: título da enciclopédia; </li>
+          <li> Subtítulo da publicação no todo: se houver, incluir; </li>
+          <li> N° da Edição; </li>
+          <li> Local de publicação; </li>
+          <li> Editora: responsável pela publicação; </li>
+          <li> Data: ano de publicação; </li>
+          <li> Página Inicial-final: página do verbete ou conceito; </li>
+          <li> Série ou Coleção: se houver, incluir; </li>
+          <li>
+            {" "}
+            Nota: Informações complementares para melhorar a identificação do
+            documento;{" "}
+          </li>
+          <li>
+            {" "}
+            Suporte: quando a consulta ocorre por CD-ROM ou online, é necessário
+            descrever o suporte.{" "}
+          </li>
+        </ul>
+
+        <h3>Exemplos</h3>
+
+        <p>
+          A forma de referenciar verbete depende do tipo de autor, que pode ser
+          pessoa física, entidade coletiva ou sem autoria.
+        </p>
+
+        <h3>Tipo de autor > Pessoa física</h3>
+
+        <p>
+          Quando o autor é uma pessoa física, a referência contém sobrenome em
+          LETRAS MAIÚSCULAS, seguido pelo prenome. Aqui, vale a mesma regra
+          aplicada em livros.
+        </p>
+
+        <h3>Exemplo</h3>
+
+        <p>
+          <mark>
+            FERREIRA, Aurélio Buarque de Holanda. Etnografia. In: FERREIRA,
+            Aurélio Buarque de Holanda. . In: <b>Míniaurélio</b>: o dicionário
+            da língua portuguesa. 7 ed. Curitiba: Editora Positivo, 2008. p.
+            383. Coordenação e edição de Margarida dos Anjos e Marina Baird
+            Ferreira.
+          </mark>
+        </p>
+
+        <h3>Tipo de autor > sem autoria</h3>
+
+        <p>
+          Quando não há um autor declarado na enciclopédia, inicia-se a
+          referência pelo verbete. A primeira palavra é em LETRAS MAIÚSCULAS e
+          nenhum termo recebe negrito.
+        </p>
+
+        <h3>Exemplo</h3>
+
+        <p>
+          <mark>
+            MORFOLOGIA dos artrópodes. In: ENCICLOPÉDIA multimídia dos seres
+            vivos. [S. l.]: Planeta DeAgostini, c1998. CD-ROM 9.
+          </mark>
+        </p>
+
+        <h3>Tipo de autor > entidade coletiva</h3>
+
+        <p>
+          Quando a autoria da obra pertence a uma entidade coletiva, como ONG ou
+          empresa, a escrita do nome do autor é por extenso, em ordem direta e
+          com LETRAS MAIÚSCULAS. Não tem negrito em nada.
+        </p>
+
+        <p>A estrutura fica assim:</p>
+
+        <p>
+          <mark>
+            AUTOR DA PARTE. Título do Verbete: subtítulo do verbete. In: AUTOR
+            DO TODO. Título da enciclopédia: subtítulo da enciclopédia. Edição.
+            Local: Editora, Ano. Página inicial - Página final. (Série).
+          </mark>
+        </p>
+
+        <h3>Verbete de enciclopédia em meio eletrônico</h3>
+
+        <p>
+          O suporte deve ser descrito na última parte da referência
+          bibliográfica. No caso de uma consulta online, é importante incluir
+          dados de disponibilidade e data de acesso.
+        </p>
+
+        <h3>Exemplo</h3>
+
+        <p>
+          <mark>
+            TRANSPLANTE de medula óssea. In : WIKIPÉDIA: a enciclopédia livre.
+            São Francisco, CA: Fundação Wikimedia, 2017. Disponível em:
+            https://pt.wikipedia.org/wiki/Transplante_de_ medula_%C3%B3ssea.
+            Acesso em: 6 jan. 2019.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            ALIMENTAÇÃO saudável. In: WIKIPÉDIA: a enciclopédia livre. São
+            Francisco, CA: Fundação Wikimedia, 2013. Disponível em:
+            http://pt.wikipedia.org/wiki/Alimentacao_saudavel. Acesso em: 22
+            set. 2013.
+          </mark>
+        </p>
+
+        <img src={Img} alt="verbete" width="100%" />
+
+        <h3>Como referenciar enciclopédia toda?</h3>
+
+        <p>
+          Segue a mesma regra de referência bibliográfica de livro. Exemplo:
+        </p>
+
+        <p>
+          <mark>
+            KOOGAN, André; HOUAISS, Antônio (ed.).{" "}
+            <b>Enciclopédia e dicionário digital 98</b>. São Paulo: Delta:
+            Estadão, 1998. 5 CD-ROM.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

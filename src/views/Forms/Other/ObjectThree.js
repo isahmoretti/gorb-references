@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -19,6 +20,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-tridimensional.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -98,7 +100,7 @@ const ObjectThree = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -241,6 +243,89 @@ const ObjectThree = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de documento tridimensional (ABNT)</h1>
+
+        <p>
+          Em determinadas áreas do conhecimento, é necessário consultar objetos
+          tridimensionais para produzir um trabalho acadêmico. Nesse caso, o
+          documento consultado deve ser inserido na lista de referências
+          bibliográficas.
+        </p>
+
+        <h3>O que são documentos tridimensionais?</h3>
+
+        <p>
+          Na área de Artes, é muito comum consultar monumentos e esculturas. Em
+          Ciências Biológicas, alguns pesquisadores verificam esqueletos,
+          fósseis e até animais empalhados. Já as maquetes são frequentemente
+          citadas em trabalhos de Arquitetura e Design.
+        </p>
+
+        <p>
+          Fósseis, esqueletos, maquetes e outros objetos são considerados
+          documentos tridimensionais na NBR 6023.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li> Autor: SOBRENOME e nome do criador; </li>
+          <li>
+            {" "}
+            Título do objeto: quando o objeto não tem um nome, deve-se criar uma
+            denominação e colocá-la entre colchetes;{" "}
+          </li>
+          <li> Cidade: local onde foi criado; </li>
+          <li> Nome do produtor ou fabricante; </li>
+          <li> Data: ano de criação; </li>
+          <li> Especificação do documento tridimensional. </li>
+        </ul>
+
+        <p>
+          A especificação é a descrição física do documento, como tipo e
+          materiais usados na fabricação.
+        </p>
+
+        <p>
+          Elementos complementares, quando inseridos na referência bibliográfica
+          na forma de nota, melhoram a identificação do documento. Isso inclui a
+          coleção que pertence o objeto ou o seu título original.
+        </p>
+
+        <h3>Estrutura</h3>
+
+        <p>
+          <mark>
+            SOBRENOME, Prenome (criador, inventor, entre outros). <b>Título</b>.
+            Local: produtor ou fabricante. Data. Especificação do documento
+            tridimensional.
+          </mark>
+        </p>
+
+        <img src={Img} alt="tridimensional" width="100%" />
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          <mark>
+            TOLEDO, Amelia. <b>Campos de cor</b>. 2010. 1 escultura variável,
+            tecidos coloridos. Original. Exposta na 29ª Bienal Internacional de
+            Arte de São Paulo.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            DUCHAMP, Marcel. <b>Roda de bicicleta</b>. Paris, 1951. 1 escultura
+            de com roda de bicicleta e banco de madeira.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

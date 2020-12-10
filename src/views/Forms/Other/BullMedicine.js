@@ -13,11 +13,13 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-bula-de-remedio.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -106,7 +108,7 @@ const BullMedicine = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -294,6 +296,83 @@ const BullMedicine = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de bula de remédio (ABNT)</h1>
+
+        <p>
+          Nas áreas de ciências biológicas e saúde, é comum alguns trabalhos
+          acadêmicos abordarem assuntos como composição de medicamentos e formas
+          de uso. Por esse motivo, a Associação Brasileira de Normas Técnicas
+          (ABNT) ensina como fazer referência bibliográfica de bula de remédio.
+        </p>
+
+        <p>
+          A NBR 6023: 2018 ensina como referenciar bulas no item "documentos
+          impressos". Na última parte da referência, o pesquisador deve se
+          preocupar com a descrição física do material consultado.
+        </p>
+
+        <h3>Elementos</h3>
+
+        <ul>
+          <li> Nome do medicamento </li>
+          <li>
+            {" "}
+            Forma do medicamento (pode ser comprimido, spray, pomada, solução,
+            etc).{" "}
+          </li>
+          <li> Responsável técnico: Nome em ordem direta do responsável; </li>
+          <li> Local: cidade de fabricação; </li>
+          <li> Fabricante: empresa responsável pela fabricação; </li>
+          <li> Ano: data de fabricação; </li>
+          <li> Especificação: descrição do documento consultado. </li>
+        </ul>
+
+        <p>
+          Quando se trata de bula de remédio, não se usa negrito, itálico ou
+          sublinhado. O motivo disso é que a entrada da referência é feita pelo
+          título, já colocado em destaque.
+        </p>
+
+        <h3>Estrutura</h3>
+
+        <p>
+          <mark>
+            NOME DO MEDICAMENTO: forma do remédio. Responsável técnico. Cidade:
+            Fabricante, Ano. Nota indicativa.
+          </mark>
+        </p>
+
+        <img src={Img} alt="bula-remedio" width="100%" />
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          <mark>
+            RESPRIN: comprimidos. Responsável técnico Delosmar R. Bastos. São
+            José dos Campos: Johnson & Johnson, 1997. 1 bula de remédio (2 p.).
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            PROPOLA: comprimidos. São Paulo: Roche, 2012. 1 bula de remédio (3
+            p.).
+          </mark>
+        </p>
+
+        <h3>Bula de medicamento online</h3>
+
+        <p>
+          Quando o documento é digital, é importante que a referência contenha o
+          endereço eletrônico e a data de acesso. Essas informações são
+          precedidas de "Disponível em" e "Acesso em", respectivamente.
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

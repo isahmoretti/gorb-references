@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -21,6 +22,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-partitura.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -128,7 +130,7 @@ const Score = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -330,6 +332,97 @@ const Score = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de partitura (ABNT)</h1>
+
+        <p>
+          A referência de partitura é abordada pela NBR 6023 na parte de
+          documentos audiovisuais. O item 7.14 explica quais são os elementos
+          essenciais e também considera os complementares.
+        </p>
+
+        <p>
+          A partitura é uma representação escrita da música, que apresenta as
+          características físicas do som. Isso inclui duração, intensidade,
+          timbre e altura. A Associação Brasileira de Normas Técnicas (ABNT)
+          explica como formatar partituras impressas e disponíveis em meio
+          eletrônico.
+        </p>
+
+        <h3>Elementos</h3>
+
+        <p>
+          Os elementos que integram a referência bibliográfica de partitura são:
+        </p>
+
+        <ul>
+          <li> Compositor: nome do autor da partitura; </li>
+          <li> Título: título da música; </li>
+          <li> Subtítulo: se houver; </li>
+          <li> Instrumento: instrumento musical a que se destina; </li>
+          <li> Local: cidade onde foi publicado o documento; </li>
+          <li> Editor: responsável pela publicação; </li>
+          <li> Data: ano de publicação </li>
+          <li> Descrição física: especificações do suporte. </li>
+        </ul>
+
+        <p>
+          O nome do instrumento musical deve ser incluído na referência desde
+          que não faça parte do título.
+        </p>
+
+        <h3>Estrutura</h3>
+
+        <p>Os elementos são organizados da seguinte forma:</p>
+
+        <p>
+          <mark>
+            SOBRENOME, prenome compositor. <b>Título</b>: subtítulo.
+            Instrumento. Local: Editor, data. Descrição física.
+          </mark>
+        </p>
+
+        <img src={Img} alt="partitura" width="100%" />
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          <mark>
+            XENAKIS, Iannis. <b>Aïs</b>. Pour baryton amplifé, percussion solo
+            et grand orchestre. Paris: Salabert, 1980. 1 partitura.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            BRAHMS, Johannes. <b>Sonate für Klavier und Violoncello</b>: e-mol
+            opus 38. München: G. Henle, 1977. 1 partitura.
+          </mark>
+        </p>
+
+        <h3>Partitura em meio eletrônico</h3>
+
+        <p>
+          Em caso de partitura online, é obrigatório mencionar o endereço
+          eletrônico do documento e a data de acesso. Esses dois dados são
+          precedidos, respectivamente, de "Disponível em:" e "Acesso em:".
+        </p>
+
+        <p>Veja o exemplo abaixo:</p>
+
+        <p>
+          <mark>
+            GONZAGA, Chiquinha. <b>Gaúcho</b>: o corta-jaca de cá e lá. Piano.
+            1997. 1 partitura. Acervo digital Chiquinha Gonzaga. Disponível
+            em:http://www.chiquinhagonzaga.com/acervo/partituras/gaucho_ca-e-la_piano.pdf.
+            Acesso em: 28 nov. 2020.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

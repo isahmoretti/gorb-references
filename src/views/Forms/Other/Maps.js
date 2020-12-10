@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -21,6 +22,7 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/outros/referencia-abnt-mapa.jpg";
 
 // styles
 import {
@@ -177,7 +179,7 @@ const Maps = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -497,6 +499,149 @@ const Maps = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de mapa (ABNT)</h1>
+
+        <p>
+          A ABNT ensina como fazer referência bibliográfica de mapa na NBR 6023.
+          As mesmas regras de normatização são adotadas em outros documentos
+          cartográficos, como é o caso de atlas, globo terrestre, carta
+          topográfica, imagem de satélite e fotografia aérea.
+        </p>
+
+        <p>
+          O mapa é a representação gráfica da superfície da terra ou parte dela.
+          Ele mostra de forma precisa a localização de bairros, cidades,
+          montanhas, rios, mares, etc. Na hora de montar a referência, é muito
+          importante observar o tipo de autor para não errar.
+        </p>
+
+        <h3>Elementos</h3>
+
+        <p>Os elementos essenciais são:</p>
+
+        <ul>
+          <li> Autor: responsável pela autoria; </li>
+          <li> Subordinação: se houver; </li>
+          <li> Título: título do mapa; </li>
+          <li> Subtítulo: se houver; </li>
+          <li> Local: cidade de publicação; </li>
+          <li> Editora: responsável pela publicação; </li>
+          <li> Data: ano de publicação; </li>
+          <li> Especificações do suporte: descrição física e escala. </li>
+        </ul>
+
+        <p>
+          Quando o local ou o ano não aparece no documento, mas de alguma forma
+          pode ser identificado, é necessário indicá-lo entre colchetes.
+          Exemplo: [Curitiba].
+        </p>
+
+        <p>
+          Elementos complementares, que não são obrigatórios, podem ser
+          acrescentados na referência para melhorar a identificação do
+          documento.
+        </p>
+
+        <h3>Estrutura</h3>
+
+        <p>
+          <mark>
+            AUTOR. Subordinação (se houver). <b>Título</b>: subtítulo. Local:
+            Editora, data. Descrição física. Escala.
+          </mark>
+        </p>
+
+        <h3>Tipo de autor &gt;&gt; pessoa física</h3>
+
+        <p>
+          Quando o mapa é elaborado por pessoa física, a referência é iniciada
+          com o SOBRENOME, Prenome de cada autor. O título do mapa recebe
+          destaque.
+        </p>
+
+        <p>
+          <mark>
+            SOUZA, José Clóvis; COSTA, Sandra Pereira.{" "}
+            <b>Mapa do bairro Santa Elizabeth II.</b> Avaré, 2018. 1 mapa 78 x
+            57 cm.
+          </mark>
+        </p>
+
+        <h3>Tipo de autor &gt;&gt; entidade coletiva</h3>
+
+        <p>
+          Os mapas geralmente são produzidos por entidades coletivas, como
+          empresas, institutos e órgãos governamentais. Neste caso, o nome do
+          autor é escrito por extenso, em ordem direta, em LETRAS MAIÚSCULAS. Há
+          destaque no título do mapa.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            INSTITUTO GEOGRÁFICO E CARTOGRÁFICO (São Paulo).{" "}
+            <b>Regiões de governo do Estado de São Paulo.</b> São Paulo: IGC,
+            1994. 1 atlas. Escala 1:2.000.
+          </mark>
+        </p>
+        <p>
+          <mark>
+            BRASIL. Ministério do Exército. <b>Aceguá e Arroio São Miguel.</b>
+            Brasília: DSG, 1980. 1 mapa, color., 79 x 95 cm. Escala 1: 50.000.
+          </mark>
+        </p>
+
+        <h3>Tipo de autor &gt;&gt; sem autoria</h3>
+
+        <p>
+          Quando não há uma autoria declarada no documento cartográfico, a
+          referência começa pelo título do documento, sendo a primeira palavra
+          escrita com LETRAS MAIÚSCULAS. Não há negrito.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            BRASIL e parte da América do Sul: mapa político, escolar,
+            rodoviário, turístico e regional. São Paulo: Michalany, 1981. 1
+            mapa, color., 79 × 95 cm. Escala 1:600.000.
+          </mark>
+        </p>
+
+        <img src={Img} alt="mapas" width="100%" />
+
+        <h3>Mapa consultado em meio eletrônico</h3>
+
+        <p>
+          Quando o mapa é consultado em meio eletrônico, deve-se fazer a
+          descrição física. Além de documentos online, também existem documentos
+          em CD-ROM, pendrive, disquete, HD externo, etc.
+        </p>
+
+        <p>
+          Numa consulta pela internet, a referência precisa conter dados de
+          disponibilidade e acesso.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            FLORIDA MUSEUM OF NATURAL HISTORY. 1931-2000{" "}
+            <b>Brazil’s confrmed unprovoked shark attacks.</b> Gainesville:
+            Florida Museum of Natural History, [2000?]. 1 mapa, color. Escala
+            1:40.000.000. Disponível em: http://www.fmnh.uf.edu/ fsh/Sharks/
+            statistics/Gattack/map/Brazil.jpg. Acesso em: 15 jan. 2002.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };
