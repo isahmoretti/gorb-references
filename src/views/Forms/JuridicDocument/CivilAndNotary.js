@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -20,6 +21,8 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img1 from "../../../assets/images/explicativos/juridicos/elementos_complementares_documentos_civis.jpg";
+import Img2 from "../../../assets/images/explicativos/juridicos/elementos_essenciais_documentos_civis.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -100,7 +103,7 @@ const CivilAndNotary = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -218,6 +221,128 @@ const CivilAndNotary = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>
+          Referência bibliográfica de documentos civis e de cartório (ABNT)
+        </h1>
+
+        <p>
+          Os documentos civis e de cartório são fontes de{" "}
+          <a href="#">pesquisa documental.</a>
+          Nesse delineamento, utiliza-se fontes primárias para coletar
+          informações e dados que ainda não receberam um tratamento científico
+          ou analítico.
+        </p>
+
+        <p>
+          A lista de documentos de cartório e civis inclui certidão de
+          nascimento, certidão de casamento, certidão de óbito, carteira de
+          trabalho, passaporte, título de eleitor, CNH, certificação de serviço
+          militar, entre outros.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Jurisdição:</b> nome da cidade onde o documento foi emitido, em
+            letras maiúsculas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Nome do cartório ou órgão expedidor:</b> nome do cartório;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de documento:</b> com identificação destacada{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de registro:</b> o dia, mês e ano devem ser precedidos pela
+            expressão "Registro em:".{" "}
+          </li>
+        </ul>
+
+        <p>O formato básico é:</p>
+
+        <p>
+          <mark>
+            JURISDIÇÃO. Cartório ou Órgão expedidor. Tipo de documento com
+            identificação em destaque. Data de registro (precedida pela
+            expressão Registro em:).
+          </mark>
+        </p>
+
+        <h3>Exemplos aplicando o formato</h3>
+
+        <img src={Img2} alt="elementos-essenciais" width="100%" />
+
+        <p>
+          <mark>
+            SÃO PAULO (SP). Cartório de Registro Civil das Pessoas Naturais do
+            19º Subdistrito em Perdizes.{" "}
+            <b>Certidão de nascimento [de] Bianca da Silva.</b>
+            Registro em: 10 jul. 1925.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            JOÃO PESSOA (PB). 2 Cartório de Registro Civil de Nascimentos e
+            Óbitos de João Pessoa.{" "}
+            <b>Certidão de nascimento [de] Paula Maria Gonçalves.</b>
+            Registro em: 26 mar. 1961.Certidão registrada às fls.134 do livro n.
+            A78 de assentamento de nascimento n. 58593. Data de nascimento: 25
+            mar. 1961.
+          </mark>
+        </p>
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Elementos complementares podem ser incluídos na referência como uma
+          forma de identificar melhor o documento. São eles:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Número da folha:</b> adicionar a abreviação fs. e o número da
+            folha;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do livro:</b> usar a expressão "do livro n.".{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data do evento:</b> nascimento, casamento ou óbito;{" "}
+          </li>
+        </ul>
+
+        <h3>Exemplo com elementos complementares</h3>
+
+        <p>
+          <mark>
+            SOROCABA (SP). Cartório de Registro Civil das Pessoas Naturais do 1º
+            Subdistrito de Sorocaba.{" "}
+            <b>Certidão de nascimento [de] Maria da Silva.</b>
+            Registro em: 5 ago. 1980. Certidão registrada às fls. 170 do livro
+            n. 246 de assentamento de nascimento n. 51602. Data de nascimento: 5
+            ago. 1980.
+          </mark>
+        </p>
+
+        <p>Na imagem abaixo, identificamos os elementos complementares:</p>
+
+        <img src={Img1} alt="elementos-complementares" width="100%" />
+      </div>
+
+      <Footer />
     </>
   );
 };

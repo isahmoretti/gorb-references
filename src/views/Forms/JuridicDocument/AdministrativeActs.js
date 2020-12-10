@@ -13,11 +13,13 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/juridicos/elementos_ato_administrativo (1).jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -137,7 +139,7 @@ const AdministrativeActs = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -426,6 +428,145 @@ const AdministrativeActs = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de atos administrativos (ABNT)</h1>
+
+        <p>
+          A ABNT explica como fazer referência bibliográfica de atos
+          administrativos na parte de documentos jurídicos na NBR 6023. Essa
+          categoria inclui ato normativo, circular, decreto, despacho, edital,
+          estatuto, deliberação, ordem de serviço, ofício, parecer técnico,
+          portaria, regulamento, edital, estatuto, regimento, entre outros
+          documentos.
+        </p>
+
+        <p>
+          Um ato administrativo pode ser simples ou composto. Uma portaria
+          expedida por um ministro, por exemplo, é considerado um ato simples,
+          assim como a decisão de um órgão colegiado. Já o composto decorre da
+          vontade de um único órgão, mas depende da verificação de por parte de
+          outro.
+        </p>
+
+        <p>
+          Nas modalidades de atos administrativos, também existe o ato complexo,
+          que depende da conjugação de vontade de mais de um órgão. Exemplo: um
+          decreto assinado pelo chefe do executivo e que depois é referendado
+          pelo ministro de estado.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Jurisdição ou entidade:</b> em letras maiúsculas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Responsável:</b> órgão que se responsabiliza pelo ato;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de documento:</b> pode ser decreto, circular, estatuto,
+            entre outros;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Numeração:</b> número que identifica o documento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de assinatura:</b> dia, mês e ano de quando o documento foi
+            assinado;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ementa:</b> síntese do ato administrativo;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Dados da publicação:</b> título da publicação, local da
+            publicação, data, número e páginas.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Itens como alterações, revogações e retificações podem ser inseridos
+          como elementos complementares na referência.
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="atos-administrativos" width="100%" />
+
+        <p>
+          <mark>
+            CONSELHO ESTADUAL DE SAÚDE (Rio de Janeiro). Deliberação nº
+            05/CES/SES, de 6 de junho de 1997. Aprova o Regimento Interno do
+            Conselho Estadual de Saúde.{" "}
+            <b>Diário Oficial [do] Estado do Rio de Janeiro:</b> parte 1: Poder
+            Executivo, Niterói, ano 23, n. 139, p. 29-31, 30 jul. 1997.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            VARGINHA (MG). Edital de licitação nº189/2007. Pregão no 151/2007.
+            [Aquisição de leite pasteurizado]. Varginha: órgão oficial do
+            município, Varginha, ano 7, n. 494, p. 15, 31 maio 2007.
+          </mark>
+        </p>
+
+        <h3>Ato administrativo consultado em meio eletrônico</h3>
+
+        <p>
+          <mark>
+            BRASIL. Ministério da Educação. <b>Ofício circular 017/MEC.</b>{" "}
+            Brasília, DF: Ministério da Educação, 26 jan. 2006. Assunto: FUNDEB.
+            Disponível em:
+            http://portal.mec.gov.br/seb/arquivos/pdf/Fundebef/ofsmeincl.pdf.
+            Acesso em: 26 ago. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            UNIVERSIDADE FEDERAL DE UBERLÂNDIA. Conselho Universitário.
+            <b> Resolução n° 01/2007,</b> de 29 de março de 2007. Dispõe sobre a
+            criação da modalidade Bacharelado do curso de Graduação em Educação
+            Física. Uberlândia: Conselho Universitário, 2007. Disponível em:
+            http://www.reitoria.ufu.br/consultaAtaResolucao.php?tipoDocumento=resolucao&conselho=TODOS&anoInicioBusca=2007&anoFimBusca=2007&entrada=&pag=1.
+            Acesso em: 26 ago. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            BRASIL. Ministério da Fazenda. Secretaria de Acompanhamento
+            Econômico. <b>Parecer técnico nº 06370/2006/RJ.</b> Rio de Janeiro:
+            Ministério da Fazenda, 13 set. 2006. Disponível em:
+            http://www.cade.gov.
+            br/Plenario/Sessao_386/Pareceres/ParecerSeae-AC-2006-08012.008423-International_BusInes_MachIne.
+            PDF. Acesso em: 4 out. 2010.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            BRASIL. Ministério da Fazenda. Secretaria de Acompanhamento
+            Econômico. <b>Parecer técnico nº 06370/2006/RJ.</b> Ministério da
+            Fazenda: Rio de Janeiro, ano , n. , p. , 13 set. 2006. Disponível
+            em: http://www.cade.gov.
+            br/Plenario/Sessao_386/Pareceres/ParecerSeae-AC-2006-08012.008423-International_BusInes_MachIne.
+            Acesso em: 26 ago. 2020.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

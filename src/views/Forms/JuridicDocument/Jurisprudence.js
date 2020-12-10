@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -20,6 +21,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/juridicos/elementos_jurisprudencia.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -504,6 +506,133 @@ const Jurisprudence = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de jurisprudência (ABNT)</h1>
+
+        <p>
+          A jurisprudência é um conjunto de decisões dos tribunais sobre um tema
+          específico. A palavra tem origem do latim jusprudentia (justo) e
+          prudentia (prudência), significando "a ciência da lei".
+        </p>
+
+        <p>
+          O documento é, portanto, uma forma de uniformizar a compreensão das
+          leis entre aqueles que julgam e serve para garantir segurança
+          jurídica.
+        </p>
+
+        <p>
+          A categoria inclui documentos jurídicos como acórdão, decisão
+          interlocutória, sentença, despacho, súmula, etc. Todos esses
+          documentos são criados com base na interpretação de um tribunal, ou
+          seja, nas decisões judiciais.
+        </p>
+
+        <p>
+          Em caso de ementas grandes, a ABNT aceita supressão, desde que o autor
+          indique o uso desse recurso com reticências entre colchetes.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Jurisdição:</b> em letras maiúsculas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Órgão judiciário:</b> Nome da corte ou tribunal;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Turma e/ou região:</b> (entre parênteses, se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de documento:</b> súmula, enunciado, acórdão, sentença e
+            outras; decisões judiciais;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do processo:</b> numeração que identifica o documento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ementa:</b> síntese de uma decisão judicial;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Partes litigantes:</b> pode ser recorrente/recorrido ou
+            agravante/agravada{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Relator:</b> Nome do relator;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data do julgamento:</b> dia, mês e ano do julgamento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título da publicação:</b> indicação da publicação que que
+            divulgou o documento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local de publicação:</b> cidade onde ocorreu a publicação{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Volume:</b> número arábico, precedido por &lt;&lt; v. &gt;&gt;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número da publicação:</b> número arábico, precedido por &lt;&lt;{" "}
+            n. &gt;&gt;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Paginação:</b> página inicial-página final{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano de publicação:</b> ano em que o documento foi publicado.{" "}
+          </li>
+        </ul>
+
+        <h3>Exemplo</h3>
+
+        <img src={Img} alt="jurisprudencia" width="100%" />
+
+        <h3>Jurisprudência em formato eletrônico</h3>
+
+        <p>
+          Quando uma Jurisprudência é consultada pela internet, é necessário
+          mencionar o endereço eletrônico e a data de acesso na referência
+          bibliográfica. Além disso, quando não se trata de uma fonte oficial, o
+          destaque desloca do nome da publicação para o título do documento e a
+          sua numeração.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            BRASIL. Superior Tribunal de Justiça. <b>Súmula n° 333.</b> Cabe
+            mandado de segurança contra ato praticado em licitação promovida por
+            sociedade de economia mista ou empresa pública. Brasília, DF:
+            Superior Tribunal de Justiça, [2007]. Disponível em:
+            http://www.stj.jus.br/SCON/sumanot/toc.jsp?&b=TEMA&p=true&t
+            =&l=10&i=340#TIT333TEMA0. Acesso em: 24 ago 2020.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

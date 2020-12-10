@@ -13,11 +13,13 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/juridicos/elementos_constituicao.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -365,6 +367,139 @@ const Constitution = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência Bibliográfica de Constituição (ABNT)</h1>
+
+        <p>
+          A Constituição Federal é um conjunto de leis responsável por organizar
+          os três poderes e manter o país em funcionamento. Essa legislação
+          máxima do país determina não só os limites da administração pública,
+          mas também os direitos e deveres dos cidadãos.
+        </p>
+
+        <p>
+          O Brasil já teve sete constituições, que foram instituídas em regimes
+          fechados e democráticos. A atual constituição, instaurada no país em
+          1988, tornou possível o processo de redemocratização depois de anos de
+          regime militar.
+        </p>
+
+        <p>
+          Cada estado tem o seu próprio conjunto de leis, que, por sua vez,
+          segue os limites estabelecidos pela Constituição Federal. Com isso, as
+          unidades federativas têm direito à auto-organização, autogoverno e
+          autoadministração.
+        </p>
+
+        <h3>Como fazer referência bibliográfica de constituição?</h3>
+
+        <p>
+          No caso de constituições e suas emendas, a referência bibliográfica
+          precisa apresentar o termo "Constituição", seguido pelo ano de
+          promulgação entre parênteses.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Jurisdição:</b> nome do estado ou país, em letras maiúsculas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Constituição:</b> essa palavra deve ser inserida após jurisdição
+            para destacar o tipo de documento jurídico;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> título da Constituição em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano de promulgação:</b> ano em que a Constituição foi
+            oficialmente publicada, entre parênteses;{" "}
+          </li>
+        </ul>
+
+        <p>
+          Quando o documento jurídico é impresso, é importante fazer a descrição
+          física da obra, incluindo local de publicação, editora, ano de
+          publicação e número de páginas.
+        </p>
+
+        <p>
+          No caso de uma constituição consultada pela internet, a recomendação é
+          incluir o endereço eletrônico, precedido pela expressão "Disponível
+          em". Já a data de acesso deve ser inserida depois da expressão "Acesso
+          em:".
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <p>Observe um exemplo:</p>
+
+        <p>
+          <mark>
+            BRASIL. Constituição (1988).{" "}
+            <b>Constituição da República Federativa do Brasil de 1988.</b>{" "}
+            Brasília, DF: Presidência da República, [2016].Disponível
+            em:http://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm.
+            Acesso em: 25 ago. 2020.
+          </mark>
+        </p>
+
+        <p>Mais exemplos de referências bibliográficas de constituição</p>
+
+        <img src={Img} alt="constituicao" width="100%" />
+
+        <p>
+          <mark>
+            RIO GRANDE DO SUL. [Constituição (1989)].{" "}
+            <b>Constituição do Estado do Rio Grande do Sul.</b> 4. ed. atual.
+            Porto Alegre: Assembleia Legislativa do Estado do Rio Grande do Sul,
+            1995.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            PARAÍBA. [Constituição (1989)].{" "}
+            <b>Constituição do Estado da Paraíba.</b>
+            Organizado por Francisco Carneiro. João Pessoa: Assembleia
+            Legislativa do Estado da Paraíba, [2015]. Disponível em:
+            http://www.al.pb.leg.br/wp-content/uploads/2017/02/Constitui%C3%A7%C3%A3o-Esta
+            dual-Atualizada-at%C3%A9-a-Emenda-40-de-2015.pdf. Acesso em: 29 out.
+            2020.
+          </mark>
+        </p>
+
+        <h3>Referência bibliográfica de emenda constitucional</h3>
+
+        <p>
+          Quando há uma modificação na constituição de um estado, cria-se um
+          documento jurídico que recebe o nome de emenda constitucional. Nesse
+          caso, também é importante mencionar a palavra "Constituição" na
+          referência, seguida pelo ano de promulgação entre parênteses. Na
+          ementa, deve-se incluir uma síntese sobre a mudança realizada. O
+          destaque na referência é feito na publicação.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            BRASIL. [Constituição (1988)]. Emenda constitucional nº 9, de 9 de
+            novembro de 1995. Dá nova redação ao art. 177 da Constituição
+            Federal, alterando e inserindo parágrafos. <b>Lex:</b> legislação
+            federal e marginalia, São Paulo, v. 59, p. 1966, out./dez. 1995.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };
