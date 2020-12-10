@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -21,6 +22,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-mensagem-instantanea.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -246,6 +248,113 @@ const InstantMessages = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de mensagens instantâneas (ABNT)</h1>
+        <p>
+          A Associação Brasileira de Normas Técnicas (ABNT) agora reconhece
+          mensagens instantâneas como documentos que podem ser referenciados em
+          trabalhos acadêmicos. Essa categoria inclui comunicações enviadas por
+          aplicativos como WhatsApp e Telegram.
+        </p>
+
+        <h3>Elementos que compõem a referência</h3>
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> nome de quem enviou a mensagem;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> título da informação em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de aplicativo:</b> WhatsApp, Instagram ou outro app;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Elementos complementares:</b> informações que ajudam a
+            identificar melhor o documento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de envio:</b> dia, mês e ano;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Horário:</b> horário de envio da mensagem;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Suporte:</b> descrição do meio eletrônico.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Quando uma mensagem não tem título, você deve seguir a recomendação do
+          item 8.2.7, da NBR 6023. Essa seção recomenda atribuir uma palavra ou
+          frase que identifique o conteúdo do documento, entre colchetes.
+        </p>
+        <h3>Formato básico</h3>
+        <p>
+          <mark>
+            SOBRENOME, Nome do autor. <b>[Título da informação]</b>. Tipo de
+            aplicativo: [elemento complementar]. Data de envio. Horário.
+            Descrição do meio eletrônico.
+          </mark>
+        </p>
+        <h3>Exemplos aplicando o formato básico</h3>
+        <img src={Img} alt="mensagem-instatanea" width="100%" />
+
+        <p>
+          <mark>
+            SOUZA, Maria Paula.{" "}
+            <b>[Uso da biblioteca pelos alunos do ensino médio]</b>. WhatsApp:
+            [Grupo de funcionários EE. Prof. Baltazar de Godoy Moreira]. 7 out.
+            2017. 15h30. 1 mensagem de WhatsApp.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            DIAS, Almiro.{" "}
+            <b>[Orçamento do marceneiro para móveis planejados]</b>. WhatsApp:
+            [Grupo sobre a reforma do restaurante]. 7 jul. 2020. 20h33. 1
+            mensagem de WhatsApp.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SOUZA, Leandro. <b>[Uso da brinquedoteca]</b>. WhatsApp: [Grupo
+            Condomínio Recanto da Mata]. 8 out. 2020. 16:30. 1 mensagem de
+            WhatsApp.
+          </mark>
+        </p>
+
+        <h3>E se a mensagem for enviada por uma entidade coletiva?</h3>
+
+        <p>
+          Quando a mensagem é encaminhada por uma empresa, associação ou órgão
+          público, o nome do autor deve ser escrito por extenso. Gere a
+          referência no GORB e faça apenas essa alteração.
+        </p>
+
+        <p>Veja um exemplo:</p>
+
+        <p>
+          <mark>
+            CLÍNICA DE ESTÉTICA BELA.{" "}
+            <b>[Desconto para sessões de depilação a laser]</b>. WhatsApp:
+            [Mensagem enviada para os clientes]. 7 jun. 2020. 20h33. 1 mensagem
+            de WhatsApp.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

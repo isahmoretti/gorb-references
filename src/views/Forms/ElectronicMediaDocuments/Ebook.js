@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -23,6 +24,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-ebook.jpg";
 
 // styles
 import {
@@ -503,6 +505,174 @@ const Ebook = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de e-book (ABNT)</h1>
+
+        <p>
+          Livros digitais estão se tornando cada vez mais populares. Algumas
+          obras, inclusive, são disponibilizadas apenas no formato eletrônico,
+          geralmente em arquivo PDF.
+        </p>
+
+        <p>
+          Vários e-books podem contribuir com a sua{" "}
+          <a href="#">pesquisa bibliográfica</a>, como é o caso dos documentos
+          produzidos por universidades e institutos de pesquisa. O Instituto de
+          Pesquisa Econômica Aplicada (IPEA), por exemplo, tem um acervo bem
+          interessante de livros diferenciais que podem ser referenciado no seu
+          trabalho acadêmico.
+        </p>
+
+        <h3>Elementos para incluir na referência</h3>
+
+        <p>Veja abaixo os elementos essenciais da referência de ebook:</p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> nome do autor ou dos autores;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de responsabilidade:</b> Organizador, Editor ou Compilador,
+            escrito entre parênteses e abreviado;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título do e-book:</b> Título da obra em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo do e-book:</b> subtítulo do e-book (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade de publicação{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Publicadora:</b> editora responsável;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano:</b> ano de publicação{" "}
+          </li>
+          <li>
+            {" "}
+            <b>E-book:</b> termo em itálico para sinalizar o tipo de documento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Disponibilidade:</b> endereço eletrônico (URL);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Acesso:</b> dia, mês e ano da consulta.{" "}
+          </li>
+        </ul>
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Os elementos complementares não são obrigatórios, mas ajudam a
+          identificar melhor o documento.
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Paginação:</b> total de páginas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Coleção ou série:</b> nome da coleção ou série (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> International Standard Book Number (se houver){" "}
+          </li>
+          <li>
+            {" "}
+            <b>DOI:</b> Digital Object Identifier{" "}
+          </li>
+        </ul>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome. <b>Título</b>: Subtítulo. Local: Editora, ano.
+            Ebook (número de p.) (Coleção). ISBN xxx-xx-xxx-xxxx-x. Disponível
+            em: URL. Acesso em: dia, mês e ano.
+          </mark>
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="ebbok" width="100%" />
+
+        <p>
+          <mark>
+            DÂNGELO, Newton; SOUSA, Sandra Sueli Garcia (org.).{" "}
+            <b>Noventa Anos de Rádio no Brasil.</b> Uberlândia, MG: Edufu, 2016.
+            E-book (211 p.). ISBN 978-85-397-0073-8. Disponível em:
+            http://ebooks.pucrs.br/edipucrs/projetosdefilosofia.pdf. Acesso em:
+            8 ago. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CRUZ, Alessandra; ALEIXO, Felipe (org.).{" "}
+            <b>Roraima entre línguas</b>: Contatos linguísticos no universo da
+            tríplice fronteira do extremo norte brasileiro. Boa Vista: Editora
+            UFRR, 2020. E-book (227p.) (Coletânea Entre Sinais). ISBN:
+            978-65-86062-10-6. Disponível em:
+            https://ufrr.br/editora/index.php/ebook. Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            LIMA, João Brígido Bezerra et al. (org.). <b>Refúgio no Brasil</b>:
+            caracterização dos perfis sociodemográficos dos refugiados
+            (1998-2014). Brasília, DF: IPEA, 2017. E-book (234p.) color. ISBN:
+            978-85-7811-308-7. Disponível em:
+            https://www.ipea.gov.br/portal/images/stories/PDFs/livros/livros/170829_Refugio_no_Brasil.pdf.
+            Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <h3>O que fazer em caso de e-book com autor entidade?</h3>
+
+        <p>
+          Quando o autor do livro digital é uma entidade coletiva (empresa,
+          associação ou órgão do governo), a autoria deve ser transcrita por
+          extenso no início da referência bibliográfica.
+        </p>
+
+        <h3>E quando o livro é consultado em leitor digital?</h3>
+
+        <p>
+          Livro digital consultado em leitor de ebook, como Kindle, Lev, Kobo,
+          não precisa ter a URL e data de acesso especificadas na referência.
+          Você só precisa incluir o termo E-book no final.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            GODINHO, Thais. <b>Vida organizada</b>: como definir prioridades e
+            transformar seus sonhos em objetivos. São Paulo: Gente, 2014.
+            E-book.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

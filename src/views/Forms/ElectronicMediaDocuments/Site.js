@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -19,6 +20,7 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { generateCitationWithoutAuthorSpread } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/elementos_site.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -275,6 +277,139 @@ const Site = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de site (ABNT)</h1>
+
+        <p>
+          Quando uma homepage institucional ou qualquer outra página da internet
+          é mencionada no trabalho acadêmico, você deve se preocupar com a
+          referência bibliográfica de site.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> incluir o nome do autor, que pode ser pessoa física ou
+            jurídica;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Nome do site em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> subtítulo do site (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Descrição:</b> uma breve descrição sobre o site.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local da publicação:</b> (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Publicadora:</b> responsável pela publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano:</b> ano de copyright, geralmente disponível no rodapé;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Disponibilidade:</b> endereço (URL), precedido por "Disponível
+            em:"{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Acesso:</b> data de acesso, precedido por “Acesso em:”{" "}
+          </li>
+        </ul>
+
+        <p>
+          Quando o local de publicação do site não é conhecido, usa-se o termo
+          [S.l.] no lugar do nome da cidade. Se não houver ano de copyright, a
+          recomendação é usar [s.d], que sinaliza a ausência de data.
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            AUTOR OU ORGANIZAÇÃO. <b>Nome do site:</b> Subtítulo. Local:
+            Publicadora, ano. Disponível em: endereço completo. Acesso em: dia,
+            mês e ano.
+          </mark>
+        </p>
+
+        <h3>Exemplos aplicando o formato básico</h3>
+
+        <p>
+          <mark>
+            CAPES - Coordenação de Aperfeiçoamento de Pessoal de Nível Superior.
+            <b> Plataforma Sucupira.</b> Brasília, DF: CAPES, c2016. Disponível
+            em: https://sucupira.capes.gov.br/sucupira/public/index. xhtml.
+            Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            LAYUB. <b>Via Carreira.</b> Página Inicial. [S.l.]. LAYUB, c2020.
+            Disponível em: https://viacarreira.com/. Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <img src={Img} alt="site" width="100%" />
+
+        <h3>E no caso de base de dados?</h3>
+
+        <p>
+          Bases de dados são coleções eletrônicas de documentos, que facilitam o
+          acesso a artigos científicos, teses e outros materiais. Elas podem ser
+          multidisciplinares, como é o caso do <a href="#">Scielo</a>, ou
+          específica de uma área, como o <a href="#">Pubmed</a>, que reúne
+          conteúdo exclusivo da literatura biomédica.
+        </p>
+
+        <p>
+          O formato de referência de site também se aplica às{" "}
+          <a href="#">bases de dados</a>. O termo "base de dados" deve ser
+          inserido como uma informação complementar.
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <p>
+          <mark>
+            BIREME - Centro Latino-Americano e do Caribe de Informação em
+            Ciências da Saúde. <b>LILACS.</b> São Paulo: BIREME, 2019. Base de
+            dados. Disponível em: http://lilacs.bvsalud.org. Acesso em: 29 out.
+            2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            COCHRANE. <b>Cochrane Library.</b> St Albans House: Wiley, c2019.
+            Disponível em: https://www. cochranelibrary.com. Acesso em: 6 fev.
+            2019. Base de dados.
+          </mark>
+        </p>
+
+        <p>
+          Antes da atualização de 2018, a NBR 6023 recomendava o uso dos
+          símbolos &lt; &gt; para apresentar os links. Contudo, agora não é mais
+          necessário.
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

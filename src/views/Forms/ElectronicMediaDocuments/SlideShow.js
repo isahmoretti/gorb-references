@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Select from "../../../components/InputWrapper/Select";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -23,6 +24,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-slides.jpg";
 
 // styles
 import {
@@ -476,6 +478,131 @@ const SlideShow = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de slide (ABNT)</h1>
+
+        <p>
+          A referência de slides, que segue as normas da ABNT, considera alguns
+          elementos como obrigatórios. São eles: autor, título e tipo de
+          apresentação.
+        </p>
+
+        <p>
+          Os slides são apresentações criadas com imagens estáticas. Os
+          programas mais utilizados para produzir esse tipo de conteúdo são
+          PowerPoint, Open Office, Prezi.
+        </p>
+
+        <p>
+          Os slides, elaborados para palestras, seminários e até mesmo
+          <a href="#"> apresentação de TCC</a>, servem de fontes de pesquisa
+          para o trabalho acadêmico. Quando isso acontece, é importante
+          referenciar o material corretamente no fim do relatório.
+        </p>
+
+        <h3>Elementos para fazer referência de slides</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do autor:</b> nome da pessoa responsável pela autoria;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título da apresentação:</b> título da apresentação em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo da apresentação:</b> subtítulo, se houver{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data da apresentação:</b> dia, mês e ano{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de apresentação:</b> ferramenta usada para apresentar ou
+            publicar o material;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> Cidade da apresentação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Produtora:</b> responsável por produzir o material (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>N° de Slides:</b> número de slides que compõem a apresentação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Descrição do suporte:</b> colorido ou preto e branco e dimensões.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Notas:</b> Informações complementares;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Disponibilidade:</b> endereço eletrônico (URL);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Acesso em:</b> dia, mês e ano de acesso.{" "}
+          </li>
+        </ul>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome do autor. <b>Título da Apresentação:</b> Subtítulo.
+            Local: Produtora. Data de apresentação. Tipo de Apresentação. N° de
+            Slides, color ou P&B, Dimensão. Disponível em: URL. Acesso em: dia,
+            mês e ano.
+          </mark>
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="slides" width="100%" />
+
+        <p>
+          <mark>
+            PUGA, Ana Carolina. <b>Ozonioterapia na Biomedicina.</b>{" "}
+            Sertãozinho, SP, 23 mar. 2018. Apresentação em Slideshare. 52
+            slides, color. Disponível em:
+            https://pt.slideshare.net/biomedicinaestetica/ozonioterapia-na-biomedicina.
+            Acesso em: 08 ago. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CHAHOUD, Juliana. <b>Desenvolvendo um aplicativo iOS com Swift.</b>{" "}
+            São Carlos. 21 ago. 2014. Apresentação no Slide Share. 76 slides.
+            color. Minicurso de iOS da 17ª Semana da Computação do ICMC USP São
+            Carlos. Disponível em:
+            https://pt2.slideshare.net/julianachahoud/semcomp-usp-so-carlos-desenvolvendo-um-aplicativo-ios-com.
+            Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <h3>E se o autor do slide for uma entidade?</h3>
+
+        <p>
+          Quando o autor é uma entidade coletiva (empresa, órgão público ou
+          associação), o nome é escrito por extenso no início da referência.
+          Essa é a única diferença em relação ao formato com autor pessoa
+          física.
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

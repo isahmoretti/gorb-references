@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import {
@@ -22,6 +23,7 @@ import {
 import { formatDate } from "../../../utils/formatDate";
 import { formatMonosyllable } from "../../../utils/monosyllable";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-jogo-ou-software.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -293,6 +295,108 @@ const SoftwareAndEletronicGame = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de software e jogo eletrônico (ABNT)</h1>
+
+        <p>
+          A Associação Brasileira de Normas Técnicas (ABNT) trata de referência
+          de software e jogo eletrônico no item 7.20 da NBR 6023. A norma
+          recomenda identificar os responsáveis pelo produto/serviço e descrever
+          o suporte.
+        </p>
+
+        <p>
+          Em pesquisas nas áreas de tecnologia e comunicação, é muito comum usar
+          programas de computador e aplicativos. Além disso, existem projetos no
+          qual um jogo eletrônico ou software específico é o próprio objeto de
+          estudo.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Título:</b> Título do jogo ou software;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> subtítulo do jogo ou software (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Versão ou edição:</b> se houver;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade onde foi desenvolvido;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Produtora:</b> responsável pela produção.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> ano de lançamento;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Suporte:</b> descrição física do meio eletrônico.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Para melhorar a identificação do documento, você pode incluir na
+          referência elementos complementares.
+        </p>
+
+        <p>
+          Ao escrever a referência, a primeira palavra do título do
+          jogo/software deve ser colocada em letras maiúsculas. E se houver um
+          artigo ou preposição acompanhando essa palavra, ele deve ser
+          transcrito em letras maiúsculas também.
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            TÍTULO do jogo/software: subtítulo. Versão ou Edição. Local:
+            Produtora, ano. Disponível em: URL. Acesso em: dia, mês e ano.
+            especificação do suporte.
+          </mark>
+        </p>
+
+        <h3>Exemplos aplicando o formato básico</h3>
+
+        <img src={Img} alt="software-jogos" width="100%" />
+
+        <p>
+          <mark>
+            GORB: Gerador Online de Referências Bibliográficas. versão 1.0
+            Marília: LAYUB, 2020. 1 software de internet. Disponível em:
+            http:/gorb.viacarreira.com. Acesso em: 29 out. 2020.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            GRAND Theft Auto: San Andreas. 5nd. Edimburgo: Rockstar North, 2004.
+            1 jogo eletrônico.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SPOTIFY. Versão 1.1.31.703. Estocolmo: Spotify AB, 2020. 1
+            aplicativo de streaming.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

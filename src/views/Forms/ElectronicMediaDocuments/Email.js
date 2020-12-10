@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -21,6 +22,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-email.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -266,6 +268,144 @@ const Email = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de e-mail (ABNT)</h1>
+
+        <p>
+          A referência bibliográfica de e-mail no trabalho acadêmico pede
+          atenção para quatro itens especiais: remetente, destinatário, data de
+          envio e especificação do suporte.
+        </p>
+
+        <p>
+          A Associação Brasileira de Normas Técnicas (ABNT) ensina como
+          referenciar mensagens eletrônicas na NBR 6023. Esse é um dos itens da
+          seção de "Documento de acesso exclusivo em meio eletrônico".
+        </p>
+
+        <p>
+          Quando o remetente é uma entidade coletiva (empresa, órgão do governo
+          ou associação), o nome do autor é escrito por extenso. Por outro lado,
+          se for uma pessoa física, o autor deve ser indicado pelo último
+          sobrenome, em letras maiúsculas, seguido do prenome.
+        </p>
+
+        <h3>Elementos importantes para referência de e-mail</h3>
+
+        <p>
+          Para referenciar correspondência via e-mail, os elementos essenciais
+          são:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Remetente:</b> nome da pessoa ou entidade que envia a mensagem;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Destinatário:</b> nome da pessoa ou entidade que recebe a
+            mensagem, precedido pela expressão Destinatário:;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Assunto:</b> Título da mensagem em negrito;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade onde aconteceu o envio;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de envio:</b> dia, mês e ano do envio da mensagem;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Descrição física do meio eletrônico:</b> 1 mensagem eletrônica.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Quando julgar necessário, você pode incluir elementos complementares
+          na referência bibliográfica de e-mail, a fim de melhorar a
+          identificação do documento.
+        </p>
+
+        <p>
+          Caso não exista título no assunto, deve-se escolher uma palavra ou
+          frase capaz de identificar o documento. Coloque a expressão entre
+          colchetes [ ].
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            ÚLTIMO SOBRENOME, Primeira parte do nome. <b>Assunto da mensagem</b>
+            . Destinatário: Nome do destinatário. Local, dia, mês e ano de
+            envio. Especificação do suporte.
+          </mark>
+        </p>
+
+        <h3>Exemplo com autor entidade</h3>
+
+        <p>
+          <mark>
+            SIBi – Sistema Integrado de Bibliotecas.{" "}
+            <b>Portal de Revistas da USP tem novo design.</b> Destinatário: Rede
+            de bibliotecas do SIBi.. São Paulo: 18 mar. 2020. 1 mensagem
+            eletrônica.
+          </mark>
+        </p>
+
+        <h3>Exemplo com autor pessoa física</h3>
+
+        <p>
+          <mark>
+            NEVES, Bianca. <b>Relatório de desempenho</b>. Destinatário: Nila
+            Maria. São Paulo: 18 mar. 2020. 1 mensagem eletrônica.
+          </mark>
+        </p>
+
+        <img src={Img} alt="email" width="100%" />
+
+        <h3>Como fica a referência em caso de bilhete, carta ou cartão?</h3>
+
+        <p>
+          Correspondências que não são eletrônicas possuem uma formatação
+          específica, que lembra a mensagem de e-mail. Os elementos obrigatórios
+          são: remetente, título, destinatário, local, data e descrição física
+          do suporte.
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <p>
+          <mark>
+            FERREIRA, Paulo. <b>[Correspondência]</b>. Destinatário: José Clóvis
+            Ferreira. Ribeirão Preto, 6 jun. 1996. 1 carta.
+          </mark>
+        </p>
+
+        <p>
+          Em caso de correspondências consultadas online, é fundamental
+          mencionar a URL e a data de acesso.
+        </p>
+
+        <p>
+          <mark>
+            LISPECTOR, Clarice. <b>[Carta enviada para suas irmãs]</b>.
+            Destinatário: Elisa e Tânia Lispector. Lisboa, 4 ago. 1944. 1 carta.
+            Disponível em:
+            http://www.claricelispector.com.br/manuscrito_minhasqueridas.aspx.
+            Acesso em: 4 set. 2010.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

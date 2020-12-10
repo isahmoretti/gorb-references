@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -21,6 +22,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-postagem-em-rede-social.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -299,6 +301,129 @@ const SocialNetworkPost = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de postagem em rede social (ABNT)</h1>
+
+        <p>
+          Na última atualização da{" "}
+          <a href="https://viacarreira.com/nbr-6023-atualizada/" target="blank">
+            NBR 6023
+          </a>
+          , a Associação Brasileira de Normas Técnicas (ABNT) incluiu novos
+          tipos de documentos digitais, como é o caso das publicações em redes
+          sociais. Com isso, passou a existir uma normatização para referenciar
+          postagens de Facebook, Twitter, Instagram, entre outras mídias.
+        </p>
+        <p>
+          De acordo com Raquel Recuero, pesquisadora na área de mídias digitais,
+          rede social é definida como um conjunto de dois elementos: atores
+          (pessoas, instituições ou grupos) e suas conexões ( laços sociais).
+        </p>
+
+        <p>
+          As interações que ocorrem através das redes são citadas nas reflexões
+          de muitos trabalhos acadêmicos, especialmente das áreas de ciências
+          humanas.
+        </p>
+
+        <h3>Elementos para referência de postagem em rede social</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> pode ser pessoa física ou entidade coletiva;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Mensagem:</b> texto da publicação escrito por extenso;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade onde ocorreu a publicação (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de publicação:</b> dia, mês e ano da postagem;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de meio:</b> nome da rede social usada;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Endereço da conta:</b> exemplo @cnpqoficial{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Disponibilidade:</b> endereço da postagem (URL);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Acesso:</b> dia, mês e ano de acesso.{" "}
+          </li>
+        </ul>
+
+        <p>
+          <b>Importante:</b> Quando for mais de 100 palavras na mensagem, você
+          deve incluir o recurso de supressão [...]. Assim, a referência não
+          fica longa demais.
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            ÚLTIMO SOBRENOME, Primeira parte do nome. <b>Mensagem</b> [...].
+            Local, dia, mês e ano de publicação. Tipo de meio: endereço da
+            conta. Disponível em: URL. Acesso em: dia, mês e ano.
+          </mark>
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="post-rede-social" width="100%" />
+
+        <p>
+          <mark>
+            OLIVEIRA, José P. M.{" "}
+            <b>
+              Repositório digital da UFRGS é destaque em ranking internacional.
+            </b>{" "}
+            Maceió, 19 ago. 2011. Twitter: @biblioufal. Disponível em:
+            http://twitter.com/#!/biblioufal. Acesso em: 20 ago. 2011.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            MENA-CHALCO, J.{" "}
+            <b>
+              As práticas de publicação estão condicionadas pelas políticas de
+              avaliação?
+            </b>{" "}
+            [...]. São Paulo, 31 out. 2018. Twitter: @jmenac. Disponível em:
+            https://twitter.com/ jmenac/status/1057660006634536961. Acesso em: 6
+            jan. 2019.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            NASA - NATIONAL AERONAUTICS AND SPACE ADMINISTRATION.{" "}
+            <b>
+              Twas the night before launch! The U.S. will soon have two of the
+              most advanced weather satellites ever, operating in tandem.
+            </b>{" "}
+            [...]. [S.l.]. 1 mar. 2018. Instagram: @nasa. Disponível em:
+            https://www.instagram.com/p/Bfw_zcynDfl/?taken-by=nasa. Acesso em:
+            29 out. 2020.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };
