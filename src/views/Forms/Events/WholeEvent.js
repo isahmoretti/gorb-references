@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -21,6 +22,7 @@ import { formatMessage } from "../../../utils/formatMessage";
 // import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/evento/referencia-abnt-evento-no-todo.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -155,7 +157,7 @@ const WholeEvent = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form style={{ maxWidth: 830 }} onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -425,6 +427,125 @@ const WholeEvent = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de evento no todo</h1>
+
+        <p>
+          A NBR 60:23 tem uma seção dedicada exclusivamente para referência
+          bibliográfica de evento no todo. O recurso deve ser usado quando o
+          autor do trabalho deseja citar uma atividade que reúne pesquisadores e
+          especialistas da área.
+        </p>
+
+        <p>
+          Existem vários <a href="#">tipos de eventos acadêmicos</a> que
+          mobilizam a comunidade científica, como é o caso de congressos,
+          conferências, jornadas, encontros, workshops, colóquios, feiras,
+          seminários e exposições.
+        </p>
+
+        <p>
+          Quando se diz evento no todo em monografia, significa que o autor do
+          trabalho consultou atas, anais, proceedings, entre outros documentos
+          resultantes da atividade.
+        </p>
+
+        <p>
+          No contexto da NBR, o termo "monografia" é usado para dizer que o
+          documento, constituído de uma parte só, foi consultado por completo.
+        </p>
+
+        <h3>Elementos para referenciar evento no todo</h3>
+
+        <ul>
+          <li> Nome do evento principal </li>
+          <li> Numeração (se houver) </li>
+          <li> Nome do evento de participação </li>
+          <li> Numeração do evento de participação (se houver) </li>
+          <li> Cidade de realização </li>
+          <li> Título do documento consultado </li>
+          <li> Local de publicação do documento consultado </li>
+          <li> Editora responsável pela publicação </li>
+          <li> Data de publicação </li>
+          <li> Número de páginas </li>
+          <li> Tema </li>
+        </ul>
+
+        <p>
+          A inclusão do evento de participação, bem como a sua numeração, o
+          número de páginas do documento e o tema, não são elementos
+          obrigatórios.
+        </p>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <span>
+            TÍTULO DO EVENTO, numeração., NOME DO EVENTO DE PARTICIPAÇÃO,
+            numeração do evento de participação., ano, Cidade de realização.
+            <b>Título do documento</b> [...]. Local de publicação: Editora, ano
+            de publicação. Número de páginas p. Tema: Assunto do evento. Nota.
+          </span>
+        </p>
+
+        <p>
+          No caso de uma consulta online ao documento, é necessário incluir a
+          URL, precedida de "Disponível em:". Em seguida vem a data de acesso,
+          precedida de "Acesso em".
+        </p>
+
+        <p>
+          Na imagem abaixo, você pode entender melhor a ordem dos elementos e a
+          identificação de cada um deles na referência. O primeiro exemplo tem
+          detalhes sobre o evento de participação, já o segundo não. Veja:
+        </p>
+
+        <img src={Img} alt="evento-todo" width="100%" />
+
+        <h3>Exemplos aplicando o formato básico</h3>
+
+        <p>
+          <mark>
+            SEMINÁRIO BAIANO DE EMPREENDEDORISMO MUSICAL, 1., 2019, Salvador.
+            <b> Anais</b> [...]. Salvador: Escola de Administração da UFBA,
+            2019.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SIMPÓSIO INTERNACIONAL SOBRE A JUVENTUDE BRASILEIRA, 4., 2010. Belo
+            Horizonte, MG. <b>Anais</b> [...]. Belo Horizonte: PUC Minas, 2011.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CONGRESSO BRASILEIRO DE UNIDADES DE CONSERVAÇÃO, 4., 2004, Curitiba.
+            <b> Anais</b> [...]. Curitiba: Fundação Boticário de Proteção à
+            Natureza, 2004. 224 p.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CONGRESSO DE ECOLOGIA DO BRASIL, 6., 2003, Fortaleza. <b>Anais</b>{" "}
+            [...]. Fortaleza: UFC, 2003.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CONGRESSO DO MINISTÉRIO PÚBLICO DO ESTADO DE SÃO PAULO, 3., 2005.
+            <b> Anais</b> [...]. São Paulo: Páginas & Letras, 2006. v. 2. ISBN
+            85-86508-53-5.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

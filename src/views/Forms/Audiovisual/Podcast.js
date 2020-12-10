@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -437,6 +438,7 @@ const Podcast = ({ back }) => {
           </mark>
         </p>
       </div>
+      <Footer />
     </>
   );
 };

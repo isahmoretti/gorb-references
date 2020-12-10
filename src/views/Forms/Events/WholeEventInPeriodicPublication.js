@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatMessage } from "../../../utils/formatMessage";
 import { formatDate } from "../../../utils/formatDate";
@@ -19,6 +20,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Img from "../../../assets/images/explicativos/evento/referencia-abnt-evento-no-todo-em-publicacao-periodica.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
@@ -453,6 +455,118 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de evento no todo em publicação periódica</h1>
+        <p>
+          Os trabalhos produzidos em eventos podem ser publicados em uma revista
+          científica. Nesse caso, é importante conhecer as normas da ABNT para
+          referência de evento no todo em publicação periódica.
+        </p>
+        <p>
+          A referência inclui os mesmos elementos de "evento no todo", exceto
+          pelo fato de conter informações da publicação periódica. Aliás, o
+          destaque em negrito deve ser aplicado no título da revista.
+        </p>
+        <h3>Elementos para referenciar evento no todo em periódico</h3>
+        <p>
+          Os elementos obrigatórios são: nome do evento, numeração, ano, local
+          de realização, tipo de documento e dados do periódico. Você pode
+          formular sua referência com os elementos da lista abaixo:
+        </p>
+        <ul>
+          <li> Nome do evento </li>
+          <li> Numeração do evento </li>
+          <li> Nome do evento de participação </li>
+          <li> Numeração do evento de participação </li>
+          <li> Ano de realização do evento </li>
+          <li> Local de realização do evento: </li>
+          <li> Título do documento </li>
+          <li> Nome do periódico </li>
+          <li> Local de publicação do periódico </li>
+          <li> Entidade publicadora </li>
+          <li> Entidade publicadora </li>
+          <li> Número do fascículo </li>
+          <li> Data de publicação </li>
+          <li> Tema </li>
+        </ul>
+
+        <h3>Formato básico</h3>
+
+        <p>
+          <mark>
+            NOME DO EVENTO PRINCIPAL, numeração.; NOME DO EVENTO DE
+            PARTICIPAÇÃO, numeração., Ano, Local do evento. Tipo de documento.
+            <b>Nome do periódico.</b> Local do periódico: Editora, volume,
+            número do fascículo, data de publicação. Tema.
+          </mark>
+        </p>
+
+        <p>
+          No caso de uma consulta online ao documento, é necessário incluir a
+          URL, precedida de "Disponível em:". Em seguida vem a data de acesso,
+          precedida de "Acesso em".
+        </p>
+        <p>
+          Na imagem abaixo, identificamos cada elemento dentro de um exemplo de
+          referência de evento no todo em publicação periódica:
+        </p>
+
+        <img src={Img} alt="evento-todo-periodico" width="100%" />
+
+        <h3>O que significa Suplemento?</h3>
+
+        <p>
+          No exemplo da imagem, temos a palavra Suplemento como parte da
+          referência. De acordo com a NBR 6023, ela sinaliza um documento
+          adicionado a outro, com relação exclusiva de editorial.1
+        </p>
+
+        <h3>Mais exemplos aplicando o formato básico</h3>
+
+        <p>
+          <mark>
+            CONGRESSO DO CENTRO-OESTE DE CLÍNICOS VETERINÁRIOS DE PEQUENOS
+            ANIMAIS, 3.; FEIRA DO CENTRO-OESTE DO MERCADO PET, 3., 2006,
+            [Brasília, DF]. [Trabalhos científicos e casos clínicos].{" "}
+            <b>Ciência Animal Brasileira.</b> Goiânia: UFG, nov. 2006.
+            Suplemento 1.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CONGRESSO BRASILEIRO DE OLERICULTURA, 41.; ENCONTRO SOBRE PLANTAS
+            MEDICINAIS, AROMÁTICAS E CONDIMENTARES, 1., 2001, Brasília, DF.
+            Apresentação, artigos, palestras, instruções.... Horticultura
+            Brasileira. Brasília, DF: <b>Sociedade de Olericultura do Brasil</b>
+            , v. 19, n. 2, jul. 2001. Suplemento. Tema: Dos orgânicos aos
+            transgênicos.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SEMINÁRIO INTERNACIONAL DE HISTÓRIA DA LITERATURA, 6., 2005, Porto
+            Alegre. Anais [...].{" "}
+            <b>Cadernos do Centro de Pesquisas Literárias da PUCRS.</b> Porto
+            Alegre: Ed. PUCRS, v. 12, n. 1, 2006.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            SEMINÁRIO INTERNACIONAL DE HISTÓRIA DA LITERATURA, 6., 2005, Porto
+            Alegre. Anais [...].{" "}
+            <b>Cadernos do Centro de Pesquisas Literárias da PUCRS.</b> Porto
+            Alegre: Ed. PUCRS, v. 12, n. 1, 2006. Tema: Literatura: memória e
+            história.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

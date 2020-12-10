@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -21,6 +22,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/evento/referencia-abnt-trabalhos-de-eventos-publicados-em-revistas.jpg";
 
 // styles
 import {
@@ -538,6 +540,131 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>
+          Referência de trabalhos de eventos publicados em revistas (ABNT)
+        </h1>
+        <p>
+          Um trabalho de evento pode contar com uma publicação formal em revista
+          científica, ganhando assim mais credibilidade e relevância no meio
+          acadêmico. O processo de aprovação é burocrático e criterioso, por
+          isso esses documentos agregam valor à bibliografia.
+        </p>
+        <p>
+          Na NBR 6023, a Associação Brasileira de Normas Técnicas (ABNT) fala
+          sobre esse tipo de documento no tópico "Parte de evento em publicação
+          periódica".
+        </p>
+
+        <h3>Elementos essenciais</h3>
+        <p>
+          A identificação de trabalhos de eventos publicados em revistas
+          científicas requer elementos essenciais:
+        </p>
+
+        <ul>
+          <li> Autoria: SOBRENOME, Nome do autor; </li>
+          <li> Título do trabalho: título do trabalho publicado; </li>
+          <li> Subtítulo: (se houver) </li>
+          <li>
+            {" "}
+            Título da publicação: nome da revista científica em destaque;{" "}
+          </li>
+          <li> Local de publicação: cidade da publicadora; </li>
+          <li> Numeração: (se houver) </li>
+          <li> Página inicial-final: indicação de páginas; </li>
+          <li> Data de publicação: período em que ocorreu a publicação; </li>
+          <li> Suplemento: indica apenas relação editorial e não física; </li>
+        </ul>
+
+        <p>
+          Os dados do evento são inseridos no final da referência, no formato de
+          nota. As informações essenciais são número, nome, ano de realização e
+          local do evento.
+        </p>
+
+        <h3>Título da revista e edição</h3>
+
+        <p>
+          O título da revista científica pode ser abreviado, desde que respeite
+          o padrão definido pelas bases de dados, como é o caso da{" "}
+          <a href="#">Medline</a> e LILACS.
+        </p>
+
+        <p>
+          Caso apareça a edição no documento, é importante transcrevê-la para a
+          referência, com número ordinal e a palavra edição abreviada, conforme
+          o idioma do documento.
+        </p>
+
+        <p>
+          Para periódicos científicos em inglês, por exemplo, as edições são
+          expressas assim:
+        </p>
+
+        <ul>
+          <li> 1st ed. </li>
+          <li> 2nd ed. </li>
+          <li> 3rd ed. </li>
+          <li> 15th ed. </li>
+        </ul>
+
+        <h3>Data de publicação</h3>
+
+        <p>
+          Os periódicos científicos podem ser publicados mensalmente,
+          semestralmente e até anualmente.
+        </p>
+
+        <p>
+          Na data da publicação, se houver intervalos de meses, deve-se indicar
+          com uma barra oblíqua. Exemplo: set./dez 2020.
+        </p>
+
+        <h3>Disponibilidade e acesso</h3>
+
+        <p>
+          Em caso de documentos consultados online, é necessário incluir o
+          endereço eletrônico e a data de acesso. Essas informações, inseridas
+          na última parte da referência bibliográfica, devem ser precedidas de
+          "Disponível em:" e "Acesso em:", respectivamente.
+        </p>
+
+        <img src={Img} alt="eventos-publicados-em-revista" width="100%" />
+
+        <p>
+          Quando se diz "meio eletrônico", a internet não é a única opção. A
+          consulta ao documento pode ser realizada por CD-ROM, disquete,
+          pen-drive ou HD externo. Nesse caso, é necessário indicar uma
+          descrição do meio físico no final da referência.
+        </p>
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          <mark>
+            ALMEIDA, M. T. et al. Avaliação do professor realizada pelo aluno:
+            impacto nas práticas docentes: impacto nas práticas docentes.{" "}
+            <b>Rev. Bras. Educ. Méd.</b>, Rio de Janeiro, v. 35, n. 4, p.
+            141-142, set./dez. 2011. ​supl. 1. Trabalho apresentado no 49°
+            Congresso Brasileiro de Educação Médica, Belo Horizonte, 2011.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            AZENHA, F. S. P; FERRARI, D. V.. Acceptable noise level (ANL):
+            results with different stimuli. <b>J Appl Oral Sci</b>, Bauru, v.
+            24, p. 219, 2016. ​Special Issue. Trabalho apresentado no 23°
+            Congresso Fonoaudiológico de Bauru “Profa. Dra. Adréa Cintra Lopes,
+            Bauru, 2016.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

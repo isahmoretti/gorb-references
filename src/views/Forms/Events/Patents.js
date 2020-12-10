@@ -13,10 +13,12 @@ import Select from "../../../components/InputWrapper/Select";
 import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/evento/referencia-abnt-patente.jpg";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -145,7 +147,7 @@ const Patents = ({ back }) => {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <form style={{ maxWidth: 1000 }} onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}>
               <Actions>
                 <Title>
                   <p
@@ -403,6 +405,145 @@ const Patents = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de patente (ABNT)</h1>
+
+        <p>
+          A NBR 6023, elaborada pela Associação Brasileira de Normas Técnicas
+          (ABNT), explica como deve ser a referência bibliográfica de patente no
+          item 7.9. São apresentadas as recomendações para documentos físicos e
+          no formato eletrônico.
+        </p>
+
+        <p>
+          Depois de criar um determinado produto, o inventor deve{" "}
+          <a href="#">adquirir a patente</a> para proteger os seus direitos de
+          propriedade intelectual. Se a ideia patenteada foi citada em algum
+          momento no trabalho acadêmico, a patente precisa ser incluída na lista
+          de referências bibliográficas.
+        </p>
+
+        <p>
+          No Brasil, a patente é um documento expedido pelo <a href="#">INPI</a>{" "}
+          (autarquia federal vinculada ao Ministério do Desenvolvimento,
+          Indústria e Comércio Exterior). O tempo médio de registro varia de 7 a
+          10 anos.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li> Autor: nome do inventor; </li>
+          <li> Título: nome da invenção; </li>
+          <li> Nome do depositante, titular; </li>
+          <li> Procurador (se houver); </li>
+          <li> Data de depósito: quando o pedido de patente foi efetuado; </li>
+          <li>
+            {" "}
+            Data de concessão: quando a patente foi concedida (se houver);{" "}
+          </li>
+        </ul>
+
+        <p>
+          Elementos complementares podem ser acrescentados à referência
+          bibliográfica de patente, com o objetivo de melhorar a identificação
+          do documento. Isso inclui, por exemplo, o número de registro.
+        </p>
+
+        <p>
+          A data de concessão nem sempre está disponível, pois alguns pedidos de
+          patente constam como ainda não concedido ou indeferido.
+        </p>
+
+        <p>Estrutura da referência de patente:</p>
+
+        <p>
+          <mark>
+            SOBRENOME, Prenome (inventor). <b>Título</b>. Depositante, titular
+            e/ou procurador (se houver). Nº da patente. Datas de depósito e
+            concessão da patente (se houver). Elementos complementares para
+            melhor identificar o documento.
+          </mark>
+        </p>
+
+        <img src={Img} alt="patente" width="100%" />
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          <mark>
+            BERTAZZOLI, Rodnei et al.{" "}
+            <b>
+              Eletrodos de difusão gasosa modificados com catalisadores redox,
+              processo e reator eletroquímico de síntese de peróxido de
+              hidrogênio utilizando os mesmos.
+            </b>{" "}
+            Depositante: Universidade Estadual de Campinas. Procurador: Maria
+            Cristina Valim Lourenço Gomes. BR n. PI0600460-1A. Depósito: 27 jan.
+            2006. Concessão: 25 mar. 2008.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            VICENTE, Marcos Fernandes.{" "}
+            <b>Reservatório para sabão em pó com suporte para escova.</b>{" "}
+            Depositante: Marcos Fernandes Vicente. MU8802281- 1U2. Depósito: 09
+            set. 2008. Concessão: 21 maio 2019.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            JONES, G.{" "}
+            <b>
+              Hearing device comprising a signal generator for masking tinnitus.
+            </b>{" "}
+            Depositante: Oticon A/S. Procurador: Stweart Birch. US 20160366527
+            A1. Depósito: 8 jun. 2016.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            LEHNEN, Romeu. <b>Salto com mecanismo amortecedor.</b> Depositante:
+            Custódio de Almeida & Cia. MU 8803472-0 Y1. Depósito: 09 set. 2008.
+            Concessão: 21 maio 2019.
+          </mark>
+        </p>
+
+        <h3>Patente em meio eletrônico</h3>
+
+        <p>
+          Quando o documento de patente é consultado online, ou através de outro
+          meio eletrônico, é necessário incluir informações de disponibilidade e
+          acesso.
+        </p>
+
+        <p>Exemplo:</p>
+
+        <p>
+          <mark>
+            GALEMBECK, Fernando; SOUZA, Maria de Fátima Brito.{" "}
+            <b>
+              Process to obtain an Intercalated or exfoliated polyester with
+              clay hybrid nanocomposite material.
+            </b>{" "}
+            Depositante: Universidade Estadual de Campinas; Rhodia Ster S/A.
+            WO2005/030850 A1, Depósito: 1 Oct. 2003, Concessão: 7 Apr. 2005.
+            Disponível em:
+            http://www.iprvillage.Info/portal/servlet/DIIDirect?CC=WO&PN=2005030850&DT=A1&SrcAut
+            h=Wila&Token=UtWHB3Mmc98t05i1AVPmaGE5dYhs00Nlt38dpA3EfnOosue2.GSz63ySsIiukTB
+            8VQWW32lISV87n4_naNBY8lhYY30Rw1UeDo_8Yo8UVD0. Acesso em: 27 ago.
+            2010.
+          </mark>
+        </p>
+      </div>
+
+      <Footer />
     </>
   );
 };

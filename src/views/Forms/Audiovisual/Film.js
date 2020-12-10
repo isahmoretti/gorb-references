@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -670,6 +671,7 @@ const AdministrativeActs = ({ back }) => {
           </mark>
         </p>
       </div>
+      <Footer />
     </>
   );
 };

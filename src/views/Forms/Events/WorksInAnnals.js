@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -22,6 +23,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+import Img from "../../../assets/images/explicativos/evento/referencia-abnt-trabalhos-em-anais.jpg";
 
 // styles
 import {
@@ -546,6 +548,101 @@ const WorksInAnnals = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de trabalhos em anais (ABNT)</h1>
+        <p>
+          Anais, publicados em eventos, servem de fonte de pesquisa nos
+          trabalhos acadêmicos. O autor só precisa se atentar à NBR 6023:2018
+          para não errar na formatação da referência bibliográfica.
+        </p>
+
+        <h3>O que são os trabalhos em anais?</h3>
+
+        <p>
+          Anais são coleções de trabalhos acadêmicos publicados no contexto de
+          um <a href="#">evento científico.</a> Eles são frequentes em
+          congressos, mas também podem fazer parte de conferências, encontros,
+          workshops e <a href="#">simpósios.</a>
+        </p>
+
+        <p>
+          Os anais se diferem dos livros tradicionais porque cada livro é
+          escrito por um pesquisador diferente, sem o compromisso de existir uma
+          continuidade entre os trabalhos publicações.
+        </p>
+
+        <p>
+          Os eventos disponibilizam os anais antes do início ou após a
+          conclusão. Esses documentos podem ser impressos ou consultados de
+          forma eletrônica.
+        </p>
+
+        <p>
+          Nem todos os trabalhos publicados em eventos entram para os anais.
+          Para que isso aconteça, a produção acadêmica precisa ser avaliada e
+          aprovada por pesquisadores de renome da área. Portanto, consultar
+          trabalhos em anais é uma fonte segura para a{" "}
+          <a href="#">fundamentação teórica.</a>
+        </p>
+
+        <h3>O que diz a ABNT sobre referência de trabalhos em anais?</h3>
+
+        <ul>
+          <li> Autoria do trabalho: SOBRENOME e prenome do autor </li>
+          <li> Título do trabalho: Título do trabalho publicado </li>
+          <li> Expressão In: sinaliza "dentro de" </li>
+          <li> Nome do evento: em ordem direta e LETRAS MAIÚSCULAS; </li>
+          <li> Numeração do evento: em algarismos arábicos; </li>
+          <li> Ano de realização: data em que ocorreu o evento. </li>
+          <li> Cidade de realização: local onde o evento foi realizado; </li>
+          <li> Título da publicação: Título do documento em destaque; </li>
+          <li> Local da publicadora: local onde fica a publicadora; </li>
+          <li>
+            {" "}
+            Responsabilidade da publicação: entidade que publicou o trabalho;{" "}
+          </li>
+          <li>
+            {" "}
+            Especificação do trabalho: código identificador do trabalho, volume,
+            página inicial e final, entre outras descrições.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Após colocar o título do documento em destaque, o autor precisa
+          incluir reticências entre colchetes para suprir o título do evento que
+          já foi mencionado na referência.
+        </p>
+
+        <h3>E no caso de anais consultados online?</h3>
+
+        <p>
+          A maioria dos trabalhos em anais é consultada de forma online. Se esse
+          for o seu caso, é importante incluir o endereço eletrônico onde o
+          documento está disponível, precedido da expressão "Disponível em". Em
+          seguida vem a data de acesso, com o mês abreviado e precedida de
+          "Acesso em".
+        </p>
+
+        <h3>Exemplos</h3>
+
+        <img src={Img} alt="evento-anais" width="100%" />
+
+        <p>
+          <mark>
+            OYADOMARI, A. T. et al. Efeitos da terapia por laser de baixa
+            potência no processo de reparo de defeitos ósseos preenchidos pelo
+            osso bovino Bio-Oss® associados ao novo selante heterólogo de
+            fibrina. In: SIMPÓSIO INTERNACIONAL DE INICIAÇÃO CIENTÍFICA DA
+            UNIVERSIDADE DE SÃO PAULO, 25., 2017, Bauru. <b>Resumos</b> [...].
+            São Paulo: Universidade de São Paulo, 2017.
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };
