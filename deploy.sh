@@ -4,7 +4,7 @@ git pull
 
 yarn install
 
-rm -rf dist/
+# rm -rf dist/
 
 echo "dist folder removed";
 
