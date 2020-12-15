@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -22,6 +23,12 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import ChamadaCitacao from "../../../assets/images/explicativos/livro/dois-autores/chamada_para_citacao_livro_dois_ou_tres_autores.jpg";
+import complementares2 from "../../../assets/images/explicativos/livro/dois-autores/elementos_complementares_livros_2_autores.jpg";
+import complementares3 from "../../../assets/images/explicativos/livro/dois-autores/elementos_complementares_livro_3_autores.jpg";
+import essenciais2 from "../../../assets/images/explicativos/livro/dois-autores/elementos_essenciais_livros_2_autores.jpg";
+import essenciais3 from "../../../assets/images/explicativos/livro/dois-autores/elementos_essenciais_livros_3_autores.jpg";
 
 // styles
 import {
@@ -36,7 +43,6 @@ import {
   ErrorText,
   Actions,
   Title,
-  Header,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -139,20 +145,8 @@ const Book = ({ back }) => {
     <>
       <Nav />
       <Container>
-        <Header>
-          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
-          <Actions>
-            <Title>
-              <p
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                Referência de livro com dois ou três autores{" "}
-              </p>
-            </Title>
-          </Actions>
-        </Header>
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
+
         <Formik
           initialValues={{
             authors: ["", "", ""],
@@ -182,6 +176,17 @@ const Book = ({ back }) => {
         >
           {(props) => (
             <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    Referência de livro com dois ou três autores{" "}
+                  </p>
+                </Title>
+              </Actions>
               <Card>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -657,6 +662,208 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de livro com dois ou três autores (ABNT)</h1>
+
+        <p>
+          Quando uma obra tem dois ou três autores, todos devem ser citados na
+          referência.
+        </p>
+
+        <p>
+          O último sobrenome é apresentado em maiúsculas, seguido pelo prenome e
+          outros sobrenomes, de forma abreviada ou não. Os autores são separados
+          por ponto-vírgula [;].
+        </p>
+
+        <h3>Como referenciar livro com dois ou três autores?</h3>
+
+        <h3>Elementos essenciais</h3>
+
+        <p>
+          Na referência de livro com dois ou três autores, os elementos
+          essenciais são:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autoria:</b> SOBRENOME e nome de cada responsável pela obra.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título em negrito.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo (se houver):</b> Subtítulo sem negrito.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Edição (se houver):</b> Algarismos arábicos seguidos pela
+            abreviatura (17. ed.){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade da editora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Editora:</b> nome da empresa publicadora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> Ano de publicação do livro.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Esquema para montar referência de livros com dois ou três autores:
+        </p>
+
+        <p>
+          <mark>
+            SOBRENOME, Primeiro Nome; SOBRENOME, Primeiro Nome; SOBRENOME,
+            Primeiro Nome do autor. Título: Subtítulo. Local: Editora, ano.
+          </mark>
+        </p>
+
+        <h3>Exemplo de referência com dois autores (elementos essenciais)</h3>
+
+        <img src={essenciais2} alt="elementos-essenciais" width="100%" />
+
+        <h3>Exemplo de referência com três autores (elementos essenciais)</h3>
+
+        <img src={essenciais3} alt="elementos-essenciais" width="100%" />
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Os elementos complementares podem ser inseridos com o objetivo de
+          melhorar a identificação do documento. São eles:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por
+            [Tradução:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título original da obra:</b> Título original da obra traduzida,
+            precedido por [Título Original:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número de páginas:</b> quantidade de páginas do documento em
+            algarismos arábicos, seguido pela abreviatura [p.]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do volume:</b> números algarismos arábicos precedido por
+            “v.” e entre vírgulas.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Série ou Coleção:</b> nome da série entre parênteses.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> Número Padrão Internacional de Livro.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência com dois autores (elementos complementares)
+        </h3>
+
+        <img
+          src={complementares2}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <h3>
+          Exemplo de referência com três autores (elementos complementares)
+        </h3>
+
+        <img
+          src={complementares3}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <p>
+          No caso da consulta à versão digital da obra, é necessário acrescentar
+          as informações de endereço eletrônico e data de acesso no final da
+          referência.
+        </p>
+
+        <p>Exemplo:</p>
+
+        <p>
+          <mark>
+            BERGER, Peter L.; LUCKMANN, Thomas. A construção social da
+            realidade: tratado de sociologia do conhecimento. 24. ed.
+            Petrópolis: Vozes, 2004. Disponível em:
+            https://cristianorodriguesdotcom.files.wordpress.com/2013/06/bergerluckman.pdf.
+            Acesso em: 13 ago. 2020.
+          </mark>
+        </p>
+
+        <h3>Chamadas para citações</h3>
+
+        <p>
+          Segundo a ABNT, quando a obra tem até três autores, todos os
+          responsáveis precisam ser referenciados na citação, adotando o sistema
+          autor-data.
+        </p>
+
+        <p>
+          Quando o autor é referenciado dentro do texto, o sobrenome é inserido
+          com letras minúsculas, seguido pelo ano de publicação da obra entre
+          parênteses. Também existe a opção de referenciar o responsável fora da
+          sentença, colocando o sobrenome em letras maiúsculas e o ano entre
+          parênteses.
+        </p>
+
+        <img src={ChamadaCitacao} alt="chamada-citacao" width="100%" />
+
+        <p>
+          É aconselhável incluir o número da página do livro onde se encontra o
+          trecho citado. Ela deve ser inserida na chamada da citação junto com o
+          ano, de forma abreviada.
+        </p>
+
+        <h3>Dois autores:</h3>
+
+        <p>
+          <mark>Berger e Luckmann (2007, p. 66) trecho citado [...]</mark>
+        </p>
+
+        <p>
+          <mark>[...] trecho citado (BERGER; LUCKMANN, 2007, p. 18).</mark>
+        </p>
+
+        <h3>Três autores:</h3>
+
+        <p>
+          <mark>
+            Kotler, Kartajaya e Setiawan (2010, p.15) trecho citado [...]
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            [...] trecho citado (KOTLER; KARTAJAYA; SETIAWAN, 2010, p. 168).
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

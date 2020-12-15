@@ -14,6 +14,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 //utils
 import { formatDate } from "../../../utils/formatDate";
@@ -24,6 +25,13 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import AcceosEm from "../../../assets/images/explicativos/livro/um-autor/Disponível em e Acesso em.jpg";
+import ChamadaCitacaoPagina from "../../../assets/images/explicativos/livro/um-autor/chamada_para_citacao_com_pagina.jpg";
+import ChamadaCitacao from "../../../assets/images/explicativos/livro/um-autor/chamadas_citações_1_autor.jpg";
+import Complementares from "../../../assets/images/explicativos/livro/um-autor/livro_1_autor_elementos_complementares.jpg";
+import Essenciais from "../../../assets/images/explicativos/livro/um-autor/livro_1_autor_elementos_essenciais.jpg";
+import Sobrenome from "../../../assets/images/explicativos/livro/um-autor/sobrenome_ano_iguais.jpg";
 
 // styles
 import {
@@ -37,7 +45,6 @@ import {
   FieldArrayContainer,
   Actions,
   Title,
-  Header,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -135,20 +142,7 @@ const Book = ({ back }) => {
     <>
       <Nav />
       <Container>
-        <Header>
-          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
-          <Actions>
-            <Title>
-              <p
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                Referência de livro com um autor{" "}
-              </p>
-            </Title>
-          </Actions>
-        </Header>
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
         <Formik
           initialValues={{
@@ -177,6 +171,17 @@ const Book = ({ back }) => {
         >
           {(props) => (
             <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    Referência de livro com um autor{" "}
+                  </p>
+                </Title>
+              </Actions>
               <Card>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -593,6 +598,186 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de livro com um autor (ABNT)</h1>
+
+        <p>
+          A ABNT lista as normas para referenciar livros na seção de "Monografia
+          no todo" e "Monografia no todo em meio eletrônico". As recomendações
+          também servem para outros documentos, como manuais, guias e catálogos.
+        </p>
+
+        <p>
+          Os elementos essenciais, definidos pela NBR 6023, são aqueles que não
+          podem faltar na referência de livro, ou seja, são considerados
+          obrigatórios. Já os elementos complementares são opcionais, mas quando
+          adicionados melhoram a identificação do documento.
+        </p>
+
+        <h3>Elementos essenciais para referência de livro</h3>
+
+        <p>
+          Na referência de livro com um autor, os elementos obrigatórios são:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> SOBRENOME, Nome.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título em negrito.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo (se houver):</b> Subtítulo sem negrito.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Edição (se houver):</b> Algarismos arábicos seguidos pela
+            abreviatura (17. ed.){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade da editora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Editora:</b> nome da empresa publicadora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> Ano de publicação do livro.{" "}
+          </li>
+        </ul>
+
+        <p>Esquema para referência de livro com um autor:</p>
+
+        <p>
+          <mark>
+            SOBRENOME, Primeiro Nome. <b>Título</b>: Subtítulo. Local: Editora,
+            ano.
+          </mark>
+        </p>
+
+        <img src={Essenciais} alt="elementos-essenciais" width="100%" />
+
+        <h3>Elementos complementares</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por
+            [Tradução:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título original da obra:</b> Título original da obra traduzida,
+            precedido por [Título Original:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número de páginas:</b> quantidade de páginas do documento em
+            algarismos arábicos, seguido pela abreviatura [p.]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do volume:</b> números algarismos arábicos precedido por
+            “v.” e entre vírgulas.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Série ou Coleção:</b> nome da série entre parênteses.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> Número Padrão Internacional de livro.{" "}
+          </li>
+        </ul>
+
+        <img src={Complementares} alt="elementos-complementares" width="100%" />
+
+        <p>
+          Um livro com registro internacional (ISBN) transmite autoridade e
+          credibilidade, por isso pode ser referenciado nos trabalhos
+          acadêmicos. Esse número existe para facilitar a identificação de
+          informações essenciais da obra, como título, autor, edição e editora.
+        </p>
+
+        <p>
+          Quando um documento não é impresso, ou seja, é consultado pela
+          internet, acrescenta-se informações sobre disponibilidade e acesso na
+          referência bibliográfica.
+        </p>
+
+        <img src={AcceosEm} alt="acessoem" width="100%" />
+
+        <h3>Mais exemplos</h3>
+
+        <p>
+          BAPTISTA, Dulce. Bibliotecária pós-moderna. Brasília: Thesaurus, 2011.
+          144 p. ISBN 978-85-64494-44-2.
+        </p>
+
+        <p>
+          CHEVALIER, Jean; GHEERBRANT, Alain. Dicionário de símbolos. 3. ed. Rio
+          de Janeiro: J. Olympio, 1990.
+        </p>
+
+        <p>
+          BAUMAN, Zygmunt. Globalização: as conseqüências humanas. Rio de
+          Janeiro: Jorge Zahar, 1999.
+        </p>
+
+        <h3>Chamadas para citações</h3>
+
+        <p>
+          Ao escrever o texto acadêmico, é necessário se preocupar com o uso das
+          chamadas para citações, que adotam o sistema autor-data.
+        </p>
+
+        <p>
+          Ao fazer uma citação direta ou indireta, a recomendação é incluir o
+          sobrenome do responsável - em letras minúsculas dentro da sentença e
+          em letras maiúsculas quando estiver entre parênteses.
+        </p>
+
+        <img src={ChamadaCitacao} alt="chamada-citacoes" width="100%" />
+
+        <p>
+          Quando há coincidência de sobrenomes de autores diferentes e
+          publicações no mesmo ano, é permitido o uso das iniciais para
+          diferenciação.
+        </p>
+
+        <img src={Sobrenome} alt="sobrenome" width="100%" />
+
+        <h3>Número da página na citação</h3>
+
+        <p>
+          O número da página onde se encontra o trecho consultado pode ser
+          inserido na chamada de citação. Esse tipo de informação é opcional,
+          mas muito recomendado para especificar o local nativo do conteúdo. O
+          formato fica assim:
+        </p>
+
+        <p>
+          <mark>Sobrenome (ano, número da página)</mark>
+        </p>
+
+        <p>
+          <mark>ou</mark>
+        </p>
+
+        <p>
+          <mark>(SOBRENOME, ano, número da página)</mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

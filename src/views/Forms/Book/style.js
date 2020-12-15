@@ -2,15 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 
   position: relative;
-  width: 90%;
-  max-width: 1100px;
-  height: 100%;
+  width: 100%;
 
   > form {
-    height: calc(100vh - 160px);
+    width: 100%;
+    max-width: 830px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -22,7 +21,11 @@ export const Back = styled.img`
   width: 50px;
   height: 50px;
 
+  position: absolute;
   cursor: pointer;
+
+  top: 0;
+  left: 0;
 
   transition: color 0.3s;
 
@@ -37,11 +40,13 @@ export const Back = styled.img`
 
 export const Card = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   position: relative;
 
   width: 100%;
-  height: 100%;
+  /* height: 500px; */
 
   padding: 20px;
 
@@ -65,6 +70,8 @@ export const Card = styled.div`
 `;
 
 export const Actions = styled.div`
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,9 +91,7 @@ export const Row = styled.div`
   }
 `;
 
-export const Content = styled.div`
-  width: 100%;
-`;
+export const Content = styled.div``;
 export const Footer = styled.div``;
 
 export const AddIcon = styled.img`
@@ -132,14 +137,4 @@ export const Title = styled.div`
   > span {
     font-style: italic;
   }
-`;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 50px;
-
-  margin-top: 30px;
-
-  display: flex;
-  align-items: center;
 `;

@@ -17,12 +17,17 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
+import Footer from "../../../components/Footer";
 
 import Nav from "../../../components/Header";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadasCitacao from "../../../assets/images/explicativos/livro/responsavel/chamadas_para_citacao_livro_com_responsavel_intelectual.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/livro/responsavel/elementos_complementares_livro_com_responsabilidade_intelectual.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/livro/responsavel/elementos_essenciais_livro_com_responsabilidade_intelectual.jpg";
 
 // styles
 import {
@@ -37,7 +42,6 @@ import {
   ErrorText,
   Actions,
   Title,
-  Header,
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
@@ -170,22 +174,8 @@ const Book = ({ back }) => {
     <>
       <Nav />
       <Container>
-        <Header>
-          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
-          <Actions>
-            <Title>
-              <p
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                Referência de livro com responsável intelectual ao invés de
-                autor{" "}
-              </p>
-              <span>Editor, coordenador ou organizador.</span>
-            </Title>
-          </Actions>
-        </Header>
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
+
         <Formik
           initialValues={{
             namesResponsible: [""],
@@ -214,6 +204,19 @@ const Book = ({ back }) => {
         >
           {(props) => (
             <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    Referência de livro com responsável intelectual ao invés de
+                    autor{" "}
+                  </p>
+                  <span>Editor, coordenador ou organizador.</span>
+                </Title>
+              </Actions>
               <Card>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -674,6 +677,169 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>
+          Referência de livro com responsável intelectual ao invés de autor
+        </h1>
+
+        <p>
+          O responsável intelectual não precisa ser necessariamente um autor,
+          ele pode ter uma outra responsabilidade com relação à obra. As funções
+          de organizador, compilador, coordenador e editor, que são
+          especificadas logo na capa do livro, devem constar na referência, de
+          forma abreviada.
+        </p>
+
+        <h3>Como fazer referência de livro com responsável intelectual?</h3>
+
+        <p>
+          A referência de livro com responsável intelectual ao invés de autor é
+          a tem a mesma formatação da referência de livro com autor(es). A
+          principal diferença está no acréscimo da abreviação que indica o tipo
+          de responsabilidade (Org., Comp., Coord.). Ela deve ser inserida entre
+          parênteses, após o sobrenome e o nome. O formato:
+        </p>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome do organizador (org.). Título: Subtítulo. Edição.
+            Local de publicação: Editora, ano.
+          </mark>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Responsável:</b> SOBRENOME e nome{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de responsabilidade:</b> abreviação do tipo de
+            responsabilidade entre parênteses{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título em negrito{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo (se houver):</b> Subtítulo sem negrito.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Edição (se houver):</b> Algarismos arábicos seguidos pela
+            abreviatura (13. ed.){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade da editora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Editora:</b> nome da empresa publicadora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> Ano de publicação do livro.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência de livro com responsável intelectual (elementos
+          essenciais)
+        </h3>
+
+        <img
+          src={elementosEssenciais}
+          alt="elementos-essenciais"
+          width="100%"
+        />
+
+        <p>
+          Quando um livro com responsável intelectual é consultado pela
+          internet, os dados de disponibilidade e acesso devem constar no final
+          da referência.
+        </p>
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Elementos complementares tornam a referência bibliográfica mais
+          completa e facilitam a identificação do documento. São eles:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por
+            - Tradução:{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título original da obra:</b> Título original da obra traduzida,
+            precedido por - Título Original:{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do volume:</b> números algarismos arábicos precedido por
+            “v.” e entre vírgulas.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Série ou Coleção:</b> nome da série entre parênteses.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> Número Padrão Internacional de Livro.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência de livro com responsável intelectual (elementos
+          complementares)
+        </h3>
+
+        <img
+          src={elementosComplementares}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <h3>Chamadas para citações</h3>
+
+        <p>
+          Ao trazer para o texto do relatório uma determinada informação, é
+          necessário apresentar a origem da citação pelo sistema autor-data. A
+          chamada pode ser escrita de duas maneiras: dentro da sentença e fora
+          dela. Veja exemplos:
+        </p>
+
+        <img src={chamadasCitacao} alt="chamadas-citacoes" width="100%" />
+
+        <p>
+          A inclusão do número da página onde se encontra o trecho citado é
+          opcional, mas recomendada. No caso, a chamada pode ser feita de duas
+          formas:
+        </p>
+
+        <p>
+          <mark>
+            Landau, Cunha e Haguenauer (2014, p. 44) trecho citado [...]
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            [...] trecho citado (LANDAU; CUNHA; HAGUENAUER, 2014, p. 40).
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

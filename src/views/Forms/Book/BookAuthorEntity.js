@@ -12,6 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
+import Footer from "../../../components/Footer";
 
 import Nav from "../../../components/Header";
 
@@ -27,6 +28,10 @@ import {
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadasCitacao from "../../../assets/images/explicativos/livro/entidade/chamadas_para_citacao_livro_autor_entidade.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/livro/entidade/elementos_complementares_livro_com_autor_entidade.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/livro/entidade/elementos_essenciais_livro_com_autor_entidade.jpg";
 
 // styles
 import {
@@ -173,20 +178,7 @@ const Book = ({ back }) => {
     <>
       <Nav />
       <Container>
-        <Header>
-          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
-          <Actions>
-            <Title>
-              <p
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                Referência de livro com autor entidade{" "}
-              </p>
-            </Title>
-          </Actions>
-        </Header>
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
         <Formik
           initialValues={{
@@ -216,6 +208,17 @@ const Book = ({ back }) => {
         >
           {(props) => (
             <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    Referência de livro com autor entidade{" "}
+                  </p>
+                </Title>
+              </Actions>
               <Card>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 0 }}>
@@ -647,6 +650,176 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de livro com autor entidade (ABNT)</h1>
+
+        <p>
+          Algumas obras não possuem uma pessoa física como autor, mas sim uma
+          organização (empresas, associações, seminários e órgãos do governo). A
+          responsabilidade de entidade coletiva é apresentada pelo seu próprio
+          nome por extenso e em ordem direta.
+        </p>
+
+        <h3>Como fazer referência de livro com autor entidade?</h3>
+
+        <p>
+          No caso de uma entidade com nome genérico, o apropriado é preceder o
+          termo com o nome do órgão superior ou da jurisdição geográfica
+          correspondente.
+        </p>
+
+        <p>O formato da referência:</p>
+
+        <p>
+          <mark>
+            NOME DA ENTIDADE POR EXTENSO. Título do livro: Subtítulo. Edição.
+            Local de publicação: Editora, ano.
+          </mark>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <p>
+          Elementos essenciais são aqueles que não podem faltar na referência da
+          obra consultada. Veja:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome da entidade:</b> autoria institucional da obra por extenso e
+            em ordem direta;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título do livro:</b> título da obra consultada;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> Adicionar subtítulo depois de dois-pontos (se
+            houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Edição:</b> se não for a primeira edição, informe na referência;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade da editora;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Editora:</b> empresa publicadora;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano:</b> ano de publicação.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência de capítulo de livro (elementos essenciais)
+        </h3>
+
+        <img
+          src={elementosEssenciais}
+          alt="elementos-essenciais"
+          width="100%"
+        />
+
+        <p>
+          Quando a obra é consultada pela internet, é essencial incluir a URL
+          onde se encontra o documento e a data de acesso (dia, mês e ano) no
+          final da referência.
+        </p>
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Para melhorar a identificação de um documento, é possível incluir
+          elementos complementares. São eles:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do tradutor:</b> Nome do tradutor por extenso e em ordem
+            direta;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título original da obra:</b> Título original da obra traduzida;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do volume:</b> números arábicos precedido por “v.” e entre
+            vírgulas.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número de páginas:</b> números arábicos seguidos pela abreviação
+            “p.”;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Série ou Coleção:</b> nome da série entre parênteses.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> Número Padrão Internacional de Livro.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência de capítulo de livro (elementos complementares)
+        </h3>
+
+        <img
+          src={elementosComplementares}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <h3>Chamadas para citações</h3>
+
+        <p>
+          Para evitar acusações de plágio, cada citação no relatório precisa vir
+          acompanhada de uma chamada com o sobrenome e ano de publicação. O
+          sistema autor-data deve ser seguido em todo corpo do texto.
+        </p>
+
+        <p>
+          Dentro do parágrafo, a chamada é feita com o nome da entidade por
+          extenso e em ordem direta, seguido pelo ano de publicação entre
+          parênteses. No caso de uma chamada no final do parágrafo, o nome da
+          entidade é colocado em letras maiúsculas entre parênteses, seguido
+          pelo ano.
+        </p>
+
+        <img src={chamadasCitacao} alt="chamada-citacao" width="100%" />
+
+        <p>
+          Existe a possibilidade de inserir a página onde se encontra a citação
+          na chamada, junto com o ano de publicação da obra. O formato fica
+          assim:
+        </p>
+
+        <p>
+          <mark>
+            Organização Mundial da Saúde (2009, p. 39) trecho citado [...]
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            [...] trecho citado (ORGANIZAÇÃO MUNDIAL DA SAÚDE, 2009, p. 39).
+          </mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };

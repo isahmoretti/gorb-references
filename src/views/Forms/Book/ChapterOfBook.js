@@ -15,6 +15,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -25,6 +26,10 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadasCitacao from "../../../assets/images/explicativos/livro/capitulo/chamadas_para_citacao_capitulo_de_livro.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/livro/capitulo/Elementos_complementares_capitulo_livro.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/livro/capitulo/Elementos_essenciais_capitulo_livro.jpg";
 
 // styles
 import {
@@ -171,20 +176,7 @@ const Book = ({ back }) => {
     <>
       <Nav />
       <Container>
-        <Header>
-          <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
-          <Actions>
-            <Title>
-              <p
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                Capítulo de livro Informações sobre a obra toda
-              </p>
-            </Title>
-          </Actions>
-        </Header>
+        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
         <Formik
           initialValues={{
@@ -222,6 +214,17 @@ const Book = ({ back }) => {
         >
           {(props) => (
             <form onSubmit={props.handleSubmit}>
+              <Actions>
+                <Title>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    Capítulo de livro Informações sobre a obra toda
+                  </p>
+                </Title>
+              </Actions>
               <Card>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -857,6 +860,179 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de capítulo de livro (ABNT)</h1>
+
+        <p>
+          O capítulo do livro é uma parte da obra, que possui seu próprio autor
+          e título. Pode acontecer do autor da obra toda não ser o responsável
+          pela autoria da parte. A entrada da referência se dá sempre pelo
+          sobrenome do autor do capítulo, mas depois é necessário incluir
+          informações que identificam a obra em sua totalidade.
+        </p>
+
+        <h3>Como fazer referência de capítulo de livro?</h3>
+
+        <h3>Elementos essenciais</h3>
+
+        <p>Na referência de capítulo de livro, os elementos essenciais são:</p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor da parte:</b> sobrenome e nome do responsável pelo capítulo{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título da parte:</b> Título do capítulo{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Expressão In:</b> expressão latina que significa «dentro de»{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título da obra:</b> Título da obra completa{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Responsável pela obra completa:</b> nome do responsável pela obra{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Edição:</b> informe a edição (se houver){" "}
+          </li>
+          <li>
+            {" "}
+            <b>informe a edição (se houver):</b> cidade da editora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Editora:</b> Nome da empresa publicadora{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano:</b> Ano de publicação{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Descrição física:</b> página inicial e página final do capítulo.{" "}
+          </li>
+        </ul>
+
+        <p>
+          Considerando apenas os elementos essenciais, a referência segue o
+          seguinte formato:
+        </p>
+
+        <p>
+          <mark>
+            ÚLTIMO NOME, Primeiro Nome do autor do capítulo. Título do capítulo.
+            In: ÚLTIMO NOME, Primeiro nome do autor. Título da obra: Subtítulo.
+            Local: Editora, ano de publicação. p.(página inicial do capítulo) -
+            (página final do capítulo).
+          </mark>
+        </p>
+
+        <h3>
+          Exemplo de referência de capítulo de livro (elementos essenciais)
+        </h3>
+
+        <img
+          src={elementosEssenciais}
+          alt="elementos-essenciais"
+          width="100%"
+        />
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Para melhorar a identificação do documento, os elementos
+          complementares são bem-vindos na referência:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por
+            [Tradução:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título original da obra:</b> Título original da obra traduzida,
+            precedido por [Título Original:]{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do volume:</b> números algarismos arábicos precedido por
+            “v.” e entre vírgulas.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Série ou Coleção:</b> nome da série entre parênteses.{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISBN:</b> Número Padrão Internacional de Livro.{" "}
+          </li>
+        </ul>
+
+        <h3>
+          Exemplo de referência de capítulo de livro (elementos complementares)
+        </h3>
+
+        <img
+          src={elementosComplementares}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <p>
+          Quando o autor do capítulo é o mesmo autor da parte referenciada,
+          repete-se o nome do responsável após a expressão In:.
+        </p>
+
+        <p>
+          No caso de um livro consultado pela internet, é necessário incluir
+          informações sobre disponibilidade e acesso no final da referência.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B. G.; BENTES, V. Arquitetura
+            da informação. In: OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B. G.;
+            BENTES, V.. Arquitetura da informação pervasiva. São Paulo: UNESP;
+            São Paulo: Cultura Acadêmica, 2015. p. 43-74. Disponível em:
+            http://static.scielo.org/scielobooks/6cn9c/pdf/oliveira-9788579836671.pdf.
+            Acesso em: 13 ago 2020.
+          </mark>
+        </p>
+
+        <h3>Chamadas para citações</h3>
+
+        <img src={chamadasCitacao} alt="chamada-citacai" width="100%" />
+
+        <p>
+          Embora seja opcional, apresentar a página em que o trecho ou
+          pensamento se encontra é recomendado.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>Recuero (2016, p. 54) trecho citado [...]</mark>
+        </p>
+
+        <p>
+          <mark>[...] trecho citado (RECUERO, 2016, p. 54).</mark>
+        </p>
+      </div>
+      <Footer />
     </>
   );
 };
