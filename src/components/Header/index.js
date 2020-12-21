@@ -2,19 +2,19 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import { Container, Wrapper } from "./styles";
+import { Nav, WrapperNav } from "./styles";
 
-import LogoViaCarreira from "../../assets/images/Logo-roxo.png";
-import LogoGorb from "../../assets/images/logo-gorb.png";
+import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
 
 const Header = () => {
   return (
-    <Container>
-      <Wrapper className="container">
-        <img src={LogoViaCarreira} alt="" className="src" />
-        <span> GORB </span>
-      </Wrapper>
-    </Container>
+    <Nav>
+      <WrapperNav className="container">
+        <a href="https://viacarreira.com/">
+          <img src={logo_viacarreiraRoxo} alt="" />
+        </a>
+      </WrapperNav>
+    </Nav>
   );
 };
 

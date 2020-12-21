@@ -1,34 +1,22 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Nav = styled.nav`
+  height: 60px;
   width: 100%;
-  height: 80px;
 
-  background-color: #333;
+  background-color: #171715;
+
+  color: #fff;
 `;
-
-export const Wrapper = styled.div`
-  width: 100%;
+export const WrapperNav = styled.div`
   height: 100%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  > img {
-    height: 70px;
-  }
-
-  > span {
-    font-weight: bold;
-    font-size: 30px;
-
-    color: #6666cc;
-  }
-
-  @media only screen and (max-width: 600px) {
-    > span {
-      display: none;
-    }
+  > a > img {
+    width: 170px;
+    height: 30px;
   }
 `;
