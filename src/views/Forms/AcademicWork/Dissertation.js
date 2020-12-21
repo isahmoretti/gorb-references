@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -19,6 +20,10 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-dissertacao.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/academicos/elementos_complementares_dissertacao.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/academicos/elementos_essenciais_dissertacao (1).jpg";
 
 // styles
 import {
@@ -500,6 +505,128 @@ const Dissertation = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de dissertação (ABNT)</h1>
+
+        <p>
+          O produto final de dois anos de pesquisa no mestrado é a dissertação.
+          Nesse tipo de trabalho acadêmico, o pesquisador identifica um
+          problema, coleta dados e prepara a parte teórica referenciando outros
+          autores. A discussão é mais profunda do que o TCC da graduação e menos
+          complexa do que a tese de doutorado.
+        </p>
+
+        <p>
+          Os trabalhos produzidos para obter o título de mestre podem ser
+          citados para melhorar o embasamento teórico da sua pesquisa.
+        </p>
+      </div>
+
+      <h3>Elementos essenciais</h3>
+
+      <ul>
+        <li>
+          {" "}
+          <b>Autor:</b> sobrenome e nome do pesquisador responsável;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Título do trabalho:</b> título da dissertação em destaque:{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Subtítulo:</b> se houver subtítulo, é essencial mencionar após
+          dois-pontos;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Ano de depósito:</b> data de entrega;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Tipo do trabalho:</b> no caso, dissertação{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Grau:</b> no caso, mestrado;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Vinculação acadêmica:</b> nome da universidade;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Local:</b> cidade de publicação;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Ano de defesa:</b> data da apresentação.{" "}
+        </li>
+      </ul>
+
+      <p>
+        Quando o documento é consultado pela internet, é obrigatório incluir o
+        endereço eletrônico, precedido por "Disponível em", além da data de
+        acesso (dia, mês e ano), indicada pela expressão "Acesso em".
+      </p>
+
+      <p>
+        A identificação do documento também ocorre com o código DOI, inserido
+        depois do ano de defesa e antes de "Disponível em".
+      </p>
+
+      <img src={elementosEssenciais} alt="elementos-essenciais" width="100%" />
+
+      <h3>Elementos complementares</h3>
+
+      <p>
+        A identificação do documento fica mais completa com os elementos
+        complementares:
+      </p>
+
+      <ul>
+        <li>
+          {" "}
+          <b>Departamento:</b> é a esfera administrativa do curso;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Orientador:</b> nome do docente que orientou o trabalho;{" "}
+        </li>
+        <li>
+          {" "}
+          <b>Número de folhas:</b> quantidade de folhas, indicada com números
+          arábicos e a abreviação «f. 80»{" "}
+        </li>
+      </ul>
+
+      <img
+        src={elementosComplementares}
+        alt="elementos-complementares"
+        width="100%"
+      />
+
+      <h3>Chamadas para citação</h3>
+
+      <p>
+        Em citações diretas e indiretas, é fundamental mencionar a fonte. Isso
+        se faz por meio de chamadas, que seguem o sistema autor-data.
+      </p>
+
+      <p>
+        Dentro da sentença, o sobrenome do autor é escrito com letras
+        minúsculas, seguido pelo ano de publicação do documento entre
+        parênteses. Quando a chamada é feita no final do parágrafo, o sobrenome
+        do autor aparece entre parênteses e com letras maiúsculas, junto com a
+        data.
+      </p>
+
+      <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+
+      <Footer />
     </>
   );
 };

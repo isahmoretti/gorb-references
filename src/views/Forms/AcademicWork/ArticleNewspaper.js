@@ -11,10 +11,14 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import artigoJornal from "../../../assets/images/explicativos/academicos/artigo-de-jornal (1).jpg";
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-jornal.jpg";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatMonosyllable } from "../../../utils/monosyllable";
@@ -485,6 +489,118 @@ const ArticleNewspaper = ({ back }) => {
           )}
         </Formik>
       </Container>
+
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência Bibliográfica de Artigo de Jornal (ABNT)</h1>
+
+        <p>
+          Artigos de jornais, quando citados no trabalho acadêmico, devem
+          aparecer na lista de referências. Isso inclui reportagem, notícia,
+          entrevista, resenha, editorial e outras publicações.
+        </p>
+
+        <p>O formato básico é:</p>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome do autor. Título do Artigo: Subtítulo. Nome do
+            Jornal, Cidade, ano, número, dia mês ano. Caderno, página.
+          </mark>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <p>Em um jornal impresso, os elementos essenciais são:</p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> SOBRENOME e nome de cada responsável;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título da matéria{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> incluir o subtítulo (se houver){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Nome do jornal:</b> título do jornal em destaque{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local de publicação:</b> cidade onde o jornal foi publicado;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Numeração do ano e/ou volume:</b> preencher com v. ou ano;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número do jornal:</b> preencher com o n. (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de publicação:</b> dia, mês e ano da publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Seção:</b> é o caderno ou parte do jornal onde se encontra a
+            publicação referenciada;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Página:</b> paginação correspondente.{" "}
+          </li>
+        </ul>
+
+        <img src={artigoJornal} alt="artigo-jornal" width="100%" />
+
+        <p>
+          Quando a matéria de um jornal tem autor desconhecido, a entrada da
+          referência se dá pelo título da matéria. Nesse caso, a primeira
+          palavra deve ser inserida com letras maiúsculas.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            ONDA de frio: reviravolta traz vento e forte chance de neve. Zero
+            Hora, Porto Alegre, ano 47, n. 16.414, p. 2, 12 ago. 2010.
+          </mark>
+        </p>
+
+        <h3>Como fazer referência de jornal online?</h3>
+
+        <p>
+          Quando uma matéria de jornal é consultada pela internet, é necessário
+          descrever o meio eletrônico no final da referência. Nesse caso, o
+          preenchimento do número do jornal, ano ou página não é obrigatório,
+          pois se trata de um documento online.
+        </p>
+
+        <h3>Exemplo:</h3>
+
+        <p>
+          <mark>
+            AMENDOLA, Gilberto. OMS inclui uma síndrome de burnout na lista de
+            doenças. Estadão, São Paulo, 28 mai. 2019. Disponível em:
+            https://saude.estadao.com.br/noticias/geral,oms-inclui-a-sindrome-de-burnout-na-lista-de-doencas,70002845142.
+            Acesso em: 22 ago. 2020.
+          </mark>
+        </p>
+
+        <p>A chamada da citação depende sempre da entrada na referência:</p>
+
+        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+      </div>
+      <Footer />
     </>
   );
 };

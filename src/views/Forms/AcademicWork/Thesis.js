@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
@@ -22,6 +23,10 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-tese.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/academicos/elementos_complementares_tese.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/academicos/elementos_essenciais_tese (1).jpg";
 
 // styles
 import {
@@ -485,6 +490,141 @@ const Thesis = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de tese (ABNT)</h1>
+
+        <p>
+          O doutorado é uma pós-graduação stricto sensu, que requer a defesa de
+          uma tese para obter a titulação de doutor. Os cursos formam
+          pesquisadores e professores universidades, por isso os trabalhos
+          abordam temas de forma mais profunda e complexa.
+        </p>
+
+        <p>
+          O autor de uma tese de doutorado já passou por uma graduação e um
+          mestrado, portanto, domina a escrita científica e produz pesquisas com
+          propriedade.
+        </p>
+
+        <p>
+          A tese se diferencia da dissertação porque tem uma contribuição mais
+          expressiva no que diz respeito ao problema de pesquisa. É necessário
+          que o estudo desenvolvido contribua com algum avanço científico.
+        </p>
+
+        <p>
+          Os acadêmicos encontram teses para consulta nas bibliotecas e também
+          nos repositórios digitais das universidades.
+        </p>
+
+        <p>
+          A organização da referência bibliográfica de uma tese deve seguir o
+          seguinte formato:
+        </p>
+
+        <p>
+          <span>
+            SOBRENOME, Nome. Título do trabalho. Ano de defesa. número de
+            folhas. Tipo de documento (Grau e Curso) - Instituição de ensino,
+            Local de publicação, ano de publicação.
+          </span>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autoria:</b> Sobrenome e nome do doutorando;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título do trabalho acadêmico em destaque;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> escrever o subtítulo (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano de depósito:</b> data de entrega do trabalho;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de trabalho entregue:</b> Tese;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Grau de formação:</b> Doutorado;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Curso:</b> Nome do curso de pós-graduação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Instituição:</b> nome da universidade responsável pelo curso;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> Cidade de publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano de defesa:</b> ano em que o trabalho foi defendido.{" "}
+          </li>
+        </ul>
+
+        <img
+          src={elementosEssenciais}
+          alt="elementos-essenciais"
+          width="100%"
+        />
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Para melhorar a identificação do documento, são usados os elementos
+          complementares.
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Departamento:</b> é a esfera administrativa do curso;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Orientador:</b> nome do professor responsável pela orientação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número de folhas:</b> quantidade de folhas, indicada com números
+            arábicos e a abreviação «f. 89»{" "}
+          </li>
+        </ul>
+
+        <img
+          src={elementosComplementares}
+          alt="elementos-completos"
+          width="100%"
+        />
+
+        <h3>Chamadas para citação</h3>
+
+        <p>
+          Dentro da sentença, o sobrenome do autor tem apenas a inicial em
+          maiúscula, seguida pelo ano de publicação da obra entre parênteses. No
+          final do parágrafo, a citação é feita com o sobrenome em letras
+          maiúsculas e entre parênteses, junto com o ano.
+        </p>
+
+        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+      </div>
+      <Footer />
     </>
   );
 };

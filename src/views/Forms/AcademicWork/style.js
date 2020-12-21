@@ -2,16 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
 
   position: relative;
-  width: 1100px;
-  height: 600px;
+  width: 100%;
+
+  > form {
+    width: 100%;
+    max-width: 830px;
+  }
 
   @media only screen and (max-width: 600px) {
     width: 100%;
-    /* position: initial; */
   }
 `;
 
@@ -43,8 +45,8 @@ export const Card = styled.div`
 
   position: relative;
 
-  width: 1000px;
-  height: 500px;
+  width: 100%;
+  /* height: 500px; */
 
   padding: 20px;
 

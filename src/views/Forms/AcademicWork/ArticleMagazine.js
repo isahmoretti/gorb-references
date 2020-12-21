@@ -12,10 +12,14 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import artigoRevista from "../../../assets/images/explicativos/academicos/artigo-de-revista.jpg";
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-revista.jpg";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatMonosyllable } from "../../../utils/monosyllable";
@@ -474,6 +478,10 @@ const ArticleMagazine = ({ back }) => {
                       />
                     </Grid>
                   </Grid>
+                  <span>
+                    Em caso de publicação em uma única página, preencher apenas
+                    o item ​ <b>página inicial</b>
+                  </span>
                   <Row container className="end">
                     <Button
                       variant="outlined"
@@ -499,11 +507,158 @@ const ArticleMagazine = ({ back }) => {
             </form>
           )}
         </Formik>
-        <span>
-          Em caso de publicação em uma única página, preencher apenas o item ​{" "}
-          <b>página inicial</b>
-        </span>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência Bibliográfica de artigo de revista comum (ABNT)</h1>
+
+        <p>
+          Revistas que não são propriamente acadêmicas também podem ser
+          referenciadas no trabalho. Em geral, elas possuem reportagens,
+          notícias, entrevistas, resenhas, editoriais e outros materiais que são
+          relevantes para a pesquisa.
+        </p>
+
+        <p>O formato básico para seguir:</p>
+
+        <p>
+          <mark>
+            SOBRENOME, Nome. Título: Subtítulo. Título da Revista, Cidade,
+            edição, ano, número, página inicial - página final, dia, mês e ano
+            de publicação.
+          </mark>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> SOBRENOME e nome de cada responsável;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título da matéria{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> incluir o subtítulo (se houver){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Nome da revista:</b> título da revista em destaque{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local de publicação:</b> cidade onde a revista foi publicada;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Volume ou edição:</b> informar o número do volume ou da edição;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Numeração do fascículo:</b> preencher com o n. (se houver);{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data de publicação:</b> dia, mês e ano da publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Páginas:</b> paginação correspondente.{" "}
+          </li>
+        </ul>
+
+        <h3>Elementos complementares</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Publicadora:</b> grupo responsável pela publicação da revista;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Periodicidade:</b> semanal, bimestral ou anual.{" "}
+          </li>
+        </ul>
+
+        <img src={artigoRevista} alt="artigo-revista" width="100%" />
+
+        <h3>E no caso de um artigo de revista online?</h3>
+
+        <p>
+          Nesse tipo de situação, não é preciso incluir informações de edição,
+          numeração e página. A segunda parte da referência é composta por dados
+          de disponibilidade e acesso. Assim:
+        </p>
+
+        <p>
+          <mark>
+            INGIZZA, Carolina; ANGRELA, Lucas; GUILHERME, Guilherme. O
+            fantástico mercado dos games. Revista Exame, São Paulo, 13 ago.
+            2020. Disponível em:
+            https://exame.com/revista-exame/o-fantastico-mercado-dos-games/.
+            Acesso em: 22 ago. 2020.
+          </mark>
+        </p>
+
+        <h3>Como é feita a citação de revista no corpo do texto?</h3>
+
+        <p>
+          Quando há o nome do autor do artigo, o sistema de citação autor-data é
+          mantido. Os formatos possíveis são:
+        </p>
+
+        <p>
+          <mark>Petry (2015) [trecho citado]....</mark>
+        </p>
+
+        <p>
+          <mark>Trecho citado… (PETRY, 2015)</mark>
+        </p>
+
+        <h3>Na referência:</h3>
+
+        <p>
+          <mark>
+            PETRY, André. Certezas sem base. Veja, São Paulo, ed. 2416, ano 48,
+            nº 10, p.58-59, 11 mar. 2015.
+          </mark>
+        </p>
+
+        <p>
+          Quando não há um autor, a chamada para citação segue sempre a entrada
+          da referência.
+        </p>
+
+        <h3>Citação de matéria sem autoria</h3>
+
+        <p>
+          No caso de uma matéria sem autoria, a fonte é indicada pelo início do
+          título.
+        </p>
+
+        <h3>Exemplo de citação:</h3>
+
+        <p>
+          <mark>(A POLÊMICA..., 2006, p. 17)</mark>
+        </p>
+
+        <h3>Na referência:</h3>
+
+        <p>
+          <mark>
+            A POLÊMICA da dieta. Revista Época, São Paulo, n. 404, p. 17, fev.
+            2006.
+          </mark>
+        </p>
+
+        <img src={chamadaCitacao} alt="chama-citacao" width="100%" />
+      </div>
+      <Footer />
     </>
   );
 };

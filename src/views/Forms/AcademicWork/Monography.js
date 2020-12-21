@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -19,6 +20,10 @@ import { formatAuthorName } from "../../../utils/formatAuthorName";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-monografia.jpg";
+import elementosComplementares from "../../../assets/images/explicativos/academicos/elementos_complementares_monografia_e_tcc.jpg";
+import elementosEssenciais from "../../../assets/images/explicativos/academicos/elementos_essenciais_monografia_e_tcc.jpg";
 
 // styles
 import {
@@ -519,6 +524,109 @@ const Monography = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência de Monografia e TCC ( ABNT)</h1>
+
+        <p>
+          A monografia é um formato de trabalho acadêmico solicitado para a
+          conclusão da graduação ou especialização. Esse tipo de texto tem como
+          principal característica o fato de colocar outros autores para
+          dialogar e assim construir os conceitos.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autor:</b> nome do responsável;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título do trabalho em negrito{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> subtítulo sem negrito (se houver){" "}
+          </li>
+          <li>
+            {" "}
+            <b>Ano de depósito:</b> ano de entrega{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Tipo de trabalho:</b> TCC ou monografia;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Grau:</b> graduação ou especialização;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Curso:</b> nome do curso{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local:</b> cidade onde está localizada a instituição responsável{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data:</b> ano da apresentação ou defesa.{" "}
+          </li>
+        </ul>
+
+        <img
+          src={elementosEssenciais}
+          alt="elementos-essenciais"
+          width="100%"
+        />
+
+        <h3>Elementos complementares</h3>
+
+        <p>
+          Uma forma de tornar a referência mais completa é usando os elementos
+          complementares. No caso de monografia e TCC, é interessante incluir:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Departamento:</b> é a esfera administrativa do curso;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Orientador:</b> nome do professor responsável pela orientação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número de folhas:</b> quantidade de folhas, indicada com números
+            arábicos e a abreviação «f. 89»{" "}
+          </li>
+        </ul>
+
+        <img
+          src={elementosComplementares}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <h3>Chamadas para citação</h3>
+
+        <p>
+          A ABNT determina que a chamada para citação no corpo do texto deve
+          seguir o sistema autor-data. É possível mencionar o nome do autor
+          dentro da sentença ou fora dela. No primeiro caso, apenas a inicial do
+          sobrenome é formatada com letra maiúscula, seguida pelo ano de
+          publicação entre parênteses. No segundo formato, coloca-se o sobrenome
+          do autor entre parênteses e em letras maiúsculas, dentro dos
+          parênteses, ao lado do ano.
+        </p>
+
+        <img src={chamadaCitacao} alt="" />
+      </div>
     </>
   );
 };

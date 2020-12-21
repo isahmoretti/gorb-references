@@ -12,6 +12,7 @@ import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
@@ -23,6 +24,9 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
+
+import chamadaCitacao from "../../../assets/images/explicativos/academicos/chamadas-para-citacao-artigo-de-periodico.jpg";
+import elementoComplementares from "../../../assets/images/explicativos/academicos/elementos_artigo_de_periodico.jpg";
 
 // styles
 import {
@@ -613,6 +617,203 @@ const WorkArticlePeriodic = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div
+        className="container"
+        style={{ paddingBottom: "40px", maxWidth: 830 }}
+      >
+        <h1>Referência bibliográfica de artigo de periódico (ABNT)</h1>
+
+        <p>
+          Os artigos de periódico são trabalhos elaborados por pesquisadores e
+          publicados em revistas científicas. Eles passam pela análise de
+          especialistas na área e precisam se enquadrar nas políticas do
+          editorial.
+        </p>
+
+        <p>
+          Os periódicos possuem um número de identificação, conhecido como
+          código ISSN (International Standard Serial Number). E cada artigo
+          publicado pode ter o seu próprio DOI (Digital Object Identifier). Com
+          esses elementos, que podem aparecer na referência, fica muito mais
+          fácil identificar um documento.
+        </p>
+
+        <p>
+          Os artigos de periódicos são encontrados em bases de dados confiáveis,
+          como é o caso do Scielo e o Portal de Periódicos Capes. Só a
+          biblioteca virtual da Coordenação de Aperfeiçoamento de Pessoal de
+          Nível Superior possui mais de 45 mil periódicos.
+        </p>
+
+        <p>
+          É permitido escrever títulos de periódicos por extenso ou abreviados,
+          com todas as iniciais em maiúsculas. No segundo caso, as abreviaturas
+          adotadas devem seguir o padrão mantido pelas bases de dados. Exemplos
+          de título de periódico abreviado:
+        </p>
+
+        <ul>
+          <li> Psicol. Reflex. Crít. - Psicologia: Reflexão e Crítica </li>
+          <li> Audiol Commun Res - Audiology: Communication research </li>
+          <li> Rev Saude Publica - Revista de Saúde Pública </li>
+          <li> Lasers Med Sci - Lasers in Medical Science </li>
+        </ul>
+
+        <h3>Como referenciar artigo de periódico no trabalho?</h3>
+
+        <p>O formato básico para referência de artigo de periódico:</p>
+
+        <p>
+          <mark>
+            AUTOR, A. A.; AUTOR, B. B.; AUTOR, C. C. Título do artigo. Título da
+            revista, local, volume, número, página inicial e final do artigo,
+            mês. ano.
+          </mark>
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>Autoria:</b> nome do autor ou dos autores;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título:</b> Título do artigo{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo:</b> se houver, incluir precedido por dois-pontos;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Título do periódico:</b> título da revista em destaque;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Subtítulo de periódico:</b> se houver subtítulo, acrescentar;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Local de publicação:</b> cidade de publicação;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Volume:</b> incluir indicação de volume, seguido pelo número «v.
+            3»;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Número e/ou edição:</b> número do fascículo «n. 3»{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Páginas inicial e final:</b> intervalo de páginas;{" "}
+          </li>
+          <li>
+            {" "}
+            <b>Data ou período de publicação:</b> geralmente mês e ano.{" "}
+          </li>
+        </ul>
+
+        <h3>Elementos complementares</h3>
+
+        <ul>
+          <li>
+            {" "}
+            <b>DOI:</b> Digital Object Identifier{" "}
+          </li>
+          <li>
+            {" "}
+            <b>ISSN:</b> International Standard Serial Number{" "}
+          </li>
+        </ul>
+
+        <img
+          src={elementoComplementares}
+          alt="elementos-complementares"
+          width="100%"
+        />
+
+        <h3>Situações especiais</h3>
+
+        <p>
+          Quando um artigo científico está em fase de publicação, usa-se o termo
+          "No prelo" na referência. Esse termo deve ser inserido depois do ano e
+          antes do DOI.
+        </p>
+
+        <h3>Referência de periódico</h3>
+
+        <p>
+          Quando uma publicação periódica é referenciada em sua totalidade (e
+          não apenas uma parte), o formato da referência bibliográfica é:
+        </p>
+
+        <p>
+          TÍTULO DO PERIÓDICO. Local de publicação: Editora, ano de início-ano
+          de encerramento. Notas. ISSN.
+        </p>
+
+        <h3>Exemplos aplicando o formato:</h3>
+
+        <p>
+          <mark>
+            REVISTA BRASILEIRA DE GEOGRAFIA. Rio de Janeiro: IBGE, 1939- . ISSN
+            0034-723X.
+          </mark>
+        </p>
+
+        <p>
+          <mark>
+            CADERNO BRASILEIRO DE ENSINO DE FÍSICA. Florianópolis: Universidade
+            Federal de Santa Catarina, 2008- . ISSN: 2175-7941. DOI
+            10.5007/2175-7941. Disponível em:
+            https://periodicos.ufsc.br/index.php/fisica/index. Acesso em: 20
+            maio 2014.
+          </mark>
+        </p>
+
+        <h3>Chamadas para citação</h3>
+
+        <p>
+          Ao referenciar outros autores no trabalho, é necessário usar uma
+          chamada de citação, que segue o sistema de autor-data.
+        </p>
+
+        <p>
+          Quando a chamada aparece dentro da sentença, o sobrenome do autor é
+          colocado em letras minúsculas, seguido pelo ano de publicação entre
+          parênteses. Por outro lado, se a chamada for feita no final do
+          parágrafo, o formato da indicação é (SOBRENOME, ano).
+        </p>
+
+        <p>
+          Adicionar o número da página de onde a citação foi extraída é uma
+          forma de facilitar a identificação. Nesse caso, a formatação da
+          chamada fica assim:
+        </p>
+
+        <p>
+          <mark>Souza (2017, p. 14) ou (SOUZA, 2017, p.14).</mark>
+        </p>
+
+        <h3>E quando a citação está em páginas diferentes?</h3>
+
+        <p>
+          Quando uma citação se encontra em páginas diferentes, a recomendação é
+          apresentar os números separados por um hífen.
+        </p>
+
+        <p>
+          <mark>Souza (2017, p. 14-15) ou (SOUZA 2017, p. 14-15)</mark>
+        </p>
+
+        <img src={chamadaCitacao} alt="chamada-cituacao" width="100%" />
+      </div>
+
+      <Footer />
     </>
   );
 };
