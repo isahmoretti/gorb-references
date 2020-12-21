@@ -45,7 +45,9 @@ export const ContentHome = styled.div`
   }
 `;
 
-export const ContentText = styled.div``;
+export const ContentText = styled.div`
+  max-width: 830px;
+`;
 
 export const Row = styled.div`
   display: flex;
