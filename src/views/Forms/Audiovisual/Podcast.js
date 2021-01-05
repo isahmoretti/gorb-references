@@ -19,7 +19,7 @@ import Footer from "../../../components/Footer";
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
-import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-podcast.jpg";
+import Img from "../../../assets/images/change/Podcast.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";

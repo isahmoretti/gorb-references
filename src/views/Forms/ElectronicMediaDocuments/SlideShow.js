@@ -24,7 +24,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
-import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-slides.jpg";
+import Img from "../../../assets/images/change/Slides.jpg";
 
 // styles
 import {

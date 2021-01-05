@@ -19,7 +19,7 @@ import Footer from "../../../components/Footer";
 import { formatDate } from "../../../utils/formatDate";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
-import Img from "../../../assets/images/explicativos/juridicos/elementos_constituicao.jpg";
+import Img from "../../../assets/images/change/Constituição.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";

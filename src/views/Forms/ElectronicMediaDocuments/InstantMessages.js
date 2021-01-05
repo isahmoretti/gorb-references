@@ -22,7 +22,7 @@ import { generateCitationWithAuthor } from "../../../utils/generateCitationWithA
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
-import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt-mensagem-instantanea.jpg";
+import Img from "../../../assets/images/change/Mensagens instantâneas.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";

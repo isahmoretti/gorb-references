@@ -22,7 +22,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Img1 from "../../../assets/images/explicativos/juridicos/elementos_complementares_documentos_civis.jpg";
-import Img2 from "../../../assets/images/explicativos/juridicos/elementos_essenciais_documentos_civis.jpg";
+import Img2 from "../../../assets/images/change/Documentos civis e de cartório.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";

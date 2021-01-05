@@ -23,7 +23,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
-import Img from "../../../assets/images/explicativos/eletronicos/elementos_artigo_de_blog.jpg";
+import Img from "../../../assets/images/change/Artigo de blog.jpg";
 
 import { Button as ButtonCore } from "@material-ui/core";
 

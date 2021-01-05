@@ -18,7 +18,7 @@ import Footer from "../../../components/Footer";
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
 import Minus from "../../../assets/images/minus.svg";
-import Img from "../../../assets/images/explicativos/evento/referencia-abnt-patente.jpg";
+import Img from "../../../assets/images/change/Patente.jpg";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
