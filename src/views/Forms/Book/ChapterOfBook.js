@@ -891,7 +891,10 @@ const Book = ({ back }) => {
           </li>
           <li>
             {" "}
-            <b>Expressão In:</b> expressão latina que significa «dentro de»{" "}
+            <b>
+              Expressão <i>In</i>:
+            </b>{" "}
+            expressão latina que significa «dentro de»{" "}
           </li>
           <li>
             {" "}
@@ -931,9 +934,9 @@ const Book = ({ back }) => {
         <p>
           <mark>
             ÚLTIMO NOME, Primeiro Nome do autor do capítulo. Título do capítulo.
-            In: ÚLTIMO NOME, Primeiro nome do autor. Título da obra: Subtítulo.
-            Local: Editora, ano de publicação. p.(página inicial do capítulo) -
-            (página final do capítulo).
+            <i>In</i>: ÚLTIMO NOME, Primeiro nome do autor. Título da obra:
+            Subtítulo. Local: Editora, ano de publicação. p.(página inicial do
+            capítulo) - (página final do capítulo).
           </mark>
         </p>
 
@@ -992,7 +995,7 @@ const Book = ({ back }) => {
 
         <p>
           Quando o autor do capítulo é o mesmo autor da parte referenciada,
-          repete-se o nome do responsável após a expressão In:.
+          repete-se o nome do responsável após a expressão <i>In</i>:.
         </p>
 
         <p>
@@ -1005,9 +1008,9 @@ const Book = ({ back }) => {
         <p>
           <mark>
             OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B. G.; BENTES, V. Arquitetura
-            da informação. In: OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B. G.;
-            BENTES, V.. Arquitetura da informação pervasiva. São Paulo: UNESP;
-            São Paulo: Cultura Acadêmica, 2015. p. 43-74. Disponível em:
+            da informação. <i>In</i>: OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B.
+            G.; BENTES, V.. Arquitetura da informação pervasiva. São Paulo:
+            UNESP; São Paulo: Cultura Acadêmica, 2015. p. 43-74. Disponível em:
             http://static.scielo.org/scielobooks/6cn9c/pdf/oliveira-9788579836671.pdf.
             Acesso em: 13 ago 2020.
           </mark>

@@ -173,6 +173,7 @@ const Book = ({ back }) => {
   return (
     <>
       <Nav />
+      <GoogleAds width="728" height="90" slot="6185479291" />
       <Container>
         <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
@@ -677,6 +678,7 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <GoogleAds width="728" height="90" slot="6185479291" />
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}

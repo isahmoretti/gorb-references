@@ -900,7 +900,10 @@ const Entry = ({ back }) => {
         <ul>
           <li> Autor da parte: nome do responsável pela parte; </li>
           <li> Título da parte: título do verbete ou conceito; </li>
-          <li> Expressão In: indica "dentro de"; </li>
+          <li>
+            {" "}
+            Expressão <i>In</i>: indica "dentro de";{" "}
+          </li>
           <li>
             {" "}
             Nome do autor do todo: nome de quem escreveu ou organizou a obra
@@ -945,11 +948,11 @@ const Entry = ({ back }) => {
 
         <p>
           <mark>
-            FERREIRA, Aurélio Buarque de Holanda. Etnografia. In: FERREIRA,
-            Aurélio Buarque de Holanda. . In: <b>Míniaurélio</b>: o dicionário
-            da língua portuguesa. 7 ed. Curitiba: Editora Positivo, 2008. p.
-            383. Coordenação e edição de Margarida dos Anjos e Marina Baird
-            Ferreira.
+            FERREIRA, Aurélio Buarque de Holanda. Etnografia. <i>In</i>:
+            FERREIRA, Aurélio Buarque de Holanda. . <i>In</i>:{" "}
+            <b>Míniaurélio</b>: o dicionário da língua portuguesa. 7 ed.
+            Curitiba: Editora Positivo, 2008. p. 383. Coordenação e edição de
+            Margarida dos Anjos e Marina Baird Ferreira.
           </mark>
         </p>
 
@@ -965,8 +968,8 @@ const Entry = ({ back }) => {
 
         <p>
           <mark>
-            MORFOLOGIA dos artrópodes. In: ENCICLOPÉDIA multimídia dos seres
-            vivos. [S. l.]: Planeta DeAgostini, c1998. CD-ROM 9.
+            MORFOLOGIA dos artrópodes. <i>In</i>: ENCICLOPÉDIA multimídia dos
+            seres vivos. [S. l.]: Planeta DeAgostini, c1998. CD-ROM 9.
           </mark>
         </p>
 
@@ -982,9 +985,9 @@ const Entry = ({ back }) => {
 
         <p>
           <mark>
-            AUTOR DA PARTE. Título do Verbete: subtítulo do verbete. In: AUTOR
-            DO TODO. Título da enciclopédia: subtítulo da enciclopédia. Edição.
-            Local: Editora, Ano. Página inicial - Página final. (Série).
+            AUTOR DA PARTE. Título do Verbete: subtítulo do verbete. <i>In</i>:
+            AUTOR DO TODO. Título da enciclopédia: subtítulo da enciclopédia.
+            Edição. Local: Editora, Ano. Página inicial - Página final. (Série).
           </mark>
         </p>
 
@@ -1009,8 +1012,8 @@ const Entry = ({ back }) => {
 
         <p>
           <mark>
-            ALIMENTAÇÃO saudável. In: WIKIPÉDIA: a enciclopédia livre. São
-            Francisco, CA: Fundação Wikimedia, 2013. Disponível em:
+            ALIMENTAÇÃO saudável. <i>In</i>: WIKIPÉDIA: a enciclopédia livre.
+            São Francisco, CA: Fundação Wikimedia, 2013. Disponível em:
             http://pt.wikipedia.org/wiki/Alimentacao_saudavel. Acesso em: 22
             set. 2013.
           </mark>

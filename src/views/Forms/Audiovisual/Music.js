@@ -439,9 +439,9 @@ const Music = ({ back }) => {
         <p>
           <mark>
             TÍTULO da música. Intérprete: Nome do intérprete. Compositor: Nome
-            do compositor. In: Título do álbum. Intérprete: Nome do intérprete
-            do álbum. Local: Gravadora, Ano. Especificações do suporte (duração
-            da música).
+            do compositor. <i>In</i>: Título do álbum. Intérprete: Nome do
+            intérprete do álbum. Local: Gravadora, Ano. Especificações do
+            suporte (duração da música).
           </mark>
         </p>
 
@@ -451,17 +451,17 @@ const Music = ({ back }) => {
 
         <p>
           <mark>
-            PROCISSÃO. Intérprete: Gilberto Gil. Compositor: Gilberto Gil. In:
-            EM CONCERTO. Intérprete: Gilberto Gil. Rio de Janeiro: Geleia Geral,
-            1987. 1 disco vinil, lado A, faixa 2, (2m).
+            PROCISSÃO. Intérprete: Gilberto Gil. Compositor: Gilberto Gil.{" "}
+            <i>In</i>: EM CONCERTO. Intérprete: Gilberto Gil. Rio de Janeiro:
+            Geleia Geral, 1987. 1 disco vinil, lado A, faixa 2, (2m).
           </mark>
         </p>
 
         <p>
           <mark>
             JURA Secreta. Intérprete: Simone. Compositor: S. Costa e A. Silva.
-            In: FACE a Face. Intérprete: Simone. [S. l.]: Emi-Odeon Brasil,
-            1977. 1 CD, faixa 7, (2 min).
+            <i>In</i>: FACE a Face. Intérprete: Simone. [S. l.]: Emi-Odeon
+            Brasil, 1977. 1 CD, faixa 7, (2 min).
           </mark>
         </p>
 
@@ -476,9 +476,9 @@ const Music = ({ back }) => {
         <p>
           <mark>
             TE ENSINEI certin. Intérprete: Ludmilla. Compositores: Umberto
-            Tavares Oliveira e Jefferson Júnior. In: HELLO Mundo (Ao vivo).
-            Intérprete: Ludmilla. Rio de Janeiro: Warner Music, 2019. Streaming
-            de música Spotify, faixa 2 (4 min). Disponível em:
+            Tavares Oliveira e Jefferson Júnior. <i>In</i>: HELLO Mundo (Ao
+            vivo). Intérprete: Ludmilla. Rio de Janeiro: Warner Music, 2019.
+            Streaming de música Spotify, faixa 2 (4 min). Disponível em:
             https://open.spotify.com/album/3VDQ3Oa1bICtnbII8HowVw. Acesso em: 31
             out. 2020.
           </mark>

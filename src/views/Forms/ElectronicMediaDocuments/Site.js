@@ -373,15 +373,30 @@ const Site = ({ back }) => {
         <p>
           Bases de dados são coleções eletrônicas de documentos, que facilitam o
           acesso a artigos científicos, teses e outros materiais. Elas podem ser
-          multidisciplinares, como é o caso do <a href="#">Scielo</a>, ou
-          específica de uma área, como o <a href="#">Pubmed</a>, que reúne
-          conteúdo exclusivo da literatura biomédica.
+          multidisciplinares, como é o caso do{" "}
+          <a
+            href="https://viacarreira.com/scielo-artigos-cientificos-em-pdf-como-pesquisar/"
+            target="blank"
+          >
+            Scielo
+          </a>
+          , ou específica de uma área, como o{" "}
+          <a href="https://viacarreira.com/pubmed/" target="blank">
+            Pubmed
+          </a>
+          , que reúne conteúdo exclusivo da literatura biomédica.
         </p>
 
         <p>
           O formato de referência de site também se aplica às{" "}
-          <a href="#">bases de dados</a>. O termo "base de dados" deve ser
-          inserido como uma informação complementar.
+          <a
+            href="https://viacarreira.com/bases-de-dados-confiaveis-para-usar-no-tcc/"
+            target="blank"
+          >
+            bases de dados
+          </a>
+          . O termo "base de dados" deve ser inserido como uma informação
+          complementar.
         </p>
 
         <h3>Exemplos</h3>

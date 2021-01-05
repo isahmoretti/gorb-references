@@ -591,7 +591,10 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
         <p>
           O título da revista científica pode ser abreviado, desde que respeite
           o padrão definido pelas bases de dados, como é o caso da{" "}
-          <a href="#">Medline</a> e LILACS.
+          <a href="https://viacarreira.com/medline/" target="blank">
+            Medline
+          </a>{" "}
+          e LILACS.
         </p>
 
         <p>

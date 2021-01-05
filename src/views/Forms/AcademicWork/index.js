@@ -9,11 +9,13 @@ import {
   Title,
   Back,
   Separator,
+  ContentText,
 } from "../../../styles/Hexagon";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 const BookGeneral = ({ back }) => {
   const history = useHistory();
@@ -82,6 +84,14 @@ const BookGeneral = ({ back }) => {
           </Row>
         </Content>
       </Conatiner>
+      <ContentText className="container">
+        Além de livros, outros materiais podem ser usados como fontes para a
+        pesquisa, como é o caso dos trabalhos acadêmicos (TCC, monografias,
+        artigos científicos, dissertações, teses) e publicações periódicas
+        (artigo de revista e jornal).
+      </ContentText>
+
+      <Footer />
     </>
   );
 };

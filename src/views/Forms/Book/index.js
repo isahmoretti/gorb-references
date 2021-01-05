@@ -56,6 +56,7 @@ const BookGeneral = ({ back }) => {
   return (
     <>
       <Header />
+
       <Conatiner>
         <Content>
           <Back onClick={() => history.push("/")} src={ArrowLeft} />

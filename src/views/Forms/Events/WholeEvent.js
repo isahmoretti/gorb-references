@@ -441,8 +441,14 @@ const WholeEvent = ({ back }) => {
         </p>
 
         <p>
-          Existem vários <a href="#">tipos de eventos acadêmicos</a> que
-          mobilizam a comunidade científica, como é o caso de congressos,
+          Existem vários{" "}
+          <a
+            href="https://viacarreira.com/tipos-de-eventos-academicos/"
+            target="blank"
+          >
+            tipos de eventos acadêmicos
+          </a>{" "}
+          que mobilizam a comunidade científica, como é o caso de congressos,
           conferências, jornadas, encontros, workshops, colóquios, feiras,
           seminários e exposições.
         </p>
@@ -483,12 +489,12 @@ const WholeEvent = ({ back }) => {
         <h3>Formato básico</h3>
 
         <p>
-          <span>
+          <mark>
             TÍTULO DO EVENTO, numeração., NOME DO EVENTO DE PARTICIPAÇÃO,
             numeração do evento de participação., ano, Cidade de realização.
             <b>Título do documento</b> [...]. Local de publicação: Editora, ano
             de publicação. Número de páginas p. Tema: Assunto do evento. Nota.
-          </span>
+          </mark>
         </p>
 
         <p>

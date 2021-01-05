@@ -519,11 +519,16 @@ const Ebook = ({ back }) => {
 
         <p>
           Vários e-books podem contribuir com a sua{" "}
-          <a href="#">pesquisa bibliográfica</a>, como é o caso dos documentos
-          produzidos por universidades e institutos de pesquisa. O Instituto de
-          Pesquisa Econômica Aplicada (IPEA), por exemplo, tem um acervo bem
-          interessante de livros diferenciais que podem ser referenciado no seu
-          trabalho acadêmico.
+          <a
+            href="https://viacarreira.com/pesquisa-bibliografica/"
+            target="blank"
+          >
+            pesquisa bibliográfica
+          </a>
+          , como é o caso dos documentos produzidos por universidades e
+          institutos de pesquisa. O Instituto de Pesquisa Econômica Aplicada
+          (IPEA), por exemplo, tem um acervo bem interessante de livros
+          diferenciais que podem ser referenciado no seu trabalho acadêmico.
         </p>
 
         <h3>Elementos para incluir na referência</h3>

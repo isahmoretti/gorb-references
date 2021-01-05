@@ -15,6 +15,7 @@ import {
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 const Events = ({ back }) => {
   const history = useHistory();
@@ -78,6 +79,7 @@ const Events = ({ back }) => {
           </Row>
         </Content>
       </Conatiner>
+      <Footer />
     </>
   );
 };

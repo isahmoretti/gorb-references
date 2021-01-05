@@ -243,7 +243,7 @@ export const Button = styled.button`
 `;
 
 export const Footer = styled.div`
-  background-color: #333;
+  background-color: #171715;
   color: #fff;
 
   padding: 14px;
@@ -312,7 +312,7 @@ export const MobileFooter = styled.div`
 export const DesktopFooter = styled.div`
   display: unset;
   padding: 50px 0%;
-  background-color: #333;
+  background-color: #171715;
   color: #fff;
 
   @media (max-width: 600px) {

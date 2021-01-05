@@ -420,14 +420,22 @@ const Patents = ({ back }) => {
 
         <p>
           Depois de criar um determinado produto, o inventor deve{" "}
-          <a href="#">adquirir a patente</a> para proteger os seus direitos de
-          propriedade intelectual. Se a ideia patenteada foi citada em algum
-          momento no trabalho acadêmico, a patente precisa ser incluída na lista
-          de referências bibliográficas.
+          <a
+            href="https://viacarreira.com/descubra-como-patentear-um-produto-em-7-passos/"
+            target="blank"
+          >
+            adquirir a patente
+          </a>{" "}
+          para proteger os seus direitos de propriedade intelectual. Se a ideia
+          patenteada foi citada em algum momento no trabalho acadêmico, a
+          patente precisa ser incluída na lista de referências bibliográficas.
         </p>
 
         <p>
-          No Brasil, a patente é um documento expedido pelo <a href="#">INPI</a>{" "}
+          No Brasil, a patente é um documento expedido pelo{" "}
+          <a href="https://www.gov.br/inpi/pt-br" target="blank">
+            INPI
+          </a>{" "}
           (autarquia federal vinculada ao Ministério do Desenvolvimento,
           Indústria e Comércio Exterior). O tempo médio de registro varia de 7 a
           10 anos.

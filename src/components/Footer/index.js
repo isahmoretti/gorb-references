@@ -152,7 +152,8 @@ const FooterComponent = () => {
         </ContainerDesktopFooter>
 
         <LabelDesktopFooter>
-          2013 - 2020 © Layub - Todos os direitos reservados
+          2013 - {new Date().getFullYear()} © Layub - Todos os direitos
+          reservados
         </LabelDesktopFooter>
       </DesktopFooter>
     </div>

@@ -14,6 +14,7 @@ import {
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 
 const Audiovisual = ({ back }) => {
   const history = useHistory();
@@ -77,6 +78,7 @@ const Audiovisual = ({ back }) => {
           </Row>
         </Content>
       </Conatiner>
+      <Footer />
     </>
   );
 };

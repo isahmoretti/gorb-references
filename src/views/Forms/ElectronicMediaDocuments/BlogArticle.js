@@ -441,7 +441,7 @@ const BlogArticle = ({ back }) => {
 
         <p>
           <mark>
-            SOBRENOME, Prenome do autor. Título do artigo: subtítulo. In:
+            SOBRENOME, Prenome do autor. Título do artigo: subtítulo. <i>In</i>:
             Responsável pelo blog. <b>Título do blog</b>: subtítulo do blog.
             Local, dia, mês e ano. Disponível em: URL. Acesso em: dia, mês e
             ano.
@@ -453,7 +453,7 @@ const BlogArticle = ({ back }) => {
         <p>
           <mark>
             PACKER, A. L. et al. SciELO pós 20 anos: o futuro continua aberto.
-            In: SCIELO - Scientific Electronic Library Online.{" "}
+            <i>In</i>: SCIELO - Scientific Electronic Library Online.{" "}
             <b>SciELO em Perspectiva.</b> São Paulo, 19 dez. 2018. Disponível
             em:
             https://blog.scielo.org/blog/2018/12/19/scielo-pos-20-anos-o-futuro-continua-aberto/#.
@@ -490,7 +490,7 @@ const BlogArticle = ({ back }) => {
           <mark>
             SCIELO - Scientific Electronic Library Online. Preprints são um
             problema? Cinco formas de melhorar a qualidade e credibilidade dos
-            preprints. In: SCIELO - Scientific Electronic Library Online.{" "}
+            preprints. <i>In</i>: SCIELO - Scientific Electronic Library Online.{" "}
             <b>SciELO em Perspectiva.</b> São Paulo, 15 out. 2020. Disponível
             em:
             https://blog.scielo.org/blog/2020/10/15/preprints-sao-um-problema-cinco-formas-de-melhorar-a-qualidade-e-credibilidade-dos-preprints/#.X5rMoFNKjfZ.

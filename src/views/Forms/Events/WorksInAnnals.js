@@ -563,9 +563,21 @@ const WorksInAnnals = ({ back }) => {
 
         <p>
           Anais são coleções de trabalhos acadêmicos publicados no contexto de
-          um <a href="#">evento científico.</a> Eles são frequentes em
-          congressos, mas também podem fazer parte de conferências, encontros,
-          workshops e <a href="#">simpósios.</a>
+          um{" "}
+          <a
+            href="https://viacarreira.com/tipos-de-eventos-academicos/"
+            target="blank"
+          >
+            evento científico.
+          </a>{" "}
+          Eles são frequentes em congressos, mas também podem fazer parte de
+          conferências, encontros, workshops e{" "}
+          <a
+            href="https://viacarreira.com/simposio-na-faculdade/"
+            target="blank"
+          >
+            simpósios.
+          </a>
         </p>
 
         <p>
@@ -585,7 +597,12 @@ const WorksInAnnals = ({ back }) => {
           Para que isso aconteça, a produção acadêmica precisa ser avaliada e
           aprovada por pesquisadores de renome da área. Portanto, consultar
           trabalhos em anais é uma fonte segura para a{" "}
-          <a href="#">fundamentação teórica.</a>
+          <a
+            href="https://viacarreira.com/fundamentacao-teorica-do-tcc/"
+            target="blank"
+          >
+            fundamentação teórica.
+          </a>
         </p>
 
         <h3>O que diz a ABNT sobre referência de trabalhos em anais?</h3>
@@ -593,7 +610,10 @@ const WorksInAnnals = ({ back }) => {
         <ul>
           <li> Autoria do trabalho: SOBRENOME e prenome do autor </li>
           <li> Título do trabalho: Título do trabalho publicado </li>
-          <li> Expressão In: sinaliza "dentro de" </li>
+          <li>
+            {" "}
+            Expressão <i>In</i>: sinaliza "dentro de"{" "}
+          </li>
           <li> Nome do evento: em ordem direta e LETRAS MAIÚSCULAS; </li>
           <li> Numeração do evento: em algarismos arábicos; </li>
           <li> Ano de realização: data em que ocorreu o evento. </li>
@@ -636,9 +656,9 @@ const WorksInAnnals = ({ back }) => {
             OYADOMARI, A. T. et al. Efeitos da terapia por laser de baixa
             potência no processo de reparo de defeitos ósseos preenchidos pelo
             osso bovino Bio-Oss® associados ao novo selante heterólogo de
-            fibrina. In: SIMPÓSIO INTERNACIONAL DE INICIAÇÃO CIENTÍFICA DA
-            UNIVERSIDADE DE SÃO PAULO, 25., 2017, Bauru. <b>Resumos</b> [...].
-            São Paulo: Universidade de São Paulo, 2017.
+            fibrina. <i>In</i>: SIMPÓSIO INTERNACIONAL DE INICIAÇÃO CIENTÍFICA
+            DA UNIVERSIDADE DE SÃO PAULO, 25., 2017, Bauru. <b>Resumos</b>{" "}
+            [...]. São Paulo: Universidade de São Paulo, 2017.
           </mark>
         </p>
       </div>

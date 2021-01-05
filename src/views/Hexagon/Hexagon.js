@@ -20,8 +20,10 @@ import {
 
 // components
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 import Plus from "../../assets/images/plus-dark.svg";
+import Pagina from "../../assets/images/home/pagina-de-referencias-bibliograficas.jpg";
 
 const HexagonPage = () => {
   const history = useHistory();
@@ -169,6 +171,81 @@ const HexagonPage = () => {
           </Row>
         </ContentMobile>
       </Conatiner>
+      <ContentText className="container">
+        <p>
+          O Gerador Online de Referências Bibliográfica (GORB) foi criado pelo
+          Via Carreira com o objetivo de facilitar o dia a dia dos estudantes.
+          Ele aplica a NBR 6023:2018, da Associação Brasileira de Normas
+          Técnicas (ABNT).
+        </p>
+
+        <p>
+          Cada referência é composta por elementos essenciais (indispensáveis
+          para a identificação do documento) e elementos complementares
+          (informações adicionais). Todos os documentos citados no trabalho
+          devem ser referenciados.
+        </p>
+
+        <p>Passo a passo para usar o GORB:</p>
+
+        <p>
+          <b>Passo 1.</b> Encontre na roseta hexagonal o tipo de documento que
+          você deseja referenciar no trabalho.
+        </p>
+
+        <p>
+          <b>Passo 2.</b> Preencha o formulário com os dados solicitados e
+          clique em "gerar referência". Em alguns casos você também consegue
+          gerar as chamadas para citações.
+        </p>
+
+        <p>
+          <b>Passo 3.</b> O sistema vai colocar todos os elementos na ordem
+          correta, como determina a ABNT. Clique no botão copiar e cole a
+          referência na sua lista, no editor de texto.
+        </p>
+
+        <p>
+          As referências bibliográficas devem ser apresentadas com a seguinte
+          formatação:
+        </p>
+
+        <ul>
+          <li>
+            {" "}
+            Margens: 3cm (Superior e Inferior) e 2 cm (Esquerda e Direita);{" "}
+          </li>
+          <li>
+            {" "}
+            O título <b>REFERÊNCIAS</b> deve estar no topo a folha,
+            centralizado, com tamanho 12, letras maiúsculas e espaçamento de 1,5
+            entre as linhas;{" "}
+          </li>
+          <li> Alinhamento de texto à esquerda; </li>
+          <li> Espaçamento simples entre linhas; </li>
+          <li>
+            {" "}
+            Separação entre si por uma linha em branco de espaço simples;{" "}
+          </li>
+          <li> Referências com fonte tamanho 12; </li>
+          <li> Organização por ordem alfabética e não numerada; </li>
+          <li> O título da seção não tem indicativo numérico; </li>
+          <li>
+            {" "}
+            O recurso tipográfico utilizado para destacar um elemento (negrito
+            ou itálico) deve ser uniforme em todas as referências;{" "}
+          </li>
+          <li>
+            {" "}
+            Quem opta por abreviar os nomes dos autores precisa seguir esse
+            padrão em toda a lista de referências.{" "}
+          </li>
+        </ul>
+
+        <img src={Pagina} alt="pagina-referencia" width="100%" />
+      </ContentText>
+
+      <Footer />
     </>
   );
 };

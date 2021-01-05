@@ -577,8 +577,8 @@ const Legislation = ({ back }) => {
           <mark>
             BRASIL. Decreto-lei n° 200, de 25 de fevereiro de 1967. Dispõe sobre
             a organização da Administração Federal, estabelece diretrizes para a
-            Reforma Administrativa, e dá outras providências. In: VADE mecum.
-            Porto Alegre: Verbo jurídico, 2007. 1 CD-ROM, p. 1-90.
+            Reforma Administrativa, e dá outras providências. <i>In</i>: VADE
+            mecum. Porto Alegre: Verbo jurídico, 2007. 1 CD-ROM, p. 1-90.
           </mark>
         </p>
 

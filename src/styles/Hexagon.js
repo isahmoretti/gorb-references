@@ -47,6 +47,8 @@ export const ContentHome = styled.div`
 
 export const ContentText = styled.div`
   max-width: 830px;
+
+  margin-bottom: 120px;
 `;
 
 export const Row = styled.div`

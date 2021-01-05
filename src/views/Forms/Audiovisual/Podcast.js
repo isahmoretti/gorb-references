@@ -399,8 +399,8 @@ const Podcast = ({ back }) => {
         <p>
           <mark>
             TÍTULO: Subtítulo. [Locução de]: Nome do Locutor. Local:
-            Publicadora, dia, mês e ano de publicação. Podcast. Disponível em:
-            URL. Acesso em: dia, mês e ano de acesso.
+            Publicadora, dia, mês e ano de publicação. <i>Podcast.</i>{" "}
+            Disponível em: URL. Acesso em: dia, mês e ano de acesso.
           </mark>
         </p>
 
@@ -412,7 +412,8 @@ const Podcast = ({ back }) => {
           <mark>
             EPISÓDIO 2: O Julgamento. [Locução de]: Branca Vianna.
             Entrevistados: Jacqueline Pitanguy; Hildete Pereira de Melo; Artur
-            Xexéo et al. Rio de Janeiro: Rádio Novelo, 19 set. 2020. Podcast.
+            Xexéo et al. Rio de Janeiro: Rádio Novelo, 19 set. 2020.{" "}
+            <i>Podcast.</i>
             (Série Praia dos Ossos). Disponível em:
             https://www.radionovelo.com.br/praiadosossos/. Acesso em: 29 out.
             2020.
@@ -423,7 +424,7 @@ const Podcast = ({ back }) => {
           <mark>
             DRAGÕES de garagem #137: vó Maria: vacinas e escolhas
             #semanadavacina. [Locução de]: Barbara Paes. [S.l.]: Dragões de
-            Garagem, 14 ago. 2018. Podcast. Disponívem em: http://
+            Garagem, 14 ago. 2018. <i>Podcast.</i> Disponívem em: http://
             dragoesdegaragem.com/podcast/dragoes-de-garagem-137-vo-maria-vacinas-e-escolhassemanadavacina/.
             Acesso em: 9 jan. 2019.
           </mark>
@@ -432,7 +433,8 @@ const Podcast = ({ back }) => {
         <p>
           <mark>
             PODCAST LXX: Brasil: parte 3: a república. [Locução de]: Christian
-            Gutner. [S. l.]: Escriba Café, 19 mar. 2010. Podcast. Disponível em:
+            Gutner. [S. l.]: Escriba Café, 19 mar. 2010. <i>Podcast.</i>{" "}
+            Disponível em:
             http://www.escribacafe.com/podcast-lxx-brasil-parte-3-a-republica/.
             Acesso em: 4 out. 2010.
           </mark>

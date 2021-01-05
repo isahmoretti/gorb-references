@@ -332,113 +332,85 @@ const TechnicalStandards = ({ back }) => {
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
       >
-        <h1> Referência de evento no todo em publicação periódica (ABNT) </h1>
+        <h1>Referência bibliográfica de normas técnicas (ABNT)</h1>
         <p>
-          Os trabalhos produzidos em eventos podem ser publicados em uma revista
-          científica. Nesse caso, é importante conhecer as normas da ABNT para
-          referência de evento no todo em publicação periódica.
+          A normatização existe com o objetivo de formular e aplicar regras para
+          prevenir problemas ou encontrar soluções. Ela cria um padrão em
+          diferentes contextos, seja para definir a apresentação de documentos
+          ou padronizar a acessibilidade a edificações.
         </p>
-        <p>
-          A referência inclui os mesmos elementos de "evento no todo", exceto
-          pelo fato de conter informações da publicação periódica. Aliás, o
-          destaque em negrito deve ser aplicado no título da revista.
-        </p>
-        <h3>Elementos para referenciar evento no todo em periódico</h3>
-        <p>
-          Os elementos obrigatórios são: nome do evento, numeração, ano, local
-          de realização, tipo de documento e dados do periódico. Você pode
-          formular sua referência com os elementos da lista abaixo:
-        </p>
-        <ul>
-          <li>Nome do evento</li>
 
-          <li> Numeração do evento </li>
-          <li> Nome do evento de participação </li>
-          <li> Numeração do evento de participação </li>
-          <li> Ano de realização do evento </li>
-          <li> Local de realização do evento: </li>
-          <li> Título do documento </li>
-          <li> Nome do periódico </li>
-          <li> Local de publicação do periódico </li>
-          <li> Entidade publicadora </li>
-          <li> Volume </li>
-          <li> Número do fascículo </li>
-          <li> Data de publicação </li>
-          <li> Tema </li>
+        <p>
+          No Brasil, a entidade responsável por definir as normas técnicas é a
+          Associação Brasileira de Normas Técnicas (
+          <a href="https://viacarreira.com/o-que-e-a-abnt/" target="blank">
+            ABNT
+          </a>
+          ). Cada NBR é elaborada e avaliada por um comitê de especialistas
+          antes de ser publicada.
+        </p>
+
+        <p>
+          Quando a NBR tem a sigla ISO no título, significa que ela passou pela
+          International Organization for Standardization, uma organização
+          mundial com sede em Genebra que cuida da padronização e procedimentos.
+        </p>
+
+        <h3>Elementos essenciais</h3>
+
+        <ul>
+          <li> Organização: nome da entidade responsável (por extenso); </li>
+          <li> Título da norma; </li>
+          <li> Subtítulo: se houver; </li>
+          <li> Local: cidade de publicação; </li>
+          <li> Publicador: entidade responsável pela publicação; </li>
+          <li> Ano: ano de publicação; </li>
+          <li>
+            {" "}
+            Total de páginas: número de páginas do documento consultado;{" "}
+          </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h3>Estrutura</h3>
+
+        <p>A ordem dos elementos segue a estrutura abaixo:</p>
 
         <p>
           <mark>
-            NOME DO EVENTO PRINCIPAL, numeração.; NOME DO EVENTO DE
-            PARTICIPAÇÃO, numeração., Ano, Local do evento. Tipo de documento.
-            <b>Nome do periódico.</b> Local do periódico: Editora, volume,
-            número do fascículo, data de publicação. Tema.
+            NOME DA ORGANIZAÇÃO. <b>Título da norma:</b> Subtítulo. Local:
+            Publicador, Ano. Total de páginas.
           </mark>
         </p>
 
-        <p>
-          No caso de uma consulta online ao documento, é necessário incluir a
-          URL, precedida de "Disponível em:". Em seguida vem a data de acesso,
-          precedida de "Acesso em".
-        </p>
+        <img src={Img} alt="norma-tecnica" width="100%" />
 
-        <p>
-          Na imagem abaixo, identificamos cada elemento dentro de um exemplo de
-          referência de evento no todo em publicação periódica:
-        </p>
-
-        <img src={Img} alt="normas-tecnicas" width="100%" />
-
-        <h3>O que significa Suplemento?</h3>
-
-        <p>
-          No exemplo da imagem, temos a palavra Suplemento como parte da
-          referência. De acordo com a NBR 6023, ela sinaliza um documento
-          adicionado a outro, com relação exclusiva de editorial.
-        </p>
-
-        <h3>Mais exemplos aplicando o formato básico</h3>
+        <h3>Mais exemplos</h3>
 
         <p>
           <mark>
-            CONGRESSO DO CENTRO-OESTE DE CLÍNICOS VETERINÁRIOS DE PEQUENOS
-            ANIMAIS, 3.; FEIRA DO CENTRO-OESTE DO MERCADO PET, 3., 2006,
-            [Brasília, DF]. [Trabalhos científicos e casos clínicos].{" "}
-            <b>Ciência Animal Brasileira.</b> Goiânia: UFG, nov. 2006.
-            Suplemento 1.
+            ABNT - Associação Brasileira de Normas Técnicas.{" "}
+            <b>ABNT NBR ISO 12836: </b>
+            odontologia: dispositivos para sistemas CAD/CAM para restaurações
+            dentárias indiretas: métodos de ensaio para avaliação de exatidão.
+            Rio de Janeiro: ABNT, 2017. 14 p.
           </mark>
         </p>
 
         <p>
           <mark>
-            CONGRESSO BRASILEIRO DE OLERICULTURA, 41.; ENCONTRO SOBRE PLANTAS
-            MEDICINAIS, AROMÁTICAS E CONDIMENTARES, 1., 2001, Brasília, DF.
-            Apresentação, artigos, palestras, instruções.... Horticultura
-            Brasileira. Brasília, DF:{" "}
-            <b>Sociedade de Olericultura do Brasil,</b> v. 19, n. 2, jul. 2001.
-            Suplemento. Tema: Dos orgânicos aos transgênicos.
+            ABNT - Associação Brasileira de Normas Técnicas.{" "}
+            <b>ABNT NBR 9050: </b>
+            Acessibilidade a edificações, mobiliário, espaços e equipamentos
+            urbanos. Rio de Janeiro: ABNT, 2004. 97 p.
           </mark>
         </p>
 
-        <p>
-          <mark>
-            SEMINÁRIO INTERNACIONAL DE HISTÓRIA DA LITERATURA, 6., 2005, Porto
-            Alegre. Anais [...].{" "}
-            <b>Cadernos do Centro de Pesquisas Literárias da PUCRS.</b> Porto
-            Alegre: Ed. PUCRS, v. 12, n. 1, 2006.
-          </mark>
-        </p>
+        <h3>Acesso em meio eletrônico</h3>
 
         <p>
-          <mark>
-            SEMINÁRIO INTERNACIONAL DE HISTÓRIA DA LITERATURA, 6., 2005, Porto
-            Alegre. Anais [...].{" "}
-            <b>Cadernos do Centro de Pesquisas Literárias da PUCRS.</b> Porto
-            Alegre: Ed. PUCRS, v. 12, n. 1, 2006. Tema: Literatura: memória e
-            história.
-          </mark>
+          O documento de uma norma técnica pode ser consultado pela internet.
+          Nesse caso, é necessário incluir o endereço eletrônico e a data de
+          acesso (dia, mês e ano).
         </p>
       </div>
 
