@@ -74,14 +74,14 @@ const generateReference = (values) => {
       )}
       <>{menu ? `${menu}. ` : ""} </>
       <>{litigants ? `${litigants}.` : ""} </>
-      <>Relatora: {nameRelator}, </>
+      <>{nameRelator ? `Relatora: ${nameRelator},` : ""}</>
       <>{yearOfJudgment}. </>
       {!online ? <b>{title}. </b> : `${title}. `}
       <>{location ? `${location},` : ""} </>
-      <>v. {volume ? `${volume},` : ""} </>
-      <>n. {numberPublication ? `${numberPublication},` : ""} </>
-      <>p. {pageInit && !pageFinish ? `${pageInit},` : ""} </>
-      <>p. {pageInit && pageFinish ? `${pageInit}-${pageFinish},` : ""} </>
+      <>{volume ? `v. ${volume},` : ""} </>
+      <>{numberPublication ? `n. ${numberPublication},` : ""} </>
+      <>{pageInit && !pageFinish ? `p. ${pageInit},` : ""} </>
+      <>{pageInit && pageFinish ? `p. ${pageInit}-${pageFinish},` : ""} </>
       <>{yearOfPublication ? `${yearOfPublication}.` : ""} </>
       {online &&
         accessedAt &&

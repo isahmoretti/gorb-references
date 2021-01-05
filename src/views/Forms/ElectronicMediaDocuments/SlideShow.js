@@ -95,8 +95,8 @@ const generateReference = (values) => {
       {local && <>{local}. </>}
       {producer && <>{producer}. </>}
 
-      {day && month && year && `${day} ${month}. ${year} `}
-      {!day && month && year && `${month}. ${year} `}
+      {day && month && year && `${day} ${month}. ${year}. `}
+      {!day && month && year && `${month}. ${year}. `}
       {!day && !month && year && `${year}. `}
 
       {type && <>{type}. </>}

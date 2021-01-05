@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Formik } from "formik";
+import { Formik, FieldArray } from "formik";
 
 import * as Yup from "yup";
 
 import { Grid } from "@material-ui/core";
+import { Button as ButtonCore } from "@material-ui/core";
 
 // components
 import Input from "../../../components/InputWrapper/Input";
@@ -20,9 +21,23 @@ import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
+import Plus from "../../../assets/images/plus-dark.svg";
+import Minus from "../../../assets/images/minus.svg";
 
 // styles
-import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import {
+  Container,
+  Card,
+  Row,
+  Content,
+  Back,
+  Actions,
+  Title,
+  FieldArrayContainer,
+  ErrorText,
+  AddIcon,
+  RemoveIcon,
+} from "./style";
 
 import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-audiolivro.jpg";
 
@@ -38,7 +53,7 @@ const generateReference = (values) => {
   const {
     title,
     caption,
-    author,
+    authors,
     ledor,
     location,
     publication,
@@ -57,25 +72,25 @@ const generateReference = (values) => {
 
   return (
     <span>
-      {formatAuthorName(author)}
-      {!author ? (
-        caption ? (
-          <span>
-            {" "}
-            {`${handleToUpperCase(title)}: `}
-            {`${caption}. `}{" "}
-          </span>
-        ) : (
-          <>{`${handleToUpperCase(title)}. `}</>
-        )
-      ) : caption ? (
+      {formatAuthorName(authors)}
+      {caption ? (
         <span>
           {" "}
-          {`${title}: `}
+          {authors.length !== 0 && authors[0] !== "" ? (
+            <>
+              <b>{title}: </b>
+            </>
+          ) : (
+            <>{title}: </>
+          )}
           {`${caption}. `}{" "}
         </span>
+      ) : authors.length !== 0 && authors[0] !== "" ? (
+        <>
+          <b>{title}. </b>
+        </>
       ) : (
-        <> {`${title}. `} </>
+        <>{title}. </>
       )}
       {`Na voz de ${ledor}. `}
       {location ? `${location}: ` : "[S.l.]: "}
@@ -120,7 +135,7 @@ const AudioBook = ({ back }) => {
           initialValues={{
             title: "",
             caption: "",
-            author: "",
+            authors: [""],
             ledor: "",
             location: "",
             publication: "",
@@ -177,21 +192,74 @@ const AudioBook = ({ back }) => {
                       />
                     </Grid>
                   </Grid>
-                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
-                    <Grid item xs={12} sm={12} md={4}>
-                      <Input
-                        name="author"
-                        type="text"
-                        label="Autoria"
-                        placeholder="Ex: Laurentino Gomes"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.author}
-                        errors={props.errors}
-                        touched={props.touched}
+                  <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <FieldArray
+                        name="authors"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {props.values.authors &&
+                            props.values.authors.length > 0 ? (
+                              props.values.authors.map((author, index) => (
+                                <FieldArrayContainer key={index}>
+                                  <div
+                                    style={{ display: "flex", width: "100%" }}
+                                  >
+                                    <Input
+                                      type="text"
+                                      label={`${index + 1}º Autor`}
+                                      name={`authors.${index}`}
+                                      placeholder={`Ex: Abel Laerte Packer`}
+                                      onChange={props.handleChange}
+                                      onBlur={props.handleBlur}
+                                      value={author}
+                                      errors={props.errors}
+                                      touched={props.touched}
+                                    />
+                                    {index > 0 && (
+                                      <ButtonCore
+                                        type="button"
+                                        onClick={() => arrayHelpers.remove("")}
+                                      >
+                                        <RemoveIcon src={Minus} />
+                                      </ButtonCore>
+                                    )}
+                                    <ButtonCore
+                                      type="button"
+                                      onClick={() => arrayHelpers.push("")}
+                                    >
+                                      <AddIcon src={Plus} />
+                                    </ButtonCore>
+                                  </div>
+                                  <div
+                                    style={{
+                                      width: "100%",
+                                      marginBottom: "10px",
+                                    }}
+                                  >
+                                    <ErrorText>
+                                      {props.errors &&
+                                        props.errors.authors &&
+                                        props.errors.authors[index]}
+                                    </ErrorText>
+                                  </div>
+                                </FieldArrayContainer>
+                              ))
+                            ) : (
+                              <ButtonCore
+                                type="button"
+                                onClick={() => arrayHelpers.push("")}
+                              >
+                                Add a author
+                              </ButtonCore>
+                            )}
+                          </div>
+                        )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={4}>
+                  </Grid>
+                  <Grid container spacing={2} style={{ marginBottom: 0 }}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Input
                         name="ledor"
                         type="text"
@@ -204,7 +272,7 @@ const AudioBook = ({ back }) => {
                         touched={props.touched}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={4}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Input
                         name="location"
                         type="text"

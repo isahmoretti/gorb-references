@@ -144,7 +144,7 @@ const Book = ({ back }) => {
   const finalParagraphArraySimple = (names = [], year = 0) => {
     const namesAuthors = names.map((name) => name).join(", ");
 
-    const response = `(${namesAuthors}, ${year})`;
+    const response = `(${namesAuthors.toUpperCase()}, ${year})`;
 
     return response;
   };

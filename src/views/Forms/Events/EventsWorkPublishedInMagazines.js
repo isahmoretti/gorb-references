@@ -390,6 +390,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                         name="date"
                         type="text"
                         label="Data"
+                        placeholder="nov. 2006"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.date}

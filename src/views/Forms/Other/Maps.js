@@ -96,6 +96,19 @@ const generateReference = (values) => {
             <b>{title}. </b>
           )}
         </>
+      ) : typeAuthor === "physicalPerson" ? (
+        <>
+          {authors && <>{formatAuthorName(authors)}</>}
+
+          {caption ? (
+            <>
+              <b>{title}: </b>
+              {caption}.{" "}
+            </>
+          ) : (
+            <b>{title}. </b>
+          )}
+        </>
       ) : (
         formatAuthorName(authors)
       )}
@@ -251,9 +264,7 @@ const Maps = ({ back }) => {
                                       >
                                         <Input
                                           type="text"
-                                          label={`Nome do autor do capítulo ${
-                                            index + 1
-                                          }`}
+                                          label={`Nome do autor ${index + 1}`}
                                           placeholder="Ex: Raquel Recuero"
                                           onChange={props.handleChange}
                                           onBlur={props.handleBlur}

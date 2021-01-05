@@ -83,7 +83,7 @@ const Email = ({ back }) => {
   const handleCitation2 = (name, date) => {
     const year = date.split("-")[0];
 
-    return `(${name}, ${year})`;
+    return `(${name.toUpperCase()}, ${year})`;
   };
 
   const handleSubmit = (values) => {

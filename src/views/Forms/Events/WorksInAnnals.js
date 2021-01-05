@@ -85,7 +85,7 @@ const generateReference = (values) => {
           <i>In:</i> {eventName.toUpperCase()},{" "}
         </>
       )}
-      {eventNumber && <>{eventNumber}, </>}
+      {eventNumber && <>{eventNumber}., </>}
       {eventYaer && <>{eventYaer}, </>}
       {eventNumbering && <>{eventNumbering}., </>}
       {placeOfEvent && <>{placeOfEvent}. </>}

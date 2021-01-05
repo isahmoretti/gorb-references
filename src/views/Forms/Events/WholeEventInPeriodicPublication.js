@@ -64,7 +64,7 @@ const generateReference = (values) => {
       {eventName && <>{eventName.toUpperCase()}, </>}
       {numbering && <>{numbering}.; </>}
       {participationEventName && <>{participationEventName.toUpperCase()}, </>}
-      {participationEventNumbering && <>{participationEventNumbering}.; </>}
+      {participationEventNumbering && <>{participationEventNumbering}., </>}
       {year && <>{year}, </>}
       {placeOfTheEvent && <>{placeOfTheEvent}. </>}
       {documentTitle && <>{formatMessage(documentTitle)} </>}
