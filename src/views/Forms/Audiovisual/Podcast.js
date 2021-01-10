@@ -324,7 +324,7 @@ const Podcast = ({ back }) => {
 
         <h3>Elementos essenciais para referência de podcast</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b> Título do podcast: </b> título do arquivo em áudio;{" "}

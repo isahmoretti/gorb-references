@@ -249,7 +249,7 @@ const CivilAndNotary = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Jurisdição:</b> nome da cidade onde o documento foi emitido, em
@@ -311,7 +311,7 @@ const CivilAndNotary = ({ back }) => {
           forma de identificar melhor o documento. São eles:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Número da folha:</b> adicionar a abreviação fs. e o número da

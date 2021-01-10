@@ -451,7 +451,7 @@ const Legislation = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Jurisdição ou Cabeçalho da Entidade:</b> em letras maiúsculas{" "}
@@ -500,7 +500,7 @@ const Legislation = ({ back }) => {
 
         <h3>Elementos complementares</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Notas (informações complementares) </li>
           <li> Retificações </li>
           <li> Alterações </li>

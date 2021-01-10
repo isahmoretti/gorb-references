@@ -303,7 +303,7 @@ const Email = ({ back }) => {
           são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Remetente:</b> nome da pessoa ou entidade que envia a mensagem;{" "}

@@ -529,7 +529,7 @@ const Dissertation = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> sobrenome e nome do pesquisador responsável;{" "}
@@ -593,7 +593,7 @@ const Dissertation = ({ back }) => {
           complementares:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Departamento:</b> é a esfera administrativa do curso;{" "}

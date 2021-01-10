@@ -386,7 +386,7 @@ const Music = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b> Título da música: </b> nome da canção;{" "}

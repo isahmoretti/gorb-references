@@ -538,7 +538,7 @@ const Ebook = ({ back }) => {
 
         <p>Veja abaixo os elementos essenciais da referência de ebook:</p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> nome do autor ou dos autores;{" "}
@@ -589,7 +589,7 @@ const Ebook = ({ back }) => {
           identificar melhor o documento.
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Paginação:</b> total de páginas;{" "}

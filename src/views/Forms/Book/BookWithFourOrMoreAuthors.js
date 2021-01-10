@@ -438,7 +438,7 @@ const Book = ({ back }) => {
           mais são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autoria:</b> SOBRENOME e nome do primeiro autor{" "}
@@ -498,7 +498,7 @@ const Book = ({ back }) => {
           a identificação da fonte. Veja alguns itens:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor (se houver):</b> Nome do tradutor, precedido por

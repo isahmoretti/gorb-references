@@ -883,7 +883,7 @@ const Book = ({ back }) => {
 
         <p>Na referência de capítulo de livro, os elementos essenciais são:</p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor da parte:</b> sobrenome e nome do responsável pelo capítulo{" "}
@@ -961,7 +961,7 @@ const Book = ({ back }) => {
           complementares são bem-vindos na referência:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por

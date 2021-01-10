@@ -446,7 +446,7 @@ const Patents = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autor: nome do inventor; </li>
           <li> Título: nome da invenção; </li>
           <li> Nome do depositante, titular; </li>

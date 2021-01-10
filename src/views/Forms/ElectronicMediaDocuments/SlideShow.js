@@ -512,7 +512,7 @@ const SlideShow = ({ back }) => {
 
         <h3>Elementos para fazer referência de slides</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do autor:</b> nome da pessoa responsável pela autoria;{" "}

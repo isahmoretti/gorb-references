@@ -469,7 +469,7 @@ const WholeEvent = ({ back }) => {
 
         <h3>Elementos para referenciar evento no todo</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Nome do evento principal </li>
           <li> Numeração (se houver) </li>
           <li> Nome do evento de participação </li>

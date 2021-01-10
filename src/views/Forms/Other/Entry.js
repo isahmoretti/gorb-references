@@ -900,7 +900,7 @@ const Entry = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autor da parte: nome do responsável pela parte; </li>
           <li> Título da parte: título do verbete ou conceito; </li>
           <li>

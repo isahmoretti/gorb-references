@@ -569,7 +569,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           científicas requer elementos essenciais:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autoria: SOBRENOME, Nome do autor; </li>
           <li> Título do trabalho: título do trabalho publicado; </li>
           <li> Subtítulo: (se houver) </li>
@@ -612,7 +612,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           expressas assim:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> 1st ed. </li>
           <li> 2nd ed. </li>
           <li> 3rd ed. </li>

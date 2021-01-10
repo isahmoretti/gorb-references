@@ -264,7 +264,7 @@ const InstantMessages = ({ back }) => {
         </p>
 
         <h3>Elementos que compõem a referência</h3>
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> nome de quem enviou a mensagem;{" "}

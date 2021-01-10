@@ -275,7 +275,7 @@ const ObjectThree = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autor: SOBRENOME e nome do criador; </li>
           <li>
             {" "}

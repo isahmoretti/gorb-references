@@ -294,7 +294,7 @@ const Site = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> incluir o nome do autor, que pode ser pessoa física ou

@@ -626,7 +626,7 @@ const Book = ({ back }) => {
           Na referência de livro com um autor, os elementos obrigatórios são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> SOBRENOME, Nome.{" "}
@@ -671,7 +671,7 @@ const Book = ({ back }) => {
 
         <h3>Elementos complementares</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por

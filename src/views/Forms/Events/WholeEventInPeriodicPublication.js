@@ -479,7 +479,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           de realização, tipo de documento e dados do periódico. Você pode
           formular sua referência com os elementos da lista abaixo:
         </p>
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Nome do evento </li>
           <li> Numeração do evento </li>
           <li> Nome do evento de participação </li>

@@ -537,7 +537,7 @@ const ArticleMagazine = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> SOBRENOME e nome de cada responsável;{" "}
@@ -578,7 +578,7 @@ const ArticleMagazine = ({ back }) => {
 
         <h3>Elementos complementares</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Publicadora:</b> grupo responsável pela publicação da revista;{" "}

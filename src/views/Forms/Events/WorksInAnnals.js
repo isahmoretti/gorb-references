@@ -610,7 +610,7 @@ const WorksInAnnals = ({ back }) => {
 
         <h3>O que diz a ABNT sobre referência de trabalhos em anais?</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autoria do trabalho: SOBRENOME e prenome do autor </li>
           <li> Título do trabalho: Título do trabalho publicado </li>
           <li>

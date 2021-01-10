@@ -154,7 +154,7 @@ const BookGeneral = ({ back }) => {
           referência.
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Organizador:</b> (org.){" "}
@@ -180,7 +180,7 @@ const BookGeneral = ({ back }) => {
 
         <h3>Sobrenomes com prefixos</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> DELLA MARA, J. </li>
           <li> DU MAURIER, C. </li>
           <li> VAN ENDE, E. </li>
@@ -189,7 +189,7 @@ const BookGeneral = ({ back }) => {
 
         <h3>Sobrenomes com grau de parentesco</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> COSTA JÚNIOR, J. A. </li>
           <li> GUIMARÃES FILHO, L. P. </li>
           <li> TOURINHO NETO, R. S. </li>
@@ -197,15 +197,15 @@ const BookGeneral = ({ back }) => {
 
         <h3>Sobrenomes compostos ou com hífen</h3>
 
-        <u>
+        <ul style={{ marginLeft: 15 }}>
           <li> VALLERY-RADOT, L. P. </li>
           <li> ESPÍRITO SANTO, J. P. </li>
           <li> PAULA SOUZA, A. F. de. </li>
-        </u>
+        </ul>
 
         <h3>Autoria corporativa</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> ABNT - Associação Brasileira de Normas Técnicas. </li>
           <li> BRASIL. Ministério da Economia. </li>
           <li> UNIVERSIDADE DE SÃO PAULO. Faculdade de Saúde Pública. </li>

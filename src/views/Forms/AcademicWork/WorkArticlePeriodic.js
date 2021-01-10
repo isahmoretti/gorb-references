@@ -676,7 +676,7 @@ const WorkArticlePeriodic = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autoria:</b> nome do autor ou dos autores;{" "}
@@ -722,7 +722,7 @@ const WorkArticlePeriodic = ({ back }) => {
 
         <h3>Elementos complementares</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>DOI:</b> Digital Object Identifier{" "}

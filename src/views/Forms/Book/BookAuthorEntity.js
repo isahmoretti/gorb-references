@@ -693,7 +693,7 @@ const Book = ({ back }) => {
           obra consultada. Veja:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome da entidade:</b> autoria institucional da obra por extenso e
@@ -749,7 +749,7 @@ const Book = ({ back }) => {
           elementos complementares. São eles:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor:</b> Nome do tradutor por extenso e em ordem

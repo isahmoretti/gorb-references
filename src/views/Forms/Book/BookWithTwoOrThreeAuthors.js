@@ -691,7 +691,7 @@ const Book = ({ back }) => {
           essenciais são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autoria:</b> SOBRENOME e nome de cada responsável pela obra.{" "}
@@ -750,7 +750,7 @@ const Book = ({ back }) => {
           melhorar a identificação do documento. São eles:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por

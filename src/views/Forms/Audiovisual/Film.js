@@ -514,7 +514,7 @@ const AdministrativeActs = ({ back }) => {
           trabalhos acadêmicos, desde que elaborem corretamente a referência.
         </p>
         <h3>Elementos essenciais para referenciar filme</h3>
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Título:</b> nome do filme;{" "}
@@ -550,7 +550,7 @@ const AdministrativeActs = ({ back }) => {
           Os elementos complementares são informações adicionais que ajudam a
           identificar melhor o documento audiovisual.
         </p>
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b> Intérpretes: </b> nomes dos principais atores por extenso;{" "}

@@ -282,7 +282,7 @@ const Photo = ({ back }) => {
           referenciar fotografia são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             <b> Autor: </b> Nome do fotógrafo;
           </li>

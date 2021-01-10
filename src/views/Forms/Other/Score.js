@@ -361,7 +361,7 @@ const Score = ({ back }) => {
           Os elementos que integram a referência bibliográfica de partitura são:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Compositor: nome do autor da partitura; </li>
           <li> Título: título da música; </li>
           <li> Subtítulo: se houver; </li>

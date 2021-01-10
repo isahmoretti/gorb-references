@@ -320,7 +320,7 @@ const BullMedicine = ({ back }) => {
 
         <h3>Elementos</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Nome do medicamento </li>
           <li>
             {" "}

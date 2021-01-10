@@ -407,7 +407,7 @@ const Constitution = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Jurisdição:</b> nome do estado ou país, em letras maiúsculas;{" "}

@@ -541,7 +541,7 @@ const Jurisprudence = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Jurisdição:</b> em letras maiúsculas;{" "}

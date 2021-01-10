@@ -542,7 +542,7 @@ const Monography = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> nome do responsável;{" "}
@@ -594,7 +594,7 @@ const Monography = ({ back }) => {
           complementares. No caso de monografia e TCC, é interessante incluir:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Departamento:</b> é a esfera administrativa do curso;{" "}

@@ -386,7 +386,7 @@ const ProvisionalMeasure = ({ back }) => {
           seguintes elementos:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Jurisdição:</b> em letras maiúsculas;{" "}

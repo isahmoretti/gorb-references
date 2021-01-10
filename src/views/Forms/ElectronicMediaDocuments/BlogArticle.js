@@ -391,7 +391,7 @@ const BlogArticle = ({ back }) => {
 
         <h3>Elementos</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> nome do autor responsável pelo artigo;{" "}

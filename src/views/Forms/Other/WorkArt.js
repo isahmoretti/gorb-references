@@ -215,7 +215,7 @@ const WorkArt = ({ back }) => {
 
         <p>Os elementos essenciais são:</p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autor: SOBRENOME e nome do criador da obra; </li>
           <li> Título: título da obra em destaque; </li>
           <li> Data: ano de criação da obra; </li>

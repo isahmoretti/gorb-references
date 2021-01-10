@@ -519,7 +519,7 @@ const ArticleNewspaper = ({ back }) => {
 
         <p>Em um jornal impresso, os elementos essenciais são:</p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> SOBRENOME e nome de cada responsável;{" "}

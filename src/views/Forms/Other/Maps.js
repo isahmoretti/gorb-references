@@ -537,7 +537,7 @@ const Maps = ({ back }) => {
 
         <p>Os elementos essenciais são:</p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Autor: responsável pela autoria; </li>
           <li> Subordinação: se houver; </li>
           <li> Título: título do mapa; </li>

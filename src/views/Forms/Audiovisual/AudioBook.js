@@ -430,7 +430,7 @@ const AudioBook = ({ back }) => {
           <h3>Elementos essenciais na referência de audiolivro</h3>
         </p>
         <p>
-          <ul>
+          <ul style={{ marginLeft: 15 }}>
             <li>
               {" "}
               <b>Título:</b> Título do audiobook;{" "}

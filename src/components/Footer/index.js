@@ -143,32 +143,47 @@ const FooterComponent = () => {
             <ContentDesktopFooter>
               <ul>
                 <li>
-                  <a href="​https://viacarreira.com/category/academico/">
-                    ACADÊMICO
+                  <a
+                    href="​https://viacarreira.com/category/academico/"
+                    target="blank"
+                  >
+                    <Title>ACADÊMICO</Title>
                   </a>
                 </li>
 
                 <li>
-                  <a href="https://viacarreira.com/category/educacao/">
-                    Educação
+                  <a
+                    href="https://viacarreira.com/category/educacao/"
+                    target="blank"
+                  >
+                    <Title>Educação</Title>
                   </a>
                 </li>
 
                 <li>
-                  <a href="​https://viacarreira.com/category/profissoes/">
-                    Profissões
+                  <a
+                    href="​https://viacarreira.com/category/profissoes/"
+                    target="blank"
+                  >
+                    <Title>Profissões</Title>
                   </a>
                 </li>
 
                 <li>
-                  <a href="​​https://viacarreira.com/category/carreira/">
-                    Carreira
+                  <a
+                    href="​​https://viacarreira.com/category/carreira/"
+                    target="blank"
+                  >
+                    <Title>Carreira</Title>
                   </a>
                 </li>
 
                 <li>
-                  <a href="​https://viacarreira.com/category/empreendedorismo/">
-                    Empreendedorismo
+                  <a
+                    href="​https://viacarreira.com/category/empreendedorismo/"
+                    target="blank"
+                  >
+                    <Title>Empreendedorismo</Title>
                   </a>
                 </li>
               </ul>

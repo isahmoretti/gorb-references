@@ -334,7 +334,7 @@ const SocialNetworkPost = ({ back }) => {
 
         <h3>Elementos para referência de postagem em rede social</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Autor:</b> pode ser pessoa física ou entidade coletiva;{" "}

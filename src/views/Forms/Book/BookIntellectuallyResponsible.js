@@ -718,7 +718,7 @@ const Book = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Responsável:</b> SOBRENOME e nome{" "}
@@ -779,7 +779,7 @@ const Book = ({ back }) => {
           completa e facilitam a identificação do documento. São eles:
         </p>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Nome do tradutor:</b> Nome do tradutor por extenso, precedido por

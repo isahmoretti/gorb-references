@@ -14,6 +14,10 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     width: 100%;
+
+    > form {
+      margin-top: 60px;
+    }
   }
 `;
 

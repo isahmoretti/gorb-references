@@ -303,7 +303,7 @@ const VideoInternet = ({ back }) => {
 
         <h3>Elementos essenciais na referência de vídeo online</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
             <b>Título do vídeo:</b> Título do vídeo referenciado;{" "}

@@ -361,7 +361,7 @@ const TechnicalStandards = ({ back }) => {
 
         <h3>Elementos essenciais</h3>
 
-        <ul>
+        <ul style={{ marginLeft: 15 }}>
           <li> Organização: nome da entidade responsável (por extenso); </li>
           <li> Título da norma; </li>
           <li> Subtítulo: se houver; </li>
