@@ -79,7 +79,8 @@ const FooterComponent = () => {
 
           <TitleReservation>
             {" "}
-            2013 - 2020 © Layub <br /> Todos os direitos reservados{" "}
+            2013 - {new Date().getFullYear()} © Layub <br /> Todos os direitos
+            reservados{" "}
           </TitleReservation>
         </Footer>
       </MobileFooter>
@@ -141,11 +142,35 @@ const FooterComponent = () => {
           <BoxDesktopFooter>
             <ContentDesktopFooter>
               <ul>
-                <li> ACADÊMICO </li>
-                <li> CURSOS </li>
-                <li> PROFISSÕES </li>
-                <li> EMPREGO </li>
-                <li> MEU NEGÓCIO </li>
+                <li>
+                  <a href="​https://viacarreira.com/category/academico/">
+                    ACADÊMICO
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://viacarreira.com/category/educacao/">
+                    Educação
+                  </a>
+                </li>
+
+                <li>
+                  <a href="​https://viacarreira.com/category/profissoes/">
+                    Profissões
+                  </a>
+                </li>
+
+                <li>
+                  <a href="​​https://viacarreira.com/category/carreira/">
+                    Carreira
+                  </a>
+                </li>
+
+                <li>
+                  <a href="​https://viacarreira.com/category/empreendedorismo/">
+                    Empreendedorismo
+                  </a>
+                </li>
               </ul>
             </ContentDesktopFooter>
           </BoxDesktopFooter>

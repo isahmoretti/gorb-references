@@ -188,6 +188,9 @@ const ArticleNewspaper = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -506,8 +509,9 @@ const ArticleNewspaper = ({ back }) => {
 
         <p>
           <mark>
-            SOBRENOME, Nome do autor. Título do Artigo: Subtítulo. Nome do
-            Jornal, Cidade, ano, número, dia mês ano. Caderno, página.
+            SOBRENOME, Nome do autor. Título do Artigo: Subtítulo.{" "}
+            <b>Nome do Jornal</b>, Cidade, ano, número, dia mês ano. Caderno,
+            página.
           </mark>
         </p>
 
@@ -571,8 +575,9 @@ const ArticleNewspaper = ({ back }) => {
 
         <p>
           <mark>
-            ONDA de frio: reviravolta traz vento e forte chance de neve. Zero
-            Hora, Porto Alegre, ano 47, n. 16.414, p. 2, 12 ago. 2010.
+            ONDA de frio: reviravolta traz vento e forte chance de neve.{" "}
+            <b>Zero Hora</b>, Porto Alegre, ano 47, n. 16.414, p. 2, 12 ago.
+            2010.
           </mark>
         </p>
 
@@ -590,7 +595,7 @@ const ArticleNewspaper = ({ back }) => {
         <p>
           <mark>
             AMENDOLA, Gilberto. OMS inclui uma síndrome de burnout na lista de
-            doenças. Estadão, São Paulo, 28 mai. 2019. Disponível em:
+            doenças. <b>Estadão</b>, São Paulo, 28 mai. 2019. Disponível em:
             https://saude.estadao.com.br/noticias/geral,oms-inclui-a-sindrome-de-burnout-na-lista-de-doencas,70002845142.
             Acesso em: 22 ago. 2020.
           </mark>

@@ -183,6 +183,9 @@ const Book = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={4}>
@@ -719,18 +722,24 @@ const Book = ({ back }) => {
         <h3>Mais exemplos</h3>
 
         <p>
-          BAPTISTA, Dulce. Bibliotecária pós-moderna. Brasília: Thesaurus, 2011.
-          144 p. ISBN 978-85-64494-44-2.
+          <mark>
+            BAPTISTA, Dulce. <b>Bibliotecária pós-moderna.</b> Brasília:
+            Thesaurus, 2011. 144 p. ISBN 978-85-64494-44-2.
+          </mark>
         </p>
 
         <p>
-          CHEVALIER, Jean; GHEERBRANT, Alain. Dicionário de símbolos. 3. ed. Rio
-          de Janeiro: J. Olympio, 1990.
+          <mark>
+            CHEVALIER, Jean; GHEERBRANT, Alain. <b>Dicionário de símbolos.</b>{" "}
+            3. ed. Rio de Janeiro: J. Olympio, 1990.
+          </mark>
         </p>
 
         <p>
-          BAUMAN, Zygmunt. Globalização: as conseqüências humanas. Rio de
-          Janeiro: Jorge Zahar, 1999.
+          <mark>
+            BAUMAN, Zygmunt. <b>Globalização:</b> as conseqüências humanas. Rio
+            de Janeiro: Jorge Zahar, 1999.
+          </mark>
         </p>
 
         <h3>Chamadas para citações</h3>

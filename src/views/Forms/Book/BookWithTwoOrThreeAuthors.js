@@ -188,6 +188,9 @@ const Book = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -727,7 +730,8 @@ const Book = ({ back }) => {
         <p>
           <mark>
             SOBRENOME, Primeiro Nome; SOBRENOME, Primeiro Nome; SOBRENOME,
-            Primeiro Nome do autor. Título: Subtítulo. Local: Editora, ano.
+            Primeiro Nome do autor. <b>Título:</b> Subtítulo. Local: Editora,
+            ano.
           </mark>
         </p>
 
@@ -807,9 +811,9 @@ const Book = ({ back }) => {
 
         <p>
           <mark>
-            BERGER, Peter L.; LUCKMANN, Thomas. A construção social da
-            realidade: tratado de sociologia do conhecimento. 24. ed.
-            Petrópolis: Vozes, 2004. Disponível em:
+            BERGER, Peter L.; LUCKMANN, Thomas.{" "}
+            <b>A construção social da realidade:</b> tratado de sociologia do
+            conhecimento. 24. ed. Petrópolis: Vozes, 2004. Disponível em:
             https://cristianorodriguesdotcom.files.wordpress.com/2013/06/bergerluckman.pdf.
             Acesso em: 13 ago. 2020.
           </mark>

@@ -220,6 +220,9 @@ const Ebook = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -623,7 +626,7 @@ const Ebook = ({ back }) => {
           <mark>
             DÂNGELO, Newton; SOUSA, Sandra Sueli Garcia (org.).{" "}
             <b>Noventa Anos de Rádio no Brasil.</b> Uberlândia, MG: Edufu, 2016.
-            E-book (211 p.). ISBN 978-85-397-0073-8. Disponível em:
+            <i>E-book</i> (211 p.). ISBN 978-85-397-0073-8. Disponível em:
             http://ebooks.pucrs.br/edipucrs/projetosdefilosofia.pdf. Acesso em:
             8 ago. 2020.
           </mark>
@@ -634,7 +637,7 @@ const Ebook = ({ back }) => {
             CRUZ, Alessandra; ALEIXO, Felipe (org.).{" "}
             <b>Roraima entre línguas</b>: Contatos linguísticos no universo da
             tríplice fronteira do extremo norte brasileiro. Boa Vista: Editora
-            UFRR, 2020. E-book (227p.) (Coletânea Entre Sinais). ISBN:
+            UFRR, 2020. <i>E-book</i> (227p.) (Coletânea Entre Sinais). ISBN:
             978-65-86062-10-6. Disponível em:
             https://ufrr.br/editora/index.php/ebook. Acesso em: 29 out. 2020.
           </mark>
@@ -644,8 +647,8 @@ const Ebook = ({ back }) => {
           <mark>
             LIMA, João Brígido Bezerra et al. (org.). <b>Refúgio no Brasil</b>:
             caracterização dos perfis sociodemográficos dos refugiados
-            (1998-2014). Brasília, DF: IPEA, 2017. E-book (234p.) color. ISBN:
-            978-85-7811-308-7. Disponível em:
+            (1998-2014). Brasília, DF: IPEA, 2017. <i>E-book</i> (234p.) color.
+            ISBN: 978-85-7811-308-7. Disponível em:
             https://www.ipea.gov.br/portal/images/stories/PDFs/livros/livros/170829_Refugio_no_Brasil.pdf.
             Acesso em: 29 out. 2020.
           </mark>

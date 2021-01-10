@@ -150,7 +150,7 @@ const ArticleMagazine = ({ back }) => {
 
         <Formik
           initialValues={{
-            authors: [],
+            authors: [""],
             title: "",
             caption: "",
             titleMagazine: "",
@@ -187,7 +187,11 @@ const ArticleMagazine = ({ back }) => {
                   </span>
                 </Title>
               </Actions>
+
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -525,9 +529,9 @@ const ArticleMagazine = ({ back }) => {
 
         <p>
           <mark>
-            SOBRENOME, Nome. Título: Subtítulo. Título da Revista, Cidade,
-            edição, ano, número, página inicial - página final, dia, mês e ano
-            de publicação.
+            SOBRENOME, Nome. Título: Subtítulo. <b>Título da Revista</b>,
+            Cidade, edição, ano, número, página inicial - página final, dia, mês
+            e ano de publicação.
           </mark>
         </p>
 
@@ -598,8 +602,8 @@ const ArticleMagazine = ({ back }) => {
         <p>
           <mark>
             INGIZZA, Carolina; ANGRELA, Lucas; GUILHERME, Guilherme. O
-            fantástico mercado dos games. Revista Exame, São Paulo, 13 ago.
-            2020. Disponível em:
+            fantástico mercado dos games. <b>Revista Exame</b>, São Paulo, 13
+            ago. 2020. Disponível em:
             https://exame.com/revista-exame/o-fantastico-mercado-dos-games/.
             Acesso em: 22 ago. 2020.
           </mark>
@@ -624,8 +628,8 @@ const ArticleMagazine = ({ back }) => {
 
         <p>
           <mark>
-            PETRY, André. Certezas sem base. Veja, São Paulo, ed. 2416, ano 48,
-            nº 10, p.58-59, 11 mar. 2015.
+            PETRY, André. Certezas sem base. <b>Veja</b>, São Paulo, ed. 2416,
+            ano 48, nº 10, p.58-59, 11 mar. 2015.
           </mark>
         </p>
 
@@ -651,8 +655,8 @@ const ArticleMagazine = ({ back }) => {
 
         <p>
           <mark>
-            A POLÊMICA da dieta. Revista Época, São Paulo, n. 404, p. 17, fev.
-            2006.
+            A POLÊMICA da dieta. <b>Revista Época</b>, São Paulo, n. 404, p. 17,
+            fev. 2006.
           </mark>
         </p>
 

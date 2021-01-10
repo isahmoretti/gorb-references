@@ -163,6 +163,9 @@ const AudioBook = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 0 }}>
                     <Grid item xs={12} sm={12} md={6}>

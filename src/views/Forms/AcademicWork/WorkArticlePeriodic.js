@@ -198,6 +198,9 @@ const WorkArticlePeriodic = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={3}>
@@ -665,9 +668,9 @@ const WorkArticlePeriodic = ({ back }) => {
 
         <p>
           <mark>
-            AUTOR, A. A.; AUTOR, B. B.; AUTOR, C. C. Título do artigo. Título da
-            revista, local, volume, número, página inicial e final do artigo,
-            mês. ano.
+            AUTOR, A. A.; AUTOR, B. B.; AUTOR, C. C. Título do artigo.{" "}
+            <b>Título da revista</b>, local, volume, número, página inicial e
+            final do artigo, mês. ano.
           </mark>
         </p>
 

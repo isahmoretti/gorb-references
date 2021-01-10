@@ -226,6 +226,9 @@ const Book = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -934,7 +937,8 @@ const Book = ({ back }) => {
         <p>
           <mark>
             ÚLTIMO NOME, Primeiro Nome do autor do capítulo. Título do capítulo.
-            <i>In</i>: ÚLTIMO NOME, Primeiro nome do autor. Título da obra:
+            <i>In</i>: ÚLTIMO NOME, Primeiro nome do autor.{" "}
+            <b>Título da obra:</b>
             Subtítulo. Local: Editora, ano de publicação. p.(página inicial do
             capítulo) - (página final do capítulo).
           </mark>
@@ -1009,8 +1013,9 @@ const Book = ({ back }) => {
           <mark>
             OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B. G.; BENTES, V. Arquitetura
             da informação. <i>In</i>: OLIVEIRA, H. P. C. DE; VIDOTTI, S. A. B.
-            G.; BENTES, V.. Arquitetura da informação pervasiva. São Paulo:
-            UNESP; São Paulo: Cultura Acadêmica, 2015. p. 43-74. Disponível em:
+            G.; BENTES, V.. <b>Arquitetura da informação pervasiva.</b> São
+            Paulo: UNESP; São Paulo: Cultura Acadêmica, 2015. p. 43-74.
+            Disponível em:
             http://static.scielo.org/scielobooks/6cn9c/pdf/oliveira-9788579836671.pdf.
             Acesso em: 13 ago 2020.
           </mark>

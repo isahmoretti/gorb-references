@@ -191,6 +191,9 @@ const Book = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Fields
                     data={{
@@ -477,8 +480,8 @@ const Book = ({ back }) => {
 
         <p>
           <mark>
-            SOBRENOME, Primeiro Nome et al. Título: Subtítulo. Local: Editora,
-            ano.
+            SOBRENOME, Primeiro Nome <i>et al.</i> <b>Título:</b> Subtítulo.
+            Local: Editora, ano.
           </mark>
         </p>
 
@@ -541,9 +544,10 @@ const Book = ({ back }) => {
 
         <p>
           <mark>
-            MARTINS, Eliseu et al. Manual de contabilidade societária: de acordo
-            com as normas internacionais e do CPC. 3. ed. São Paulo: Atlas,
-            2018. 2441 p. ISBN: 9788597016154. Disponível em:
+            MARTINS, Eliseu <i>et al.</i>{" "}
+            <b>Manual de contabilidade societária:</b> de acordo com as normas
+            internacionais e do CPC. 3. ed. São Paulo: Atlas, 2018. 2441 p.
+            ISBN: 9788597016154. Disponível em:
             https://minhabiblioteca.com.br/livros/9745677. Acesso em: 13 ago.
             2020.
           </mark>

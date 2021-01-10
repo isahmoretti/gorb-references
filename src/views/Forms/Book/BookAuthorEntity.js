@@ -222,6 +222,9 @@ const Book = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 0 }}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -678,8 +681,8 @@ const Book = ({ back }) => {
 
         <p>
           <mark>
-            NOME DA ENTIDADE POR EXTENSO. Título do livro: Subtítulo. Edição.
-            Local de publicação: Editora, ano.
+            NOME DA ENTIDADE POR EXTENSO. <b>Título do livro:</b> Subtítulo.
+            Edição. Local de publicação: Editora, ano.
           </mark>
         </p>
 

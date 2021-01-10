@@ -179,6 +179,9 @@ const Thesis = ({ back }) => {
                 </Title>
               </Actions>
               <Card>
+                <p>
+                  Preencha o formulário com informações sobre a obra consultada:
+                </p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={10}>
@@ -527,7 +530,7 @@ const Thesis = ({ back }) => {
 
         <p>
           <span>
-            SOBRENOME, Nome. Título do trabalho. Ano de defesa. número de
+            SOBRENOME, Nome. <b>Título do trabalho.</b> Ano de defesa. número de
             folhas. Tipo de documento (Grau e Curso) - Instituição de ensino,
             Local de publicação, ano de publicação.
           </span>
