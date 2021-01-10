@@ -305,8 +305,34 @@ export const IconPlus = styled.img`
 export const ContentMobile = styled.div`
   display: none;
 
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+
   @media (max-width: 600px) {
-    display: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const ContentDesktop = styled.div`
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    display: none;
   }
 `;
 
