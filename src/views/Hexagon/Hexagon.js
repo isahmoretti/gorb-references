@@ -136,8 +136,7 @@ const HexagonPage = () => {
               className="yellow"
             >
               <p className="txt-white">
-                Trabalhos <br />
-                acadêmicos e publicações periódicas
+                Trabalhos <br />e publicações periódicas
               </p>
             </Hexagon>
             <Separator />

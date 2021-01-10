@@ -23,6 +23,7 @@ import {
   Advertising,
   ContentText,
 } from "../../../styles/Hexagon";
+import { TitleFromHexagon } from "./style";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
@@ -65,14 +66,20 @@ const BookGeneral = ({ back }) => {
               onClick={() => history.push("/livro/um-autor")}
               className="blue"
             >
-              <p className="txt-white">Livros com um único autor</p>
+              <TitleFromHexagon
+                text="Livros com um único autor"
+                mobileText="Com um único autor"
+              />
             </Hexagon>
             <Separator />
             <Hexagon
               className="blue"
               onClick={() => history.push("/livro/autor-entidade")}
             >
-              <p className="txt-white">Livro com autor entidade</p>
+              <TitleFromHexagon
+                text="Livro com autor entidade"
+                mobileText="Com autor entidade"
+              />
             </Hexagon>
           </Row>
 
@@ -81,16 +88,20 @@ const BookGeneral = ({ back }) => {
               onClick={() => history.push("/livro/dois-ou-tres-autores")}
               className="blue"
             >
-              <p className="txt-white">Livros com dois ou três autores</p>
+              <TitleFromHexagon
+                text="Livros com dois ou três autores"
+                mobileText="Com dois ou três autores"
+              />
             </Hexagon>
             <Title> Livros </Title>
             <Hexagon
               onClick={() => history.push("/livro/responsavel-intelectual")}
               className="blue"
             >
-              <p className="txt-white">
-                Livro com responsável intelectual ao invés de autor
-              </p>
+              <TitleFromHexagon
+                text="Livro com responsável intelectual ao invés de autor"
+                mobileText="Com responsável intelectual"
+              />
             </Hexagon>
           </Row>
 
@@ -99,7 +110,10 @@ const BookGeneral = ({ back }) => {
               onClick={() => history.push("/livro/quatro-autores-ou-mais")}
               className="blue"
             >
-              <p className="txt-white">Livro com quatro autores ou mais</p>
+              <TitleFromHexagon
+                text="Livro com quatro autores ou mais"
+                mobileText="Com quatro autores ou mais"
+              />
             </Hexagon>
             <Separator />
             <Hexagon

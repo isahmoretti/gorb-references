@@ -142,3 +142,17 @@ export const Title = styled.div`
     font-style: italic;
   }
 `;
+
+export const TitleFromHexagon = styled.p`
+  color: #fff;
+
+  &:after {
+    content: ${(props) => `'${props.text}'`};
+  }
+
+  @media only screen and (max-width: 600px) {
+    &:after {
+      content: ${(props) => `'${props.mobileText}'`};
+    }
+  }
+`;
