@@ -103,7 +103,7 @@ const ElectronicMediaDocuments = ({ back }) => {
 
         <ContentMobile>
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
-          <Row>
+          <Row style={{ marginTop: 40 }}>
             <Hexagon
               onClick={() =>
                 history.push("/meio-eletronico/mensagens-instantaneas")
@@ -169,7 +169,7 @@ const ElectronicMediaDocuments = ({ back }) => {
               <p className="txt-white">E-mail</p>
             </Hexagon>
           </Row>
-          <Row>
+          <Row style={{ marginBottom: 40 }}>
             <Hexagon
               onClick={() => history.push("/meio-eletronico/ebook")}
               className="wine"

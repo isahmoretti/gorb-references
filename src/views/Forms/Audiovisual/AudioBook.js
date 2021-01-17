@@ -212,7 +212,7 @@ const AudioBook = ({ back }) => {
                                       type="text"
                                       label={`${index + 1}º Autor`}
                                       name={`authors.${index}`}
-                                      placeholder={`Ex: Abel Laerte Packer`}
+                                      placeholder={`Ex: Laurentino Gomes`}
                                       onChange={props.handleChange}
                                       onBlur={props.handleBlur}
                                       value={author}

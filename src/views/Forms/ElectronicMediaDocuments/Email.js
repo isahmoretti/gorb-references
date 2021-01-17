@@ -77,7 +77,7 @@ const Email = ({ back }) => {
   const handleCitation1 = (name, date) => {
     const year = date.split("-")[0];
 
-    return `${name}, (${year})`;
+    return `${name} (${year})`;
   };
 
   const handleCitation2 = (name, date) => {

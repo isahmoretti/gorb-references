@@ -247,7 +247,9 @@ const BookGeneral = ({ back }) => {
         <h3>Exemplo:</h3>
 
         <p>
-          <span>Marketing 4.0: Do tradicional ao digital</span>
+          <span>
+            <b>Marketing 4.0:</b> Do tradicional ao digital
+          </span>
         </p>
 
         <h3>Edição</h3>

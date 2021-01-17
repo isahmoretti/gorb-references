@@ -65,7 +65,7 @@ export const generateCitationWithAuthor = (
 
       return (
         <>
-          {lastName} <i>et al.</i> ({date})
+          {lastName} et al. ({date})
         </>
       );
     }
@@ -77,7 +77,7 @@ export const generateCitationWithAuthor = (
 
   return (
     <span>
-      {lastName} {abbreviate} <i>et al. </i> ({date})
+      {lastName} {abbreviate} et al. ({date})
     </span>
   );
 };

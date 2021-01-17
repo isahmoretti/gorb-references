@@ -48,7 +48,7 @@ export const generateCitationWithoutAuthor = (
 
       return (
         <span>
-          ({lastName.toUpperCase()} <i>et al</i>., {date})
+          ({lastName.toUpperCase()} et al., {date})
         </span>
       );
     }
@@ -60,7 +60,7 @@ export const generateCitationWithoutAuthor = (
 
   return (
     <span>
-      ({lastName} {abbreviate} <i>et al.</i>, {date})
+      ({lastName} {abbreviate} et al., {date})
     </span>
   );
 };

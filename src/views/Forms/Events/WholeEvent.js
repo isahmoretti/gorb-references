@@ -68,7 +68,7 @@ const generateReference = (values) => {
       {placeOfPerformance && <>{placeOfPerformance}: </>}
       {title && (
         <>
-          <b>{formatMessage(title)}</b> [...].&nbps;
+          <b>{formatMessage(title)}</b> [...].&nbsp;
         </>
       )}
       {placeOfPublication && <>{placeOfPublication}: </>}

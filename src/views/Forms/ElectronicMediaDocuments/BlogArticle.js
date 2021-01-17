@@ -455,7 +455,8 @@ const BlogArticle = ({ back }) => {
 
         <p>
           <mark>
-            PACKER, A. L. et al. SciELO pós 20 anos: o futuro continua aberto.
+            PACKER, A. L. <i>et al.</i> SciELO pós 20 anos: o futuro continua
+            aberto.
             <i>In</i>: SCIELO - Scientific Electronic Library Online.{" "}
             <b>SciELO em Perspectiva.</b> São Paulo, 19 dez. 2018. Disponível
             em:

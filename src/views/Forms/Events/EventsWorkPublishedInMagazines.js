@@ -653,8 +653,8 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
 
         <p>
           <mark>
-            ALMEIDA, M. T. et al. Avaliação do professor realizada pelo aluno:
-            impacto nas práticas docentes: impacto nas práticas docentes.{" "}
+            ALMEIDA, M. T. <i>et al.</i> Avaliação do professor realizada pelo
+            aluno: impacto nas práticas docentes: impacto nas práticas docentes.{" "}
             <b>Rev. Bras. Educ. Méd.</b>, Rio de Janeiro, v. 35, n. 4, p.
             141-142, set./dez. 2011. ​supl. 1. Trabalho apresentado no 49°
             Congresso Brasileiro de Educação Médica, Belo Horizonte, 2011.

@@ -645,10 +645,11 @@ const Ebook = ({ back }) => {
 
         <p>
           <mark>
-            LIMA, João Brígido Bezerra et al. (org.). <b>Refúgio no Brasil</b>:
-            caracterização dos perfis sociodemográficos dos refugiados
-            (1998-2014). Brasília, DF: IPEA, 2017. <i>E-book</i> (234p.) color.
-            ISBN: 978-85-7811-308-7. Disponível em:
+            LIMA, João Brígido Bezerra <i>et al.</i> (org.).{" "}
+            <b>Refúgio no Brasil</b>: caracterização dos perfis
+            sociodemográficos dos refugiados (1998-2014). Brasília, DF: IPEA,
+            2017. <i>E-book</i> (234p.) color. ISBN: 978-85-7811-308-7.
+            Disponível em:
             https://www.ipea.gov.br/portal/images/stories/PDFs/livros/livros/170829_Refugio_no_Brasil.pdf.
             Acesso em: 29 out. 2020.
           </mark>

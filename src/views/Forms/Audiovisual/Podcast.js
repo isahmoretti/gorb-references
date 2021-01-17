@@ -415,7 +415,7 @@ const Podcast = ({ back }) => {
           <mark>
             EPISÓDIO 2: O Julgamento. [Locução de]: Branca Vianna.
             Entrevistados: Jacqueline Pitanguy; Hildete Pereira de Melo; Artur
-            Xexéo et al. Rio de Janeiro: Rádio Novelo, 19 set. 2020.{" "}
+            Xexéo <i>et al.</i> Rio de Janeiro: Rádio Novelo, 19 set. 2020.{" "}
             <i>Podcast.</i>
             (Série Praia dos Ossos). Disponível em:
             https://www.radionovelo.com.br/praiadosossos/. Acesso em: 29 out.

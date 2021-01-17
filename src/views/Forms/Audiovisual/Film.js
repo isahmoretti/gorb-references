@@ -593,10 +593,10 @@ const AdministrativeActs = ({ back }) => {
             CENTRAL do Brasil. Direção: Walter Salles Júnior. Produção: Martire
             de ClermontTonnerre e Arthur Cohn. Intérpretes: Fernanda Montenegro,
             Marilia Pera, Vinicius de Oliveira, Sônia Lira, Othon Bastos,
-            Matheus Nachtergaele et al. Roteiro: Marcos Bernstein, João Emanuel
-            Carneiro e Walter Salles Júnior. [S. l.]: Le Studio Canal; Riofilme;
-            MACT Productions, 1998. 5 rolos de filme (106 min), son., color., 35
-            mm.
+            Matheus Nachtergaele <i>et al.</i> Roteiro: Marcos Bernstein, João
+            Emanuel Carneiro e Walter Salles Júnior. [S. l.]: Le Studio Canal;
+            Riofilme; MACT Productions, 1998. 5 rolos de filme (106 min), son.,
+            color., 35 mm.
           </mark>
         </p>
         <p>
@@ -634,9 +634,9 @@ const AdministrativeActs = ({ back }) => {
           <mark>
             QUERIDO Menino. Direção: Felix Van Groeningen. Produção: Dede
             Gardner; Jeremy Kleiner; Brad Pitt. Intérpretes: Steve Carell;
-            Timothée Chalamet;Maura Tierney Amy Ryan et al.[S. l.]: Amazon
-            Studios, 2018. Filme original da plataforma streaming de Amazon
-            Prime Video.
+            Timothée Chalamet;Maura Tierney Amy Ryan <i>et al.</i>[S. l.]:
+            Amazon Studios, 2018. Filme original da plataforma streaming de
+            Amazon Prime Video.
           </mark>
         </p>
         <p>
@@ -653,8 +653,8 @@ const AdministrativeActs = ({ back }) => {
         <p>
           <mark>
             LOST (Temporada 1, ep. 5). Criadores: Jeffrey Lieber; J. J. Abrams;
-            Damon Lindelof. Produtores: Sarah Caplan et al. Hawaii: Produtora
-            ABC Network, 2004. 1 DVD (45 min.), son., color.
+            Damon Lindelof. Produtores: Sarah Caplan <i>et al. </i> Hawaii:
+            Produtora ABC Network, 2004. 1 DVD (45 min.), son., color.
           </mark>
         </p>
         <p>

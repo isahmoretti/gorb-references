@@ -656,7 +656,7 @@ const WorksInAnnals = ({ back }) => {
 
         <p>
           <mark>
-            OYADOMARI, A. T. et al. Efeitos da terapia por laser de baixa
+            OYADOMARI, A. T. <i>et al.</i> Efeitos da terapia por laser de baixa
             potência no processo de reparo de defeitos ósseos preenchidos pelo
             osso bovino Bio-Oss® associados ao novo selante heterólogo de
             fibrina. <i>In</i>: SIMPÓSIO INTERNACIONAL DE INICIAÇÃO CIENTÍFICA

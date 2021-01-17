@@ -59,6 +59,7 @@ const generateReference = (values) => {
     abbreviate,
     title,
     caption,
+    subdivisao,
     titlePeriodic,
     captionPeriodic,
     location,
@@ -82,9 +83,11 @@ const generateReference = (values) => {
       {typeAthor === "fisic" ? (
         formatAuthorName(constructionNames, abbreviate)
       ) : caption ? (
-        <>{`${title.toUpperCase()}: ${caption}. `}</>
+        <>{`${title.toUpperCase()}: ${caption}. ${
+          subdivisao ? `${subdivisao}. ` : ""
+        }`}</>
       ) : (
-        `${title.toUpperCase()}. `
+        `${title.toUpperCase()}. ${subdivisao ? `${subdivisao}. ` : ""}`
       )}
       {typeAthor === "fisic" ? (
         caption ? (
@@ -130,19 +133,29 @@ const WorkArticlePeriodic = ({ back }) => {
 
   const history = useHistory();
 
+  const citacaoEntidade = (nomeEntidade, ano) => {
+    return `${nomeEntidade} (${ano})`;
+  };
+  const citacaoEntidade2 = (nomeEntidade, ano) => {
+    return `(${nomeEntidade.toUpperCase()}, ${ano})`;
+  };
+
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor: generateCitationWithAuthor(
-        values.constructionNames,
-        values.year
-      ),
-      citation: generateCitationWithoutAuthor(
-        values.constructionNames,
-        values.year
-      ),
+      citationWithAuthor:
+        values.typeAthor === "entity"
+          ? citacaoEntidade(values.title, values.year)
+          : generateCitationWithAuthor(values.constructionNames, values.year),
+      citation:
+        values.typeAthor === "entity"
+          ? citacaoEntidade2(values.title, values.year)
+          : generateCitationWithoutAuthor(
+              values.constructionNames,
+              values.year
+            ),
     }));
 
     setOpenModal(!openModal);
@@ -163,6 +176,7 @@ const WorkArticlePeriodic = ({ back }) => {
             abbreviate: false,
             title: "",
             caption: "",
+            subdivisao: "",
             titlePeriodic: "",
             captionPeriodic: "",
             location: "",
@@ -246,6 +260,24 @@ const WorkArticlePeriodic = ({ back }) => {
                       />
                     </Grid>
                   </Grid>
+                  {props.values.typeAthor === "entity" && (
+                    <Grid container spacing={2} style={{ marginBottom: 5 }}>
+                      <Grid item xs={12} sm={12} md={12}>
+                        <Input
+                          name="subdivisao"
+                          label="Subdivisão"
+                          type="text"
+                          placeholder="Subdivisão"
+                          onChange={props.handleChange}
+                          onBlur={props.handleBlur}
+                          value={props.values.subdivisao}
+                          errors={props.errors}
+                          touched={props.touched}
+                        />
+                      </Grid>
+                    </Grid>
+                  )}
+
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid item xs={12} sm={12} md={10}>
                       <FieldArray
