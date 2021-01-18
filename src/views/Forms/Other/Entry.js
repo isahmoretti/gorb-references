@@ -22,6 +22,7 @@ import { formatDate } from "../../../utils/formatDate";
 import { formatAuthorName } from "../../../utils/formatAuthorName";
 import { generateCitationWithAuthor } from "../../../utils/generateCitationWithAuthor";
 import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWithoutAuthor";
+import { formatMonosyllable } from "../../../utils/monosyllable";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";
@@ -44,10 +45,10 @@ import {
 } from "./style";
 
 const SignupSchema = Yup.object().shape({
-  entryTitle: Yup.string().required("Obrigatório"),
-  title: Yup.string().required("Obrigatório"),
-  publishingCompany: Yup.string().required("Obrigatório"),
-  year: Yup.string().required("Obrigatório"),
+  // entryTitle: Yup.string().required("Obrigatório"),
+  // title: Yup.string().required("Obrigatório"),
+  // publishingCompany: Yup.string().required("Obrigatório"),
+  // year: Yup.string().required("Obrigatório"),
 });
 
 const generateReference = (values) => {
@@ -86,128 +87,139 @@ const generateReference = (values) => {
     return "";
   };
 
-  const getTypeAndSupport = (type) => {
-    switch (type) {
-      case "cd-rom":
-        return "CD-ROM";
-      // case "online":
-      //   return "Online";
-      // case "printed":
-      //   return "Impresso";
-      default:
-        break;
-    }
-  };
-  const getNamesResponsible = (namesResponsible, abbreviate = false) => {
-    if (responsabilityType === "author") abbreviate = false;
-
-    if (!namesResponsible.length || namesResponsible[0] === "") return;
-
-    if (namesResponsible.length >= 4) {
-      return formatAuthorName(namesResponsible, abbreviate);
-    }
-
-    const name = formatAuthorName(namesResponsible, abbreviate);
-
-    return `${name.slice(0, name.length - 2)}`;
+  const mostrarEntidade = (entidades = []) => {
+    return entidades.map((item) => item.toUpperCase()).join("; ");
   };
 
-  const firstUpperCase = (title) => {
-    if (!title) return;
-
-    const titleSplit = title.split(" ");
-
-    if (titleSplit.length === 1) return title.toUpperCase();
-
-    return `${titleSplit[0].toUpperCase()} ${titleSplit.slice(1).join(" ")}`;
-  };
-
-  const hasAuthor = !!partAuthors.length && !!partAuthors[0].length;
-  const entryTitleFormatted = firstUpperCase(entryTitle);
-  return (
-    <span>
-      {hasAuthor &&
-        (entryAuthorType !== "withoutAuthorship" ||
-          entryAuthorType !== "sameAuthor") && (
-          <>
-            {<>{getNamesResponsible(partAuthors, abbreviate)}. </>}
-            {entryResponsabilityType && (
-              <>
-                {getResposabilityTypes(entryResponsabilityType)}
-                {responsabilityType !== "author" && <>. </>}
-              </>
-            )}
-          </>
-        )}
-      {entryCaption ? (
+  const tipoAutor = {
+    physicalPerson: (
+      <>
+        <>{formatAuthorName(partAuthors, abbreviate)}</>
         <>
-          {entryAuthorType === "withoutAuthorship" ? (
+          {entryCaption ? (
             <>
-              {entryTitleFormatted}: {entryCaption}.{" "}
+              {entryTitle}: {entryCaption}.&nbsp;
+            </>
+          ) : (
+            <>{entryTitle}. </>
+          )}
+        </>
+      </>
+    ),
+    entity: (
+      <>
+        <>{mostrarEntidade(partAuthors)}</>
+        {entryResponsabilityType !== "author" ? (
+          <> {getResposabilityTypes(entryResponsabilityType)}. </>
+        ) : (
+          <>. </>
+        )}
+        <>
+          {entryCaption ? (
+            <>
+              {entryTitle}: {entryCaption}.&nbsp;
+            </>
+          ) : (
+            <>{entryTitle}. </>
+          )}
+        </>
+      </>
+    ),
+    withoutAuthorship: (
+      <>
+        {entryCaption ? (
+          <>
+            {formatMonosyllable(entryTitle)}: {entryCaption}.&nbsp;
+          </>
+        ) : (
+          <>{formatMonosyllable(entryTitle)}. </>
+        )}
+      </>
+    ),
+  };
+
+  const tipoAutorSegundaParte = {
+    physicalPerson: (
+      <>
+        <>
+          <i>In: </i>
+          {formatAuthorName(authorOfTheWhole)}
+        </>
+        <>
+          {caption ? (
+            <>
+              <b>{title}</b>: {caption}.&nbsp;
             </>
           ) : (
             <>
-              <b>{entryTitleFormatted}</b>: {entryCaption}.{" "}
+              <b>{title}</b>.{" "}
             </>
           )}
         </>
-      ) : (
-        <>{entryTitle && <>{entryTitleFormatted}. </>}</>
-      )}
-
-      {authorOfTheWhole &&
-        authorOfTheWhole[0] !== "" &&
-        authorType !== "withoutAuthorship" && (
+        {edition && <>{edition} ed. </>}
+        {local ? <>{local}: </> : <>[S. l.]: </>}
+        {publishingCompany && <>{publishingCompany}, </>}
+        {year && <>{year}. </>}
+        {initialPage && !finalPage && `p. ${initialPage}. `}
+        {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
+        {series && <>({series}). </>}
+        {notes && <>{notes}. </>}
+      </>
+    ),
+    entity: (
+      <>
+        <>
+          <i>In: </i>
+          {mostrarEntidade(authorOfTheWhole)}.&nbsp;
+        </>
+        <>
+          {caption ? (
+            <>
+              {title}: {caption}.&nbsp;
+            </>
+          ) : (
+            <>{title}. </>
+          )}
+        </>
+        {edition && <>{edition} ed. </>}
+        {local ? <>{local}: </> : <>[S. l.]: </>}
+        {publishingCompany && <>{publishingCompany}, </>}
+        {year && <>{year}. </>}
+        {initialPage && !finalPage && `p. ${initialPage}. `}
+        {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
+        {series && <>({series}). </>}
+      </>
+    ),
+    withoutAuthorship: (
+      <>
+        {caption ? (
           <>
-            <i>In:</i> <>{formatAuthorName(authorOfTheWhole)}</>{" "}
+            <i>In: </i>
+            {formatMonosyllable(title)}: {caption}.&nbsp;
+          </>
+        ) : (
+          <>
+            <i>In: </i>
+            {formatMonosyllable(title)}.{" "}
           </>
         )}
-      {responsabilityType && <>{getResposabilityTypes(responsabilityType)}. </>}
-      {caption ? (
-        <>
-          <i>In: </i>
-          <>
-            {authorType === "withoutAuthorship" ||
-            !authorOfTheWhole[0].trim().length ? (
-              firstUpperCase(title)
-            ) : (
-              <b>{title}</b>
-            )}
-          </>
-          : {caption}.{" "}
-        </>
-      ) : (
-        <>
-          <i>In: </i>
-          <>
-            {authorType === "withoutAuthorship" ||
-            !authorOfTheWhole[0].trim().length ? (
-              firstUpperCase(title)
-            ) : (
-              <b>{title}</b>
-            )}
-          </>
-          .{" "}
-        </>
-      )}
 
-      {edition && <>{edition} ed. </>}
-      {local ? <>{local}: </> : <>[S. l.]: </>}
-      {publishingCompany && <>{publishingCompany}, </>}
-      {year && <>{year}. </>}
-      {initialPage && !finalPage && `p. ${initialPage}. `}
-      {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
-      {series && <>({series}). </>}
-      {notes && <>{notes}. </>}
-      {typeAndSupport && typeAndSupport === "cd-rom" && (
-        <>{getTypeAndSupport(typeAndSupport)}. </>
-      )}
+        {edition && <>{edition} ed. </>}
+        {local ? <>{local}: </> : <>[S. l.]: </>}
+        {publishingCompany && <>{publishingCompany}, </>}
+        {year && <>{year}. </>}
+        {initialPage && !finalPage && `p. ${initialPage}. `}
+        {initialPage && finalPage && `p. ${initialPage}-${finalPage}. `}
+        {series && <>({series}). </>}
+        {notes && <>{notes}. </>}
+      </>
+    ),
+  };
 
-      {typeAndSupport &&
-        typeAndSupport !== "printed" &&
-        accessedAt &&
-        url &&
-        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
+  return (
+    <span>
+      <>{tipoAutor[entryAuthorType]}</>
+      <>{tipoAutorSegundaParte[authorType]}</>
     </span>
   );
 };
@@ -218,44 +230,17 @@ const Entry = ({ back }) => {
   });
 
   const [collapse, setCollapase] = useState(false);
-
   const [openModal, setOpenModal] = useState(false);
 
   const history = useHistory();
-
-  const getCitationWithAuthor = (authors, year) => {
-    return (
-      <>
-        {formatAuthorName(authors)} ({year})
-      </>
-    );
-  };
-
-  const getCitationWithoutAuthor = (authors, year) => {
-    return (
-      <>
-        ({authors[0].toUpperCase()}, {year})
-      </>
-    );
-  };
 
   const handleSubmit = (values) => {
     setState((prev) => ({
       ...prev,
       values,
       references: generateReference(values),
-      citationWithAuthor:
-        values.local &&
-        // values.entryAuthorType === "physicalPerson"
-        // ? getCitationWithAuthor(values.partAuthors, values.year)
-        // :
-        generateCitationWithAuthor(values.partAuthors, values.year),
-      citation:
-        values.local &&
-        // values.entryAuthorType === "physicalPerson"
-        // ? getCitationWithoutAuthor(values.partAuthors, values.year)
-        // :
-        generateCitationWithoutAuthor(values.partAuthors, values.year),
+      citationWithAuthor: "",
+      citation: "",
     }));
 
     setOpenModal(!openModal);
@@ -334,10 +319,6 @@ const Entry = ({ back }) => {
                           options={[
                             { value: "physicalPerson", name: "Pessoa física" },
                             { value: "entity", name: "Entidade" },
-                            // {
-                            //   value: "sameAuthor",
-                            //   name: "Mesmo autor da enciclopédia",
-                            // },
                             { value: "withoutAuthorship", name: "Sem autoria" },
                           ]}
                         />
@@ -352,6 +333,9 @@ const Entry = ({ back }) => {
                           name="entryResponsabilityType"
                           errors={props.errors}
                           touched={props.touched}
+                          disabled={
+                            props.values.entryAuthorType === "withoutAuthorship"
+                          }
                           options={[
                             { value: "author", name: "Autor" },
                             { value: "compiler", name: "Compilador" },
@@ -397,9 +381,7 @@ const Entry = ({ back }) => {
                                         <Input
                                           disabled={
                                             props.values.entryAuthorType ===
-                                              "sameAuthor" ||
-                                            props.values.entryAuthorType ===
-                                              "withoutAuthorship"
+                                            "withoutAuthorship"
                                           }
                                           type="text"
                                           label={`Autor da parte ${index + 1}`}
@@ -533,7 +515,7 @@ const Entry = ({ back }) => {
 
                   <Collapse in={collapse}>
                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                      <Grid item xs={12} sm={12} md={6}>
+                      <Grid item xs={12} sm={12} md={12}>
                         <Select
                           type="text"
                           label="Tipo do autor"
@@ -550,7 +532,7 @@ const Entry = ({ back }) => {
                           ]}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={12} md={6}>
+                      {/* <Grid item xs={12} sm={12} md={6}>
                         <Select
                           type="text"
                           label="Tipo de responsabilidade"
@@ -560,6 +542,9 @@ const Entry = ({ back }) => {
                           name="responsabilityType"
                           errors={props.errors}
                           touched={props.touched}
+                          disabled={
+                            props.values.authorType === "withoutAuthorship"
+                          }
                           options={[
                             { value: "author", name: "Autor" },
                             { value: "compiler", name: "Compilador" },
@@ -567,7 +552,7 @@ const Entry = ({ back }) => {
                             { value: "organizator", name: "Organizador" },
                           ]}
                         />
-                      </Grid>
+                      </Grid> */}
                     </Grid>
                     <Grid container spacing={2} style={{ marginBottom: 5 }}>
                       <Grid item xs={12} sm={12} md={12}>
@@ -588,7 +573,7 @@ const Entry = ({ back }) => {
                                       >
                                         <Input
                                           disabled={
-                                            props.values.entryAuthorType ===
+                                            props.values.authorType ===
                                             "withoutAuthorship"
                                           }
                                           type="text"
