@@ -103,7 +103,7 @@ const Events = ({ back }) => {
               className="blue-dark"
               onClick={() =>
                 history.push(
-                  "/eventos-patentes-e-normas-tecnicas/referencia-de-revista"
+                  "/eventos-patentes-e-normas-tecnicas/referencia-de-trabalho-de-evento-em-revista"
                 )
               }
             >

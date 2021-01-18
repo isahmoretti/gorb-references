@@ -215,7 +215,7 @@ const AppRoutes = () => {
         />
         <Route
           exact
-          path="/eventos-patentes-e-normas-tecnicas/referencia-de-revista"
+          path="/eventos-patentes-e-normas-tecnicas/referencia-de-trabalho-de-evento-em-revista"
           component={EventsWorkPublishedInMagazines}
         />
         <Route
