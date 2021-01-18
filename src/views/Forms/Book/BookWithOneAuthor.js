@@ -12,7 +12,7 @@ import Input from "../../../components/InputWrapper/Input";
 import Button from "../../../components/Buttons";
 import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
-
+import GoogleAds from "../../../components/GoogleAds";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
@@ -141,6 +141,9 @@ const Book = ({ back }) => {
   return (
     <>
       <Nav />
+      <div className="container">
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <Container>
         <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
@@ -785,6 +788,9 @@ const Book = ({ back }) => {
         <p>
           <mark>(SOBRENOME, ano, número da página)</mark>
         </p>
+      </div>
+      <div className="container" style={{ marginBottom: 100 }}>
+        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>
