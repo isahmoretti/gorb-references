@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const Conatiner = styled.div`
   width: 100%;
   height: calc(100vh - 80px);
+  min-height: 400px;
+
+  @media only screen and (max-width: 1024px) {
+    min-height: 556px;
+  }
 
   display: flex;
   align-items: center;
@@ -22,7 +27,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
   }
 `;
@@ -39,7 +44,7 @@ export const ContentHome = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
     display: none;
   }
@@ -69,7 +74,7 @@ export const Row = styled.div`
     margin-left: -205px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     height: 107px;
 
     &.mt {
@@ -99,7 +104,7 @@ export const Title = styled.span`
 
   text-align: center;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 117px;
     font-size: 14px;
   }
@@ -109,7 +114,7 @@ export const Separator = styled.div`
   width: 3px;
   height: 50px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 14px;
   }
 `;
@@ -160,7 +165,7 @@ export const Hexagon = styled.div`
     border-top: 58px solid red;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 95px;
     height: 59px;
 
@@ -222,7 +227,7 @@ export const Hexagon = styled.div`
   &.blue-dark {
     background: #191970;
 
-    @media (max-width: 600px) {
+    @media (max-width: 1024px) {
       margin-left: unset;
     }
   }
@@ -237,7 +242,7 @@ export const Hexagon = styled.div`
     background: #191970;
     margin-left: 203px;
 
-    @media (max-width: 600px) {
+    @media (max-width: 1024px) {
       margin-left: unset;
     }
   }
@@ -311,7 +316,7 @@ export const ContentMobile = styled.div`
   max-width: 1100px;
   height: 100%;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1024px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -331,7 +336,7 @@ export const ContentDesktop = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 600px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;

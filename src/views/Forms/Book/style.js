@@ -12,7 +12,7 @@ export const Container = styled.div`
     max-width: 830px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
 
     > form {
@@ -37,7 +37,7 @@ export const Back = styled.img`
     color: #6666cc;
   }
 
-  /* @media only screen and (max-width: 600px) {
+  /* @media only screen and (max-width: 1024px) {
     top: -30px;
   } */
 `;
@@ -56,7 +56,7 @@ export const Card = styled.div`
 
   overflow-y: auto;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
   }
 
@@ -80,7 +80,7 @@ export const Actions = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
 `;
@@ -150,7 +150,7 @@ export const TitleFromHexagon = styled.p`
     content: ${(props) => `'${props.text}'`};
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     &:after {
       content: ${(props) => `'${props.mobileText}'`};
     }

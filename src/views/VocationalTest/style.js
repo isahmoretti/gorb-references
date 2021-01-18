@@ -6,7 +6,7 @@ export const MainBackground = styled.div`
   background-size: auto;
   height: auto;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     background-size: contain;
     background-repeat: round;
   }
@@ -27,7 +27,7 @@ export const Header = styled.div`
 
   display: flex;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     height: 100px;
   } ;
 `;
