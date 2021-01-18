@@ -144,7 +144,7 @@ const FooterComponent = () => {
               <ul>
                 <li>
                   <a
-                    href="​https://viacarreira.com/category/academico/"
+                    href="http://www.​viacarreira.com/academico/"
                     target="blank"
                   >
                     <Title>ACADÊMICO</Title>
@@ -152,17 +152,14 @@ const FooterComponent = () => {
                 </li>
 
                 <li>
-                  <a
-                    href="https://viacarreira.com/category/educacao/"
-                    target="blank"
-                  >
+                  <a href="http://www.viacarreira.com/educacao/" target="blank">
                     <Title>Educação</Title>
                   </a>
                 </li>
 
                 <li>
                   <a
-                    href="​https://viacarreira.com/category/profissoes/"
+                    href="http://www.​viacarreira.com/profissoes/"
                     target="blank"
                   >
                     <Title>Profissões</Title>
@@ -170,17 +167,14 @@ const FooterComponent = () => {
                 </li>
 
                 <li>
-                  <a
-                    href="​​https://viacarreira.com/category/carreira/"
-                    target="blank"
-                  >
+                  <a href="https://viacarreira.com/carreira/" target="blank">
                     <Title>Carreira</Title>
                   </a>
                 </li>
 
                 <li>
                   <a
-                    href="​https://viacarreira.com/category/empreendedorismo/"
+                    href="http://www.​viacarreira.com/empreendedorismo/"
                     target="blank"
                   >
                     <Title>Empreendedorismo</Title>
