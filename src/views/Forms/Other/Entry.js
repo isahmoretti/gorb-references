@@ -216,10 +216,27 @@ const generateReference = (values) => {
     ),
   };
 
+  const getTypeAndSupport = (type) => {
+    switch (type) {
+      case "cd-rom":
+        return "CD-ROM. ";
+
+      case "printed":
+        return "Impresso. ";
+      default:
+        break;
+    }
+  };
+
   return (
     <span>
       <>{tipoAutor[entryAuthorType]}</>
       <>{tipoAutorSegundaParte[authorType]}</>
+      {typeAndSupport && <>{getTypeAndSupport(typeAndSupport)}</>}
+      {typeAndSupport !== "printed" &&
+        accessedAt &&
+        url &&
+        `Disponível em: ${url}. Acesso em: ${formatDate(accessedAt)}. `}
     </span>
   );
 };
@@ -296,13 +313,13 @@ const Entry = ({ back }) => {
                   >
                     Verbete de dicionário/enciclopédia
                   </p>
-                  Informações do Verbete
                 </Title>
               </Actions>
               <Card>
                 <p>
                   Preencha o formulário com informações sobre a obra consultada:
                 </p>
+                <p>Informações do Verbete</p>
                 <Content>
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
                     <Grid container spacing={2} style={{ marginBottom: 5 }}>

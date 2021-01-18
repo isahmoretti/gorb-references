@@ -72,9 +72,7 @@ const Events = ({ back }) => {
               className="gray"
               onClick={() => history.push("/outros/verbete")}
             >
-              <p className="txt-white">
-                Verbete de <br /> enciclopédia/dicionário
-              </p>
+              <p className="txt-white">Verbete</p>
             </Hexagon>
           </Row>
         </Content>

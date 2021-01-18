@@ -5,7 +5,8 @@ import monosyllableData from "../data/Monosyllable";
 export const generateCitationWithAuthor = (
   author,
   yearOfPublication,
-  abbreviate = false
+  abbreviate = false,
+  flag = false
 ) => {
   yearOfPublication = String(yearOfPublication);
 
@@ -77,7 +78,7 @@ export const generateCitationWithAuthor = (
 
   return (
     <span>
-      {lastName} {abbreviate} et al. ({date})
+      {lastName} {abbreviate} {flag && `et al.`} ({date})
     </span>
   );
 };

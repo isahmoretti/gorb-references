@@ -132,11 +132,13 @@ const Book = ({ back }) => {
       citationWithAuthor: generateCitationWithAuthor(
         values.author,
         values.yearOfPublication,
+        true,
         true
       ),
       citation: generateCitationWithoutAuthor(
         values.author,
         values.yearOfPublication,
+        true,
         true
       ),
     }));
