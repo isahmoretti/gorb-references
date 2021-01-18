@@ -78,26 +78,24 @@ const generateReference = (values) => {
     notes,
   } = values;
 
+  const nomeEntidade = (authors = []) => {
+    if (authors.length >= 4) return `${authors[0]} et al.`;
+
+    return authors.map((item) => item.toUpperCase()).join("; ");
+  };
+
   return (
     <span>
       {typeAthor === "fisic" ? (
         formatAuthorName(constructionNames, abbreviate)
-      ) : caption ? (
-        <>{`${title.toUpperCase()}: ${caption}. ${
-          subdivisao ? `${subdivisao}. ` : ""
-        }`}</>
+      ) : subdivisao ? (
+        <>
+          {nomeEntidade(constructionNames)}. {subdivisao}.{" "}
+        </>
       ) : (
-        `${title.toUpperCase()}. ${subdivisao ? `${subdivisao}. ` : ""}`
+        <>{nomeEntidade(constructionNames)}. </>
       )}
-      {typeAthor === "fisic" ? (
-        caption ? (
-          <>{`${title}: ${caption}. `}</>
-        ) : (
-          <>{title}. </>
-        )
-      ) : (
-        ""
-      )}
+      {caption ? <>{`${title}: ${caption}. `}</> : <>{title}. </>}
       {titlePeriodic && <b>{`${titlePeriodic}`}</b>}
       {captionPeriodic ? `: ${captionPeriodic}, ` : ", "}
       {location ? `${location}, ` : "[s. l.], "}
@@ -133,11 +131,13 @@ const WorkArticlePeriodic = ({ back }) => {
 
   const history = useHistory();
 
-  const citacaoEntidade = (nomeEntidade, ano) => {
-    return `${nomeEntidade} (${ano})`;
+  const citacaoEntidade = (nomeEntidade = [], ano) => {
+    return `${nomeEntidade.join("; ")} (${ano})`;
   };
-  const citacaoEntidade2 = (nomeEntidade, ano) => {
-    return `(${nomeEntidade.toUpperCase()}, ${ano})`;
+  const citacaoEntidade2 = (nomeEntidade = [], ano) => {
+    return `(${nomeEntidade
+      .map((item) => item.toUpperCase())
+      .join("; ")}, ${ano})`;
   };
 
   const handleSubmit = (values) => {
@@ -147,11 +147,11 @@ const WorkArticlePeriodic = ({ back }) => {
       references: generateReference(values),
       citationWithAuthor:
         values.typeAthor === "entity"
-          ? citacaoEntidade(values.title, values.year)
+          ? citacaoEntidade(values.constructionNames, values.year)
           : generateCitationWithAuthor(values.constructionNames, values.year),
       citation:
         values.typeAthor === "entity"
-          ? citacaoEntidade2(values.title, values.year)
+          ? citacaoEntidade2(values.constructionNames, values.year)
           : generateCitationWithoutAuthor(
               values.constructionNames,
               values.year
@@ -279,7 +279,12 @@ const WorkArticlePeriodic = ({ back }) => {
                   )}
 
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
-                    <Grid item xs={12} sm={12} md={10}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={props.values.typeAthor === "fisic" ? 10 : 12}
+                    >
                       <FieldArray
                         name="constructionNames"
                         render={(arrayHelpers) => (
@@ -298,9 +303,17 @@ const WorkArticlePeriodic = ({ back }) => {
                                     >
                                       <Input
                                         name={`constructionNames.${index}`}
-                                        label={`${index + 1}º Autor da obra`}
+                                        label={
+                                          props.values.typeAthor === "fisic"
+                                            ? "Autor da obra"
+                                            : "Entidade da obra"
+                                        }
                                         type="text"
-                                        placeholder="Nome do autor"
+                                        placeholder={
+                                          props.values.typeAthor === "fisic"
+                                            ? "Nome do autor"
+                                            : "Nome da entidade"
+                                        }
                                         onChange={props.handleChange}
                                         onBlur={props.handleBlur}
                                         value={constructionName}
@@ -349,22 +362,24 @@ const WorkArticlePeriodic = ({ back }) => {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12} md={2}>
-                      <Select
-                        name="abbreviate"
-                        label="abreviar autor?"
-                        type="text"
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.abbreviate}
-                        errors={props.errors}
-                        touched={props.touched}
-                        options={[
-                          { value: true, name: "Sim" },
-                          { value: false, name: "Não" },
-                        ]}
-                      />
-                    </Grid>
+                    {props.values.typeAthor === "fisic" && (
+                      <Grid item xs={12} sm={12} md={2}>
+                        <Select
+                          name="abbreviate"
+                          label="abreviar autor?"
+                          type="text"
+                          onChange={props.handleChange}
+                          onBlur={props.handleBlur}
+                          value={props.values.abbreviate}
+                          errors={props.errors}
+                          touched={props.touched}
+                          options={[
+                            { value: true, name: "Sim" },
+                            { value: false, name: "Não" },
+                          ]}
+                        />
+                      </Grid>
+                    )}
                   </Grid>
 
                   <Grid container spacing={2} style={{ marginBottom: 5 }}>
@@ -386,7 +401,7 @@ const WorkArticlePeriodic = ({ back }) => {
                         name="captionPeriodic"
                         label="Subtítulo do periódico"
                         type="text"
-                        placeholder="Subtítulo do "
+                        placeholder="Subtítulo do periódico"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.captionPeriodic}
