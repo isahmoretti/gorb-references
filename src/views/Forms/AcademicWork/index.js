@@ -29,14 +29,22 @@ const BookGeneral = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/trabalhos-academicos/teses")}
+              onClick={() =>
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-tese"
+                )
+              }
               className="yellow"
             >
               <p className="txt-white">Tese</p>
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/trabalhos-academicos/monografia")}
+              onClick={() =>
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-monografia-e-tcc"
+                )
+              }
               className="yellow"
             >
               <p className="txt-white">Monografia e TCC</p>
@@ -45,7 +53,11 @@ const BookGeneral = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/trabalhos-academicos/dissertacao")}
+              onClick={() =>
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-dissertacao"
+                )
+              }
               className="yellow"
             >
               <p className="txt-white">Dissertação</p>
@@ -56,7 +68,9 @@ const BookGeneral = ({ back }) => {
             </Title>
             <Hexagon
               onClick={() =>
-                history.push("/trabalhos-academicos/artigo-de-periodico")
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-periodico"
+                )
               }
               className="yellow"
             >
@@ -67,7 +81,9 @@ const BookGeneral = ({ back }) => {
           <Row>
             <Hexagon
               onClick={() =>
-                history.push("/trabalhos-academicos/artigo-de-jornal")
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-jornal"
+                )
               }
               className="yellow"
             >
@@ -76,7 +92,9 @@ const BookGeneral = ({ back }) => {
             <Separator />
             <Hexagon
               onClick={() =>
-                history.push("/trabalhos-academicos/artigo-de-revista")
+                history.push(
+                  "/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-revista"
+                )
               }
               className="yellow"
             >

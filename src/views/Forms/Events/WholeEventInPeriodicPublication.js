@@ -124,7 +124,10 @@ const WholeEventInPeriodicPublication = ({ back }) => {
         <GoogleAds slot="5867857434" width={728} height={90} />
       </div>
       <Container>
-        <Back onClick={() => history.push("/evento")} src={ArrowLeft} />
+        <Back
+          onClick={() => history.push("/eventos-patentes-e-normas-tecnicas")}
+          src={ArrowLeft}
+        />
 
         <Formik
           initialValues={{

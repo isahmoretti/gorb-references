@@ -91,7 +91,7 @@ const CivilAndNotary = ({ back }) => {
       </div>
       <Container>
         <Back
-          onClick={() => history.push("/documentos-juridicos")}
+          onClick={() => history.push("/documentos-juridicos-e-civis")}
           src={ArrowLeft}
         />
 

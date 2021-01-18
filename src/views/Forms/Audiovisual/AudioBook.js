@@ -133,7 +133,10 @@ const AudioBook = ({ back }) => {
         <GoogleAds slot="5867857434" width={728} height={90} />
       </div>
       <Container>
-        <Back onClick={() => history.push("/audiovisual")} src={ArrowLeft} />
+        <Back
+          onClick={() => history.push("/documentos-audiovisuais")}
+          src={ArrowLeft}
+        />
 
         <Formik
           initialValues={{

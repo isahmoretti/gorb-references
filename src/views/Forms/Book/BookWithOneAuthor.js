@@ -145,7 +145,7 @@ const Book = ({ back }) => {
         <GoogleAds slot="5867857434" width={728} height={90} />
       </div>
       <Container>
-        <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
+        <Back onClick={() => history.push("/livros")} src={ArrowLeft} />
 
         <Formik
           initialValues={{

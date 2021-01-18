@@ -86,173 +86,255 @@ const AppRoutes = () => {
       <Switch>
         <Route exact path="/" component={Hexagon} />
 
-        <Route exact path="/livro" component={Book} />
-        <Route exact path="/livro/um-autor" component={BookWithOneAuthor} />
+        {/* LIVROS */}
+
+        <Route exact path="/livros" component={Book} />
         <Route
           exact
-          path="/livro/dois-ou-tres-autores"
+          path="/livros/referencia-de-livro-com-um-autor"
+          component={BookWithOneAuthor}
+        />
+        <Route
+          exact
+          path="/livros/referencia-de-livro-com-dois-ou-tres-autores"
           component={BookWithTwoOrThreeAuthors}
         />
         <Route
           exact
-          path="/livro/quatro-autores-ou-mais"
+          path="/livros/referencia-de-livro-com-quatro-autores-ou-mais"
           component={BookWithFourOrMoreAuthors}
         />
         <Route
           exact
-          path="/livro/responsavel-intelectual"
+          path="/livros/referencia-de-livro-com-responsavel-intelectual"
           component={BookIntellectuallyResponsible}
         />
         <Route
           exact
-          path="/livro/autor-entidade"
+          path="/livros/referencia-de-livro-com-um-autor-entidade"
           component={BookAuthorEntity}
         />
         <Route
           exact
-          path="/livro/capitulo-de-livro"
+          path="/livros/referencia-de-capitulo-de-livro"
           component={ChapterOfBook}
         />
 
-        <Route exact path="/trabalhos-academicos" component={AcademicWork} />
+        {/* TRABALHOS ACADÊMICOS E PUBLICAÇÕES PERIÓDICAS */}
+
         <Route
           exact
-          path="/trabalhos-academicos/artigo-de-periodico"
+          path="/trabalhos-academicos-e-publicacoes-periodicas"
+          component={AcademicWork}
+        />
+        <Route
+          exact
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-periodico"
           component={WorkArticlePeriodic}
         />
         <Route
           exact
-          path="/trabalhos-academicos/artigo-de-revista"
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-revista"
           component={ArticleMagazine}
         />
         <Route
           exact
-          path="/trabalhos-academicos/artigo-de-jornal"
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-jornal"
           component={ArticleNewspaper}
         />
         <Route
           exact
-          path="/trabalhos-academicos/dissertacao"
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-dissertacao"
           component={Dissertation}
         />
         <Route
           exact
-          path="/trabalhos-academicos/monografia"
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-monografia-e-tcc"
           component={Monography}
         />
-        <Route exact path="/trabalhos-academicos/teses" component={Thesis} />
+        <Route
+          exact
+          path="/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-tese"
+          component={Thesis}
+        />
+
+        {/* DOCUMENTOS DE MEIO ELETRÔNICO */}
 
         <Route
           exact
-          path="/meio-eletronico"
+          path="/documentos-de-meio-eletronico"
           component={ElectronicMediaDocuments}
         />
         <Route
           exact
-          path="/meio-eletronico/artigo-de-blog"
+          path="/documentos-de-meio-eletronico/referencia-de-artigo-de-blog"
           component={BlogArticle}
         />
-        <Route exact path="/meio-eletronico/ebook" component={Ebook} />
-        <Route exact path="/meio-eletronico/email" component={Email} />
         <Route
           exact
-          path="/meio-eletronico/mensagens-instantaneas"
+          path="/documentos-de-meio-eletronico/referencia-de-ebook"
+          component={Ebook}
+        />
+        <Route
+          exact
+          path="/documentos-de-meio-eletronico/referencia-de-email"
+          component={Email}
+        />
+        <Route
+          exact
+          path="/documentos-de-meio-eletronico/referencia-de-mensagens-instantaneas"
           component={InstantMessages}
         />
-        <Route exact path="/meio-eletronico/site" component={Site} />
         <Route
           exact
-          path="/meio-eletronico/apresentacao-de-slide"
+          path="/documentos-de-meio-eletronico/referencia-de-site"
+          component={Site}
+        />
+        <Route
+          exact
+          path="/documentos-de-meio-eletronico/referencia-de-apresentacao-de-slides"
           component={SlideShow}
         />
         <Route
           exact
-          path="/meio-eletronico/postagem-na-rede-social"
+          path="/documentos-de-meio-eletronico/referencia-de-postagem-de-rede-social"
           component={SocialNetworkPost}
         />
         <Route
           exact
-          path="/meio-eletronico/programa-e-jogo-eletronico"
+          path="/documentos-de-meio-eletronico/referencia-de-software-e-jogo-eletronico"
           component={SoftwareAndEletronicGame}
         />
 
-        <Route exact path="/evento" component={Events} />
+        {/* EVENTOS, PATENTES E NORMAS TÉCNICAS */}
+
         <Route
           exact
-          path="/evento/revistas"
+          path="/eventos-patentes-e-normas-tecnicas"
+          component={Events}
+        />
+        <Route
+          exact
+          path="/eventos-patentes-e-normas-tecnicas/referencia-de-revista"
           component={EventsWorkPublishedInMagazines}
         />
-        <Route exact path="/evento/patentes" component={Patents} />
         <Route
           exact
-          path="/evento/normas-tecnicas"
+          path="/eventos-patentes-e-normas-tecnicas/referencia-de-patente"
+          component={Patents}
+        />
+        <Route
+          exact
+          path="/eventos-patentes-e-normas-tecnicas/referencia-de-norma-tecnica"
           component={TechnicalStandards}
         />
-        <Route exact path="/evento/todo" component={WholeEvent} />
         <Route
           exact
-          path="/evento/todo-em-periodica"
+          path="/eventos-patentes-e-normas-tecnicas/referencia-de-evento-no-todo"
+          component={WholeEvent}
+        />
+        <Route
+          exact
+          path="/eventos-patentes-e-normas-tecnicas/referencia-evento-no-todo-em-publicacao-periodica"
           component={WholeEventInPeriodicPublication}
         />
         <Route
           exact
-          path="/evento/trabalhos-em-anais"
+          path="/eventos-patentes-e-normas-tecnicas/referencia-trabalhos-em-anais"
           component={WorksInAnnals}
         />
 
-        <Route exact path="/audiovisual" component={Audiovisual} />
-        <Route exact path="/audiovisual/audio-livro" component={AudioBook} />
-        <Route exact path="/audiovisual/filme" component={Film} />
-        <Route exact path="/audiovisual/musica" component={Music} />
-        <Route exact path="/audiovisual/foto" component={Photo} />
-        <Route exact path="/audiovisual/podcast" component={Podcast} />
+        {/* DOCUMENTOS AUDIOVISUAIS */}
+
+        <Route exact path="/documentos-audiovisuais" component={Audiovisual} />
         <Route
           exact
-          path="/audiovisual/video-internet"
+          path="/documentos-audiovisuais/referencia-de-audiolivro"
+          component={AudioBook}
+        />
+        <Route
+          exact
+          path="/documentos-audiovisuais/referencia-de-filme"
+          component={Film}
+        />
+        <Route
+          exact
+          path="/documentos-audiovisuais/referencia-de-musica"
+          component={Music}
+        />
+        <Route
+          exact
+          path="/documentos-audiovisuais/referencia-de-fotografia"
+          component={Photo}
+        />
+        <Route
+          exact
+          path="/documentos-audiovisuais/referencia-de-podcast"
+          component={Podcast}
+        />
+        <Route
+          exact
+          path="/documentos-audiovisuais/referencia-de-video-de-internet"
           component={VideoInternet}
         />
 
+        {/* OUTROS */}
+
         <Route exact path="/outros" component={Other} />
-        <Route exact path="/outros/bula-de-remedio" component={BullMedicine} />
-        <Route exact path="/outros/verbete" component={Entry} />
-        <Route exact path="/outros/mapas" component={Maps} />
         <Route
           exact
-          path="/outros/objetos-tridimensional"
+          path="/outros/referencia-de-bula-de-remedio"
+          component={BullMedicine}
+        />
+        <Route exact path="/outros/referencia-de-verbete" component={Entry} />
+        <Route exact path="/outros/referencia-de-mapa" component={Maps} />
+        <Route
+          exact
+          path="/outros/referencia-de-tridimensional"
           component={ObjectThree}
         />
-        <Route exact path="/outros/partitura" component={Score} />
-        <Route exact path="/outros/obra-de-arte" component={WorkArt} />
-
-        <Route exact path="/documentos-juridicos" component={JuridicDocument} />
+        <Route exact path="/outros/referencia-de-partitura" component={Score} />
         <Route
           exact
-          path="/documentos-juridicos/atos-administrativos"
+          path="/outros/referencia-de-obra-de-arte"
+          component={WorkArt}
+        />
+
+        {/* DOCUMENTOS JURÍDICOS E CIVIS */}
+
+        <Route
+          exact
+          path="/documentos-juridicos-e-civis"
+          component={JuridicDocument}
+        />
+        <Route
+          exact
+          path="/documentos-juridicos-e-civis/referencia-de-atos-administrativos"
           component={AdministrativeActs}
         />
         <Route
           exact
-          path="/documentos-juridicos/documentos-civil"
+          path="/documentos-juridicos-e-civis/referencia-de-documentos-civis-e-de-cartorio"
           component={CivilAndNotary}
         />
         <Route
           exact
-          path="/documentos-juridicos/constituicao"
+          path="/documentos-juridicos-e-civis/referencia-de-constituicao"
           component={Constitution}
         />
         <Route
           exact
-          path="/documentos-juridicos/jurisprudencia"
+          path="/documentos-juridicos-e-civis/referencia-de-jurisprudencia"
           component={Jurisprudence}
         />
         <Route
           exact
-          path="/documentos-juridicos/legislacao"
+          path="/documentos-juridicos-e-civis/referencia-de-legislacao"
           component={Legislation}
         />
         <Route
           exact
-          path="/documentos-juridicos/medida-provisoria"
+          path="/documentos-juridicos-e-civis/referencia-de-medida-provisoria"
           component={ProvisionalMeasure}
         />
 

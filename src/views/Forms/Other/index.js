@@ -29,7 +29,9 @@ const Events = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/outros/objetos-tridimensional")}
+              onClick={() =>
+                history.push("/outros/referencia-de-tridimensional")
+              }
               className="gray"
             >
               <p className="txt-white">Tridimensional</p>
@@ -37,7 +39,9 @@ const Events = ({ back }) => {
             <Separator />
             <Hexagon
               className="gray"
-              onClick={() => history.push("/outros/bula-de-remedio")}
+              onClick={() =>
+                history.push("/outros/referencia-de-bula-de-remedio")
+              }
             >
               <p className="txt-white">Bula de remédio</p>
             </Hexagon>
@@ -45,7 +49,7 @@ const Events = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/outros/mapas")}
+              onClick={() => history.push("/outros/referencia-de-mapa")}
               className="gray"
             >
               <p className="txt-white">Mapas </p>
@@ -55,7 +59,7 @@ const Events = ({ back }) => {
             </Title>
             <Hexagon
               className="gray"
-              onClick={() => history.push("/outros/obra-de-arte")}
+              onClick={() => history.push("/outros/referencia-de-obra-de-arte")}
             >
               <p className="txt-white">Obra de arte</p>
             </Hexagon>
@@ -64,14 +68,14 @@ const Events = ({ back }) => {
           <Row>
             <Hexagon
               className="gray"
-              onClick={() => history.push("/outros/partitura")}
+              onClick={() => history.push("/outros/referencia-de-partitura")}
             >
               <p className="txt-white">Partitura</p>
             </Hexagon>
             <Separator />
             <Hexagon
               className="gray"
-              onClick={() => history.push("/outros/verbete")}
+              onClick={() => history.push("/outros/referencia-de-verbete")}
             >
               <p className="txt-white">Verbete</p>
             </Hexagon>

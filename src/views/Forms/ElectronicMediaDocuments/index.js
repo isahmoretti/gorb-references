@@ -31,7 +31,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row className="ml">
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/mensagens-instantaneas")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-mensagens-instantaneas"
+                )
               }
               className="wine"
             >
@@ -39,7 +41,11 @@ const ElectronicMediaDocuments = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/site")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-site"
+                )
+              }
               className="wine"
             >
               <p className="txt-white">Site</p>
@@ -47,7 +53,11 @@ const ElectronicMediaDocuments = ({ back }) => {
             <Separator />
             <Hexagon
               className="wine"
-              onClick={() => history.push("/meio-eletronico/artigo-de-blog")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-artigo-de-blog"
+                )
+              }
             >
               <p className="txt-white">Artigo de blog</p>
             </Hexagon>
@@ -56,7 +66,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/programa-e-jogo-eletronico")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-software-e-jogo-eletronico"
+                )
               }
               className="wine"
             >
@@ -65,7 +77,9 @@ const ElectronicMediaDocuments = ({ back }) => {
             <Title> Documentos exclusivos de meio eletrônico </Title>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/postagem-na-rede-social")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-postagem-de-rede-social"
+                )
               }
               className="wine"
             >
@@ -76,7 +90,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row className="mt">
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/apresentacao-de-slide")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-apresentacao-de-slides"
+                )
               }
               className="wine"
             >
@@ -87,14 +103,22 @@ const ElectronicMediaDocuments = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/email")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-email"
+                )
+              }
               className="wine"
             >
               <p className="txt-white">E-mail</p>
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/ebook")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-ebook"
+                )
+              }
               className="wine"
             >
               E-book
@@ -107,7 +131,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row style={{ marginTop: 40 }}>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/mensagens-instantaneas")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-mensagens-instantaneas"
+                )
               }
               className="wine"
             >
@@ -116,7 +142,11 @@ const ElectronicMediaDocuments = ({ back }) => {
           </Row>
           <Row>
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/site")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-site"
+                )
+              }
               className="wine"
             >
               <p className="txt-white">Site</p>
@@ -124,7 +154,11 @@ const ElectronicMediaDocuments = ({ back }) => {
             <Separator />
             <Hexagon
               className="wine"
-              onClick={() => history.push("/meio-eletronico/artigo-de-blog")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-artigo-de-blog"
+                )
+              }
             >
               <p className="txt-white">Artigo de blog</p>
             </Hexagon>
@@ -133,7 +167,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/programa-e-jogo-eletronico")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-software-e-jogo-eletronico"
+                )
               }
               className="wine"
             >
@@ -142,7 +178,9 @@ const ElectronicMediaDocuments = ({ back }) => {
             <Title> Documentos exclusivos de meio eletrônico </Title>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/postagem-na-rede-social")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-postagem-de-rede-social"
+                )
               }
               className="wine"
             >
@@ -153,7 +191,9 @@ const ElectronicMediaDocuments = ({ back }) => {
           <Row>
             <Hexagon
               onClick={() =>
-                history.push("/meio-eletronico/apresentacao-de-slide")
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-apresentacao-de-slides"
+                )
               }
               className="wine"
             >
@@ -164,7 +204,11 @@ const ElectronicMediaDocuments = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/email")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-email"
+                )
+              }
               className="wine"
             >
               <p className="txt-white">E-mail</p>
@@ -172,7 +216,11 @@ const ElectronicMediaDocuments = ({ back }) => {
           </Row>
           <Row style={{ marginBottom: 40 }}>
             <Hexagon
-              onClick={() => history.push("/meio-eletronico/ebook")}
+              onClick={() =>
+                history.push(
+                  "/documentos-de-meio-eletronico/referencia-de-ebook"
+                )
+              }
               className="wine"
             >
               <p className="txt-white"> E-book</p>

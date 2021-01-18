@@ -96,7 +96,7 @@ const Site = ({ back }) => {
       </div>
       <Container>
         <Back
-          onClick={() => history.push("/meio-eletronico")}
+          onClick={() => history.push("/documentos-de-meio-eletronico")}
           src={ArrowLeft}
         />
 

@@ -29,7 +29,11 @@ const Events = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/evento/todo")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-de-evento-no-todo"
+                )
+              }
               className="blue-dark"
             >
               <p className="txt-white">Evento no todo</p>
@@ -37,7 +41,11 @@ const Events = ({ back }) => {
             <Separator />
             <Hexagon
               className="blue-dark"
-              onClick={() => history.push("/evento/todo-em-periodica")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-evento-no-todo-em-publicacao-periodica"
+                )
+              }
             >
               <p className="txt-white">
                 Evento no todo em publicação periódica
@@ -47,7 +55,11 @@ const Events = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/evento/normas-tecnicas")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-de-norma-tecnica"
+                )
+              }
               className="blue-dark"
             >
               <p className="txt-white">Normas técnicas</p>
@@ -65,7 +77,11 @@ const Events = ({ back }) => {
             </Title>
             <Hexagon
               className="blue-dark"
-              onClick={() => history.push("/evento/trabalhos-em-anais")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-trabalhos-em-anais"
+                )
+              }
             >
               <p className="txt-white">Trabalhos em anais</p>
             </Hexagon>
@@ -74,14 +90,22 @@ const Events = ({ back }) => {
           <Row>
             <Hexagon
               className="blue-dark"
-              onClick={() => history.push("/evento/patentes")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-de-patente"
+                )
+              }
             >
               <p className="txt-white">Patentes</p>
             </Hexagon>
             <Separator />
             <Hexagon
               className="blue-dark"
-              onClick={() => history.push("/evento/revistas")}
+              onClick={() =>
+                history.push(
+                  "/eventos-patentes-e-normas-tecnicas/referencia-de-revista"
+                )
+              }
             >
               <p className="txt-white">
                 Trabalhos de eventos publicados em <br />

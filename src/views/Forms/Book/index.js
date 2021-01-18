@@ -64,7 +64,9 @@ const BookGeneral = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/livro/um-autor")}
+              onClick={() =>
+                history.push("/livros/referencia-de-livro-com-um-autor")
+              }
               className="blue"
             >
               <TitleFromHexagon
@@ -75,7 +77,11 @@ const BookGeneral = ({ back }) => {
             <Separator />
             <Hexagon
               className="blue"
-              onClick={() => history.push("/livro/autor-entidade")}
+              onClick={() =>
+                history.push(
+                  "/livros/referencia-de-livro-com-um-autor-entidade"
+                )
+              }
             >
               <TitleFromHexagon
                 text="Livro com autor entidade"
@@ -86,7 +92,11 @@ const BookGeneral = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/livro/dois-ou-tres-autores")}
+              onClick={() =>
+                history.push(
+                  "/livros/referencia-de-livro-com-dois-ou-tres-autores"
+                )
+              }
               className="blue"
             >
               <TitleFromHexagon
@@ -96,7 +106,11 @@ const BookGeneral = ({ back }) => {
             </Hexagon>
             <Title> Livros </Title>
             <Hexagon
-              onClick={() => history.push("/livro/responsavel-intelectual")}
+              onClick={() =>
+                history.push(
+                  "/livros/referencia-de-livro-com-responsavel-intelectual"
+                )
+              }
               className="blue"
             >
               <TitleFromHexagon
@@ -108,7 +122,11 @@ const BookGeneral = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/livro/quatro-autores-ou-mais")}
+              onClick={() =>
+                history.push(
+                  "/livros/referencia-de-livro-com-quatro-autores-ou-mais"
+                )
+              }
               className="blue"
             >
               <TitleFromHexagon
@@ -118,7 +136,9 @@ const BookGeneral = ({ back }) => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/livro/capitulo-de-livro")}
+              onClick={() =>
+                history.push("/livros/referencia-de-capitulo-de-livro")
+              }
               className="blue"
             >
               <p className="txt-white"> Capítulo de livro</p>

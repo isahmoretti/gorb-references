@@ -28,7 +28,9 @@ const Audiovisual = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/audiovisual/filme")}
+              onClick={() =>
+                history.push("/documentos-audiovisuais/referencia-de-filme")
+              }
               className="violet"
             >
               <p className="txt-white">Filme</p>
@@ -36,7 +38,11 @@ const Audiovisual = ({ back }) => {
             <Separator />
             <Hexagon
               className="violet"
-              onClick={() => history.push("/audiovisual/video-internet")}
+              onClick={() =>
+                history.push(
+                  "/documentos-audiovisuais/referencia-de-video-de-internet"
+                )
+              }
             >
               <p className="txt-white">Vídeo de internet</p>
             </Hexagon>
@@ -44,7 +50,9 @@ const Audiovisual = ({ back }) => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/audiovisual/musica")}
+              onClick={() =>
+                history.push("/documentos-audiovisuais/referencia-de-musica")
+              }
               className="violet"
             >
               <p className="txt-white">Música</p>
@@ -56,7 +64,9 @@ const Audiovisual = ({ back }) => {
             </Title>
             <Hexagon
               className="violet"
-              onClick={() => history.push("/audiovisual/podcast")}
+              onClick={() =>
+                history.push("/documentos-audiovisuais/referencia-de-podcast")
+              }
             >
               <p className="txt-white">Podcast</p>
             </Hexagon>
@@ -65,14 +75,22 @@ const Audiovisual = ({ back }) => {
           <Row>
             <Hexagon
               className="violet"
-              onClick={() => history.push("/audiovisual/foto")}
+              onClick={() =>
+                history.push(
+                  "/documentos-audiovisuais/referencia-de-fotografia"
+                )
+              }
             >
               <p className="txt-white">Fotografia</p>
             </Hexagon>
             <Separator />
             <Hexagon
               className="violet"
-              onClick={() => history.push("/audiovisual/audio-livro")}
+              onClick={() =>
+                history.push(
+                  "/documentos-audiovisuais/referencia-de-audiolivro"
+                )
+              }
             >
               <p className="txt-white">Audiolivro</p>
             </Hexagon>

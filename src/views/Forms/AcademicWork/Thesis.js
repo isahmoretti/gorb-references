@@ -140,7 +140,9 @@ const Thesis = ({ back }) => {
       </div>
       <Container>
         <Back
-          onClick={() => history.push("/trabalhos-academicos")}
+          onClick={() =>
+            history.push("/trabalhos-academicos-e-publicacoes-periodicas")
+          }
           src={ArrowLeft}
         />
 

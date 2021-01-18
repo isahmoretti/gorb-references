@@ -34,12 +34,12 @@ const HexagonPage = () => {
       <Conatiner>
         <ContentHome>
           <Row>
-            <Hexagon onClick={() => history.push("/livro")} className="blue">
+            <Hexagon onClick={() => history.push("/livros")} className="blue">
               <p className="txt-white">Livros</p>
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/documentos-juridicos")}
+              onClick={() => history.push("/documentos-juridicos-e-civis")}
               className="green"
             >
               <p className="txt-white">
@@ -50,7 +50,9 @@ const HexagonPage = () => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/trabalhos-academicos")}
+              onClick={() =>
+                history.push("/trabalhos-academicos-e-publicacoes-periodicas")
+              }
               className="yellow"
             >
               <p className="txt-white">
@@ -65,7 +67,7 @@ const HexagonPage = () => {
               Gerador <br /> Online de <br /> Referências <br /> Bibliográficas{" "}
             </Title>
             <Hexagon
-              onClick={() => history.push("/meio-eletronico")}
+              onClick={() => history.push("/documentos-de-meio-eletronico")}
               className="wine"
             >
               <p className="txt-white">
@@ -78,7 +80,9 @@ const HexagonPage = () => {
           {/* f2f2f8 */}
           <Row>
             <Hexagon
-              onClick={() => history.push("/evento")}
+              onClick={() =>
+                history.push("/eventos-patentes-e-normas-tecnicas")
+              }
               className="blue-dark-left"
             >
               <p className="txt-white">
@@ -95,7 +99,7 @@ const HexagonPage = () => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/audiovisual")}
+              onClick={() => history.push("/documentos-audiovisuais")}
               className="violet"
             >
               <p className="txt-white">
@@ -116,12 +120,12 @@ const HexagonPage = () => {
             </TitleMobile>
           </HeaderTitle>
           <Row>
-            <Hexagon onClick={() => history.push("/livro")} className="blue">
+            <Hexagon onClick={() => history.push("/livros")} className="blue">
               <p className="txt-white">Livros</p>
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/documentos-juridicos")}
+              onClick={() => history.push("/documentos-juridicos-e-civis")}
               className="green"
             >
               <p className="txt-white">
@@ -132,7 +136,9 @@ const HexagonPage = () => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/trabalhos-academicos")}
+              onClick={() =>
+                history.push("/trabalhos-academicos-e-publicacoes-periodicas")
+              }
               className="yellow"
             >
               <p className="txt-white">
@@ -145,7 +151,7 @@ const HexagonPage = () => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/meio-eletronico")}
+              onClick={() => history.push("/documentos-de-meio-eletronico")}
               className="wine"
             >
               <p className="txt-white">
@@ -158,7 +164,9 @@ const HexagonPage = () => {
 
           <Row>
             <Hexagon
-              onClick={() => history.push("/evento")}
+              onClick={() =>
+                history.push("/eventos-patentes-e-normas-tecnicas")
+              }
               className="blue-dark"
             >
               <p className="txt-white">
@@ -173,7 +181,7 @@ const HexagonPage = () => {
             </Hexagon>
             <Separator />
             <Hexagon
-              onClick={() => history.push("/audiovisual")}
+              onClick={() => history.push("/documentos-audiovisuais")}
               className="violet"
             >
               <p className="txt-white">

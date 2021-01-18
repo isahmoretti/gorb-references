@@ -28,7 +28,11 @@ const JuridicDocumentGeneral = ({ back }) => {
           <Back onClick={() => history.push("/")} src={ArrowLeft} />
           <Row>
             <Hexagon
-              onClick={() => history.push("/documentos-juridicos/legislacao")}
+              onClick={() =>
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-legislacao"
+                )
+              }
               className="green"
             >
               <p className="txt-white">Legislação</p>
@@ -37,7 +41,9 @@ const JuridicDocumentGeneral = ({ back }) => {
             <Hexagon
               className="green"
               onClick={() =>
-                history.push("/documentos-juridicos/jurisprudencia")
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-jurisprudencia"
+                )
               }
             >
               <p className="txt-white">Jurisprudência</p>
@@ -47,7 +53,9 @@ const JuridicDocumentGeneral = ({ back }) => {
           <Row>
             <Hexagon
               onClick={() =>
-                history.push("/documentos-juridicos/medida-provisoria")
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-medida-provisoria"
+                )
               }
               className="green"
             >
@@ -57,7 +65,9 @@ const JuridicDocumentGeneral = ({ back }) => {
             <Hexagon
               className="green"
               onClick={() =>
-                history.push("/documentos-juridicos/atos-administrativos")
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-atos-administrativos"
+                )
               }
             >
               <p className="txt-white">Atos administrativos</p>
@@ -67,7 +77,11 @@ const JuridicDocumentGeneral = ({ back }) => {
           <Row>
             <Hexagon
               className="green"
-              onClick={() => history.push("/documentos-juridicos/constituicao")}
+              onClick={() =>
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-constituicao"
+                )
+              }
             >
               <p className="txt-white">Constituição</p>
             </Hexagon>
@@ -75,7 +89,9 @@ const JuridicDocumentGeneral = ({ back }) => {
             <Hexagon
               className="green"
               onClick={() =>
-                history.push("/documentos-juridicos/documentos-civil")
+                history.push(
+                  "/documentos-juridicos-e-civis/referencia-de-documentos-civis-e-de-cartorio"
+                )
               }
             >
               <p className="txt-white">Documentos civis e de cartórios</p>
