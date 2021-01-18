@@ -144,6 +144,9 @@ const Book = ({ back }) => {
   return (
     <>
       <Nav />
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <Container>
         <Back onClick={() => history.push("/livro")} src={ArrowLeft} />
 
@@ -665,6 +668,9 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -866,6 +872,9 @@ const Book = ({ back }) => {
             [...] trecho citado (KOTLER; KARTAJAYA; SETIAWAN, 2010, p. 168).
           </mark>
         </p>
+      </div>
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>

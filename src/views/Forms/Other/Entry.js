@@ -270,6 +270,9 @@ const Entry = ({ back }) => {
   return (
     <>
       <Nav />
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <Container>
         <Back onClick={() => history.push("/outros")} src={ArrowLeft} />
         <Formik
@@ -875,6 +878,9 @@ const Entry = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -1037,6 +1043,9 @@ const Entry = ({ back }) => {
             Estadão, 1998. 5 CD-ROM.
           </mark>
         </p>
+      </div>
+      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
+        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>
