@@ -543,10 +543,10 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           <mark>
             CONGRESSO BRASILEIRO DE OLERICULTURA, 41.; ENCONTRO SOBRE PLANTAS
             MEDICINAIS, AROMÁTICAS E CONDIMENTARES, 1., 2001, Brasília, DF.
-            Apresentação, artigos, palestras, instruções.... Horticultura
-            Brasileira. Brasília, DF: <b>Sociedade de Olericultura do Brasil</b>
-            , v. 19, n. 2, jul. 2001. Suplemento. Tema: Dos orgânicos aos
-            transgênicos.
+            Apresentação, artigos, palestras, instruções....{" "}
+            <b>Horticultura Brasileira.</b> Brasília, DF: Sociedade de
+            Olericultura do Brasil , v. 19, n. 2, jul. 2001. Suplemento. Tema:
+            Dos orgânicos aos transgênicos.
           </mark>
         </p>
 
