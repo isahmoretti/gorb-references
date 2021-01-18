@@ -13,6 +13,7 @@ import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import GoogleAds from "../../../components/GoogleAds";
 
 import { formatMessage } from "../../../utils/formatMessage";
 import { formatDate } from "../../../utils/formatDate";

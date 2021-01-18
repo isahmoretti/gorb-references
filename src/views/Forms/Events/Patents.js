@@ -14,6 +14,7 @@ import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import GoogleAds from "../../../components/GoogleAds";
 
 import ArrowLeft from "../../../assets/images/arrow-left.svg";
 import Plus from "../../../assets/images/plus-dark.svg";

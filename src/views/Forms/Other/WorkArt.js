@@ -13,6 +13,7 @@ import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatAuthorName } from "../../../utils/formatAuthorName";

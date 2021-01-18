@@ -13,6 +13,7 @@ import Modal from "../../../components/Modal";
 import Fields from "../../../components/Fields";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";

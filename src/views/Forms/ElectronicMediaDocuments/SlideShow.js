@@ -14,6 +14,7 @@ import Modal from "../../../components/Modal";
 import Select from "../../../components/InputWrapper/Select";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
