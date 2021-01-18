@@ -117,15 +117,13 @@ const generateReference = (values) => {
 
     const titleSplit = title.split(" ");
 
-    if (titleSplit.length === 1) return title;
+    if (titleSplit.length === 1) return title.toUpperCase();
 
     return `${titleSplit[0].toUpperCase()} ${titleSplit.slice(1).join(" ")}`;
   };
 
   const hasAuthor = !!partAuthors.length && !!partAuthors[0].length;
-  const entryTitleFormatted = hasAuthor
-    ? firstUpperCase(entryTitle)
-    : entryTitle;
+  const entryTitleFormatted = firstUpperCase(entryTitle);
   return (
     <span>
       {hasAuthor &&
@@ -336,10 +334,10 @@ const Entry = ({ back }) => {
                           options={[
                             { value: "physicalPerson", name: "Pessoa física" },
                             { value: "entity", name: "Entidade" },
-                            {
-                              value: "sameAuthor",
-                              name: "Mesmo autor da enciclopédia",
-                            },
+                            // {
+                            //   value: "sameAuthor",
+                            //   name: "Mesmo autor da enciclopédia",
+                            // },
                             { value: "withoutAuthorship", name: "Sem autoria" },
                           ]}
                         />
