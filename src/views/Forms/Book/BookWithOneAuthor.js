@@ -141,7 +141,7 @@ const Book = ({ back }) => {
   return (
     <>
       <Nav />
-      <div className="container">
+      <div className="container" style={{ margin: "50px 0" }}>
         <GoogleAds slot="5867857434" width={728} height={90} />
       </div>
       <Container>
@@ -604,6 +604,9 @@ const Book = ({ back }) => {
           )}
         </Formik>
       </Container>
+      <div className="container" style={{ margin: "50px 0" }}>
+        <GoogleAds slot="5867857434" width={728} height={90} />
+      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -789,7 +792,7 @@ const Book = ({ back }) => {
           <mark>(SOBRENOME, ano, número da página)</mark>
         </p>
       </div>
-      <div className="container" style={{ marginBottom: 100 }}>
+      <div className="container" style={{ margin: "50px 0" }}>
         <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
