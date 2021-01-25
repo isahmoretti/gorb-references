@@ -152,7 +152,7 @@ const Monography = ({ back }) => {
     <>
       <Nav />
       <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="5867857434" width={728} height={90} />
+        <GoogleAds slot="9633279412" width={728} height={90} />
       </div>
       <Container>
         <Back
@@ -534,7 +534,7 @@ const Monography = ({ back }) => {
         </Formik>
       </Container>
       <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="5867857434" width={728} height={90} />
+        <GoogleAds slot="9633279412" width={728} height={90} />
       </div>
       <div
         className="container"
