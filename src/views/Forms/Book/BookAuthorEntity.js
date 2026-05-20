@@ -666,7 +666,7 @@ const Book = ({ back }) => {
           nome por extenso e em ordem direta.
         </p>
 
-        <h3>Como fazer referência de livro com autor entidade?</h3>
+        <h2>Como fazer referência de livro com autor entidade?</h2>
 
         <p>
           No caso de uma entidade com nome genérico, o apropriado é preceder o
@@ -683,7 +683,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>
           Elementos essenciais são aqueles que não podem faltar na referência da
@@ -723,9 +723,9 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência de capítulo de livro (elementos essenciais)
-        </h3>
+        </h2>
 
         <img
           src={elementosEssenciais}
@@ -739,7 +739,7 @@ const Book = ({ back }) => {
           final da referência.
         </p>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Para melhorar a identificação de um documento, é possível incluir
@@ -776,9 +776,9 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência de capítulo de livro (elementos complementares)
-        </h3>
+        </h2>
 
         <img
           src={elementosComplementares}
@@ -786,7 +786,7 @@ const Book = ({ back }) => {
           width="100%"
         />
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <p>
           Para evitar acusações de plágio, cada citação no relatório precisa vir

@@ -898,7 +898,7 @@ const Entry = ({ back }) => {
           acontece com capítulo, volume ou outro tipo de fragmento.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Autor da parte: nome do responsável pela parte; </li>
@@ -932,14 +932,14 @@ const Entry = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>
           A forma de referenciar verbete depende do tipo de autor, que pode ser
           pessoa física, entidade coletiva ou sem autoria.
         </p>
 
-        <h3>Tipo de autor > Pessoa física</h3>
+        <h2>Tipo de autor > Pessoa física</h2>
 
         <p>
           Quando o autor é uma pessoa física, a referência contém sobrenome em
@@ -947,7 +947,7 @@ const Entry = ({ back }) => {
           aplicada em livros.
         </p>
 
-        <h3>Exemplo</h3>
+        <h2>Exemplo</h2>
 
         <p>
           <mark>
@@ -959,7 +959,7 @@ const Entry = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Tipo de autor > sem autoria</h3>
+        <h2>Tipo de autor > sem autoria</h2>
 
         <p>
           Quando não há um autor declarado na enciclopédia, inicia-se a
@@ -967,7 +967,7 @@ const Entry = ({ back }) => {
           nenhum termo recebe negrito.
         </p>
 
-        <h3>Exemplo</h3>
+        <h2>Exemplo</h2>
 
         <p>
           <mark>
@@ -976,7 +976,7 @@ const Entry = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Tipo de autor > entidade coletiva</h3>
+        <h2>Tipo de autor > entidade coletiva</h2>
 
         <p>
           Quando a autoria da obra pertence a uma entidade coletiva, como ONG ou
@@ -994,7 +994,7 @@ const Entry = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Verbete de enciclopédia em meio eletrônico</h3>
+        <h2>Verbete de enciclopédia em meio eletrônico</h2>
 
         <p>
           O suporte deve ser descrito na última parte da referência
@@ -1002,7 +1002,7 @@ const Entry = ({ back }) => {
           dados de disponibilidade e data de acesso.
         </p>
 
-        <h3>Exemplo</h3>
+        <h2>Exemplo</h2>
 
         <p>
           <mark>
@@ -1024,7 +1024,7 @@ const Entry = ({ back }) => {
 
         <img src={Img} alt="verbete" width="100%" />
 
-        <h3>Como referenciar enciclopédia toda?</h3>
+        <h2>Como referenciar enciclopédia toda?</h2>
 
         <p>
           Segue a mesma regra de referência bibliográfica de livro. Exemplo:

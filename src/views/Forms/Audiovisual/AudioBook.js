@@ -430,7 +430,7 @@ const AudioBook = ({ back }) => {
           negrito.
         </p>
         <p>
-          <h3>Elementos essenciais na referência de audiolivro</h3>
+          <h2>Elementos essenciais na referência de audiolivro</h2>
         </p>
         <p>
           <ul style={{ marginLeft: 15 }}>
@@ -474,7 +474,7 @@ const AudioBook = ({ back }) => {
           automaticamente para você não se preocupe.
         </p>
         <p>
-          <h3>Formato básico</h3>
+          <h2>Formato básico</h2>
         </p>
         <p>
           <mark>
@@ -493,7 +493,7 @@ const AudioBook = ({ back }) => {
         </p>
 
         <p>
-          <h3>Exemplos aplicando o formato</h3>
+          <h2>Exemplos aplicando o formato</h2>
         </p>
         <img src={Img} alt="audio-livro" width="100%" />
         <p>
@@ -517,7 +517,7 @@ const AudioBook = ({ back }) => {
         </p>
 
         <p>
-          <h3>E quando o audiolivro está disponível na internet?</h3>
+          <h2>E quando o audiolivro está disponível na internet?</h2>
         </p>
         <p>
           Quando a consulta ao audiobook ocorre online, é necessário especificar

@@ -516,7 +516,7 @@ const AdministrativeActs = ({ back }) => {
           Alunos podem citar trechos ou descrever cenas de filmes em seus
           trabalhos acadêmicos, desde que elaborem corretamente a referência.
         </p>
-        <h3>Elementos essenciais para referenciar filme</h3>
+        <h2>Elementos essenciais para referenciar filme</h2>
         <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
@@ -548,7 +548,7 @@ const AdministrativeActs = ({ back }) => {
             <b>Descrição:</b> especificação do suporte;{" "}
           </li>
         </ul>
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
         <p>
           Os elementos complementares são informações adicionais que ajudam a
           identificar melhor o documento audiovisual.
@@ -569,7 +569,7 @@ const AdministrativeActs = ({ back }) => {
           à qualidade da cópia ou erros de edição. O dado sobre o arquivo pode
           ser inserido como uma nota.
         </p>
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
         <p>
           A referência sempre começa com o nome do filme por extenso, sendo a
           primeira palavra transcrita em letras maiúsculas. Especificações sobre
@@ -587,7 +587,7 @@ const AdministrativeActs = ({ back }) => {
           </mark>
         </p>
         <img src={Img} alt="" width="100%" />
-        <h3>Exemplos aplicando o formato</h3>
+        <h2>Exemplos aplicando o formato</h2>
         <p>
           <b>Cinema</b>
         </p>

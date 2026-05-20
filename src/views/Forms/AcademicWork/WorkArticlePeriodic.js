@@ -711,7 +711,7 @@ const WorkArticlePeriodic = ({ back }) => {
           <li> Lasers Med Sci - Lasers in Medical Science </li>
         </ul>
 
-        <h3>Como referenciar artigo de periódico no trabalho?</h3>
+        <h2>Como referenciar artigo de periódico no trabalho?</h2>
 
         <p>O formato básico para referência de artigo de periódico:</p>
 
@@ -723,7 +723,7 @@ const WorkArticlePeriodic = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -769,7 +769,7 @@ const WorkArticlePeriodic = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -788,7 +788,7 @@ const WorkArticlePeriodic = ({ back }) => {
           width="100%"
         />
 
-        <h3>Situações especiais</h3>
+        <h2>Situações especiais</h2>
 
         <p>
           Quando um artigo científico está em fase de publicação, usa-se o termo
@@ -796,7 +796,7 @@ const WorkArticlePeriodic = ({ back }) => {
           antes do DOI.
         </p>
 
-        <h3>Referência de periódico</h3>
+        <h2>Referência de periódico</h2>
 
         <p>
           Quando uma publicação periódica é referenciada em sua totalidade (e
@@ -808,7 +808,7 @@ const WorkArticlePeriodic = ({ back }) => {
           de encerramento. Notas. ISSN.
         </p>
 
-        <h3>Exemplos aplicando o formato:</h3>
+        <h2>Exemplos aplicando o formato:</h2>
 
         <p>
           <mark>
@@ -827,7 +827,7 @@ const WorkArticlePeriodic = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citação</h3>
+        <h2>Chamadas para citação</h2>
 
         <p>
           Ao referenciar outros autores no trabalho, é necessário usar uma
@@ -851,7 +851,7 @@ const WorkArticlePeriodic = ({ back }) => {
           <mark>Souza (2017, p. 14) ou (SOUZA, 2017, p.14).</mark>
         </p>
 
-        <h3>E quando a citação está em páginas diferentes?</h3>
+        <h2>E quando a citação está em páginas diferentes?</h2>
 
         <p>
           Quando uma citação se encontra em páginas diferentes, a recomendação é

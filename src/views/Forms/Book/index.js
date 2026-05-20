@@ -166,7 +166,7 @@ const BookGeneral = ({ back }) => {
           com a NBR 6023:
         </p>
 
-        <h3>Os Autores</h3>
+        <h2>Os Autores</h2>
 
         <p>
           Os autores são sempre indicados pelo sobrenome, seguido pelo nome ou
@@ -212,7 +212,7 @@ const BookGeneral = ({ back }) => {
           elas:
         </p>
 
-        <h3>Sobrenomes com prefixos</h3>
+        <h2>Sobrenomes com prefixos</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> DELLA MARA, J. </li>
@@ -221,7 +221,7 @@ const BookGeneral = ({ back }) => {
           <li> LA BRUYÈRE, J. </li>
         </ul>
 
-        <h3>Sobrenomes com grau de parentesco</h3>
+        <h2>Sobrenomes com grau de parentesco</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> COSTA JÚNIOR, J. A. </li>
@@ -229,7 +229,7 @@ const BookGeneral = ({ back }) => {
           <li> TOURINHO NETO, R. S. </li>
         </ul>
 
-        <h3>Sobrenomes compostos ou com hífen</h3>
+        <h2>Sobrenomes compostos ou com hífen</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> VALLERY-RADOT, L. P. </li>
@@ -237,7 +237,7 @@ const BookGeneral = ({ back }) => {
           <li> PAULA SOUZA, A. F. de. </li>
         </ul>
 
-        <h3>Autoria corporativa</h3>
+        <h2>Autoria corporativa</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> ABNT - Associação Brasileira de Normas Técnicas. </li>
@@ -245,18 +245,18 @@ const BookGeneral = ({ back }) => {
           <li> UNIVERSIDADE DE SÃO PAULO. Faculdade de Saúde Pública. </li>
         </ul>
 
-        <h3>Sem autoria</h3>
+        <h2>Sem autoria</h2>
 
         <p>
           Quando um livro não tem autoria, a referência começa com o nome da
           obra, sendo a primeira palavra escrita com letras maiúsculas.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>CONCISE encyclopedia: chemistry.</p>
 
-        <h3>Os Títulos e Subtítulos</h3>
+        <h2>Os Títulos e Subtítulos</h2>
 
         <p>
           O título deve ser escrito com letras minúsculas e com destaque em
@@ -264,7 +264,7 @@ const BookGeneral = ({ back }) => {
           dois-pontos [:], mas sem a necessidade de destacar.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <span>
@@ -272,7 +272,7 @@ const BookGeneral = ({ back }) => {
           </span>
         </p>
 
-        <h3>Edição</h3>
+        <h2>Edição</h2>
 
         <p>
           Quando a obra apresentar a edição indicada, essa informação deve ser
@@ -282,7 +282,7 @@ const BookGeneral = ({ back }) => {
 
         <img src={edicoes} alt="edicoes" width="100%" />
 
-        <h3>Local e Editora</h3>
+        <h2>Local e Editora</h2>
 
         <p>
           O local é a cidade onde a obra foi publicada. Em caso de cidades
@@ -310,7 +310,7 @@ const BookGeneral = ({ back }) => {
           expressão sine nomine abreviada e entre colchetes [s. n.].
         </p>
 
-        <h3>Ano de publicação</h3>
+        <h2>Ano de publicação</h2>
 
         <img src={anoPublicacao} alt="ano-publicacao" width="100%" />
 
@@ -322,7 +322,7 @@ const BookGeneral = ({ back }) => {
 
         <img src={anoPublicacao1} alt="ano-publicacao-1" width="100%" />
 
-        <h3>Paginação e descrição física</h3>
+        <h2>Paginação e descrição física</h2>
 
         <p>
           O número de páginas pode constar na referência, na forma de números
@@ -333,7 +333,7 @@ const BookGeneral = ({ back }) => {
           <b>Exemplo: </b>345p.
         </p>
 
-        <h3>Séries e coleções</h3>
+        <h2>Séries e coleções</h2>
 
         <p>
           Quando o livro faz parte de uma coleção ou série, o título deve ser
@@ -344,14 +344,14 @@ const BookGeneral = ({ back }) => {
           <b>Exemplo: </b>(Coleção Cibercultura)
         </p>
 
-        <h3>Notas</h3>
+        <h2>Notas</h2>
 
         <p>
           As informações complementares, também chamadas de notas, são inseridas
           no final da referência.
         </p>
 
-        <h3>Disponibilidade e acesso</h3>
+        <h2>Disponibilidade e acesso</h2>
 
         <p>
           Livros consultados em suporte digital devem ter a URL do documento

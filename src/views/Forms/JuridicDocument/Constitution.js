@@ -397,7 +397,7 @@ const Constitution = ({ back }) => {
           autoadministração.
         </p>
 
-        <h3>Como fazer referência bibliográfica de constituição?</h3>
+        <h2>Como fazer referência bibliográfica de constituição?</h2>
 
         <p>
           No caso de constituições e suas emendas, a referência bibliográfica
@@ -405,7 +405,7 @@ const Constitution = ({ back }) => {
           promulgação entre parênteses.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -441,7 +441,7 @@ const Constitution = ({ back }) => {
           em:".
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>Observe um exemplo:</p>
 
@@ -480,7 +480,7 @@ const Constitution = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Referência bibliográfica de emenda constitucional</h3>
+        <h2>Referência bibliográfica de emenda constitucional</h2>
 
         <p>
           Quando há uma modificação na constituição de um estado, cria-se um
@@ -491,7 +491,7 @@ const Constitution = ({ back }) => {
           destaque na referência é feito na publicação.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>

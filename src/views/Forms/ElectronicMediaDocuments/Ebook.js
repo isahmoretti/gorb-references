@@ -534,7 +534,7 @@ const Ebook = ({ back }) => {
           diferenciais que podem ser referenciado no seu trabalho acadêmico.
         </p>
 
-        <h3>Elementos para incluir na referência</h3>
+        <h2>Elementos para incluir na referência</h2>
 
         <p>Veja abaixo os elementos essenciais da referência de ebook:</p>
 
@@ -582,7 +582,7 @@ const Ebook = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Os elementos complementares não são obrigatórios, mas ajudam a
@@ -608,7 +608,7 @@ const Ebook = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -618,7 +618,7 @@ const Ebook = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="ebbok" width="100%" />
 
@@ -655,7 +655,7 @@ const Ebook = ({ back }) => {
           </mark>
         </p>
 
-        <h3>O que fazer em caso de e-book com autor entidade?</h3>
+        <h2>O que fazer em caso de e-book com autor entidade?</h2>
 
         <p>
           Quando o autor do livro digital é uma entidade coletiva (empresa,
@@ -663,7 +663,7 @@ const Ebook = ({ back }) => {
           extenso no início da referência bibliográfica.
         </p>
 
-        <h3>E quando o livro é consultado em leitor digital?</h3>
+        <h2>E quando o livro é consultado em leitor digital?</h2>
 
         <p>
           Livro digital consultado em leitor de ebook, como Kindle, Lev, Kobo,
@@ -671,7 +671,7 @@ const Ebook = ({ back }) => {
           Você só precisa incluir o termo E-book no final.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>

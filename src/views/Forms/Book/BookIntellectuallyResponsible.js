@@ -696,7 +696,7 @@ const Book = ({ back }) => {
           forma abreviada.
         </p>
 
-        <h3>Como fazer referência de livro com responsável intelectual?</h3>
+        <h2>Como fazer referência de livro com responsável intelectual?</h2>
 
         <p>
           A referência de livro com responsável intelectual ao invés de autor é
@@ -713,7 +713,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -752,10 +752,10 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência de livro com responsável intelectual (elementos
           essenciais)
-        </h3>
+        </h2>
 
         <img
           src={elementosEssenciais}
@@ -769,7 +769,7 @@ const Book = ({ back }) => {
           da referência.
         </p>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Elementos complementares tornam a referência bibliográfica mais
@@ -802,10 +802,10 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência de livro com responsável intelectual (elementos
           complementares)
-        </h3>
+        </h2>
 
         <img
           src={elementosComplementares}
@@ -813,7 +813,7 @@ const Book = ({ back }) => {
           width="100%"
         />
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <p>
           Ao trazer para o texto do relatório uma determinada informação, é

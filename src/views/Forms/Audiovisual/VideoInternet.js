@@ -304,7 +304,7 @@ const VideoInternet = ({ back }) => {
           especialistas, documentários, propagandas e curtas.
         </p>
 
-        <h3>Elementos essenciais na referência de vídeo online</h3>
+        <h2>Elementos essenciais na referência de vídeo online</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -341,7 +341,7 @@ const VideoInternet = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Os elementos complementares de uma referência são aqueles que não
@@ -354,7 +354,7 @@ const VideoInternet = ({ back }) => {
           referência de filme.
         </p>
 
-        <h3>Regras de formatação</h3>
+        <h2>Regras de formatação</h2>
 
         <p>
           A referência de vídeo de internet começa com o título do conteúdo,
@@ -379,7 +379,7 @@ const VideoInternet = ({ back }) => {
           e separadas por dois pontos.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>Veja no esquema abaixo a ordem dos elementos e pontuação:</p>
 
@@ -391,7 +391,7 @@ const VideoInternet = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="video-de-internet" width="100%" />
 

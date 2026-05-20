@@ -318,7 +318,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
           estudo.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -363,7 +363,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
           transcrito em letras maiúsculas também.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -373,7 +373,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos aplicando o formato básico</h3>
+        <h2>Exemplos aplicando o formato básico</h2>
 
         <img src={Img} alt="software-jogos" width="100%" />
 

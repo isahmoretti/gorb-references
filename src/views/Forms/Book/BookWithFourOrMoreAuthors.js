@@ -431,9 +431,9 @@ const Book = ({ back }) => {
           usar vírgula antes de et al.
         </p>
 
-        <h3>Como fazer referência com quatro autores ou mais?</h3>
+        <h2>Como fazer referência com quatro autores ou mais?</h2>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>
           Os elementos essenciais para referência de livro com quatro autores ou
@@ -493,7 +493,7 @@ const Book = ({ back }) => {
           width="100%"
         />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Os elementos complementares são inseridos para facilitar, ainda mais,
@@ -542,7 +542,7 @@ const Book = ({ back }) => {
           onde está o documento e a data de acesso.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -555,7 +555,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <p>
           A ABNT diz que toda obra consultada e colocada no trabalho deve ser
@@ -582,7 +582,7 @@ const Book = ({ back }) => {
           bibliográficas do seu trabalho.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>Citação (chamada): Martins et al. (2003)</mark>
@@ -600,7 +600,7 @@ const Book = ({ back }) => {
           ano, de forma abreviada.
         </p>
 
-        <h3>Quatro autores ou mais:</h3>
+        <h2>Quatro autores ou mais:</h2>
 
         <p>
           <mark>Neves et al. (2015, p. 28) trecho citado [...]</mark>

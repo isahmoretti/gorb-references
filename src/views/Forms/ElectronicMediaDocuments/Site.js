@@ -292,7 +292,7 @@ const Site = ({ back }) => {
           referência bibliográfica de site.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -341,7 +341,7 @@ const Site = ({ back }) => {
           recomendação é usar [s.d], que sinaliza a ausência de data.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -351,7 +351,7 @@ const Site = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos aplicando o formato básico</h3>
+        <h2>Exemplos aplicando o formato básico</h2>
 
         <p>
           <mark>
@@ -371,7 +371,7 @@ const Site = ({ back }) => {
 
         <img src={Img} alt="site" width="100%" />
 
-        <h3>E no caso de base de dados?</h3>
+        <h2>E no caso de base de dados?</h2>
 
         <p>
           Bases de dados são coleções eletrônicas de documentos, que facilitam o
@@ -402,7 +402,7 @@ const Site = ({ back }) => {
           complementar.
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>
           <mark>

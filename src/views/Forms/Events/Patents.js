@@ -447,7 +447,7 @@ const Patents = ({ back }) => {
           10 anos.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Autor: nome do inventor; </li>
@@ -485,7 +485,7 @@ const Patents = ({ back }) => {
 
         <img src={Img} alt="patente" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>
@@ -529,7 +529,7 @@ const Patents = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Patente em meio eletrônico</h3>
+        <h2>Patente em meio eletrônico</h2>
 
         <p>
           Quando o documento de patente é consultado online, ou através de outro

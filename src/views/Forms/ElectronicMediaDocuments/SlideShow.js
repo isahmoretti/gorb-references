@@ -510,7 +510,7 @@ const SlideShow = ({ back }) => {
           relatório.
         </p>
 
-        <h3>Elementos para fazer referência de slides</h3>
+        <h2>Elementos para fazer referência de slides</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -564,7 +564,7 @@ const SlideShow = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -575,7 +575,7 @@ const SlideShow = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="slides" width="100%" />
 
@@ -600,7 +600,7 @@ const SlideShow = ({ back }) => {
           </mark>
         </p>
 
-        <h3>E se o autor do slide for uma entidade?</h3>
+        <h2>E se o autor do slide for uma entidade?</h2>
 
         <p>
           Quando o autor é uma entidade coletiva (empresa, órgão público ou

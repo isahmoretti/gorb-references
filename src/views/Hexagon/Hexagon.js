@@ -208,7 +208,7 @@ const HexagonPage = () => {
           devem ser referenciados.
         </p>
 
-        <h3>Passo a passo para usar o GORB:</h3>
+        <h2>Passo a passo para usar o GORB:</h2>
 
         <p>
           <b>Passo 1.</b> Encontre na roseta hexagonal o tipo de documento que

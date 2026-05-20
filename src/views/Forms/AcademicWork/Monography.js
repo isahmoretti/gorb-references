@@ -542,7 +542,7 @@ const Monography = ({ back }) => {
           dialogar e assim construir os conceitos.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -589,7 +589,7 @@ const Monography = ({ back }) => {
           width="100%"
         />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Uma forma de tornar a referência mais completa é usando os elementos
@@ -618,7 +618,7 @@ const Monography = ({ back }) => {
           width="100%"
         />
 
-        <h3>Chamadas para citação</h3>
+        <h2>Chamadas para citação</h2>
 
         <p>
           A ABNT determina que a chamada para citação no corpo do texto deve

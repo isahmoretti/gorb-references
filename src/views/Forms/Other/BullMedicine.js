@@ -318,7 +318,7 @@ const BullMedicine = ({ back }) => {
           preocupar com a descrição física do material consultado.
         </p>
 
-        <h3>Elementos</h3>
+        <h2>Elementos</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Nome do medicamento </li>
@@ -340,7 +340,7 @@ const BullMedicine = ({ back }) => {
           título, já colocado em destaque.
         </p>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>
           <mark>
@@ -351,7 +351,7 @@ const BullMedicine = ({ back }) => {
 
         <img src={Img} alt="bula-remedio" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>
@@ -367,7 +367,7 @@ const BullMedicine = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Bula de medicamento online</h3>
+        <h2>Bula de medicamento online</h2>
 
         <p>
           Quando o documento é digital, é importante que a referência contenha o

@@ -355,7 +355,7 @@ const Score = ({ back }) => {
           eletrônico.
         </p>
 
-        <h3>Elementos</h3>
+        <h2>Elementos</h2>
 
         <p>
           Os elementos que integram a referência bibliográfica de partitura são:
@@ -377,7 +377,7 @@ const Score = ({ back }) => {
           que não faça parte do título.
         </p>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>Os elementos são organizados da seguinte forma:</p>
 
@@ -390,7 +390,7 @@ const Score = ({ back }) => {
 
         <img src={Img} alt="partitura" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>
@@ -406,7 +406,7 @@ const Score = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Partitura em meio eletrônico</h3>
+        <h2>Partitura em meio eletrônico</h2>
 
         <p>
           Em caso de partitura online, é obrigatório mencionar o endereço

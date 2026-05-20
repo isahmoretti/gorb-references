@@ -538,7 +538,7 @@ const Thesis = ({ back }) => {
           </span>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -589,7 +589,7 @@ const Thesis = ({ back }) => {
           width="100%"
         />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Para melhorar a identificação do documento, são usados os elementos
@@ -618,7 +618,7 @@ const Thesis = ({ back }) => {
           width="100%"
         />
 
-        <h3>Chamadas para citação</h3>
+        <h2>Chamadas para citação</h2>
 
         <p>
           Dentro da sentença, o sobrenome do autor tem apenas a inicial em

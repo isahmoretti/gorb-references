@@ -379,7 +379,7 @@ const ProvisionalMeasure = ({ back }) => {
           documentos jurídicos, logo no subitem "legislação".
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>
           A referência bibliográfica de medida provisória deve apresentar os
@@ -432,7 +432,7 @@ const ProvisionalMeasure = ({ back }) => {
           completar com reticências entre colchetes [...].
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="medida-provisoria" width="100%" />
 
@@ -455,7 +455,7 @@ const ProvisionalMeasure = ({ back }) => {
           </mark>
         </p>
 
-        <h3>O que fazer se a MP for consultada pela internet? </h3>
+        <h2>O que fazer se a MP for consultada pela internet? </h2>
 
         <p>
           Em caso de uma medida provisória consultada online, em fonte não

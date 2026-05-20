@@ -539,7 +539,7 @@ const Jurisprudence = ({ back }) => {
           indique o uso desse recurso com reticências entre colchetes.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -608,11 +608,11 @@ const Jurisprudence = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Exemplo</h3>
+        <h2>Exemplo</h2>
 
         <img src={Img} alt="jurisprudencia" width="100%" />
 
-        <h3>Jurisprudência em formato eletrônico</h3>
+        <h2>Jurisprudência em formato eletrônico</h2>
 
         <p>
           Quando uma Jurisprudência é consultada pela internet, é necessário
@@ -622,7 +622,7 @@ const Jurisprudence = ({ back }) => {
           sua numeração.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>

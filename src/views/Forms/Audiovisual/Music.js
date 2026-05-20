@@ -387,7 +387,7 @@ const Music = ({ back }) => {
           indicar que o documento se encontra dentro de um álbum.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -440,7 +440,7 @@ const Music = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -451,7 +451,7 @@ const Music = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos aplicando o formato</h3>
+        <h2>Exemplos aplicando o formato</h2>
 
         <img src={Img} alt="musica" width="100%" />
 
@@ -471,7 +471,7 @@ const Music = ({ back }) => {
           </mark>
         </p>
 
-        <h3>E se a música for online?</h3>
+        <h2>E se a música for online?</h2>
 
         <p>
           No caso de um documento acessado pela internet, é necessário incluir a
@@ -490,7 +490,7 @@ const Music = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Como fazer referência de álbum completo?</h3>
+        <h2>Como fazer referência de álbum completo?</h2>
 
         <p>
           Na seção “Documento sonoro no todo”, a ABNT ensina como fazer

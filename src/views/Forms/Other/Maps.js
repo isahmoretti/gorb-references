@@ -533,7 +533,7 @@ const Maps = ({ back }) => {
           importante observar o tipo de autor para não errar.
         </p>
 
-        <h3>Elementos</h3>
+        <h2>Elementos</h2>
 
         <p>Os elementos essenciais são:</p>
 
@@ -560,7 +560,7 @@ const Maps = ({ back }) => {
           documento.
         </p>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>
           <mark>
@@ -569,7 +569,7 @@ const Maps = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Tipo de autor &gt;&gt; pessoa física</h3>
+        <h2>Tipo de autor &gt;&gt; pessoa física</h2>
 
         <p>
           Quando o mapa é elaborado por pessoa física, a referência é iniciada
@@ -585,7 +585,7 @@ const Maps = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Tipo de autor &gt;&gt; entidade coletiva</h3>
+        <h2>Tipo de autor &gt;&gt; entidade coletiva</h2>
 
         <p>
           Os mapas geralmente são produzidos por entidades coletivas, como
@@ -594,7 +594,7 @@ const Maps = ({ back }) => {
           destaque no título do mapa.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -610,7 +610,7 @@ const Maps = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Tipo de autor &gt;&gt; sem autoria</h3>
+        <h2>Tipo de autor &gt;&gt; sem autoria</h2>
 
         <p>
           Quando não há uma autoria declarada no documento cartográfico, a
@@ -618,7 +618,7 @@ const Maps = ({ back }) => {
           escrita com LETRAS MAIÚSCULAS. Não há negrito.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -630,7 +630,7 @@ const Maps = ({ back }) => {
 
         <img src={Img} alt="mapas" width="100%" />
 
-        <h3>Mapa consultado em meio eletrônico</h3>
+        <h2>Mapa consultado em meio eletrônico</h2>
 
         <p>
           Quando o mapa é consultado em meio eletrônico, deve-se fazer a
@@ -643,7 +643,7 @@ const Maps = ({ back }) => {
           disponibilidade e acesso.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>

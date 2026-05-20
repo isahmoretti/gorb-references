@@ -529,7 +529,7 @@ const Dissertation = ({ back }) => {
           citados para melhorar o embasamento teórico da sua pesquisa.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -588,7 +588,7 @@ const Dissertation = ({ back }) => {
           width="100%"
         />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           A identificação do documento fica mais completa com os elementos
@@ -617,7 +617,7 @@ const Dissertation = ({ back }) => {
           width="100%"
         />
 
-        <h3>Chamadas para citação</h3>
+        <h2>Chamadas para citação</h2>
 
         <p>
           Em citações diretas e indiretas, é fundamental mencionar a fonte. Isso

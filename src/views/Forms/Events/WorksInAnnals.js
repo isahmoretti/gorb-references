@@ -565,7 +565,7 @@ const WorksInAnnals = ({ back }) => {
           para não errar na formatação da referência bibliográfica.
         </p>
 
-        <h3>O que são os trabalhos em anais?</h3>
+        <h2>O que são os trabalhos em anais?</h2>
 
         <p>
           Anais são coleções de trabalhos acadêmicos publicados no contexto de
@@ -611,7 +611,7 @@ const WorksInAnnals = ({ back }) => {
           </a>
         </p>
 
-        <h3>O que diz a ABNT sobre referência de trabalhos em anais?</h3>
+        <h2>O que diz a ABNT sobre referência de trabalhos em anais?</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Autoria do trabalho: SOBRENOME e prenome do autor </li>
@@ -643,7 +643,7 @@ const WorksInAnnals = ({ back }) => {
           já foi mencionado na referência.
         </p>
 
-        <h3>E no caso de anais consultados online?</h3>
+        <h2>E no caso de anais consultados online?</h2>
 
         <p>
           A maioria dos trabalhos em anais é consultada de forma online. Se esse
@@ -653,7 +653,7 @@ const WorksInAnnals = ({ back }) => {
           "Acesso em".
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="evento-anais" width="100%" />
 

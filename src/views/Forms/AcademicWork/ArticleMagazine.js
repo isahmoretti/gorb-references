@@ -537,7 +537,7 @@ const ArticleMagazine = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -578,7 +578,7 @@ const ArticleMagazine = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -593,7 +593,7 @@ const ArticleMagazine = ({ back }) => {
 
         <img src={artigoRevista} alt="artigo-revista" width="100%" />
 
-        <h3>E no caso de um artigo de revista online?</h3>
+        <h2>E no caso de um artigo de revista online?</h2>
 
         <p>
           Nesse tipo de situação, não é preciso incluir informações de edição,
@@ -611,7 +611,7 @@ const ArticleMagazine = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Como é feita a citação de revista no corpo do texto?</h3>
+        <h2>Como é feita a citação de revista no corpo do texto?</h2>
 
         <p>
           Quando há o nome do autor do artigo, o sistema de citação autor-data é
@@ -626,7 +626,7 @@ const ArticleMagazine = ({ back }) => {
           <mark>Trecho citado… (PETRY, 2015)</mark>
         </p>
 
-        <h3>Na referência:</h3>
+        <h2>Na referência:</h2>
 
         <p>
           <mark>
@@ -640,20 +640,20 @@ const ArticleMagazine = ({ back }) => {
           da referência.
         </p>
 
-        <h3>Citação de matéria sem autoria</h3>
+        <h2>Citação de matéria sem autoria</h2>
 
         <p>
           No caso de uma matéria sem autoria, a fonte é indicada pelo início do
           título.
         </p>
 
-        <h3>Exemplo de citação:</h3>
+        <h2>Exemplo de citação:</h2>
 
         <p>
           <mark>(A POLÊMICA..., 2006, p. 17)</mark>
         </p>
 
-        <h3>Na referência:</h3>
+        <h2>Na referência:</h2>
 
         <p>
           <mark>

@@ -461,7 +461,7 @@ const AdministrativeActs = ({ back }) => {
           pelo ministro de estado.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -502,7 +502,7 @@ const AdministrativeActs = ({ back }) => {
           como elementos complementares na referência.
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="atos-administrativos" width="100%" />
 
@@ -524,7 +524,7 @@ const AdministrativeActs = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Ato administrativo consultado em meio eletrônico</h3>
+        <h2>Ato administrativo consultado em meio eletrônico</h2>
 
         <p>
           <mark>

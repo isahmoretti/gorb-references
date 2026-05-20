@@ -516,7 +516,7 @@ const ArticleNewspaper = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>Em um jornal impresso, os elementos essenciais são:</p>
 
@@ -572,7 +572,7 @@ const ArticleNewspaper = ({ back }) => {
           palavra deve ser inserida com letras maiúsculas.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -582,7 +582,7 @@ const ArticleNewspaper = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Como fazer referência de jornal online?</h3>
+        <h2>Como fazer referência de jornal online?</h2>
 
         <p>
           Quando uma matéria de jornal é consultada pela internet, é necessário
@@ -591,7 +591,7 @@ const ArticleNewspaper = ({ back }) => {
           pois se trata de um documento online.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>

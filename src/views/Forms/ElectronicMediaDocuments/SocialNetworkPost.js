@@ -332,7 +332,7 @@ const SocialNetworkPost = ({ back }) => {
           humanas.
         </p>
 
-        <h3>Elementos para referência de postagem em rede social</h3>
+        <h2>Elementos para referência de postagem em rede social</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -375,7 +375,7 @@ const SocialNetworkPost = ({ back }) => {
           fica longa demais.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -385,7 +385,7 @@ const SocialNetworkPost = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <img src={Img} alt="post-rede-social" width="100%" />
 

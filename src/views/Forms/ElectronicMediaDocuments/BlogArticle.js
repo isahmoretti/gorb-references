@@ -389,7 +389,7 @@ const BlogArticle = ({ back }) => {
           (;).
         </p>
 
-        <h3>Elementos</h3>
+        <h2>Elementos</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -440,7 +440,7 @@ const BlogArticle = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -451,7 +451,7 @@ const BlogArticle = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>
           <mark>
@@ -479,7 +479,7 @@ const BlogArticle = ({ back }) => {
 
         <img src={Img} alt="artigo-blog" width="100%" />
 
-        <h3>E quando o autor do artigo de blog é uma entidade?</h3>
+        <h2>E quando o autor do artigo de blog é uma entidade?</h2>
 
         <p>
           O GORB só gera referência de artigo de blog com autor pessoa física.

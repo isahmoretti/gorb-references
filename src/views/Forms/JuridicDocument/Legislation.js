@@ -449,7 +449,7 @@ const Legislation = ({ back }) => {
           entre colchetes [...].
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -498,7 +498,7 @@ const Legislation = ({ back }) => {
 
         <img src={Img2} alt="elementos-essenciais" width="100%" />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Notas (informações complementares) </li>
@@ -523,7 +523,7 @@ const Legislation = ({ back }) => {
           ano.
         </p>
 
-        <h3>Exemplos aplicando o formato</h3>
+        <h2>Exemplos aplicando o formato</h2>
 
         <p>
           <mark>
@@ -551,14 +551,14 @@ const Legislation = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Legislação consultada em meio eletrônico</h3>
+        <h2>Legislação consultada em meio eletrônico</h2>
 
         <p>
           Quando a legislação for consultada pela internet, é fundamental
           indicar o endereço eletrônico e a data de acesso.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -574,7 +574,7 @@ const Legislation = ({ back }) => {
           DVD ou disquete, é importante mencionar essa informação na referência.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -585,7 +585,7 @@ const Legislation = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citação</h3>
+        <h2>Chamadas para citação</h2>
 
         <p>
           A chamada para citação inicia-se com a palavra de entrada na
@@ -593,7 +593,7 @@ const Legislation = ({ back }) => {
           autor-data.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>(BRASIL, 2002, p. 40)</mark>

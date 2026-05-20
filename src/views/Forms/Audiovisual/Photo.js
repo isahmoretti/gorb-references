@@ -278,7 +278,7 @@ const Photo = ({ back }) => {
           digitais.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>
           De acordo com a NBR 6023: 2018, os elementos essenciais para
@@ -308,13 +308,13 @@ const Photo = ({ back }) => {
           dimensões (largura x altura pixels ou cm) e cor (colorido ou preto e
           branco) são exemplos.
         </p>
-        <h3>E quando a fotografia for online?</h3>
+        <h2>E quando a fotografia for online?</h2>
         <p>
           Quando uma fotografia é consultada pela internet, é necessário
           especificar a URL, precedida da expressão "Disponível em". Em seguida,
           a data de acesso deve ser mencionada, precedida de "Acesso em".
         </p>
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
         <p>
           <mark>
             SOBRENOME, Nome do fotógrafo. <b>Título da fotografia.</b> Data de
@@ -322,7 +322,7 @@ const Photo = ({ back }) => {
             Disponível em: URL. Acesso em: dia, mês e ano.
           </mark>
         </p>
-        <h3>Exemplos aplicando o formato</h3>
+        <h2>Exemplos aplicando o formato</h2>
         <img src={Img} alt="fotografia" width="100%" />
         <p>
           <mark>

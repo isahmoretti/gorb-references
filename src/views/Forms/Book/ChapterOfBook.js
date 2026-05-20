@@ -877,9 +877,9 @@ const Book = ({ back }) => {
           informações que identificam a obra em sua totalidade.
         </p>
 
-        <h3>Como fazer referência de capítulo de livro?</h3>
+        <h2>Como fazer referência de capítulo de livro?</h2>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>Na referência de capítulo de livro, os elementos essenciais são:</p>
 
@@ -944,9 +944,9 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>
+        <h2>
           Exemplo de referência de capítulo de livro (elementos essenciais)
-        </h3>
+        </h2>
 
         <img
           src={elementosEssenciais}
@@ -954,7 +954,7 @@ const Book = ({ back }) => {
           width="100%"
         />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Para melhorar a identificação do documento, os elementos
@@ -987,9 +987,9 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência de capítulo de livro (elementos complementares)
-        </h3>
+        </h2>
 
         <img
           src={elementosComplementares}
@@ -1007,7 +1007,7 @@ const Book = ({ back }) => {
           informações sobre disponibilidade e acesso no final da referência.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>
@@ -1021,7 +1021,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <img src={chamadasCitacao} alt="chamada-citacai" width="100%" />
 
@@ -1030,7 +1030,7 @@ const Book = ({ back }) => {
           pensamento se encontra é recomendado.
         </p>
 
-        <h3>Exemplo:</h3>
+        <h2>Exemplo:</h2>
 
         <p>
           <mark>Recuero (2016, p. 54) trecho citado [...]</mark>

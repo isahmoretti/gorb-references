@@ -619,7 +619,7 @@ const Book = ({ back }) => {
           adicionados melhoram a identificação do documento.
         </p>
 
-        <h3>Elementos essenciais para referência de livro</h3>
+        <h2>Elementos essenciais para referência de livro</h2>
 
         <p>
           Na referência de livro com um autor, os elementos obrigatórios são:
@@ -668,7 +668,7 @@ const Book = ({ back }) => {
 
         <img src={Essenciais} alt="elementos-essenciais" width="100%" />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -718,7 +718,7 @@ const Book = ({ back }) => {
 
         <img src={AcceosEm} alt="acessoem" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>
@@ -741,7 +741,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <p>
           Ao escrever o texto acadêmico, é necessário se preocupar com o uso das
@@ -764,7 +764,7 @@ const Book = ({ back }) => {
 
         <img src={Sobrenome} alt="sobrenome" width="100%" />
 
-        <h3>Número da página na citação</h3>
+        <h2>Número da página na citação</h2>
 
         <p>
           O número da página onde se encontra o trecho consultado pode ser

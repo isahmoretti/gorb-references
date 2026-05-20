@@ -296,7 +296,7 @@ const Email = ({ back }) => {
           sobrenome, em letras maiúsculas, seguido do prenome.
         </p>
 
-        <h3>Elementos importantes para referência de e-mail</h3>
+        <h2>Elementos importantes para referência de e-mail</h2>
 
         <p>
           Para referenciar correspondência via e-mail, os elementos essenciais
@@ -343,7 +343,7 @@ const Email = ({ back }) => {
           colchetes [ ].
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -353,7 +353,7 @@ const Email = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplo com autor entidade</h3>
+        <h2>Exemplo com autor entidade</h2>
 
         <p>
           <mark>
@@ -364,7 +364,7 @@ const Email = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplo com autor pessoa física</h3>
+        <h2>Exemplo com autor pessoa física</h2>
 
         <p>
           <mark>
@@ -375,7 +375,7 @@ const Email = ({ back }) => {
 
         <img src={Img} alt="email" width="100%" />
 
-        <h3>Como fica a referência em caso de bilhete, carta ou cartão?</h3>
+        <h2>Como fica a referência em caso de bilhete, carta ou cartão?</h2>
 
         <p>
           Correspondências que não são eletrônicas possuem uma formatação
@@ -384,7 +384,7 @@ const Email = ({ back }) => {
           do suporte.
         </p>
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>
           <mark>

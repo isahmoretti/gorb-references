@@ -259,7 +259,7 @@ const ObjectThree = ({ back }) => {
           bibliográficas.
         </p>
 
-        <h3>O que são documentos tridimensionais?</h3>
+        <h2>O que são documentos tridimensionais?</h2>
 
         <p>
           Na área de Artes, é muito comum consultar monumentos e esculturas. Em
@@ -273,7 +273,7 @@ const ObjectThree = ({ back }) => {
           documentos tridimensionais na NBR 6023.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Autor: SOBRENOME e nome do criador; </li>
@@ -299,7 +299,7 @@ const ObjectThree = ({ back }) => {
           coleção que pertence o objeto ou o seu título original.
         </p>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>
           <mark>
@@ -311,7 +311,7 @@ const ObjectThree = ({ back }) => {
 
         <img src={Img} alt="tridimensional" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>

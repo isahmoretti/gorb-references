@@ -682,9 +682,9 @@ const Book = ({ back }) => {
           por ponto-vírgula [;].
         </p>
 
-        <h3>Como referenciar livro com dois ou três autores?</h3>
+        <h2>Como referenciar livro com dois ou três autores?</h2>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <p>
           Na referência de livro com dois ou três autores, os elementos
@@ -735,15 +735,15 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplo de referência com dois autores (elementos essenciais)</h3>
+        <h2>Exemplo de referência com dois autores (elementos essenciais)</h2>
 
         <img src={essenciais2} alt="elementos-essenciais" width="100%" />
 
-        <h3>Exemplo de referência com três autores (elementos essenciais)</h3>
+        <h2>Exemplo de referência com três autores (elementos essenciais)</h2>
 
         <img src={essenciais3} alt="elementos-essenciais" width="100%" />
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Os elementos complementares podem ser inseridos com o objetivo de
@@ -781,9 +781,9 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <h3>
+        <h2>
           Exemplo de referência com dois autores (elementos complementares)
-        </h3>
+        </h2>
 
         <img
           src={complementares2}
@@ -791,9 +791,9 @@ const Book = ({ back }) => {
           width="100%"
         />
 
-        <h3>
+        <h2>
           Exemplo de referência com três autores (elementos complementares)
-        </h3>
+        </h2>
 
         <img
           src={complementares3}
@@ -819,7 +819,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Chamadas para citações</h3>
+        <h2>Chamadas para citações</h2>
 
         <p>
           Segundo a ABNT, quando a obra tem até três autores, todos os
@@ -843,7 +843,7 @@ const Book = ({ back }) => {
           ano, de forma abreviada.
         </p>
 
-        <h3>Dois autores:</h3>
+        <h2>Dois autores:</h2>
 
         <p>
           <mark>Berger e Luckmann (2007, p. 66) trecho citado [...]</mark>
@@ -853,7 +853,7 @@ const Book = ({ back }) => {
           <mark>[...] trecho citado (BERGER; LUCKMANN, 2007, p. 18).</mark>
         </p>
 
-        <h3>Três autores:</h3>
+        <h2>Três autores:</h2>
 
         <p>
           <mark>

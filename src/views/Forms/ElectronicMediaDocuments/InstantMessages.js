@@ -263,7 +263,7 @@ const InstantMessages = ({ back }) => {
           aplicativos como WhatsApp e Telegram.
         </p>
 
-        <h3>Elementos que compõem a referência</h3>
+        <h2>Elementos que compõem a referência</h2>
         <ul style={{ marginLeft: 15 }}>
           <li>
             {" "}
@@ -301,7 +301,7 @@ const InstantMessages = ({ back }) => {
           item 8.2.7, da NBR 6023. Essa seção recomenda atribuir uma palavra ou
           frase que identifique o conteúdo do documento, entre colchetes.
         </p>
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
         <p>
           <mark>
             SOBRENOME, Nome do autor. <b>[Título da informação]</b>. Tipo de
@@ -309,7 +309,7 @@ const InstantMessages = ({ back }) => {
             Descrição do meio eletrônico.
           </mark>
         </p>
-        <h3>Exemplos aplicando o formato básico</h3>
+        <h2>Exemplos aplicando o formato básico</h2>
         <img src={Img} alt="mensagem-instatanea" width="100%" />
 
         <p>
@@ -338,7 +338,7 @@ const InstantMessages = ({ back }) => {
           </mark>
         </p>
 
-        <h3>E se a mensagem for enviada por uma entidade coletiva?</h3>
+        <h2>E se a mensagem for enviada por uma entidade coletiva?</h2>
 
         <p>
           Quando a mensagem é encaminhada por uma empresa, associação ou órgão

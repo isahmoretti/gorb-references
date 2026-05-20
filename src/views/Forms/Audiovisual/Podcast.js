@@ -325,7 +325,7 @@ const Podcast = ({ back }) => {
           de pesquisa para o seu trabalho acadêmico.
         </p>
 
-        <h3>Elementos essenciais para referência de podcast</h3>
+        <h2>Elementos essenciais para referência de podcast</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -376,7 +376,7 @@ const Podcast = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Recomendações</h3>
+        <h2>Recomendações</h2>
 
         <p>
           A referência bibliográfica de podcast começa com o título do áudio,
@@ -395,7 +395,7 @@ const Podcast = ({ back }) => {
           acesso.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           No esquema abaixo, você pode ver com detalhes a ordem dos elementos e
@@ -412,7 +412,7 @@ const Podcast = ({ back }) => {
 
         <img src={Img} alt="podcast" width="100%" />
 
-        <h3>Exemplos</h3>
+        <h2>Exemplos</h2>
 
         <p>
           <mark>

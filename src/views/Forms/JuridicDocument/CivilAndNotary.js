@@ -247,7 +247,7 @@ const CivilAndNotary = ({ back }) => {
           militar, entre outros.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li>
@@ -280,7 +280,7 @@ const CivilAndNotary = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Exemplos aplicando o formato</h3>
+        <h2>Exemplos aplicando o formato</h2>
 
         <img src={Img2} alt="elementos-essenciais" width="100%" />
 
@@ -304,7 +304,7 @@ const CivilAndNotary = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Elementos complementares</h3>
+        <h2>Elementos complementares</h2>
 
         <p>
           Elementos complementares podem ser incluídos na referência como uma
@@ -327,7 +327,7 @@ const CivilAndNotary = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Exemplo com elementos complementares</h3>
+        <h2>Exemplo com elementos complementares</h2>
 
         <p>
           <mark>

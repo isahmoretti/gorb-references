@@ -566,7 +566,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           periódica".
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
         <p>
           A identificação de trabalhos de eventos publicados em revistas
           científicas requer elementos essenciais:
@@ -593,7 +593,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           local do evento.
         </p>
 
-        <h3>Título da revista e edição</h3>
+        <h2>Título da revista e edição</h2>
 
         <p>
           O título da revista científica pode ser abreviado, desde que respeite
@@ -622,7 +622,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           <li> 15th ed. </li>
         </ul>
 
-        <h3>Data de publicação</h3>
+        <h2>Data de publicação</h2>
 
         <p>
           Os periódicos científicos podem ser publicados mensalmente,
@@ -634,7 +634,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           com uma barra oblíqua. Exemplo: set./dez 2020.
         </p>
 
-        <h3>Disponibilidade e acesso</h3>
+        <h2>Disponibilidade e acesso</h2>
 
         <p>
           Em caso de documentos consultados online, é necessário incluir o
@@ -652,7 +652,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           descrição do meio físico no final da referência.
         </p>
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>

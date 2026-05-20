@@ -362,7 +362,7 @@ const TechnicalStandards = ({ back }) => {
           mundial com sede em Genebra que cuida da padronização e procedimentos.
         </p>
 
-        <h3>Elementos essenciais</h3>
+        <h2>Elementos essenciais</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Organização: nome da entidade responsável (por extenso); </li>
@@ -377,7 +377,7 @@ const TechnicalStandards = ({ back }) => {
           </li>
         </ul>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>A ordem dos elementos segue a estrutura abaixo:</p>
 
@@ -390,7 +390,7 @@ const TechnicalStandards = ({ back }) => {
 
         <img src={Img} alt="norma-tecnica" width="100%" />
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <p>
           <mark>
@@ -411,7 +411,7 @@ const TechnicalStandards = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Acesso em meio eletrônico</h3>
+        <h2>Acesso em meio eletrônico</h2>
 
         <p>
           O documento de uma norma técnica pode ser consultado pela internet.

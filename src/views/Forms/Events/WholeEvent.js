@@ -470,7 +470,7 @@ const WholeEvent = ({ back }) => {
           documento, constituído de uma parte só, foi consultado por completo.
         </p>
 
-        <h3>Elementos para referenciar evento no todo</h3>
+        <h2>Elementos para referenciar evento no todo</h2>
 
         <ul style={{ marginLeft: 15 }}>
           <li> Nome do evento principal </li>
@@ -492,7 +492,7 @@ const WholeEvent = ({ back }) => {
           obrigatórios.
         </p>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -517,7 +517,7 @@ const WholeEvent = ({ back }) => {
 
         <img src={Img} alt="evento-todo" width="100%" />
 
-        <h3>Exemplos aplicando o formato básico</h3>
+        <h2>Exemplos aplicando o formato básico</h2>
 
         <p>
           <mark>

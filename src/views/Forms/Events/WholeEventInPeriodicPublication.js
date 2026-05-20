@@ -476,7 +476,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           pelo fato de conter informações da publicação periódica. Aliás, o
           destaque em negrito deve ser aplicado no título da revista.
         </p>
-        <h3>Elementos para referenciar evento no todo em periódico</h3>
+        <h2>Elementos para referenciar evento no todo em periódico</h2>
         <p>
           Os elementos obrigatórios são: nome do evento, numeração, ano, local
           de realização, tipo de documento e dados do periódico. Você pode
@@ -499,7 +499,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           <li> Tema </li>
         </ul>
 
-        <h3>Formato básico</h3>
+        <h2>Formato básico</h2>
 
         <p>
           <mark>
@@ -522,7 +522,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
 
         <img src={Img} alt="evento-todo-periodico" width="100%" />
 
-        <h3>O que significa Suplemento?</h3>
+        <h2>O que significa Suplemento?</h2>
 
         <p>
           No exemplo da imagem, temos a palavra Suplemento como parte da
@@ -530,7 +530,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           adicionado a outro, com relação exclusiva de editorial.1
         </p>
 
-        <h3>Mais exemplos aplicando o formato básico</h3>
+        <h2>Mais exemplos aplicando o formato básico</h2>
 
         <p>
           <mark>

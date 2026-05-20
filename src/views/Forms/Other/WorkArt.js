@@ -211,7 +211,7 @@ const WorkArt = ({ back }) => {
           colchetes: <b>[Sem título]</b>.
         </p>
 
-        <h3>Elementos</h3>
+        <h2>Elementos</h2>
 
         <p>Os elementos essenciais são:</p>
 
@@ -230,7 +230,7 @@ const WorkArt = ({ back }) => {
           museu/galeria.
         </p>
 
-        <h3>Estrutura</h3>
+        <h2>Estrutura</h2>
 
         <p>
           <mark>
@@ -239,7 +239,7 @@ const WorkArt = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Mais exemplos</h3>
+        <h2>Mais exemplos</h2>
 
         <img src={Img} alt="trabalho-arte" width="100%" />
 
@@ -257,7 +257,7 @@ const WorkArt = ({ back }) => {
           </mark>
         </p>
 
-        <h3>Citação de obra de arte</h3>
+        <h2>Citação de obra de arte</h2>
 
         <p>
           A ABNT adota o sistema autor-data para normalizar citações em
