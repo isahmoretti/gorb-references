@@ -6,7 +6,6 @@ import ReactHtmlParser from "react-html-parser";
 // components
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import GoogleAds from "../../../components/GoogleAds";
 
 // service
 import api from "../../../service/api";

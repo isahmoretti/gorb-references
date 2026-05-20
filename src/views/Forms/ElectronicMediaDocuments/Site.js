@@ -13,7 +13,6 @@ import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -91,9 +90,6 @@ const Site = ({ back }) => {
   return (
     <>
       <Nav />
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <Container>
         <Back
           onClick={() => history.push("/documentos-de-meio-eletronico")}
@@ -284,9 +280,6 @@ const Site = ({ back }) => {
           )}
         </Formik>
       </Container>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -433,9 +426,6 @@ const Site = ({ back }) => {
           símbolos &lt; &gt; para apresentar os links. Contudo, agora não é mais
           necessário.
         </p>
-      </div>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>

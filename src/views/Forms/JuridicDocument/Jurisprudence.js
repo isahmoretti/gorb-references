@@ -14,7 +14,6 @@ import Select from "../../../components/InputWrapper/Select";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -123,9 +122,6 @@ const Jurisprudence = ({ back }) => {
   return (
     <>
       <Nav />
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <Container>
         <Back
           onClick={() => history.push("/documentos-juridicos-e-civis")}
@@ -513,9 +509,6 @@ const Jurisprudence = ({ back }) => {
           )}
         </Formik>
       </Container>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -641,9 +634,6 @@ const Jurisprudence = ({ back }) => {
             =&l=10&i=340#TIT333TEMA0. Acesso em: 24 ago 2020.
           </mark>
         </p>
-      </div>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>

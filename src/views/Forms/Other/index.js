@@ -16,7 +16,6 @@ import ArrowLeft from "../../../assets/images/arrow-left.svg";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import GoogleAds from "../../../components/GoogleAds";
 
 const Events = ({ back }) => {
   const history = useHistory();

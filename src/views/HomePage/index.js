@@ -15,7 +15,6 @@ import linkedin from "../../assets/images/linkedin.svg";
 import share from "../../assets/images/compartilhar.svg";
 
 // components
-import GoogleAds from "../../components/GoogleAds";
 import Footer from "../../components/Footer";
 
 import {

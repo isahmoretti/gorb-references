@@ -14,7 +14,6 @@ import Button from "../../../components/Buttons";
 import Modal from "../../../components/Modal";
 import Nav from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import GoogleAds from "../../../components/GoogleAds";
 
 // utils
 import { formatDate } from "../../../utils/formatDate";
@@ -84,9 +83,6 @@ const Photo = ({ back }) => {
   return (
     <>
       <Nav />
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <Container>
         <Back
           onClick={() => history.push("/documentos-audiovisuais")}
@@ -268,9 +264,6 @@ const Photo = ({ back }) => {
           )}
         </Formik>
       </Container>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="9633279412" width={728} height={90} />
-      </div>
       <div
         className="container"
         style={{ paddingBottom: "40px", maxWidth: 830 }}
@@ -378,9 +371,6 @@ const Photo = ({ back }) => {
           técnicos. Você pode usar o mesmo formulário para gerar as referências
           destes documentos, basta especificar o suporte.
         </p>
-      </div>
-      <div className="container" style={{ marginTop: 50, marginBottom: 50 }}>
-        <GoogleAds slot="6358812024" width={728} height={250} />
       </div>
       <Footer />
     </>
