@@ -59,6 +59,7 @@ const FooterComponent = () => {
           <Logo src={logo_viacarreira} />
           <FooterNav aria-label="Links do rodapé">
             <MobileFooterLink to="/sobre">Sobre</MobileFooterLink>
+            <MobileFooterLink to="/politica-de-privacidade">Privacidade</MobileFooterLink>
           </FooterNav>
           <TitleReservation>
             {" "}
@@ -80,6 +81,7 @@ const FooterComponent = () => {
             </ContentDesktopFooter>
             <FooterNav aria-label="Links do rodapé">
               <FooterLink to="/sobre">Sobre</FooterLink>
+              <FooterLink to="/politica-de-privacidade">Política de Privacidade</FooterLink>
             </FooterNav>
           </BoxDesktopFooter>
         </ContainerDesktopFooter>
