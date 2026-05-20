@@ -96,7 +96,7 @@ export const Back = styled.img`
   transition: color 0.3s;
 `;
 
-export const Title = styled.span`
+export const Title = styled.h1`
   width: 209px;
 
   font-size: 20px;
@@ -348,7 +348,7 @@ export const HeaderTitle = styled.div`
   text-align: center;
 `;
 
-export const TitleMobile = styled.span`
+export const TitleMobile = styled.h1`
   width: 100%;
   font-size: 30px;
   font-weight: bold;
