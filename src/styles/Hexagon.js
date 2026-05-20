@@ -131,15 +131,16 @@ export const Hexagon = styled.div`
   justify-content: center;
 
   color: #fff;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
   text-align: center;
-
-  /* margin: 80px 45px; */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 
   cursor: pointer;
-  transition: opacity 0.2s;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 
   ::before {
     content: "";
@@ -169,8 +170,6 @@ export const Hexagon = styled.div`
     width: 95px;
     height: 59px;
 
-    /* margin: 80px 20px; */
-
     ::before {
       border-left: 49px solid transparent;
       border-right: 47px solid transparent;
@@ -186,60 +185,62 @@ export const Hexagon = styled.div`
     }
 
     > p {
-      font-size: 9px;
+      font-size: 11px;
+      line-height: 1.3;
     }
   }
 
   :hover {
-    opacity: 0.6;
+    filter: brightness(1.15);
+    transform: translateY(-4px);
   }
 
   &.blue {
-    background: #1e90ff;
+    background: #2563eb;
   }
   &.blue::before {
-    border-bottom-color: #1e90ff;
+    border-bottom-color: #2563eb;
   }
   &.blue::after {
-    border-top-color: #1e90ff;
+    border-top-color: #2563eb;
   }
 
   &.green {
-    background: #228b22;
+    background: #16a34a;
   }
   &.green::before {
-    border-bottom-color: #228b22;
+    border-bottom-color: #16a34a;
   }
   &.green::after {
-    border-top-color: #228b22;
+    border-top-color: #16a34a;
   }
 
   &.yellow {
-    background: #daa520;
+    background: #d97706;
   }
   &.yellow::before {
-    border-bottom-color: #daa520;
+    border-bottom-color: #d97706;
   }
   &.yellow::after {
-    border-top-color: #daa520;
+    border-top-color: #d97706;
   }
 
   &.blue-dark {
-    background: #191970;
+    background: #3730a3;
 
     @media (max-width: 1024px) {
       margin-left: unset;
     }
   }
   &.blue-dark::before {
-    border-bottom-color: #191970;
+    border-bottom-color: #3730a3;
   }
   &.blue-dark::after {
-    border-top-color: #191970;
+    border-top-color: #3730a3;
   }
 
   &.blue-dark-left {
-    background: #191970;
+    background: #3730a3;
     margin-left: 203px;
 
     @media (max-width: 1024px) {
@@ -247,40 +248,40 @@ export const Hexagon = styled.div`
     }
   }
   &.blue-dark-left::before {
-    border-bottom-color: #191970;
+    border-bottom-color: #3730a3;
   }
   &.blue-dark-left::after {
-    border-top-color: #191970;
+    border-top-color: #3730a3;
   }
 
   &.violet {
-    background: #c71585;
+    background: #9333ea;
   }
   &.violet::before {
-    border-bottom-color: #c71585;
+    border-bottom-color: #9333ea;
   }
   &.violet::after {
-    border-top-color: #c71585;
+    border-top-color: #9333ea;
   }
 
   &.wine {
-    background: #800000;
+    background: #dc2626;
   }
   &.wine::before {
-    border-bottom-color: #800000;
+    border-bottom-color: #dc2626;
   }
   &.wine::after {
-    border-top-color: #800000;
+    border-top-color: #dc2626;
   }
 
   &.gray {
-    background: #585858;
+    background: #475569;
   }
   &.gray::before {
-    border-bottom-color: #585858;
+    border-bottom-color: #475569;
   }
   &.gray::after {
-    border-top-color: #585858;
+    border-top-color: #475569;
   }
 `;
 

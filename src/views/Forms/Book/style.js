@@ -146,12 +146,20 @@ export const Title = styled.div`
 
 export const TitleFromHexagon = styled.p`
   color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-align: center;
 
   &:after {
     content: ${(props) => `'${props.text}'`};
   }
 
   @media only screen and (max-width: 1024px) {
+    font-size: 11px;
+    line-height: 1.3;
+
     &:after {
       content: ${(props) => `'${props.mobileText}'`};
     }
