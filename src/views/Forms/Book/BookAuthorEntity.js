@@ -35,7 +35,6 @@ import elementosEssenciais from "../../../assets/images/explicativos/livro/entid
 
 // styles
 import {
-import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -49,6 +48,7 @@ import RelatedLinks from "../../../components/RelatedLinks";
   Title,
   Header,
 } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   entities: Yup.array().of(Yup.string().required("Obrigatório")),

@@ -31,7 +31,6 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-verb
 
 // styles
 import {
-import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -44,6 +43,7 @@ import RelatedLinks from "../../../components/RelatedLinks";
   Actions,
   Title,
 } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   // entryTitle: Yup.string().required("Obrigatório"),

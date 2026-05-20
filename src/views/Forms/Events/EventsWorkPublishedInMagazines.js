@@ -26,7 +26,6 @@ import Img from "../../../assets/images/explicativos/evento/referencia-abnt-trab
 
 // styles
 import {
-import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -39,6 +38,7 @@ import RelatedLinks from "../../../components/RelatedLinks";
   Actions,
   Title,
 } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   authors: Yup.array().of(Yup.string().required("Obrigatório")),

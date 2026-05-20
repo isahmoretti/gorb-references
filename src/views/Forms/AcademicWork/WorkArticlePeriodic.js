@@ -30,7 +30,6 @@ import elementoComplementares from "../../../assets/images/explicativos/academic
 
 // styles
 import {
-import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -43,6 +42,7 @@ import RelatedLinks from "../../../components/RelatedLinks";
   Actions,
   Title,
 } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   constructionNames: Yup.array().of(Yup.string().required("Obrigatório")),
