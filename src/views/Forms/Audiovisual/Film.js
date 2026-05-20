@@ -91,7 +91,9 @@ const generateReference = (values) => {
   );
 };
 
-const AdministrativeActs = ({ back }) => {
+const AdministrativeActs = ({
+  back }) => {
+  document.title = "Filme: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

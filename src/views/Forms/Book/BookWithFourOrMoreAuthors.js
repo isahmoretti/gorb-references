@@ -110,7 +110,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Book = ({ back }) => {
+const Book = ({
+  back }) => {
+  document.title = "Livro com Quatro Autores ou Mais: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

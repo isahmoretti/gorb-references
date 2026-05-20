@@ -102,7 +102,9 @@ const generateReference = (values) => {
   );
 };
 
-const Legislation = ({ back }) => {
+const Legislation = ({
+  back }) => {
+  document.title = "Legislação: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

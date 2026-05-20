@@ -67,7 +67,9 @@ const generateReference = (values) => {
   );
 };
 
-const Email = ({ back }) => {
+const Email = ({
+  back }) => {
+  document.title = "E-mail: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

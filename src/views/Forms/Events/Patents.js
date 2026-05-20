@@ -98,7 +98,9 @@ const generateReference = (values) => {
   );
 };
 
-const Patents = ({ back }) => {
+const Patents = ({
+  back }) => {
+  document.title = "Patente: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

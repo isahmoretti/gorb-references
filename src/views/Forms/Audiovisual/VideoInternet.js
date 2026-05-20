@@ -71,7 +71,9 @@ const generateReference = (values) => {
   );
 };
 
-const VideoInternet = ({ back }) => {
+const VideoInternet = ({
+  back }) => {
+  document.title = "Vídeo de Internet: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

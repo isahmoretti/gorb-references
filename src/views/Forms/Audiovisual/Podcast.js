@@ -75,7 +75,9 @@ const generateReference = (values) => {
   );
 };
 
-const Podcast = ({ back }) => {
+const Podcast = ({
+  back }) => {
+  document.title = "Podcast: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

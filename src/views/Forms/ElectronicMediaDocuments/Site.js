@@ -66,7 +66,9 @@ const generateReference = (values) => {
   );
 };
 
-const Site = ({ back }) => {
+const Site = ({
+  back }) => {
+  document.title = "Site: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

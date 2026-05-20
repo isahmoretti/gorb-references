@@ -243,7 +243,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Entry = ({ back }) => {
+const Entry = ({
+  back }) => {
+  document.title = "Verbete de Dicionário ou Enciclopédia: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

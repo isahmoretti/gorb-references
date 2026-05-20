@@ -87,7 +87,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const WholeEventInPeriodicPublication = ({ back }) => {
+const WholeEventInPeriodicPublication = ({
+  back }) => {
+  document.title = "Evento em Publicação Periódica: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

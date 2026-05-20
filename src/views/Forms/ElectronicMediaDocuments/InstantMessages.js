@@ -62,7 +62,9 @@ const generateReference = (values) => {
   );
 };
 
-const InstantMessages = ({ back }) => {
+const InstantMessages = ({
+  back }) => {
+  document.title = "Mensagens Instantâneas: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

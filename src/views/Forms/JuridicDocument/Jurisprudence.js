@@ -94,7 +94,9 @@ const generateReference = (values) => {
   );
 };
 
-const Jurisprudence = ({ back }) => {
+const Jurisprudence = ({
+  back }) => {
+  document.title = "Jurisprudência: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

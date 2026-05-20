@@ -108,7 +108,9 @@ const generateReference = (values) => {
   );
 };
 
-const AudioBook = ({ back }) => {
+const AudioBook = ({
+  back }) => {
+  document.title = "Audiolivro: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

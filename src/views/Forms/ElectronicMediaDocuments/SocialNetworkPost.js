@@ -70,7 +70,9 @@ const generateReference = (values) => {
   );
 };
 
-const SocialNetworkPost = ({ back }) => {
+const SocialNetworkPost = ({
+  back }) => {
+  document.title = "Postagem em Rede Social: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

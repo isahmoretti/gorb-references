@@ -90,7 +90,9 @@ const generateReference = (values) => {
   );
 };
 
-const AdministrativeActs = ({ back }) => {
+const AdministrativeActs = ({
+  back }) => {
+  document.title = "Atos Administrativos: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

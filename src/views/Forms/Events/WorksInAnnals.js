@@ -116,7 +116,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const WorksInAnnals = ({ back }) => {
+const WorksInAnnals = ({
+  back }) => {
+  document.title = "Trabalhos em Anais: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -148,7 +148,9 @@ const getTypeAuthor = (type) => {
   }
 };
 
-const Maps = ({ back }) => {
+const Maps = ({
+  back }) => {
+  document.title = "Mapa: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

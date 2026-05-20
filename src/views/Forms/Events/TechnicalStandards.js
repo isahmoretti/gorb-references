@@ -85,7 +85,9 @@ const generateCitationWithoutAuthor = (author, year) => {
     </>
   );
 };
-const TechnicalStandards = ({ back }) => {
+const TechnicalStandards = ({
+  back }) => {
+  document.title = "Normas Técnicas: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

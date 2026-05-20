@@ -128,7 +128,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Monography = ({ back }) => {
+const Monography = ({
+  back }) => {
+  document.title = "Monografia e TCC: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

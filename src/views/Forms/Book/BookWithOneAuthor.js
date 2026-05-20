@@ -112,7 +112,9 @@ const generateReference = (values) => {
   );
 };
 
-const Book = ({ back }) => {
+const Book = ({
+  back }) => {
+  document.title = "Livro com Um Autor: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

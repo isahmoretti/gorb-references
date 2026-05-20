@@ -48,7 +48,9 @@ const generateReference = (values) => {
   );
 };
 
-const WorkArt = ({ back }) => {
+const WorkArt = ({
+  back }) => {
+  document.title = "Obra de Arte: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

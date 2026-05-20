@@ -63,7 +63,9 @@ const generateReference = (values) => {
   );
 };
 
-const Photo = ({ back }) => {
+const Photo = ({
+  back }) => {
+  document.title = "Fotografia: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

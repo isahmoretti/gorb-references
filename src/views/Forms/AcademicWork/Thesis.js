@@ -106,7 +106,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Thesis = ({ back }) => {
+const Thesis = ({
+  back }) => {
+  document.title = "Tese: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

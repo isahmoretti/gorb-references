@@ -57,7 +57,9 @@ const generateReference = (values) => {
   );
 };
 
-const CivilAndNotary = ({ back }) => {
+const CivilAndNotary = ({
+  back }) => {
+  document.title = "Documentos Civis e de Cartório: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -68,7 +68,9 @@ const generateReference = (values) => {
   );
 };
 
-const BullMedicine = ({ back }) => {
+const BullMedicine = ({
+  back }) => {
+  document.title = "Bula de Remédio: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

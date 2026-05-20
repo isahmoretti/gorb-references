@@ -77,7 +77,9 @@ const generateReference = (values) => {
   );
 };
 
-const Music = ({ back }) => {
+const Music = ({
+  back }) => {
+  document.title = "Música: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

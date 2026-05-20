@@ -141,7 +141,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const Book = ({ back }) => {
+const Book = ({
+  back }) => {
+  document.title = "Capítulo de Livro: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

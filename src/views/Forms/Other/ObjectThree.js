@@ -58,7 +58,9 @@ const generateReference = (values) => {
   );
 };
 
-const ObjectThree = ({ back }) => {
+const ObjectThree = ({
+  back }) => {
+  document.title = "Documento Tridimensional: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

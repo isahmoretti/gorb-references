@@ -104,7 +104,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const EventsWorkPublishedInMagazines = ({ back }) => {
+const EventsWorkPublishedInMagazines = ({
+  back }) => {
+  document.title = "Trabalho de Evento em Revista: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

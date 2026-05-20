@@ -103,7 +103,9 @@ const generateCitationWithoutAuthor = (author, year) => {
   );
 };
 
-const WholeEvent = ({ back }) => {
+const WholeEvent = ({
+  back }) => {
+  document.title = "Evento no Todo: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

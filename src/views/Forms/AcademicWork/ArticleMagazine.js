@@ -110,7 +110,9 @@ const generateReference = (values) => {
     </span>
   );
 };
-const ArticleMagazine = ({ back }) => {
+const ArticleMagazine = ({
+  back }) => {
+  document.title = "Artigo de Revista: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

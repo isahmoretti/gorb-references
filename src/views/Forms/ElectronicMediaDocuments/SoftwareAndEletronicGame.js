@@ -79,7 +79,9 @@ const generateReference = (values) => {
   );
 };
 
-const SoftwareAndEletronicGame = ({ back }) => {
+const SoftwareAndEletronicGame = ({
+  back }) => {
+  document.title = "Software e Jogo Eletrônico: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

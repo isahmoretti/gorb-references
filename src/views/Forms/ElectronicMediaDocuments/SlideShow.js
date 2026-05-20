@@ -114,7 +114,9 @@ const generateReference = (values) => {
   );
 };
 
-const SlideShow = ({ back }) => {
+const SlideShow = ({
+  back }) => {
+  document.title = "Apresentação de Slides: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -84,7 +84,9 @@ const generateReference = (values) => {
   );
 };
 
-const Score = ({ back }) => {
+const Score = ({
+  back }) => {
+  document.title = "Partitura: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

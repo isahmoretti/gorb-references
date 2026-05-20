@@ -74,7 +74,9 @@ const generateReference = (values) => {
   );
 };
 
-const ProvisionalMeasure = ({ back }) => {
+const ProvisionalMeasure = ({
+  back }) => {
+  document.title = "Medida Provisória: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
