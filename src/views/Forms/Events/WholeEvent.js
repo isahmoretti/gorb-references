@@ -512,7 +512,7 @@ const WholeEvent = ({ back }) => {
           detalhes sobre o evento de participação, já o segundo não. Veja:
         </p>
 
-        <img src={Img} alt="evento-todo" width="100%" />
+        <img loading="lazy" src={Img} alt="evento-todo" width="100%" />
 
         <h2>Exemplos aplicando o formato básico</h2>
 

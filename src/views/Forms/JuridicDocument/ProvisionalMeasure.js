@@ -436,7 +436,7 @@ const ProvisionalMeasure = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img src={Img} alt="medida-provisoria" width="100%" />
+        <img loading="lazy" src={Img} alt="medida-provisoria" width="100%" />
 
         <p>
           <mark>

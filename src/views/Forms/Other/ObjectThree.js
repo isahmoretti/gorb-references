@@ -311,7 +311,7 @@ const ObjectThree = ({ back }) => {
           </mark>
         </p>
 
-        <img src={Img} alt="tridimensional" width="100%" />
+        <img loading="lazy" src={Img} alt="tridimensional" width="100%" />
 
         <h2>Mais exemplos</h2>
 

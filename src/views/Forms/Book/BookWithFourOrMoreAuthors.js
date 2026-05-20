@@ -489,7 +489,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -533,7 +533,7 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -594,7 +594,7 @@ const Book = ({ back }) => {
           <mark>Entrada na lista de referência: MARTINS, Eliseu et al.</mark>
         </p>
 
-        <img src={chamadasCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="chamada-citacao" width="100%" />
 
         <p>
           Incluir o número da página do livro de onde a citação foi extraída é

@@ -88,7 +88,7 @@ const VocationalTest = () => {
     <MainBackground>
       <div id="top"></div>
       <Header>
-        <img
+        <img loading="lazy"
           src={window.innerWidth < 600 ? imgHeaderMobile : imgHeaderDesktop}
           alt=""
           style={{

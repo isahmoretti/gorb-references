@@ -243,7 +243,7 @@ const WorkArt = ({ back }) => {
 
         <h2>Mais exemplos</h2>
 
-        <img src={Img} alt="trabalho-arte" width="100%" />
+        <img loading="lazy" src={Img} alt="trabalho-arte" width="100%" />
 
         <p>
           <mark>

@@ -522,7 +522,7 @@ const WholeEventInPeriodicPublication = ({ back }) => {
           referência de evento no todo em publicação periódica:
         </p>
 
-        <img src={Img} alt="evento-todo-periodico" width="100%" />
+        <img loading="lazy" src={Img} alt="evento-todo-periodico" width="100%" />
 
         <h2>O que significa Suplemento?</h2>
 

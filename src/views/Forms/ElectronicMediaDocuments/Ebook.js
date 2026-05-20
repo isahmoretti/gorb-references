@@ -617,7 +617,7 @@ const Ebook = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img src={Img} alt="ebbok" width="100%" />
+        <img loading="lazy" src={Img} alt="ebbok" width="100%" />
 
         <p>
           <mark>

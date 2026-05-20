@@ -612,7 +612,7 @@ const Jurisprudence = ({ back }) => {
 
         <h2>Exemplo</h2>
 
-        <img src={Img} alt="jurisprudencia" width="100%" />
+        <img loading="lazy" src={Img} alt="jurisprudencia" width="100%" />
 
         <h2>Jurisprudência em formato eletrônico</h2>
 

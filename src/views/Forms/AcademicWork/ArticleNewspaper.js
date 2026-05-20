@@ -566,7 +566,7 @@ const ArticleNewspaper = ({ back }) => {
           </li>
         </ul>
 
-        <img src={artigoJornal} alt="artigo-jornal" width="100%" />
+        <img loading="lazy" src={artigoJornal} alt="artigo-jornal" width="100%" />
 
         <p>
           Quando a matéria de um jornal tem autor desconhecido, a entrada da
@@ -606,7 +606,7 @@ const ArticleNewspaper = ({ back }) => {
 
         <p>A chamada da citação depende sempre da entrada na referência:</p>
 
-        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
       </div>
       <Footer />
     </>

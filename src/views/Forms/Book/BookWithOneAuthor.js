@@ -668,7 +668,7 @@ const Book = ({ back }) => {
           </mark>
         </p>
 
-        <img src={Essenciais} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={Essenciais} alt="elementos-essenciais" width="100%" />
 
         <h2>Elementos complementares</h2>
 
@@ -703,7 +703,7 @@ const Book = ({ back }) => {
           </li>
         </ul>
 
-        <img src={Complementares} alt="elementos-complementares" width="100%" />
+        <img loading="lazy" src={Complementares} alt="elementos-complementares" width="100%" />
 
         <p>
           Um livro com registro internacional (ISBN) transmite autoridade e
@@ -718,7 +718,7 @@ const Book = ({ back }) => {
           referência bibliográfica.
         </p>
 
-        <img src={AcceosEm} alt="acessoem" width="100%" />
+        <img loading="lazy" src={AcceosEm} alt="acessoem" width="100%" />
 
         <h2>Mais exemplos</h2>
 
@@ -756,7 +756,7 @@ const Book = ({ back }) => {
           em letras maiúsculas quando estiver entre parênteses.
         </p>
 
-        <img src={ChamadaCitacao} alt="chamada-citacoes" width="100%" />
+        <img loading="lazy" src={ChamadaCitacao} alt="chamada-citacoes" width="100%" />
 
         <p>
           Quando há coincidência de sobrenomes de autores diferentes e
@@ -764,7 +764,7 @@ const Book = ({ back }) => {
           diferenciação.
         </p>
 
-        <img src={Sobrenome} alt="sobrenome" width="100%" />
+        <img loading="lazy" src={Sobrenome} alt="sobrenome" width="100%" />
 
         <h2>Número da página na citação</h2>
 

@@ -577,7 +577,7 @@ const SlideShow = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img src={Img} alt="slides" width="100%" />
+        <img loading="lazy" src={Img} alt="slides" width="100%" />
 
         <p>
           <mark>

@@ -950,7 +950,7 @@ const Book = ({ back }) => {
           Exemplo de referência de capítulo de livro (elementos essenciais)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -993,7 +993,7 @@ const Book = ({ back }) => {
           Exemplo de referência de capítulo de livro (elementos complementares)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -1025,7 +1025,7 @@ const Book = ({ back }) => {
 
         <h2>Chamadas para citações</h2>
 
-        <img src={chamadasCitacao} alt="chamada-citacai" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="chamada-citacai" width="100%" />
 
         <p>
           Embora seja opcional, apresentar a página em que o trecho ou

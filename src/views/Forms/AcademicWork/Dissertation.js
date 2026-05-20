@@ -584,7 +584,7 @@ const Dissertation = ({ back }) => {
           depois do ano de defesa e antes de "Disponível em".
         </p>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -613,7 +613,7 @@ const Dissertation = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -634,7 +634,7 @@ const Dissertation = ({ back }) => {
           junto com a data.
         </p>
 
-        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
       </div>
       <Footer />
     </>

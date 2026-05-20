@@ -498,7 +498,7 @@ const Legislation = ({ back }) => {
           </li>
         </ul>
 
-        <img src={Img2} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={Img2} alt="elementos-essenciais" width="100%" />
 
         <h2>Elementos complementares</h2>
 
@@ -515,7 +515,7 @@ const Legislation = ({ back }) => {
           <li> Página Final </li>
         </ul>
 
-        <img src={Img1} alt="elementos-complementares" width="100%" />
+        <img loading="lazy" src={Img1} alt="elementos-complementares" width="100%" />
 
         <p>O formato básico:</p>
 

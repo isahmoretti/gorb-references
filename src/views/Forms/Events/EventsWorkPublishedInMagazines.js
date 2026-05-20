@@ -643,7 +643,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           "Disponível em:" e "Acesso em:", respectivamente.
         </p>
 
-        <img src={Img} alt="eventos-publicados-em-revista" width="100%" />
+        <img loading="lazy" src={Img} alt="eventos-publicados-em-revista" width="100%" />
 
         <p>
           Quando se diz "meio eletrônico", a internet não é a única opção. A

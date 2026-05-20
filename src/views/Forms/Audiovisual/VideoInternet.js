@@ -395,7 +395,7 @@ const VideoInternet = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img src={Img} alt="video-de-internet" width="100%" />
+        <img loading="lazy" src={Img} alt="video-de-internet" width="100%" />
 
         <p>
           <mark>

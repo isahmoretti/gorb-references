@@ -585,7 +585,7 @@ const Monography = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -614,7 +614,7 @@ const Monography = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -632,7 +632,7 @@ const Monography = ({ back }) => {
           parênteses, ao lado do ano.
         </p>
 
-        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
       </div>
       <Footer />
     </>

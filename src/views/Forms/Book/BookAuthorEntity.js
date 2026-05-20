@@ -729,7 +729,7 @@ const Book = ({ back }) => {
           Exemplo de referência de capítulo de livro (elementos essenciais)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -782,7 +782,7 @@ const Book = ({ back }) => {
           Exemplo de referência de capítulo de livro (elementos complementares)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -804,7 +804,7 @@ const Book = ({ back }) => {
           pelo ano.
         </p>
 
-        <img src={chamadasCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="chamada-citacao" width="100%" />
 
         <p>
           Existe a possibilidade de inserir a página onde se encontra a citação

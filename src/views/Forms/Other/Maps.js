@@ -630,7 +630,7 @@ const Maps = ({ back }) => {
           </mark>
         </p>
 
-        <img src={Img} alt="mapas" width="100%" />
+        <img loading="lazy" src={Img} alt="mapas" width="100%" />
 
         <h2>Mapa consultado em meio eletrônico</h2>
 

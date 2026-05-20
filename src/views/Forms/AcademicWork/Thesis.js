@@ -585,7 +585,7 @@ const Thesis = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -614,7 +614,7 @@ const Thesis = ({ back }) => {
           </li>
         </ul>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-completos"
           width="100%"
@@ -629,7 +629,7 @@ const Thesis = ({ back }) => {
           maiúsculas e entre parênteses, junto com o ano.
         </p>
 
-        <img src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
       </div>
       <Footer />
     </>

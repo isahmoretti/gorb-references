@@ -59,7 +59,7 @@ const Result = (props) => {
     <>
       <Nav>
         <WrapperNav className="container">
-          <img src={logo_viacarreiraRoxo} alt="" />
+          <img loading="lazy" src={logo_viacarreiraRoxo} alt="" />
         </WrapperNav>
       </Nav>
       <Background image={iconeDoFundo} color={color}>
@@ -81,13 +81,13 @@ const Result = (props) => {
           <a
             href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
           >
-            <img src={share} width="50" height="50" />
+            <img loading="lazy" src={share} width="50" height="50" />
           </a>
           <hr />
           <WrapperCourse>
             {courses.map(({ name, imageName, link }, index) => (
               <Course key={index} onClick={() => window.open(link)}>
-                <img src={images[imageName]} />
+                <img loading="lazy" src={images[imageName]} />
                 <div>{name}</div>
               </Course>
             ))}

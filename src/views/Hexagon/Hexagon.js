@@ -327,7 +327,7 @@ const HexagonPage = () => {
           </li>
         </ul>
 
-        <img src={Pagina} alt="pagina-referencia" width="100%" />
+        <img loading="lazy" src={Pagina} alt="pagina-referencia" width="100%" />
       </ContentText>
 
       <Footer />

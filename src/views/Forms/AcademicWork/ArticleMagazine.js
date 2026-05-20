@@ -593,7 +593,7 @@ const ArticleMagazine = ({ back }) => {
           </li>
         </ul>
 
-        <img src={artigoRevista} alt="artigo-revista" width="100%" />
+        <img loading="lazy" src={artigoRevista} alt="artigo-revista" width="100%" />
 
         <h2>E no caso de um artigo de revista online?</h2>
 
@@ -664,7 +664,7 @@ const ArticleMagazine = ({ back }) => {
           </mark>
         </p>
 
-        <img src={chamadaCitacao} alt="chama-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="chama-citacao" width="100%" />
       </div>
       <Footer />
     </>

@@ -284,7 +284,7 @@ const CivilAndNotary = ({ back }) => {
 
         <h2>Exemplos aplicando o formato</h2>
 
-        <img src={Img2} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={Img2} alt="elementos-essenciais" width="100%" />
 
         <p>
           <mark>
@@ -344,7 +344,7 @@ const CivilAndNotary = ({ back }) => {
 
         <p>Na imagem abaixo, identificamos os elementos complementares:</p>
 
-        <img src={Img1} alt="elementos-complementares" width="100%" />
+        <img loading="lazy" src={Img1} alt="elementos-complementares" width="100%" />
       </div>
       <Footer />
     </>

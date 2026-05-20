@@ -506,7 +506,7 @@ const AdministrativeActs = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img src={Img} alt="atos-administrativos" width="100%" />
+        <img loading="lazy" src={Img} alt="atos-administrativos" width="100%" />
 
         <p>
           <mark>

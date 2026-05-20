@@ -377,7 +377,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
 
         <h2>Exemplos aplicando o formato básico</h2>
 
-        <img src={Img} alt="software-jogos" width="100%" />
+        <img loading="lazy" src={Img} alt="software-jogos" width="100%" />
 
         <p>
           <mark>

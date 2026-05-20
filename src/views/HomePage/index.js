@@ -42,7 +42,7 @@ const HomePageTest = () => {
     <Container>
       <Nav>
         <WrapperNav className="container">
-          <img src={logo_viacarreiraRoxo} alt="" />
+          <img loading="lazy" src={logo_viacarreiraRoxo} alt="" />
         </WrapperNav>
       </Nav>
 
@@ -69,7 +69,7 @@ const HomePageTest = () => {
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
         >
-          <img src={share} width="50" height="50" />
+          <img loading="lazy" src={share} width="50" height="50" />
         </a>
         <hr />
         <p>
@@ -101,7 +101,7 @@ const HomePageTest = () => {
         </p>
         <br />
         <BoxImage>
-          <img src={testevocacional} alt="" />
+          <img loading="lazy" src={testevocacional} alt="" />
         </BoxImage>
         <p>
           <br /> Ao finalizar, a descrição do perfil auxilia na identificação de

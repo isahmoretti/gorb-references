@@ -739,11 +739,11 @@ const Book = ({ back }) => {
 
         <h2>Exemplo de referência com dois autores (elementos essenciais)</h2>
 
-        <img src={essenciais2} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={essenciais2} alt="elementos-essenciais" width="100%" />
 
         <h2>Exemplo de referência com três autores (elementos essenciais)</h2>
 
-        <img src={essenciais3} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={essenciais3} alt="elementos-essenciais" width="100%" />
 
         <h2>Elementos complementares</h2>
 
@@ -787,7 +787,7 @@ const Book = ({ back }) => {
           Exemplo de referência com dois autores (elementos complementares)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={complementares2}
           alt="elementos-complementares"
           width="100%"
@@ -797,7 +797,7 @@ const Book = ({ back }) => {
           Exemplo de referência com três autores (elementos complementares)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={complementares3}
           alt="elementos-complementares"
           width="100%"
@@ -837,7 +837,7 @@ const Book = ({ back }) => {
           parênteses.
         </p>
 
-        <img src={ChamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={ChamadaCitacao} alt="chamada-citacao" width="100%" />
 
         <p>
           É aconselhável incluir o número da página do livro onde se encontra o

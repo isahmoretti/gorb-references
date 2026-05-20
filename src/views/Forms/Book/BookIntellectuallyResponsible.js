@@ -759,7 +759,7 @@ const Book = ({ back }) => {
           essenciais)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosEssenciais}
           alt="elementos-essenciais"
           width="100%"
@@ -809,7 +809,7 @@ const Book = ({ back }) => {
           complementares)
         </h2>
 
-        <img
+        <img loading="lazy"
           src={elementosComplementares}
           alt="elementos-complementares"
           width="100%"
@@ -824,7 +824,7 @@ const Book = ({ back }) => {
           dela. Veja exemplos:
         </p>
 
-        <img src={chamadasCitacao} alt="chamadas-citacoes" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="chamadas-citacoes" width="100%" />
 
         <p>
           A inclusão do número da página onde se encontra o trecho citado é

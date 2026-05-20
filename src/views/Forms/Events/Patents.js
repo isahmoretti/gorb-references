@@ -480,7 +480,7 @@ const Patents = ({ back }) => {
           </mark>
         </p>
 
-        <img src={Img} alt="patente" width="100%" />
+        <img loading="lazy" src={Img} alt="patente" width="100%" />
 
         <h2>Mais exemplos</h2>
 

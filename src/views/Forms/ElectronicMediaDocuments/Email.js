@@ -375,7 +375,7 @@ const Email = ({ back }) => {
           </mark>
         </p>
 
-        <img src={Img} alt="email" width="100%" />
+        <img loading="lazy" src={Img} alt="email" width="100%" />
 
         <h2>Como fica a referência em caso de bilhete, carta ou cartão?</h2>
 
