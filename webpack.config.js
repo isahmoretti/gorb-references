@@ -19,7 +19,20 @@ module.exports = () => {
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "bundle.js",
+      chunkFilename: "[name].chunk.js",
       publicPath: "/",
+    },
+    optimization: {
+      splitChunks: {
+        chunks: "all",
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
+        },
+      },
     },
     devServer: {
       contentBase: "./dist",
