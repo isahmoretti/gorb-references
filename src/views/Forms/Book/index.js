@@ -35,6 +35,7 @@ import referencias from "../../../assets/images/home/referencias-de-livros-autor
 
 const BookGeneral = ({ back }) => {
   document.title = "Livros: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de livros no padrão ABNT NBR 6023:2018. Escolha o tipo de autoria e obtenha a referência pronta.");
   const history = useHistory();
 
   const [data, setData] = useState({

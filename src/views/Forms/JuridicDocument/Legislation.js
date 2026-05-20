@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Legislação: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte referências de legislação no padrão ABNT NBR 6023:2018. Leis, decretos e normas referenciados automaticamente.");
   const {
     jurisdiction,
     title,

@@ -55,6 +55,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Tese: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte a referência de tese de doutorado conforme a ABNT NBR 6023:2018. Gratuito e atualizado.");
   const {
     authors,
     abbreviate,

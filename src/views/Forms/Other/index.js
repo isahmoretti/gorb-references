@@ -19,6 +19,7 @@ import Footer from "../../../components/Footer";
 
 const Events = ({ back }) => {
   document.title = "Outros Documentos: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de outros tipos de documentos no padrão ABNT: mapas, obras de arte, partituras e mais.");
   const history = useHistory();
 
   return (

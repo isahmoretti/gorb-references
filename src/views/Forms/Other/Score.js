@@ -38,6 +38,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Partitura: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de partituras musicais no formato ABNT NBR 6023:2018. Rápido, gratuito e atualizado.");
   const {
     compositor,
     title,

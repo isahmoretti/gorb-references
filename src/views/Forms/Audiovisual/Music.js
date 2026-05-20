@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Música: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte referências de músicas e álbuns conforme a ABNT NBR 6023:2018. Ferramenta gratuita e atualizada.");
   const {
     title,
     interpreters,

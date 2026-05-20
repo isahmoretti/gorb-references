@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url><loc>https://gorb.viacarreira.com/</loc><priority>1.0</priority></url>
+
+  <!-- Livros -->
+  <url><loc>https://gorb.viacarreira.com/livros</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-livro-com-um-autor</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-livro-com-dois-ou-tres-autores</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-livro-com-quatro-autores-ou-mais</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-livro-com-responsavel-intelectual</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-livro-com-um-autor-entidade</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/livros/referencia-de-capitulo-de-livro</loc><priority>0.9</priority></url>
+
+  <!-- Trabalhos Acadêmicos -->
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-periodico</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-revista</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-artigo-de-jornal</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-dissertacao</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-monografia-e-tcc</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/trabalhos-academicos-e-publicacoes-periodicas/referencia-de-tese</loc><priority>0.9</priority></url>
+
+  <!-- Documentos Jurídicos -->
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-atos-administrativos</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-documentos-civis-e-de-cartorio</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-constituicao</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-jurisprudencia</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-legislacao</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-juridicos-e-civis/referencia-de-medida-provisoria</loc><priority>0.7</priority></url>
+
+  <!-- Documentos Eletrônicos -->
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-artigo-de-blog</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-ebook</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-email</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-mensagens-instantaneas</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-site</loc><priority>0.9</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-apresentacao-de-slides</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-postagem-de-rede-social</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-de-meio-eletronico/referencia-de-software-e-jogo-eletronico</loc><priority>0.7</priority></url>
+
+  <!-- Documentos Audiovisuais -->
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-audiolivro</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-filme</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-musica</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-fotografia</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-podcast</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/documentos-audiovisuais/referencia-de-video-de-internet</loc><priority>0.8</priority></url>
+
+  <!-- Eventos, Patentes e Normas -->
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-de-trabalho-de-evento-em-revista</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-de-patente</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-de-norma-tecnica</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-de-evento-no-todo</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-evento-no-todo-em-publicacao-periodica</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/eventos-patentes-e-normas-tecnicas/referencia-trabalhos-em-anais</loc><priority>0.7</priority></url>
+
+  <!-- Outros -->
+  <url><loc>https://gorb.viacarreira.com/outros</loc><priority>0.8</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-bula-de-remedio</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-verbete</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-mapa</loc><priority>0.7</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-tridimensional</loc><priority>0.6</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-partitura</loc><priority>0.6</priority></url>
+  <url><loc>https://gorb.viacarreira.com/outros/referencia-de-obra-de-arte</loc><priority>0.7</priority></url>
+
+</urlset>

@@ -34,6 +34,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Documento Tridimensional: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de documento tridimensional (escultura, maquete) conforme a ABNT NBR 6023:2018. Gratuito.");
   const {
     author,
     title,

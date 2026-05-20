@@ -19,6 +19,7 @@ import Footer from "../../../components/Footer";
 
 const BookGeneral = ({ back }) => {
   document.title = "Trabalhos Acadêmicos: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de trabalhos acadêmicos, artigos e publicações periódicas no padrão ABNT NBR 6023:2018.");
   const history = useHistory();
 
   return (

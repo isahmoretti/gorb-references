@@ -40,6 +40,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Evento no Todo: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de evento no todo (congresso, seminário) conforme a ABNT NBR 6023:2018. Gratuito e atualizado.");
   const {
     mainEventName,
     mainEventNumber,

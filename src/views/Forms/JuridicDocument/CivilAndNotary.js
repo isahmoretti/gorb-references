@@ -36,6 +36,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Documentos Civis e de Cartório: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Crie referências de documentos civis e de cartório conforme a ABNT NBR 6023:2018. Gratuito e rápido.");
   const {
     jurisdiction,
     nameOfTheNotaryOrIssuingBody,

@@ -32,6 +32,7 @@ const SignupSchema = Yup.object().shape({
 
 const Constitution = ({ back }) => {
   document.title = "Constituição: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de constituição no padrão ABNT NBR 6023:2018. Preencha os campos e copie a referência pronta.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

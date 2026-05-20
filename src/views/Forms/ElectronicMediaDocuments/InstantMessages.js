@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Mensagens Instantâneas: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de mensagens instantâneas (WhatsApp, Telegram) no formato ABNT NBR 6023:2018. Gratuito.");
   const {
     author,
     title,

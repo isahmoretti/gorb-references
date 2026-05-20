@@ -39,6 +39,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Evento em Publicação Periódica: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de eventos em publicação periódica no padrão ABNT NBR 6023:2018. Rápido e gratuito.");
   const {
     eventName,
     numbering,

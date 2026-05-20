@@ -53,6 +53,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateCitationWithAuthor = (values) => {
   document.title = "Monografia e TCC: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de monografia e TCC no padrão ABNT NBR 6023:2018. Preencha os dados e obtenha a referência completa.");
   const { authors, yearOfPublication } = values;
 
   const authorSplit = authors[0].split(" ");

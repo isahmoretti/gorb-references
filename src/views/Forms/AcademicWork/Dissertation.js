@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateCitationWithAuthor = (values) => {
   document.title = "Dissertação: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de dissertações de mestrado no formato ABNT NBR 6023:2018. Ferramenta gratuita para pós-graduação.");
   const { authors, yearOfPublication } = values;
 
   const authorSplit = authors[0].split(" ");

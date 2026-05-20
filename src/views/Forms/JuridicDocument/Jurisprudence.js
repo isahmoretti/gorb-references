@@ -38,6 +38,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Jurisprudência: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de jurisprudência (súmula, acórdão, sentença) no formato ABNT NBR 6023:2018.");
   const {
     jurisdiction,
     judicialOrgan,

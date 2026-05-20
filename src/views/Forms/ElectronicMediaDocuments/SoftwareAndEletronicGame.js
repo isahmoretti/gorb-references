@@ -40,6 +40,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Software e Jogo Eletrônico: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de software e jogos eletrônicos conforme a ABNT NBR 6023:2018. Gratuito.");
   const {
     title,
     caption,

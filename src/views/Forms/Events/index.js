@@ -19,6 +19,7 @@ import Footer from "../../../components/Footer";
 
 const Events = ({ back }) => {
   document.title = "Eventos, Patentes e Normas Técnicas: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de eventos, patentes e normas técnicas no padrão ABNT NBR 6023:2018. Gratuito.");
   const history = useHistory();
 
   return (

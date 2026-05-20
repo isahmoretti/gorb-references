@@ -58,6 +58,7 @@ const SignupSchema = Yup.object().shape({
 
 const getResposabilityTypes = (responsabiltyTypes) => {
   document.title = "Capítulo de Livro: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de capítulo de livro no padrão ABNT NBR 6023:2018. Preencha os dados e copie a referência completa.");
   if (responsabiltyTypes === "organizator") return "(Org.)";
   if (responsabiltyTypes === "author") return "(Aut.)";
   if (responsabiltyTypes === "coordinator") return "(Coord.)";

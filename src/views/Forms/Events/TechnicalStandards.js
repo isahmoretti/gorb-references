@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Normas Técnicas: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte referências de normas técnicas (ABNT, ISO, NBR) no formato correto. Baseado na NBR 6023:2018.");
   const {
     firstName,
     secondName,

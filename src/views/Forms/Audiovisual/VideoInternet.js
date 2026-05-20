@@ -35,6 +35,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Vídeo de Internet: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de vídeo de internet (YouTube, Vimeo) no padrão ABNT NBR 6023:2018. Gratuito e fácil.");
   const {
     title,
     subtitle,

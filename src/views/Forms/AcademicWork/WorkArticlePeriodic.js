@@ -54,6 +54,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Artigo de Periódico: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de artigos de periódico no padrão ABNT NBR 6023:2018. Ferramenta gratuita para trabalhos acadêmicos.");
   const {
     typeAthor,
     constructionNames,

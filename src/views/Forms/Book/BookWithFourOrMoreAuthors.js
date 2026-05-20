@@ -47,6 +47,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Livro com Quatro Autores ou Mais: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de livro com quatro autores ou mais pela ABNT NBR 6023:2018. Gere automaticamente com o GORB, gratuito e atualizado.");
   const {
     author,
     title,

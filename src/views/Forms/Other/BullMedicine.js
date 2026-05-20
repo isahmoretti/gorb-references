@@ -34,6 +34,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Bula de Remédio: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de bulas de remédio no padrão ABNT NBR 6023:2018. Preencha os dados e copie a referência.");
   const {
     name,
     medicineForm,

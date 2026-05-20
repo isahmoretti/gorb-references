@@ -20,6 +20,7 @@ import Footer from "../../../components/Footer";
 
 const ElectronicMediaDocuments = ({ back }) => {
   document.title = "Documentos de Meio Eletrônico: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de documentos eletrônicos no padrão ABNT: sites, e-books, redes sociais, e-mail e muito mais.");
   const history = useHistory();
 
   return (

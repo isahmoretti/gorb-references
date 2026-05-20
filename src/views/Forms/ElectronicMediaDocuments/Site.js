@@ -36,6 +36,7 @@ const SignupSchema = Yup.object().shape({
 
 const generateReference = (values) => {
   document.title = "Site: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de sites e páginas web no padrão ABNT NBR 6023:2018. Preencha os campos e copie a referência.");
   const {
     author,
     siteName,

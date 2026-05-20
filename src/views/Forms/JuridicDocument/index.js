@@ -18,6 +18,7 @@ import Footer from "../../../components/Footer";
 
 const JuridicDocumentGeneral = ({ back }) => {
   document.title = "Documentos Jurídicos e Civis: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de documentos jurídicos e civis no padrão ABNT NBR 6023:2018. Legislação, jurisprudência e mais.");
   const history = useHistory();
 
   return (
