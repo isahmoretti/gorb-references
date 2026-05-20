@@ -6,6 +6,7 @@ export const Container = styled.div`
 
   position: relative;
   width: 100%;
+  margin-top: 50px;
 
   > form {
     width: 100%;
