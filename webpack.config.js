@@ -65,6 +65,7 @@ module.exports = () => {
       new HtmlWebPackPlugin({
         template: path.resolve(__dirname, "public/index.html"),
         filename: "index.html",
+        scriptLoading: "defer",
       }),
       new CopyWebpackPlugin({
         patterns: [
