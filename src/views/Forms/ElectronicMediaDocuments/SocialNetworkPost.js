@@ -313,9 +313,7 @@ const SocialNetworkPost = ({ back }) => {
 
         <p>
           Na última atualização da{" "}
-          <a href="https://viacarreira.com/nbr-6023-atualizada/" target="blank">
-            NBR 6023
-          </a>
+          NBR 6023
           , a Associação Brasileira de Normas Técnicas (ABNT) incluiu novos
           tipos de documentos digitais, como é o caso das publicações em redes
           sociais. Com isso, passou a existir uma normatização para referenciar

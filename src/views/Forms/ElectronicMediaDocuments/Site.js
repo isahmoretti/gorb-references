@@ -378,27 +378,15 @@ const Site = ({ back }) => {
           Bases de dados são coleções eletrônicas de documentos, que facilitam o
           acesso a artigos científicos, teses e outros materiais. Elas podem ser
           multidisciplinares, como é o caso do{" "}
-          <a
-            href="https://viacarreira.com/scielo-artigos-cientificos-em-pdf-como-pesquisar/"
-            target="blank"
-          >
-            Scielo
-          </a>
+          Scielo
           , ou específica de uma área, como o{" "}
-          <a href="https://viacarreira.com/pubmed/" target="blank">
-            Pubmed
-          </a>
+          Pubmed
           , que reúne conteúdo exclusivo da literatura biomédica.
         </p>
 
         <p>
           O formato de referência de site também se aplica às{" "}
-          <a
-            href="https://viacarreira.com/bases-de-dados-confiaveis-para-usar-no-tcc/"
-            target="blank"
-          >
-            bases de dados
-          </a>
+          bases de dados
           . O termo "base de dados" deve ser inserido como uma informação
           complementar.
         </p>

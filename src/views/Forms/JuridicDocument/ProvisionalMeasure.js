@@ -305,7 +305,7 @@ const ProvisionalMeasure = ({ back }) => {
                       <Input
                         type="text"
                         label="Disponível em"
-                        placeholder="Ex: www.viacarreira.com"
+                        placeholder="Ex: https://exemplo.com/"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.url}

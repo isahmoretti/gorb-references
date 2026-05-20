@@ -819,7 +819,7 @@ const Entry = ({ back }) => {
                           disabled={props.values.typeAndSupport === "printed"}
                           type="text"
                           label="Endereço(URL)"
-                          placeholder="https://viacarreira.com/"
+                          placeholder="https://exemplo.com/"
                           onChange={props.handleChange}
                           onBlur={props.handleBlur}
                           value={props.values.url}

@@ -350,9 +350,7 @@ const TechnicalStandards = ({ back }) => {
         <p>
           No Brasil, a entidade responsável por definir as normas técnicas é a
           Associação Brasileira de Normas Técnicas (
-          <a href="https://viacarreira.com/o-que-e-a-abnt/" target="blank">
-            ABNT
-          </a>
+          ABNT
           ). Cada NBR é elaborada e avaliada por um comitê de especialistas
           antes de ser publicada.
         </p>

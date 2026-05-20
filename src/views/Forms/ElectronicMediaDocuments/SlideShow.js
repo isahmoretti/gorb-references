@@ -502,10 +502,8 @@ const SlideShow = ({ back }) => {
 
         <p>
           Os slides, elaborados para palestras, seminários e até mesmo
-          <a href="https://viacarreira.com/apresentacao-de-tcc/" target="blank">
-            {" "}
+          {" "}
             apresentação de TCC
-          </a>
           , servem de fontes de pesquisa para o trabalho acadêmico. Quando isso
           acontece, é importante referenciar o material corretamente no fim do
           relatório.

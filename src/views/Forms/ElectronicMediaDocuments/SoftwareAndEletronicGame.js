@@ -265,7 +265,7 @@ const SoftwareAndEletronicGame = ({ back }) => {
                         name="url"
                         label="Endereço (URL)"
                         type="text"
-                        placeholder="https://viacarreira.com/"
+                        placeholder="https://exemplo.com/"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.url}

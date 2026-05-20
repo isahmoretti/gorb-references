@@ -363,7 +363,7 @@ const Patents = ({ back }) => {
                         name="url"
                         label="Disponível em"
                         type="text"
-                        placeholder="https://viacarreira.com/"
+                        placeholder="https://exemplo.com/"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.url}
@@ -427,12 +427,7 @@ const Patents = ({ back }) => {
 
         <p>
           Depois de criar um determinado produto, o inventor deve{" "}
-          <a
-            href="https://viacarreira.com/descubra-como-patentear-um-produto-em-7-passos/"
-            target="blank"
-          >
-            adquirir a patente
-          </a>{" "}
+          adquirir a patente{" "}
           para proteger os seus direitos de propriedade intelectual. Se a ideia
           patenteada foi citada em algum momento no trabalho acadêmico, a
           patente precisa ser incluída na lista de referências bibliográficas.

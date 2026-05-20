@@ -519,7 +519,7 @@ const WorksInAnnals = ({ back }) => {
                         name="url"
                         label="Endereço (URL)"
                         type="text"
-                        placeholder="https://viacarreira.com/"
+                        placeholder="https://exemplo.com/"
                         disabled={!props.values.online}
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
@@ -571,20 +571,10 @@ const WorksInAnnals = ({ back }) => {
         <p>
           Anais são coleções de trabalhos acadêmicos publicados no contexto de
           um{" "}
-          <a
-            href="https://viacarreira.com/tipos-de-eventos-academicos/"
-            target="blank"
-          >
-            evento científico.
-          </a>{" "}
+          evento científico.{" "}
           Eles são frequentes em congressos, mas também podem fazer parte de
           conferências, encontros, workshops e{" "}
-          <a
-            href="https://viacarreira.com/simposio-na-faculdade/"
-            target="blank"
-          >
-            simpósios.
-          </a>
+          simpósios.
         </p>
 
         <p>
@@ -604,12 +594,7 @@ const WorksInAnnals = ({ back }) => {
           Para que isso aconteça, a produção acadêmica precisa ser avaliada e
           aprovada por pesquisadores de renome da área. Portanto, consultar
           trabalhos em anais é uma fonte segura para a{" "}
-          <a
-            href="https://viacarreira.com/fundamentacao-teorica-do-tcc/"
-            target="blank"
-          >
-            fundamentação teórica.
-          </a>
+          fundamentação teórica.
         </p>
 
         <h2>O que diz a ABNT sobre referência de trabalhos em anais?</h2>

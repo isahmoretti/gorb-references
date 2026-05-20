@@ -384,7 +384,7 @@ const WholeEvent = ({ back }) => {
                         name="url"
                         label="Disponível em"
                         type="text"
-                        placeholder="https://viacarreira.com/"
+                        placeholder="https://exemplo.com/"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.url}
@@ -449,12 +449,7 @@ const WholeEvent = ({ back }) => {
 
         <p>
           Existem vários{" "}
-          <a
-            href="https://viacarreira.com/tipos-de-eventos-academicos/"
-            target="blank"
-          >
-            tipos de eventos acadêmicos
-          </a>{" "}
+          tipos de eventos acadêmicos{" "}
           que mobilizam a comunidade científica, como é o caso de congressos,
           conferências, jornadas, encontros, workshops, colóquios, feiras,
           seminários e exposições.

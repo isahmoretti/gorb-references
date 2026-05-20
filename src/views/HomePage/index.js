@@ -42,9 +42,7 @@ const HomePageTest = () => {
     <Container>
       <Nav>
         <WrapperNav className="container">
-          <a href="https://viacarreira.com/">
-            <img src={logo_viacarreiraRoxo} alt="" />
-          </a>
+          <img src={logo_viacarreiraRoxo} alt="" />
         </WrapperNav>
       </Nav>
 

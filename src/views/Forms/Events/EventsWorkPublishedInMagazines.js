@@ -512,7 +512,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
                         name="url"
                         label="Endereço (URL)"
                         type="text"
-                        placeholder="https://viacarreira.com/"
+                        placeholder="https://exemplo.com/"
                         disabled={!props.values.online}
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
@@ -599,9 +599,7 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
         <p>
           O título da revista científica pode ser abreviado, desde que respeite
           o padrão definido pelas bases de dados, como é o caso da{" "}
-          <a href="https://viacarreira.com/medline/" target="blank">
-            Medline
-          </a>{" "}
+          Medline{" "}
           e LILACS.
         </p>
 
