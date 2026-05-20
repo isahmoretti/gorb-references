@@ -94,6 +94,7 @@ const generateReference = (values) => {
 const AdministrativeActs = ({
   back }) => {
   document.title = "Filme: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de filmes e documentários no formato ABNT NBR 6023:2018. Gratuito e rápido.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

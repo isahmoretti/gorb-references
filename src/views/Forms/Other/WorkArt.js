@@ -51,6 +51,7 @@ const generateReference = (values) => {
 const WorkArt = ({
   back }) => {
   document.title = "Obra de Arte: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de obra de arte (pintura, escultura) no padrão ABNT NBR 6023:2018. Ferramenta gratuita.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

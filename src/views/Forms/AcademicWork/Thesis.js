@@ -109,6 +109,7 @@ const generateReference = (values) => {
 const Thesis = ({
   back }) => {
   document.title = "Tese: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte a referência de tese de doutorado conforme a ABNT NBR 6023:2018. Gratuito e atualizado.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

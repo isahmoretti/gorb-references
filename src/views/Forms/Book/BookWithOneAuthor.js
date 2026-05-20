@@ -115,6 +115,7 @@ const generateReference = (values) => {
 const Book = ({
   back }) => {
   document.title = "Livro com Um Autor: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere a referência de livro com um autor no padrão ABNT NBR 6023:2018. Preencha os campos e copie a referência pronta em segundos.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

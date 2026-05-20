@@ -113,6 +113,7 @@ const generateReference = (values) => {
 const ArticleMagazine = ({
   back }) => {
   document.title = "Artigo de Revista: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte a referência de artigo de revista conforme a ABNT NBR 6023:2018. Rápido, gratuito e atualizado.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

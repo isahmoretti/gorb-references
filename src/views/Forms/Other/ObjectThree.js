@@ -61,6 +61,7 @@ const generateReference = (values) => {
 const ObjectThree = ({
   back }) => {
   document.title = "Documento Tridimensional: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de documento tridimensional (escultura, maquete) conforme a ABNT NBR 6023:2018. Gratuito.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

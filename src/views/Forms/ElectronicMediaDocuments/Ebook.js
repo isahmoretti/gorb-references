@@ -155,6 +155,7 @@ const generateReference = (values) => {
 const Ebook = ({
   back }) => {
   document.title = "E-book: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de e-books conforme a ABNT NBR 6023:2018. Ferramenta gratuita para trabalhos acadêmicos.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

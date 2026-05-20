@@ -119,6 +119,7 @@ const generateReference = (values) => {
 const WorksInAnnals = ({
   back }) => {
   document.title = "Trabalhos em Anais: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de trabalhos em anais de eventos conforme a ABNT NBR 6023:2018. Ferramenta gratuita.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

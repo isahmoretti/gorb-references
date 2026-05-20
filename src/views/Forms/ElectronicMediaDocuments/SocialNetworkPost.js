@@ -73,6 +73,7 @@ const generateReference = (values) => {
 const SocialNetworkPost = ({
   back }) => {
   document.title = "Postagem em Rede Social: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de postagem em rede social no padrão ABNT NBR 6023:2018. Instagram, Twitter e mais.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

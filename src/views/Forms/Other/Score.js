@@ -87,6 +87,7 @@ const generateReference = (values) => {
 const Score = ({
   back }) => {
   document.title = "Partitura: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de partituras musicais no formato ABNT NBR 6023:2018. Rápido, gratuito e atualizado.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

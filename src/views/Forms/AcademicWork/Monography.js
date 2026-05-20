@@ -131,6 +131,7 @@ const generateReference = (values) => {
 const Monography = ({
   back }) => {
   document.title = "Monografia e TCC: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de monografia e TCC no padrão ABNT NBR 6023:2018. Preencha os dados e obtenha a referência completa.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -111,6 +111,7 @@ const generateReference = (values) => {
 const AudioBook = ({
   back }) => {
   document.title = "Audiolivro: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de audiolivro no padrão ABNT NBR 6023:2018. Preencha os dados e copie a referência pronta em segundos.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

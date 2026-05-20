@@ -151,6 +151,7 @@ const getTypeAuthor = (type) => {
 const Maps = ({
   back }) => {
   document.title = "Mapa: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte referências de mapas no padrão ABNT NBR 6023:2018. Ferramenta gratuita e atualizada.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

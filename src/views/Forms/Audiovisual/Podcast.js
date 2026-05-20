@@ -78,6 +78,7 @@ const generateReference = (values) => {
 const Podcast = ({
   back }) => {
   document.title = "Podcast: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de podcasts conforme a ABNT NBR 6023:2018. Rápido, gratuito e atualizado.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

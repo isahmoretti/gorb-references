@@ -119,6 +119,7 @@ const generateReference = (values) => {
 const Book = ({
   back }) => {
   document.title = "Livro com Dois ou Três Autores: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Crie referências de livros com dois ou três autores conforme a ABNT NBR 6023:2018. Ferramenta gratuita e atualizada.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

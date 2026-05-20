@@ -129,6 +129,7 @@ const generateReference = (values) => {
 const Dissertation = ({
   back }) => {
   document.title = "Dissertação: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de dissertações de mestrado no formato ABNT NBR 6023:2018. Ferramenta gratuita para pós-graduação.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

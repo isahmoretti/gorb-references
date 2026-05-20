@@ -148,6 +148,7 @@ const generateReference = (values) => {
 const Book = ({
   back }) => {
   document.title = "Livro com Responsável Intelectual: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Monte a referência de livro com responsável intelectual conforme a ABNT NBR 6023:2018. Rápido e gratuito.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

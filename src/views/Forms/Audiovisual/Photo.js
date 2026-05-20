@@ -66,6 +66,7 @@ const generateReference = (values) => {
 const Photo = ({
   back }) => {
   document.title = "Fotografia: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Referência de fotografia no padrão ABNT NBR 6023:2018. Preencha os campos e copie a referência completa.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

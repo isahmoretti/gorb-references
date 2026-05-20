@@ -93,6 +93,7 @@ const generateReference = (values) => {
 const AdministrativeActs = ({
   back }) => {
   document.title = "Atos Administrativos: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de atos administrativos no padrão ABNT NBR 6023:2018. Ferramenta gratuita e atualizada.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -101,6 +101,7 @@ const generateReference = (values) => {
 const Patents = ({
   back }) => {
   document.title = "Patente: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Gere referências de patentes no padrão ABNT NBR 6023:2018. Preencha os dados e copie a referência pronta.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

@@ -70,6 +70,7 @@ const generateReference = (values) => {
 const Email = ({
   back }) => {
   document.title = "E-mail: Referência ABNT";
+  const metaDesc = document.querySelector('meta[name="description"]'); if (metaDesc) metaDesc.setAttribute('content', "Crie referências de e-mail no padrão ABNT NBR 6023:2018. Rápido, gratuito e atualizado.");
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,
