@@ -2,8 +2,8 @@ import React from "react";
 
 // import PropTypes from "prop-types";
 
-import logo_viacarreira from "../../assets/images/logo-branco-rodape.png";
-import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
+import logo_viacarreira from "../../assets/images/gorb-logo-ok.png";
+import logo_viacarreiraRoxo from "../../assets/images/gorb-logo-ok.png";
 
 import {
   Footer,

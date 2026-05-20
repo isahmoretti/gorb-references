@@ -4,7 +4,7 @@ import React from "react";
 
 import { Nav, WrapperNav } from "./styles";
 
-import logo_viacarreiraRoxo from "../../assets/images/logo-lilas.png";
+import logo_viacarreiraRoxo from "../../assets/images/gorb-logo-ok.png";
 
 const Header = () => {
   return (
