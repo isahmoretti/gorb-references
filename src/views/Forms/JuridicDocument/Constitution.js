@@ -31,6 +31,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Constitution = ({ back }) => {
+  document.title = "Constituição: Referência ABNT";
   const [state, setState] = useState({
     values: {},
     clearInitialValues: false,

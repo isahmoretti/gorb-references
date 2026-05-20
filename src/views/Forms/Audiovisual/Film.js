@@ -38,6 +38,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Filme: Referência ABNT";
   const {
     title,
     director,

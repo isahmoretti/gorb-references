@@ -46,6 +46,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Livro com Quatro Autores ou Mais: Referência ABNT";
   const {
     author,
     title,

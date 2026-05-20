@@ -57,6 +57,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const getResposabilityTypes = (responsabiltyTypes) => {
+  document.title = "Capítulo de Livro: Referência ABNT";
   if (responsabiltyTypes === "organizator") return "(Org.)";
   if (responsabiltyTypes === "author") return "(Aut.)";
   if (responsabiltyTypes === "coordinator") return "(Coord.)";

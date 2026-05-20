@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const firstUpperCase = (name) => {
+  document.title = "Artigo de Jornal: Referência ABNT";
   const firstName = name.split(" ")[0];
 
   return name.replace(firstName, firstName.toUpperCase());

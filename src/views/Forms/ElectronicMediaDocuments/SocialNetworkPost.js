@@ -39,6 +39,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Postagem em Rede Social: Referência ABNT";
   const {
     type,
     firstName,

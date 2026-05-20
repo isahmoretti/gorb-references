@@ -33,6 +33,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Obra de Arte: Referência ABNT";
   const { author, title, year, specification } = values;
 
   return (

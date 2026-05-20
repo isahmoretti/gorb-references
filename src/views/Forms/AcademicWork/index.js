@@ -18,6 +18,7 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 const BookGeneral = ({ back }) => {
+  document.title = "Trabalhos Acadêmicos: Referência ABNT";
   const history = useHistory();
 
   return (

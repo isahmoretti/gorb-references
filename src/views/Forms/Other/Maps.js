@@ -48,6 +48,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Mapa: Referência ABNT";
   const {
     typeAuthor,
     author,

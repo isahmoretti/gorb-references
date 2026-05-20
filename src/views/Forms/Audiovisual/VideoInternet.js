@@ -34,6 +34,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Vídeo de Internet: Referência ABNT";
   const {
     title,
     subtitle,

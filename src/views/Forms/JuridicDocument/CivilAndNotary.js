@@ -35,6 +35,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Documentos Civis e de Cartório: Referência ABNT";
   const {
     jurisdiction,
     nameOfTheNotaryOrIssuingBody,

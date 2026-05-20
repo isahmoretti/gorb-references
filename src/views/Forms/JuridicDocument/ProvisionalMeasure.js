@@ -35,6 +35,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Medida Provisória: Referência ABNT";
   const {
     author,
     type,

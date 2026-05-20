@@ -33,6 +33,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Bula de Remédio: Referência ABNT";
   const {
     name,
     medicineForm,

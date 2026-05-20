@@ -39,6 +39,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Evento no Todo: Referência ABNT";
   const {
     mainEventName,
     mainEventNumber,

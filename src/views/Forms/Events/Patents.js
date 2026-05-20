@@ -51,6 +51,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const getTypeName = (type) => {
+  document.title = "Patente: Referência ABNT";
   switch (type) {
     case "depositor":
       return "Depositante";

@@ -17,6 +17,7 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 const Audiovisual = ({ back }) => {
+  document.title = "Documentos Audiovisuais: Referência ABNT";
   const history = useHistory();
 
   return (

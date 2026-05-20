@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateCitationWithAuthor = (values) => {
+  document.title = "Monografia e TCC: Referência ABNT";
   const { authors, yearOfPublication } = values;
 
   const authorSplit = authors[0].split(" ");

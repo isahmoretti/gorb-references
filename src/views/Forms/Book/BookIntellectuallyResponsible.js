@@ -54,6 +54,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const getResposabilityTypes = (responsabiltyTypes) => {
+  document.title = "Livro com Responsável Intelectual: Referência ABNT";
   switch (responsabiltyTypes) {
     case "organizator":
       return "(org.).";

@@ -34,6 +34,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Podcast: Referência ABNT";
   const {
     title,
     caption,

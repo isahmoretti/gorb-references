@@ -34,6 +34,7 @@ import editora from "../../../assets/images/home/editora-e-local.jpg";
 import referencias from "../../../assets/images/home/referencias-de-livros-autores-1.jpg";
 
 const BookGeneral = ({ back }) => {
+  document.title = "Referência de Livro: ABNT";
   const history = useHistory();
 
   const [data, setData] = useState({

@@ -36,6 +36,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Normas Técnicas: Referência ABNT";
   const {
     firstName,
     secondName,

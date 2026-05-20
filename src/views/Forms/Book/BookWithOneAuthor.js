@@ -55,6 +55,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Livro com Um Autor: Referência ABNT";
   const {
     author,
     abbreviate,

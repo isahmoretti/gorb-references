@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Trabalhos em Anais: Referência ABNT";
   const {
     authors,
     abbreviate,

@@ -36,6 +36,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Música: Referência ABNT";
   const {
     title,
     interpreters,

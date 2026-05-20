@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "E-mail: Referência ABNT";
   const {
     type,
     sender,

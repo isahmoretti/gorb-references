@@ -37,6 +37,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Jurisprudência: Referência ABNT";
   const {
     jurisdiction,
     judicialOrgan,

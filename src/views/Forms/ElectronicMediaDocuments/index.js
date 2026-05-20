@@ -19,6 +19,7 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 const ElectronicMediaDocuments = ({ back }) => {
+  document.title = "Documentos de Meio Eletrônico: Referência ABNT";
   const history = useHistory();
 
   return (

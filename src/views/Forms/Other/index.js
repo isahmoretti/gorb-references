@@ -18,6 +18,7 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 const Events = ({ back }) => {
+  document.title = "Outros Tipos de Referência: ABNT";
   const history = useHistory();
 
   return (

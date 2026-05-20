@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Artigo de Blog: Referência ABNT";
   const {
     authors,
     articleTitle,

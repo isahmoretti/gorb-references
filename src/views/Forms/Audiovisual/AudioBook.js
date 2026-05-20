@@ -50,6 +50,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Audiolivro: Referência ABNT";
   const {
     title,
     caption,

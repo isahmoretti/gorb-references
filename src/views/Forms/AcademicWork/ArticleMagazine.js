@@ -43,6 +43,7 @@ import {
 } from "./style";
 
 const firstUpperCase = (name) => {
+  document.title = "Artigo de Revista: Referência ABNT";
   const firstName = name.split(" ")[0];
 
   return name.replace(firstName, firstName.toUpperCase());

@@ -52,6 +52,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Verbete de Dicionário ou Enciclopédia: Referência ABNT";
   const {
     entryAuthorType,
     entryResponsabilityType,

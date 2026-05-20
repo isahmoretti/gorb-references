@@ -17,6 +17,7 @@ import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 const JuridicDocumentGeneral = ({ back }) => {
+  document.title = "Documentos Jurídicos e Civis: Referência ABNT";
   const history = useHistory();
 
   return (

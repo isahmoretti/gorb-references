@@ -33,6 +33,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Documento Tridimensional: Referência ABNT";
   const {
     author,
     title,

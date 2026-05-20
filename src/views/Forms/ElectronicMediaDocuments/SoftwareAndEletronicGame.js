@@ -39,6 +39,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const generateReference = (values) => {
+  document.title = "Software e Jogo Eletrônico: Referência ABNT";
   const {
     title,
     caption,
