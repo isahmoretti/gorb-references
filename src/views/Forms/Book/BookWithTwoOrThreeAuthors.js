@@ -636,6 +636,7 @@ const Book = ({ back }) => {
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.accessedAt}
+                        label="Acesso em"
                         name="accessedAt"
                         errors={props.errors}
                         touched={props.touched}

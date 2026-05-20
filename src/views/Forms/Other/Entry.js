@@ -836,7 +836,8 @@ const Entry = ({ back }) => {
                           onChange={props.handleChange}
                           onBlur={props.handleBlur}
                           value={props.values.accessedAt}
-                          name="accessedAt"
+                          label="Acesso em"
+                        name="accessedAt"
                           errors={props.errors}
                           touched={props.touched}
                         />
