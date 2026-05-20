@@ -185,8 +185,11 @@ export const Hexagon = styled.div`
     }
 
     > p {
-      font-size: 11px;
+      font-size: 10px;
       line-height: 1.3;
+      padding: 0 6px;
+      overflow: hidden;
+      max-height: 55px;
     }
   }
 

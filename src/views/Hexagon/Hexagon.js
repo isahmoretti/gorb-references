@@ -192,7 +192,7 @@ const HexagonPage = () => {
               className="green"
             >
               <p className="txt-white">
-                Documentos <br /> jurídicos e civis
+                Jurídicos <br /> e civis
               </p>
             </Hexagon>
           </Row>
@@ -205,7 +205,7 @@ const HexagonPage = () => {
               className="yellow"
             >
               <p className="txt-white">
-                Trabalhos <br />e publicações periódicas
+                Trabalhos <br /> acadêmicos
               </p>
             </Hexagon>
             <Separator />
@@ -218,9 +218,7 @@ const HexagonPage = () => {
               className="wine"
             >
               <p className="txt-white">
-                Documentos <br />
-                exclusivos de meio <br />
-                eletrônico
+                Meio <br /> eletrônico
               </p>
             </Hexagon>
           </Row>
@@ -233,13 +231,7 @@ const HexagonPage = () => {
               className="blue-dark"
             >
               <p className="txt-white">
-                {" "}
-                Eventos,
-                <br />
-                patentes e
-                <br />
-                normas técnicas
-                <br />{" "}
+                Eventos <br /> e normas
               </p>
             </Hexagon>
             <Separator />
@@ -248,8 +240,7 @@ const HexagonPage = () => {
               className="violet"
             >
               <p className="txt-white">
-                Documentos <br />
-                audiovisuais
+                Audiovisuais
               </p>
             </Hexagon>
             <Separator />
