@@ -212,17 +212,17 @@ const SobrePage = () => {
     if (metaDesc) {
       metaDesc.setAttribute(
         "content",
-        "Conheça o GORB, criado pelo Via Carreira para facilitar a vida dos estudantes. Referências bibliográficas ABNT NBR 6023:2018 de forma rápida e gratuita."
+        "Conheça o GORB, gerador gratuito de referências bibliográficas no padrão ABNT NBR 6023:2018 para facilitar a vida dos estudantes brasileiros."
       );
     }
 
     const schema = {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Via Carreira",
+      "@type": "WebApplication",
+      name: "GORB – Gerador Online de Referências Bibliográficas",
       url: "https://gorb.viacarreira.com",
       description:
-        "Criadora do GORB – Gerador Online de Referências Bibliográficas, ferramenta gratuita baseada na NBR 6023:2018 da ABNT.",
+        "Gerador gratuito de referências bibliográficas no padrão ABNT NBR 6023:2018.",
       inLanguage: "pt-BR",
     };
 
@@ -248,9 +248,8 @@ const SobrePage = () => {
           <H1>Referências bibliográficas ABNT sem complicação</H1>
           <Lead>
             O Gerador Online de Referências Bibliográficas (GORB) foi criado
-            pelo Via Carreira com o objetivo de facilitar o dia a dia dos
-            estudantes. Ele aplica a NBR 6023:2018, da Associação Brasileira de
-            Normas Técnicas (ABNT).
+            com o objetivo de facilitar o dia a dia dos estudantes. Ele aplica
+            a NBR 6023:2018, da Associação Brasileira de Normas Técnicas (ABNT).
           </Lead>
         </Hero>
 
@@ -307,26 +306,13 @@ const SobrePage = () => {
 
         <Divider />
 
-        <Section>
-          <H2>Sobre o Via Carreira</H2>
-          <P>
-            O Via Carreira é uma plataforma educacional brasileira dedicada a apoiar estudantes em sua jornada acadêmica e profissional. O GORB é uma das ferramentas desenvolvidas com esse propósito: tornar o processo de produção acadêmica mais acessível, correto e sem burocracia.
-          </P>
-        </Section>
-
-        <Divider />
-
         <ContactBox>
           <ContactTitle>Encontrou algo fora do padrão?</ContactTitle>
           <ContactText>
-            Se identificar uma referência incorreta ou tiver sugestões de melhoria, entre em contato com a equipe do Via Carreira. A precisão das referências é nossa prioridade.
+            Se identificar uma referência incorreta ou tiver sugestões de melhoria, mande um e-mail para a gente. A precisão das referências é nossa prioridade.
           </ContactText>
-          <ContactLink
-            href="https://viacarreira.com/contato"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Entrar em contato
+          <ContactLink href="mailto:contato@viacarreira.com">
+            contato@viacarreira.com
           </ContactLink>
         </ContactBox>
 
