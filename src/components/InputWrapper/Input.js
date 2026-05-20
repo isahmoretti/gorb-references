@@ -55,7 +55,12 @@ const InputWrapper = ({ ...rest }) => {
           </Popover>
         </ContainerHelp>
       )}
-      <TextField size="small" variant="outlined" {...rest} />
+      <TextField
+        size="small"
+        variant="outlined"
+        InputLabelProps={rest.type === "date" ? { shrink: true } : undefined}
+        {...rest}
+      />
       {errors &&
         touched &&
         errors[nameField || name] &&
