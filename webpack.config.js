@@ -53,10 +53,15 @@ module.exports = () => {
         template: path.resolve(__dirname, "public/index.html"),
         filename: "index.html",
       }),
-      //   new CopyWebpackPlugin([
-      //     { from: "src/assets/favicons", to: "favicons" },
-      //     { from: "src/assets/public", to: "assets" },
-      //   ]),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: "public",
+            to: ".",
+            globOptions: { ignore: ["**/index.html"] },
+          },
+        ],
+      }),
     ],
   };
 };
