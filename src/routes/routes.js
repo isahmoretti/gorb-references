@@ -9,6 +9,7 @@ import {
 
 // pages
 const Hexagon = lazy(() => import("../views/Hexagon"));
+const SobrePage = lazy(() => import("../views/Sobre"));
 
 // Livro
 const Book = lazy(() => import("../views/Forms/Book"));
@@ -152,6 +153,8 @@ const AppRoutes = () => {
           <Route exact path="/documentos-juridicos-e-civis/referencia-de-jurisprudencia" component={Jurisprudence} />
           <Route exact path="/documentos-juridicos-e-civis/referencia-de-legislacao" component={Legislation} />
           <Route exact path="/documentos-juridicos-e-civis/referencia-de-medida-provisoria" component={ProvisionalMeasure} />
+
+          <Route exact path="/sobre" component={SobrePage} />
 
           <Route path="*">
             <Redirect to="/" />
