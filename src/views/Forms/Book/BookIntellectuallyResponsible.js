@@ -762,7 +762,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosEssenciais}
-          alt="elementos-essenciais"
+          alt="Elementos essenciais para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -812,7 +812,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosComplementares}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -825,7 +825,7 @@ const Book = ({ back }) => {
           dela. Veja exemplos:
         </p>
 
-        <img loading="lazy" src={chamadasCitacao} alt="chamadas-citacoes" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="Chamadas para citações no sistema autor-data ABNT" width="100%" />
 
         <p>
           A inclusão do número da página onde se encontra o trecho citado é

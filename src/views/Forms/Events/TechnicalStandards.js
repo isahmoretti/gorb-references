@@ -388,7 +388,7 @@ const TechnicalStandards = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="norma-tecnica" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de norma técnica ABNT" width="100%" />
 
         <h2>Mais exemplos</h2>
 

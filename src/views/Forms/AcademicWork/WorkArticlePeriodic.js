@@ -786,7 +786,7 @@ const WorkArticlePeriodic = ({ back }) => {
 
         <img loading="lazy"
           src={elementoComplementares}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -864,7 +864,7 @@ const WorkArticlePeriodic = ({ back }) => {
           <mark>Souza (2017, p. 14-15) ou (SOUZA 2017, p. 14-15)</mark>
         </p>
 
-        <img loading="lazy" src={chamadaCitacao} alt="chamada-cituacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
       <Footer />
     </>

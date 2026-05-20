@@ -351,7 +351,7 @@ const BullMedicine = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="bula-remedio" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de bula de remédio ABNT" width="100%" />
 
         <h2>Mais exemplos</h2>
 

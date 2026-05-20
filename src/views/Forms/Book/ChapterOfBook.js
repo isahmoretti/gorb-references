@@ -953,7 +953,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosEssenciais}
-          alt="elementos-essenciais"
+          alt="Elementos essenciais para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -996,7 +996,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosComplementares}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -1026,7 +1026,7 @@ const Book = ({ back }) => {
 
         <h2>Chamadas para citações</h2>
 
-        <img loading="lazy" src={chamadasCitacao} alt="chamada-citacai" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
 
         <p>
           Embora seja opcional, apresentar a página em que o trecho ou

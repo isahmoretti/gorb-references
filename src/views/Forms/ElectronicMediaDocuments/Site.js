@@ -371,7 +371,7 @@ const Site = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="site" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de site ABNT" width="100%" />
 
         <h2>E no caso de base de dados?</h2>
 

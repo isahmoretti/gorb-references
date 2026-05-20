@@ -587,7 +587,7 @@ const Monography = ({ back }) => {
 
         <img loading="lazy"
           src={elementosEssenciais}
-          alt="elementos-essenciais"
+          alt="Elementos essenciais para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -616,7 +616,7 @@ const Monography = ({ back }) => {
 
         <img loading="lazy"
           src={elementosComplementares}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -632,7 +632,7 @@ const Monography = ({ back }) => {
           parênteses, ao lado do ano.
         </p>
 
-        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
       <Footer />
     </>

@@ -412,7 +412,7 @@ const Podcast = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="podcast" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de podcast ABNT" width="100%" />
 
         <h2>Exemplos</h2>
 

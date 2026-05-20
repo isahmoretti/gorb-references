@@ -325,7 +325,7 @@ const Photo = ({ back }) => {
           </mark>
         </p>
         <h2>Exemplos aplicando o formato</h2>
-        <img loading="lazy" src={Img} alt="fotografia" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de fotografia ABNT" width="100%" />
         <p>
           <mark>
             MACMILLAN, Iain. <b>Os Beatles atravessando a Abbey Road.</b> 1969.

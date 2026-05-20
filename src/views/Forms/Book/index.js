@@ -182,7 +182,7 @@ const BookGeneral = ({ back }) => {
           recomendado seguir o mesmo padrão na lista de referências.
         </p>
 
-        <img loading="lazy" src={referencias} alt="referencias" width="100%" />
+        <img loading="lazy" src={referencias} alt="Exemplos de referências bibliográficas ABNT" width="100%" />
 
         <p>
           Os autores de um livro também podem se distinguir com relação à
@@ -282,7 +282,7 @@ const BookGeneral = ({ back }) => {
           palavra edição abreviada. Não mencionar a 1ª edição.
         </p>
 
-        <img loading="lazy" src={edicoes} alt="edicoes" width="100%" />
+        <img loading="lazy" src={edicoes} alt="Como indicar edição na referência ABNT" width="100%" />
 
         <h2>Local e Editora</h2>
 
@@ -293,7 +293,7 @@ const BookGeneral = ({ back }) => {
           no Distrito Federal (DF) e também em Minas Gerais (MG).
         </p>
 
-        <img loading="lazy" src={editora} alt="editora" width="100%" />
+        <img loading="lazy" src={editora} alt="Como indicar editora e local de publicação na referência ABNT" width="100%" />
 
         <p>
           Quando não há informações sobre o local de publicação, utiliza-se a
@@ -314,7 +314,7 @@ const BookGeneral = ({ back }) => {
 
         <h2>Ano de publicação</h2>
 
-        <img loading="lazy" src={anoPublicacao} alt="ano-publicacao" width="100%" />
+        <img loading="lazy" src={anoPublicacao} alt="Como indicar o ano de publicação na referência ABNT" width="100%" />
 
         <p>
           A indicação do ano deve ser feita com algarismos arábicos. Quando não
@@ -322,7 +322,7 @@ const BookGeneral = ({ back }) => {
           uma data aproximada entre colchetes.
         </p>
 
-        <img loading="lazy" src={anoPublicacao1} alt="ano-publicacao-1" width="100%" />
+        <img loading="lazy" src={anoPublicacao1} alt="Data aproximada de publicação na referência ABNT" width="100%" />
 
         <h2>Paginação e descrição física</h2>
 

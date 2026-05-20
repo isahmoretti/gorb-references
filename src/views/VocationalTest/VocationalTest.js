@@ -90,7 +90,7 @@ const VocationalTest = () => {
       <Header>
         <img loading="lazy"
           src={window.innerWidth < 600 ? imgHeaderMobile : imgHeaderDesktop}
-          alt=""
+          alt="Exemplo de referência de filme ABNT"
           style={{
             width: "100%",
             height: window.innerWidth < 600 ? 63 : 188,

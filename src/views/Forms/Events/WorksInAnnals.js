@@ -642,7 +642,7 @@ const WorksInAnnals = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img loading="lazy" src={Img} alt="evento-anais" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de trabalho em anais de evento ABNT" width="100%" />
 
         <p>
           <mark>

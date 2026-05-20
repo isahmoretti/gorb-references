@@ -455,7 +455,7 @@ const Music = ({ back }) => {
 
         <h2>Exemplos aplicando o formato</h2>
 
-        <img loading="lazy" src={Img} alt="musica" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de música ABNT" width="100%" />
 
         <p>
           <mark>

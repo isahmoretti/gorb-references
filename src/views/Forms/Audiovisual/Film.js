@@ -588,7 +588,7 @@ const AdministrativeActs = ({ back }) => {
             especiais.
           </mark>
         </p>
-        <img loading="lazy" src={Img} alt="" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de filme ABNT" width="100%" />
         <h2>Exemplos aplicando o formato</h2>
         <p>
           <b>Cinema</b>

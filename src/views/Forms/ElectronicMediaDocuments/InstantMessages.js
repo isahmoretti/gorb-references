@@ -312,7 +312,7 @@ const InstantMessages = ({ back }) => {
           </mark>
         </p>
         <h2>Exemplos aplicando o formato básico</h2>
-        <img loading="lazy" src={Img} alt="mensagem-instatanea" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de mensagem instantânea ABNT" width="100%" />
 
         <p>
           <mark>

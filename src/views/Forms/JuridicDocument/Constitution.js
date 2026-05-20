@@ -459,7 +459,7 @@ const Constitution = ({ back }) => {
 
         <p>Mais exemplos de referências bibliográficas de constituição</p>
 
-        <img loading="lazy" src={Img} alt="constituicao" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de constituição ABNT" width="100%" />
 
         <p>
           <mark>

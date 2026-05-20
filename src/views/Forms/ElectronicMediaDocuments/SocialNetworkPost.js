@@ -387,7 +387,7 @@ const SocialNetworkPost = ({ back }) => {
 
         <h2>Exemplos</h2>
 
-        <img loading="lazy" src={Img} alt="post-rede-social" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de postagem em rede social ABNT" width="100%" />
 
         <p>
           <mark>

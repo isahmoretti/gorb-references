@@ -42,7 +42,7 @@ const HomePageTest = () => {
     <Container>
       <Nav>
         <WrapperNav className="container">
-          <img loading="lazy" src={logo_viacarreiraRoxo} alt="" />
+          <img loading="lazy" src={logo_viacarreiraRoxo} alt="Exemplo de referência de filme ABNT" />
         </WrapperNav>
       </Nav>
 
@@ -101,7 +101,7 @@ const HomePageTest = () => {
         </p>
         <br />
         <BoxImage>
-          <img loading="lazy" src={testevocacional} alt="" />
+          <img loading="lazy" src={testevocacional} alt="Exemplo de referência de filme ABNT" />
         </BoxImage>
         <p>
           <br /> Ao finalizar, a descrição do perfil auxilia na identificação de

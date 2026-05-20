@@ -587,7 +587,7 @@ const Thesis = ({ back }) => {
 
         <img loading="lazy"
           src={elementosEssenciais}
-          alt="elementos-essenciais"
+          alt="Elementos essenciais para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -616,7 +616,7 @@ const Thesis = ({ back }) => {
 
         <img loading="lazy"
           src={elementosComplementares}
-          alt="elementos-completos"
+          alt="Elementos completos da referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -629,7 +629,7 @@ const Thesis = ({ back }) => {
           maiúsculas e entre parênteses, junto com o ano.
         </p>
 
-        <img loading="lazy" src={chamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
       <Footer />
     </>

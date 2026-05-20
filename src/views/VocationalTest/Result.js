@@ -59,7 +59,7 @@ const Result = (props) => {
     <>
       <Nav>
         <WrapperNav className="container">
-          <img loading="lazy" src={logo_viacarreiraRoxo} alt="" />
+          <img loading="lazy" src={logo_viacarreiraRoxo} alt="Exemplo de referência de filme ABNT" />
         </WrapperNav>
       </Nav>
       <Background image={iconeDoFundo} color={color}>

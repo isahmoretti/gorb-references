@@ -1025,7 +1025,7 @@ const Entry = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="verbete" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de verbete ABNT" width="100%" />
 
         <h2>Como referenciar enciclopédia toda?</h2>
 

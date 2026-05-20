@@ -491,7 +491,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosEssenciais}
-          alt="elementos-essenciais"
+          alt="Elementos essenciais para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -535,7 +535,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={elementosComplementares}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -594,7 +594,7 @@ const Book = ({ back }) => {
           <mark>Entrada na lista de referência: MARTINS, Eliseu et al.</mark>
         </p>
 
-        <img loading="lazy" src={chamadasCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={chamadasCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
 
         <p>
           Incluir o número da página do livro de onde a citação foi extraída é

@@ -479,7 +479,7 @@ const BlogArticle = ({ back }) => {
           </mark>
         </p>
 
-        <img loading="lazy" src={Img} alt="artigo-blog" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de artigo de blog ABNT" width="100%" />
 
         <h2>E quando o autor do artigo de blog é uma entidade?</h2>
 

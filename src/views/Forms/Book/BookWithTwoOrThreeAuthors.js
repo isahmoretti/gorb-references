@@ -740,11 +740,11 @@ const Book = ({ back }) => {
 
         <h2>Exemplo de referência com dois autores (elementos essenciais)</h2>
 
-        <img loading="lazy" src={essenciais2} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={essenciais2} alt="Elementos essenciais para referência bibliográfica ABNT" width="100%" />
 
         <h2>Exemplo de referência com três autores (elementos essenciais)</h2>
 
-        <img loading="lazy" src={essenciais3} alt="elementos-essenciais" width="100%" />
+        <img loading="lazy" src={essenciais3} alt="Elementos essenciais para referência bibliográfica ABNT" width="100%" />
 
         <h2>Elementos complementares</h2>
 
@@ -790,7 +790,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={complementares2}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -800,7 +800,7 @@ const Book = ({ back }) => {
 
         <img loading="lazy"
           src={complementares3}
-          alt="elementos-complementares"
+          alt="Elementos complementares para referência bibliográfica ABNT"
           width="100%"
         />
 
@@ -838,7 +838,7 @@ const Book = ({ back }) => {
           parênteses.
         </p>
 
-        <img loading="lazy" src={ChamadaCitacao} alt="chamada-citacao" width="100%" />
+        <img loading="lazy" src={ChamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
 
         <p>
           É aconselhável incluir o número da página do livro onde se encontra o

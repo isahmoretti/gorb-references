@@ -497,7 +497,7 @@ const AudioBook = ({ back }) => {
         <p>
           <h2>Exemplos aplicando o formato</h2>
         </p>
-        <img loading="lazy" src={Img} alt="audio-livro" width="100%" />
+        <img loading="lazy" src={Img} alt="Exemplo de referência de audiolivro ABNT" width="100%" />
         <p>
           <mark>
             GOMES, Laurentino. <b>1822.</b> Na voz de Pedro Bial. [S. l.]:
