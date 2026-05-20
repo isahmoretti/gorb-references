@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
@@ -27,6 +27,69 @@ import Pagina from "../../assets/images/home/pagina-de-referencias-bibliografica
 
 const HexagonPage = () => {
   const history = useHistory();
+
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "GORB - Gerador Online de Referências Bibliográficas",
+          "url": "https://gorb.viacarreira.com",
+          "description": "Gere referências bibliográficas ABNT de forma rápida e gratuita. O GORB aplica a NBR 6023:2018 para livros, artigos, sites, vídeos e muito mais.",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "inLanguage": "pt-BR",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "HowTo",
+          "name": "Como gerar referências bibliográficas ABNT",
+          "description": "Passo a passo para gerar referências no padrão ABNT NBR 6023:2018 usando o GORB.",
+          "inLanguage": "pt-BR",
+          "tool": {
+            "@type": "HowToTool",
+            "name": "GORB - Gerador Online de Referências Bibliográficas"
+          },
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Escolha o tipo de documento",
+              "text": "Encontre na roseta hexagonal o tipo de documento que você deseja referenciar no trabalho."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Preencha o formulário",
+              "text": "Preencha o formulário com os dados solicitados e clique em Gerar referência. Em alguns casos você também consegue gerar as chamadas para citações."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Copie a referência gerada",
+              "text": "O sistema organiza todos os elementos na ordem correta conforme a ABNT. Clique em Copiar e cole a referência na sua lista no editor de texto."
+            }
+          ]
+        }
+      ]
+    };
+
+    const script = document.createElement("script");
+    script.id = "home-jsonld";
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      const s = document.getElementById("home-jsonld");
+      if (s) s.remove();
+    };
+  }, []);
 
   return (
     <>
