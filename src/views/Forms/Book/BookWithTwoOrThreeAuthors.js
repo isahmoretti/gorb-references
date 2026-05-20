@@ -32,6 +32,7 @@ import essenciais3 from "../../../assets/images/explicativos/livro/dois-autores/
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -870,6 +871,8 @@ const Book = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -30,6 +30,7 @@ import elementosEssenciais from "../../../assets/images/explicativos/academicos/
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -631,6 +632,8 @@ const Thesis = ({ back }) => {
 
         <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

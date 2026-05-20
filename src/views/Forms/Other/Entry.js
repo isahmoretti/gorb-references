@@ -31,6 +31,7 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-verb
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -1041,6 +1042,8 @@ const Entry = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -25,6 +25,7 @@ import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -374,6 +375,8 @@ const Photo = ({ back }) => {
           destes documentos, basta especificar o suporte.
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

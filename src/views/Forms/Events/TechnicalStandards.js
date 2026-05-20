@@ -23,6 +23,7 @@ import Img from "../../../assets/images/explicativos/evento/referencia-abnt-norm
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string().required("Obrigatório"),
@@ -419,6 +420,8 @@ const TechnicalStandards = ({ back }) => {
           acesso (dia, mês e ano).
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

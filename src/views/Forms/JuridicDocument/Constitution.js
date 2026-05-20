@@ -23,6 +23,7 @@ import Img from "../../../assets/images/change/Constituição.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   country: Yup.string().required("Obrigatório"),
@@ -504,6 +505,8 @@ const Constitution = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

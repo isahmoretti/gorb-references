@@ -23,6 +23,7 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-bula
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().required("Obrigatório"),
@@ -377,6 +378,8 @@ const BullMedicine = ({ back }) => {
           precedidas de "Disponível em" e "Acesso em", respectivamente.
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

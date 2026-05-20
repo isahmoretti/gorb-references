@@ -26,6 +26,7 @@ import Img2 from "../../../assets/images/change/Documentos civis e de cartório
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
@@ -346,6 +347,8 @@ const CivilAndNotary = ({ back }) => {
 
         <img loading="lazy" src={Img1} alt="Elementos complementares para referência bibliográfica ABNT" width="100%" />
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

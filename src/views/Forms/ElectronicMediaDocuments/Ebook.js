@@ -28,6 +28,7 @@ import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -678,6 +679,8 @@ const Ebook = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

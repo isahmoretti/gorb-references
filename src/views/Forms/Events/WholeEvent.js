@@ -26,6 +26,7 @@ import Img from "../../../assets/images/explicativos/evento/referencia-abnt-even
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   mainEventName: Yup.string().required("Obrigatório"),
@@ -554,6 +555,8 @@ const WholeEvent = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

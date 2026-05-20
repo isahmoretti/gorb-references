@@ -26,6 +26,7 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-mapa
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -657,6 +658,8 @@ const Maps = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

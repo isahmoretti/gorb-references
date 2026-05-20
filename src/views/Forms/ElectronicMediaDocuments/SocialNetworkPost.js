@@ -26,6 +26,7 @@ import Img from "../../../assets/images/change/Postagem em rede social.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   type: Yup.string().required("Obrigatório"),
@@ -426,6 +427,8 @@ const SocialNetworkPost = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

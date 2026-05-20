@@ -26,6 +26,7 @@ import Img from "../../../assets/images/explicativos/evento/referencia-abnt-trab
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -674,6 +675,8 @@ const EventsWorkPublishedInMagazines = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -40,6 +40,7 @@ import {
 } from "./style";
 
 import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-audiolivro.jpg";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
@@ -546,6 +547,8 @@ const AudioBook = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -27,6 +27,7 @@ import elementosEssenciais from "../../../assets/images/explicativos/livro/quatr
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -612,6 +613,8 @@ const Book = ({ back }) => {
           <mark>[...] trecho citado (NEVES et al., 2015, p. 28).</mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

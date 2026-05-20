@@ -28,6 +28,7 @@ import Img from "../../../assets/images/change/Slides.jpg";
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -609,6 +610,8 @@ const SlideShow = ({ back }) => {
           física.
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -28,6 +28,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -608,6 +609,8 @@ const ArticleNewspaper = ({ back }) => {
 
         <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

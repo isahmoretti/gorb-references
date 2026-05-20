@@ -30,6 +30,7 @@ import elementoComplementares from "../../../assets/images/explicativos/academic
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -866,6 +867,8 @@ const WorkArticlePeriodic = ({ back }) => {
 
         <img loading="lazy" src={chamadaCitacao} alt="Chamada para citação no sistema autor-data ABNT" width="100%" />
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

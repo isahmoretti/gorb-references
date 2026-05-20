@@ -24,6 +24,7 @@ import Img from "../../../assets/images/explicativos/eletronicos/elementos_site.
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -417,6 +418,8 @@ const Site = ({ back }) => {
           necessário.
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

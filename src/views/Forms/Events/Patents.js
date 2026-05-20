@@ -28,6 +28,7 @@ import { generateCitationWithoutAuthor } from "../../../utils/generateCitationWi
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -553,6 +554,8 @@ const Patents = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

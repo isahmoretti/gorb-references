@@ -34,6 +34,7 @@ import Sobrenome from "../../../assets/images/explicativos/livro/um-autor/sobren
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -788,6 +789,8 @@ const Book = ({ back }) => {
           <mark>(SOBRENOME, ano, número da página)</mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

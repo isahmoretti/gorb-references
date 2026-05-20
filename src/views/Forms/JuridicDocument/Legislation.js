@@ -26,6 +26,7 @@ import Img2 from "../../../assets/images/change/Lgislação_elementos_essencia
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
@@ -601,6 +602,8 @@ const Legislation = ({ back }) => {
           <mark>(BRASIL, 2002, p. 40)</mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -26,6 +26,7 @@ import Img from "../../../assets/images/explicativos/eletronicos/referencia-abnt
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   type: Yup.string().required("Obrigatório"),
@@ -410,6 +411,8 @@ const Email = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

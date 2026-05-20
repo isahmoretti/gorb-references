@@ -33,6 +33,7 @@ import elementosEssenciais from "../../../assets/images/explicativos/livro/capit
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -1043,6 +1044,8 @@ const Book = ({ back }) => {
           <mark>[...] trecho citado (RECUERO, 2016, p. 54).</mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

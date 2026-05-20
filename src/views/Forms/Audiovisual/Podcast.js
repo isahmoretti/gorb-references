@@ -23,6 +23,7 @@ import Img from "../../../assets/images/change/Podcast.jpg";
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
@@ -448,6 +449,8 @@ const Podcast = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -23,6 +23,7 @@ import Img from "../../../assets/images/explicativos/audiolivro/referencia-abnt-
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Obrigatório"),
@@ -446,6 +447,8 @@ const VideoInternet = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

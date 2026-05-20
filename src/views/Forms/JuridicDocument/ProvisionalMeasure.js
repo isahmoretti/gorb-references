@@ -24,6 +24,7 @@ import Img from "../../../assets/images/explicativos/juridicos/elementos_medida-
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   publicationDate: Yup.string().required("Obrigatório"),
@@ -466,6 +467,8 @@ const ProvisionalMeasure = ({ back }) => {
           acesso na parte final da referência.
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

@@ -24,6 +24,7 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-obra
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   author: Yup.string().required("Obrigatório"),
@@ -284,6 +285,8 @@ const WorkArt = ({ back }) => {
           <mark>Portinari (1944) [...]</mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

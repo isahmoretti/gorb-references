@@ -26,6 +26,7 @@ import Img from "../../../assets/images/explicativos/outros/referencia-abnt-part
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   compositor: Yup.string().required("Obrigatório"),
@@ -427,6 +428,8 @@ const Score = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

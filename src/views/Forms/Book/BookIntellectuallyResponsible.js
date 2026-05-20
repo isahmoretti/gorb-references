@@ -31,6 +31,7 @@ import elementosEssenciais from "../../../assets/images/explicativos/livro/respo
 
 // styles
 import {
+import RelatedLinks from "../../../components/RelatedLinks";
   Container,
   Card,
   Row,
@@ -845,6 +846,8 @@ const Book = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );

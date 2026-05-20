@@ -25,6 +25,7 @@ import Img from "../../../assets/images/explicativos/juridicos/elementos_jurispr
 
 // styles
 import { Container, Card, Row, Content, Back, Actions, Title } from "./style";
+import RelatedLinks from "../../../components/RelatedLinks";
 
 const SignupSchema = Yup.object().shape({
   jurisdiction: Yup.string().required("Obrigatório"),
@@ -637,6 +638,8 @@ const Jurisprudence = ({ back }) => {
           </mark>
         </p>
       </div>
+      <RelatedLinks />
+
       <Footer />
     </>
   );
