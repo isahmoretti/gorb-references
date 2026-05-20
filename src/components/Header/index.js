@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <Nav>
       <WrapperNav className="container">
-        <a href="https://viacarreira.com/">
+        <a href="https://gorb.viacarreira.com/">
           <img src={logo_viacarreiraRoxo} alt="" />
         </a>
       </WrapperNav>
