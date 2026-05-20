@@ -47,35 +47,6 @@ const FooterComponent = () => {
               <Icons src={linkedin} />
             </a>
           </WrapperIcons>
-          <WrapperContent className="container">
-            <ButtonFooter>
-              <a href="https://viacarreira.com/">
-                <Title>Home</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/sobre/">
-                <Title>Sobre</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/politica-de-privacidade/">
-                <Title>Políticas de privacidade</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-
-            <ButtonFooter>
-              <a href="https://viacarreira.com/contato/">
-                <Title>Fale conosco</Title>
-              </a>
-              <Icon> > </Icon>
-            </ButtonFooter>
-          </WrapperContent>
 
           <TitleReservation>
             {" "}
@@ -108,80 +79,6 @@ const FooterComponent = () => {
                 <Icons src={linkedin} />
               </a>
             </IconsDesktopFooter>
-          </BoxDesktopFooter>
-          <BoxDesktopFooter>
-            <ContentDesktopFooter>
-              <ul>
-                <li>
-                  {" "}
-                  <a href="https://viacarreira.com/">
-                    <Title>Home</Title>
-                  </a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="https://viacarreira.com/sobre/">
-                    <Title>Sobre</Title>
-                  </a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="https://viacarreira.com/politica-de-privacidade/">
-                    <Title>Políticas de privacidade</Title>
-                  </a>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <a href="https://viacarreira.com/contato/">
-                    <Title>Fale conosco</Title>
-                  </a>{" "}
-                </li>
-              </ul>
-            </ContentDesktopFooter>
-          </BoxDesktopFooter>
-          <BoxDesktopFooter>
-            <ContentDesktopFooter>
-              <ul>
-                <li>
-                  <a
-                    href="http://www.​viacarreira.com/academico/"
-                    target="blank"
-                  >
-                    <Title>ACADÊMICO</Title>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="http://www.viacarreira.com/educacao/" target="blank">
-                    <Title>Educação</Title>
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="http://www.​viacarreira.com/profissoes/"
-                    target="blank"
-                  >
-                    <Title>Profissões</Title>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="https://viacarreira.com/carreira/" target="blank">
-                    <Title>Carreira</Title>
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="http://www.​viacarreira.com/empreendedorismo/"
-                    target="blank"
-                  >
-                    <Title>Empreendedorismo</Title>
-                  </a>
-                </li>
-              </ul>
-            </ContentDesktopFooter>
           </BoxDesktopFooter>
         </ContainerDesktopFooter>
 
