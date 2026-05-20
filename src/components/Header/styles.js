@@ -16,7 +16,7 @@ export const WrapperNav = styled.div`
   justify-content: center;
 
   > a > img {
-    width: 170px;
-    height: 30px;
+    height: 36px;
+    width: auto;
   }
 `;

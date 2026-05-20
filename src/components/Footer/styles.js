@@ -255,7 +255,8 @@ export const Footer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 115px;
+  height: 36px;
+  width: auto;
 `;
 
 export const WrapperIcons = styled.div`
@@ -337,8 +338,8 @@ export const LogoDesktopFooter = styled.div`
   margin-bottom: 15px;
 
   > img {
-    width: 170px;
-    height: 30px;
+    height: 36px;
+    width: auto;
   }
 `;
 export const ContentDesktopFooter = styled.div`
