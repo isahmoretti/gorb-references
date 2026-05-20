@@ -14,7 +14,7 @@ module.exports = () => {
 
   return {
     // mode: process.env.NODE_ENV,
-    devtool: "source-map",
+    devtool: false,
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
       path: path.resolve(__dirname, "dist"),
