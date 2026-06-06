@@ -16,7 +16,6 @@ import share from "../../assets/images/compartilhar.svg";
 
 // components
 import Footer from "../../components/Footer";
-import GoogleAds from "../../components/GoogleAds";
 
 import {
   Container,
@@ -64,10 +63,6 @@ const HomePageTest = () => {
         </ContentHome>
         <Fundo2 src={fundo2} />
       </WrapperHome>
-
-      <div className="container" style={{ margin: "24px auto" }}>
-        <GoogleAds slot="3888213070" />
-      </div>
 
       <WrapperText className="container">
         <h1> O que é o Teste Vocacional? </h1>

@@ -21,6 +21,7 @@ import {
 // components
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import GoogleAds from "../../components/GoogleAds";
 
 import Plus from "../../assets/images/plus-dark.svg";
 import Pagina from "../../assets/images/home/pagina-de-referencias-bibliograficas.jpg";
@@ -247,6 +248,11 @@ const HexagonPage = () => {
           </Row>
         </ContentMobile>
       </Conatiner>
+
+      <div className="container" style={{ margin: "24px auto" }}>
+        <GoogleAds slot="3888213070" />
+      </div>
+
       <ContentText className="container">
         <p>
           O Gerador Online de Referências Bibliográfica (GORB) foi criado pelo
